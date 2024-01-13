@@ -6,9 +6,11 @@ name: Molecule Test
     branches:
       - "feature/*"
   workflow_dispatch:
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
+
 jobs:
   ansible_lint:
     runs-on: ubuntu-latest

@@ -34,8 +34,8 @@ module.exports = {
       {
         prepareCmd:
           "sed -i 's/^version:.*/version: ${nextRelease.version}/g' galaxy.yml && poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt", //&& ansible-galaxy collection build",
-        // successCmd:
-        //   "git checkout -b release/${nextRelease.version} && git push --set-upstream origin release/${nextRelease.version}",
+        successCmd:
+          "git checkout -b release/${nextRelease.version} && git push --set-upstream origin release/${nextRelease.version}",
       },
     ],
     [
