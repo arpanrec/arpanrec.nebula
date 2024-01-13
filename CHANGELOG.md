@@ -1,0 +1,36 @@
+# 1.0.0 (2024-01-13)
+
+
+### Bug Fixes
+
+* delegate_to: localhost ([#84](https://github.com/arpanrec/nebula/issues/84)) ([ad15a42](https://github.com/arpanrec/nebula/commit/ad15a42a1e2e65ae8a3d514150e6a2ff28d8b21d))
+* Download Check ([44ac233](https://github.com/arpanrec/nebula/commit/44ac233494dbc02a19e997ab1b0ce7ca9afca3c5))
+* release exe ([4f8d4aa](https://github.com/arpanrec/nebula/commit/4f8d4aa592f217ef5c5be8c476c9b930afaf4f91))
+* requirements.txt to reduce vulnerabilities ([#103](https://github.com/arpanrec/nebula/issues/103)) ([98ca6c6](https://github.com/arpanrec/nebula/commit/98ca6c6dda28f049ab53f2df6ccc07e1d6837c13))
+* requirements.txt to reduce vulnerabilities ([#104](https://github.com/arpanrec/nebula/issues/104)) ([60e8bb5](https://github.com/arpanrec/nebula/commit/60e8bb530064351bd6934024e5bc869514113490))
+
+
+### Feat
+
+* Groovy, Patch, telegram ([acfc2b2](https://github.com/arpanrec/nebula/commit/acfc2b262404bdd0b8fef983c329a1cba796078c))
+
+
+### Features
+
+* add kotlin support ([bf1f654](https://github.com/arpanrec/nebula/commit/bf1f654a5f4435c4546ccec7350bcc9a45ff2ab0))
+* added kotlin compile ([41d9220](https://github.com/arpanrec/nebula/commit/41d922045c096ef9d25898b36a8187d52b7c57e2))
+* Ansible lint ([d7d348a](https://github.com/arpanrec/nebula/commit/d7d348ae4adf40639bc9504180f3fed44002fae8))
+* auto release ([#3](https://github.com/arpanrec/nebula/issues/3)) ([fc77058](https://github.com/arpanrec/nebula/commit/fc770582fb11bab04976ed8c588141acd3293acb))
+* Bitwarden Dynamic Version ([d5f471c](https://github.com/arpanrec/nebula/commit/d5f471c2f8dc9bf6e9d070c788c386c90418c610))
+* Gather Facts ([5522998](https://github.com/arpanrec/nebula/commit/5522998223c3c0388c0d4fce0c26dce37fb4674f))
+* Get Dynamic Latest version of java tools ([07018ea](https://github.com/arpanrec/nebula/commit/07018ea888dd23f2a3998b5de826c6980935d2b5))
+* Golang Dynamic version ([#79](https://github.com/arpanrec/nebula/issues/79)) ([04882c0](https://github.com/arpanrec/nebula/commit/04882c08fc45a7a7f0ebc26037f054c351e6de44))
+* moved to github arpanrec as user ([#102](https://github.com/arpanrec/nebula/issues/102)) ([9824866](https://github.com/arpanrec/nebula/commit/9824866f602deaebeb8b2f0b7b909f3c63e69dca))
+* Update release branch to main and configure GPG signing ([#4](https://github.com/arpanrec/nebula/issues/4)) ([d482838](https://github.com/arpanrec/nebula/commit/d482838691a7dffcc63ba56ca0c92bf71ab0c394))
+
+
+### BREAKING CHANGES
+
+* Removed terraform cloud managed role, it's moved to plugin
+* Added kotlin, and java env setup
+* Added Groovy SDK, Bug Fixed to telegram unzip, Added XZ Utils to Linux patch

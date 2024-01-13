@@ -1,0 +1,5 @@
+---
+themes_rv_user_home_dir: "{{ ansible_facts.user_dir }}"
+themes_rv_user_tmp_dir: "{{ themes_rv_user_home_dir }}/.tmp/themes"
+themes_rv_user_config_dir: "{{ themes_rv_user_home_dir }}/.config"
+themes_rv_user_share_dir: "{{ themes_rv_user_home_dir }}/.local/share"

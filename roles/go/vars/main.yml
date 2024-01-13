@@ -1,0 +1,5 @@
+---
+go_rv_tarball_download_path: "{{ go_rv_tmp_dir }}/go{{ go_rv_version }}.linux.tar.gz"
+go_rv_download_url_arch_map:
+  aarch64: "https://go.dev/dl/go{{ go_rv_version | string }}.linux-arm64.tar.gz"
+  x86_64: "https://go.dev/dl/go{{ go_rv_version | string }}.linux-amd64.tar.gz"

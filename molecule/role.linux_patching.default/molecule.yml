@@ -1,0 +1,57 @@
+---
+dependency:
+  name: galaxy
+  enabled: true
+  options:
+    ignore-certs: false
+    ignore-errors: false
+    role-file: requirements.yml
+    requirements-file: requirements.yml
+driver:
+  name: docker
+platforms:
+  - name: debian_role_linux_patching_default
+    hostname: debian_role_linux_patching_default
+    image: debian
+    pre_build_image: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    privileged: true
+    provider_raw_config_args:
+      - "--sysctl"
+provisioner:
+  name: ansible
+  playbooks:
+    converge: converge.yml
+  inventory:
+    group_vars:
+      all:
+        linux_patching_rv_install_headers: false
+        endpoint_global_config: "https://raw.githubusercontent.com/arpanrec/dotfiles/main/.config/global.json"
+        global_config: "{{ lookup('ansible.builtin.url', \
+          endpoint_global_config, \
+          split_lines=False, \
+          headers={'Content-Type':'application/json', 'Accept':'application/json'}) }}"
+        linux_patching_rv_root_ca_pem_content: "{{ global_config.ROOT_CA.CERTIFICATE }}"
+        linux_patching_rv_managed_packages: []
+scenario:
+  name: role.linux_patching.default
+  converge_sequence:
+    - converge
+  destroy_sequence:
+    - destroy
+  create_sequence:
+    - dependency
+    - create
+  test_sequence:
+    - syntax
+    - destroy
+    - dependency
+    - create
+    - converge
+    - idempotence
+    - destroy
+verifier:
+  name: ansible
+log: true
+role_name_check: 0

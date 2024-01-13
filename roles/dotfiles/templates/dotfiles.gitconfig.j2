@@ -1,0 +1,14 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = true
+[remote "origin"]
+	url = {{ dotfiles_rv_git_remote }}
+[status]
+	showUntrackedFiles = no
+[branch "{{ dotfiles_rv_git_version }}"]
+	remote = origin
+	merge = refs/heads/{{ dotfiles_rv_git_version }}
+[branch "testing"]
+	remote = origin
+	merge = refs/heads/testing

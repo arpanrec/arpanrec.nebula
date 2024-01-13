@@ -1,0 +1,20 @@
+---
+- name: Patch Cloud System
+  hosts: localhost
+  become: true
+  gather_facts: true
+  tasks:
+    - name: Patch Cloud System | Linux Patching
+      ansible.builtin.include_role:
+        name: arpanrec.nebula.linux_patching
+
+    - name: Patch Cloud System | SSH Hardening
+      ansible.builtin.include_role:
+        name: arpanrec.nebula.ssh_hardening
+
+    - name: Patch Cloud System | Install Docker
+      ansible.builtin.include_role:
+        name: geerlingguy.docker
+      vars:
+        docker_users:
+          - "{{ pv_cloud_username }}"

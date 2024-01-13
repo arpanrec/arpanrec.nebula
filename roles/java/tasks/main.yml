@@ -1,0 +1,78 @@
+---
+- name: Oracle JDK | Prerequisites
+  ansible.builtin.import_tasks: prerequisites.yml
+
+- name: Oracle JDK | Get downloaded file stat
+  ansible.builtin.stat:
+    path: "{{ java_rv_jdk_tarball_download_path }}"
+  register: pv_ua_jdk_downloaded_file_stat
+
+- name: Oracle JDK | Newly Downloaded
+  when: not pv_ua_jdk_downloaded_file_stat.stat.exists
+  block:
+    - name: Oracle JDK | Newly Downloaded | Download tarball
+      ansible.builtin.get_url:
+        url: "{{ java_rv_jdk_download_url_map['jdk'][java_rv_jdk_version][ansible_facts.architecture] }}"
+        dest: "{{ java_rv_jdk_tarball_download_path }}"
+        mode: "0700"
+
+    - name: Oracle JDK | Newly Downloaded | Remove Old Install Directory
+      ansible.builtin.file:
+        path: "{{ java_rv_jdk_install_path }}"
+        state: absent
+
+  rescue:
+    - name: Oracle JDK | Newly Downloaded | Delete Downloaded tarball
+      ansible.builtin.file:
+        path: "{{ java_rv_jdk_tarball_download_path }}"
+        state: absent
+
+    - name: Oracle JDK | Newly Downloaded | Delete Install Directory
+      ansible.builtin.fail:
+        msg: "Failed to download JDK tarball. Check the above errors."
+
+- name: Oracle JDK | Create install directory
+  ansible.builtin.file:
+    path: "{{ java_rv_jdk_install_path }}"
+    state: directory
+    mode: "0700"
+
+- name: Oracle JDK | Newly Downloaded | Unarchive the tarball
+  ansible.builtin.unarchive:
+    src: "{{ java_rv_jdk_tarball_download_path }}"
+    dest: "{{ java_rv_jdk_install_path }}"
+    extra_opts: [--strip-components=1]
+    remote_src: true
+
+- name: Oracle JDK | Maven
+  ansible.builtin.import_tasks: mvn.yml
+
+- name: Oracle JDK | Gradle
+  ansible.builtin.import_tasks: gradle.yml
+
+- name: Oracle JDK | Groovy
+  ansible.builtin.import_tasks: groovy.yml
+
+- name: Oracle JDK | Kotlin
+  ansible.builtin.include_tasks: kotlin.yml
+
+- name: Oracle JDK | GraalVM
+  ansible.builtin.include_tasks: graalvm.yml
+
+- name: Oracle JDK | Install Script
+  ansible.builtin.template:
+    src: template/source.sh.j2
+    dest: "{{ ansible_facts.user_dir }}/.jdk.env.sh"
+    mode: "0700"
+
+- name: Dotfiles | Ensure config alias is set in ~/.bashrc and ~/.zshrc
+  ansible.builtin.lineinfile:
+    path: "{{ item }}"
+    line: "source {{ ansible_facts.user_dir }}/.jdk.env.sh"
+    create: true
+    state: present
+    regexp: "^source {{ ansible_facts.user_dir }}/.jdk.env.sh$"
+    mode: "0700"
+  loop:
+    - "{{ ansible_facts.user_dir }}/.bashrc"
+    - "{{ ansible_facts.user_dir }}/.zshrc"

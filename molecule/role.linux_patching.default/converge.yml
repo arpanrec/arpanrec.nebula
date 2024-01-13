@@ -1,0 +1,12 @@
+---
+- name: Linux Patching | Molecule | Converge
+  hosts: all
+  become: false
+  gather_facts: false
+  any_errors_fatal: false
+  tasks:
+    - name: Linux Patching | Molecule | Converge | Role
+      become: true
+      become_method: ansible.builtin.su
+      ansible.builtin.import_role:
+        name: arpanrec.nebula.linux_patching
