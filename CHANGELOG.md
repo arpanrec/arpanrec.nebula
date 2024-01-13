@@ -1,6 +1,20 @@
 # 1.0.0 (2024-01-13)
 
 
+### Features
+
+* bring in the code ([b98147d](https://github.com/arpanrec/nebula/commit/b98147d5ea654645651bdb46db46b8c79f547851))
+* bring in the code ([7320ad5](https://github.com/arpanrec/nebula/commit/7320ad5f32d8c129b3956d5b424218c8286dd909))
+
+
+### BREAKING CHANGES
+
+* first commit
+* first commit
+
+# 1.0.0 (2024-01-13)
+
+
 ### Bug Fixes
 
 * delegate_to: localhost ([#84](https://github.com/arpanrec/nebula/issues/84)) ([ad15a42](https://github.com/arpanrec/nebula/commit/ad15a42a1e2e65ae8a3d514150e6a2ff28d8b21d))
