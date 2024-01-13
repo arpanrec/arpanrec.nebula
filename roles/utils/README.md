@@ -21,6 +21,6 @@ python3 -m pip install --user --upgrade wheel setuptools
 python3 -m pip install --user --upgrade virtualenv
 virtualenv --python $(readlink -f $(which python3)) venv
 source venv/bin/activate
-venv/bin/python3 -m pip install -r requirements.txt --upgrade
+venv/bin/python3 -m pip install -r .github/files/requirements.txt --upgrade
 molecule test
 ```

@@ -8,7 +8,7 @@ Collection of ansible roles to bootstrap a new server.
 python3.11 -m venv .venv
 source .venv/bin/activate
 pip install pip pip-tools --upgrade
-rm -f requirements.txt
+rm -f .github/files/requirements.txt
 pip-compile --output-file=requirements.txt requirements.in --upgrade --no-header --no-annotate
 ```
 
@@ -17,7 +17,7 @@ pip-compile --output-file=requirements.txt requirements.in --upgrade --no-header
 ```bash
 python3.11 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r .github/files/requirements.txt
 ansible-galaxy install -r requirements.yml --force
 ```
 
