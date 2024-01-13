@@ -7,7 +7,7 @@ license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 ansible = "^9.1.0"
 bcrypt = "^4.1.1"
 cryptography = "^41.0.7"
@@ -31,10 +31,7 @@ autopep8 = "^2.0.4"
 molecule-plugins = "^23.5.0"
 molecule = "^6.0.2"
 ansible-lint = { version = "^6.22.1", markers = "platform_system != 'Windows'" }
-
-
-[tool.poetry.group.optional.dependencies]
-minio = "^7.2.0"
+poetry-plugin-export = "^1.6.0"
 
 [build-system]
 requires = ["poetry-core"]
