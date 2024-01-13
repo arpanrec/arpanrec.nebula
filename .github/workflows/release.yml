@@ -3,7 +3,7 @@ name: Release
 "on":
   push:
     branches:
-      - release
+      - main
 
 jobs:
   release:
@@ -17,6 +17,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Import GPG key
+        id: import-gpg
+        uses: crazy-max/ghaction-import-gpg@v6
+        with:
+          gpg_private_key: ${{ secrets.ARPANREC_GITHUB_ACTIONS_GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.ARPANREC_GITHUB_ACTIONS_GPG_PRIVATE_KEY_PASSPHRASE }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+          trust_level: 5
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -49,7 +59,10 @@ jobs:
             @semantic-release/github -D
 
       - name: Release
-        run: npx semantic-release --extends ./.github/files/release.config.js && ls -al
+        run: |+
+          git config --global user.email "${{ steps.import-gpg.outputs.email }}"
+          git config --global user.name "${{ steps.import-gpg.outputs.name }}"
+          npx semantic-release --extends ./.github/files/release.config.js && ls -al
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GIT_AUTHOR_NAME: ${{ github.actor }}
