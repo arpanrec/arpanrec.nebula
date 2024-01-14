@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/arpanrec/nebula/compare/1.0.1...1.0.2) (2024-01-14)
+
+
+### Bug Fixes
+
+* Update release workflow to remove unnecessary command ([c6f1954](https://github.com/arpanrec/nebula/commit/c6f195429f51d8b0d3b0d635c357a4cceb741a5f))
+
 ## [1.0.1](https://github.com/arpanrec/nebula/compare/1.0.0...1.0.1) (2024-01-14)
 
 
