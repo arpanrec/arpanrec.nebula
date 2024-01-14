@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/arpanrec/nebula/compare/1.0.2...1.0.3) (2024-01-14)
+
+
+### Bug Fixes
+
+* Update release.config.js to include pyproject.toml ([e1ff9f5](https://github.com/arpanrec/nebula/commit/e1ff9f5c94f3be898528dd8af7b079c10e8bb6cd))
+
 ## [1.0.2](https://github.com/arpanrec/nebula/compare/1.0.1...1.0.2) (2024-01-14)
 
 
