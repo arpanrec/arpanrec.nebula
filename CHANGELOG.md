@@ -1,3 +1,11 @@
+## [1.0.1](https://github.com/arpanrec/nebula/compare/1.0.0...1.0.1) (2024-01-14)
+
+
+### Bug Fixes
+
+* Add ignored files to build_ignore list ([df1c2e2](https://github.com/arpanrec/nebula/commit/df1c2e2b7930edd1bdfaefbd1eec43a53d38b68b))
+* Update version number in pyproject.toml ([37b6aff](https://github.com/arpanrec/nebula/commit/37b6aff3b226120b7f2feed8208672f916020b4a))
+
 # 1.0.0 (2024-01-13)
 
 
