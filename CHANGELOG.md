@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/arpanrec/nebula/compare/1.0.3...1.0.4) (2024-01-14)
+
+
+### Bug Fixes
+
+* Update author email in pyproject.toml ([ff1623d](https://github.com/arpanrec/nebula/commit/ff1623de34f639670bf3bc5e8db415282bb82629))
+
 ## [1.0.3](https://github.com/arpanrec/nebula/compare/1.0.2...1.0.3) (2024-01-14)
 
 
