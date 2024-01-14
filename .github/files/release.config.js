@@ -33,7 +33,7 @@ module.exports = {
       "@semantic-release/exec",
       {
         prepareCmd:
-          "sed -i 's/^version:.*/version: ${nextRelease.version}/g' galaxy.yml && poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt", //&& ansible-galaxy collection build",
+          "sed -i 's/^version:.*/version: ${nextRelease.version}/g' galaxy.yml && poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt && poetry version ${nextRelease.version}", //&& ansible-galaxy collection build",
         successCmd:
           "git checkout -b release/${nextRelease.version} && git push --set-upstream origin release/${nextRelease.version}",
       },
@@ -45,6 +45,7 @@ module.exports = {
           "galaxy.yml",
           "CHANGELOG.md",
           ".github/files/requirements.txt",
+          "pyproject.toml",
         ],
         message:
           "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
