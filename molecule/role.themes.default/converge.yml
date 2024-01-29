@@ -3,6 +3,6 @@
   hosts: all
   gather_facts: false
   tasks:
-    - name: Themes | Molecule | Converge | Include Code role
-      ansible.builtin.import_role:
-        name: arpanrec.nebula.themes
+      - name: Themes | Molecule | Converge | Include Code role
+        ansible.builtin.import_role:
+            name: arpanrec.nebula.themes
