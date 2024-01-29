@@ -2,7 +2,7 @@
 # handlers file for ssh_hardening
 - name: SSH Hardening | Restart openssh server
   ansible.builtin.service:
-    name: sshd
-    state: restarted
-    enabled: true
+      name: sshd
+      state: restarted
+      enabled: true
   when: ssh_hardening_rv_ssh_security_restart_service
