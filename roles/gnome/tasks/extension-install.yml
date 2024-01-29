@@ -35,7 +35,9 @@
   block:
       - name: Gnome | Extension | Install | New Install | Set Download location | {{ pv_gnome_extension_name }}
         ansible.builtin.set_fact:
-            pv_gnome_extension_download_path: "{{ gnome_rv_user_cache_tmp_dir }}/{{ pv_gnome_extension_uuid }}-{{ pv_gnome_extension_version }}.zip"
+            pv_gnome_extension_download_path:
+                "{{ gnome_rv_user_cache_tmp_dir }}/\
+                {{ pv_gnome_extension_uuid }}-{{ pv_gnome_extension_version }}.zip"
 
       - name: Gnome | Extension | Install | New Install | Check for existing archive | {{ pv_gnome_extension_name }}
         ansible.builtin.stat:
@@ -45,20 +47,26 @@
       - name: Gnome | Extension | Install | New Install | New Download | {{ pv_gnome_extension_name }}
         when: not pv_gnome_extension_download_path_stat.stat.exists
         block:
-            - name: Gnome | Extension | Install | New Install | New Download | Create Directiry | {{ pv_gnome_extension_name }}
+            - name:
+                  Gnome | Extension | Install | New Install | New Download | Create Directiry \
+                  | {{ pv_gnome_extension_name }}
               ansible.builtin.file:
                   path: "{{ pv_gnome_extension_download_path | dirname }}"
                   state: directory
                   mode: "0700"
 
-            - name: Gnome | Extension | Install | New Install | New Download | Download archive | {{ pv_gnome_extension_name }}
+            - name:
+                  Gnome | Extension | Install | New Install | New Download | Download archive \
+                  | {{ pv_gnome_extension_name }}
               when: not pv_gnome_extension_download_path_stat.stat.exists
               ansible.builtin.get_url:
                   url: "https://extensions.gnome.org{{ pv_gnome_extension_download_url }}"
                   dest: "{{ pv_gnome_extension_download_path }}"
                   mode: "0700"
 
-            - name: Gnome | Extension | Install | New Install | New Download | Create directory | {{ pv_gnome_extension_name }}
+            - name:
+                  Gnome | Extension | Install | New Install | New Download | Create directory \
+                  | {{ pv_gnome_extension_name }}
               ansible.builtin.file:
                   path: "{{ pv_gnome_extension_user_dir }}"
                   state: directory
