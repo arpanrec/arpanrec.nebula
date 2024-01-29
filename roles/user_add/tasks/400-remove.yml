@@ -1,16 +1,16 @@
 ---
 - name: "Removing the user {{ user_add_rv_username }}"
   ansible.builtin.user:
-    name: "{{ user_add_rv_username }}"
-    state: absent
-    remove: true
+      name: "{{ user_add_rv_username }}"
+      state: absent
+      remove: true
 
 - name: "Removing the default group {{ user_add_rv_username }}"
   ansible.builtin.group:
-    name: "{{ user_add_rv_username }}"
-    state: absent
+      name: "{{ user_add_rv_username }}"
+      state: absent
 
 - name: "Removing sudoers file"
   ansible.builtin.file:
-    path: "{{ user_add_rv_sudoers_file }}"
-    state: absent
+      path: "{{ user_add_rv_sudoers_file }}"
+      state: absent
