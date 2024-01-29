@@ -28,7 +28,7 @@ rules:
   indentation:
     indent-sequences: consistent
     check-multi-line-strings: false
-    spaces: 2
+    spaces: 4
   key-duplicates: enable
   new-line-at-end-of-file:
     level: error
