@@ -75,13 +75,9 @@ class VaultInventoryModule(BaseInventoryPlugin):
         valid = False
         if super(VaultInventoryModule, self).verify_file(path):
             with open(path, encoding="utf-8") as inventory_file_stream:
-                self.__inventory_config = yaml.load(
-                    inventory_file_stream, Loader=SafeLoader
-                )
+                self.__inventory_config = yaml.load(inventory_file_stream, Loader=SafeLoader)
                 self.display.vvv("Ansible Inventory Loaded from: " + path)
-                self.display.vvvv(
-                    "Ansible Inventory Information: " + self.__inventory_config
-                )
+                self.display.vvvv("Ansible Inventory Information: " + self.__inventory_config)
                 valid = True
         return valid
 
@@ -90,9 +86,7 @@ class VaultInventoryModule(BaseInventoryPlugin):
         self.display.vvvv("Adding Localhost")
         self.inventory.add_host("localhost")
         self.inventory.set_variable("localhost", "ansible_connection", "local")
-        self.inventory.set_variable(
-            "localhost", "ansible_python_interpreter", "/usr/bin/env python3"
-        )
+        self.inventory.set_variable("localhost", "ansible_python_interpreter", "/usr/bin/env python3")
 
         self.display.vvvv("Parsing Vault inventory : " + path)
         self.inventory = inventory
@@ -114,7 +108,5 @@ class VaultInventoryModule(BaseInventoryPlugin):
             cert=cert,
         )
         print(vault_client.is_authenticated())
-        secret_version_response = vault_client.secrets.kv.v2.read_secret_version(
-            path=path, mount_point=mount_point
-        )
+        secret_version_response = vault_client.secrets.kv.v2.read_secret_version(path=path, mount_point=mount_point)
         print(secret_version_response)

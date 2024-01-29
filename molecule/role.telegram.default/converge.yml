@@ -3,6 +3,6 @@
   hosts: all
   gather_facts: false
   tasks:
-    - name: Telegram Desktop | Molecule | Converge | Include Telegram Desktop
-      ansible.builtin.import_role:
-        name: arpanrec.nebula.telegram
+      - name: Telegram Desktop | Molecule | Converge | Include Telegram Desktop
+        ansible.builtin.import_role:
+            name: arpanrec.nebula.telegram
