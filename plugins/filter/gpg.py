@@ -83,7 +83,9 @@ def d_gpg_ops(
         else:
             gnupg_home = Path.joinpath(Path.home(), ".gnupg")
     elif gnupg_home.lower() == "temp":
-        with tempfile.TemporaryDirectory(suffix=None, prefix=None, dir=None, ignore_cleanup_errors=False) as temporary_directory:
+        with tempfile.TemporaryDirectory(
+            suffix=None, prefix=None, dir=None, ignore_cleanup_errors=False
+        ) as temporary_directory:
             gnupg_home = temporary_directory
     else:
         pass

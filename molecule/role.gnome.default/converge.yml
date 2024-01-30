@@ -3,6 +3,6 @@
   hosts: all
   gather_facts: false
   tasks:
-    - name: Gnome | Molecule | Converge | Include Gnome
-      ansible.builtin.import_role:
-        name: arpanrec.nebula.gnome
+      - name: Gnome | Molecule | Converge | Include Gnome
+        ansible.builtin.import_role:
+            name: arpanrec.nebula.gnome

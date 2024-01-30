@@ -3,37 +3,37 @@
   hosts: all
   gather_facts: false
   tasks:
-    - name: Golang | Molecule | Verify | Import Roles for variables
-      ansible.builtin.import_role:
-        name: arpanrec.nebula.go
-        tasks_from: prerequisites
+      - name: Golang | Molecule | Verify | Import Roles for variables
+        ansible.builtin.import_role:
+            name: arpanrec.nebula.go
+            tasks_from: prerequisites
 
-    - name: Golang | Molecule | Get Latest Version
-      when: go_rv_version is not defined
-      block:
-        - name: Golang | Molecule | Get Latest Version | Download
-          ansible.builtin.uri:
-            url: https://golang.org/VERSION?m=text
-            return_content: true
-          register: pv_ua_golang_latest_version
+      - name: Golang | Molecule | Get Latest Version
+        when: go_rv_version is not defined
+        block:
+            - name: Golang | Molecule | Get Latest Version | Download
+              ansible.builtin.uri:
+                  url: https://golang.org/VERSION?m=text
+                  return_content: true
+              register: pv_ua_golang_latest_version
 
-        - name: Golang | Molecule | Get Latest Version | Set
-          ansible.builtin.set_fact:
-            go_rv_version: "{{ pv_ua_golang_latest_version.content | split('\n') | first | regex_replace('^go', '') }}"
+            - name: Golang | Molecule | Get Latest Version | Set
+              ansible.builtin.set_fact:
+                  go_rv_version: "{{ pv_ua_golang_latest_version.content | split('\n') | first | regex_replace('^go', '') }}"
 
-    - name: Golang | Molecule | Verify | Get go version from shell
-      ansible.builtin.command: go version
-      environment:
-        PATH: "{{ go_rv_install_path }}/bin:{{ ansible_env.PATH }}"
-      register: go_rv_tmp_version_shell_result
-      changed_when: false
+      - name: Golang | Molecule | Verify | Get go version from shell
+        ansible.builtin.command: go version
+        environment:
+            PATH: "{{ go_rv_install_path }}/bin:{{ ansible_env.PATH }}"
+        register: go_rv_tmp_version_shell_result
+        changed_when: false
 
-    - name: Golang | Molecule | Verify | go version from shell result
-      ansible.builtin.debug:
-        var: go_rv_tmp_version_shell_result
+      - name: Golang | Molecule | Verify | go version from shell result
+        ansible.builtin.debug:
+            var: go_rv_tmp_version_shell_result
 
-    - name: Golang | Molecule | Verify | Fail if Go version is not present
-      ansible.builtin.assert:
-        that: go_rv_tmp_version_shell_result.stdout is match("go version go" + go_rv_version + ".*")
-        success_msg: Go Version {{ go_rv_version }} is installed
-        fail_msg: Go Version {{ go_rv_version }} is not installed, Shell result {{ go_rv_tmp_version_shell_result.stdout }}
+      - name: Golang | Molecule | Verify | Fail if Go version is not present
+        ansible.builtin.assert:
+            that: go_rv_tmp_version_shell_result.stdout is match("go version go" + go_rv_version + ".*")
+            success_msg: Go Version {{ go_rv_version }} is installed
+            fail_msg: Go Version {{ go_rv_version }} is not installed, Shell result {{ go_rv_tmp_version_shell_result.stdout }}
