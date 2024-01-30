@@ -102,7 +102,6 @@ EXAMPLES = r"""
       repository: "github_master_controller"
       name: "ENV_SECRET"
       state: absent
-
 """
 
 RETURN = r"""

@@ -30,7 +30,7 @@ flake8 = "^6.1.0"
 autopep8 = "^2.0.4"
 molecule-plugins = "^23.5.0"
 molecule = "^6.0.2"
-ansible-lint = { version = "^6.22.1", markers = "platform_system != 'Windows'" }
+ansible-lint = { version = "^6.22.2", markers = "platform_system != 'Windows'" }
 poetry-plugin-export = "^1.6.0"
 
 [build-system]
