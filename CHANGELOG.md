@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/arpanrec/nebula/compare/1.0.4...1.0.5) (2024-01-30)
+
+
+### Bug Fixes
+
+* 4 spaces for yaml ([#6](https://github.com/arpanrec/nebula/issues/6)) ([2f8edac](https://github.com/arpanrec/nebula/commit/2f8edac11796f8b33ff2de26a63a42f32ecfb996))
+
 ## [1.0.4](https://github.com/arpanrec/nebula/compare/1.0.3...1.0.4) (2024-01-14)
 
 
