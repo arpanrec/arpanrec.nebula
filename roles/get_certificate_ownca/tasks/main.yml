@@ -1,29 +1,29 @@
 ---
 - name: Get Certificate Ownca | Check Variables
   ansible.builtin.import_tasks:
-    file: check_vars.yml
+      file: check_vars.yml
 
 - name: Get Certificate Ownca | Set Values
   ansible.builtin.import_tasks:
-    file: pre_set.yml
+      file: pre_set.yml
 
 - name: Get Certificate Ownca | Create Private Key
   ansible.builtin.import_tasks:
-    file: private_key_create.yml
+      file: private_key_create.yml
 
 - name: Get Certificate Ownca | Certificate To Be Created
   ansible.builtin.import_tasks:
-    file: certificate_to_be_created.yml
+      file: certificate_to_be_created.yml
 
 - name: Get Certificate Ownca | Create Certificate
   when: get_certificate_ownca_rv_getcert_to_be_created
   ansible.builtin.import_tasks:
-    file: certificate_create.yml
+      file: certificate_create.yml
 
 - name: Get Certificate Ownca | Write Files
   ansible.builtin.import_tasks:
-    file: write_files.yml
+      file: write_files.yml
 
 - name: Get Certificate Ownca | Set All values to length 0
   ansible.builtin.import_tasks:
-    file: reset_vars.yml
+      file: reset_vars.yml

@@ -7,7 +7,7 @@
 
 - name: Visual Studio Code | Extension | Installed extentsion | {{ item }}
   ansible.builtin.debug:
-    var: pv_ua_code_tmp_ext_installed_list_shell
+      var: pv_ua_code_tmp_ext_installed_list_shell
 
 - name: Visual Studio Code | Extension | Install | {{ item }}
   ansible.builtin.command: "code --install-extension {{ item }}"
@@ -18,4 +18,4 @@
 
 - name: Visual Studio Code | Extension | Install result | {{ item }}
   ansible.builtin.debug:
-    var: pv_ua_code_tmp_ext_install_result
+      var: pv_ua_code_tmp_ext_install_result

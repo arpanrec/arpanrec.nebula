@@ -9,11 +9,11 @@
   ansible.builtin.shell: "command -v {{ item }} >/dev/null 2>&1"
   changed_when: false
   with_items:
-    - curl
-    - wget
-    - tar
-    - unzip
-    - gtk-update-icon-cache
+      - curl
+      - wget
+      - tar
+      - unzip
+      - gtk-update-icon-cache
 
 - name: Gnome | Prerequisites | Gather Facts
   ansible.builtin.setup:

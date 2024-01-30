@@ -9,10 +9,10 @@
   ansible.builtin.shell: "command -v {{ item }} >/dev/null 2>&1"
   changed_when: false
   with_items:
-    - curl
-    - wget
-    - tar
-    - unzip
+      - curl
+      - wget
+      - tar
+      - unzip
 
 - name: Postman | Prerequisites | Gather Facts
   ansible.builtin.setup:
