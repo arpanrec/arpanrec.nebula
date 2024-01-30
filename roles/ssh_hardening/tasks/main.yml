@@ -1,44 +1,44 @@
 ---
 - name: SSHD Hardening | Include Asserts | Checking platform compatibility
   ansible.builtin.fail:
-    msg: "{{ ansible_system }} is not supported by this role"
+      msg: "{{ ansible_system }} is not supported by this role"
   when: ansible_os_family not in ['Debian']
 
 - name: SSHD Hardening | Install Packages | Install openssh server
   ansible.builtin.apt:
-    name: openssh-server
-    state: present
-    update_cache: true
+      name: openssh-server
+      state: present
+      update_cache: true
 
 - name: Linux Patching | Enable UFW SSH Port
   community.general.ufw:
-    rule: allow
-    port: "{{ ssh_hardening_rv_ssh_port }}"
-    proto: tcp
-    state: enabled
+      rule: allow
+      port: "{{ ssh_hardening_rv_ssh_port }}"
+      proto: tcp
+      state: enabled
 
 - name: SSHD Hardening | Enable Firewall port
   community.general.ufw:
-    port: "{{ ssh_hardening_rv_ssh_port }}"
-    rule: allow
-    state: enabled
+      port: "{{ ssh_hardening_rv_ssh_port }}"
+      rule: allow
+      state: enabled
 
 - name: SSHD Hardening | Create config directory
   ansible.builtin.file:
-    path: /etc/ssh/sshd_config.d
-    state: directory
-    mode: "0755"
-    owner: root
-    group: root
+      path: /etc/ssh/sshd_config.d
+      state: directory
+      mode: "0755"
+      owner: root
+      group: root
   notify:
-    - SSH Hardening | Restart openssh server
+      - SSH Hardening | Restart openssh server
 
 - name: SSHD Hardening | Place config file
   ansible.builtin.template:
-    src: templates/010-ssh-ansible.conf.j2
-    dest: /etc/ssh/sshd_config.d/010-ssh-ansible.conf
-    mode: "0755"
-    owner: root
-    group: root
+      src: templates/010-ssh-ansible.conf.j2
+      dest: /etc/ssh/sshd_config.d/010-ssh-ansible.conf
+      mode: "0755"
+      owner: root
+      group: root
   notify:
-    - SSH Hardening | Restart openssh server
+      - SSH Hardening | Restart openssh server

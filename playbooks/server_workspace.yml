@@ -4,164 +4,164 @@
   become: false
   gather_facts: true
   tasks:
-    - name: USERAPPS | Dotfiles
-      ansible.builtin.include_role:
-        name: arpanrec.nebula.dotfiles
-      args:
-        apply:
-          tags:
+      - name: USERAPPS | Dotfiles
+        ansible.builtin.include_role:
+            name: arpanrec.nebula.dotfiles
+        args:
+            apply:
+                tags:
+                    - dotfiles
+        tags:
             - dotfiles
-      tags:
-        - dotfiles
 
-    - name: USERAPPS | Install Bitwarden
-      ansible.builtin.include_role:
-        name: arpanrec.nebula.bitwarden_desktop
-      args:
-        apply:
-          tags:
+      - name: USERAPPS | Install Bitwarden
+        ansible.builtin.include_role:
+            name: arpanrec.nebula.bitwarden_desktop
+        args:
+            apply:
+                tags:
+                    - bitwarden_desktop
+                    - never
+        tags:
             - bitwarden_desktop
             - never
-      tags:
-        - bitwarden_desktop
-        - never
 
-    - name: USERAPPS | Bitwarden CLI
-      ansible.builtin.include_role:
-        name: arpanrec.nebula.bw
-      args:
-        apply:
-          tags:
+      - name: USERAPPS | Bitwarden CLI
+        ansible.builtin.include_role:
+            name: arpanrec.nebula.bw
+        args:
+            apply:
+                tags:
+                    - bw
+        tags:
             - bw
-      tags:
-        - bw
 
-    - name: USERAPPS | Mattermost
-      ansible.builtin.include_role:
-        name: arpanrec.nebula.mattermost_desktop
-      args:
-        apply:
-          tags:
+      - name: USERAPPS | Mattermost
+        ansible.builtin.include_role:
+            name: arpanrec.nebula.mattermost_desktop
+        args:
+            apply:
+                tags:
+                    - mattermost_desktop
+                    - never
+        tags:
             - mattermost_desktop
             - never
-      tags:
-        - mattermost_desktop
-        - never
 
-    - name: USERAPPS | Telegram
-      ansible.builtin.include_role:
-        name: arpanrec.nebula.telegram
-      args:
-        apply:
-          tags:
+      - name: USERAPPS | Telegram
+        ansible.builtin.include_role:
+            name: arpanrec.nebula.telegram
+        args:
+            apply:
+                tags:
+                    - telegram
+                    - never
+        tags:
             - telegram
             - never
-      tags:
-        - telegram
-        - never
 
-    - name: USERAPPS | NodeJS
-      ansible.builtin.include_role:
-        name: arpanrec.nebula.nodejs
-      tags:
-        - nodejs
-      args:
-        apply:
-          tags:
+      - name: USERAPPS | NodeJS
+        ansible.builtin.include_role:
+            name: arpanrec.nebula.nodejs
+        tags:
             - nodejs
+        args:
+            apply:
+                tags:
+                    - nodejs
 
-    - name: USERAPPS | Postman
-      ansible.builtin.include_role:
-        name: arpanrec.nebula.postman
-      tags:
-        - postman
-        - never
-      args:
-        apply:
-          tags:
+      - name: USERAPPS | Postman
+        ansible.builtin.include_role:
+            name: arpanrec.nebula.postman
+        tags:
             - postman
             - never
+        args:
+            apply:
+                tags:
+                    - postman
+                    - never
 
-    - name: USERAPPS | Go Language
-      ansible.builtin.include_role:
-        name: arpanrec.nebula.go
-      tags:
-        - go
-      args:
-        apply:
-          tags:
+      - name: USERAPPS | Go Language
+        ansible.builtin.include_role:
+            name: arpanrec.nebula.go
+        tags:
             - go
+        args:
+            apply:
+                tags:
+                    - go
 
-    - name: USERAPPS | Oracle Java
-      ansible.builtin.include_role:
-        name: arpanrec.nebula.java
-      tags:
-        - java
-      args:
-        apply:
-          tags:
+      - name: USERAPPS | Oracle Java
+        ansible.builtin.include_role:
+            name: arpanrec.nebula.java
+        tags:
             - java
+        args:
+            apply:
+                tags:
+                    - java
 
-    - name: USERAPPS | Visual Studio Code
-      ansible.builtin.include_role:
-        name: arpanrec.nebula.code
-      tags:
-        - code
-        - never
-      args:
-        apply:
-          tags:
+      - name: USERAPPS | Visual Studio Code
+        ansible.builtin.include_role:
+            name: arpanrec.nebula.code
+        tags:
             - code
             - never
+        args:
+            apply:
+                tags:
+                    - code
+                    - never
 
-    - name: USERAPPS | Themes
-      ansible.builtin.include_role:
-        name: arpanrec.nebula.themes
-      tags:
-        - themes
-      args:
-        apply:
-          tags:
+      - name: USERAPPS | Themes
+        ansible.builtin.include_role:
+            name: arpanrec.nebula.themes
+        tags:
             - themes
+        args:
+            apply:
+                tags:
+                    - themes
 
-    - name: USERAPPS | KDE
-      ansible.builtin.include_role:
-        name: arpanrec.nebula.kde
-      tags:
-        - kde
-      args:
-        apply:
-          tags:
+      - name: USERAPPS | KDE
+        ansible.builtin.include_role:
+            name: arpanrec.nebula.kde
+        tags:
             - kde
+        args:
+            apply:
+                tags:
+                    - kde
 
-    - name: USERAPPS | Gnome Setup
-      ansible.builtin.include_role:
-        name: arpanrec.nebula.gnome
-      tags:
-        - gnome
-        - never
-      args:
-        apply:
-          tags:
+      - name: USERAPPS | Gnome Setup
+        ansible.builtin.include_role:
+            name: arpanrec.nebula.gnome
+        tags:
             - gnome
             - never
+        args:
+            apply:
+                tags:
+                    - gnome
+                    - never
 
-    - name: USERAPPS | Terraform
-      ansible.builtin.include_role:
-        name: arpanrec.nebula.terraform
-      tags:
-        - terraform
-      args:
-        apply:
-          tags:
+      - name: USERAPPS | Terraform
+        ansible.builtin.include_role:
+            name: arpanrec.nebula.terraform
+        tags:
             - terraform
+        args:
+            apply:
+                tags:
+                    - terraform
 
-    - name: USERAPPS | Hashicorp Vault
-      ansible.builtin.include_role:
-        name: arpanrec.nebula.vault
-      tags:
-        - vault
-      args:
-        apply:
-          tags:
+      - name: USERAPPS | Hashicorp Vault
+        ansible.builtin.include_role:
+            name: arpanrec.nebula.vault
+        tags:
             - vault
+        args:
+            apply:
+                tags:
+                    - vault

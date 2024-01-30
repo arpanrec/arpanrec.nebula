@@ -9,7 +9,7 @@
   ansible.builtin.shell: "command -v {{ item }} >/dev/null 2>&1"
   changed_when: false
   with_items:
-    - tar
+      - tar
 
 - name: KDE | Prerequisites | Gather Facts
   ansible.builtin.setup:

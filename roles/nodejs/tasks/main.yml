@@ -4,50 +4,50 @@
 
 - name: NodeJS | Get downloaded file stat
   ansible.builtin.stat:
-    path: "{{ nodejs_rv_tarball_download_path }}"
+      path: "{{ nodejs_rv_tarball_download_path }}"
   register: nodejs_rv_tmp_downloaded_file_stat
 
 - name: NodeJS | New Download | Create download directory
   ansible.builtin.file:
-    path: "{{ nodejs_rv_tmp_install_cache_dir }}"
-    state: directory
-    mode: "0700"
+      path: "{{ nodejs_rv_tmp_install_cache_dir }}"
+      state: directory
+      mode: "0700"
 
 - name: NodeJS | New Download
   when: not nodejs_rv_tmp_downloaded_file_stat.stat.exists
   block:
-    - name: NodeJS | New Download | Download tarball
-      ansible.builtin.get_url:
-        url: "{{ nodejs_rv_download_url }}"
-        dest: "{{ nodejs_rv_tarball_download_path }}"
-        mode: "0700"
+      - name: NodeJS | New Download | Download tarball
+        ansible.builtin.get_url:
+            url: "{{ nodejs_rv_download_url }}"
+            dest: "{{ nodejs_rv_tarball_download_path }}"
+            mode: "0700"
+            timeout: 300
         timeout: 300
-      timeout: 300
 
-    - name: NodeJS | New Download | Remove old install directory
-      ansible.builtin.file:
-        path: "{{ nodejs_rv_install_path }}"
-        state: absent
+      - name: NodeJS | New Download | Remove old install directory
+        ansible.builtin.file:
+            path: "{{ nodejs_rv_install_path }}"
+            state: absent
 
   rescue:
-    - name: NodeJS | New Download | Fail | Cleanup
-      ansible.builtin.file:
-        path: "{{ nodejs_rv_tmp_install_cache_dir }}"
-        state: absent
+      - name: NodeJS | New Download | Fail | Cleanup
+        ansible.builtin.file:
+            path: "{{ nodejs_rv_tmp_install_cache_dir }}"
+            state: absent
 
-    - name: NodeJS | New Download | Fail | Fail
-      ansible.builtin.fail:
-        msg: Something went wrong, check the errors above
+      - name: NodeJS | New Download | Fail | Fail
+        ansible.builtin.fail:
+            msg: Something went wrong, check the errors above
 
 - name: NodeJS | Create install directory
   ansible.builtin.file:
-    path: "{{ nodejs_rv_install_path }}"
-    state: directory
-    mode: "0700"
+      path: "{{ nodejs_rv_install_path }}"
+      state: directory
+      mode: "0700"
 
 - name: NodeJS | New Download | Unarchive the tarball
   ansible.builtin.unarchive:
-    src: "{{ nodejs_rv_tarball_download_path }}"
-    dest: "{{ nodejs_rv_install_path }}"
-    extra_opts: [--strip-components=1]
-    remote_src: true
+      src: "{{ nodejs_rv_tarball_download_path }}"
+      dest: "{{ nodejs_rv_install_path }}"
+      extra_opts: [--strip-components=1]
+      remote_src: true

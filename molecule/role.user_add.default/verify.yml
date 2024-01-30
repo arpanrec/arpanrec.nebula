@@ -5,11 +5,11 @@
   hosts: all
   gather_facts: false
   tasks:
-    - name: Get user details
-      ansible.builtin.command: "id {{ user_add_rv_username }}"
-      register: userdetails
-      changed_when: false
+      - name: Get user details
+        ansible.builtin.command: "id {{ user_add_rv_username }}"
+        register: userdetails
+        changed_when: false
 
-    - name: Print User Details
-      ansible.builtin.debug:
-        var: userdetails
+      - name: Print User Details
+        ansible.builtin.debug:
+            var: userdetails

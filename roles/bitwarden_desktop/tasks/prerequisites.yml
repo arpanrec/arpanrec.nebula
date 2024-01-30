@@ -9,13 +9,13 @@
   ansible.builtin.shell: "command -v {{ item }} >/dev/null 2>&1"
   changed_when: false
   with_items:
-    - curl
-    - wget
+      - curl
+      - wget
 
 - name: Bitwarden Desktop | Prerequisites | Gather Facts
   ansible.builtin.setup:
 
 - name: Bitwarden Desktop | Prerequisites | Fail if not ansible_facts.architecture == "x86_64"
   ansible.builtin.fail:
-    msg: This app is avalaible only for ansible_facts.architecture == "x86_64"
+      msg: This app is avalaible only for ansible_facts.architecture == "x86_64"
   when: ansible_facts.architecture != "x86_64"

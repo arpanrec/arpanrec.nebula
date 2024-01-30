@@ -9,9 +9,9 @@
   ansible.builtin.shell: "command -v {{ item }} >/dev/null 2>&1"
   changed_when: false
   with_items:
-    - curl
-    - wget
-    - tar
+      - curl
+      - wget
+      - tar
 
 - name: NodeJS | Prerequisites | Gather Facts
   ansible.builtin.setup:

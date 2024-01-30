@@ -27,96 +27,96 @@ version_added: "1.0.0"
 description: Create Update Delete Github Action Secret.
 
 options:
-  api_ep:
-    description: Rest Api endpoint
-    required: false
-    type: str
-    default: "https://api.github.com"
-  pat:
-    description: Github PAT.
-    required: true
-    type: str
-  owner:
-    description:
-      - Owner Of the repository
-      - When organization and owner both are missing, this value will be set as the owner of PAT
-      - mutually exclusive with organization
-    required: false
-    type: str
-  organization:
-    description:
-      - organization of the repository
-      - If repository is missing then the secret wil be added to organization secret
-    required: false
-    type: str
-  unencrypted_secret:
-    description: Plain text action secret
-    required: false
-    type: str
-  name:
-    description: Name of the secret
-    required: true
-    type: str
-  repository:
-    description: Name of the github repository.
-    required: false
-    type: str
-  state:
-    description: State of the secret.
-    required: false
-    type: str
-    choices: ["present", "absent"]
-    default: present
-  visibility:
-    description: Mandatory for organization secrets
-    choices: ["private", "all", "selected"]
-    type: str
-    required: false
+    api_ep:
+        description: Rest Api endpoint
+        required: false
+        type: str
+        default: "https://api.github.com"
+    pat:
+        description: Github PAT.
+        required: true
+        type: str
+    owner:
+        description:
+            - Owner Of the repository
+            - When organization and owner both are missing, this value will be set as the owner of PAT
+            - mutually exclusive with organization
+        required: false
+        type: str
+    organization:
+        description:
+            - organization of the repository
+            - If repository is missing then the secret wil be added to organization secret
+        required: false
+        type: str
+    unencrypted_secret:
+        description: Plain text action secret
+        required: false
+        type: str
+    name:
+        description: Name of the secret
+        required: true
+        type: str
+    repository:
+        description: Name of the github repository.
+        required: false
+        type: str
+    state:
+        description: State of the secret.
+        required: false
+        type: str
+        choices: ["present", "absent"]
+        default: present
+    visibility:
+        description: Mandatory for organization secrets
+        choices: ["private", "all", "selected"]
+        type: str
+        required: false
 author:
-  - Arpan Mandal (mailto:arpan.rec@gmail.com)
+    - Arpan Mandal (mailto:arpan.rec@gmail.com)
 """
 
 EXAMPLES = r"""
 - name: Create or Update a repository secret
   github_action_secret:
-    api_ep: "https://api.github.com"
-    pat: "{{ lookup('ansible.builtin.env', 'GH_PROD_API_TOKEN') }}"
-    unencrypted_secret: "supersecret"
-    repository: "github_master_controller"
-    name: "ENV_SECRET1"
+      api_ep: "https://api.github.com"
+      pat: "{{ lookup('ansible.builtin.env', 'GH_PROD_API_TOKEN') }}"
+      unencrypted_secret: "supersecret"
+      repository: "github_master_controller"
+      name: "ENV_SECRET1"
 
 - name: Create or Update a organization secret
   github_action_secret:
-    api_ep: "https://api.github.com"
-    pat: "{{ lookup('ansible.builtin.env', 'GH_PROD_API_TOKEN') }}"
-    unencrypted_secret: "supersecret"
-    name: "ENV_SECRET"
-    organization: arpanrec
-    state: present
-    visibility: all
+      api_ep: "https://api.github.com"
+      pat: "{{ lookup('ansible.builtin.env', 'GH_PROD_API_TOKEN') }}"
+      unencrypted_secret: "supersecret"
+      name: "ENV_SECRET"
+      organization: arpanrec
+      state: present
+      visibility: all
 
 - name: Delete a repository secret
   github_action_secret:
-    api_ep: "https://api.github.com"
-    pat: "{{ lookup('ansible.builtin.env', 'GH_PROD_API_TOKEN') }}"
-    repository: "github_master_controller"
-    name: "ENV_SECRET"
-    state: absent
+      api_ep: "https://api.github.com"
+      pat: "{{ lookup('ansible.builtin.env', 'GH_PROD_API_TOKEN') }}"
+      repository: "github_master_controller"
+      name: "ENV_SECRET"
+      state: absent
 """
 
 RETURN = r"""
 public_key:
-  description: Public Key of the repository
-  type: str
-  returned: if state == present
+    description: Public Key of the repository
+    type: str
+    returned: if state == present
 public_key_id:
-  description: Public Key id of the repository
-  type: str
-  returned: if state == present
+    description: Public Key id of the repository
+    type: str
+    returned: if state == present
 secret:
-  description: Encrypted secret
-  type: str
-  returned: if state == present
+    description: Encrypted secret
+    type: str
+    returned: if state == present
 """
 
 

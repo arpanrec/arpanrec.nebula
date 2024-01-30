@@ -1,53 +1,53 @@
 ---
 - name: Application User | Generate password hash
   ansible.builtin.shell: >
-    import crypt;  print(crypt.crypt("{{ user_add_rv_password }}", "$1$SomeSalt$"))
+      import crypt;  print(crypt.crypt("{{ user_add_rv_password }}", "$1$SomeSalt$"))
   register: user_add_rv_password_hash_tmp
   args:
-    executable: "{{ ansible_python_interpreter }}"
+      executable: "{{ ansible_python_interpreter }}"
   no_log: true
   when: user_add_rv_password is defined
   changed_when: false
 
 - name: Application User | Adding the group
   ansible.builtin.group:
-    name: "{{ user_add_rv_user_primary_group }}"
-    gid: "{{ user_add_rv_user_primary_gid | default(omit) }}"
-    state: present
+      name: "{{ user_add_rv_user_primary_group }}"
+      gid: "{{ user_add_rv_user_primary_gid | default(omit) }}"
+      state: present
 
 - name: Application User | Adding the user
   ansible.builtin.user:
-    name: "{{ user_add_rv_username }}"
-    shell: "{{ user_add_rv_user_default_shell }}"
-    state: present
-    groups: "{{ (user_add_rv_user_extra_groups | length > 0) | ternary(user_add_rv_user_extra_groups, omit) }}"
-    append: "{{ (user_add_rv_user_extra_groups | length > 0) | ternary(true, omit) }}"
-    uid: "{{ user_add_rv_uid | default(omit) }}"
-    group: "{{ user_add_rv_user_primary_group }}"
-    create_home: true
-    home: "{{ user_add_rv_user_home_dir | default(omit, True) }}"
-    expires: -1
-    password: "{{ user_add_rv_password_hash_tmp.stdout | default(omit) }}"
-    update_password: on_create
+      name: "{{ user_add_rv_username }}"
+      shell: "{{ user_add_rv_user_default_shell }}"
+      state: present
+      groups: "{{ (user_add_rv_user_extra_groups | length > 0) | ternary(user_add_rv_user_extra_groups, omit) }}"
+      append: "{{ (user_add_rv_user_extra_groups | length > 0) | ternary(true, omit) }}"
+      uid: "{{ user_add_rv_uid | default(omit) }}"
+      group: "{{ user_add_rv_user_primary_group }}"
+      create_home: true
+      home: "{{ user_add_rv_user_home_dir | default(omit, True) }}"
+      expires: -1
+      password: "{{ user_add_rv_password_hash_tmp.stdout | default(omit) }}"
+      update_password: on_create
 
 - name: Application User | Deploying SSH Key
   ansible.posix.authorized_key:
-    user: "{{ user_add_rv_username }}"
-    key: "{{ item }}"
-    state: present
-    comment: added by ansible automation
+      user: "{{ user_add_rv_username }}"
+      key: "{{ item }}"
+      state: present
+      comment: added by ansible automation
   with_items: "{{ user_add_rv_ssh_access_public_key_content_list }}"
   when:
-    - user_add_rv_ssh_access_public_key_content_list is defined
-    - user_add_rv_ssh_access_public_key_content_list | length > 0
+      - user_add_rv_ssh_access_public_key_content_list is defined
+      - user_add_rv_ssh_access_public_key_content_list | length > 0
 
 - name: Application User | Adding user to the sudoers
   when: user_add_rv_user_nopasswd_commands | length > 0
   ansible.builtin.lineinfile:
-    path: "{{ user_add_rv_sudoers_file }}"
-    line: "{{ user_add_rv_username }} ALL=(ALL) NOPASSWD: {{ item }}"
-    create: true
-    validate: /usr/sbin/visudo -cf %s
-    mode: "0440"
+      path: "{{ user_add_rv_sudoers_file }}"
+      line: "{{ user_add_rv_username }} ALL=(ALL) NOPASSWD: {{ item }}"
+      create: true
+      validate: /usr/sbin/visudo -cf %s
+      mode: "0440"
   with_items:
-    - "{{ user_add_rv_user_nopasswd_commands }}"
+      - "{{ user_add_rv_user_nopasswd_commands }}"

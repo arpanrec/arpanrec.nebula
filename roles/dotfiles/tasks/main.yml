@@ -4,37 +4,37 @@
 
 - name: Dotfiles | Cloning git bare
   ansible.builtin.git:
-    single_branch: true
-    repo: "{{ dotfiles_rv_git_remote }}"
-    dest: "{{ dotfiles_rv_user_home_dir }}/{{ dotfiles_rv_bare_relative_dir }}"
-    bare: true
-    version: "{{ dotfiles_rv_git_version }}"
+      single_branch: true
+      repo: "{{ dotfiles_rv_git_remote }}"
+      dest: "{{ dotfiles_rv_user_home_dir }}/{{ dotfiles_rv_bare_relative_dir }}"
+      bare: true
+      version: "{{ dotfiles_rv_git_version }}"
   register: pv_ua_dotrepo_update
 
 - name: Dotfiles | Set git config
   ansible.builtin.template:
-    src: templates/dotfiles.gitconfig.j2
-    dest: "{{ dotfiles_rv_user_home_dir }}/{{ dotfiles_rv_bare_relative_dir }}/config"
-    mode: "0600"
+      src: templates/dotfiles.gitconfig.j2
+      dest: "{{ dotfiles_rv_user_home_dir }}/{{ dotfiles_rv_bare_relative_dir }}/config"
+      mode: "0600"
 
 - name: Dotfiles | Check if ~/.aliasrc is present
   ansible.builtin.stat:
-    path: "{{ dotfiles_rv_user_home_dir }}/.aliasrc"
+      path: "{{ dotfiles_rv_user_home_dir }}/.aliasrc"
   register: dotfiles_rv_tmp_aliasrc_stat
 
 - name: Dotfiles | Ensure config alias is set in ~/.aliasrc
   when: dotfiles_rv_tmp_aliasrc_stat.stat.exists
   ansible.builtin.lineinfile:
-    path: "{{ dotfiles_rv_user_home_dir }}/.aliasrc"
-    line: 'alias config=''git --git-dir="$HOME/{{ dotfiles_rv_bare_relative_dir }}" --work-tree=$HOME'''
+      path: "{{ dotfiles_rv_user_home_dir }}/.aliasrc"
+      line: 'alias config=''git --git-dir="$HOME/{{ dotfiles_rv_bare_relative_dir }}" --work-tree=$HOME'''
 
 - name: Dotfiles | Ensure config alias is set in ~/.bashrc and ~/.zshrc
   ansible.builtin.lineinfile:
-    path: "{{ item }}"
-    line: 'alias config=''git --git-dir="$HOME/{{ dotfiles_rv_bare_relative_dir }}" --work-tree=$HOME'''
-    create: true
-    mode: "0700"
+      path: "{{ item }}"
+      line: 'alias config=''git --git-dir="$HOME/{{ dotfiles_rv_bare_relative_dir }}" --work-tree=$HOME'''
+      create: true
+      mode: "0700"
   loop:
-    - "{{ dotfiles_rv_user_home_dir }}/.bashrc"
-    - "{{ dotfiles_rv_user_home_dir }}/.zshrc"
+      - "{{ dotfiles_rv_user_home_dir }}/.bashrc"
+      - "{{ dotfiles_rv_user_home_dir }}/.zshrc"
   when: not dotfiles_rv_tmp_aliasrc_stat.stat.exists

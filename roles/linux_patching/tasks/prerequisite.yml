@@ -4,7 +4,7 @@
 
 - name: Linux Patching | Prerequisite | Checking platform compatibility
   ansible.builtin.fail:
-    msg: "{{ ansible_distribution }} is not supported by this role"
+      msg: "{{ ansible_distribution }} is not supported by this role"
   when: ansible_distribution not in ['Debian']
 
 - name: Linux Patching | Prerequisite | Get system 1 PID Details
@@ -14,6 +14,6 @@
 
 - name: Linux Patching | Prerequisite | Assume system is not in systemd
   ansible.builtin.set_fact:
-    linux_patching_rv_init_system_systemd:
-      "{{ linux_patching_rv_tmp_one_pid_shell_result.stdout_lines[1] \
-      | split(' ') | last == 'systemd' }}"
+      linux_patching_rv_init_system_systemd:
+          "{{ linux_patching_rv_tmp_one_pid_shell_result.stdout_lines[1] \
+          | split(' ') | last == 'systemd' }}"

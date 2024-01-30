@@ -9,8 +9,8 @@
   ansible.builtin.shell: "command -v {{ item }} >/dev/null 2>&1"
   changed_when: false
   with_items:
-    - wget
-    - tar
+      - wget
+      - tar
 
 - name: Golang | Prerequisites | Gather Facts
   ansible.builtin.setup:

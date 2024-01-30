@@ -5,60 +5,60 @@
 - name: Golang | Get Latest Version
   when: go_rv_version is not defined
   block:
-    - name: Golang | Get Latest Version | Download
-      ansible.builtin.uri:
-        url: https://golang.org/VERSION?m=text
-        return_content: true
-      register: pv_ua_golang_latest_version
+      - name: Golang | Get Latest Version | Download
+        ansible.builtin.uri:
+            url: https://golang.org/VERSION?m=text
+            return_content: true
+        register: pv_ua_golang_latest_version
 
-    - name: Golang | Get Latest Version | Set
-      ansible.builtin.set_fact:
-        go_rv_version: "{{ pv_ua_golang_latest_version.content | split('\n') | first | regex_replace('^go', '') }}"
+      - name: Golang | Get Latest Version | Set
+        ansible.builtin.set_fact:
+            go_rv_version: "{{ pv_ua_golang_latest_version.content | split('\n') | first | regex_replace('^go', '') }}"
 
 - name: Golang | Get downloaded file stat
   ansible.builtin.stat:
-    path: "{{ go_rv_tarball_download_path }}"
+      path: "{{ go_rv_tarball_download_path }}"
   register: pv_ua_golang_downloaded_file_stat
 
 - name: Golang | Newly downloaded | Create Download Directory
   ansible.builtin.file:
-    path: "{{ go_rv_tmp_dir }}"
-    state: directory
-    mode: "0700"
+      path: "{{ go_rv_tmp_dir }}"
+      state: directory
+      mode: "0700"
 
 - name: Golang | Newly downloaded
   when: not pv_ua_golang_downloaded_file_stat.stat.exists
   block:
-    - name: "Golang | Newly downloaded | Download tarball version: {{ go_rv_version }}"
-      ansible.builtin.get_url:
-        url: "{{ go_rv_download_url_arch_map[ansible_facts.architecture] }}"
-        dest: "{{ go_rv_tarball_download_path }}"
-        mode: "0700"
+      - name: "Golang | Newly downloaded | Download tarball version: {{ go_rv_version }}"
+        ansible.builtin.get_url:
+            url: "{{ go_rv_download_url_arch_map[ansible_facts.architecture] }}"
+            dest: "{{ go_rv_tarball_download_path }}"
+            mode: "0700"
 
-    - name: Golang | Newly downloaded | Remove old install directory
-      ansible.builtin.file:
-        path: "{{ go_rv_install_path }}"
-        state: absent
+      - name: Golang | Newly downloaded | Remove old install directory
+        ansible.builtin.file:
+            path: "{{ go_rv_install_path }}"
+            state: absent
 
   rescue:
-    - name: Golang | Newly downloaded | Delete Tarball
-      ansible.builtin.file:
-        path: "{{ go_rv_tarball_download_path }}"
-        state: absent
+      - name: Golang | Newly downloaded | Delete Tarball
+        ansible.builtin.file:
+            path: "{{ go_rv_tarball_download_path }}"
+            state: absent
 
-    - name: Golang | Newly downloaded | Fail
-      ansible.builtin.fail:
-        msg: "Failed to download Golang tarball"
+      - name: Golang | Newly downloaded | Fail
+        ansible.builtin.fail:
+            msg: "Failed to download Golang tarball"
 
 - name: Golang | Create install directory
   ansible.builtin.file:
-    path: "{{ go_rv_install_path }}"
-    state: directory
-    mode: "0700"
+      path: "{{ go_rv_install_path }}"
+      state: directory
+      mode: "0700"
 
 - name: Golang | Newly downloaded | Unarchive the tarball
   ansible.builtin.unarchive:
-    src: "{{ go_rv_tarball_download_path }}"
-    dest: "{{ go_rv_install_path }}"
-    extra_opts: [--strip-components=1]
-    remote_src: true
+      src: "{{ go_rv_tarball_download_path }}"
+      dest: "{{ go_rv_install_path }}"
+      extra_opts: [--strip-components=1]
+      remote_src: true

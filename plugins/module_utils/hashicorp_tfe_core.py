@@ -57,7 +57,10 @@ def tfe_resource(
         if resource_attributes and len(resource_attributes) > 0:
             _existing_attributes = _resource_details["data"]["attributes"]
             for attribute in resource_attributes.keys():
-                if attribute not in _existing_attributes.keys() or resource_attributes[attribute] != _existing_attributes[attribute]:
+                if (
+                    attribute not in _existing_attributes.keys()
+                    or resource_attributes[attribute] != _existing_attributes[attribute]
+                ):
                     _org_update_data = {
                         "data": {
                             "type": "organizations",
@@ -73,7 +76,9 @@ def tfe_resource(
                     if _org_update_response.status_code == 200:
                         result["changed"] = True
                         result[f"{resource_type}_{resource_name}_updated"] = True
-                        _tfe_org_updated_details_response = requests.get(_resource_url_name, timeout=30, headers=headers)
+                        _tfe_org_updated_details_response = requests.get(
+                            _resource_url_name, timeout=30, headers=headers
+                        )
                         if _tfe_org_updated_details_response.status_code == 200:
                             _resource_details = _tfe_org_updated_details_response.json()
                         else:

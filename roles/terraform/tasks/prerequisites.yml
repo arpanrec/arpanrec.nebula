@@ -9,9 +9,9 @@
   ansible.builtin.shell: "command -v {{ item }} >/dev/null 2>&1"
   changed_when: false
   with_items:
-    - curl
-    - wget
-    - unzip
+      - curl
+      - wget
+      - unzip
 
 - name: Terraform | Prerequisites | Gather Facts
   ansible.builtin.setup:

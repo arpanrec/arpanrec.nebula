@@ -75,16 +75,11 @@ EXAMPLES = r"""
 # Pass in a message
 - name: recreate root token
   arpanrec.nebula.vault_sys_generate_root:
-    unseal_keys:
-      [
-        "xxxxx",
-        "yyyyy",
-        "zzzzz",
-      ]
-    vault_addr: https://vault.com:8200
-    vault_client_cert: "vault_client_auth.crt"
-    vault_client_key: "vault_client_auth.key"
-    vault_capath: "root_ca_certificate.crt"
+      unseal_keys: ["xxxxx", "yyyyy", "zzzzz"]
+      vault_addr: https://vault.com:8200
+      vault_client_cert: "vault_client_auth.crt"
+      vault_client_key: "vault_client_auth.key"
+      vault_capath: "root_ca_certificate.crt"
 """
 
 RETURN = r"""

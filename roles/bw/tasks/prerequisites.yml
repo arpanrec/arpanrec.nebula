@@ -9,19 +9,19 @@
   ansible.builtin.shell: "command -v {{ item }} >/dev/null 2>&1"
   changed_when: false
   with_items:
-    - curl
-    - wget
-    - zip
-    - tar
-    - unzip
+      - curl
+      - wget
+      - zip
+      - tar
+      - unzip
 
 - name: Bitwarden CLI | Prerequisites | Gather Facts
   ansible.builtin.setup:
 
 - name: Bitwarden CLI | Prerequisites | Create a directory if it does not exist
   ansible.builtin.file:
-    path: "{{ item }}"
-    state: directory
-    mode: "0700"
+      path: "{{ item }}"
+      state: directory
+      mode: "0700"
   with_items:
-    - "{{ bw_bws_tmp_dir }}"
+      - "{{ bw_bws_tmp_dir }}"
