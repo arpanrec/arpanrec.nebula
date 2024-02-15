@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/arpanrec/nebula/compare/2.0.0...2.0.1) (2024-02-15)
+
+
+### Bug Fixes
+
+* docs remove KDE konsave ([d88bf51](https://github.com/arpanrec/nebula/commit/d88bf51f54415a24e645aadc40e10dad7778db85))
+
 # [2.0.0](https://github.com/arpanrec/nebula/compare/1.0.5...2.0.0) (2024-02-15)
 
 
