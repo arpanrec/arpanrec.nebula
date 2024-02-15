@@ -124,16 +124,6 @@
                 tags:
                     - themes
 
-      - name: USERAPPS | KDE
-        ansible.builtin.include_role:
-            name: arpanrec.nebula.kde
-        tags:
-            - kde
-        args:
-            apply:
-                tags:
-                    - kde
-
       - name: USERAPPS | Gnome Setup
         ansible.builtin.include_role:
             name: arpanrec.nebula.gnome
