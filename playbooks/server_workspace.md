@@ -19,7 +19,6 @@ Extra variables will be applied to the original role.
 - [Oracle JDK](../roles/java/README.md) -> java
 - [Microsoft Visual Studio Code](../roles/code/README.md) -> code [Disable By Default]
 - [Themes](../roles/themes/README.md) -> themes
-- [KDE Settings](../roles/kde/README.md) -> kde
 - [Gnome Settings](../roles/gnome/README.md) -> gnome [Disable By Default]
 - [Terraform](../roles/terraform/README.md) -> terraform
 - [Vault](../roles/vault/README.md) -> vault
