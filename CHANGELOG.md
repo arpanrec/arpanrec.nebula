@@ -1,3 +1,21 @@
+# [2.0.0](https://github.com/arpanrec/nebula/compare/1.0.5...2.0.0) (2024-02-15)
+
+
+### Features
+
+* Remove KDE-related files and configurations ([#7](https://github.com/arpanrec/nebula/issues/7)) ([a7c0b14](https://github.com/arpanrec/nebula/commit/a7c0b14b22024235b9499ae4ed5b2b1299de51d9))
+
+
+### BREAKING CHANGES
+
+* * Remove KDE-related files and configurations
+
+* Remove molecule_test_role_kde from ansible_molecule.yml
+
+* Add import statement for requests module
+
+* Update semantic-release dependencies
+
 ## [1.0.5](https://github.com/arpanrec/nebula/compare/1.0.4...1.0.5) (2024-01-30)
 
 
