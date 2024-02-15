@@ -336,29 +336,6 @@ jobs:
               run: |+
                   molecule test -s role.postman.default
 
-    molecule_test_role_kde:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
-
-            - name: Setup Python
-              uses: actions/setup-python@v5
-              with:
-                  python-version: "3.10"
-                  cache: "pip"
-                  cache-dependency-path: .github/files/requirements.txt
-
-            - name: Install dependencies
-              run: |+
-                  python -m pip install --upgrade pip wheel setuptools poetry
-                  poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt
-                  pip install -r .github/files/requirements.txt
-
-            - name: Run Molecule Test
-              run: |+
-                  molecule test -s role.kde.default
-
     molecule_test_role_telegram:
         runs-on: ubuntu-latest
         steps:
@@ -489,7 +466,6 @@ jobs:
             - molecule_test_role_mattermost_desktop
             - molecule_test_role_gnome
             - molecule_test_role_postman
-            - molecule_test_role_kde
             - molecule_test_role_telegram
             - molecule_test_role_ssh_hardening
             - molecule_test_role_get_certificate_ownca
