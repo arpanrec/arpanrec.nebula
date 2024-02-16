@@ -17,17 +17,6 @@
       dest: "{{ dotfiles_rv_user_home_dir }}/{{ dotfiles_rv_bare_relative_dir }}/config"
       mode: "0600"
 
-- name: Dotfiles | Check if ~/.aliasrc is present
-  ansible.builtin.stat:
-      path: "{{ dotfiles_rv_user_home_dir }}/.aliasrc"
-  register: dotfiles_rv_tmp_aliasrc_stat
-
-- name: Dotfiles | Ensure config alias is set in ~/.aliasrc
-  when: dotfiles_rv_tmp_aliasrc_stat.stat.exists
-  ansible.builtin.lineinfile:
-      path: "{{ dotfiles_rv_user_home_dir }}/.aliasrc"
-      line: 'alias config=''git --git-dir="$HOME/{{ dotfiles_rv_bare_relative_dir }}" --work-tree=$HOME'''
-
 - name: Dotfiles | Ensure config alias is set in ~/.bashrc and ~/.zshrc
   ansible.builtin.lineinfile:
       path: "{{ item }}"
@@ -37,4 +26,4 @@
   loop:
       - "{{ dotfiles_rv_user_home_dir }}/.bashrc"
       - "{{ dotfiles_rv_user_home_dir }}/.zshrc"
-  when: not dotfiles_rv_tmp_aliasrc_stat.stat.exists
+      - "{{ dotfiles_rv_user_home_dir }}/.aliasrc"
