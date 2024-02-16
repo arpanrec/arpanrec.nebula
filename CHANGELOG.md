@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/arpanrec/nebula/compare/2.0.1...2.0.2) (2024-02-16)
+
+
+### Bug Fixes
+
+* Refactor dotfiles tasks and templates ([ab41987](https://github.com/arpanrec/nebula/commit/ab419874e5b0d3614b804724ac8fc1e994304173))
+
 ## [2.0.1](https://github.com/arpanrec/nebula/compare/2.0.0...2.0.1) (2024-02-15)
 
 
