@@ -20,7 +20,7 @@
 - name: Dotfiles | Ensure config alias is set in ~/.bashrc and ~/.zshrc
   ansible.builtin.lineinfile:
       path: "{{ item }}"
-      line: 'alias config=''git --git-dir="$HOME/{{ dotfiles_rv_bare_relative_dir }}" --work-tree=$HOME'''
+      line: 'alias dotfiles=''git --git-dir="$HOME/{{ dotfiles_rv_bare_relative_dir }}" --work-tree=$HOME'''
       create: true
       mode: "0700"
   loop:

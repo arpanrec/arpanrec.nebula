@@ -3,10 +3,10 @@
 Track your dotfiles from [GitHub](https://github.com/arpanrec/dotfiles). You can track these files with below command. (Follow the git commands for reference)
 
 ```shell
-config pull # To pull the changes
-config add <filepath> # Track new files/Changes
-config commit -m "New Config added/Changed" # Track new files
-config push # Push to remote
+dotfiles pull # To pull the changes
+dotfiles add <filepath> # Track new files/Changes
+dotfiles commit -m "New Config added/Changed" # Track new files
+dotfiles push # Push to remote
 ```
 
 ## Variables
