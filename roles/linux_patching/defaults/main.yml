@@ -48,8 +48,6 @@ linux_patching_rv_packages:
     - libcap2-bin
     - ntfs-3g
     - exfat-fuse
-    - vim
-    - neovim
     - python3-venv
     - xz-utils
 
