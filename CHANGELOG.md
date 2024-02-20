@@ -1,3 +1,10 @@
+## [2.0.3](https://github.com/arpanrec/arpanrec.nebula/compare/2.0.2...2.0.3) (2024-02-20)
+
+
+### Bug Fixes
+
+* remove neovim ([84dc4d6](https://github.com/arpanrec/arpanrec.nebula/commit/84dc4d6d13e9677f25a346a064e3be2338337ca7))
+
 ## [2.0.2](https://github.com/arpanrec/nebula/compare/2.0.1...2.0.2) (2024-02-16)
 
 
