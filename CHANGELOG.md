@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/arpanrec/arpanrec.nebula/compare/2.0.3...3.0.0) (2024-02-20)
+
+
+### Features
+
+* Add WTFPL license ([c0d0053](https://github.com/arpanrec/arpanrec.nebula/commit/c0d00531794af7ae90878780f72cedae5650ce8e))
+
+
+### BREAKING CHANGES
+
+* Adding build ignore and copying changes
+
 ## [2.0.3](https://github.com/arpanrec/arpanrec.nebula/compare/2.0.2...2.0.3) (2024-02-20)
 
 
