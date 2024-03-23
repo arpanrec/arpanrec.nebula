@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/arpanrec/arpanrec.nebula/compare/3.0.0...3.1.0) (2024-03-23)
+
+
+### Features
+
+* 2024.2.1 bw cli ([a77db9b](https://github.com/arpanrec/arpanrec.nebula/commit/a77db9bb6184526f8fca849b79ab105a7e5b4d48))
+
 # [3.0.0](https://github.com/arpanrec/arpanrec.nebula/compare/2.0.3...3.0.0) (2024-02-20)
 
 
