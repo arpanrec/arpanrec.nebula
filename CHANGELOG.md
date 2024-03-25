@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/arpanrec/arpanrec.nebula/compare/3.1.0...3.2.0) (2024-03-25)
+
+
+### Features
+
+* python3 toolchain ([2d27279](https://github.com/arpanrec/arpanrec.nebula/commit/2d27279e56911e6f62ef090e4a4596b4c26fc2ee))
+
 # [3.1.0](https://github.com/arpanrec/arpanrec.nebula/compare/3.0.0...3.1.0) (2024-03-23)
 
 
