@@ -19,6 +19,7 @@ Install [postman](https://www.postman.com/)
   - Default: `{{ ansible_facts.user_dir }}/.local/share/applications/postman-userapps.desktop`
 
 - `postman_rv_user_tmp_dir`
+
   - Description: Install cache and temporary directory.
   - Type: `str`
   - Required: `false`
@@ -29,7 +30,7 @@ Install [postman](https://www.postman.com/)
 ```yaml
 - name: Include postman
   ansible.builtin.import_role:
-    name: arpanrec.nebula.postman
+      name: arpanrec.nebula.postman
 ```
 
 ### Testing postman

@@ -12,8 +12,7 @@ terraform_rv_select_ansible_system: "{{ ansible_system | lower }}"
 # https://releases.hashicorp.com/terraform/1.4.4/terraform_1.4.4_linux_amd64.zip
 # https://releases.hashicorp.com/terraform/1.4.4/terraform_1.4.4_linux_arm64.zip
 
-terraform_rv_download_url:
-    "https://releases.hashicorp.com/terraform/{{ terraform_rv_version }}/\
+terraform_rv_download_url: "https://releases.hashicorp.com/terraform/{{ terraform_rv_version }}/\
     terraform_{{ terraform_rv_version }}_{{ terraform_rv_select_ansible_system }}_{{ terraform_rv_install_select_architecture }}.zip"
 
 terraform_rv_tarball_download_path: "{{ terraform_rv_tmp_install_cache_dir }}/tf-{{ terraform_rv_version }}.zip"

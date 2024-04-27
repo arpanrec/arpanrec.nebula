@@ -5,6 +5,13 @@ name: Molecule Test
     push:
         branches:
             - "feature/*"
+            - "dev/*"
+            - "bugfix/*"
+            - "hotfix/*"
+            - "support/*"
+            - "docs/*"
+            - "style/*"
+            - "test/*"
     workflow_dispatch:
 
 concurrency:

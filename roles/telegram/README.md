@@ -35,6 +35,7 @@ Install [Telegram Desktop](https://desktop.telegram.org/)
   - Example: `4.4.1`
 
 - `telegram_desktop_rv_work_directory`
+
   - Description: Application work directory
   - Required: `false`
   - Type: `str`
@@ -45,7 +46,7 @@ Install [Telegram Desktop](https://desktop.telegram.org/)
 ```yaml
 - name: Include Telegram Desktop
   ansible.builtin.import_role:
-    name: arpanrec.nebula.telegram
+      name: arpanrec.nebula.telegram
 ```
 
 ## Testing Telegram Desktop

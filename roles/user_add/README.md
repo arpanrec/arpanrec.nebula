@@ -63,6 +63,7 @@ Create a user and add it to sudoers.d
   - Description: Default shell for the User
 
 - `user_add_rv_user_home_dir`
+
   - Type: `str`
   - Required: `false`
   - Description: Path to home
@@ -72,10 +73,10 @@ Create a user and add it to sudoers.d
 ```yaml
 - name: Add application user
   import_role:
-    name: arpanrec.nebula.user_add
+      name: arpanrec.nebula.user_add
   vars:
-    user_add_rv_username: "arpan"
-    user_add_rv_ssh_access_public_key_content_list: ["ssh-rsa yc2E"]
+      user_add_rv_username: "arpan"
+      user_add_rv_ssh_access_public_key_content_list: ["ssh-rsa yc2E"]
 ```
 
 ## Testing

@@ -35,8 +35,7 @@
       msg: "Expected validity should not cross CA"
   when: not get_certificate_ownca_rv_getcert_tmp_owca_certificate_content_x509_info.valid_at.not_crossed_issuer
 
-- name:
-      Get Certificate Ownca | Certificate To Be Created | Authority Key Identifier Mismatch,
+- name: Get Certificate Ownca | Certificate To Be Created | Authority Key Identifier Mismatch,
       Existing Certificate is not signed by OwnCA
   when: not get_certificate_ownca_rv_getcert_to_be_created
   ansible.builtin.set_fact:

@@ -2,21 +2,15 @@
     "[ansible]": {
         "editor.autoIndent": "advanced",
         "editor.detectIndentation": false,
-        "editor.formatOnSave": false,
-        "editor.indentSize": "tabSize",
-        "editor.insertSpaces": true,
         "editor.quickSuggestions": {
             "comments": true,
             "other": true,
             "strings": true
         },
-        "editor.tabSize": 4
+        "prettier.singleQuote": false
     },
-    "[gitconfig]": {
-        "editor.formatOnSave": false
-    },
-    "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "[dockerfile]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
     },
     "[ignore]": {
         "editor.defaultFormatter": "foxundermoon.shell-format"
@@ -27,35 +21,25 @@
             "source.organizeImports.ruff": "always"
         },
         "editor.defaultFormatter": "redhat.java",
-        "editor.formatOnSave": false,
-        "editor.indentSize": "tabSize",
         "editor.maxTokenizationLineLength": 20000,
         "editor.suggest.snippetsPreventQuickSuggestions": false,
         "outline.showVariables": true
     },
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
     "[json]": {
-        "editor.defaultFormatter": "vscode.json-language-features",
-        "editor.indentSize": "tabSize",
-        "editor.tabSize": 4,
         "files.insertFinalNewline": false,
         "files.trimFinalNewlines": true
     },
-    "[jsonc]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
+    "[lua]": {
+        "editor.defaultFormatter": "sumneko.lua"
     },
     "[markdown]": {
-        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
-        "files.trimTrailingWhitespace": false
+        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
     },
     "[python]": {
         "editor.codeActionsOnSave": {
             "source.organizeImports.ruff": "always"
         },
         "editor.defaultFormatter": "ms-python.black-formatter",
-        "editor.formatOnSave": false,
         "editor.wordBasedSuggestions": "off"
     },
     "[shellscript]": {
@@ -64,42 +48,27 @@
     "[terraform]": {
         "editor.defaultFormatter": "hashicorp.terraform"
     },
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
     "[xml]": {
         "editor.defaultFormatter": "redhat.vscode-xml"
     },
     "[yaml]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.indentSize": "tabSize",
-        "editor.insertSpaces": true,
-        "editor.tabSize": 4
-    },
-    "[yml]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.indentSize": "tabSize",
-        "editor.insertSpaces": true,
-        "editor.tabSize": 4
+        "prettier.singleQuote": false
     },
     "ansible.ansible.path": "ansible",
     "ansible.ansible.useFullyQualifiedCollectionNames": true,
-    "ansible.ansibleLint.enabled": true,
     "ansible.lightspeed.enabled": false,
     "ansible.lightspeed.suggestions.enabled": false,
-    "ansible.validation": true,
     "ansible.validation.enabled": true,
     "ansible.validation.lint.enabled": true,
     "ansible.validation.lint.path": "ansible-lint",
     "ansibleServer.trace.server": "messages",
-    "black-formatter.args": [
-        "--line-length",
-        "120"
-    ],
+    "black-formatter.args": ["--line-length", "120"],
     "diffEditor.ignoreTrimWhitespace": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.detectIndentation": false,
     "editor.fontFamily": "'Cascadia Code', 'Hack Nerd Font', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.formatOnSave": false,
+    "editor.indentSize": "tabSize",
     "editor.inlineSuggest.enabled": true,
     "editor.insertSpaces": true,
     "editor.minimap.enabled": false,
@@ -107,13 +76,14 @@
     "editor.suggestSelection": "first",
     "editor.tabSize": 4,
     "editor.wordWrap": "wordWrapColumn",
-    "editor.wordWrapColumn": 180,
+    "editor.wordWrapColumn": 120,
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "files.associations": {
         "**/*.tf": "terraform",
         "**/.ansible-lint": "yaml",
         "**/.yamllint": "yaml",
+        "**/.yamlfmt": "yaml",
         "**/ansible.cfg": "ini",
         "**/ansible/**/*.yaml": "ansible",
         "**/ansible/**/*.yml": "ansible",
@@ -146,7 +116,7 @@
         "**/venv.bak/**": true,
         "**/venv/**": true
     },
-    "files.trimTrailingWhitespace": true,
+    "files.trimTrailingWhitespace": false,
     "files.watcherExclude": {
         "**/.classpath": true,
         "**/.env/**": true,
@@ -196,10 +166,13 @@
     "liveServer.settings.donotShowInfoMsg": true,
     "liveServer.settings.donotVerifyTags": true,
     "maven.dependency.enableConflictDiagnostics": true,
+    "prettier.printWidth": 120,
+    "prettier.requireConfig": false,
+    "prettier.singleQuote": true,
     "prettier.tabWidth": 4,
+    "prettier.useEditorConfig": true,
     "prettier.useTabs": false,
     "redhat.telemetry.enabled": false,
-    "remoteHub.logLevel": "debug",
     "security.workspace.trust.untrustedFiles": "open",
     "telemetry.telemetryLevel": "off",
     "terminal.integrated.env.linux": {
@@ -217,9 +190,7 @@
     },
     "workbench.iconTheme": "material-icon-theme",
     "workbench.startupEditor": "none",
-    "yaml.customTags": [
-        "!vault"
-    ],
-    "yaml.format.enable": true,
+    "yaml.customTags": ["!vault"],
+    "yaml.format.enable": false,
     "yaml.format.printWidth": 120
 }

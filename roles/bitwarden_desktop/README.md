@@ -20,6 +20,7 @@ Install bitwarden AppImage [Bitwarden Desktop](https://github.com/bitwarden/clie
   - Required: `false`
 
 - `bitwarden_desktop_rv_xdg_icon_path`
+
   - Description: `.desktop` icon file location
   - Default: `{{ pv_ua_user_share_dir }}/applications/bitwarden-desktop-userapps.desktop`
   - Type: `str`
@@ -30,7 +31,7 @@ Install bitwarden AppImage [Bitwarden Desktop](https://github.com/bitwarden/clie
 ```yaml
 - name: Include bitwarden_desktop
   ansible.builtin.import_role:
-    name: arpanrec.nebula.bitwarden_desktop
+      name: arpanrec.nebula.bitwarden_desktop
 ```
 
 ## Testing Bitwarden Desktop

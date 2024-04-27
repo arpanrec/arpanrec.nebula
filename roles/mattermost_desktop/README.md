@@ -27,6 +27,7 @@ Install [Mattermost Desktop](https://github.com/mattermost/desktop/releases)
   - Default: `{{ ansible_facts.user_dir }}/.local/share/mattermost-desktop`
 
 - `mattermost_desktop_rv_xdg_icon_path`
+
   - Description: Linux desktop icon path.
   - Type: `str`
   - Required: `false`
@@ -37,7 +38,7 @@ Install [Mattermost Desktop](https://github.com/mattermost/desktop/releases)
 ```yaml
 - name: Include bitwarden_desktop
   ansible.builtin.import_role:
-    name: arpanrec.nebula.mattermost_desktop
+      name: arpanrec.nebula.mattermost_desktop
 ```
 
 ## Testing Mattermost Desktop

@@ -23,6 +23,7 @@ Install Hashicorp Vault in user space
   - Type: `str`
 
 - `vault_rv_tmp_install_cache_dir`
+
   - Description: Cache install directory.
   - Default: `"{{ ansible_facts.user_dir }}/.tmp/vault"`
   - Required: `false`
@@ -33,7 +34,7 @@ Install Hashicorp Vault in user space
 ```yaml
 - name: Include Vault
   ansible.builtin.import_role:
-    name: arpanrec.nebula.vault
+      name: arpanrec.nebula.vault
 ```
 
 ### Testing Vault

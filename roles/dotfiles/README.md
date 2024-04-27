@@ -13,26 +13,26 @@ dotfiles push # Push to remote
 
 ```yaml
 options:
-  dotfiles_rv_user_home_dir:
-    description: User home directory.
-    required: false
-    type: str
-    default: "{{ ansible_facts.user_dir }}"
-  dotfiles_rv_git_remote:
-    description: Git remote.
-    required: false
-    type: str
-    default: https://github.com/arpanrec/dotfiles
-  dotfiles_rv_git_version:
-    description: Git Branch.
-    required: false
-    type: str
-    default: main
-  dotfiles_rv_bare_relative_dir:
-    description: "Git bare directory in {{ dotfiles_rv_user_home_dir }}."
-    required: false
-    type: str
-    default: ".dotfiles"
+    dotfiles_rv_user_home_dir:
+        description: User home directory.
+        required: false
+        type: str
+        default: "{{ ansible_facts.user_dir }}"
+    dotfiles_rv_git_remote:
+        description: Git remote.
+        required: false
+        type: str
+        default: https://github.com/arpanrec/dotfiles
+    dotfiles_rv_git_version:
+        description: Git Branch.
+        required: false
+        type: str
+        default: main
+    dotfiles_rv_bare_relative_dir:
+        description: "Git bare directory in {{ dotfiles_rv_user_home_dir }}."
+        required: false
+        type: str
+        default: ".dotfiles"
 ```
 
 ## Example Playbook dotfiles
@@ -45,5 +45,5 @@ options:
   become: false
   any_errors_fatal: true
   roles:
-    - name: arpanrec.nebula.dotfiles
+      - name: arpanrec.nebula.dotfiles
 ```

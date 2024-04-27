@@ -79,9 +79,9 @@ This role applies basic security settings for personal VPS
 ```yaml
 - name: SSHD Hardening
   ansible.builtin.import_role:
-    name: arpanrec.nebula.ssh_hardening
+      name: arpanrec.nebula.ssh_hardening
   vars:
-    ssh_hardening_rv_ssh_security_password_authentication: true
+      ssh_hardening_rv_ssh_security_password_authentication: true
 ```
 
 ## Testing

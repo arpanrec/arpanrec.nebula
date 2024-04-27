@@ -38,6 +38,7 @@ code_rv_ext_to_be_installed:
     - "redhat.vscode-yaml"
     - "shengchen.vscode-checkstyle"
     - "streetsidesoftware.code-spell-checker"
+    - "sumneko.lua"
     - "timonwong.shellcheck"
     - "VisualStudioExptTeam.intellicode-api-usage-examples"
     - "VisualStudioExptTeam.vscodeintellicode"

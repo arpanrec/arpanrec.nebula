@@ -21,6 +21,7 @@ Variables:
   - Default: `{{ ansible_facts.user_dir }}/.local/share/node/bin`
 
 - `bw_bws_version_tag`
+
   - Description:
     - Version of [Bitwarden BWS SDK ClI](https://github.com/bitwarden/sdk/releases).
     - Default Get latest release name from [github](https://api.github.com/repos/bitwarden/sdk/releases/latest)
@@ -29,12 +30,14 @@ Variables:
   - Example: `0.3.1`
 
 - `bw_bws_bin_dir`
+
   - Description: Directory to install BWS
   - Type: `str`
   - Required: `false`
   - Default: `{{ ansible_facts.user_dir }}/.local/bin`
 
 - `bw_bws_tmp_dir`
+
   - Description: Directory to temporary download BWS.
   - Type: `str`
   - Required: `false`
@@ -45,7 +48,7 @@ Variables:
 ```yaml
 - name: Include Bitwarden CLI
   ansible.builtin.import_role:
-    name: arpanrec.nebula.bw
+      name: arpanrec.nebula.bw
 ```
 
 ### Testing Bitwarden CLI

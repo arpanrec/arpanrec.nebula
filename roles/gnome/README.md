@@ -33,6 +33,7 @@ Install Gnome Extensions and setup
   - Default: `{{ ansible_facts.user_dir }}/.local/share`
 
 - `gnome_rv_user_cache_tmp_dir`
+
   - Description: Install cache and temporary directory.
   - Type: `str`
   - Required: `false`
@@ -43,7 +44,7 @@ Install Gnome Extensions and setup
 ```yaml
 - name: Include Gnome
   ansible.builtin.import_role:
-    name: arpanrec.nebula.gnome
+      name: arpanrec.nebula.gnome
 ```
 
 ## Testing Gnome

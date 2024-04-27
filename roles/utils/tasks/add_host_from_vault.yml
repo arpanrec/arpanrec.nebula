@@ -22,8 +22,7 @@
 
 - name: Common | Add Ansible Host | Setfact vault string
   ansible.builtin.set_fact:
-      rv_common_add_host_tmp_vault_string:
-          "secret=secret/data/ansible/inventory/{{ rv_common_add_host_hostname }} \
+      rv_common_add_host_tmp_vault_string: "secret=secret/data/ansible/inventory/{{ rv_common_add_host_hostname }} \
           token={{ ss_vault_secret_vault_token }} url={{ ss_secret_vault_endpoint }}"
 
 - name: Common | Add Ansible Host | Checking for hostname

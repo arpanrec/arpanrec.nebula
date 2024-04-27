@@ -12,8 +12,7 @@ vault_rv_select_ansible_system: "{{ ansible_system | lower }}"
 # https://releases.hashicorp.com/vault/1.4.4/vault_1.4.4_linux_amd64.zip
 # https://releases.hashicorp.com/vault/1.4.4/vault_1.4.4_linux_arm64.zip
 
-vault_rv_download_url:
-    "https://releases.hashicorp.com/vault/{{ vault_rv_version }}/\
+vault_rv_download_url: "https://releases.hashicorp.com/vault/{{ vault_rv_version }}/\
     vault_{{ vault_rv_version }}_{{ vault_rv_select_ansible_system }}_{{ vault_rv_install_select_architecture }}.zip"
 
 vault_rv_tarball_download_path: "{{ vault_rv_tmp_install_cache_dir }}/tf-{{ vault_rv_version }}.zip"

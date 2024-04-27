@@ -21,6 +21,7 @@ Install NodeJS in user space
   - Type: `str`
 
 - `nodejs_rv_tmp_install_cache_dir`
+
   - Description: Cache install directory.
   - Default: `"{{ ansible_facts.user_dir }}/.tmp/nodejs"`
   - Required: `false`
@@ -31,7 +32,7 @@ Install NodeJS in user space
 ```yaml
 - name: Include NodeJS
   ansible.builtin.import_role:
-    name: arpanrec.nebula.nodejs
+      name: arpanrec.nebula.nodejs
 ```
 
 ### Testing NodeJS

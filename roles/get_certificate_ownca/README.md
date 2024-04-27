@@ -144,16 +144,19 @@ Get Server or Client certificate.
 #### Variables: Certificate: CSR Config
 
 - `get_certificate_ownca_rv_getcert_key_usage`
+
   - Description: Key Usages, that can be found [here](https://www.openssl.org/docs/manmaster/man5/x509v3_config.html)
   - Type: `list[str]`
   - Required: `false`
 
 - `get_certificate_ownca_rv_getcert_extended_key_usage`
+
   - Description: Extended Key Usages, that can be found [here](https://www.openssl.org/docs/manmaster/man5/x509v3_config.html)
   - Type: `list[str]`
   - Required: `false`
 
 - `get_certificate_ownca_rv_getcert_subject_alt_name`
+
   - Description:
     - Subject Alternative Name (SAN) extension to attach to the certificate signing request.
     - Values must be prefixed by their options. (These are email, URI, DNS, RID, IP, dirName, otherName, and the ones specific to your CA).
@@ -163,6 +166,7 @@ Get Server or Client certificate.
   - Required: `false`
 
 - `get_certificate_ownca_rv_getcert_subject`
+
   - Description:
     - Key/value pairs that will be present in the subject name field of the certificate signing request.
     - If you need to specify more than one value with the same key, use a list as value.
@@ -171,6 +175,7 @@ Get Server or Client certificate.
   - Required: `false`
 
 - `get_certificate_ownca_rv_getcert_basic_constraints`
+
   - Description: Indicates basic constraints, such as if the certificate is a CA.
   - Type: `list[str]`
   - Required: `false`
@@ -240,40 +245,40 @@ Get Server or Client certificate.
 ```yaml
 - name: Create Certificate
   ansible.builtin.import_role:
-    name: arpanrec.nebula.get_certificate_ownca
+      name: arpanrec.nebula.get_certificate_ownca
   vars:
-    get_certificate_ownca_rv_private_key_path: ownca_private_key.pem
-    get_certificate_ownca_rv_certificate_path: ownca_certificate_path.pem
-    get_certificate_ownca_rv_private_key_password: password
-    get_certificate_ownca_rv_getcert_private_key_password: password
-    get_certificate_ownca_rv_getcert_private_key_path: private_key.pem
-    get_certificate_ownca_rv_getcert_certificate_path: certificate_path.pem
-    get_certificate_ownca_rv_getcert_molecule_prepare_csr_path: ownca_csr.pem
-    get_certificate_ownca_rv_getcert_certificatefullchain_path: certificate_chain_path.pem
-    get_certificate_ownca_rv_getcert_key_usage:
-      - digitalSignature
-      - nonRepudiation
-      - keyEncipherment
-      - dataEncipherment
-      - keyCertSign
-      - cRLSign
-    get_certificate_ownca_rv_getcert_extended_key_usage:
-      - serverAuth
-      - clientAuth
-      - codeSigning
-      - emailProtection
-      - timeStamping
-      - OCSPSigning
-      - msCTLSign
-    get_certificate_ownca_rv_getcert_subject_alt_name:
-      - DNS:www.arpanrec.com
-      - IP:172.0.0.1
-    get_certificate_ownca_rv_getcert_subject:
-      commonName: www.arpanrec.com
-    get_certificate_ownca_rv_getcert_basic_constraints:
-      - CA:TRUE
-      - pathlen:0
-    get_certificate_ownca_rv_getcert_private_key_file_mode: "0600"
+      get_certificate_ownca_rv_private_key_path: ownca_private_key.pem
+      get_certificate_ownca_rv_certificate_path: ownca_certificate_path.pem
+      get_certificate_ownca_rv_private_key_password: password
+      get_certificate_ownca_rv_getcert_private_key_password: password
+      get_certificate_ownca_rv_getcert_private_key_path: private_key.pem
+      get_certificate_ownca_rv_getcert_certificate_path: certificate_path.pem
+      get_certificate_ownca_rv_getcert_molecule_prepare_csr_path: ownca_csr.pem
+      get_certificate_ownca_rv_getcert_certificatefullchain_path: certificate_chain_path.pem
+      get_certificate_ownca_rv_getcert_key_usage:
+          - digitalSignature
+          - nonRepudiation
+          - keyEncipherment
+          - dataEncipherment
+          - keyCertSign
+          - cRLSign
+      get_certificate_ownca_rv_getcert_extended_key_usage:
+          - serverAuth
+          - clientAuth
+          - codeSigning
+          - emailProtection
+          - timeStamping
+          - OCSPSigning
+          - msCTLSign
+      get_certificate_ownca_rv_getcert_subject_alt_name:
+          - DNS:www.arpanrec.com
+          - IP:172.0.0.1
+      get_certificate_ownca_rv_getcert_subject:
+          commonName: www.arpanrec.com
+      get_certificate_ownca_rv_getcert_basic_constraints:
+          - CA:TRUE
+          - pathlen:0
+      get_certificate_ownca_rv_getcert_private_key_file_mode: "0600"
 ```
 
 ## Testing Certificate Role

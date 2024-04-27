@@ -23,6 +23,7 @@ Install Terraform in user space
   - Type: `str`
 
 - `terraform_rv_tmp_install_cache_dir`
+
   - Description: Cache install directory.
   - Default: `"{{ ansible_facts.user_dir }}/.tmp/terraform"`
   - Required: `false`
@@ -33,7 +34,7 @@ Install Terraform in user space
 ```yaml
 - name: Include Terraform
   ansible.builtin.import_role:
-    name: arpanrec.nebula.terraform
+      name: arpanrec.nebula.terraform
 ```
 
 ### Testing Terraform

@@ -20,6 +20,7 @@ Set timezone, locale, and loopback ip in server
   - Type: `list[str]`
 
 - `linux_patching_rv_managed_packages`
+
   - Description: Install the managed packages in the distributions.
   - Required: `false`
   - Default: []
@@ -44,11 +45,13 @@ Set timezone, locale, and loopback ip in server
   - Type: `str`
 
 - `linux_patching_rv_root_ca_pem_content`
+
   - Description: Organization Root CA certificate.
   - Required: `false`
   - Type: `str`
 
 - `linux_patching_rv_ssh_port`
+
   - Description: Default SSH Port
   - Required: `false`
   - Type: `int`
@@ -63,7 +66,7 @@ Set timezone, locale, and loopback ip in server
   become_method: su
   any_errors_fatal: true
   ansible.builtin.import_role:
-    name: arpanrec.nebula.linux_patching
+      name: arpanrec.nebula.linux_patching
 ```
 
 ## Testing
