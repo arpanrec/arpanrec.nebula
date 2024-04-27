@@ -1,3 +1,10 @@
+## [3.2.2](https://github.com/arpanrec/arpanrec.nebula/compare/3.2.1...3.2.2) (2024-04-27)
+
+
+### Bug Fixes
+
+* Update default packages in linux_patching role ([#9](https://github.com/arpanrec/arpanrec.nebula/issues/9)) ([e000295](https://github.com/arpanrec/arpanrec.nebula/commit/e000295b7836fc32537e068e8c658e6dc200930c))
+
 ## [3.2.1](https://github.com/arpanrec/arpanrec.nebula/compare/3.2.0...3.2.1) (2024-04-27)
 
 
