@@ -7,10 +7,9 @@ Install Gnome Extensions and setup
 - `gnome_rv_extension_list`
 
   - Description: List of Extensions
-  - Type: Array
-    `[
-    - {`name`:`{{ name }}`,`id`:`{{ id }}`}
-      ]`
+  - Type:
+    - list: {`name`:`{{ name }}`,`id`:`{{ id }}`}
+    - None
   - Default:
     - name: "user-themes"
       id: 19

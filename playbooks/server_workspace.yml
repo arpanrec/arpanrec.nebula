@@ -69,6 +69,7 @@
             apply:
                 tags:
                     - nodejs
+                    - never
 
       - name: USERAPPS | Postman
         ansible.builtin.include_role:
