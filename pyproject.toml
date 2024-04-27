@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nebula"
-version = "3.2.0"
+version = "3.2.1"
 description = "common ansible resources"
 authors = ["arpanrec <arpan.rec@gmail.com>"]
 license = "MIT"

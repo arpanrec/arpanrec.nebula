@@ -1,3 +1,10 @@
+## [3.2.1](https://github.com/arpanrec/arpanrec.nebula/compare/3.2.0...3.2.1) (2024-04-27)
+
+
+### Bug Fixes
+
+* maintenance ([#8](https://github.com/arpanrec/arpanrec.nebula/issues/8)) ([8242115](https://github.com/arpanrec/arpanrec.nebula/commit/8242115ac73a7e8599618f21ebbf7e1d33e83270))
+
 # [3.2.0](https://github.com/arpanrec/arpanrec.nebula/compare/3.1.0...3.2.0) (2024-03-25)
 
 
