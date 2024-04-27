@@ -1,3 +1,10 @@
+## [3.2.3](https://github.com/arpanrec/arpanrec.nebula/compare/3.2.2...3.2.3) (2024-04-27)
+
+
+### Bug Fixes
+
+* Update hvac package version to 2.2.0 ([2119814](https://github.com/arpanrec/arpanrec.nebula/commit/2119814363c48f6fc8476ba89b35f152cdff5792))
+
 ## [3.2.2](https://github.com/arpanrec/arpanrec.nebula/compare/3.2.1...3.2.2) (2024-04-27)
 
 
