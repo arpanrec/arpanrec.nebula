@@ -1,3 +1,10 @@
+# [3.4.0](https://github.com/arpanrec/arpanrec.nebula/compare/3.3.1...3.4.0) (2024-04-28)
+
+
+### Features
+
+* Feature/fail2ban ([#12](https://github.com/arpanrec/arpanrec.nebula/issues/12)) ([b246c31](https://github.com/arpanrec/arpanrec.nebula/commit/b246c313c9419085f38297f216e8d8560831934e))
+
 ## [3.3.1](https://github.com/arpanrec/arpanrec.nebula/compare/3.3.0...3.3.1) (2024-04-28)
 
 
