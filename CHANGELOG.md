@@ -1,3 +1,10 @@
+## [4.1.3](https://github.com/arpanrec/arpanrec.nebula/compare/4.1.2...4.1.3) (2024-04-28)
+
+
+### Bug Fixes
+
+* Add issues link to galaxy.yml ([701e2df](https://github.com/arpanrec/arpanrec.nebula/commit/701e2dfe0b4fc587cc3d5309e96ac56636254e8c))
+
 ## [4.1.2](https://github.com/arpanrec/arpanrec.nebula/compare/4.1.1...4.1.2) (2024-04-28)
 
 
