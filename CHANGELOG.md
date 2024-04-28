@@ -1,3 +1,10 @@
+# [3.3.0](https://github.com/arpanrec/arpanrec.nebula/compare/3.2.3...3.3.0) (2024-04-28)
+
+
+### Features
+
+* disable themes by default ([#10](https://github.com/arpanrec/arpanrec.nebula/issues/10)) ([617e896](https://github.com/arpanrec/arpanrec.nebula/commit/617e89633b94b3535cc6a5a1f43636061bb263f9))
+
 ## [3.2.3](https://github.com/arpanrec/arpanrec.nebula/compare/3.2.2...3.2.3) (2024-04-27)
 
 
