@@ -112,7 +112,7 @@
 
 - name: Linux Patching | Network | Setup Host Network Information | Set Host-Name via /etc/hostname
   ansible.builtin.copy:
-      content: "{{ linux_patching_rv_hostname }}"
+      content: "{{ linux_patching_rv_hostname }}\n"
       dest: /etc/hostname
       mode: "0644"
       owner: root
