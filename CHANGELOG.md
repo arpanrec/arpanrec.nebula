@@ -1,3 +1,10 @@
+# [4.1.0](https://github.com/arpanrec/arpanrec.nebula/compare/4.0.0...4.1.0) (2024-04-28)
+
+
+### Features
+
+* Refactor split_certificates function to support Python 3 in split_certificates.py ([bdc3fce](https://github.com/arpanrec/arpanrec.nebula/commit/bdc3fcea6266aa7c936fcb546fd811b7e710e875))
+
 # [4.0.0](https://github.com/arpanrec/arpanrec.nebula/compare/3.4.4...4.0.0) (2024-04-28)
 
 
