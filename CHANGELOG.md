@@ -1,3 +1,11 @@
+## [3.4.3](https://github.com/arpanrec/arpanrec.nebula/compare/3.4.2...3.4.3) (2024-04-28)
+
+
+### Bug Fixes
+
+* Merge branch 'main' of github.com:arpanrec/arpanrec.nebula ([53eb869](https://github.com/arpanrec/arpanrec.nebula/commit/53eb8694fcbb745cf85a203aa69ad5b903f37487))
+* Update release.config.js and galaxy.yml files with new changes ([eba8680](https://github.com/arpanrec/arpanrec.nebula/commit/eba8680bd9df1bd20918e54812455643d389f5eb))
+
 ## [3.4.2](https://github.com/arpanrec/arpanrec.nebula/compare/3.4.1...3.4.2) (2024-04-28)
 
 
