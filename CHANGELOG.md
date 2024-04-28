@@ -1,3 +1,10 @@
+## [3.4.1](https://github.com/arpanrec/arpanrec.nebula/compare/3.4.0...3.4.1) (2024-04-28)
+
+
+### Bug Fixes
+
+* Update network.yml to include a newline character in the content of the copy task ([20a9b97](https://github.com/arpanrec/arpanrec.nebula/commit/20a9b97824dfe03ce90c49ccfd3861d2b0fdfde1))
+
 # [3.4.0](https://github.com/arpanrec/arpanrec.nebula/compare/3.3.1...3.4.0) (2024-04-28)
 
 
