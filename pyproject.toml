@@ -6,7 +6,7 @@ name = "nebula"
 version = "3.4.4"
 description = "common ansible resources"
 authors = ["arpanrec <arpan.rec@gmail.com>"]
-license = "MIT"
+license = "GLWTS"
 package-mode = false
 readme = "README.md"
 

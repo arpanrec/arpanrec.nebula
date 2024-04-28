@@ -86,7 +86,3 @@ Prerequisite: `docker`, `python3-venv`
 ```bash
 molecule test -s role.user_add.default
 ```
-
-## License
-
-`MIT`

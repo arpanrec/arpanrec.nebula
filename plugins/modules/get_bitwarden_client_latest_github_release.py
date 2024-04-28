@@ -2,8 +2,6 @@
 Ansible Module for Searching the latest bitwarden client release version from github.
 """
 
-# Copyright: (c) 2022, Arpan Mandal <arpan.rec@gmail.com>
-# MIT (see LICENSE or https://en.wikipedia.org/wiki/MIT_License)
 from __future__ import absolute_import, division, print_function
 
 import requests

@@ -32,6 +32,8 @@ This collection provides a set of roles to deploy and manage various services.
 - [server_workspace](playbooks/server_workspace.md)
 - [cloudinit](playbooks/cloudinit.md)
 
-## License
+## [License](LICENSE)
 
-`MIT`
+`GLWTS`
+
+Visit [GLWTS Public License](https://raw.githubusercontent.com/me-shaon/GLWTPL/master/NSFW_LICENSE) for more information.
