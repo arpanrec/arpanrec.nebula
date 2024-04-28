@@ -37,6 +37,7 @@ build_ignore:
     - "CODE_OF_CONDUCT.md"
     - ".ansible-lint"
     - "CHANGELOG.md"
+    - ".mypy_cache"
 tags:
     - "linux"
     - "debian"
