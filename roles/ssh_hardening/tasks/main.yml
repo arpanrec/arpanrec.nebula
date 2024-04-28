@@ -6,7 +6,9 @@
 
 - name: SSHD Hardening | Install Packages | Install openssh server
   ansible.builtin.apt:
-      name: openssh-server
+      name:
+          - openssh-server
+          - openssh-sftp-server
       state: present
       update_cache: true
 

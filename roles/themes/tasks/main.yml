@@ -5,9 +5,6 @@
 - name: Themes | Theme
   ansible.builtin.import_tasks: theme.yml
 
-- name: Themes | Terminal Themes
-  ansible.builtin.import_tasks: terminal_themes.yml
-
 - name: Themes | Icons
   ansible.builtin.import_tasks: icons.yml
 

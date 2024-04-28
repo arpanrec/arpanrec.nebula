@@ -19,13 +19,22 @@ linux_patching_rv_packages:
     - locales
     - systemd-timesyncd
     - network-manager
-    - gnupg2
     - gnupg
     - pigz
     - cron
     - acl
     - ufw
     - bzip2
+    - procps
+    - xz-utils
+    # Apt tools
+    - apt-utils
+    - lsb-release
+    - software-properties-common
+    # Python tools
+    - python3
+    - python3-pip
+    - python3-venv
 
 linux_patching_rv_managed_packages: []
 

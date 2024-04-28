@@ -37,7 +37,16 @@ Set timezone, locale, and loopback ip in server
     - "acl"
     - "ufw"
     - "bzip2"
-  - Type: `list[str]`
+    - "procps"
+    - "xz-utils"
+    - apt-utils
+    - lsb-release
+    - software-properties-common
+    - python3
+    - python3-pip
+    - python3-venv
+
+- Type: `list[str]`
 
 - `linux_patching_rv_managed_packages`
 

@@ -124,6 +124,17 @@
             apply:
                 tags:
                     - themes
+                    - never
+
+      - name: USERAPPS | Terminal
+        ansible.builtin.include_role:
+            name: arpanrec.nebula.terminal
+        tags:
+            - terminal
+        args:
+            apply:
+                tags:
+                    - terminal
 
       - name: USERAPPS | Gnome Setup
         ansible.builtin.include_role:

@@ -15,7 +15,7 @@ Extra variables will be applied to the original role.
   - This also installs [Node JS](../roles/nodejs/README.md) -> nodejs
 - [Go Language](../roles/go/README.md) -> go
 - [Oracle JDK](../roles/java/README.md) -> java
-- [Themes](../roles/themes/README.md) -> themes
+- [terminal](../roles/terminal/README.md) -> terminal
 - [Terraform](../roles/terraform/README.md) -> terraform
 - [Vault](../roles/vault/README.md) -> vault
 
@@ -28,3 +28,4 @@ Extra variables will be applied to the original role.
 - [Microsoft Visual Studio Code](../roles/code/README.md) -> code
 - [Gnome Settings](../roles/gnome/README.md) -> gnome
 - [Node JS](../roles/nodejs/README.md) -> nodejs
+- [Themes](../roles/themes/README.md) -> themes

@@ -22,6 +22,7 @@ This collection provides a set of roles to deploy and manage various services.
 - [telegram](roles/telegram/README.md)
 - [terraform](roles/terraform/README.md)
 - [themes](roles/themes/README.md)
+- [terminal](roles/terminal/README.md)
 - [user_add](roles/user_add/README.md)
 - [utils](roles/utils/README.md)
 - [vault](roles/vault/README.md)
