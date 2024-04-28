@@ -1,3 +1,10 @@
+## [4.1.2](https://github.com/arpanrec/arpanrec.nebula/compare/4.1.1...4.1.2) (2024-04-28)
+
+
+### Bug Fixes
+
+* Update release.config.cjs to include poetry lock file in assets ([5029d4b](https://github.com/arpanrec/arpanrec.nebula/commit/5029d4bb594163dd8f80f6c7544a0d3cc67376b0))
+
 ## [4.1.1](https://github.com/arpanrec/arpanrec.nebula/compare/4.1.0...4.1.1) (2024-04-28)
 
 
