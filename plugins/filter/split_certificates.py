@@ -7,13 +7,27 @@ or more PEM-formatted certificates and splits it into a list of individual certi
 Each certificate in the list is a string that begins with
 "-----BEGIN CERTIFICATE-----" and ends with "-----END CERTIFICATE-----".
 
-The module also includes a `FilterModule` class that makes the `split_certificates`
-function available as a filter in Ansible playbooks.
-
-This module is part of the arpanrec.nebula collection.
-
 Author:
     Arpan Mandal (arpan.rec@gmail.com)
+"""
+
+# Make coding more python3-ish, this is required for contributions to Ansible
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
+# not only visible to ansible-doc, it also 'declares' the options the plugin requires and how to configure them.
+DOCUMENTATION = """
+name: split_certificates
+short_description: Split a string of concatenated certificates into a list of individual certificates.
+version_added: "4.1.0"
+description: This module provides functionality for splitting a string of concatenated certificates
+    into a list of individual certificates.
+
+    The main function, `split_certificates`, takes a string that contains one
+    or more PEM-formatted certificates and splits it into a list of individual certificates.
+    Each certificate in the list is a string that begins with
+    "-----BEGIN CERTIFICATE-----" and ends with "-----END CERTIFICATE-----".
 """
 
 
