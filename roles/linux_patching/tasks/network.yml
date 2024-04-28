@@ -110,6 +110,19 @@
       and
       linux_patching_rv_tmp_set_debian_hostname.failed
 
+- name: Linux Patching | Network | Setup Host Network Information | Set Host-Name via /etc/hostname
+  ansible.builtin.copy:
+      content: "{{ linux_patching_rv_hostname }}"
+      dest: /etc/hostname
+      mode: "0644"
+      owner: root
+      group: root
+  register: linux_patching_rv_tmp_set_etc_hostname
+  failed_when: >
+      linux_patching_rv_init_system_systemd
+      and
+      linux_patching_rv_tmp_set_etc_hostname.failed
+
 - name: Linux Patching | Network | Setup Host Network Information | Set Hosts file
   ansible.builtin.lineinfile:
       path: /etc/hosts
