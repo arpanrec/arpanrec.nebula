@@ -1,3 +1,10 @@
+## [3.4.4](https://github.com/arpanrec/arpanrec.nebula/compare/3.4.3...3.4.4) (2024-04-28)
+
+
+### Bug Fixes
+
+* Update galaxy.yml to remove unnecessary files from build_ignore ([03917c9](https://github.com/arpanrec/arpanrec.nebula/commit/03917c9b93589f910e39ac550ca61f4433d498a2))
+
 ## [3.4.3](https://github.com/arpanrec/arpanrec.nebula/compare/3.4.2...3.4.3) (2024-04-28)
 
 
