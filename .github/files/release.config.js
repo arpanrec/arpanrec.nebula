@@ -1,3 +1,5 @@
+GALAXY_API_KEY = process.env.GALAXY_API_KEY;
+
 module.exports = {
     branches: ['main'],
     tagFormat: '${version}',
@@ -35,7 +37,7 @@ module.exports = {
                 prepareCmd:
                     "sed -i 's/^version:.*/version: ${nextRelease.version}/g' galaxy.yml && poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt && poetry version ${nextRelease.version} && ansible-galaxy collection build",
                 successCmd:
-                    'git checkout -b release/${nextRelease.version} && git push --set-upstream origin release/${nextRelease.version} && ansible-galaxy collection publish arpanrec-nebula-${nextRelease.version}.tar.gz --api-key ${{ secrets.GALAXY_API_KEY }}',
+                    'git checkout -b release/${nextRelease.version} && git push --set-upstream origin release/${nextRelease.version} && ansible-galaxy collection publish arpanrec-nebula-${nextRelease.version}.tar.gz --api-key ${GALAXY_API_KEY}',
             },
         ],
         [
