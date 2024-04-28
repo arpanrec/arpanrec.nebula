@@ -146,12 +146,14 @@
 - name: Linux Patching | Network | Setup Host Network Information | UFW Iptables legacy
   when: linux_patching_rv_ufw_ssh_port_result.failed
   block:
-      - name: Linux Patching | Network | Setup Host Network Information | UFW Iptables legacy | Change iptables legacy for UFW
+      - name: Linux Patching | Network | Setup Host Network Information |
+            UFW Iptables legacy | Change iptables legacy for UFW
         community.general.alternatives:
             name: iptables
             path: /usr/sbin/iptables-legacy
 
-      - name: Linux Patching | Network | Setup Host Network Information | UFW Iptables legacy | Enable SSH Port with iptables legacy
+      - name: Linux Patching | Network | Setup Host Network Information |
+            UFW Iptables legacy | Enable SSH Port with iptables legacy
         community.general.ufw:
             rule: allow
             port: "{{ linux_patching_rv_ssh_port }}"

@@ -46,7 +46,9 @@
             extended_key_usage_critical: true
             create_subject_key_identifier: true
 
-      - name: Get Certificate Ownca | Molecule | Prepare | Generate an OpenSSL certificate signed with your own CA certificate
+      - name: >-
+            Get Certificate Ownca | Molecule | Prepare |
+            Generate an OpenSSL certificate signed with your own CA certificate
         community.crypto.x509_certificate:
             path: "{{ get_certificate_ownca_rv_certificate_path }}"
             csr_path: "{{ get_certificate_ownca_rv_getcert_molecule_prepare_csr_path }}"

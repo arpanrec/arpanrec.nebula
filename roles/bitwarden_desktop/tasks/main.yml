@@ -22,14 +22,16 @@
 
 - name: Bitwarden Desktop | Get archive info
   ansible.builtin.stat:
-      path: "{{ bitwarden_desktop_rv_install_path }}/{{ bitwarden_desktop_rv_download_url_map[ansible_facts.architecture] | basename }}"
+      path: "{{ bitwarden_desktop_rv_install_path }}/{{
+          bitwarden_desktop_rv_download_url_map[ansible_facts.architecture] | basename }}"
   register: pv_ua_bw_archive_stat
 
 - name: Bitwarden Desktop | Download AppImage
   when: not pv_ua_bw_archive_stat.stat.exists
   ansible.builtin.get_url:
       url: "{{ bitwarden_desktop_rv_download_url_map[ansible_facts.architecture] }}"
-      dest: "{{ bitwarden_desktop_rv_install_path }}/{{ bitwarden_desktop_rv_download_url_map[ansible_facts.architecture] | basename }}"
+      dest: "{{ bitwarden_desktop_rv_install_path }}/{{
+          bitwarden_desktop_rv_download_url_map[ansible_facts.architecture] | basename }}"
       mode: "0700"
 
 - name: Bitwarden Desktop | Create desktop icon directory

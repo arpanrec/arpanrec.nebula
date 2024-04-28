@@ -26,7 +26,8 @@
       - name: Oracle JDK | Apache Groovy | Fail
         ansible.builtin.fail:
             msg: |+
-                Failed to download {{ java_rv_jdk_groovy_download_url }} to {{ java_rv_jdk_groovy_tarball_download_path }}
+                Failed to download {{ java_rv_jdk_groovy_download_url }} to
+                   {{ java_rv_jdk_groovy_tarball_download_path }}
                 Check the errors above and try again.
 
 - name: Oracle JDK | Apache Groovy | Create temporary unzip directory

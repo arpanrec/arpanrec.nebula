@@ -19,7 +19,8 @@
 
             - name: Golang | Molecule | Get Latest Version | Set
               ansible.builtin.set_fact:
-                  go_rv_version: "{{ pv_ua_golang_latest_version.content | split('\n') | first | regex_replace('^go', '') }}"
+                  go_rv_version: "{{ pv_ua_golang_latest_version.content | split('\n') |
+                      first | regex_replace('^go', '') }}"
 
       - name: Golang | Molecule | Verify | Get go version from shell
         ansible.builtin.command: go version
@@ -36,4 +37,5 @@
         ansible.builtin.assert:
             that: go_rv_tmp_version_shell_result.stdout is match("go version go" + go_rv_version + ".*")
             success_msg: Go Version {{ go_rv_version }} is installed
-            fail_msg: Go Version {{ go_rv_version }} is not installed, Shell result {{ go_rv_tmp_version_shell_result.stdout }}
+            fail_msg: Go Version {{ go_rv_version }} is not installed,
+                Shell result {{ go_rv_tmp_version_shell_result.stdout }}

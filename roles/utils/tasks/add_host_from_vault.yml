@@ -27,7 +27,8 @@
 
 - name: Common | Add Ansible Host | Checking for hostname
   ansible.builtin.set_fact:
-      rv_common_add_host_vault_data: "{{ lookup('community.hashi_vault.hashi_vault', rv_common_add_host_tmp_vault_string) }}"
+      rv_common_add_host_vault_data: "{{ lookup('community.hashi_vault.hashi_vault',
+          rv_common_add_host_tmp_vault_string) }}"
 
 - name: Common | Add Ansible Host | Gather Ansible facts
   ansible.builtin.setup:
@@ -39,7 +40,8 @@
   block:
       - name: Common | Add Ansible Host | Set Private Key file name
         ansible.builtin.set_fact:
-            rv_common_add_host_ansible_ssh_private_key_file: "{{ ansible_env.HOME }}/.ssh/tmp/{{ rv_common_add_host_hostname }}_{{ ansible_date_time.epoch }}"
+            rv_common_add_host_ansible_ssh_private_key_file: "{{ ansible_env.HOME }}/.ssh/tmp/{{
+                rv_common_add_host_hostname }}_{{ ansible_date_time.epoch }}"
 
       - name: Common | Add Ansible Host | Make directory for ssh key
         ansible.builtin.file:

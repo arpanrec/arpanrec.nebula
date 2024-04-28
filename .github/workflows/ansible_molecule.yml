@@ -19,7 +19,7 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    ansible_lint:
+    code_quality:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
@@ -39,10 +39,30 @@ jobs:
                   pip install -r .github/files/requirements.txt
                   if [ -f requirements.yml ]; then ansible-galaxy install -r requirements.yml; fi
 
-            - name: ansible lint
+            - name: Analysing the code with ansible-lint
               run: |+
+                  set -ex
                   ansible-lint
+
+            - name: Analysing the code with yamllint
+              run: |+
+                  set -ex
                   yamllint .
+
+            - name: Analysing the code with pylint
+              run: |+
+                  set -ex
+                  pylint $(git ls-files '*.py')
+
+            - name: Analysing the code with black
+              run: |+
+                  set -ex
+                  black --check $(git ls-files '*.py')
+
+            - name: Analysing the code with mypy
+              run: |+
+                  set -ex
+                  mypy $(git ls-files '*.py')
 
     molecule_test_role_linux_patching:
         runs-on: ubuntu-latest
@@ -480,30 +500,3 @@ jobs:
             - name: Run Molecule Test
               run: |+
                   molecule test -s role.vault.default
-
-    molecule_test:
-        needs:
-            - molecule_test_role_linux_patching
-            - molecule_test_role_user_add
-            - molecule_test_role_dotfiles
-            - molecule_test_role_code
-            - molecule_test_role_java
-            - molecule_test_role_themes
-            - molecule_test_role_terminal
-            - molecule_test_role_go
-            - molecule_test_role_nodejs
-            - molecule_test_role_bw
-            - molecule_test_role_bitwarden_desktop
-            - molecule_test_role_mattermost_desktop
-            - molecule_test_role_gnome
-            - molecule_test_role_postman
-            - molecule_test_role_telegram
-            - molecule_test_role_ssh_hardening
-            - molecule_test_role_get_certificate_ownca
-            - molecule_test_role_terraform
-            - molecule_test_role_vault
-
-        runs-on: ubuntu-latest
-        steps:
-            - name: All molecule Tests
-              run: echo "All molecule Tests"

@@ -7,7 +7,7 @@ Ansible Module for Searching the latest bitwarden client release version from gi
 from __future__ import absolute_import, division, print_function
 
 import requests
-from ansible.module_utils.basic import AnsibleModule
+from ansible.module_utils.basic import AnsibleModule  # type: ignore
 
 # pylint: disable=C0103
 __metaclass__ = type

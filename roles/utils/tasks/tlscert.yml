@@ -6,7 +6,8 @@
 # rv_tls_vault_token: Hashicorp vault auth token
 # rv_tls_common_name: domain/fqdn name of the expected uri (IP Address not allowed)
 # rv_tls_alt_names : alternet domain/fqdn name of the expected uri (IP Address not allowed)
-# rv_tls_alt_names_combiled : alternet domain/fqdn + rv_tls_common_name name of the expected uri (IP Address not allowed)
+# rv_tls_alt_names_combiled :
+#   alternet domain/fqdn + rv_tls_common_name name of the expected uri (IP Address not allowed)
 # rv_tls_vault_uri_result: temp variable
 # rv_tls_tmpp_csr_dir: temp variable
 

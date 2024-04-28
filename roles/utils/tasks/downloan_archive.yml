@@ -45,6 +45,7 @@
   ansible.builtin.set_fact:
       rv_common_download_archive_url_headers: {}
 
-- name: Common | Download Archive | Set dummy variables for rv_common_download_archive_unarchive_extra_opts post download
+- name: Common | Download Archive |
+      Set dummy variables for rv_common_download_archive_unarchive_extra_opts post download
   ansible.builtin.set_fact:
       rv_common_download_archive_unarchive_extra_opts: []

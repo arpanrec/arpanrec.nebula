@@ -1,13 +1,14 @@
 ---
 - name: Application User | Generate password hash
   ansible.builtin.shell: >
-      import crypt;  print(crypt.crypt("{{ user_add_rv_password }}", "$1$SomeSalt$"))
+      python -c 'import crypt;  print(crypt.crypt("{{ user_add_rv_password }}", "$1$SomeSalt$"))'
   register: user_add_rv_password_hash_tmp
   args:
-      executable: "{{ ansible_python_interpreter }}"
+      executable: /bin/bash
   no_log: true
   when: user_add_rv_password is defined
   changed_when: false
+  delegate_to: localhost
 
 - name: Application User | Adding the group
   ansible.builtin.group:

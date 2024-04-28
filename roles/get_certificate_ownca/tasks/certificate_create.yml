@@ -11,10 +11,12 @@
       subject_alt_name_critical: true
       use_common_name_for_san: false
       commonName: "{{ get_certificate_ownca_rv_getcert_subject.commonName | default(omit, True) }}"
-      state_or_province_name: "{{ get_certificate_ownca_rv_getcert_subject.state_or_province_name | default(omit, True) }}"
+      state_or_province_name: "{{ get_certificate_ownca_rv_getcert_subject.state_or_province_name
+          | default(omit, True) }}"
       locality_name: "{{ get_certificate_ownca_rv_getcert_subject.locality_name | default(omit, True) }}"
       organization_name: "{{ get_certificate_ownca_rv_getcert_subject.organization_name | default(omit, True) }}"
-      organizational_unit_name: "{{ get_certificate_ownca_rv_getcert_subject.organizational_unit_name | default(omit, True) }}"
+      organizational_unit_name: "{{ get_certificate_ownca_rv_getcert_subject.organizational_unit_name
+          | default(omit, True) }}"
       country_name: "{{ get_certificate_ownca_rv_getcert_subject.country_name | default(omit, True) }}"
       email_address: "{{ get_certificate_ownca_rv_getcert_subject.email_address | default(omit, True) }}"
       basic_constraints: "{{ get_certificate_ownca_rv_getcert_basic_constraints | default(omit, True) }}"
@@ -42,4 +44,5 @@
 - name: Get Certificate Ownca | Create Certificate | Certificate Set Fact
   when: get_certificate_ownca_rv_getcert_tmp_new_certificate_content.certificate is defined
   ansible.builtin.set_fact:
-      get_certificate_ownca_rv_getcert_certificate_content: "{{ get_certificate_ownca_rv_getcert_tmp_new_certificate_content.certificate }}"
+      get_certificate_ownca_rv_getcert_certificate_content: "{{
+          get_certificate_ownca_rv_getcert_tmp_new_certificate_content.certificate }}"
