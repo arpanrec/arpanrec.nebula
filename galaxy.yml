@@ -8,6 +8,7 @@ authors:
 description: common ansible resources
 repository: https://github.com/arpanrec/arpanrec.nebula.git
 license_file: LICENSE
+issues: https://github.com/arpanrec/arpanrec.nebula/issues
 # dependencies:
 #   "https://github.com/ansible-collections/community.general.git": "6.0.1"
 #   "https://github.com/ansible-collections/ansible.posix.git": "1.4.0"
