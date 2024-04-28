@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/arpanrec/arpanrec.nebula/compare/3.4.4...4.0.0) (2024-04-28)
+
+
+### Features
+
+* Change License ([#14](https://github.com/arpanrec/arpanrec.nebula/issues/14)) ([18b71f7](https://github.com/arpanrec/arpanrec.nebula/commit/18b71f7403290c89d699992ccc5079767679b54d))
+
+
+### BREAKING CHANGES
+
+* Changed the license to GLWTS
+
 ## [3.4.4](https://github.com/arpanrec/arpanrec.nebula/compare/3.4.3...3.4.4) (2024-04-28)
 
 
