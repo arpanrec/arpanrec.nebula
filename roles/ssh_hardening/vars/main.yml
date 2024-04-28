@@ -1,0 +1,39 @@
+---
+# vars file for fail2ban
+
+ssh_hardening_rv_fail2ban_packages:
+    - fail2ban
+    - sendmail
+
+ssh_hardening_rv_fail2ban_service: fail2ban
+
+ssh_hardening_rv_fail2ban_base_configuration:
+    - option: loglevel
+      value: "{{ ssh_hardening_rv_fail2ban_loglevel }}"
+      section: Definition
+    - option: logtarget
+      value: "{{ ssh_hardening_rv_fail2ban_logtarget }}"
+      section: Definition
+    - option: ignoreip
+      value: "{{ ssh_hardening_rv_fail2ban_ignoreips | join(' ') }}"
+      section: DEFAULT
+
+ssh_hardening_rv_fail2ban_base_jail_configuration:
+    - option: ignoreself
+      value: "{{ ssh_hardening_rv_fail2ban_ignoreself }}"
+      section: DEFAULT
+    - option: bantime
+      value: "{{ ssh_hardening_rv_fail2ban_bantime }}"
+      section: DEFAULT
+    - option: findtime
+      value: "{{ ssh_hardening_rv_fail2ban_findtime }}"
+      section: DEFAULT
+    - option: maxretry
+      value: "{{ ssh_hardening_rv_fail2ban_maxretry }}"
+      section: DEFAULT
+    - option: destemail
+      value: "{{ ssh_hardening_rv_fail2ban_destemail }}"
+      section: DEFAULT
+    - option: sender
+      value: "{{ ssh_hardening_rv_fail2ban_sender }}"
+      section: DEFAULT

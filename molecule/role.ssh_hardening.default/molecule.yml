@@ -24,6 +24,7 @@ provisioner:
     playbooks:
         converge: converge.yml
         prepare: prepare.yml
+        verify: verify.yml
     inventory:
         group_vars:
             all:

@@ -1,8 +1,24 @@
 ---
 # handlers file for ssh_hardening
 - name: SSH Hardening | Restart openssh server
-  ansible.builtin.service:
+  ansible.builtin.systemd_service:
       name: sshd
       state: restarted
       enabled: true
   when: ssh_hardening_rv_ssh_security_restart_service
+  register: ssh_hardening_rv_tmp_restart_sshd
+  failed_when: >
+      ssh_hardening_rv_init_system_systemd
+      and
+      ssh_hardening_rv_tmp_restart_sshd.failed
+
+- name: SSHD Hardening | fail2ban | Restart fail2ban
+  ansible.builtin.systemd_service:
+      name: "{{ ssh_hardening_rv_fail2ban_service }}"
+      state: restarted
+      enabled: true
+  register: ssh_hardening_rv_tmp_restart_fail2ban
+  failed_when: >
+      ssh_hardening_rv_init_system_systemd
+      and
+      ssh_hardening_rv_tmp_restart_fail2ban.failed

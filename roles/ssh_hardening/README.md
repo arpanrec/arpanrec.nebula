@@ -74,6 +74,106 @@ This role applies basic security settings for personal VPS
 - Required: `false`
 - Description: Challenge-response passwords (beware issues with some PAM modules and threads)
 
+`ssh_hardening_rv_fail2ban_loglevel`
+
+- Type: `string`
+- Default: `INFO`
+- Required: `false`
+- Description: Log level in fail2ban
+
+`ssh_hardening_rv_fail2ban_logtarget`
+
+- Type: `string`
+- Default: `/var/log/fail2ban.log`
+- Required: `false`
+- Description: Log target in fail2ban
+
+`ssh_hardening_rv_fail2ban_ignoreself`
+
+- Type: `boolean`
+- Default: `true`
+- Required: `false`
+- Description: Ignore self in fail2ban
+
+`ssh_hardening_rv_fail2ban_ignoreips`
+
+- Type: `list`
+- Default: `["127.0.0.1/8 ::1"]`
+- Required: `false`
+- Description: Ignore IPs in fail2ban
+
+`ssh_hardening_rv_fail2ban_bantime`
+
+- Type: `int`
+- Default: `600`
+- Required: `false`
+- Description: Ban time in fail2ban
+
+`ssh_hardening_rv_fail2ban_findtime`
+
+- Type: `int`
+- Default: `600`
+- Required: `false`
+- Description: Find time in fail2ban
+
+`ssh_hardening_rv_fail2ban_maxretry`
+
+- Type: `int`
+- Default: `5`
+- Required: `false`
+- Description: Max retry in fail2ban
+
+`ssh_hardening_rv_fail2ban_destemail`
+
+- Type: `string`
+- Default: `root@localhost`
+- Required: `false`
+- Description: Destination email in fail2ban
+
+`ssh_hardening_rv_fail2ban_sender`
+
+- Type: `string`
+- Default: `root@{{ ansible_fqdn }}`
+- Required: `false`
+- Description: Sender email in fail2ban
+
+`ssh_hardening_rv_fail2ban_configuration`
+
+- Type: `list`
+- Default: `[]`
+- Required: `false`
+- Description: Fail2ban configuration
+- Example:
+
+  ```yaml
+  ssh_hardening_rv_fail2ban_configuration:
+    - option: loglevel
+      value: "INFO"
+      section: Definition
+  ```
+
+`ssh_hardening_rv_fail2ban_jail_configuration`
+
+- Type: `list`
+- Default: `[]`
+- Required: `false`
+- Description: Fail2ban jail configuration
+- Example:
+
+  ```yaml
+  ssh_hardening_rv_fail2ban_jail_configuration:
+    - option: ignoreself
+      value: "true"
+      section: DEFAULT
+  ```
+
+`ssh_hardening_rv_fail2ban_filterd_path`
+
+- Type: `string`
+- Default: none
+- Required: `false`
+- Description: From where to copy the filterd files
+  
 ## Example Playbook
 
 ```yaml

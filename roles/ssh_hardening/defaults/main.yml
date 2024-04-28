@@ -39,3 +39,33 @@ ssh_hardening_rv_ssh_security_client_alive_count_max: 3
 ssh_hardening_rv_ssh_security_restart_service: true
 
 ssh_hardening_rv_ssh_security_challenge_response_authentication: false
+
+# defaults file for fail2ban
+
+ssh_hardening_rv_fail2ban_loglevel: INFO
+ssh_hardening_rv_fail2ban_logtarget: /var/log/fail2ban.log
+
+ssh_hardening_rv_fail2ban_ignoreself: "true"
+ssh_hardening_rv_fail2ban_ignoreips:
+    - "127.0.0.1/8 ::1"
+
+# In seconds
+ssh_hardening_rv_fail2ban_bantime: 600
+ssh_hardening_rv_fail2ban_findtime: 600
+
+ssh_hardening_rv_fail2ban_maxretry: 5
+ssh_hardening_rv_fail2ban_destemail: root@localhost
+ssh_hardening_rv_fail2ban_sender: root@{{ ansible_fqdn }}
+
+ssh_hardening_rv_fail2ban_configuration: []
+#  - option: loglevel
+#    value: "INFO"
+#    section: Definition
+
+ssh_hardening_rv_fail2ban_jail_configuration: []
+#  - option: ignoreself
+#    value: "true"
+#    section: DEFAULT
+
+# Path to directory containing filters to copy in filter.d
+# ssh_hardening_rv_fail2ban_filterd_path:
