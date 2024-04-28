@@ -1,3 +1,11 @@
+## [4.1.1](https://github.com/arpanrec/arpanrec.nebula/compare/4.1.0...4.1.1) (2024-04-28)
+
+
+### Bug Fixes
+
+* Refactor dependencies in pyproject.toml file ([fb1dbac](https://github.com/arpanrec/arpanrec.nebula/commit/fb1dbac4433221e9f09fd75909663658fa34cde8))
+* Refactor release.config.cjs to remove unnecessary code ([c8b2b44](https://github.com/arpanrec/arpanrec.nebula/commit/c8b2b448fbc2253759ae1c78d87139a52aa3fd71))
+
 # [4.1.0](https://github.com/arpanrec/arpanrec.nebula/compare/4.0.0...4.1.0) (2024-04-28)
 
 
