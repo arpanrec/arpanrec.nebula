@@ -1,3 +1,10 @@
+## [5.0.1](https://github.com/arpanrec/arpanrec.nebula/compare/5.0.0...5.0.1) (2024-04-29)
+
+
+### Bug Fixes
+
+* fix docs to readme to telegram ([#16](https://github.com/arpanrec/arpanrec.nebula/issues/16)) ([b218658](https://github.com/arpanrec/arpanrec.nebula/commit/b218658503865e9c31415abbde4e884e5c1e55ab))
+
 # [5.0.0](https://github.com/arpanrec/arpanrec.nebula/compare/4.4.4...5.0.0) (2024-04-29)
 
 
