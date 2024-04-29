@@ -1,3 +1,10 @@
+# [4.4.0](https://github.com/arpanrec/arpanrec.nebula/compare/4.3.6...4.4.0) (2024-04-29)
+
+
+### Features
+
+* cloundinit ([6cd813a](https://github.com/arpanrec/arpanrec.nebula/commit/6cd813a8c1c30ca1bb087fcb0a61edfbe324ef51))
+
 ## [4.3.6](https://github.com/arpanrec/arpanrec.nebula/compare/4.3.5...4.3.6) (2024-04-29)
 
 
