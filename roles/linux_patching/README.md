@@ -6,13 +6,6 @@ Set timezone, locale, and loopback ip in server
 
 ## Role Variables
 
-- `linux_patching_rv_upgrade_existing_packages`
-
-  - Description: If set to `true` Upgrade the existing packages in OS.
-  - Required: `false`
-  - Default: `true`
-  - Type: `bool`
-
 - `linux_patching_rv_packages`
 
   - Description: Install the packages in the distributions.

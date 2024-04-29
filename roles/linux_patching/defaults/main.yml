@@ -1,8 +1,6 @@
 ---
 # defaults file for host_essentials
 
-linux_patching_rv_upgrade_existing_packages: true
-
 linux_patching_rv_install_devel_packages: true
 
 linux_patching_rv_devel_packages:

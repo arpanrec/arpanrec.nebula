@@ -8,16 +8,9 @@
       state: absent
       purge: true
 
-- name: Linux Patching | Install Packages | Upgrade existing all packages in Debian
+- name: Linux Patching | Install Packages | Update apt cache
   ansible.builtin.apt:
       update_cache: true
-  when: linux_patching_rv_upgrade_existing_packages
-  register: linux_patching_rv_upgrade_result
-
-- name: Linux Patching | Install Packages | Reboot After Packages Upgrade
-  when: linux_patching_rv_upgrade_result.changed and linux_patching_rv_init_system_systemd
-  ansible.builtin.import_tasks:
-      file: reboot.yml
 
 - name: Linux Patching | Install Packages | Packages to install
   ansible.builtin.debug:
@@ -30,7 +23,6 @@
       name: "{{ linux_patching_rv_packages | default([]) + linux_patching_rv_extra_packages |
           default([]) + linux_patching_rv_managed_packages | default([]) }}"
       state: present
-      update_cache: true
   register: linux_patching_rv_extra_install
 
 - name: Linux Patching | Install Packages | Reboot After Packages Install
@@ -53,7 +45,6 @@
   ansible.builtin.apt:
       name: "{{ linux_patching_rv_devel_packages | default([]) }}"
       state: present
-      update_cache: true
   register: linux_patching_rv_extra_devel_install
   when: linux_patching_rv_install_devel_packages
 
@@ -66,7 +57,6 @@
   ansible.builtin.apt:
       name: "linux-headers-{{ ansible_kernel }}"
       state: present
-      update_cache: true
   when: linux_patching_rv_install_devel_packages
   ignore_errors: true
   register: linux_patching_rv_install_devel_packages_tmp_kernel_version_installed
@@ -75,7 +65,6 @@
   ansible.builtin.apt:
       name: "linux-headers"
       state: present
-      update_cache: true
   when: linux_patching_rv_install_devel_packages
       and linux_patching_rv_install_devel_packages_tmp_kernel_version_installed.failed
   register: linux_patching_rv_install_generic_headers_tmp_kernel_version_installed
