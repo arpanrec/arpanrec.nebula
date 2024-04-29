@@ -1,3 +1,10 @@
+## [4.4.2](https://github.com/arpanrec/arpanrec.nebula/compare/4.4.1...4.4.2) (2024-04-29)
+
+
+### Bug Fixes
+
+* don't reboot if ansible connection is local ([a90dc37](https://github.com/arpanrec/arpanrec.nebula/commit/a90dc377490cf37371ade6e8a71a0ebb42f81bd7))
+
 ## [4.4.1](https://github.com/arpanrec/arpanrec.nebula/compare/4.4.0...4.4.1) (2024-04-29)
 
 
