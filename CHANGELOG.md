@@ -1,3 +1,10 @@
+## [4.3.2](https://github.com/arpanrec/arpanrec.nebula/compare/4.3.1...4.3.2) (2024-04-29)
+
+
+### Bug Fixes
+
+* Debug msg for dev machine ([db5c75e](https://github.com/arpanrec/arpanrec.nebula/commit/db5c75e5b1c9bc65635364d387b3b60c3030d1b7))
+
 ## [4.3.1](https://github.com/arpanrec/arpanrec.nebula/compare/4.3.0...4.3.1) (2024-04-29)
 
 
