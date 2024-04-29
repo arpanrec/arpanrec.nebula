@@ -1,3 +1,11 @@
+## [4.3.6](https://github.com/arpanrec/arpanrec.nebula/compare/4.3.5...4.3.6) (2024-04-29)
+
+
+### Bug Fixes
+
+* hostname line in network.yml has one space ([2034606](https://github.com/arpanrec/arpanrec.nebula/commit/2034606bd3a403d3f8821feeb6bee0f3811347c2))
+* Merge branch 'main' of github.com:arpanrec/arpanrec.nebula ([4bd72b4](https://github.com/arpanrec/arpanrec.nebula/commit/4bd72b45d1dc07ac7593d4915d0c74c765860cd4))
+
 ## [4.3.5](https://github.com/arpanrec/arpanrec.nebula/compare/4.3.4...4.3.5) (2024-04-29)
 
 
