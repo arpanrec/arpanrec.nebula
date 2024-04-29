@@ -1,3 +1,10 @@
+## [4.4.4](https://github.com/arpanrec/arpanrec.nebula/compare/4.4.3...4.4.4) (2024-04-29)
+
+
+### Bug Fixes
+
+* no become ([9d1dbbc](https://github.com/arpanrec/arpanrec.nebula/commit/9d1dbbc98d6c54cc14d04e80342a4b8b98150e2a))
+
 ## [4.4.3](https://github.com/arpanrec/arpanrec.nebula/compare/4.4.2...4.4.3) (2024-04-29)
 
 
