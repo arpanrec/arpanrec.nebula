@@ -114,9 +114,6 @@ Set timezone, locale, and loopback ip in server
 ```yaml
 ---
 - name: Patch Debian System
-  become: true
-  become_method: su
-  any_errors_fatal: true
   ansible.builtin.import_role:
       name: arpanrec.nebula.linux_patching
 ```

@@ -96,10 +96,6 @@ options:
 ```yaml
 ---
 - name: Visual Studio Code
-  hosts: all
-  gather_facts: false
-  become: false
-  any_errors_fatal: true
   roles:
       - name: arpanrec.nebula.code
 ```

@@ -1,8 +1,6 @@
 ---
 - name: Installing apps in user $HOME directory
   hosts: server_workspace
-  become: false
-  gather_facts: true
   tasks:
       - name: USERAPPS | Dotfiles
         ansible.builtin.include_role:
