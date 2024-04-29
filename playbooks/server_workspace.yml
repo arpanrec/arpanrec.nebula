@@ -24,16 +24,6 @@
             - bitwarden_desktop
             - never
 
-      - name: USERAPPS | Bitwarden CLI
-        ansible.builtin.include_role:
-            name: arpanrec.nebula.bw
-        args:
-            apply:
-                tags:
-                    - bw
-        tags:
-            - bw
-
       - name: USERAPPS | Mattermost
         ansible.builtin.include_role:
             name: arpanrec.nebula.mattermost_desktop
@@ -46,16 +36,16 @@
             - mattermost_desktop
             - never
 
-      - name: USERAPPS | Telegram
+      - name: USERAPPS | Telegram Desktop
         ansible.builtin.include_role:
-            name: arpanrec.nebula.telegram
+            name: arpanrec.nebula.telegram_desktop
         args:
             apply:
                 tags:
-                    - telegram
+                    - telegram_desktop
                     - never
         tags:
-            - telegram
+            - telegram_desktop
             - never
 
       - name: USERAPPS | NodeJS
@@ -67,7 +57,6 @@
             apply:
                 tags:
                     - nodejs
-                    - never
 
       - name: USERAPPS | Postman
         ansible.builtin.include_role:

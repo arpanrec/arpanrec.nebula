@@ -25,7 +25,7 @@ user_add_rv_user_extra_groups: []
 
 # Public key for remote ssh access
 # Type: List of String
-# user_add_rv_ssh_access_public_key_content_list
+user_add_rv_ssh_access_public_key_content_list: []
 
 # Commands user will be able to run without password
 # Type: List<String>

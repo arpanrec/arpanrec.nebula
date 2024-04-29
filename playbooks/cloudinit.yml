@@ -16,7 +16,7 @@
             - "{{ pv_cloud_domainname }}"
 
       - name: Patch Cloud System | Linux Patching
-        ansible.builtin.import_role:
+        ansible.builtin.include_role:
             name: arpanrec.nebula.linux_patching
         vars:
             linux_patching_rv_install_devel_packages: "{{ pv_cloud_is_dev_machine | bool }}"
@@ -30,7 +30,7 @@
             update_cache: true
 
       - name: Patch Cloud System | Add application user
-        ansible.builtin.import_role:
+        ansible.builtin.include_role:
             name: arpanrec.nebula.user_add
         vars:
             user_add_rv_user_primary_group: "{{ pv_cloud_groupname }}"
@@ -41,12 +41,12 @@
             user_add_rv_user_nopasswd_commands: ["ALL"]
 
       - name: Patch Cloud System | SSH Hardening
-        ansible.builtin.import_role:
+        ansible.builtin.include_role:
             name: arpanrec.nebula.ssh_hardening
 
       - name: Patch Cloud System | Install Docker
-        ansible.builtin.import_role:
-            name: geerlingguy.docker
+        ansible.builtin.include_role:
+            name: arpanrec.nebula.docker
         vars:
             docker_users:
                 - "{{ pv_cloud_username }}"

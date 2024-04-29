@@ -377,7 +377,7 @@ jobs:
               run: |+
                   molecule test -s role.postman.default
 
-    molecule_test_role_telegram:
+    molecule_test_role_telegram_desktop:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
@@ -398,7 +398,7 @@ jobs:
 
             - name: Run Molecule Test
               run: |+
-                  molecule test -s role.telegram.default
+                  molecule test -s role.telegram_desktop.default
 
     molecule_test_role_ssh_hardening:
         runs-on: ubuntu-latest

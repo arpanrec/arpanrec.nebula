@@ -163,6 +163,8 @@
       state: enabled
   register: linux_patching_rv_ufw_ssh_port_result
   ignore_errors: true
+  environment:
+      PATH: /sbin:{{ ansible_env.PATH }}
 
 - name: Linux Patching | Network | Setup Host Network Information | UFW Iptables legacy
   when: linux_patching_rv_ufw_ssh_port_result.failed
@@ -180,3 +182,5 @@
             port: "{{ linux_patching_rv_ssh_port }}"
             proto: tcp
             state: enabled
+        environment:
+            PATH: /sbin:{{ ansible_env.PATH }}

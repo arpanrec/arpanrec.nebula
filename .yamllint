@@ -44,3 +44,4 @@ ignore: |
     venv
     node_modules
     roles/geerlingguy.docker
+    roles/docker

@@ -5,4 +5,5 @@ verbosity: 1
 profile: production
 exclude_paths:
     - "roles/geerlingguy.docker"
+    - "roles/docker"
 var_naming_pattern: "^[a-z_][a-z0-9_]*$"

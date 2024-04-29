@@ -46,11 +46,11 @@ Install [Telegram Desktop](https://desktop.telegram.org/)
 ```yaml
 - name: Include Telegram Desktop
   ansible.builtin.import_role:
-      name: arpanrec.nebula.telegram
+      name: arpanrec.nebula.telegram_desktop
 ```
 
 ## Testing Telegram Desktop
 
 ```bash
-molecule test -s role.telegram.default
+molecule test -s role.telegram_desktop.default
 ```

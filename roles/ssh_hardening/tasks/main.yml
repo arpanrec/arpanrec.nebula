@@ -26,6 +26,8 @@
       rule: allow
       port: "{{ ssh_hardening_rv_ssh_port }}"
       state: enabled
+  environment:
+      PATH: /sbin:{{ ansible_env.PATH }}
 
 - name: SSHD Hardening | Create config directory
   ansible.builtin.file:

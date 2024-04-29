@@ -38,9 +38,7 @@
       state: present
       comment: added by ansible automation
   with_items: "{{ user_add_rv_ssh_access_public_key_content_list }}"
-  when:
-      - user_add_rv_ssh_access_public_key_content_list is defined
-      - user_add_rv_ssh_access_public_key_content_list | length > 0
+  when: user_add_rv_ssh_access_public_key_content_list | length > 0
 
 - name: Application User | Adding user to the sudoers
   when: user_add_rv_user_nopasswd_commands | length > 0
