@@ -1,3 +1,10 @@
+## [4.1.4](https://github.com/arpanrec/arpanrec.nebula/compare/4.1.3...4.1.4) (2024-04-29)
+
+
+### Bug Fixes
+
+* Refactor Linux Patching task to use noninteractive mode for apt-get commands ([e3d1487](https://github.com/arpanrec/arpanrec.nebula/commit/e3d1487e79ee960035c6adbadb7bddd60cd1d3bf))
+
 ## [4.1.3](https://github.com/arpanrec/arpanrec.nebula/compare/4.1.2...4.1.3) (2024-04-28)
 
 
