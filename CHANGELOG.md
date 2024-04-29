@@ -1,3 +1,10 @@
+## [4.3.5](https://github.com/arpanrec/arpanrec.nebula/compare/4.3.4...4.3.5) (2024-04-29)
+
+
+### Bug Fixes
+
+* add domain in hostname ([2977492](https://github.com/arpanrec/arpanrec.nebula/commit/297749265f567851d069edcef7d13057a80adda9))
+
 ## [4.3.4](https://github.com/arpanrec/arpanrec.nebula/compare/4.3.3...4.3.4) (2024-04-29)
 
 
