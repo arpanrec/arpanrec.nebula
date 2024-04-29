@@ -140,7 +140,8 @@
       - regexp: '^127\.0\.0\.1'
         line: "127.0.0.1  localhost"
       - regexp: '^127\.0\.1\.1'
-        line: "127.0.1.1  {{ linux_patching_rv_hostname }}"
+        line: "127.0.1.1  {{ linux_patching_rv_hostname }}
+            {{ linux_patching_rv_hostname }}.{{ linux_patching_rv_domain_name }}"
 
 - name: Linux Patching | Network | Setup Host Network Information | Enable network services
   ansible.builtin.systemd_service:
