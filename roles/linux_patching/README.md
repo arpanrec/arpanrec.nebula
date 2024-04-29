@@ -17,28 +17,28 @@ Set timezone, locale, and loopback ip in server
   - Description: Install the packages in the distributions.
   - Required: `false`
   - Default:
-    - "zip"
-    - "unzip"
-    - "tar"
-    - "wget"
-    - "curl"
-    - "ca-certificates"
-    - "sudo"
-    - "systemd"
-    - "gnupg2"
-    - "apt-transport-https"
-    - "locales"
-    - "systemd-timesyncd"
-    - "network-manager"
-    - "gnupg2"
-    - "gnupg"
-    - "pigz"
-    - "cron"
-    - "acl"
-    - "ufw"
-    - "bzip2"
-    - "procps"
-    - "xz-utils"
+    - zip
+    - unzip
+    - tar
+    - wget
+    - curl
+    - ca-certificates
+    - sudo
+    - systemd
+    - gnupg2
+    - apt-transport-https
+    - locales
+    - systemd-timesyncd
+    - network-manager
+    - gnupg2
+    - gnupg
+    - pigz
+    - cron
+    - acl
+    - ufw
+    - bzip2
+    - procps
+    - xz-utils
     - apt-utils
     - lsb-release
     - software-properties-common
@@ -47,6 +47,34 @@ Set timezone, locale, and loopback ip in server
     - python3-venv
 
 - Type: `list[str]`
+
+- `linux_patching_rv_devel_packages`
+  
+  - Description: Install the development packages in the distributions.
+  - Required: `false`
+  - Type: `list[str]`
+  - Default:
+    - net-tools
+    - telnet
+    - vim
+    - git
+    - jq
+    - zsh
+    - htop
+    - tmux
+    - tree
+    - neovim
+    - python3-neovim
+    - luarocks
+    - build-essential
+    - ninja-build
+    - gettext
+    - cmake
+    - make
+    - openssh-client
+    - rsync
+    - ntfs-3g
+    - exfat-fuse
 
 - `linux_patching_rv_managed_packages`
 
