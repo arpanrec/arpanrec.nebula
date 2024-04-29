@@ -7,7 +7,7 @@ from __future__ import absolute_import, division, print_function
 import requests
 from ansible.module_utils.basic import AnsibleModule  # type: ignore
 
-# pylint: disable=C0103
+# pylint: disable=C0103,invalid-name
 __metaclass__ = type
 
 DOCUMENTATION = r"""

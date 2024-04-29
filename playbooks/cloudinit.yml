@@ -30,7 +30,8 @@
         vars:
             user_add_rv_user_primary_group: "{{ pv_cloud_groupname }}"
             user_add_rv_username: "{{ pv_cloud_username }}"
-            user_add_rv_ssh_access_public_key_content_list: ["{{ pv_cloud_user_ssh_public_key }}"]
+            user_add_rv_ssh_access_public_key_content_list:
+                - "{{ pv_cloud_user_ssh_public_key }}"
             user_add_rv_user_default_shell: "/bin/zsh"
             user_add_rv_user_nopasswd_commands: ["ALL"]
 
@@ -50,4 +51,5 @@
         ansible.builtin.import_role:
             name: geerlingguy.docker
         vars:
-            docker_users: ["{{ pv_cloud_username }}"]
+            docker_users:
+                - "{{ pv_cloud_username }}"

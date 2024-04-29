@@ -14,6 +14,7 @@ Author:
 # Make coding more python3-ish, this is required for contributions to Ansible
 from __future__ import absolute_import, division, print_function
 
+# pylint: disable=C0103,invalid-name
 __metaclass__ = type
 
 # not only visible to ansible-doc, it also 'declares' the options the plugin requires and how to configure them.
