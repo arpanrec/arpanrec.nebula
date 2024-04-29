@@ -1,3 +1,31 @@
+# [5.0.0](https://github.com/arpanrec/arpanrec.nebula/compare/4.4.4...5.0.0) (2024-04-29)
+
+
+### Features
+
+* cloudinit ([#15](https://github.com/arpanrec/arpanrec.nebula/issues/15)) ([21ab0ff](https://github.com/arpanrec/arpanrec.nebula/commit/21ab0ffb7da093e9af18b517ce179aede3c6fc56))
+
+
+### BREAKING CHANGES
+
+* docker added
+
+* Fix network configuration and environment variables in linux_patching tasks
+
+* Fix environment variable PATH in ssh_hardening tasks
+
+* Update user_add role to handle empty ssh access public key list
+
+* Update server_workspace playbook to enable Bitwarden CLI and Node JS roles
+
+* Update cloudinit.yml playbook to use include_role instead of import_role
+
+* remove bw
+
+* telegram_desktop
+
+* Update molecule.yml to use debian_role_telegram_desktop_default instead of debian_role_telegram_default
+
 ## [4.4.4](https://github.com/arpanrec/arpanrec.nebula/compare/4.4.3...4.4.4) (2024-04-29)
 
 
