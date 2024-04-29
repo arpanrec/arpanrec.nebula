@@ -1,3 +1,10 @@
+## [4.3.1](https://github.com/arpanrec/arpanrec.nebula/compare/4.3.0...4.3.1) (2024-04-29)
+
+
+### Bug Fixes
+
+* Refactor assert statements in cloudinit.yml, user_add.yml, arch_aur_helper.yml, downloan_archive.yml, and tlscert.yml to use simplified syntax ([ee1cf8f](https://github.com/arpanrec/arpanrec.nebula/commit/ee1cf8fd685648ec842c435e6dd2412432877773))
+
 # [4.3.0](https://github.com/arpanrec/arpanrec.nebula/compare/4.2.1...4.3.0) (2024-04-29)
 
 
