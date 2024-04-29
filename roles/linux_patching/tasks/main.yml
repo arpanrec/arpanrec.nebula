@@ -1,6 +1,7 @@
 ---
 - name: Linux Patching | Install python3, python3-pip, python3-venv and procps
-  ansible.builtin.raw: apt-get update && apt-get install -y python3 python3-pip python3-venv procps
+  ansible.builtin.raw: DEBIAN_FRONTEND=noninteractive apt-get update
+      && DEBIAN_FRONTEND=noninteractive apt-get install -y python3 python3-pip python3-venv procps
   register: linux_patching_rv_install_python_pip_result_raw
   changed_when: "'0 upgraded, 0 newly installed' not in
       linux_patching_rv_install_python_pip_result_raw.stdout_lines | last"
