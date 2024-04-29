@@ -1,3 +1,10 @@
+## [4.4.1](https://github.com/arpanrec/arpanrec.nebula/compare/4.4.0...4.4.1) (2024-04-29)
+
+
+### Bug Fixes
+
+* cloudinit ([addbf57](https://github.com/arpanrec/arpanrec.nebula/commit/addbf57c31bf7758dbb14f4a8672497d25884e73))
+
 # [4.4.0](https://github.com/arpanrec/arpanrec.nebula/compare/4.3.6...4.4.0) (2024-04-29)
 
 
