@@ -3,7 +3,30 @@
 
 linux_patching_rv_upgrade_existing_packages: true
 
-linux_patching_rv_install_headers: true
+linux_patching_rv_install_devel_packages: true
+
+linux_patching_rv_devel_packages:
+    - net-tools
+    - telnet
+    - vim
+    - git
+    - jq
+    - zsh
+    - htop
+    - tmux
+    - tree
+    - neovim
+    - python3-neovim
+    - luarocks
+    - build-essential
+    - ninja-build
+    - gettext
+    - cmake
+    - make
+    - openssh-client
+    - rsync
+    - ntfs-3g
+    - exfat-fuse
 
 linux_patching_rv_packages:
     - zip

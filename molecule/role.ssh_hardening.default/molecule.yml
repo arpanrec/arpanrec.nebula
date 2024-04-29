@@ -28,7 +28,7 @@ provisioner:
     inventory:
         group_vars:
             all:
-                linux_patching_rv_install_headers: false
+                linux_patching_rv_install_devel_packages: false
                 ssh_hardening_rv_ssh_security_restart_service: false
                 linux_patching_rv_managed_packages: []
 scenario:
