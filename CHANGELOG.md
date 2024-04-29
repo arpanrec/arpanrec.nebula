@@ -1,3 +1,10 @@
+## [4.3.4](https://github.com/arpanrec/arpanrec.nebula/compare/4.3.3...4.3.4) (2024-04-29)
+
+
+### Bug Fixes
+
+* python3-pip,venv moved to dev ([300eef2](https://github.com/arpanrec/arpanrec.nebula/commit/300eef294f81c212f838373e725a7384354c2ba9))
+
 ## [4.3.3](https://github.com/arpanrec/arpanrec.nebula/compare/4.3.2...4.3.3) (2024-04-29)
 
 
