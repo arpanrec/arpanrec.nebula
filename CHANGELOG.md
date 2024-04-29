@@ -1,3 +1,10 @@
+## [4.4.3](https://github.com/arpanrec/arpanrec.nebula/compare/4.4.2...4.4.3) (2024-04-29)
+
+
+### Bug Fixes
+
+* update apt cache ([3849d29](https://github.com/arpanrec/arpanrec.nebula/commit/3849d29b6cb45649f478bf68e98ed62a1043e830))
+
 ## [4.4.2](https://github.com/arpanrec/arpanrec.nebula/compare/4.4.1...4.4.2) (2024-04-29)
 
 
