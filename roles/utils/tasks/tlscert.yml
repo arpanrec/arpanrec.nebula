@@ -14,15 +14,13 @@
 - name: TLS Certificate | Include Asserts | Checking essential variables
   ansible.builtin.assert:
       that:
-          - "{{ item }} is defined"
-          - "{{ item }} != None"
-      fail_msg: "{{ item }} is not defined, it should be present"
-      success_msg: "{{ item }} is defined"
+          - item is defined
+          - item != None
   with_items:
-      - rv_tls_key_path
-      - rv_tls_cert_path
-      - rv_tls_common_name
-      - rv_tls_alt_names
+      - "{{ rv_tls_key_path }}"
+      - "{{ rv_tls_cert_path }}"
+      - "{{ rv_tls_common_name }}"
+      - "{{ rv_tls_alt_names }}"
 
 - name: TLS Certificate | Combile domain name to alternetnames for chrome
   ansible.builtin.set_fact:

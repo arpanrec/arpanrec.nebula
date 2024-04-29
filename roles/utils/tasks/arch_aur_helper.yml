@@ -3,12 +3,10 @@
 - name: Common | AUR Helper | Mandatory Checks
   ansible.builtin.assert:
       that:
-          - "{{ item }} is defined"
-          - "{{ item }} != None"
-      fail_msg: "{{ item }} is not defined, it should be present"
-      success_msg: "{{ item }} is defined"
+          - item is defined
+          - item != None
   with_items:
-      - rv_common_arch_aur_helper_packages
+      - "{{ rv_common_arch_aur_helper_packages }}"
 
 - name: Common | AUR Helper | Generate User Name
   ansible.builtin.set_fact:

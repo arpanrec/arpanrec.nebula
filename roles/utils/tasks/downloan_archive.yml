@@ -7,14 +7,12 @@
 - name: Common | Download Archive | Mandatory Checks
   ansible.builtin.assert:
       that:
-          - "{{ item }} is defined"
-          - "{{ item }} != None"
-      fail_msg: "{{ item }} is not defined, it should be present"
-      success_msg: "{{ item }} is defined"
+          - item is defined
+          - item != None
   with_items:
-      - rv_common_Download_archive_url
-      - rv_common_Download_archive_location
-      - rv_common_Download_archive_directory_location
+      - "{{ rv_common_Download_archive_url }}"
+      - "{{ rv_common_Download_archive_location }}"
+      - "{{ rv_common_Download_archive_directory_location }}"
 
 - name: Common | Download Archive | Downloading the archive
   ansible.builtin.get_url:

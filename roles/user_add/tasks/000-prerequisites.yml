@@ -2,10 +2,8 @@
 - name: Application User | Checking essential variables
   ansible.builtin.assert:
       that:
-          - "{{ item }} is defined"
-          - "{{ item }} != None"
-      fail_msg: "{{ item }} is not defined, it should be present"
-      success_msg: "{{ item }} is defined"
+          - item is defined
+          - item != None
   with_items:
       - user_add_rv_username
 

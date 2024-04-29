@@ -7,14 +7,11 @@
       - name: Patch Cloud System | Checking essential variables
         ansible.builtin.assert:
             that:
-                - "{{ item }} is defined"
-                - "{{ item }} != None"
-                - "{{ item }} != ''"
-            fail_msg: "{{ item }} is not defined, it should be present"
-            success_msg: "{{ item }} is defined"
+                - item is defined
+                - item != None
         with_items:
-            - pv_cloud_username
-            - pv_cloud_is_dev_machine
+            - "{{ pv_cloud_username }}"
+            - "{{ pv_cloud_is_dev_machine }}"
 
       - name: Patch Cloud System | Linux Patching
         ansible.builtin.include_role:
