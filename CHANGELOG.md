@@ -1,3 +1,10 @@
+## [4.2.1](https://github.com/arpanrec/arpanrec.nebula/compare/4.2.0...4.2.1) (2024-04-29)
+
+
+### Bug Fixes
+
+* Application User | Checking essential variables ([0e30a69](https://github.com/arpanrec/arpanrec.nebula/commit/0e30a693ffb3e9c11221cadb08075bdcb37ccb32))
+
 # [4.2.0](https://github.com/arpanrec/arpanrec.nebula/compare/4.1.4...4.2.0) (2024-04-29)
 
 

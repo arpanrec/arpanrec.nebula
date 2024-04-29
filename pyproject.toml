@@ -3,7 +3,7 @@ line-length = 120
 
 [tool.poetry]
 name = "nebula"
-version = "4.2.0"
+version = "4.2.1"
 description = "common ansible resources"
 authors = ["arpanrec <arpan.rec@gmail.com>"]
 license = "GLWTS"
