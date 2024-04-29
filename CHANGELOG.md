@@ -1,3 +1,11 @@
+# [4.2.0](https://github.com/arpanrec/arpanrec.nebula/compare/4.1.4...4.2.0) (2024-04-29)
+
+
+### Features
+
+* Add development packages ([39db575](https://github.com/arpanrec/arpanrec.nebula/commit/39db5754892f365649bcd9836f3964c2cd452616))
+* Merge branch 'main' of github.com:arpanrec/arpanrec.nebula ([1b76286](https://github.com/arpanrec/arpanrec.nebula/commit/1b762862cf498b5a157990ad27a4f5f80567c3b2))
+
 ## [4.1.4](https://github.com/arpanrec/arpanrec.nebula/compare/4.1.3...4.1.4) (2024-04-29)
 
 
