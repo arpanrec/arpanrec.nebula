@@ -1,3 +1,10 @@
+# [4.3.0](https://github.com/arpanrec/arpanrec.nebula/compare/4.2.1...4.3.0) (2024-04-29)
+
+
+### Features
+
+* pv_cloud_is_dev_machine is mandatory variable now ([125c475](https://github.com/arpanrec/arpanrec.nebula/commit/125c4751e246f246355e92f988a03dba35682a40))
+
 ## [4.2.1](https://github.com/arpanrec/arpanrec.nebula/compare/4.2.0...4.2.1) (2024-04-29)
 
 
