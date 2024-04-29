@@ -1,17 +1,8 @@
 ---
 name: Molecule Test
 
-"on":
+'on':
     push:
-        branches:
-            - "feature/*"
-            - "dev/*"
-            - "bugfix/*"
-            - "hotfix/*"
-            - "support/*"
-            - "docs/*"
-            - "style/*"
-            - "test/*"
     workflow_dispatch:
 
 concurrency:
@@ -28,8 +19,8 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: "pip"
+                  python-version: '3.10'
+                  cache: 'pip'
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
@@ -73,8 +64,8 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: "pip"
+                  python-version: '3.10'
+                  cache: 'pip'
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
@@ -96,8 +87,8 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: "pip"
+                  python-version: '3.10'
+                  cache: 'pip'
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
@@ -119,8 +110,8 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: "pip"
+                  python-version: '3.10'
+                  cache: 'pip'
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
@@ -142,8 +133,8 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: "pip"
+                  python-version: '3.10'
+                  cache: 'pip'
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
@@ -165,8 +156,8 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: "pip"
+                  python-version: '3.10'
+                  cache: 'pip'
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
@@ -188,8 +179,8 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: "pip"
+                  python-version: '3.10'
+                  cache: 'pip'
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
@@ -211,8 +202,8 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: "pip"
+                  python-version: '3.10'
+                  cache: 'pip'
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
@@ -234,8 +225,8 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: "pip"
+                  python-version: '3.10'
+                  cache: 'pip'
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
@@ -257,8 +248,8 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: "pip"
+                  python-version: '3.10'
+                  cache: 'pip'
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
@@ -280,8 +271,8 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: "pip"
+                  python-version: '3.10'
+                  cache: 'pip'
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
@@ -303,8 +294,8 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: "pip"
+                  python-version: '3.10'
+                  cache: 'pip'
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
@@ -326,8 +317,8 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: "pip"
+                  python-version: '3.10'
+                  cache: 'pip'
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
@@ -349,8 +340,8 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: "pip"
+                  python-version: '3.10'
+                  cache: 'pip'
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
@@ -372,8 +363,8 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: "pip"
+                  python-version: '3.10'
+                  cache: 'pip'
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
@@ -395,8 +386,8 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: "pip"
+                  python-version: '3.10'
+                  cache: 'pip'
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
@@ -418,8 +409,8 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: "pip"
+                  python-version: '3.10'
+                  cache: 'pip'
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
@@ -441,8 +432,8 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: "pip"
+                  python-version: '3.10'
+                  cache: 'pip'
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
@@ -464,8 +455,8 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: "pip"
+                  python-version: '3.10'
+                  cache: 'pip'
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
@@ -487,8 +478,8 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: "pip"
+                  python-version: '3.10'
+                  cache: 'pip'
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies

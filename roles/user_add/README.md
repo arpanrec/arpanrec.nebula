@@ -72,7 +72,7 @@ Create a user and add it to sudoers.d
 
 ```yaml
 - name: Add application user
-  import_role:
+  ansible.builtin.import_role:
       name: arpanrec.nebula.user_add
   vars:
       user_add_rv_username: "arpan"

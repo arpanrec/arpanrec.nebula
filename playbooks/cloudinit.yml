@@ -1,6 +1,6 @@
 ---
 - name: Patch Cloud System
-  hosts: localhost
+  hosts: cloudinit
   become: true
   gather_facts: true
   tasks:
@@ -10,22 +10,44 @@
                 - item is defined
                 - item != None
         with_items:
+            - "{{ pv_cloud_groupname }}"
             - "{{ pv_cloud_username }}"
+            - "{{ pv_cloud_user_ssh_public_key }}"
             - "{{ pv_cloud_is_dev_machine }}"
+            - "{{ pv_cloud_hostname }}"
+            - "{{ pv_cloud_domainname }}"
+
+      - name: Patch Cloud System | Make sure zsh is installed
+        become: true
+        ansible.builtin.apt:
+            name: zsh
+            state: present
+            update_cache: true
+
+      - name: Patch Cloud System | Add application user
+        ansible.builtin.import_role:
+            name: arpanrec.nebula.user_add
+        vars:
+            user_add_rv_user_primary_group: "{{ pv_cloud_groupname }}"
+            user_add_rv_username: "{{ pv_cloud_username }}"
+            user_add_rv_ssh_access_public_key_content_list: ["{{ pv_cloud_user_ssh_public_key }}"]
+            user_add_rv_user_default_shell: "/bin/zsh"
+            user_add_rv_user_nopasswd_commands: ["ALL"]
 
       - name: Patch Cloud System | Linux Patching
-        ansible.builtin.include_role:
+        ansible.builtin.import_role:
             name: arpanrec.nebula.linux_patching
         vars:
             linux_patching_rv_install_devel_packages: "{{ pv_cloud_is_dev_machine | bool }}"
+            linux_patching_rv_hostname: "{{ pv_cloud_hostname }}"
+            linux_patching_rv_domain_name: "{{ pv_cloud_domainname }}"
 
       - name: Patch Cloud System | SSH Hardening
-        ansible.builtin.include_role:
+        ansible.builtin.import_role:
             name: arpanrec.nebula.ssh_hardening
 
       - name: Patch Cloud System | Install Docker
-        ansible.builtin.include_role:
+        ansible.builtin.import_role:
             name: geerlingguy.docker
         vars:
-            docker_users:
-                - "{{ pv_cloud_username }}"
+            docker_users: ["{{ pv_cloud_username }}"]

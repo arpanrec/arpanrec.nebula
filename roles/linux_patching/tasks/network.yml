@@ -147,13 +147,20 @@
   ansible.builtin.systemd_service:
       name: "{{ item }}"
       enabled: true
+      state: started
+  register: linux_patching_rv_tmp_enable_network_services
   with_items: "{{ linux_patching_rv_net_time_services }}"
+  failed_when: >
+      linux_patching_rv_init_system_systemd
+      and
+      linux_patching_rv_tmp_enable_network_services.failed
 
 - name: Linux Patching | Network | Setup Host Network Information | Enable SSH Port
   community.general.ufw:
       rule: allow
       port: "{{ linux_patching_rv_ssh_port }}"
       proto: tcp
+      state: enabled
   register: linux_patching_rv_ufw_ssh_port_result
   ignore_errors: true
 
@@ -172,3 +179,4 @@
             rule: allow
             port: "{{ linux_patching_rv_ssh_port }}"
             proto: tcp
+            state: enabled
