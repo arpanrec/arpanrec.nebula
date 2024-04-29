@@ -17,7 +17,7 @@
         ansible.builtin.include_role:
             name: arpanrec.nebula.linux_patching
         vars:
-            linux_patching_rv_install_devel_packages: "{{ pv_cloud_is_dev_machine }}"
+            linux_patching_rv_install_devel_packages: "{{ pv_cloud_is_dev_machine | bool }}"
 
       - name: Patch Cloud System | SSH Hardening
         ansible.builtin.include_role:

@@ -32,6 +32,12 @@
   ansible.builtin.import_tasks:
       file: reboot.yml
 
+- name: Linux Patching | Install Packages | Is this a development machine?
+  ansible.builtin.debug:
+      msg: "Installing devel packages with
+          linux_patching_rv_install_devel_packages: {{ linux_patching_rv_install_devel_packages }}
+          type: {{ linux_patching_rv_install_devel_packages | type_debug }}"
+
 - name: Linux Patching | Install Packages | Install specific devel packages in Debian
   ansible.builtin.apt:
       name: "{{ linux_patching_rv_devel_packages | default([]) }}"
