@@ -28,7 +28,7 @@ Extra variables will be applied to the original role.
 
 * [Bitwarden Desktop](../roles/bitwarden_desktop/README.md) -> bitwarden_desktop
 * [Mattermost Desktop](../roles/mattermost_desktop/README.md) -> mattermost_desktop
-* [Telegram](../roles/telegram_desktop/README.md) -> telegram_desktop
+* [Telegram Desktop](../roles/telegram_desktop/README.md) -> telegram_desktop
 * [Postman](../roles/postman/README.md) -> postman
 * [Microsoft Visual Studio Code](../roles/code/README.md) -> code
 * [Gnome Settings](../roles/gnome/README.md) -> gnome
