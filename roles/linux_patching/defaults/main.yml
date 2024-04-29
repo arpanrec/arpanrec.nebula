@@ -27,6 +27,9 @@ linux_patching_rv_devel_packages:
     - rsync
     - ntfs-3g
     - exfat-fuse
+    - python3-pip
+    - python3-venv
+    - python3-dev
 
 linux_patching_rv_packages:
     - zip
@@ -50,14 +53,11 @@ linux_patching_rv_packages:
     - bzip2
     - procps
     - xz-utils
+    - python3
     # Apt tools
     - apt-utils
     - lsb-release
     - software-properties-common
-    # Python tools
-    - python3
-    - python3-pip
-    - python3-venv
 
 linux_patching_rv_managed_packages: []
 

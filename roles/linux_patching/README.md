@@ -1,6 +1,7 @@
 # Ansible Role Linux Patching (arpanrec.nebula.linux_patching)
 
-Install all latest packages in Debian based systems. also Install basic utility tools for server.
+Install all latest packages in Debian based systems.
+Also Install basic utility tools for server.
 Set timezone, locale, and loopback ip in server
 
 ## Role Variables
@@ -43,8 +44,6 @@ Set timezone, locale, and loopback ip in server
     - lsb-release
     - software-properties-common
     - python3
-    - python3-pip
-    - python3-venv
 
 - Type: `list[str]`
 
@@ -75,6 +74,9 @@ Set timezone, locale, and loopback ip in server
     - rsync
     - ntfs-3g
     - exfat-fuse
+    - python3-pip
+    - python3-venv
+    - python3-dev
 
 - `linux_patching_rv_managed_packages`
 
