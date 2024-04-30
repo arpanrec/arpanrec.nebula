@@ -47,7 +47,7 @@
 
       - name: Patch Cloud System | Install Docker
         ansible.builtin.include_role:
-            name: arpanrec.nebula.docker
+            name: geerlingguy.docker
         vars:
             docker_users:
                 - "{{ pv_cloud_init_user }}"
