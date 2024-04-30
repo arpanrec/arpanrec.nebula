@@ -1,3 +1,10 @@
+# [5.1.0](https://github.com/arpanrec/arpanrec.nebula/compare/5.0.2...5.1.0) (2024-04-30)
+
+
+### Features
+
+* Change variable names ([20c289f](https://github.com/arpanrec/arpanrec.nebula/commit/20c289f3f7b36c69cae4ad1ac6ccad6f10f8e673))
+
 ## [5.0.2](https://github.com/arpanrec/arpanrec.nebula/compare/5.0.1...5.0.2) (2024-04-30)
 
 
