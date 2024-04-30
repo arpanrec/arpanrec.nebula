@@ -1,3 +1,10 @@
+## [5.2.1](https://github.com/arpanrec/arpanrec.nebula/compare/5.2.0...5.2.1) (2024-04-30)
+
+
+### Bug Fixes
+
+* Update Docker role to geerlingguy.docker in cloudinit.yml playbook ([8bd6aa0](https://github.com/arpanrec/arpanrec.nebula/commit/8bd6aa040c6fb6a4a7d5552d0671f39cc842ec24))
+
 # [5.2.0](https://github.com/arpanrec/arpanrec.nebula/compare/5.1.0...5.2.0) (2024-04-30)
 
 
