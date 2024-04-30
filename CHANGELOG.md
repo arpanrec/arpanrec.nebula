@@ -1,3 +1,10 @@
+## [5.0.2](https://github.com/arpanrec/arpanrec.nebula/compare/5.0.1...5.0.2) (2024-04-30)
+
+
+### Bug Fixes
+
+* Cloudintit docs added ([#17](https://github.com/arpanrec/arpanrec.nebula/issues/17)) ([f28e71f](https://github.com/arpanrec/arpanrec.nebula/commit/f28e71f247e7809ff9ee8527bb10d47e514b7555))
+
 ## [5.0.1](https://github.com/arpanrec/arpanrec.nebula/compare/5.0.0...5.0.1) (2024-04-29)
 
 
