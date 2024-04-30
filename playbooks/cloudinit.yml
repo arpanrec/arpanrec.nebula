@@ -8,12 +8,12 @@
                 - item is defined
                 - item != None
         with_items:
-            - "{{ pv_cloud_init_groupname }}"
-            - "{{ pv_cloud_init_username }}"
-            - "{{ pv_cloud_init_user_ssh_public_key }}"
+            - "{{ pv_cloud_init_user }}"
+            - "{{ pv_cloud_init_group }}"
+            - "{{ pv_cloud_init_authorized_keys }}"
             - "{{ pv_cloud_init_is_dev_machine }}"
             - "{{ pv_cloud_init_hostname }}"
-            - "{{ pv_cloud_init_domainname }}"
+            - "{{ pv_cloud_init_domain }}"
 
       - name: Patch Cloud System | Linux Patching
         ansible.builtin.include_role:
@@ -21,7 +21,7 @@
         vars:
             linux_patching_rv_install_devel_packages: "{{ pv_cloud_init_is_dev_machine | bool }}"
             linux_patching_rv_hostname: "{{ pv_cloud_init_hostname }}"
-            linux_patching_rv_domain_name: "{{ pv_cloud_init_domainname }}"
+            linux_patching_rv_domain_name: "{{ pv_cloud_init_domain }}"
 
       - name: Patch Cloud System | Make sure zsh is installed
         ansible.builtin.apt:
@@ -33,12 +33,13 @@
         ansible.builtin.include_role:
             name: arpanrec.nebula.user_add
         vars:
-            user_add_rv_user_primary_group: "{{ pv_cloud_init_groupname }}"
-            user_add_rv_username: "{{ pv_cloud_init_username }}"
-            user_add_rv_ssh_access_public_key_content_list:
-                - "{{ pv_cloud_init_user_ssh_public_key }}"
+            user_add_rv_user_primary_group: "{{ pv_cloud_init_group }}"
+            user_add_rv_username: "{{ pv_cloud_init_user }}"
+            user_add_rv_ssh_access_public_key_content_list: "{{ lookup('file',
+                pv_cloud_init_authorized_keys).splitlines() }}"
             user_add_rv_user_default_shell: "/bin/zsh"
             user_add_rv_user_nopasswd_commands: ["ALL"]
+            user_add_rv_user_extra_groups: ["wheel"]
 
       - name: Patch Cloud System | SSH Hardening
         ansible.builtin.include_role:
@@ -49,4 +50,4 @@
             name: arpanrec.nebula.docker
         vars:
             docker_users:
-                - "{{ pv_cloud_init_username }}"
+                - "{{ pv_cloud_init_user }}"
