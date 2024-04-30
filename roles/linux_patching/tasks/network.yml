@@ -155,6 +155,15 @@
       and
       linux_patching_rv_tmp_enable_network_services.failed
 
+- name: Linux Patching | Network | Setup Host Network Information | Enable UFW
+  ansible.builtin.command: /usr/sbin/ufw --force enable
+  register: linux_patching_rv_tmp_enable_ufw
+  changed_when: false
+  failed_when: >
+      linux_patching_rv_init_system_systemd
+      and
+      linux_patching_rv_tmp_enable_ufw.failed
+
 - name: Linux Patching | Network | Setup Host Network Information | Enable SSH Port
   community.general.ufw:
       rule: allow

@@ -1,4 +1,4 @@
-# [Ansible Play Server Workspace](server_workspace.yml)
+# [Ansible Play Server Workspace](/playbooks/server_workspace.yml)
 
 Run the playbook
 
