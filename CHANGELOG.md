@@ -1,3 +1,10 @@
+# [5.2.0](https://github.com/arpanrec/arpanrec.nebula/compare/5.1.0...5.2.0) (2024-04-30)
+
+
+### Features
+
+* remove docker ([fc9e645](https://github.com/arpanrec/arpanrec.nebula/commit/fc9e645a98d1b5fe142b63bbc5c354af6dbe9972))
+
 # [5.1.0](https://github.com/arpanrec/arpanrec.nebula/compare/5.0.2...5.1.0) (2024-04-30)
 
 
