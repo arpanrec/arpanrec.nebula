@@ -1,3 +1,13 @@
+## [5.2.3](https://github.com/arpanrec/arpanrec.nebula/compare/5.2.2...5.2.3) (2024-05-01)
+
+
+### Bug Fixes
+
+* Update semantic-release version in release.yml workflow ([00fea4c](https://github.com/arpanrec/arpanrec.nebula/commit/00fea4c82a491e9dfbab4670576b3b7a2dddc7ee))
+* Update semantic-release version in release.yml workflow ([bc45a7b](https://github.com/arpanrec/arpanrec.nebula/commit/bc45a7be9c51f1aca1477369c92de13821c0e2c7))
+* Update semantic-release version in release.yml workflow ([cdd7dd3](https://github.com/arpanrec/arpanrec.nebula/commit/cdd7dd316c4bc3dedeffe4c72a1874ce10094cb9))
+* Update settings.json to enable single quotes in GitHub Actions workflow ([9f7ac20](https://github.com/arpanrec/arpanrec.nebula/commit/9f7ac2095375d4c5972910c9ab026353f9560084))
+
 ## [5.2.2](https://github.com/arpanrec/arpanrec.nebula/compare/5.2.1...5.2.2) (2024-05-01)
 
 
