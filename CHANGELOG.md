@@ -1,3 +1,10 @@
+## [5.2.2](https://github.com/arpanrec/arpanrec.nebula/compare/5.2.1...5.2.2) (2024-05-01)
+
+
+### Bug Fixes
+
+* added ms-python.mypy-type-checker ([0c2d1be](https://github.com/arpanrec/arpanrec.nebula/commit/0c2d1befb94eeb76f35dd26a57046c2bdfb6ed31))
+
 ## [5.2.1](https://github.com/arpanrec/arpanrec.nebula/compare/5.2.0...5.2.1) (2024-04-30)
 
 
