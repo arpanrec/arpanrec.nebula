@@ -1,7 +1,7 @@
 ---
 name: Molecule Test
 
-'on':
+"on":
     push:
     workflow_dispatch:
 
@@ -19,16 +19,15 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: '3.10'
-                  cache: 'pip'
+                  python-version: "3.10"
+                  cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools poetry
-                  poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt
+                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
-                  if [ -f requirements.yml ]; then ansible-galaxy install -r requirements.yml; fi
+                  ansible-galaxy install -r requirements.yml
 
             - name: Analysing the code with ansible-lint
               run: |+
@@ -64,14 +63,13 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: '3.10'
-                  cache: 'pip'
+                  python-version: "3.10"
+                  cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools poetry
-                  poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt
+                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -87,14 +85,13 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: '3.10'
-                  cache: 'pip'
+                  python-version: "3.10"
+                  cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools poetry
-                  poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt
+                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -110,14 +107,13 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: '3.10'
-                  cache: 'pip'
+                  python-version: "3.10"
+                  cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools poetry
-                  poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt
+                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -133,14 +129,13 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: '3.10'
-                  cache: 'pip'
+                  python-version: "3.10"
+                  cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools poetry
-                  poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt
+                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -156,14 +151,13 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: '3.10'
-                  cache: 'pip'
+                  python-version: "3.10"
+                  cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools poetry
-                  poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt
+                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -179,14 +173,13 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: '3.10'
-                  cache: 'pip'
+                  python-version: "3.10"
+                  cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools poetry
-                  poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt
+                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -202,14 +195,13 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: '3.10'
-                  cache: 'pip'
+                  python-version: "3.10"
+                  cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools poetry
-                  poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt
+                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -225,14 +217,13 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: '3.10'
-                  cache: 'pip'
+                  python-version: "3.10"
+                  cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools poetry
-                  poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt
+                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -248,14 +239,13 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: '3.10'
-                  cache: 'pip'
+                  python-version: "3.10"
+                  cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools poetry
-                  poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt
+                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -271,14 +261,13 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: '3.10'
-                  cache: 'pip'
+                  python-version: "3.10"
+                  cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools poetry
-                  poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt
+                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -294,14 +283,13 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: '3.10'
-                  cache: 'pip'
+                  python-version: "3.10"
+                  cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools poetry
-                  poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt
+                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -317,14 +305,13 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: '3.10'
-                  cache: 'pip'
+                  python-version: "3.10"
+                  cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools poetry
-                  poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt
+                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -340,14 +327,13 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: '3.10'
-                  cache: 'pip'
+                  python-version: "3.10"
+                  cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools poetry
-                  poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt
+                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -363,14 +349,13 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: '3.10'
-                  cache: 'pip'
+                  python-version: "3.10"
+                  cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools poetry
-                  poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt
+                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -386,14 +371,13 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: '3.10'
-                  cache: 'pip'
+                  python-version: "3.10"
+                  cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools poetry
-                  poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt
+                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -409,14 +393,13 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: '3.10'
-                  cache: 'pip'
+                  python-version: "3.10"
+                  cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools poetry
-                  poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt
+                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -432,14 +415,13 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: '3.10'
-                  cache: 'pip'
+                  python-version: "3.10"
+                  cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools poetry
-                  poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt
+                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -455,14 +437,13 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: '3.10'
-                  cache: 'pip'
+                  python-version: "3.10"
+                  cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools poetry
-                  poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt
+                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -478,14 +459,13 @@ jobs:
             - name: Setup Python
               uses: actions/setup-python@v5
               with:
-                  python-version: '3.10'
-                  cache: 'pip'
+                  python-version: "3.10"
+                  cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools poetry
-                  poetry export --without-hashes --format=requirements.txt --with dev > .github/files/requirements.txt
+                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
