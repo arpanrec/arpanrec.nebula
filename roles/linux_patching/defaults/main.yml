@@ -28,6 +28,10 @@ linux_patching_rv_devel_packages:
     - python3-pip
     - python3-venv
     - python3-dev
+    - python3-pynvim
+    - fd-find
+    - ripgrep
+    - rclone
 
 linux_patching_rv_packages:
     - zip
@@ -52,6 +56,8 @@ linux_patching_rv_packages:
     - procps
     - xz-utils
     - python3
+    - gzip
+    - openssl
     # Apt tools
     - apt-utils
     - lsb-release

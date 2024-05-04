@@ -37,6 +37,8 @@ Set timezone, locale, and loopback ip in server
     - lsb-release
     - software-properties-common
     - python3
+    - gzip
+    - openssl
 
 - Type: `list[str]`
 
@@ -70,6 +72,10 @@ Set timezone, locale, and loopback ip in server
     - python3-pip
     - python3-venv
     - python3-dev
+    - python3-pynvim
+    - fd-find
+    - ripgrep
+    - rclone
 
 - `linux_patching_rv_managed_packages`
 
