@@ -23,9 +23,16 @@ jobs:
                   cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
+            - name: Cache ansible
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.ansible
+                      ~/.cache/ansible-*
+                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
                   ansible-galaxy install -r requirements.yml
 
@@ -67,9 +74,16 @@ jobs:
                   cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
+            - name: Cache ansible
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.ansible
+                      ~/.cache/ansible-*
+                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -89,9 +103,16 @@ jobs:
                   cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
+            - name: Cache ansible
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.ansible
+                      ~/.cache/ansible-*
+                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -111,9 +132,16 @@ jobs:
                   cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
+            - name: Cache ansible
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.ansible
+                      ~/.cache/ansible-*
+                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -133,9 +161,16 @@ jobs:
                   cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
+            - name: Cache ansible
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.ansible
+                      ~/.cache/ansible-*
+                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -155,9 +190,16 @@ jobs:
                   cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
+            - name: Cache ansible
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.ansible
+                      ~/.cache/ansible-*
+                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -177,9 +219,16 @@ jobs:
                   cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
+            - name: Cache ansible
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.ansible
+                      ~/.cache/ansible-*
+                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -199,9 +248,16 @@ jobs:
                   cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
+            - name: Cache ansible
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.ansible
+                      ~/.cache/ansible-*
+                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -221,9 +277,16 @@ jobs:
                   cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
+            - name: Cache ansible
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.ansible
+                      ~/.cache/ansible-*
+                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -243,9 +306,16 @@ jobs:
                   cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
+            - name: Cache ansible
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.ansible
+                      ~/.cache/ansible-*
+                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -265,9 +335,16 @@ jobs:
                   cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
+            - name: Cache ansible
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.ansible
+                      ~/.cache/ansible-*
+                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -287,9 +364,16 @@ jobs:
                   cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
+            - name: Cache ansible
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.ansible
+                      ~/.cache/ansible-*
+                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -309,9 +393,16 @@ jobs:
                   cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
+            - name: Cache ansible
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.ansible
+                      ~/.cache/ansible-*
+                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -331,9 +422,16 @@ jobs:
                   cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
+            - name: Cache ansible
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.ansible
+                      ~/.cache/ansible-*
+                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -353,9 +451,16 @@ jobs:
                   cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
+            - name: Cache ansible
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.ansible
+                      ~/.cache/ansible-*
+                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -375,9 +480,16 @@ jobs:
                   cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
+            - name: Cache ansible
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.ansible
+                      ~/.cache/ansible-*
+                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -397,9 +509,16 @@ jobs:
                   cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
+            - name: Cache ansible
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.ansible
+                      ~/.cache/ansible-*
+                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -419,9 +538,16 @@ jobs:
                   cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
+            - name: Cache ansible
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.ansible
+                      ~/.cache/ansible-*
+                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -441,9 +567,16 @@ jobs:
                   cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
+            - name: Cache ansible
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.ansible
+                      ~/.cache/ansible-*
+                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test
@@ -463,9 +596,16 @@ jobs:
                   cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
+            - name: Cache ansible
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.ansible
+                      ~/.cache/ansible-*
+                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+
             - name: Install dependencies
               run: |+
-                  python -m pip install --upgrade pip wheel setuptools
                   pip install -r .github/files/requirements.txt
 
             - name: Run Molecule Test

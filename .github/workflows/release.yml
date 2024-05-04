@@ -39,6 +39,14 @@ jobs:
                   cache: "pip"
                   cache-dependency-path: .github/files/requirements.txt
 
+            - name: Cache ansible
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.ansible
+                      ~/.cache/ansible-*
+                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+
             - name: Install python dependencies
               run: |+
                   pip install -r .github/files/requirements.txt
@@ -51,8 +59,7 @@ jobs:
                     @semantic-release/release-notes-generator@13.0.0 \
                     @semantic-release/changelog@6.0.3 \
                     @semantic-release/exec@6.0.3 \
-                    @semantic-release/git@10.0.1 \
-                    @semantic-release/github@10.0.3 -D
+                    @semantic-release/git@10.0.1 -D
 
             - name: Release
               run: |+
@@ -60,7 +67,7 @@ jobs:
                   git config --global user.name "${{ steps.import-gpg.outputs.name }}"
                   npx semantic-release@23.0.8 --extends ./.github/files/release.config.cjs
               env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
                   GIT_AUTHOR_NAME: "${{ steps.import-gpg.outputs.name }}"
                   GIT_AUTHOR_EMAIL: "${{ steps.import-gpg.outputs.email }}"
                   GIT_COMMITTER_NAME: "${{ steps.import-gpg.outputs.name }}"
