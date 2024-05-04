@@ -1,3 +1,10 @@
+## [5.2.4](https://github.com/arpanrec/arpanrec.nebula/compare/5.2.3...5.2.4) (2024-05-04)
+
+
+### Bug Fixes
+
+* Updated CI ([313074e](https://github.com/arpanrec/arpanrec.nebula/commit/313074ea55973cf396c6d1c702647b66b9f55064))
+
 ## [5.2.3](https://github.com/arpanrec/arpanrec.nebula/compare/5.2.2...5.2.3) (2024-05-01)
 
 
