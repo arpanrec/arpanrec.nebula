@@ -1,3 +1,10 @@
+## [5.3.1](https://github.com/arpanrec/arpanrec.nebula/compare/5.3.0...5.3.1) (2024-05-05)
+
+
+### Bug Fixes
+
+* remove `ssh_hardening_rv_ssh_security_restart_service` ([ea3e41c](https://github.com/arpanrec/arpanrec.nebula/commit/ea3e41c9c704d5b37f6db24efb058d41554d8221))
+
 # [5.3.0](https://github.com/arpanrec/arpanrec.nebula/compare/5.2.4...5.3.0) (2024-05-05)
 
 
