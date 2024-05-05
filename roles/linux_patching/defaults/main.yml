@@ -63,7 +63,7 @@ linux_patching_rv_packages:
     - lsb-release
     - software-properties-common
 
-linux_patching_rv_managed_packages: []
+linux_patching_rv_extra_packages: []
 
 linux_patching_rv_timezone: Asia/Kolkata
 

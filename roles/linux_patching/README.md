@@ -77,11 +77,11 @@ Set timezone, locale, and loopback ip in server
     - ripgrep
     - rclone
 
-- `linux_patching_rv_managed_packages`
-
-  - Description: Install the managed packages in the distributions.
+- `linux_patching_rv_install_devel_packages`
+  - Description: Install the development packages in the distributions.
   - Required: `false`
-  - Default: List of packages
+  - Type: `bool`
+  - Default: `true`
 
 - `linux_patching_rv_extra_packages`
 
@@ -101,6 +101,13 @@ Set timezone, locale, and loopback ip in server
   - Description: Cluster / Public Host name. (Doesn't work with docker)
   - Required: `false`
   - Type: `str`
+  - Default: `localhost` or `{{ ansible_facts['hostname'] }}`
+
+- `linux_patching_rv_domain_name`
+  - Description: Domain Name
+  - Required: `false`
+  - Type: `str`
+  - Default: `{{ ansible_facts['domain'] }}`
 
 - `linux_patching_rv_root_ca_pem_content`
 
