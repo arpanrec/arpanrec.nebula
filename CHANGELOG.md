@@ -1,3 +1,10 @@
+# [5.3.0](https://github.com/arpanrec/arpanrec.nebula/compare/5.2.4...5.3.0) (2024-05-05)
+
+
+### Features
+
+* linux patching fixes ([a7d981e](https://github.com/arpanrec/arpanrec.nebula/commit/a7d981e2aec6026a263f41875d5458f7b28a512a))
+
 ## [5.2.4](https://github.com/arpanrec/arpanrec.nebula/compare/5.2.3...5.2.4) (2024-05-04)
 
 
