@@ -5,7 +5,6 @@
       name: sshd
       state: restarted
       enabled: true
-  when: ssh_hardening_rv_ssh_security_restart_service
   register: ssh_hardening_rv_tmp_restart_sshd
   failed_when: >
       ssh_hardening_rv_init_system_systemd

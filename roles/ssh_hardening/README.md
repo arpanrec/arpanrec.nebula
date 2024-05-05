@@ -60,13 +60,6 @@ This role applies basic security settings for personal VPS
 - Required: `false`
 - Description: Sets the number of client alive messages which may be sent without sshd(8) receiving any messages back from the client. If this threshold is reached while client alive messages are being sent, sshd will disconnect the client, terminating the session.
 
-`ssh_hardening_rv_ssh_security_restart_service`
-
-- Type: `bool`
-- Default: `true`
-- Required: `false`
-- Description: Restart sshd handlers
-
 `ssh_hardening_rv_ssh_security_challenge_response_authentication`
 
 - Type: `bool`

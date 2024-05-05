@@ -36,8 +36,6 @@ ssh_hardening_rv_ssh_security_client_alive_count_max: 3
 
 # Restart sshd handlers
 
-ssh_hardening_rv_ssh_security_restart_service: true
-
 ssh_hardening_rv_ssh_security_challenge_response_authentication: false
 
 # defaults file for fail2ban
