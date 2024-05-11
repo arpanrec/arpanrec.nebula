@@ -1,3 +1,10 @@
+# [5.4.0](https://github.com/arpanrec/arpanrec.nebula/compare/5.3.1...5.4.0) (2024-05-11)
+
+
+### Features
+
+* added hashicorp_vault_kv2_inventory ([#19](https://github.com/arpanrec/arpanrec.nebula/issues/19)) ([ef50d65](https://github.com/arpanrec/arpanrec.nebula/commit/ef50d654d630ad53ad20b310ae4e5f92f4e3a6b8))
+
 ## [5.3.1](https://github.com/arpanrec/arpanrec.nebula/compare/5.3.0...5.3.1) (2024-05-05)
 
 
