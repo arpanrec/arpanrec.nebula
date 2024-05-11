@@ -20,7 +20,7 @@ def run_module(which="desktop"):
     """
     Get the latest bitwarden client release version from github
     """
-    module_args = {}
+    module_args: dict = {}
 
     tag_version = None
     url = "https://api.github.com/repos/bitwarden/clients/releases"
