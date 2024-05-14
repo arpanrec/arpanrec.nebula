@@ -1,3 +1,10 @@
+# [5.7.0](https://github.com/arpanrec/arpanrec.nebula/compare/5.6.0...5.7.0) (2024-05-14)
+
+
+### Features
+
+* docs for role ([3688bd4](https://github.com/arpanrec/arpanrec.nebula/commit/3688bd48254ad674c34ae400cd59c57a70e9846d))
+
 # [5.6.0](https://github.com/arpanrec/arpanrec.nebula/compare/5.5.0...5.6.0) (2024-05-14)
 
 
