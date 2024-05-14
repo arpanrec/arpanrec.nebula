@@ -24,4 +24,4 @@
       state: directory
       mode: "0700"
   with_items:
-      - "{{ bw_bws_tmp_dir }}"
+      - "{{ bws_sdk_tmp_dir }}"

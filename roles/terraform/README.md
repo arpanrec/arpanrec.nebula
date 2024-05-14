@@ -18,7 +18,7 @@ Install Terraform in user space
   - Description:
     - Release version.
     - Get latest release from [Github releases](https://api.github.com/repos/hashicorp/terraform/releases/latest)
-    - Example format `1.0.9`
+    - Example `v1.0.9`
   - Required: `false`
   - Type: `str`
 

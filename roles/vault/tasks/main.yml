@@ -11,14 +11,14 @@
 - name: Vault | Get Release
   when: vault_rv_version is not defined
   block:
-      - name: Terrafrom | Get Vault Release from Github API
+      - name: Vault | Get Vault Release from Github API
         ansible.builtin.uri:
             url: "https://api.github.com/repos/hashicorp/vault/releases/latest"
             return_content: true
             status_code: 200
         register: vault_rv_release_from_github
 
-      - name: Terrafrom | Set releases
+      - name: Vault | Set releases
         ansible.builtin.set_fact:
             vault_rv_version: "{{ vault_rv_release_from_github.json.tag_name }}"
 
