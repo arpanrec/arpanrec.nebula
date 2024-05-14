@@ -27,15 +27,15 @@
       path: "{{ pulumi_rv_tarball_download_path }}"
   register: pulumi_rv_tmp_downloaded_file_stat
 
-- name: Pulumi | New Download | Create download directory
-  ansible.builtin.file:
-      path: "{{ pulumi_rv_tmp_install_cache_dir }}"
-      state: directory
-      mode: "0700"
-
 - name: Pulumi | New Download
   when: not pulumi_rv_tmp_downloaded_file_stat.stat.exists
   block:
+      - name: Pulumi | New Download | Create download directory
+        ansible.builtin.file:
+            path: "{{ pulumi_rv_tmp_install_cache_dir }}"
+            state: directory
+            mode: "0700"
+
       - name: "Pulumi | New Download | Download tarball version: {{ pulumi_rv_version }}"
         ansible.builtin.get_url:
             url: "{{ pulumi_rv_download_url }}"

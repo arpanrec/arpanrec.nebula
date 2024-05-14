@@ -322,7 +322,7 @@ jobs:
               run: |+
                   molecule test -s role.nodejs.default
 
-    molecule_test_role_bw:
+    molecule_test_role_bws:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
@@ -349,7 +349,7 @@ jobs:
 
             - name: Run Molecule Test
               run: |+
-                  molecule test -s role.bw.default
+                  molecule test -s role.bws.default
 
     molecule_test_role_bitwarden_desktop:
         runs-on: ubuntu-latest
@@ -611,3 +611,32 @@ jobs:
             - name: Run Molecule Test
               run: |+
                   molecule test -s role.vault.default
+
+    molecule_test_role_pulumi:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Setup Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "3.10"
+                  cache: "pip"
+                  cache-dependency-path: .github/files/requirements-dev.txt
+
+            - name: Cache ansible
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.ansible
+                      ~/.cache/ansible-*
+                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+
+            - name: Install dependencies
+              run: |+
+                  pip install -r .github/files/requirements-dev.txt
+
+            - name: Run Molecule Test
+              run: |+
+                  molecule test -s role.pulumi.default

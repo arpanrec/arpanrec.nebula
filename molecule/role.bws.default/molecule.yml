@@ -20,7 +20,7 @@ provisioner:
         converge: converge.yml
         verify: verify.yml
 scenario:
-    name: role.bw.default
+    name: role.bws.default
     converge_sequence:
         - converge
     destroy_sequence:
