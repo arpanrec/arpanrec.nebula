@@ -11,16 +11,16 @@
 - name: Terraform | Get Release
   when: terraform_rv_version is not defined
   block:
-      - name: Terrafrom | Get Terraform Release from Github API
+      - name: Terraform | Get Terraform Release from Github API
         ansible.builtin.uri:
             url: "https://api.github.com/repos/hashicorp/terraform/releases/latest"
             return_content: true
             status_code: 200
         register: terraform_rv_release_from_github
 
-      - name: Terrafrom | Set releases
+      - name: Terraform | Set releases
         ansible.builtin.set_fact:
-            terraform_rv_version: "{{ terraform_rv_release_from_github.json.tag_name[1:] }}"
+            terraform_rv_version: "{{ terraform_rv_release_from_github.json.tag_name }}"
 
 - name: Terraform | Get downloaded file stat
   ansible.builtin.stat:

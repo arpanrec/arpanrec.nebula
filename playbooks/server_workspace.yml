@@ -164,3 +164,13 @@
             apply:
                 tags:
                     - pulumi
+
+      - name: USERAPPS | Bitwarden SDK
+        ansible.builtin.include_role:
+            name: arpanrec.nebula.bws
+        tags:
+            - bws
+        args:
+            apply:
+                tags:
+                    - bws

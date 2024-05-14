@@ -23,6 +23,8 @@ Extra variables will be applied to the original role.
 * [terminal](../roles/terminal/README.md) -> terminal
 * [Terraform](../roles/terraform/README.md) -> terraform
 * [Vault](../roles/vault/README.md) -> vault
+* [Pulumi](../roles/pulumi/README.md) -> pulumi
+* [Bitwarden SDK](../roles/bws/README.md) -> bws
 
 ### Disabled by Default
 

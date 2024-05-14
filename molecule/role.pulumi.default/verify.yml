@@ -11,14 +11,14 @@
       - name: Pulumi | Molecule | Get Release
         when: pulumi_rv_version is not defined
         block:
-            - name: Terrafrom | Molecule | Get Pulumi Release from Github API
+            - name: Pulumi | Molecule | Get Pulumi Release from Github API
               ansible.builtin.uri:
                   url: "https://api.github.com/repos/pulumi/pulumi/releases/latest"
                   return_content: true
                   status_code: 200
               register: pulumi_rv_release_from_github
 
-            - name: Terrafrom | Molecule | Set releases
+            - name: Pulumi | Molecule | Set releases
               ansible.builtin.set_fact:
                   pulumi_rv_version: "{{ pulumi_rv_release_from_github.json.tag_name }}"
 

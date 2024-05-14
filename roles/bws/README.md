@@ -6,21 +6,7 @@ Install [Bitwarden ClI](https://www.npmjs.com/package/@bitwarden/cli)
 
 Variables:
 
-- `bw_cli_rv_version`
-
-  - Description: Version of [Bitwarden ClI](https://www.npmjs.com/package/@bitwarden/cli) npm module.
-  - Type: `str`
-  - Required: `false`
-  - Default: `2024.2.1`
-
-- `bw_cli_rv_node_dependency_bin_dir`
-
-  - Description: NPM Directory.
-  - Type: `str`
-  - Required: `false`
-  - Default: `{{ ansible_facts.user_dir }}/.local/share/node/bin`
-
-- `bw_bws_version_tag`
+- `bws_sdk_version_tag`
 
   - Description:
     - Version of [Bitwarden BWS SDK ClI](https://github.com/bitwarden/sdk/releases).
@@ -29,14 +15,14 @@ Variables:
   - Required: `false`
   - Example: `0.3.1`
 
-- `bw_bws_bin_dir`
+- `bws_sdk_bin_dir`
 
   - Description: Directory to install BWS
   - Type: `str`
   - Required: `false`
   - Default: `{{ ansible_facts.user_dir }}/.local/bin`
 
-- `bw_bws_tmp_dir`
+- `bws_sdk_tmp_dir`
 
   - Description: Directory to temporary download BWS.
   - Type: `str`
@@ -48,7 +34,7 @@ Variables:
 ```yaml
 - name: Include Bitwarden CLI
   ansible.builtin.import_role:
-      name: arpanrec.nebula.bw
+      name: arpanrec.nebula.bws
 ```
 
 ### Testing Bitwarden CLI

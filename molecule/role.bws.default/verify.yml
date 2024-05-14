@@ -1,0 +1,44 @@
+---
+- name: Bitwarden CLI | Molecule | Verify
+  hosts: all
+  gather_facts: true
+  become: false
+  tasks:
+      - name: Bitwarden CLI | Molecule | Verify | Import Roles for variables
+        ansible.builtin.import_role:
+            name: arpanrec.nebula.bws
+            tasks_from: prerequisites
+
+      - name: Bitwarden CLI | BWS SDK | Molecule | Get Dynamic Version
+        when: bws_sdk_version_tag is not defined
+        block:
+            - name: Bitwarden CLI | BWS SDK | Molecule | Get Latest Release from github
+              ansible.builtin.uri:
+                  url: "https://api.github.com/repos/bitwarden/sdk/releases/latest"
+                  return_content: true
+                  headers:
+                      Accept: "application/vnd.github.v3+json"
+              register: bws_sdk_version_for_github
+
+            - name: Bitwarden CLI | BWS SDK | Molecule | Set Dynamic Version
+              ansible.builtin.set_fact:
+                  bws_sdk_version_tag: "{{ bws_sdk_version_for_github.json.tag_name[5:] }}"
+
+      - name: Bitwarden CLI | BWS SDK | Molecule | Verify | Get bw version from shell
+        ansible.builtin.command: bws --version
+        environment:
+            PATH: "{{ bws_sdk_bin_dir }}:{{ ansible_env.PATH }}"
+        register: bws_sdk_cli_rv_tmp_version_shell_result
+        changed_when: false
+
+      - name: Bitwarden CLI | BWS SDK | Molecule | Verify | bw version from shell result
+        ansible.builtin.debug:
+            var: bws_sdk_cli_rv_tmp_version_shell_result
+
+      - name: Bitwarden CLI | BWS SDK | Molecule | Verify | Fail if bw version is not present
+        ansible.builtin.assert:
+            that: bws_sdk_cli_rv_tmp_version_shell_result.stdout is match("bws " + bws_sdk_version_tag )
+            success_msg: BWS Version {{ bws_sdk_version_tag }} is installed
+            fail_msg: >-
+                BWS Version {{ bws_sdk_version_tag }} is not installed,
+                Shell result {{ bws_sdk_cli_rv_tmp_version_shell_result.stdout }}
