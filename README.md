@@ -7,7 +7,7 @@ This collection provides a set of roles to deploy and manage various services.
 ## Roles
 
 - [bitwarden_desktop](/roles/bitwarden_desktop/README.md)
-- [bw](/roles/bw/README.md)
+- [bws](/roles/bws/README.md)
 - [code](/roles/code/README.md)
 - [dotfiles](/roles/dotfiles/README.md)
 - [docker](/roles/docker/README.md)
@@ -27,6 +27,7 @@ This collection provides a set of roles to deploy and manage various services.
 - [user_add](/roles/user_add/README.md)
 - [utils](/roles/utils/README.md)
 - [vault](/roles/vault/README.md)
+- [Pulumi](/roles/pulumi/README.md)
 
 ## Playbooks
 
