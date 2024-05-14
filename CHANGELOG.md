@@ -1,3 +1,10 @@
+# [5.6.0](https://github.com/arpanrec/arpanrec.nebula/compare/5.5.0...5.6.0) (2024-05-14)
+
+
+### Features
+
+* update dependencies ([7e540cc](https://github.com/arpanrec/arpanrec.nebula/commit/7e540ccd20e499bf4f11f58fe6d13d81acf6d8be))
+
 # [5.4.0](https://github.com/arpanrec/arpanrec.nebula/compare/5.3.1...5.4.0) (2024-05-11)
 
 
