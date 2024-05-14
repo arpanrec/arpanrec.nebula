@@ -1,0 +1,41 @@
+---
+- name: Pulumi | Molecule | Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+      - name: Pulumi | Molecule | Verify | Import Roles for variables
+        ansible.builtin.import_role:
+            name: arpanrec.nebula.pulumi
+            tasks_from: prerequisites
+
+      - name: Pulumi | Molecule | Get Release
+        when: pulumi_rv_version is not defined
+        block:
+            - name: Terrafrom | Molecule | Get Pulumi Release from Github API
+              ansible.builtin.uri:
+                  url: "https://api.github.com/repos/pulumi/pulumi/releases/latest"
+                  return_content: true
+                  status_code: 200
+              register: pulumi_rv_release_from_github
+
+            - name: Terrafrom | Molecule | Set releases
+              ansible.builtin.set_fact:
+                  pulumi_rv_version: "{{ pulumi_rv_release_from_github.json.tag_name }}"
+
+      - name: Pulumi | Molecule | Verify | Get pulumi version from shell
+        ansible.builtin.command: pulumi version
+        environment:
+            PATH: "{{ pulumi_rv_install_path }}:{{ ansible_env.PATH }}"
+        register: pulumi_rv_version_shell_result
+        changed_when: false
+
+      - name: Pulumi | Molecule | Verify | pulumi version from shell result
+        ansible.builtin.debug:
+            var: pulumi_rv_version_shell_result
+
+      - name: Pulumi | Molecule | Verify | Fail if pulumi version is not present
+        ansible.builtin.assert:
+            that: pulumi_rv_version_shell_result.stdout_lines[0] == pulumi_rv_version
+            success_msg: Pulumi Version {{ pulumi_rv_version }} is installed
+            fail_msg: Pulumi Version {{ pulumi_rv_version }} is not installed,
+                Shell result {{ pulumi_rv_version_shell_result.stdout }}

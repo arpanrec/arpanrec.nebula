@@ -20,7 +20,7 @@
 
       - name: Terrafrom | Set releases
         ansible.builtin.set_fact:
-            vault_rv_version: "{{ vault_rv_release_from_github.json.tag_name[1:] }}"
+            vault_rv_version: "{{ vault_rv_release_from_github.json.tag_name }}"
 
 - name: Vault | Get downloaded file stat
   ansible.builtin.stat:

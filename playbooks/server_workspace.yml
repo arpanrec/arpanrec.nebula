@@ -154,3 +154,13 @@
             apply:
                 tags:
                     - vault
+
+      - name: USERAPPS | Pulumi
+        ansible.builtin.include_role:
+            name: arpanrec.nebula.pulumi
+        tags:
+            - pulumi
+        args:
+            apply:
+                tags:
+                    - pulumi

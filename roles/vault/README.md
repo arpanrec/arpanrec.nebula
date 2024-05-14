@@ -18,7 +18,7 @@ Install Hashicorp Vault in user space
   - Description:
     - Release version.
     - Get latest release from [Github releases](https://api.github.com/repos/hashicorp/vault/releases/latest)
-    - Example format `1.0.9`
+    - Example `v1.16.2`
   - Required: `false`
   - Type: `str`
 
