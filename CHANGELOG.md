@@ -1,3 +1,10 @@
+## [5.7.1](https://github.com/arpanrec/arpanrec.nebula/compare/5.7.0...5.7.1) (2024-05-15)
+
+
+### Bug Fixes
+
+* vault secrets ([98ec889](https://github.com/arpanrec/arpanrec.nebula/commit/98ec8898cbb6c933dec4de0cc95133f375805338))
+
 # [5.7.0](https://github.com/arpanrec/arpanrec.nebula/compare/5.6.0...5.7.0) (2024-05-14)
 
 
