@@ -1,3 +1,10 @@
+## [5.7.3](https://github.com/arpanrec/arpanrec.nebula/compare/5.7.2...5.7.3) (2024-05-16)
+
+
+### Bug Fixes
+
+* Update dependencies ([498c733](https://github.com/arpanrec/arpanrec.nebula/commit/498c733b44f51f3d991f1558d21124146b3cd945))
+
 ## [5.7.2](https://github.com/arpanrec/arpanrec.nebula/compare/5.7.1...5.7.2) (2024-05-16)
 
 
