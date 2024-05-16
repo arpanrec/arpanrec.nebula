@@ -226,7 +226,7 @@ class InventoryModule(BaseInventoryPlugin):
             )
             if read_secret_version["data"]["data"]:
                 for key, value in read_secret_version["data"]["data"].items():
-                    config[key] = value if value and len(value) > 0 else None
+                    config[key] = value if (value and not isinstance(value, int) and len(value) > 0) else None
         except InvalidPath as e:
             self.display.vvv(f"Ignoring invalid path in HashiCorp Vault: {e}.")
         except Exception as e:
