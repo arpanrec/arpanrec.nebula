@@ -1,3 +1,12 @@
+## [5.7.2](https://github.com/arpanrec/arpanrec.nebula/compare/5.7.1...5.7.2) (2024-05-16)
+
+
+### Bug Fixes
+
+* Automated release ([839a0d7](https://github.com/arpanrec/arpanrec.nebula/commit/839a0d7549bd3287644171402fd1c025b2f192a4))
+* persist-credentials: false ([db5f91f](https://github.com/arpanrec/arpanrec.nebula/commit/db5f91f954c44f7e2aa4a1a91ec5ea8e81db565b))
+* Update vault secrets path for ansible_galaxy ([982143e](https://github.com/arpanrec/arpanrec.nebula/commit/982143e3b1ba107cc6f030e02d19cd2fd75ed82c))
+
 ## [5.7.1](https://github.com/arpanrec/arpanrec.nebula/compare/5.7.0...5.7.1) (2024-05-15)
 
 
