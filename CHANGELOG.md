@@ -1,3 +1,10 @@
+## [5.7.4](https://github.com/arpanrec/arpanrec.nebula/compare/5.7.3...5.7.4) (2024-05-16)
+
+
+### Bug Fixes
+
+* no len for int ([#2](https://github.com/arpanrec/arpanrec.nebula/issues/2)) ([ec27ec8](https://github.com/arpanrec/arpanrec.nebula/commit/ec27ec8c8ad889c61cd059c5c28a0ac299128304))
+
 ## [5.7.3](https://github.com/arpanrec/arpanrec.nebula/compare/5.7.2...5.7.3) (2024-05-16)
 
 
