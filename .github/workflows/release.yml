@@ -31,7 +31,7 @@ jobs:
 
                       secret/data/vault_secrets/github_details/github_bot GH_BOT_API_TOKEN ;
 
-                      secret/data/external_services/ansible_galaxy GALAXY_API_KEY ;
+                      secret/data/vault_secrets/external_services/ansible_galaxy GALAXY_API_KEY ;
 
             - name: Import GPG key
               id: import-gpg
