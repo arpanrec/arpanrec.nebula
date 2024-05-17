@@ -141,6 +141,20 @@ class InventoryModule(BaseInventoryPlugin):
 
         if "approle" == hvac_client_auth_method:
             self.hvac_client.auth.approle.login(**hvac_client_auth_config)
+
+        ansible_inventory: InventoryData = self.inventory
+
+        ansible_inventory.set_variable(
+            "hashicorp_vault_kv2_inventory",
+            {
+                "hvac_client_configuration": hvac_client_configuration,
+                "hvac_client_auth_method": hvac_client_auth_method,
+                "hvac_client_auth_config": hvac_client_auth_config,
+                "hvac_kv2_mount_point": self.hvac_kv2_mount_point,
+                "hvac_kv2_path": hvac_kv2_path,
+            },
+        )
+
         config = {"all": self.read_from_vault(hvac_kv2_path)}
         config = loader.load(data=yaml.dump(config), show_content=True)
         self.display.vvvvvv(f"Config: {json.dumps(config, indent=4)}")
