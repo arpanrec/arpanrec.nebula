@@ -145,6 +145,7 @@ class InventoryModule(BaseInventoryPlugin):
         ansible_inventory: InventoryData = self.inventory
 
         ansible_inventory.set_variable(
+            "all",
             "hashicorp_vault_kv2_inventory",
             {
                 "hvac_client_configuration": hvac_client_configuration,
