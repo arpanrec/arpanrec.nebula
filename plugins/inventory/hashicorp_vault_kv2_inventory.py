@@ -232,6 +232,16 @@ class InventoryModule(BaseInventoryPlugin):
             ) from e
         return hostnames, port
 
+    def _filter_null_from_vault(self, data):
+        """Filter out null values from HashiCorp Vault"""
+        if data is None:
+            return None
+        if isinstance(data, (str, NoneType)):
+            if isinstance(data, str) and (len(data) == 0 or data == ""):
+                return None
+            return data
+        return data
+
     def read_from_vault(self, path):
         """Read data from HashiCorp Vault"""
         config = {}
@@ -242,7 +252,7 @@ class InventoryModule(BaseInventoryPlugin):
             )
             if read_secret_version["data"]["data"]:
                 for key, value in read_secret_version["data"]["data"].items():
-                    config[key] = value if (value and not isinstance(value, int) and len(value) > 0) else None
+                    config[key] = self._filter_null_from_vault(value)
         except InvalidPath as e:
             self.display.vvv(f"Ignoring invalid path in HashiCorp Vault: {e}.")
         except Exception as e:
