@@ -153,6 +153,7 @@ class InventoryModule(BaseInventoryPlugin):
                 "hvac_client_auth_config": hvac_client_auth_config,
                 "hvac_kv2_mount_point": self.hvac_kv2_mount_point,
                 "hvac_kv2_path": hvac_kv2_path,
+                "hvac_token": self.hvac_client.token,
             },
         )
 
