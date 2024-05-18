@@ -18,7 +18,7 @@ from ansible.inventory.data import InventoryData  # type: ignore
 from ansible.module_utils.common.text.converters import to_text  # type: ignore
 from ansible.module_utils.six import string_types  # type: ignore
 from ansible.parsing.dataloader import DataLoader  # type: ignore
-from ansible.plugins.inventory import BaseInventoryPlugin  # type: ignore
+from ansible.plugins.inventory import BaseFileInventoryPlugin  # type: ignore
 from hvac.exceptions import InvalidPath  # type: ignore
 
 
@@ -95,7 +95,7 @@ def file_or_string(value):
     return value
 
 
-class InventoryModule(BaseInventoryPlugin):
+class InventoryModule(BaseFileInventoryPlugin):
     """
     Ansible dynamic inventory plugin for Hashicorp Vault
     """
@@ -236,7 +236,7 @@ class InventoryModule(BaseInventoryPlugin):
         """Filter out null values from HashiCorp Vault"""
         if data is None:
             return None
-        if isinstance(data, (str, NoneType)):
+        if isinstance(data, (str)):
             if isinstance(data, str) and (len(data) == 0 or data == ""):
                 return None
             return data
