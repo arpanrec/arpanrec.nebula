@@ -18,7 +18,7 @@ from ansible.inventory.data import InventoryData  # type: ignore
 from ansible.module_utils.common.text.converters import to_text  # type: ignore
 from ansible.module_utils.six import string_types  # type: ignore
 from ansible.parsing.dataloader import DataLoader  # type: ignore
-from ansible.plugins.inventory import BaseInventoryPlugin  # type: ignore
+from ansible.plugins.inventory import BaseFileInventoryPlugin  # type: ignore
 from hvac.exceptions import InvalidPath  # type: ignore
 
 
@@ -95,7 +95,7 @@ def file_or_string(value):
     return value
 
 
-class InventoryModule(BaseInventoryPlugin):
+class InventoryModule(BaseFileInventoryPlugin):
     """
     Ansible dynamic inventory plugin for Hashicorp Vault
     """
@@ -141,6 +141,22 @@ class InventoryModule(BaseInventoryPlugin):
 
         if "approle" == hvac_client_auth_method:
             self.hvac_client.auth.approle.login(**hvac_client_auth_config)
+
+        ansible_inventory: InventoryData = self.inventory
+
+        ansible_inventory.set_variable(
+            "all",
+            "hashicorp_vault_kv2_inventory",
+            {
+                "hvac_client_configuration": hvac_client_configuration,
+                "hvac_client_auth_method": hvac_client_auth_method,
+                "hvac_client_auth_config": hvac_client_auth_config,
+                "hvac_kv2_mount_point": self.hvac_kv2_mount_point,
+                "hvac_kv2_path": hvac_kv2_path,
+                "hvac_token": self.hvac_client.token,
+            },
+        )
+
         config = {"all": self.read_from_vault(hvac_kv2_path)}
         config = loader.load(data=yaml.dump(config), show_content=True)
         self.display.vvvvvv(f"Config: {json.dumps(config, indent=4)}")
@@ -216,6 +232,16 @@ class InventoryModule(BaseInventoryPlugin):
             ) from e
         return hostnames, port
 
+    def _filter_null_from_vault(self, data):
+        """Filter out null values from HashiCorp Vault"""
+        if data is None:
+            return None
+        if isinstance(data, (str)):
+            if isinstance(data, str) and (len(data) == 0 or data == ""):
+                return None
+            return data
+        return data
+
     def read_from_vault(self, path):
         """Read data from HashiCorp Vault"""
         config = {}
@@ -226,7 +252,7 @@ class InventoryModule(BaseInventoryPlugin):
             )
             if read_secret_version["data"]["data"]:
                 for key, value in read_secret_version["data"]["data"].items():
-                    config[key] = value if (value and not isinstance(value, int) and len(value) > 0) else None
+                    config[key] = self._filter_null_from_vault(value)
         except InvalidPath as e:
             self.display.vvv(f"Ignoring invalid path in HashiCorp Vault: {e}.")
         except Exception as e:
