@@ -44,6 +44,7 @@ DOCUMENTATION = r"""
                 - Configuration for the HashiCorp Vault client.
                 - Configuration options are the same as the options for the hvac.Client class.
                 - https://hvac.readthedocs.io/en/stable/source/hvac_v1.html#hvac.v1.Client
+                - If starting with '@', the value is treated as a file path and the content is read from the file.
             required: true
             type: dict
         hvac_client_auth_method:
@@ -51,24 +52,36 @@ DOCUMENTATION = r"""
                 - Authentication method for the HashiCorp Vault client.
                 - Supported authentication methods are: userpass, approle.
                 - In case of token authentication, it can be set directly in the hvac_client_configuration.
+                - If starting with '@', the value is treated as a file path and the content is read from the file.
             required: false
             type: str
             default: userpass
             choices: ["userpass", "approle"]
         hvac_client_auth_config:
-            description: Configuration for the HashiCorp Vault client authentication method.
+            description:
+                - Configuration for the HashiCorp Vault client authentication method.
+                - If starting with '@', the value is treated as a file path and the content is read from the file.
             required: false
             type: dict
         hvac_kv2_mount_point:
-            description: Path to the KV version 2 secrets engine mount point.
+            description:
+                - Path to the KV version 2 secrets engine mount point.
+                - If starting with '@', the value is treated as a file path and the content is read from the file.
             required: false
             type: str
             default: secret
         hvac_kv2_path:
-            description: Path to the KV version 2 secrets engine path.
+            description:
+                - Path to the KV version 2 secrets engine path.
+                - If starting with '@', the value is treated as a file path and the content is read from the file.
             required: false
             type: str
             default: ansible_inventory
+        add_hvac_client_to_inventory:
+            description: Add HashiCorp Vault client configuration to the inventory.
+            required: false
+            type: bool
+            default: false
 """
 
 NoneType = type(None)
@@ -144,18 +157,19 @@ class InventoryModule(BaseFileInventoryPlugin):
 
         ansible_inventory: InventoryData = self.inventory
 
-        ansible_inventory.set_variable(
-            "all",
-            "hashicorp_vault_kv2_inventory",
-            {
-                "hvac_client_configuration": hvac_client_configuration,
-                "hvac_client_auth_method": hvac_client_auth_method,
-                "hvac_client_auth_config": hvac_client_auth_config,
-                "hvac_kv2_mount_point": self.hvac_kv2_mount_point,
-                "hvac_kv2_path": hvac_kv2_path,
-                "hvac_token": self.hvac_client.token,
-            },
-        )
+        if ansible_inventory_dict.get("add_hvac_client_to_inventory", False):
+            ansible_inventory.set_variable(
+                "all",
+                "hashicorp_vault_kv2_inventory",
+                {
+                    "hvac_client_configuration": hvac_client_configuration,
+                    "hvac_client_auth_method": hvac_client_auth_method,
+                    "hvac_client_auth_config": hvac_client_auth_config,
+                    "hvac_kv2_mount_point": self.hvac_kv2_mount_point,
+                    "hvac_kv2_path": hvac_kv2_path,
+                    "hvac_token": self.hvac_client.token,
+                },
+            )
 
         config = {"all": self.read_from_vault(hvac_kv2_path)}
         config = loader.load(data=yaml.dump(config), show_content=True)
