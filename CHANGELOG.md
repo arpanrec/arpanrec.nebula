@@ -1,3 +1,10 @@
+## [5.8.1](https://github.com/arpanrec/arpanrec.nebula/compare/5.8.0...5.8.1) (2024-05-18)
+
+
+### Bug Fixes
+
+* vault-secrets path ([75bf21d](https://github.com/arpanrec/arpanrec.nebula/commit/75bf21d7927dad99526481391ce6a7d546726d01))
+
 # [5.8.0](https://github.com/arpanrec/arpanrec.nebula/compare/5.7.5...5.8.0) (2024-05-18)
 
 
