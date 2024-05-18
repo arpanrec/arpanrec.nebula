@@ -1,3 +1,10 @@
+## [5.8.2](https://github.com/arpanrec/arpanrec.nebula/compare/5.8.1...5.8.2) (2024-05-18)
+
+
+### Bug Fixes
+
+* remove galaxy release ([0baa5be](https://github.com/arpanrec/arpanrec.nebula/commit/0baa5be1d8321410b13145269b0504cc3216b509))
+
 ## [5.8.1](https://github.com/arpanrec/arpanrec.nebula/compare/5.8.0...5.8.1) (2024-05-18)
 
 
