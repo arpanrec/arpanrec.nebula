@@ -34,8 +34,8 @@ module.exports = {
             {
                 prepareCmd:
                     "sed -i 's/^version:.*/version: ${nextRelease.version}/g' galaxy.yml && poetry version ${nextRelease.version} && ansible-galaxy collection build",
-                // successCmd:
-                //     'ansible-galaxy collection publish arpanrec-nebula-${nextRelease.version}.tar.gz --api-key ${process.env.GALAXY_API_KEY}',
+                successCmd:
+                    'ansible-galaxy collection publish arpanrec-nebula-${nextRelease.version}.tar.gz --api-key ${process.env.GALAXY_API_KEY}',
             },
         ],
         [
