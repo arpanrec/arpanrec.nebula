@@ -1,3 +1,10 @@
+# [5.8.0](https://github.com/arpanrec/arpanrec.nebula/compare/5.7.5...5.8.0) (2024-05-18)
+
+
+### Features
+
+* variable for add_hvac_client_to_inventory ([b1aaba1](https://github.com/arpanrec/arpanrec.nebula/commit/b1aaba1fe7eaa78746eacb3f4c49f4364e5951b2))
+
 ## [5.7.5](https://github.com/arpanrec/arpanrec.nebula/compare/5.7.4...5.7.5) (2024-05-18)
 
 
