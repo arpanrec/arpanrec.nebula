@@ -1,3 +1,10 @@
+## [5.7.5](https://github.com/arpanrec/arpanrec.nebula/compare/5.7.4...5.7.5) (2024-05-18)
+
+
+### Bug Fixes
+
+* Empty string is null ([c866825](https://github.com/arpanrec/arpanrec.nebula/commit/c8668257aeff757da442044a604c83f92dc40694))
+
 ## [5.7.4](https://github.com/arpanrec/arpanrec.nebula/compare/5.7.3...5.7.4) (2024-05-16)
 
 
