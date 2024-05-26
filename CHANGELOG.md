@@ -1,3 +1,10 @@
+# [5.9.0](https://github.com/arpanrec/arpanrec.nebula/compare/5.8.2...5.9.0) (2024-05-26)
+
+
+### Features
+
+* Default nodejs version v20.13.1 ([cdf7464](https://github.com/arpanrec/arpanrec.nebula/commit/cdf74647bf057ff41ca64ed52f6716f15ec30511))
+
 ## [5.8.2](https://github.com/arpanrec/arpanrec.nebula/compare/5.8.1...5.8.2) (2024-05-18)
 
 
