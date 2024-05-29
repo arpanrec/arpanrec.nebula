@@ -3,7 +3,7 @@ line-length = 120
 
 [tool.poetry]
 name = "nebula"
-version = "5.9.0"
+version = "5.9.1"
 description = "common ansible resources"
 authors = ["arpanrec <arpan.rec@gmail.com>"]
 license = "GLWTS"
@@ -14,7 +14,7 @@ readme = "README.md"
 python = "^3.10"
 ansible = "9.6.0"
 cryptography = "42.0.7"
-requests = "2.32.2"
+requests = "2.31.0" # https://github.com/ansible/molecule/issues/4189
 hvac = "2.2.0"
 
 [tool.poetry.group.dev.dependencies]

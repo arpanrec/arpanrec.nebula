@@ -1,3 +1,10 @@
+## [5.9.1](https://github.com/arpanrec/arpanrec.nebula/compare/5.9.0...5.9.1) (2024-05-29)
+
+
+### Bug Fixes
+
+* linting update ([2775550](https://github.com/arpanrec/arpanrec.nebula/commit/27755500ce0c7f58dce8cd054dea871fb4d44b25))
+
 # [5.9.0](https://github.com/arpanrec/arpanrec.nebula/compare/5.8.2...5.9.0) (2024-05-26)
 
 
