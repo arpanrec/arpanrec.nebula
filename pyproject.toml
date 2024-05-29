@@ -14,7 +14,7 @@ readme = "README.md"
 python = "^3.10"
 ansible = "9.6.0"
 cryptography = "42.0.7"
-requests = "2.31.0"
+requests = "2.32.2"
 hvac = "2.2.0"
 
 [tool.poetry.group.dev.dependencies]
