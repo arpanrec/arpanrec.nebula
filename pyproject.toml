@@ -14,7 +14,7 @@ readme = "README.md"
 python = "^3.10"
 ansible = "9.6.0"
 cryptography = "42.0.7"
-requests = "2.31.0" # https://github.com/ansible/molecule/issues/4189
+requests = "2.32.2"
 hvac = "2.2.0"
 
 [tool.poetry.group.dev.dependencies]
@@ -23,7 +23,7 @@ pylint = "3.2.2"
 mypy = "1.10.0"
 molecule-plugins = "23.5.3"
 molecule = "24.2.1"
-docker = "7.0.0" # molecule-docker
+docker = "7.1.0" # Needed for molecule docker driver
 ansible-lint = { version = "24.5.0", markers = "platform_system != 'Windows'" }
 poetry-plugin-export = "1.8.0"
 pyright = "1.1.365"
