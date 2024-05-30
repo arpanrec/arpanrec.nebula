@@ -1,3 +1,45 @@
+## [5.9.2](https://github.com/arpanrec/arpanrec.nebula/compare/5.9.1...5.9.2) (2024-05-30)
+
+
+### Bug Fixes
+
+* requests 2.32.2 ([7f8c335](https://github.com/arpanrec/arpanrec.nebula/commit/7f8c3359e73b241447081f7bcdc1bbad7a71b8bc))
+
+## [5.9.1](https://github.com/arpanrec/arpanrec.nebula/compare/5.9.0...5.9.1) (2024-05-29)
+
+
+### Bug Fixes
+
+* linting update ([2775550](https://github.com/arpanrec/arpanrec.nebula/commit/27755500ce0c7f58dce8cd054dea871fb4d44b25))
+
+# [5.9.0](https://github.com/arpanrec/arpanrec.nebula/compare/5.8.2...5.9.0) (2024-05-26)
+
+
+### Features
+
+* Default nodejs version v20.13.1 ([cdf7464](https://github.com/arpanrec/arpanrec.nebula/commit/cdf74647bf057ff41ca64ed52f6716f15ec30511))
+
+## [5.8.2](https://github.com/arpanrec/arpanrec.nebula/compare/5.8.1...5.8.2) (2024-05-18)
+
+
+### Bug Fixes
+
+* remove galaxy release ([0baa5be](https://github.com/arpanrec/arpanrec.nebula/commit/0baa5be1d8321410b13145269b0504cc3216b509))
+
+## [5.8.1](https://github.com/arpanrec/arpanrec.nebula/compare/5.8.0...5.8.1) (2024-05-18)
+
+
+### Bug Fixes
+
+* vault-secrets path ([75bf21d](https://github.com/arpanrec/arpanrec.nebula/commit/75bf21d7927dad99526481391ce6a7d546726d01))
+
+# [5.8.0](https://github.com/arpanrec/arpanrec.nebula/compare/5.7.5...5.8.0) (2024-05-18)
+
+
+### Features
+
+* variable for add_hvac_client_to_inventory ([b1aaba1](https://github.com/arpanrec/arpanrec.nebula/commit/b1aaba1fe7eaa78746eacb3f4c49f4364e5951b2))
+
 ## [5.7.5](https://github.com/arpanrec/arpanrec.nebula/compare/5.7.4...5.7.5) (2024-05-18)
 
 
