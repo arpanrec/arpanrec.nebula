@@ -1,3 +1,10 @@
+## [5.9.2](https://github.com/arpanrec/arpanrec.nebula/compare/5.9.1...5.9.2) (2024-05-30)
+
+
+### Bug Fixes
+
+* requests 2.32.2 ([7f8c335](https://github.com/arpanrec/arpanrec.nebula/commit/7f8c3359e73b241447081f7bcdc1bbad7a71b8bc))
+
 ## [5.9.1](https://github.com/arpanrec/arpanrec.nebula/compare/5.9.0...5.9.1) (2024-05-29)
 
 
