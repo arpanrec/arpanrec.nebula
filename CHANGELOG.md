@@ -1,3 +1,17 @@
+# [6.0.0](https://github.com/arpanrec/arpanrec.nebula/compare/5.9.2...6.0.0) (2024-05-31)
+
+
+### Features
+
+* Remove dot files ([#6](https://github.com/arpanrec/arpanrec.nebula/issues/6)) ([88d81fc](https://github.com/arpanrec/arpanrec.nebula/commit/88d81fce66b736c18a758cc8f0372e11ce8e1d1e))
+
+
+### BREAKING CHANGES
+
+* No more dotfiles
+new vscode extensions added
+removed java from vscode
+
 ## [5.9.2](https://github.com/arpanrec/arpanrec.nebula/compare/5.9.1...5.9.2) (2024-05-30)
 
 
