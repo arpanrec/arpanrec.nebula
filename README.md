@@ -9,8 +9,6 @@ This collection provides a set of roles to deploy and manage various services.
 - [bitwarden_desktop](/roles/bitwarden_desktop/README.md)
 - [bws](/roles/bws/README.md)
 - [code](/roles/code/README.md)
-- [dotfiles](/roles/dotfiles/README.md)
-- [docker](/roles/docker/README.md)
 - [get_certificate_ownca](/roles/get_certificate_ownca/README.md)
 - [gnome](/roles/gnome/README.md)
 - [go](/roles/go/README.md)

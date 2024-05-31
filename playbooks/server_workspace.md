@@ -16,7 +16,6 @@ Extra variables will be applied to the original role.
 
 ### Enabled by Default
 
-* [Dot Files](../roles/dotfiles/README.md) -> dotfiles
 * [Node JS](../roles/nodejs/README.md) -> nodejs
 * [Go Language](../roles/go/README.md) -> go
 * [Oracle JDK](../roles/java/README.md) -> java
