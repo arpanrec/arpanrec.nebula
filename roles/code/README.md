@@ -38,22 +38,35 @@ options:
         required: false
         type: list[str]
         default:
-            - Angular.ng-template
-            - DavidAnson.vscode-markdownlint
+            - angular.ng-template
+            - bradlc.vscode-tailwindcss
+            - davidanson.vscode-markdownlint
+            - dbaeumer.vscode-eslint
             - dhruv.maven-dependency-explorer
+            - dsznajder.es7-react-js-snippets
             - esbenp.prettier-vscode
+            - exiasr.hadolint
             - foxundermoon.shell-format
-            - GitHub.github-vscode-theme
-            - GitHub.vscode-pull-request-github
+            - github.codespaces
+            - github.copilot
+            - github.copilot-chat
+            - github.github-vscode-theme
+            - github.remotehub
+            - github.vscode-codeql
+            - github.vscode-github-actions
+            - github.vscode-pull-request-github
+            - gitlab.gitlab-workflow
             - golang.go
             - hashicorp.terraform
-            - johnpapa.Angular2
+            - johnpapa.angular2
             - ms-azuretools.vscode-docker
+            - ms-python.black-formatter
+            - ms-python.debugpy
             - ms-python.isort
+            - ms-python.mypy-type-checker
+            - ms-python.pylint
             - ms-python.python
             - ms-python.vscode-pylance
-            - ms-python.black-formatter
-            - ms-python.mypy-type-checker
             - ms-toolsai.jupyter
             - ms-toolsai.jupyter-keymap
             - ms-toolsai.jupyter-renderers
@@ -64,30 +77,24 @@ options:
             - ms-vscode-remote.remote-ssh-edit
             - ms-vscode-remote.remote-wsl
             - ms-vscode-remote.vscode-remote-extensionpack
+            - ms-vscode.azure-repos
             - ms-vscode.remote-explorer
-            - PKief.material-icon-theme
+            - ms-vscode.remote-repositories
+            - ms-vscode.remote-server
+            - ms-vscode.vscode-speech
+            - msjsdiag.vscode-react-native
+            - pkief.material-icon-theme
             - redhat.ansible
             - redhat.fabric8-analytics
-            - redhat.java
             - redhat.vscode-xml
             - redhat.vscode-yaml
-            - shengchen.vscode-checkstyle
-            - sumneko.lua
+            - rust-lang.rust-analyzer
             - streetsidesoftware.code-spell-checker
+            - sumneko.lua
             - timonwong.shellcheck
-            - VisualStudioExptTeam.intellicode-api-usage-examples
-            - VisualStudioExptTeam.vscodeintellicode
-            - VisualStudioExptTeam.vscodeintellicode-completions
-            - vmware.vscode-boot-dev-pack
-            - vmware.vscode-spring-boot
-            - vscjava.vscode-gradle
-            - vscjava.vscode-java-debug
-            - vscjava.vscode-java-dependency
-            - vscjava.vscode-java-pack
-            - vscjava.vscode-java-test
-            - vscjava.vscode-maven
-            - vscjava.vscode-spring-boot-dashboard
-            - vscjava.vscode-spring-initializr
+            - visualstudioexptteam.intellicode-api-usage-examples
+            - visualstudioexptteam.vscodeintellicode
+            - visualstudioexptteam.vscodeintellicode-completions
             - wholroyd.jinja
             - yzhang.markdown-all-in-one
 ```

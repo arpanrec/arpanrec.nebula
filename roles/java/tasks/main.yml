@@ -65,7 +65,7 @@
       dest: "{{ ansible_facts.user_dir }}/.jdk.env.sh"
       mode: "0700"
 
-- name: Dotfiles | Ensure config alias is set in ~/.bashrc and ~/.zshrc
+- name: Oracle JDK | Ensure config alias is set in ~/.bashrc and ~/.zshrc
   ansible.builtin.lineinfile:
       path: "{{ item }}"
       line: "source {{ ansible_facts.user_dir }}/.jdk.env.sh"

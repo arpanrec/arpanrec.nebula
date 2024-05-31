@@ -14,7 +14,7 @@
       - name: Linux Patching | Network | CA Certificate | Copy the certificate
         ansible.builtin.copy:
             content: "{{ linux_patching_rv_root_ca_pem_content }}"
-            dest: /usr/local/share/ca-certificates/arpanrec-root-ca.crt
+            dest: /usr/local/share/ca-certificates/root-ca-certificate.crt
             mode: "0775"
 
       - name: Linux Patching | Network | CA Certificate | Update CA Trust

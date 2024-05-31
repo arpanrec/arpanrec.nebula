@@ -2,16 +2,6 @@
 - name: Installing apps in user $HOME directory
   hosts: server_workspace
   tasks:
-      - name: USERAPPS | Dotfiles
-        ansible.builtin.include_role:
-            name: arpanrec.nebula.dotfiles
-        args:
-            apply:
-                tags:
-                    - dotfiles
-        tags:
-            - dotfiles
-
       - name: USERAPPS | Install Bitwarden
         ansible.builtin.include_role:
             name: arpanrec.nebula.bitwarden_desktop
