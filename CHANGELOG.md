@@ -1,3 +1,10 @@
+## [6.0.1](https://github.com/arpanrec/arpanrec.nebula/compare/6.0.0...6.0.1) (2024-06-09)
+
+
+### Bug Fixes
+
+* update versions ([#7](https://github.com/arpanrec/arpanrec.nebula/issues/7)) ([045a84a](https://github.com/arpanrec/arpanrec.nebula/commit/045a84ac8f447ff4c20a40722ddedfbfe8ef9a81))
+
 # [6.0.0](https://github.com/arpanrec/arpanrec.nebula/compare/5.9.2...6.0.0) (2024-05-31)
 
 
