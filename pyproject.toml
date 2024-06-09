@@ -12,22 +12,22 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-ansible = "9.6.0"
-cryptography = "42.0.7"
-requests = "2.32.2"
+ansible = "10.0.1"
+cryptography = "42.0.8"
+requests = "2.32.3"
 hvac = "2.2.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "24.4.2"
-pylint = "3.2.2"
+pylint = "3.2.3"
 mypy = "1.10.0"
 molecule-plugins = "23.5.3"
-molecule = "24.2.1"
+molecule = "24.6.0"
 docker = "7.1.0" # Needed for molecule docker driver
-ansible-lint = { version = "24.5.0", markers = "platform_system != 'Windows'" }
+ansible-lint = { version = "24.6.0", markers = "platform_system != 'Windows'" }
 poetry-plugin-export = "1.8.0"
-pyright = "1.1.365"
-types-requests = "2.32.0.20240523"
+pyright = "1.1.366"
+types-requests = "2.32.0.20240602"
 types-pyyaml = "6.0.12.20240311"
 
 [build-system]
