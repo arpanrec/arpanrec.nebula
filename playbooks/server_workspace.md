@@ -19,7 +19,7 @@ Extra variables will be applied to the original role.
 * [Node JS](../roles/nodejs/README.md) -> nodejs
 * [Go Language](../roles/go/README.md) -> go
 * [Oracle JDK](../roles/java/README.md) -> java
-* [terminal](../roles/terminal/README.md) -> terminal
+* [Terminal Themes](../roles/terminal/README.md) -> terminal
 * [Terraform](../roles/terraform/README.md) -> terraform
 * [Vault](../roles/vault/README.md) -> vault
 * [Pulumi](../roles/pulumi/README.md) -> pulumi
