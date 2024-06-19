@@ -1,0 +1,3 @@
+---
+- name: GitLeaks | Prerequisites
+  ansible.builtin.import_tasks: prerequisites.yml
