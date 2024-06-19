@@ -1,0 +1,10 @@
+---
+- name: GitLeaks | Molecule | Converge
+  hosts: all
+  gather_facts: false
+  any_errors_fatal: true
+  become: false
+  tasks:
+      - name: GitLeaks | Molecule | Converge | Include GitLeaks role
+        ansible.builtin.import_role:
+            name: arpanrec.nebula.gitleaks

@@ -1,0 +1,13 @@
+---
+- name: GitLeaks | Molecule | Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+
+      - name: Testing
+        arpanrec.nebula.version_db:
+        register: version_db
+
+      - name: Debug
+        ansible.builtin.debug:
+            var: version_db
