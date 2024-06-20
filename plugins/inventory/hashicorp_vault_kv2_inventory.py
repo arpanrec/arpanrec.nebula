@@ -150,10 +150,16 @@ class InventoryModule(BaseFileInventoryPlugin):
             raise ValueError(f"Unsupported authentication method: {hvac_client_auth_method}")
 
         if "userpass" == hvac_client_auth_method:
-            self.hvac_client.auth.userpass.login(**hvac_client_auth_config)
+            try:
+                self.hvac_client.auth.userpass.login(**hvac_client_auth_config)
+            except Exception as e:
+                raise AnsibleParserError(f"Error authenticating with userpass: {to_text(e)}") from e
 
         if "approle" == hvac_client_auth_method:
-            self.hvac_client.auth.approle.login(**hvac_client_auth_config)
+            try:
+                self.hvac_client.auth.approle.login(**hvac_client_auth_config)
+            except Exception as e:
+                raise AnsibleParserError(f"Error authenticating with approle: {to_text(e)}") from e
 
         ansible_inventory: InventoryData = self.inventory
 
