@@ -1,3 +1,10 @@
+## [6.0.2](https://github.com/arpanrec/arpanrec.nebula/compare/6.0.1...6.0.2) (2024-06-20)
+
+
+### Bug Fixes
+
+* Handle authentication errors in Hashicorp Vault plugin ([2bc43af](https://github.com/arpanrec/arpanrec.nebula/commit/2bc43afb75d079ce9f1c598e6b0499f8446cac12))
+
 ## [6.0.1](https://github.com/arpanrec/arpanrec.nebula/compare/6.0.0...6.0.1) (2024-06-09)
 
 
