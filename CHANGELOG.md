@@ -1,3 +1,10 @@
+## [6.0.3](https://github.com/arpanrec/arpanrec.nebula/compare/6.0.2...6.0.3) (2024-06-21)
+
+
+### Bug Fixes
+
+* cert as tuple in hvac_client_configuration ([63f1435](https://github.com/arpanrec/arpanrec.nebula/commit/63f1435ca437ab06aa1053b6984431f8d7c58d70))
+
 ## [6.0.2](https://github.com/arpanrec/arpanrec.nebula/compare/6.0.1...6.0.2) (2024-06-20)
 
 
