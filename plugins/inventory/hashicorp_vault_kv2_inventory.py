@@ -141,6 +141,10 @@ class InventoryModule(BaseFileInventoryPlugin):
                 f"Invalid HashiCorp Vault KV2 path: {hvac_kv2_path}. Path should not start or end with a forward slash"
             )
 
+        if "cert" in hvac_client_configuration.keys():
+            cert_list: list = hvac_client_configuration["cert"]
+            hvac_client_configuration["cert"] = tuple(cert_list)
+
         self.hvac_client = hvac.Client(**hvac_client_configuration)
 
         if hvac_client_auth_method and hvac_client_auth_method not in [
