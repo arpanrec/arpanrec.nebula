@@ -17,6 +17,7 @@ cryptography = "42.0.8"
 requests = "2.32.3"
 hvac = "2.2.0"
 godaddypy = "^2.5.1"
+configloader = "^1.0.1"
 
 [tool.poetry.group.dev.dependencies]
 black = "24.4.2"

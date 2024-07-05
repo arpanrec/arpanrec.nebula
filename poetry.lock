@@ -456,6 +456,22 @@ files = [
 ]
 
 [[package]]
+name = "configloader"
+version = "1.0.1"
+description = "Python dict that supports common app configuration-loading scenarios."
+optional = false
+python-versions = "*"
+files = [
+    {file = "configloader-1.0.1-py2.py3-none-any.whl", hash = "sha256:e2033a2328f704c68479423ae0ad3dcc08767270c5f57f562f2aa0bd370c16b9"},
+    {file = "configloader-1.0.1.tar.gz", hash = "sha256:e2613c1b8c838e1f3046bf6bb4a11ecfaf6e3950e5a2aa1b8569b39c9171a044"},
+]
+
+[package.extras]
+all = ["PyYAML (>=3)", "attrdict (>=1)"]
+attrdict = ["attrdict (>=1)"]
+yaml = ["PyYAML (>=3)"]
+
+[[package]]
 name = "crashtest"
 version = "0.4.1"
 description = "Manage Python errors with ease"
@@ -2183,4 +2199,4 @@ test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", 
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "a234a9dfcdfd14c7a23e886b8c14b0dcce3acc897cd2cec0f4c8a6312d2ab768"
+content-hash = "5b99ec434851793579df06a92ff82f2a7ddd5a1c7bd0dff2ebf969f547a1d18f"
