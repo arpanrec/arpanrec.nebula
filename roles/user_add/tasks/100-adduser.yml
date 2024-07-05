@@ -12,7 +12,7 @@
 
 - name: Application User | Adding the group
   ansible.builtin.group:
-      name: "{{ user_add_rv_user_primary_group }}"
+      name: "{{ user_add_rv_user_primary_group | default(user_add_rv_username, true) }}"
       gid: "{{ user_add_rv_user_primary_gid | default(omit) }}"
       state: present
 
@@ -24,7 +24,7 @@
       groups: "{{ (user_add_rv_user_extra_groups | length > 0) | ternary(user_add_rv_user_extra_groups, omit) }}"
       append: "{{ (user_add_rv_user_extra_groups | length > 0) | ternary(true, omit) }}"
       uid: "{{ user_add_rv_uid | default(omit) }}"
-      group: "{{ user_add_rv_user_primary_group }}"
+      group: "{{ user_add_rv_user_primary_group | default(user_add_rv_username, true) }}"
       create_home: true
       home: "{{ user_add_rv_user_home_dir | default(omit, True) }}"
       expires: -1
