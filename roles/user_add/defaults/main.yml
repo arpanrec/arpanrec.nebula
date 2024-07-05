@@ -1,7 +1,7 @@
 ---
 # Group Name : Primary Group of the user
 # Type: String
-user_add_rv_user_primary_group: "{{ user_add_rv_user_primary_group | default(user_add_rv_username, true) }}"
+# user_add_rv_user_primary_group:
 
 # Group ID : GID for primary group
 # Type: int

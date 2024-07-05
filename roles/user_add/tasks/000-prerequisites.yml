@@ -30,11 +30,3 @@
       success_msg: "user_add_rv_user_extra_groups is a list."
       fail_msg: "user_add_rv_user_extra_groups is not a list.
           user_add_rv_user_extra_groups should be a list."
-
-- name: Application User | Setting Group Name
-  ansible.builtin.set_fact:
-      user_add_rv_user_primary_group: "{{ user_add_rv_username }}"
-  when: >
-      user_add_rv_user_primary_group is not defined
-      or
-      user_add_rv_user_primary_group | length < 1
