@@ -67,8 +67,8 @@ linux_patching_rv_extra_packages: []
 
 linux_patching_rv_timezone: Asia/Kolkata
 
-linux_patching_rv_hostname: "{{ ansible_facts['hostname'] | mandatory }}"
-linux_patching_rv_domain_name: "{{ ansible_facts['domain'] | mandatory }}"
+linux_patching_rv_hostname: "{{ ansible_facts['hostname'] | default('localhost', true) | mandatory }}"
+linux_patching_rv_domain_name: "{{ ansible_facts['domain'] | default('localdomain', true) | mandatory }}"
 # linux_patching_rv_root_ca_pem_content:
 
 linux_patching_rv_ssh_port: 22
