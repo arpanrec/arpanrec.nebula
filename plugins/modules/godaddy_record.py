@@ -55,14 +55,16 @@ author:
 """
 
 EXAMPLES = """
+---
 # Update A Record
 - name: Test with a message
   godaddy_record:
-    name: mail
-    type: A
+      name: mail
+      type: A
 """
 
 RETURN = """
+---
 original_message:
     description: The original name param that was passed in
     type: str
