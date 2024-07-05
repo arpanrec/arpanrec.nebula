@@ -3,7 +3,7 @@ line-length = 120
 
 [tool.poetry]
 name = "nebula"
-version = "6.0.1"
+version = "6.0.3"
 description = "common ansible resources"
 authors = ["arpanrec <arpan.rec@gmail.com>"]
 license = "GLWTS"
@@ -12,22 +12,22 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-ansible = "10.0.1"
+ansible = "10.1.0"
 cryptography = "42.0.8"
 requests = "2.32.3"
 hvac = "2.2.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "24.4.2"
-pylint = "3.2.3"
-mypy = "1.10.0"
+pylint = "3.2.5"
+mypy = "1.10.1"
 molecule-plugins = "23.5.3"
 molecule = "24.6.0"
 docker = "7.1.0" # Needed for molecule docker driver
-ansible-lint = { version = "24.6.0", markers = "platform_system != 'Windows'" }
+ansible-lint = { version = "24.6.1", markers = "platform_system != 'Windows'" }
 poetry-plugin-export = "1.8.0"
-pyright = "1.1.366"
-types-requests = "2.32.0.20240602"
+pyright = "1.1.370"
+types-requests = "2.32.0.20240622"
 types-pyyaml = "6.0.12.20240311"
 
 [build-system]

@@ -141,6 +141,10 @@ class InventoryModule(BaseFileInventoryPlugin):
                 f"Invalid HashiCorp Vault KV2 path: {hvac_kv2_path}. Path should not start or end with a forward slash"
             )
 
+        if "cert" in hvac_client_configuration.keys():
+            cert_list: list = hvac_client_configuration["cert"]
+            hvac_client_configuration["cert"] = tuple(cert_list)
+
         self.hvac_client = hvac.Client(**hvac_client_configuration)
 
         if hvac_client_auth_method and hvac_client_auth_method not in [
@@ -150,10 +154,16 @@ class InventoryModule(BaseFileInventoryPlugin):
             raise ValueError(f"Unsupported authentication method: {hvac_client_auth_method}")
 
         if "userpass" == hvac_client_auth_method:
-            self.hvac_client.auth.userpass.login(**hvac_client_auth_config)
+            try:
+                self.hvac_client.auth.userpass.login(**hvac_client_auth_config)
+            except Exception as e:
+                raise AnsibleParserError(f"Error authenticating with userpass: {to_text(e)}") from e
 
         if "approle" == hvac_client_auth_method:
-            self.hvac_client.auth.approle.login(**hvac_client_auth_config)
+            try:
+                self.hvac_client.auth.approle.login(**hvac_client_auth_config)
+            except Exception as e:
+                raise AnsibleParserError(f"Error authenticating with approle: {to_text(e)}") from e
 
         ansible_inventory: InventoryData = self.inventory
 
