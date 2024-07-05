@@ -1,3 +1,10 @@
+## [6.0.4](https://github.com/arpanrec/arpanrec.nebula/compare/6.0.3...6.0.4) (2024-07-05)
+
+
+### Bug Fixes
+
+* default vaules in some roles ([e4a20e1](https://github.com/arpanrec/arpanrec.nebula/commit/e4a20e10394cee8ef508dc849bd9788ff61355ad))
+
 ## [6.0.3](https://github.com/arpanrec/arpanrec.nebula/compare/6.0.2...6.0.3) (2024-06-21)
 
 
