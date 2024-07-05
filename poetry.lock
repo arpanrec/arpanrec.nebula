@@ -703,6 +703,20 @@ testing = ["covdefaults (>=2.3)", "coverage (>=7.3.2)", "diff-cover (>=8.0.1)", 
 typing = ["typing-extensions (>=4.8)"]
 
 [[package]]
+name = "godaddypy"
+version = "2.5.1"
+description = "A very simple python client used to update the IP address in A records for GoDaddy managed domains."
+optional = false
+python-versions = "*"
+files = [
+    {file = "GoDaddyPy-2.5.1-py2.py3-none-any.whl", hash = "sha256:22da1e2d93225e605bc150992b9ed477677f782c87e0ed3e0c47d2cbc13ece53"},
+    {file = "GoDaddyPy-2.5.1.tar.gz", hash = "sha256:db54c3a023b65f1b4b7793c8bdac0f778bb02044817df1f412c76540e2e0ae9a"},
+]
+
+[package.dependencies]
+requests = ">=2.4"
+
+[[package]]
 name = "hvac"
 version = "2.2.0"
 description = "HashiCorp Vault API client"
@@ -2169,4 +2183,4 @@ test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", 
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "9d648f07d549f03c3059efb01530d709d680b07eb7fdbbbaa098549d18b10080"
+content-hash = "a234a9dfcdfd14c7a23e886b8c14b0dcce3acc897cd2cec0f4c8a6312d2ab768"

@@ -24,6 +24,7 @@ dulwich==0.21.7 ; python_version >= "3.10" and python_version < "4.0"
 enrich==1.2.7 ; python_version >= "3.10" and python_version < "4.0"
 fastjsonschema==2.20.0 ; python_version >= "3.10" and python_version < "4.0"
 filelock==3.15.4 ; python_version >= "3.10" and python_version < "4.0"
+godaddypy==2.5.1 ; python_version >= "3.10" and python_version < "4.0"
 hvac==2.2.0 ; python_version >= "3.10" and python_version < "4.0"
 idna==3.7 ; python_version >= "3.10" and python_version < "4.0"
 importlib-metadata==8.0.0 ; python_version >= "3.10" and python_version < "4.0" and (platform_system != "Windows" or python_version < "3.12")
