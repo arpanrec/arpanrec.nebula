@@ -1,3 +1,10 @@
+## [6.0.5](https://github.com/arpanrec/arpanrec.nebula/compare/6.0.4...6.0.5) (2024-07-06)
+
+
+### Bug Fixes
+
+* Fixing name format ([22100a3](https://github.com/arpanrec/arpanrec.nebula/commit/22100a3a6b6d43d55aa4a3b59338b3727371d02c))
+
 ## [6.0.4](https://github.com/arpanrec/arpanrec.nebula/compare/6.0.3...6.0.4) (2024-07-05)
 
 
