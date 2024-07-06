@@ -1,11 +1,11 @@
 ---
-- name: Themes |  Prerequisites | Fail if Root User
+- name: Themes | Prerequisites | Fail if Root User
   ansible.builtin.command: whoami
   register: rl_sw_current_shelluser_shell_result
   failed_when: rl_sw_current_shelluser_shell_result.stdout == "root"
   changed_when: false
 
-- name: Themes |  Prerequisites | Packages are present
+- name: Themes | Prerequisites | Packages are present
   ansible.builtin.shell: "command -v {{ item }} >/dev/null 2>&1"
   changed_when: false
   with_items:
@@ -18,10 +18,10 @@
       - fc-cache
       - gtk-update-icon-cache
 
-- name: Themes |  Prerequisites | Gather Facts
+- name: Themes | Prerequisites | Gather Facts
   ansible.builtin.setup:
 
-- name: Themes |  Prerequisites | Create a directory if it does not exist
+- name: Themes | Prerequisites | Create a directory if it does not exist
   ansible.builtin.file:
       path: "{{ item }}"
       state: directory
