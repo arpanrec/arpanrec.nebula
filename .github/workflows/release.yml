@@ -13,6 +13,7 @@ jobs:
               with:
                   fetch-depth: 0
                   persist-credentials: false
+
             - name: Import GPG key
               id: import-gpg
               uses: crazy-max/ghaction-import-gpg@v6
