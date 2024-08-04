@@ -1,11 +1,11 @@
 ---
-- name: Terminal |  Prerequisites | Fail if Root User
+- name: Terminal | Prerequisites | Fail if Root User
   ansible.builtin.command: whoami
   register: rl_sw_current_shelluser_shell_result
   failed_when: rl_sw_current_shelluser_shell_result.stdout == "root"
   changed_when: false
 
-- name: Terminal |  Prerequisites | Packages are present
+- name: Terminal | Prerequisites | Packages are present
   ansible.builtin.shell: "command -v {{ item }} >/dev/null 2>&1"
   changed_when: false
   with_items:
@@ -16,5 +16,5 @@
       - tar
       - unzip
 
-- name: Terminal |  Prerequisites | Gather Facts
+- name: Terminal | Prerequisites | Gather Facts
   ansible.builtin.setup:
