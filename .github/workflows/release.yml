@@ -33,7 +33,7 @@ jobs:
             - name: prepare requirements-release.txt
               run: |+
                   set -ex
-                  grep "^ansible=" .github/files/requirements-dev.txt | tee /tmp/requirements-release.txt
+                  grep "^ansible" .github/files/requirements-dev.txt | tee /tmp/requirements-release.txt
                   grep "^poetry=" .github/files/requirements-dev.txt | tee -a /tmp/requirements-release.txt
 
             - name: Setup Python
