@@ -456,6 +456,22 @@ files = [
 ]
 
 [[package]]
+name = "configloader"
+version = "1.0.1"
+description = "Python dict that supports common app configuration-loading scenarios."
+optional = false
+python-versions = "*"
+files = [
+    {file = "configloader-1.0.1-py2.py3-none-any.whl", hash = "sha256:e2033a2328f704c68479423ae0ad3dcc08767270c5f57f562f2aa0bd370c16b9"},
+    {file = "configloader-1.0.1.tar.gz", hash = "sha256:e2613c1b8c838e1f3046bf6bb4a11ecfaf6e3950e5a2aa1b8569b39c9171a044"},
+]
+
+[package.extras]
+all = ["PyYAML (>=3)", "attrdict (>=1)"]
+attrdict = ["attrdict (>=1)"]
+yaml = ["PyYAML (>=3)"]
+
+[[package]]
 name = "crashtest"
 version = "0.4.1"
 description = "Manage Python errors with ease"
@@ -701,6 +717,20 @@ files = [
 docs = ["furo (>=2023.9.10)", "sphinx (>=7.2.6)", "sphinx-autodoc-typehints (>=1.25.2)"]
 testing = ["covdefaults (>=2.3)", "coverage (>=7.3.2)", "diff-cover (>=8.0.1)", "pytest (>=7.4.3)", "pytest-asyncio (>=0.21)", "pytest-cov (>=4.1)", "pytest-mock (>=3.12)", "pytest-timeout (>=2.2)", "virtualenv (>=20.26.2)"]
 typing = ["typing-extensions (>=4.8)"]
+
+[[package]]
+name = "godaddypy"
+version = "2.5.1"
+description = "A very simple python client used to update the IP address in A records for GoDaddy managed domains."
+optional = false
+python-versions = "*"
+files = [
+    {file = "GoDaddyPy-2.5.1-py2.py3-none-any.whl", hash = "sha256:22da1e2d93225e605bc150992b9ed477677f782c87e0ed3e0c47d2cbc13ece53"},
+    {file = "GoDaddyPy-2.5.1.tar.gz", hash = "sha256:db54c3a023b65f1b4b7793c8bdac0f778bb02044817df1f412c76540e2e0ae9a"},
+]
+
+[package.dependencies]
+requests = ">=2.4"
 
 [[package]]
 name = "hvac"
@@ -2169,4 +2199,4 @@ test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", 
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "9d648f07d549f03c3059efb01530d709d680b07eb7fdbbbaa098549d18b10080"
+content-hash = "5b99ec434851793579df06a92ff82f2a7ddd5a1c7bd0dff2ebf969f547a1d18f"
