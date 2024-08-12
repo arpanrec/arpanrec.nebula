@@ -1,0 +1,42 @@
+---
+namespace: arpanrec
+name: nebula
+version: 6.0.10
+readme: README.md
+authors:
+    - "Arpan Mandal <arpan.rec@gmail.com>"
+description: common ansible resources
+repository: https://github.com/arpanrec/arpanrec.nebula.git
+license_file: LICENSE
+issues: https://github.com/arpanrec/arpanrec.nebula/issues
+# dependencies:
+#   "https://github.com/ansible-collections/community.general.git": "6.0.1"
+#   "https://github.com/ansible-collections/ansible.posix.git": "1.4.0"
+#   "https://github.com/ansible-collections/community.docker.git": "3.3.1"
+homepage: "https://arpanrec.com"
+documentation: README.md
+build_ignore:
+    - ".github"
+    - ".idea"
+    - ".trunk"
+    - ".vscode"
+    - "venv"
+    - "node_modules"
+    - "molecule"
+    - ".venv"
+    - ".gitignore"
+    - ".git"
+    - ".gitattributes"
+    - "requirements.yml"
+    - "pyproject.toml"
+    - "poetry.lock"
+    - "build"
+    - ".yamllint"
+    - ".pylintrc"
+    - "CODE_OF_CONDUCT.md"
+    - ".ansible-lint"
+    - "CHANGELOG.md"
+    - ".mypy_cache"
+tags:
+    - "linux"
+    - "debian"

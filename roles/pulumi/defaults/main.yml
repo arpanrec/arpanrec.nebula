@@ -1,0 +1,4 @@
+---
+pulumi_rv_install_path: "{{ ansible_facts.user_dir }}/.pulumi/bin"
+pulumi_rv_tmp_install_cache_dir: "{{ ansible_facts.user_dir }}/.tmp/pulumi"
+# pulumi_rv_version: v3.116.0

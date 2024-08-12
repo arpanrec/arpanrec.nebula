@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+      - name: Include user_add
+        ansible.builtin.import_role:
+            name: arpanrec.nebula.user_add

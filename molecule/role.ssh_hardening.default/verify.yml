@@ -1,0 +1,7 @@
+---
+- name: SSHD Hardening | Molecule | Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+      - name: SSHD Hardening | Molecule | Verify | Check if connection still works
+        ansible.builtin.ping:

@@ -1,0 +1,12 @@
+---
+- name: Linux Patching | Reboot | Reboot
+  ansible.builtin.reboot:
+  when: ansible_connection != 'local'
+
+- name: Linux Patching | Reboot | Reboot Skip
+  ansible.builtin.debug:
+      msg: "Reboot skipped for local connection"
+  when: ansible_connection == 'local'
+
+- name: Linux Patching | Reboot | Gather Facts
+  ansible.builtin.setup:

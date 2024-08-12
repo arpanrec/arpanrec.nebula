@@ -1,0 +1,10 @@
+---
+- name: SSHD Hardening | Molecule | Prepare
+  hosts: all
+  gather_facts: false
+  tasks:
+      - name: SSHD Hardening | Molecule | Prepare | Include arpanrec.linux_patching
+        become: true
+        become_method: ansible.builtin.su
+        ansible.builtin.import_role:
+            name: arpanrec.nebula.linux_patching

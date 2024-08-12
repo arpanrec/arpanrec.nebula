@@ -1,0 +1,12 @@
+---
+pulumi_rv_ansible_architecture_map:
+    amd64: x64
+    x86_64: x64
+    aarch64: arm64
+
+pulumi_rv_install_select_architecture: "{{ pulumi_rv_ansible_architecture_map[ansible_facts.architecture] }}"
+
+pulumi_rv_download_url: "https://github.com/pulumi/pulumi/releases/download/{{ pulumi_rv_version }}\
+    /pulumi-{{ pulumi_rv_version }}-{{ ansible_system | lower }}-{{ pulumi_rv_install_select_architecture }}.tar.gz"
+
+pulumi_rv_tarball_download_path: "{{ pulumi_rv_tmp_install_cache_dir }}/pulumi-{{ pulumi_rv_version }}.zip"

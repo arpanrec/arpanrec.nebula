@@ -1,0 +1,8 @@
+---
+- name: Bitwarden CLI | Molecule | Converge
+  hosts: all
+  gather_facts: false
+  tasks:
+      - name: Bitwarden CLI | Molecule | Converge | Include Bitwarden CLI
+        ansible.builtin.import_role:
+            name: arpanrec.nebula.bws

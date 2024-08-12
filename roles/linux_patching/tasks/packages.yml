@@ -1,0 +1,80 @@
+---
+- name: Linux Patching | Install Packages | Checking Prerequisite | Include Common Checks
+  ansible.builtin.import_tasks: prerequisite.yml
+
+- name: Linux Patching | Install Packages | Purge to resolve conflicts
+  ansible.builtin.apt:
+      name: ntp
+      state: absent
+      purge: true
+
+- name: Linux Patching | Install Packages | Update apt cache
+  ansible.builtin.apt:
+      update_cache: true
+
+- name: Linux Patching | Install Packages | Packages to install
+  ansible.builtin.debug:
+      msg: "Installing essential packages {{ linux_patching_rv_packages
+          + linux_patching_rv_extra_packages | default([]) }}"
+
+- name: Linux Patching | Install Packages | Install specific essential packages in Debian
+  ansible.builtin.apt:
+      name: "{{ linux_patching_rv_packages + linux_patching_rv_extra_packages | default([]) }}"
+      state: present
+  register: linux_patching_rv_extra_install
+
+- name: Linux Patching | Install Packages | Reboot After Packages Install
+  when: linux_patching_rv_extra_install.changed and linux_patching_rv_init_system_systemd
+  ansible.builtin.import_tasks:
+      file: reboot.yml
+
+- name: Linux Patching | Install Packages | Is this a development machine?
+  ansible.builtin.debug:
+      msg: "Installing devel packages with
+          linux_patching_rv_install_devel_packages: {{ linux_patching_rv_install_devel_packages }},
+          type: {{ linux_patching_rv_install_devel_packages | type_debug }}"
+
+- name: Linux Patching | Install Packages | DEVEL Packages to install
+  ansible.builtin.debug:
+      msg: "Installing devel packages {{ linux_patching_rv_devel_packages | default([]) }}"
+  when: linux_patching_rv_install_devel_packages
+
+- name: Linux Patching | Install Packages | Install specific devel packages in Debian
+  ansible.builtin.apt:
+      name: "{{ linux_patching_rv_devel_packages | default([]) }}"
+      state: present
+  register: linux_patching_rv_extra_devel_install
+  when: linux_patching_rv_install_devel_packages
+
+- name: Linux Patching | Install Packages | Reboot After Devel Packages Install
+  when: linux_patching_rv_extra_devel_install.changed and linux_patching_rv_init_system_systemd
+  ansible.builtin.import_tasks:
+      file: reboot.yml
+
+- name: Linux Patching | Install Packages | Install headers linux-headers-{{ ansible_kernel }}
+  ansible.builtin.apt:
+      name: "linux-headers-{{ ansible_kernel }}"
+      state: present
+  when: linux_patching_rv_install_devel_packages
+  ignore_errors: true
+  register: linux_patching_rv_install_devel_packages_tmp_kernel_version_installed
+
+- name: Linux Patching | Install Packages | Install generic headers linux-headers
+  ansible.builtin.apt:
+      name: "linux-headers"
+      state: present
+  when: linux_patching_rv_install_devel_packages
+      and linux_patching_rv_install_devel_packages_tmp_kernel_version_installed.failed
+  register: linux_patching_rv_install_generic_headers_tmp_kernel_version_installed
+
+- name: Linux Patching | Install Packages | Reboot after kernel install
+  ansible.builtin.import_tasks:
+      file: reboot.yml
+  when: >
+      linux_patching_rv_init_system_systemd
+      and
+      (
+        linux_patching_rv_install_generic_headers_tmp_kernel_version_installed.changed
+        or
+        linux_patching_rv_install_devel_packages_tmp_kernel_version_installed.changed
+      )
