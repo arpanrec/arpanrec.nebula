@@ -1,5 +1,10 @@
 # Ansible Collection Nebula (arpanrec.nebula)
 
+[![Linting](https://github.com/arpanrec/arpanrec.nebula/actions/workflows/linting.yml/badge.svg)](https://github.com/arpanrec/arpanrec.nebula/actions/workflows/linting.yml)
+[![Molecule](https://github.com/arpanrec/arpanrec.nebula/actions/workflows/molecule.yml/badge.svg)](https://github.com/arpanrec/arpanrec.nebula/actions/workflows/molecule.yml)
+[![Release](https://github.com/arpanrec/arpanrec.nebula/actions/workflows/release.yml/badge.svg)](https://github.com/arpanrec/arpanrec.nebula/actions/workflows/release.yml)
+[![Scans](https://github.com/arpanrec/arpanrec.nebula/actions/workflows/scans.yml/badge.svg)](https://github.com/arpanrec/arpanrec.nebula/actions/workflows/scans.yml)
+
 ## Description
 
 This collection provides a set of roles to deploy and manage various services.
