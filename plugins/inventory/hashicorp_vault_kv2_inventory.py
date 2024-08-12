@@ -8,19 +8,18 @@ Requirements: Python 3 or higher
 """
 import json
 import os
-from typing import Dict
 from collections.abc import MutableMapping  # type: ignore
+from typing import Dict
 
 import hvac  # type: ignore
 import yaml
-from ansible.errors import AnsibleParserError, AnsibleError  # type: ignore
+from ansible.errors import AnsibleError, AnsibleParserError  # type: ignore
 from ansible.inventory.data import InventoryData  # type: ignore
 from ansible.module_utils.common.text.converters import to_text  # type: ignore
 from ansible.module_utils.six import string_types  # type: ignore
 from ansible.parsing.dataloader import DataLoader  # type: ignore
 from ansible.plugins.inventory import BaseFileInventoryPlugin  # type: ignore
 from hvac.exceptions import InvalidPath  # type: ignore
-
 
 DOCUMENTATION = r"""
     name: hashicorp_vault_kv2_inventory
