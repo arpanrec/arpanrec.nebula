@@ -4,7 +4,7 @@ Ansible module to manage GoDaddy DNS Records
 """
 
 from ansible.module_utils.basic import AnsibleModule  # type: ignore
-from godaddypy import Client, Account  # type: ignore
+from godaddypy import Account, Client  # type: ignore
 
 ANSIBLE_METADATA = {"metadata_version": "1.1", "status": ["preview"], "supported_by": "community"}
 
