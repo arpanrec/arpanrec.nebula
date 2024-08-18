@@ -1,15 +1,15 @@
-if [[ -f "{{ java_rv_jdk_graalvm_install_path }}/bin/java" ]] && [[ ! "$PATH" =~ {{ java_rv_jdk_graalvm_install_path }}/bin: ]]; then
-    PATH="{{ java_rv_jdk_graalvm_install_path }}/bin:$PATH"
-    export PATH
-    GRAALVM_HOME="{{ java_rv_jdk_graalvm_install_path }}"
-    export GRAALVM_HOME
-fi
-
 if [[ -f "{{ java_rv_jdk_install_path }}/bin/java" ]] && [[ ! "$PATH" =~ {{ java_rv_jdk_install_path }}/bin: ]]; then
     PATH="{{ java_rv_jdk_install_path }}/bin:$PATH"
     export PATH
     JAVA_HOME="{{ java_rv_jdk_install_path }}"
     export JAVA_HOME
+fi
+
+if [[ -f "{{ java_rv_jdk_graalvm_install_path }}/bin/java" ]] && [[ ! "$PATH" =~ {{ java_rv_jdk_graalvm_install_path }}/bin: ]]; then
+    PATH="{{ java_rv_jdk_graalvm_install_path }}/bin:$PATH"
+    export PATH
+    GRAALVM_HOME="{{ java_rv_jdk_graalvm_install_path }}"
+    export GRAALVM_HOME
 fi
 
 if [[ -f "{{ java_rv_jdk_mvn_install_path }}/bin/mvn" ]] && [[ ! "$PATH" =~ {{ java_rv_jdk_mvn_install_path }}/bin: ]]; then
