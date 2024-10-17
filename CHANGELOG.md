@@ -1,6 +1,6 @@
-# 1.0.0 (2024-08-12)
+## [1.0.2](https://github.com/arpanrec/arpanrec.nebula/compare/1.0.1...1.0.2) (2024-10-17)
 
 
-### Features
+### Bug Fixes
 
-* Bring in the code ([63d7170](https://github.com/arpanrec/arpanrec.nebula/commit/63d7170134d6ca350b84e05e508470da92c91ff9))
+* bitwarden sdk release tags format changed ([#20](https://github.com/arpanrec/arpanrec.nebula/issues/20)) ([2ab07e7](https://github.com/arpanrec/arpanrec.nebula/commit/2ab07e72fc44ba1bb4c32cf277a3a6b5be874750))

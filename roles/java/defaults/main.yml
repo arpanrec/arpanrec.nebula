@@ -1,6 +1,6 @@
 ---
 java_rv_jdk_install_path: "{{ ansible_facts.user_dir }}/.local/share/java"
-java_rv_jdk_version: 17
+java_rv_jdk_version: 21
 
 java_rv_jdk_mvn_install_path: "{{ ansible_facts.user_dir }}/.local/share/maven"
 # java_rv_jdk_mvn_version: 3.9.4
