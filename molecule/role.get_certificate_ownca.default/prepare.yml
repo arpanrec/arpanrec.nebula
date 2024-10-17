@@ -2,8 +2,8 @@
 - name: Get Certificate Ownca | Molecule | Prepare
   hosts: all
   become: false
-  gather_facts: false
-  any_errors_fatal: false
+  gather_facts: true
+  any_errors_fatal: true
   tasks:
       - name: Get Certificate Ownca | Molecule | Prepare | Generate an OpenSSL private key
         community.crypto.openssl_privatekey:

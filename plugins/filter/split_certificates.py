@@ -32,7 +32,7 @@ description: This module provides functionality for splitting a string of concat
 """
 
 
-def split_certificates(string):
+def split_certificates(string: str) -> list[str]:
     """
     Splits a string of concatenated certificates into a list of individual certificates.
 
@@ -78,7 +78,7 @@ class FilterModule:
         filters: Returns a dictionary mapping the filter name ('split_certificates') to the filter function.
     """
 
-    def filters(self):
+    def filters(self) -> dict[str, object]:
         """
         Returns a dictionary mapping filter names to filter functions.
 
