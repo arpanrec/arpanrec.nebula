@@ -16,7 +16,10 @@ RUN apt-get install -y fontconfig
 # For Icons
 RUN apt-get install -y gnome-shell gtk-update-icon-cache
 
-RUN useradd -m -s /bin/bash -d /home/molecule-user molecule-user
+RUN useradd -m -s /bin/bash -d /home/molecule-user molecule-user \
+    && mkdir -p /home/molecule-user/.ansible /tmp/.ansible \
+    && chown -R molecule-user:molecule-user /home/molecule-user \
+    && chmod 777 -R /tmp
 
 WORKDIR /home/molecule-user
 

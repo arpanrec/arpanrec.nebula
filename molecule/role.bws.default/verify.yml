@@ -13,16 +13,15 @@
         when: bws_sdk_version_tag is not defined
         block:
             - name: Bitwarden CLI | BWS SDK | Molecule | Get Latest Release from github
-              ansible.builtin.uri:
-                  url: "https://api.github.com/repos/bitwarden/sdk/releases/latest"
-                  return_content: true
-                  headers:
-                      Accept: "application/vnd.github.v3+json"
+              arpanrec.nebula.github_release_search:
+                  github_repo: "bitwarden/sdk"
+                  prefix: "bws-"
+              delegate_to: localhost
               register: bws_sdk_version_for_github
 
             - name: Bitwarden CLI | BWS SDK | Molecule | Set Dynamic Version
               ansible.builtin.set_fact:
-                  bws_sdk_version_tag: "{{ bws_sdk_version_for_github.json.tag_name[5:] }}"
+                  bws_sdk_version_tag: "{{ bws_sdk_version_for_github.tag_version[5:] }}"
 
       - name: Bitwarden CLI | BWS SDK | Molecule | Verify | Get bw version from shell
         ansible.builtin.command: bws --version

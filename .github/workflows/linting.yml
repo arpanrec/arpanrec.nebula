@@ -12,145 +12,157 @@ concurrency:
 jobs:
     pylint:
         runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                python-version: ["3.10", "3.11", "3.12"]
         name: pylint
         steps:
             - name: Checkout
               uses: actions/checkout@v4
 
-            - name: Set up Python "3.10"
+            - name: Install poetry 1.8.4
+              run: pipx install poetry==1.8.4
+
+            - name: Set up Python "${{ matrix.python-version }}"
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: pip
-                  cache-dependency-path: .github/files/requirements-dev.txt
+                  python-version: "${{ matrix.python-version }}"
+                  cache: poetry
+                  # cache-dependency-path: pyproject.toml
 
             - name: Install dependencies
-              run: |-
-                  set -ex
-                  python -m pip install -r .github/files/requirements-dev.txt
-                  poetry config virtualenvs.create false --local
-                  poetry install
+              run: poetry install --with dev
 
             - name: Analysing the code with pylint
-              run: |+
-                  set -ex
-                  pylint $(git ls-files '*.py')
+              run: poetry run pylint $(git ls-files '*.py')
 
     black:
         runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                python-version: ["3.10", "3.11", "3.12"]
         name: black
         steps:
             - name: Checkout
               uses: actions/checkout@v4
 
-            - name: Set up Python "3.10"
+            - name: Install poetry 1.8.4
+              run: pipx install poetry==1.8.4
+
+            - name: Set up Python "${{ matrix.python-version }}"
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: pip
-                  cache-dependency-path: .github/files/requirements-dev.txt
+                  python-version: "${{ matrix.python-version }}"
+                  cache: poetry
+                  # cache-dependency-path: pyproject.toml
 
             - name: Install dependencies
-              run: |-
-                  set -ex
-                  python -m pip install -r .github/files/requirements-dev.txt
-                  poetry config virtualenvs.create false --local
-                  poetry install
+              run: poetry install --with dev
 
             - name: Analysing the code with black
-              run: |+
-                  set -ex
-                  black --check $(git ls-files '*.py')
+              run: poetry run black --check $(git ls-files '*.py')
     isort:
         runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                python-version: ["3.10", "3.11", "3.12"]
         name: isort
         steps:
             - name: Checkout
               uses: actions/checkout@v4
 
-            - name: Set up Python "3.10"
+            - name: Install poetry 1.8.4
+              run: pipx install poetry==1.8.4
+
+            - name: Set up Python "${{ matrix.python-version }}"
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: pip
-                  cache-dependency-path: .github/files/requirements-dev.txt
+                  python-version: "${{ matrix.python-version }}"
+                  cache: poetry
+                  # cache-dependency-path: pyproject.toml
 
             - name: Install dependencies
-              run: |-
-                  set -ex
-                  python -m pip install -r .github/files/requirements-dev.txt
-                  poetry config virtualenvs.create false --local
-                  poetry install
+              run: poetry install --with dev
 
             - name: Analysing the code with isort
-              run: |+
-                  set -ex
-                  isort --check-only $(git ls-files '*.py')
+              run: poetry run isort --check-only $(git ls-files '*.py')
     mypy:
         runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                python-version: ["3.10", "3.11", "3.12"]
         name: mypy
         steps:
             - name: Checkout
               uses: actions/checkout@v4
 
-            - name: Set up Python "3.10"
+            - name: Install poetry 1.8.4
+              run: pipx install poetry==1.8.4
+
+            - name: Set up Python "${{ matrix.python-version }}"
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: pip
-                  cache-dependency-path: .github/files/requirements-dev.txt
+                  python-version: "${{ matrix.python-version }}"
+                  cache: poetry
+                  # cache-dependency-path: pyproject.toml
 
             - name: Install dependencies
-              run: |-
-                  set -ex
-                  python -m pip install -r .github/files/requirements-dev.txt
-                  poetry config virtualenvs.create false --local
-                  poetry install
+              run: poetry install --with dev
 
             - name: Analysing the code with mypy
-              run: |+
-                  set -ex
-                  mypy $(git ls-files '*.py') --check-untyped-defs
+              run: poetry run mypy $(git ls-files '*.py')
 
     yamllint:
         runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                python-version: ["3.10", "3.11", "3.12"]
         name: yamllint
         steps:
             - name: Checkout
               uses: actions/checkout@v4
 
-            - name: Set up Python "3.10"
+            - name: Install poetry 1.8.4
+              run: pipx install poetry==1.8.4
+
+            - name: Set up Python "${{ matrix.python-version }}"
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: pip
-                  cache-dependency-path: .github/files/requirements-dev.txt
+                  python-version: "${{ matrix.python-version }}"
+                  cache: poetry
+                  # cache-dependency-path: pyproject.toml
 
             - name: Install dependencies
-              run: |-
-                  set -ex
-                  python -m pip install -r .github/files/requirements-dev.txt
-                  poetry config virtualenvs.create false --local
-                  poetry install
+              run: poetry install --with dev
 
             - name: Analysing the code with yamllint
-              run: |+
-                  set -ex
-                  yamllint .
+              run: poetry run yamllint .
 
     ansible-lint:
         runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                python-version: ["3.10", "3.11", "3.12"]
         name: ansible-lint
         steps:
             - name: Checkout
               uses: actions/checkout@v4
 
-            - name: Set up Python "3.10"
+            - name: Install poetry 1.8.4
+              run: pipx install poetry==1.8.4
+
+            - name: Set up Python "${{ matrix.python-version }}"
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.10"
-                  cache: pip
-                  cache-dependency-path: .github/files/requirements-dev.txt
+                  python-version: "${{ matrix.python-version }}"
+                  cache: poetry
+                  # cache-dependency-path: pyproject.toml
 
             - name: Cache ansible
               uses: actions/cache@v4
@@ -161,14 +173,9 @@ jobs:
                   key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
 
             - name: Install dependencies
-              run: |-
-                  set -ex
-                  python -m pip install -r .github/files/requirements-dev.txt
-                  poetry config virtualenvs.create false --local
+              run: |+
                   poetry install
                   ansible-galaxy install -r requirements.yml
 
             - name: Analysing the code with ansible-lint
-              run: |+
-                  set -ex
-                  ansible-lint
+              run: poetry run ansible-lint
