@@ -2174,7 +2174,7 @@ tests = ["coverage[toml] (==5.0.4)", "pytest (>=6.0.0,<7.0.0)"]
 
 [[package]]
 name = "pylib-arpanrec"
-version = "1.0.0"
+version = "1.1.0"
 description = "Common python API's"
 optional = false
 python-versions = "^3.10"
@@ -2198,8 +2198,8 @@ requests = "^2.32.3"
 [package.source]
 type = "git"
 url = "https://github.com/arpanrec/pylib.git"
-reference = "develop"
-resolved_reference = "b7c6e60167c30aa8f902d70aaa770ac410220bb0"
+reference = "1.1.0"
+resolved_reference = "37ab03534cffc9f87c92d04672a96da3feede7d2"
 
 [[package]]
 name = "pylint"
@@ -3239,4 +3239,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "e40ebbb2156bcb9961e3b856f042ce16e61b29a6c8904ebae1e7a5b766995761"
+content-hash = "d827de15a5bbb939207fd43482634cd79aed4fa5fa36ecc386c86d8f627273de"

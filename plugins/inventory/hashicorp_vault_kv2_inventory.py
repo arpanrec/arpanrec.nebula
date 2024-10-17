@@ -9,7 +9,7 @@ Requirements: Python 3 or higher
 import json
 import os
 from collections.abc import MutableMapping  # type: ignore
-from typing import Dict
+from typing import Any, Dict
 
 import hvac  # type: ignore
 import yaml
@@ -86,7 +86,7 @@ DOCUMENTATION = r"""
 NoneType = type(None)
 
 
-def file_or_string(value: str) -> str:
+def file_or_string(value: str | Dict[Any, Any]) -> Dict[Any, Any]:
     """Read a file if the value is a file path, otherwise return the value as is"""
     if value is None:
         return None
@@ -104,7 +104,7 @@ def file_or_string(value: str) -> str:
             if file_extension in [".json"]:
                 return json.load(f)
             return yaml.safe_load(f)
-    return value
+    raise ValueError(f"Unsupported value type: {type(value)}")
 
 
 class InventoryModule(BaseFileInventoryPlugin):
@@ -118,7 +118,7 @@ class InventoryModule(BaseFileInventoryPlugin):
     hvac_client: hvac.Client
     hvac_kv2_mount_point: str
 
-    def parse(self, inventory: InventoryData, loader: DataLoader, path, cache=False):
+    def parse(self, inventory: InventoryData, loader: DataLoader, path: str, cache: bool = False) -> None:
         """parse and populate the inventory with data"""
 
         super().parse(inventory, loader, path)
@@ -132,8 +132,8 @@ class InventoryModule(BaseFileInventoryPlugin):
         hvac_client_configuration = file_or_string(ansible_inventory_dict.get("hvac_client_configuration", {}))
         hvac_client_auth_method = file_or_string(ansible_inventory_dict.get("hvac_client_auth_method", None))
         hvac_client_auth_config = file_or_string(ansible_inventory_dict.get("hvac_client_auth_config", {}))
-        self.hvac_kv2_mount_point = file_or_string(ansible_inventory_dict.get("hvac_kv2_mount_point", "secret"))
-        hvac_kv2_path = file_or_string(ansible_inventory_dict.get("hvac_kv2_path", "ansible_inventory"))
+        self.hvac_kv2_mount_point = str(file_or_string(ansible_inventory_dict.get("hvac_kv2_mount_point", "secret")))
+        hvac_kv2_path: str = str(file_or_string(ansible_inventory_dict.get("hvac_kv2_path", "ansible_inventory")))
 
         if hvac_kv2_path.startswith("/") or hvac_kv2_path.endswith("/"):
             raise AnsibleParserError(
@@ -141,7 +141,7 @@ class InventoryModule(BaseFileInventoryPlugin):
             )
 
         if "cert" in hvac_client_configuration.keys():
-            cert_list: list = hvac_client_configuration["cert"]
+            cert_list: list[str] = hvac_client_configuration["cert"]
             hvac_client_configuration["cert"] = tuple(cert_list)
 
         self.hvac_client = hvac.Client(**hvac_client_configuration)
@@ -186,7 +186,7 @@ class InventoryModule(BaseFileInventoryPlugin):
         for group_name in config:  # type: ignore
             self._parse_group(group_name, config[group_name])
 
-    def _parse_group(self, group, group_data):  # pylint: disable=too-many-branches
+    def _parse_group(self, group: str, group_data: Any) -> Any:  # pylint: disable=too-many-branches
 
         if isinstance(group_data, (MutableMapping, NoneType)):  # type: ignore[misc]
 
@@ -243,7 +243,7 @@ class InventoryModule(BaseFileInventoryPlugin):
 
         return group
 
-    def _parse_host(self, host_pattern):
+    def _parse_host(self, host_pattern: Any) -> tuple[list[str], int]:
         """
         Each host key can be a pattern, try to process it and add variables as needed
         """
@@ -255,7 +255,7 @@ class InventoryModule(BaseFileInventoryPlugin):
             ) from e
         return hostnames, port
 
-    def _filter_null_from_vault(self, data):
+    def _filter_null_from_vault(self, data: Any) -> Any:
         """Filter out null values from HashiCorp Vault"""
         if data is None:
             return None
@@ -265,7 +265,7 @@ class InventoryModule(BaseFileInventoryPlugin):
             return data
         return data
 
-    def read_from_vault(self, path):
+    def read_from_vault(self, path: str) -> Dict[str, Any]:
         """Read data from HashiCorp Vault"""
         config = {}
 
