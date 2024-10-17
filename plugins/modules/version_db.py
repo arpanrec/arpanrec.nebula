@@ -1,12 +1,10 @@
-#!/usr/bin/env python3
-
-
 from __future__ import absolute_import, division, print_function
 
 from typing import Any, Dict
 
 from ansible.module_utils.basic import AnsibleModule  # type: ignore
-from ansible.module_utils.vdb import get_version
+from ansible_collections.arpanrec.nebula.plugins.module_utils.vdb import get_version
+# from ansible.module_utils.vdb import get_version
 
 # pylint: disable=C0103,invalid-name
 __metaclass__ = type

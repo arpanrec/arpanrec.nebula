@@ -1,7 +1,6 @@
 ---
 - name: Golang | Molecule | Verify
   hosts: all
-  gather_facts: false
   tasks:
       - name: Golang | Molecule | Verify | Import Roles for variables
         arpanrec.nebula.version_db:
