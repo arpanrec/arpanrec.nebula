@@ -21,7 +21,7 @@ provisioner:
         converge: converge.yml
         prepare: prepare.yml
     env:
-      ANSIBLE_VERBOSITY: 1
+        ANSIBLE_VERBOSITY: 1
     inventory:
         group_vars:
             all:
