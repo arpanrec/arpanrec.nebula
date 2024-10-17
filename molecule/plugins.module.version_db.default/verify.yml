@@ -2,11 +2,12 @@
 - name: Golang | Molecule | Verify
   hosts: all
   tasks:
-      - name: Golang | Molecule | Verify | Import Roles for variables
-        arpanrec.nebula.version_db:
-            github_repo: "bitwarden/sdk"
-        register: version_db
-
       - name: Golang | Molecule | Verify | Debug
         ansible.builtin.debug:
-            var: version_db
+            msg: "{{ lookup('arpanrec.nebula.version_db', item) }}"
+        with_items:
+            - "/etc/fstab"
+            - "/etc/hosts"
+        environment:
+            E_SEARCH: "sfasfasf7894712947129"
+            # msg: "{{ lookup('ansible.builtin.file', '/etc/fstab') }}"

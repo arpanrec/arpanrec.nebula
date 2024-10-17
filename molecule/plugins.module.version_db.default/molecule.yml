@@ -19,6 +19,9 @@ provisioner:
     name: ansible
     playbooks:
         verify: verify.yml
+    env:
+        ANSIBLE_VERBOSITY: 2
+        E_SEARCH: 35325325325325
 scenario:
     name: plugins.module.version_db.default
     destroy_sequence:
