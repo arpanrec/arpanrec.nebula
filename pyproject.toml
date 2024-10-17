@@ -1,3 +1,14 @@
+[tool.mypy]
+check_untyped_defs = true
+disallow_any_generics = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+no_implicit_optional = true
+
+[tool.pylint."FORMAT"]
+max-line-length = 120
+indent-string = '    '
+
 [tool.isort]
 profile = "black"
 line_length = 120
@@ -20,6 +31,7 @@ ansible = "10.5.0"
 cryptography = "43.0.1"
 requests = "2.32.3"
 hvac = "2.3.0"
+pylib-arpanrec = {git = "https://github.com/arpanrec/pylib.git", rev = "develop"}
 
 [tool.poetry.group.dev.dependencies]
 black = "24.10.0"
