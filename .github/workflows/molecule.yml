@@ -42,7 +42,7 @@ jobs:
               run: poetry install
 
             - name: Run Molecule Test
-              run: molecule test -s role.linux_patching.default
+              run: poetry run molecule test -s role.linux_patching.default
 
     molecule_test_role_user_add:
         runs-on: ubuntu-latest
@@ -79,7 +79,7 @@ jobs:
               run: poetry install
 
             - name: Run Molecule Test
-              run: molecule test -s role.user_add.default
+              run: poetry run molecule test -s role.user_add.default
 
     molecule_test_role_code:
         runs-on: ubuntu-latest
@@ -113,7 +113,7 @@ jobs:
               run: poetry install
 
             - name: Run Molecule Test
-              run: molecule test -s role.code.default
+              run: poetry run molecule test -s role.code.default
 
     molecule_test_role_java:
         runs-on: ubuntu-latest
@@ -147,7 +147,7 @@ jobs:
               run: poetry install
 
             - name: Run Molecule Test
-              run: molecule test -s role.java.default
+              run: poetry run molecule test -s role.java.default
 
     molecule_test_role_themes:
         runs-on: ubuntu-latest
@@ -181,7 +181,7 @@ jobs:
               run: poetry install
 
             - name: Run Molecule Test
-              run: molecule test -s role.themes.default
+              run: poetry run molecule test -s role.themes.default
 
     molecule_test_role_terminal:
         runs-on: ubuntu-latest
@@ -215,7 +215,7 @@ jobs:
               run: poetry install
 
             - name: Run Molecule Test
-              run: molecule test -s role.terminal.default
+              run: poetry run molecule test -s role.terminal.default
 
     molecule_test_role_go:
         runs-on: ubuntu-latest
@@ -249,7 +249,7 @@ jobs:
               run: poetry install
 
             - name: Run Molecule Test
-              run: molecule test -s role.go.default
+              run: poetry run molecule test -s role.go.default
 
     molecule_test_role_nodejs:
         runs-on: ubuntu-latest
@@ -283,7 +283,7 @@ jobs:
               run: poetry install
 
             - name: Run Molecule Test
-              run: molecule test -s role.nodejs.default
+              run: poetry run molecule test -s role.nodejs.default
 
     molecule_test_role_bws:
         runs-on: ubuntu-latest
@@ -317,7 +317,7 @@ jobs:
               run: poetry install
 
             - name: Run Molecule Test
-              run: molecule test -s role.bws.default
+              run: poetry run molecule test -s role.bws.default
 
     molecule_test_role_bitwarden_desktop:
         runs-on: ubuntu-latest
@@ -351,7 +351,7 @@ jobs:
               run: poetry install
 
             - name: Run Molecule Test
-              run: molecule test -s role.bitwarden_desktop.default
+              run: poetry run molecule test -s role.bitwarden_desktop.default
 
     molecule_test_role_mattermost_desktop:
         runs-on: ubuntu-latest
@@ -385,7 +385,7 @@ jobs:
               run: poetry install
 
             - name: Run Molecule Test
-              run: molecule test -s role.mattermost_desktop.default
+              run: poetry run molecule test -s role.mattermost_desktop.default
 
     molecule_test_role_gnome:
         runs-on: ubuntu-latest
@@ -419,7 +419,7 @@ jobs:
               run: poetry install
 
             - name: Run Molecule Test
-              run: molecule test -s role.gnome.default
+              run: poetry run molecule test -s role.gnome.default
 
     molecule_test_role_postman:
         runs-on: ubuntu-latest
@@ -453,7 +453,7 @@ jobs:
               run: poetry install
 
             - name: Run Molecule Test
-              run: molecule test -s role.postman.default
+              run: poetry run molecule test -s role.postman.default
 
     molecule_test_role_telegram_desktop:
         runs-on: ubuntu-latest
@@ -487,7 +487,7 @@ jobs:
               run: poetry install
 
             - name: Run Molecule Test
-              run: molecule test -s role.telegram_desktop.default
+              run: poetry run molecule test -s role.telegram_desktop.default
 
     molecule_test_role_ssh_hardening:
         runs-on: ubuntu-latest
@@ -521,7 +521,7 @@ jobs:
               run: poetry install
 
             - name: Run Molecule Test
-              run: molecule test -s role.ssh_hardening.default
+              run: poetry run molecule test -s role.ssh_hardening.default
 
     molecule_test_role_get_certificate_ownca:
         runs-on: ubuntu-latest
@@ -555,7 +555,7 @@ jobs:
               run: poetry install
 
             - name: Run Molecule Test
-              run: molecule test -s role.get_certificate_ownca.default
+              run: poetry run molecule test -s role.get_certificate_ownca.default
 
     molecule_test_role_terraform:
         runs-on: ubuntu-latest
@@ -589,7 +589,7 @@ jobs:
               run: poetry install
 
             - name: Run Molecule Test
-              run: molecule test -s role.terraform.default
+              run: poetry run molecule test -s role.terraform.default
 
     molecule_test_role_vault:
         runs-on: ubuntu-latest
@@ -623,7 +623,7 @@ jobs:
               run: poetry install
 
             - name: Run Molecule Test
-              run: molecule test -s role.vault.default
+              run: poetry run molecule test -s role.vault.default
 
     molecule_test_role_pulumi:
         runs-on: ubuntu-latest
@@ -657,4 +657,4 @@ jobs:
               run: poetry install
 
             - name: Run Molecule Test
-              run: molecule test -s role.pulumi.default
+              run: poetry run molecule test -s role.pulumi.default
