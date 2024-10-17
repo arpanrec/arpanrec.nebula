@@ -16,16 +16,7 @@ def run_module() -> None:
     """
     Search for the latest release in a GitHub repository.
     """
-    module_args: Dict[str, Dict[str, Any]] = {
-        "github_repo": {"type": "str", "required": True},
-        "github_token": {"type": "str", "required": False},
-        "github_api_url": {"type": "str", "required": False, "default": "https://api.github.com"},
-        "prefix": {"type": "str", "required": False},
-        "suffix": {"type": "str", "required": False},
-        "contains": {"type": "str", "required": False},
-        "max_pages": {"type": "int", "required": False, "default": 100},
-        "timeout": {"type": "int", "required": False, "default": 10},
-    }
+    module_args: Dict[str, Dict[str, Any]] = {}
 
     result = {"changed": False, "original_message": ""}
 
