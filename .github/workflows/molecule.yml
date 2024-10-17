@@ -39,7 +39,7 @@ jobs:
                   key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
 
             - name: Install dependencies
-              run: poetry install
+              run: poetry run molecule --with dev
 
             - name: Run Molecule Test
               run: poetry run molecule test -s role.linux_patching.default
@@ -76,7 +76,7 @@ jobs:
               run: pipx install poetry==1.8.4
 
             - name: Install dependencies
-              run: poetry install
+              run: poetry run molecule --with dev
 
             - name: Run Molecule Test
               run: poetry run molecule test -s role.user_add.default
@@ -110,7 +110,7 @@ jobs:
                   key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
 
             - name: Install dependencies
-              run: poetry install
+              run: poetry run molecule --with dev
 
             - name: Run Molecule Test
               run: poetry run molecule test -s role.code.default
@@ -144,7 +144,7 @@ jobs:
                   key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
 
             - name: Install dependencies
-              run: poetry install
+              run: poetry run molecule --with dev
 
             - name: Run Molecule Test
               run: poetry run molecule test -s role.java.default
@@ -178,7 +178,7 @@ jobs:
                   key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
 
             - name: Install dependencies
-              run: poetry install
+              run: poetry run molecule --with dev
 
             - name: Run Molecule Test
               run: poetry run molecule test -s role.themes.default
@@ -212,7 +212,7 @@ jobs:
                   key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
 
             - name: Install dependencies
-              run: poetry install
+              run: poetry run molecule --with dev
 
             - name: Run Molecule Test
               run: poetry run molecule test -s role.terminal.default
@@ -246,7 +246,7 @@ jobs:
                   key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
 
             - name: Install dependencies
-              run: poetry install
+              run: poetry run molecule --with dev
 
             - name: Run Molecule Test
               run: poetry run molecule test -s role.go.default
@@ -280,7 +280,7 @@ jobs:
                   key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
 
             - name: Install dependencies
-              run: poetry install
+              run: poetry run molecule --with dev
 
             - name: Run Molecule Test
               run: poetry run molecule test -s role.nodejs.default
@@ -314,7 +314,7 @@ jobs:
                   key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
 
             - name: Install dependencies
-              run: poetry install
+              run: poetry run molecule --with dev
 
             - name: Run Molecule Test
               run: poetry run molecule test -s role.bws.default
@@ -348,7 +348,7 @@ jobs:
                   key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
 
             - name: Install dependencies
-              run: poetry install
+              run: poetry run molecule --with dev
 
             - name: Run Molecule Test
               run: poetry run molecule test -s role.bitwarden_desktop.default
@@ -382,7 +382,7 @@ jobs:
                   key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
 
             - name: Install dependencies
-              run: poetry install
+              run: poetry run molecule --with dev
 
             - name: Run Molecule Test
               run: poetry run molecule test -s role.mattermost_desktop.default
@@ -416,7 +416,7 @@ jobs:
                   key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
 
             - name: Install dependencies
-              run: poetry install
+              run: poetry run molecule --with dev
 
             - name: Run Molecule Test
               run: poetry run molecule test -s role.gnome.default
@@ -450,7 +450,7 @@ jobs:
                   key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
 
             - name: Install dependencies
-              run: poetry install
+              run: poetry run molecule --with dev
 
             - name: Run Molecule Test
               run: poetry run molecule test -s role.postman.default
@@ -484,7 +484,7 @@ jobs:
                   key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
 
             - name: Install dependencies
-              run: poetry install
+              run: poetry run molecule --with dev
 
             - name: Run Molecule Test
               run: poetry run molecule test -s role.telegram_desktop.default
@@ -518,7 +518,7 @@ jobs:
                   key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
 
             - name: Install dependencies
-              run: poetry install
+              run: poetry run molecule --with dev
 
             - name: Run Molecule Test
               run: poetry run molecule test -s role.ssh_hardening.default
@@ -552,7 +552,7 @@ jobs:
                   key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
 
             - name: Install dependencies
-              run: poetry install
+              run: poetry run molecule --with dev
 
             - name: Run Molecule Test
               run: poetry run molecule test -s role.get_certificate_ownca.default
@@ -586,7 +586,7 @@ jobs:
                   key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
 
             - name: Install dependencies
-              run: poetry install
+              run: poetry run molecule --with dev
 
             - name: Run Molecule Test
               run: poetry run molecule test -s role.terraform.default
@@ -620,7 +620,7 @@ jobs:
                   key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
 
             - name: Install dependencies
-              run: poetry install
+              run: poetry run molecule --with dev
 
             - name: Run Molecule Test
               run: poetry run molecule test -s role.vault.default
@@ -654,7 +654,7 @@ jobs:
                   key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
 
             - name: Install dependencies
-              run: poetry install
+              run: poetry run molecule --with dev
 
             - name: Run Molecule Test
               run: poetry run molecule test -s role.pulumi.default

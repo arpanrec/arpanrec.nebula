@@ -41,7 +41,7 @@ jobs:
                   #cache-dependency-path: pyproject.toml
 
             - name: Install dependencies
-              run: poetry install
+              run: poetry run molecule --with dev
 
             - name: Analysing the code with bandit
               run: poetry run bandit -r $(git ls-files '*.py')
