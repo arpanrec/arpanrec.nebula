@@ -45,7 +45,7 @@ jobs:
 
             - name: Install node dependencies
               run: |+
-                  npm i semantic-release@24.0.0 \
+                  npm i semantic-release@24.1.2 \
                         @semantic-release/commit-analyzer@13.0.0 \
                         @semantic-release/release-notes-generator@14.0.1 \
                         @semantic-release/changelog@6.0.3 \
@@ -59,7 +59,7 @@ jobs:
                   git config --global user.name "${{ steps.import-gpg.outputs.name }}"
                   git config --global user.name "${{ steps.import-gpg.outputs.name }}"
                   echo "Removing old CHANGELOG.md" && rm -f CHANGELOG.md
-                  npx semantic-release@23.0.8 --extends ./.github/files/release.config.cjs
+                  npx semantic-release@24.1.2 --extends ./.github/files/release.config.cjs
               env:
                   GITHUB_TOKEN: "${{ secrets.GH_BOT_API_TOKEN }}"
                   GIT_AUTHOR_NAME: "${{ steps.import-gpg.outputs.name }}"
