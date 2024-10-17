@@ -3,6 +3,7 @@ Ansible Module for Searching the latest bitwarden client release version from gi
 """
 
 from __future__ import absolute_import, division, print_function
+from typing import Any
 
 import requests
 from ansible.module_utils.basic import AnsibleModule  # type: ignore
@@ -16,11 +17,11 @@ module: get_bitwarden_client_latest_github_release
 """
 
 
-def run_module(which="desktop"):
+def run_module(which: str = "desktop") -> None:
     """
     Get the latest bitwarden client release version from github
     """
-    module_args: dict = {}
+    module_args: dict[str, Any] = {}
 
     tag_version = None
     url = "https://api.github.com/repos/bitwarden/clients/releases"
@@ -66,7 +67,7 @@ def run_module(which="desktop"):
     module.exit_json(**result)
 
 
-def main():
+def main() -> None:
     """
     Python Main Module
     """
