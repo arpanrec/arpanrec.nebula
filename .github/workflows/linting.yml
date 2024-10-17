@@ -32,7 +32,7 @@ jobs:
                   #cache-dependency-path: pyproject.toml
 
             - name: Install dependencies
-              run: poetry run molecule --with dev
+              run: poetry install --with dev
 
             - name: Analysing the code with pylint
               run: poetry run pylint $(git ls-files '*.py')
@@ -59,7 +59,7 @@ jobs:
                   #cache-dependency-path: pyproject.toml
 
             - name: Install dependencies
-              run: poetry run molecule --with dev
+              run: poetry install --with dev
 
             - name: Analysing the code with black
               run: poetry run black --check $(git ls-files '*.py')
@@ -85,7 +85,7 @@ jobs:
                   #cache-dependency-path: pyproject.toml
 
             - name: Install dependencies
-              run: poetry run molecule --with dev
+              run: poetry install --with dev
 
             - name: Analysing the code with isort
               run: poetry run isort --check-only $(git ls-files '*.py')
@@ -111,7 +111,7 @@ jobs:
                   #cache-dependency-path: pyproject.toml
 
             - name: Install dependencies
-              run: poetry run molecule --with dev
+              run: poetry install --with dev
 
             - name: Analysing the code with mypy
               run: poetry run mypy $(git ls-files '*.py')
@@ -138,7 +138,7 @@ jobs:
                   #cache-dependency-path: pyproject.toml
 
             - name: Install dependencies
-              run: poetry run molecule --with dev
+              run: poetry install --with dev
 
             - name: Analysing the code with yamllint
               run: poetry run yamllint .
