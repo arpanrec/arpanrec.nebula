@@ -1,0 +1,12 @@
+---
+- name: Golang | Molecule | Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+      - name: Golang | Molecule | Verify | Import Roles for variables
+        arpanrec.nebula.version_db:
+        register: version_db
+
+      - name: Golang | Molecule | Verify | Debug
+        ansible.builtin.debug:
+            var: version_db

@@ -1,0 +1,38 @@
+---
+dependency:
+    name: galaxy
+    enabled: true
+    options:
+        ignore-certs: false
+        ignore-errors: false
+        role-file: requirements.yml
+        requirements-file: requirements.yml
+driver:
+    name: docker
+platforms:
+    - name: plugins_module_version_db_default
+      image: debian
+      hostname: plugins_module_version_db_default
+      dockerfile: Dockerfile.j2
+      pre_build_image: false
+provisioner:
+    name: ansible
+    playbooks:
+        verify: verify.yml
+scenario:
+    name: plugins.module.version_db.default
+    destroy_sequence:
+        - destroy
+    create_sequence:
+        - dependency
+        - create
+    test_sequence:
+        - syntax
+        - destroy
+        - dependency
+        - create
+        - verify
+        - idempotence
+        - destroy
+verifier:
+    name: ansible
