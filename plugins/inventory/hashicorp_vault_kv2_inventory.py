@@ -86,7 +86,7 @@ DOCUMENTATION = r"""
 NoneType = type(None)
 
 
-def file_or_string(value):
+def file_or_string(value: str) -> str:
     """Read a file if the value is a file path, otherwise return the value as is"""
     if value is None:
         return None

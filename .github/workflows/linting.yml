@@ -21,8 +21,8 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v4
 
-            - name: Install poetry
-              run: pipx install poetry
+            - name: Install poetry 1.8.4
+              run: pipx install poetry==1.8.4
 
             - name: Set up Python "${{ matrix.python-version }}"
               uses: actions/setup-python@v5
@@ -48,8 +48,8 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v4
 
-            - name: Install poetry
-              run: pipx install poetry
+            - name: Install poetry 1.8.4
+              run: pipx install poetry==1.8.4
 
             - name: Set up Python "${{ matrix.python-version }}"
               uses: actions/setup-python@v5
@@ -74,8 +74,8 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v4
 
-            - name: Install poetry
-              run: pipx install poetry
+            - name: Install poetry 1.8.4
+              run: pipx install poetry==1.8.4
 
             - name: Set up Python "${{ matrix.python-version }}"
               uses: actions/setup-python@v5
@@ -100,8 +100,8 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v4
 
-            - name: Install poetry
-              run: pipx install poetry
+            - name: Install poetry 1.8.4
+              run: pipx install poetry==1.8.4
 
             - name: Set up Python "${{ matrix.python-version }}"
               uses: actions/setup-python@v5
@@ -127,8 +127,8 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v4
 
-            - name: Install poetry
-              run: pipx install poetry
+            - name: Install poetry 1.8.4
+              run: pipx install poetry==1.8.4
 
             - name: Set up Python "${{ matrix.python-version }}"
               uses: actions/setup-python@v5
@@ -154,8 +154,8 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v4
 
-            - name: Install poetry
-              run: pipx install poetry
+            - name: Install poetry 1.8.4
+              run: pipx install poetry==1.8.4
 
             - name: Set up Python "${{ matrix.python-version }}"
               uses: actions/setup-python@v5

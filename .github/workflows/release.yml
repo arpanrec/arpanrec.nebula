@@ -30,22 +30,21 @@ jobs:
                   node-version: lts/*
                   cache-dependency-path: .github/files/package-lock.json
 
-            - name: Setup Python
+            - name: Install poetry 1.8.4
+              run: pipx install poetry==1.8.4
+
+            - name: Set up Python "3.12"
               uses: actions/setup-python@v5
               with:
                   python-version: "3.12"
-                  cache: "pip"
-                  cache-dependency-path: .github/files/requirements-dev.txt
+                  cache: "poetry"
+                  cache-dependency-path: pyproject.toml
 
             - name: Install python dependencies
-              run: |+
-                  set -ex
-                  pip install -r .github/files/requirements-dev.txt
+              run: poetry install
 
             - name: Install node dependencies
-              run: |+
-                  set -ex
-                  npm i semantic-release@24.0.0 \
+              run: npm i semantic-release@24.0.0 \
                       @semantic-release/commit-analyzer@13.0.0 \
                       @semantic-release/release-notes-generator@14.0.1 \
                       @semantic-release/changelog@6.0.3 \
