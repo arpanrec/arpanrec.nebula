@@ -4,6 +4,7 @@
   tasks:
       - name: Golang | Molecule | Verify | Import Roles for variables
         arpanrec.nebula.version_db:
+            github_repo: "bitwarden/sdk"
         register: version_db
 
       - name: Golang | Molecule | Verify | Debug

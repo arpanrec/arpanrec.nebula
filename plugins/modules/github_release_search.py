@@ -8,7 +8,7 @@ from __future__ import absolute_import, division, print_function
 from typing import Any, Dict
 
 from ansible.module_utils.basic import AnsibleModule  # type: ignore
-from pylib_arpanrec.utils.github_helper import github_release_search
+from ansible_collections.arpanrec.nebula.plugins.module_utils.version_db import github_release_search
 
 # pylint: disable=C0103,invalid-name
 __metaclass__ = type
