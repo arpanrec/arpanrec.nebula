@@ -29,7 +29,7 @@ jobs:
               with:
                   python-version: "${{ matrix.python-version }}"
                   cache: poetry
-                  cache-dependency-path: pyproject.toml
+                  #cache-dependency-path: pyproject.toml
 
             - name: Install dependencies
               run: poetry install
@@ -56,7 +56,7 @@ jobs:
               with:
                   python-version: "${{ matrix.python-version }}"
                   cache: poetry
-                  cache-dependency-path: pyproject.toml
+                  #cache-dependency-path: pyproject.toml
 
             - name: Install dependencies
               run: poetry install
@@ -82,7 +82,7 @@ jobs:
               with:
                   python-version: "${{ matrix.python-version }}"
                   cache: poetry
-                  cache-dependency-path: pyproject.toml
+                  #cache-dependency-path: pyproject.toml
 
             - name: Install dependencies
               run: poetry install
@@ -108,7 +108,7 @@ jobs:
               with:
                   python-version: "${{ matrix.python-version }}"
                   cache: poetry
-                  cache-dependency-path: pyproject.toml
+                  #cache-dependency-path: pyproject.toml
 
             - name: Install dependencies
               run: poetry install
@@ -135,7 +135,7 @@ jobs:
               with:
                   python-version: "${{ matrix.python-version }}"
                   cache: poetry
-                  cache-dependency-path: pyproject.toml
+                  #cache-dependency-path: pyproject.toml
 
             - name: Install dependencies
               run: poetry install
@@ -162,7 +162,7 @@ jobs:
               with:
                   python-version: "${{ matrix.python-version }}"
                   cache: poetry
-                  cache-dependency-path: pyproject.toml
+                  #cache-dependency-path: pyproject.toml
 
             - name: Cache ansible
               uses: actions/cache@v4
