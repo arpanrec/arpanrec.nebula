@@ -87,8 +87,6 @@ def run_module() -> None:
 
     module = AnsibleModule(argument_spec=module_args, supports_check_mode=True)
 
-    module.log(msg=f"Starting...{module.params["prefix"]}")
-
     tag_version = github_release_search(
         github_repo=module.params["github_repo"],
         github_token=module.params["github_token"],
