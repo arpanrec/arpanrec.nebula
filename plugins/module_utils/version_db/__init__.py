@@ -1,7 +1,7 @@
 import dataclasses
 import enum
 
-from ansible.utils.display import Display
+from ansible.utils.display import Display  # type: ignore
 
 from .grs import github_release_search
 
