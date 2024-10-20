@@ -29,10 +29,12 @@ scenario:
     destroy_sequence:
         - destroy
     create_sequence:
+        - dependency
         - create
     test_sequence:
         - syntax
         - destroy
+        - dependency
         - create
         - converge
         - verify

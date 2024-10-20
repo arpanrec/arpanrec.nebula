@@ -23,6 +23,8 @@ provisioner:
         ANSIBLE_VERBOSITY: 2
 scenario:
     name: plugins.lookup.version_db.default
+    converge_sequence:
+        - converge
     destroy_sequence:
         - destroy
     create_sequence:
@@ -33,7 +35,9 @@ scenario:
         - destroy
         - dependency
         - create
+        - converge
         - verify
+        - idempotence
         - destroy
 verifier:
     name: ansible
