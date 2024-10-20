@@ -10,9 +10,9 @@ dependency:
 driver:
     name: docker
 platforms:
-    - name: plugins_module_version_db_default
+    - name: plugins_lookup_version_db_default
       image: debian
-      hostname: plugins_module_version_db_default
+      hostname: plugins_lookup_version_db_default
       dockerfile: Dockerfile.j2
       pre_build_image: false
 provisioner:
@@ -21,9 +21,8 @@ provisioner:
         verify: verify.yml
     env:
         ANSIBLE_VERBOSITY: 2
-        E_SEARCH: 35325325325325
 scenario:
-    name: plugins.module.version_db.default
+    name: plugins.lookup.version_db.default
     destroy_sequence:
         - destroy
     create_sequence:
@@ -35,7 +34,6 @@ scenario:
         - dependency
         - create
         - verify
-        - idempotence
         - destroy
 verifier:
     name: ansible
