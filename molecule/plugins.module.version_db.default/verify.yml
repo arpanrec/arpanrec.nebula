@@ -1,13 +1,8 @@
 ---
 - name: Golang | Molecule | Verify
   hosts: all
+  gather_facts: true
   tasks:
       - name: Golang | Molecule | Verify | Debug
         ansible.builtin.debug:
-            msg: "{{ lookup('arpanrec.nebula.version_db', item) }}"
-        with_items:
-            - "/etc/fstab"
-            - "/etc/hosts"
-        environment:
-            E_SEARCH: "sfasfasf7894712947129"
-            # msg: "{{ lookup('ansible.builtin.file', '/etc/fstab') }}"
+            msg: "{{ lookup('arpanrec.nebula.version_db', 'bws') }}"

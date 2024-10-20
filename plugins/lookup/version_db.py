@@ -7,11 +7,14 @@ from __future__ import absolute_import, division, print_function
 
 __metaclass__ = type
 
+import json
+from dataclasses import asdict
 from typing import List, Dict, Any, Optional
 
 from ansible.errors import AnsibleLookupError  # type: ignore
 from ansible.plugins.lookup import LookupBase  # type: ignore
 from ansible.utils.display import Display  # type: ignore
+from ansible_collections.arpanrec.nebula.plugins.module_utils.version_db import get_version, VersionDetails
 
 DOCUMENTATION = """
 ---
@@ -28,14 +31,6 @@ DOCUMENTATION = """
             required: true
             type: list
             elements: str
-        e_search:
-            description:
-                - Field to retrieve, for example V(name) or V(id).
-                - If set to V(id), only zero or one element can be returned.
-                  Use the Jinja C(first) filter to get the only list element.
-                - If set to V(None) or V(''), or if O(_terms) is empty, records are not filtered by fields.
-            type: str
-            version_added: 5.7.0
 """
 
 
@@ -84,6 +79,11 @@ class LookupModule(LookupBase):
         """
         Run the lookup module.
         """
+        if not variables or not variables.get("ansible_facts"):
+            raise AnsibleLookupError(
+                "ansible_facts/ansible_architecture is expected,"
+                "make sure ansible_facts/ansible_architecture is present"
+            )
 
         self.set_options(var_options=variables, direct=kwargs)
 
@@ -92,10 +92,12 @@ class LookupModule(LookupBase):
 
         if len(terms) > 1:
             raise AnsibleLookupError(f"Only one term is allowed for lookup, got {len(terms)}, {terms}")
+        version_details: VersionDetails
+        try:
+            version_details = get_version(
+                ansible_architecture=str(variables.get("ansible_architecture")), app_name=terms[0]
+            )
+        except Exception as e:
+            raise AnsibleLookupError(f"Failed to get version details for {terms[0]}: {e}") from e
 
-        for term in terms:
-            display.debug("File lookup term: %s" % term)
-            display.v("File lookup term: %s" % term)
-        display.v("Variables: %s" % self.get_option("e_search"))
-
-        return ["ret", "sfasf,safas"]
+        return [json.dumps(asdict(version_details))]
