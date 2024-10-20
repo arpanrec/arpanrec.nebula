@@ -18,7 +18,7 @@ provisioner:
     name: ansible
     vvv: true
     env:
-        ANSIBLE_VERBOSITY: 5
+        ANSIBLE_VERBOSITY: 1
     playbooks:
         converge: converge.yml
         verify: verify.yml
