@@ -10,20 +10,19 @@ dependency:
 driver:
     name: docker
 platforms:
-    - name: debian
+    - name: plugins_lookup_version_db_default
       image: debian
+      hostname: plugins_lookup_version_db_default
       dockerfile: Dockerfile.j2
       pre_build_image: false
 provisioner:
     name: ansible
-    vvv: true
-    env:
-        ANSIBLE_VERBOSITY: 1
     playbooks:
-        converge: converge.yml
         verify: verify.yml
+    env:
+        ANSIBLE_VERBOSITY: 2
 scenario:
-    name: role.bws.default
+    name: plugins.lookup.version_db.default
     converge_sequence:
         - converge
     destroy_sequence:

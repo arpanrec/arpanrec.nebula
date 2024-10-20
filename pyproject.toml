@@ -26,27 +26,25 @@ package-mode = false
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
-ansible = "10.5.0"
-cryptography = "43.0.1"
-requests = "2.32.3"
-hvac = "2.3.0"
-pylib-arpanrec = {git = "https://github.com/arpanrec/pylib.git", rev = "1.1.0"}
+python = ">=3.10,<3.13"
+ansible = ">=10.5.0"
+hvac = ">=2.3.0"
 
 [tool.poetry.group.dev.dependencies]
-black = "24.10.0"
-pylint = "3.3.1"
-mypy = "1.12.0"
-molecule-plugins = "23.5.3"
-molecule = "24.9.0"
-docker = "7.1.0" # Needed for molecule docker driver
-ansible-lint = { version = "24.9.2", markers = "platform_system != 'Windows'" }
-poetry-plugin-export = "1.8.0"
-pyright = "1.1.385"
-types-requests = "2.32.0.20241016"
-types-pyyaml = "6.0.12.20240917"
-bandit = "1.7.10"
-isort = "5.13.2"
+black = ">=24.10.0,<25.0.0"
+pylint = ">=3.3.1,<4.0.0"
+mypy = ">=1.12.1,<2.0.0"
+molecule-plugins = ">=23.5.3,<24.0.0"
+molecule = ">=24.9.0,<25.0.0"
+docker = ">=7.1.0,<8.0.0" # Needed for molecule docker driver
+ansible-lint = { version = ">=24.9.2,<25.0.0", markers = "platform_system != 'Windows'" }
+poetry-plugin-export = ">=1.8.0,<2.0.0"
+pyright = ">=1.1.385,<2.0.0"
+types-requests = ">=2.32.0.20241016,<3.0.0"
+types-pyyaml = ">=6.0.12.20240917,<7.0.0"
+bandit = ">=1.7.10,<2.0.0"
+isort = ">=5.13.2,<6.0.0"
+neovim = ">=0.3.1,<1.0.0"
 
 [build-system]
 requires = ["poetry-core"]

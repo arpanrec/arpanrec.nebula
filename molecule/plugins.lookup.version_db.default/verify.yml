@@ -1,0 +1,8 @@
+---
+- name: Golang | Molecule | Verify
+  hosts: all
+  gather_facts: true
+  tasks:
+      - name: Golang | Molecule | Verify | Debug
+        ansible.builtin.debug:
+            msg: "{{ lookup('arpanrec.nebula.version_db', 'bws') }}"
