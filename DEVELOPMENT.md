@@ -28,6 +28,7 @@ ENABLE_USER_SITE: False
 Create a symlink of the `arpanrec.nebula` directory to the `ansible_collections` directory in the `site-packages` directory.
 
 ```bash
-mkdir -p /home/arpan/.cache/pypoetry/virtualenvs/nebula-a40OZ9WJ-py3.12/lib/python3.12/site-packages/ansible_collections/arpanrec/nebula
+rm -rf /home/arpan/.cache/pypoetry/virtualenvs/nebula-a40OZ9WJ-py3.12/lib/python3.12/site-packages/ansible_collections/arpanrec/nebula
+mkdir -p /home/arpan/.cache/pypoetry/virtualenvs/nebula-a40OZ9WJ-py3.12/lib/python3.12/site-packages/ansible_collections/arpanrec
 ln -s /home/arpan/workspace/arpanrec.nebula /home/arpan/.cache/pypoetry/virtualenvs/nebula-a40OZ9WJ-py3.12/lib/python3.12/site-packages/ansible_collections/arpanrec/nebula
 ```
