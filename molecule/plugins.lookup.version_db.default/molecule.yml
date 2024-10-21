@@ -20,7 +20,7 @@ provisioner:
     playbooks:
         verify: verify.yml
     env:
-        ANSIBLE_VERBOSITY: 2
+        ANSIBLE_VERBOSITY: 5
 scenario:
     name: plugins.lookup.version_db.default
     converge_sequence:
