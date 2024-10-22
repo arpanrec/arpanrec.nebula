@@ -19,7 +19,11 @@ provisioner:
     name: ansible
     vvv: true
     env:
-        ANSIBLE_VERBOSITY: 1
+        ANSIBLE_VERBOSITY: 5
+    inventory:
+        group_vars:
+            all:
+                # terraform_rv_version: 1.0.0
     playbooks:
         converge: converge.yml
         verify: verify.yml

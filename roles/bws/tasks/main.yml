@@ -7,10 +7,6 @@
       bws_sdk_version_details: "{{ lookup('arpanrec.nebula.version_db', 'bws',
           bws_sdk_version_tag=bws_sdk_version_tag) }}"
 
-- name: Bitwarden CLI | BWS SDK | Set Download URL
-  ansible.builtin.set_fact:
-      bws_sdk_download_url: "{{ bws_sdk_version_details.download_link }}"
-
 - name: Bitwarden CLI | BWS SDK | Get downloaded file stat
   ansible.builtin.stat:
       path: "{{ bws_sdk_tmp_zip_download_path }}"
@@ -21,8 +17,9 @@
   block:
       - name: Bitwarden CLI | BWS SDK | New Install | Download
         ansible.builtin.get_url:
-            url: "{{ bws_sdk_download_url }}"
+            url: "{{ bws_sdk_version_details.download_link }}"
             dest: "{{ bws_sdk_tmp_zip_download_path }}"
+            checksum: "{{ bws_sdk_version_details.checksum_sha256 | default(omit) }}"
             mode: "0700"
 
       - name: Bitwarden CLI | BWS SDK | New Install | Remove old directory
@@ -32,8 +29,21 @@
         with_items:
             - "{{ bws_sdk_bin_dir }}/bws"
             - "{{ bws_sdk_tmp_dir }}/bws"
+  rescue:
+      - name: Bitwarden CLI | BWS SDK | New Install | Fail | Cleanup
+        ansible.builtin.file:
+            path: "{{ item }}"
+            state: absent
+        with_items:
+            - "{{ bws_sdk_bin_dir }}/bws"
+            - "{{ bws_sdk_tmp_dir }}/bws"
+            - "{{ bws_sdk_tmp_zip_download_path }}"
 
-- name: Bitwarden CLI | BWS SDK | New Install | Extract
+      - name: Bitwarden CLI | BWS SDK | New Install | Fail | Fail
+        ansible.builtin.fail:
+            msg: Something went wrong, check the errors above
+
+- name: Bitwarden CLI | BWS SDK | New Install | Extract to tmp directory
   ansible.builtin.unarchive:
       src: "{{ bws_sdk_tmp_zip_download_path }}"
       dest: "{{ bws_sdk_tmp_dir }}"

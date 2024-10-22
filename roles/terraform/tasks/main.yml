@@ -13,10 +13,6 @@
       terraform_tmp_version_details: "{{ lookup('arpanrec.nebula.version_db', 'terraform',
           terraform_rv_version=terraform_rv_version) }}"
 
-- name: Terraform | Set Download URL
-  ansible.builtin.set_fact:
-      terraform_rv_download_url: "{{ terraform_tmp_version_details.download_link }}"
-
 - name: Terraform | Get downloaded file stat
   ansible.builtin.stat:
       path: "{{ terraform_rv_tarball_download_path }}"
@@ -33,7 +29,8 @@
   block:
       - name: "Terraform | New Download | Download tarball version: {{ terraform_rv_version }}"
         ansible.builtin.get_url:
-            url: "{{ terraform_rv_download_url }}"
+            url: "{{ terraform_tmp_version_details.download_link }}"
+            checksum: "{{ terraform_tmp_version_details.checksum_sha256 | default(omit) }}"
             dest: "{{ terraform_rv_tarball_download_path }}"
             mode: "0700"
   rescue:

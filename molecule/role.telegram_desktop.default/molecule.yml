@@ -18,7 +18,7 @@ platforms:
 provisioner:
     name: ansible
     env:
-        ANSIBLE_VERBOSITY: 3
+        ANSIBLE_VERBOSITY: 1
     playbooks:
         converge: converge.yml
 scenario:
