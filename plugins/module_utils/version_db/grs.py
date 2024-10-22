@@ -6,13 +6,16 @@ import os
 from typing import Dict, Optional
 
 import requests
+from ansible.utils.display import Display  # type: ignore
+
+display = Display()
 
 
 # pylint: disable=R0913,R0914
 def github_release_search(
     github_repo: str,
-    github_token: Optional[str] = os.getenv("GITHUB_TOKEN", None),
-    github_api_url: str = "https://api.github.com",
+    github_api_url: str,
+    github_token: Optional[str],
     prefix: Optional[str] = None,
     suffix: Optional[str] = None,
     contains: Optional[str] = None,
@@ -42,6 +45,17 @@ def github_release_search(
     Returns:
         str: The latest tag in the GitHub repository.
     """
+    if not github_token:
+        github_token = os.getenv("GITHUB_TOKEN", None)
+
+    if not github_api_url:
+        github_api_url = "https://api.github.com"
+
+    if not max_pages or max_pages < 1:
+        max_pages = 100
+
+    if not timeout or timeout < 1:
+        timeout = 10
 
     tag_version: Optional[str] = None
     url: str = f"{github_api_url}/repos/{github_repo}/releases"

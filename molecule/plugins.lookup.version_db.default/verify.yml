@@ -6,3 +6,10 @@
       - name: Golang | Molecule | Verify | Debug
         ansible.builtin.debug:
             msg: "{{ lookup('arpanrec.nebula.version_db', 'bws', app_name11='app_name_231532562375237') }}"
+
+      - name: Golang | Molecule | Verify | Debug
+        ansible.builtin.debug:
+            msg: "{{ version_details.download_link }}"
+        vars:
+            version_details: "{{ lookup('arpanrec.nebula.version_db', 'bws',
+                github_api_url='https://app_name_231532562375237') }}"

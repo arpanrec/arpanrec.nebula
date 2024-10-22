@@ -27,10 +27,9 @@ DOCUMENTATION = """
         - Get version details.
     options:
         _terms:
-            description: Key(s) to fetch values for from login info.
+            description: The app name.
             required: true
-            type: list
-            elements: str
+            type: str
 """
 
 
@@ -70,6 +69,6 @@ class LookupModule(LookupBase):
         try:
             version_details = get_version(app_name=terms[0], variables=variables, **kwargs)
         except Exception as e:
-            raise AnsibleLookupError(f"Failed to get version details for {terms[0]}: {e}") from e
+            raise AnsibleLookupError(f"Failed to get version details for {terms[0]}: {str(e)}") from e
 
-        return [json.dumps(asdict(version_details))]
+        return [json.dumps(asdict(version_details))]  # type: ignore
