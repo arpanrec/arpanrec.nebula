@@ -15,6 +15,7 @@ Variables:
     - If set to `fetch_latest_version`, it will fetch the latest release from the github api.
   - Type: `str`.
   - Required: `false`.
+  - Default: `fetch_latest_version`.
   - Example: `bws-v1.0.0`.
 
 - `bws_sdk_bin_dir`

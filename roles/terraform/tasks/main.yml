@@ -8,19 +8,14 @@
       state: directory
       mode: "0700"
 
-- name: Terraform | Get Release
-  when: terraform_rv_version is not defined
-  block:
-      - name: Terraform | Get Terraform Release from Github API
-        ansible.builtin.uri:
-            url: "https://api.github.com/repos/hashicorp/terraform/releases/latest"
-            return_content: true
-            status_code: 200
-        register: terraform_rv_release_from_github
+- name: Terraform | Get Version Details
+  ansible.builtin.set_fact:
+      terraform_tmp_version_details: "{{ lookup('arpanrec.nebula.version_db', 'terraform',
+          terraform_rv_version=terraform_rv_version) }}"
 
-      - name: Terraform | Set releases
-        ansible.builtin.set_fact:
-            terraform_rv_version: "{{ terraform_rv_release_from_github.json.tag_name }}"
+- name: Terraform | Set Download URL
+  ansible.builtin.set_fact:
+      terraform_rv_download_url: "{{ terraform_tmp_version_details.download_link }}"
 
 - name: Terraform | Get downloaded file stat
   ansible.builtin.stat:

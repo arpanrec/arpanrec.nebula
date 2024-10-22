@@ -18,6 +18,8 @@ class SupportedApps(enum.Enum):
 
     BWS = "bws"
 
+    TERRAFORM = "terraform"
+
 
 @dataclasses.dataclass
 class VersionDetails:
@@ -99,6 +101,10 @@ def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: igno
             from .bws import BWS  # pylint: disable=import-outside-toplevel
 
             app_details = BWS(*args, **kwargs)  # type: ignore
+        case SupportedApps.TERRAFORM.value:
+            from .terraform import Terraform  # pylint: disable=import-outside-toplevel
+
+            app_details = Terraform(*args, **kwargs)  # type: ignore
         case _:
             raise ValueError(f"Unsupported app: {app_name}")
 
