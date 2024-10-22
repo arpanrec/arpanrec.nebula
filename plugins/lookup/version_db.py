@@ -51,11 +51,6 @@ class LookupModule(LookupBase):
         """
         Run the lookup module.
         """
-        # if not variables or not variables.get("ansible_facts"):
-        #     raise AnsibleLookupError(
-        #         "ansible_facts/ansible_architecture is expected,"
-        #         "make sure ansible_facts/ansible_architecture is present"
-        #     )
 
         self.set_options(var_options=variables, direct=kwargs)
 

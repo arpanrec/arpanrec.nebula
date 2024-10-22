@@ -2,10 +2,12 @@ import abc
 import dataclasses
 import enum
 from typing import Any, Optional, Dict
-
+import json
 from ansible.utils.display import Display  # type: ignore
 
 display = Display()
+
+FETCH_LATEST_KEY = "fetch_latest_version"
 
 
 class SupportedApps(enum.StrEnum):
@@ -54,7 +56,7 @@ class AppDetails(abc.ABC):
         Get the version details for the app.
         """
 
-    def _get_ansible_architecture(self, ansible_to_expected: Optional[Dict[str, str]]) -> str:
+    def _get_ansible_architecture(self, ansible_to_expected: Optional[Dict[str, str]] = None) -> str:
         """
         Get the architecture from the Ansible facts.
         """
@@ -68,10 +70,13 @@ class AppDetails(abc.ABC):
         ansible_architecture: str = self._variables["ansible_architecture"]
 
         if not ansible_to_expected:
+            display.vvv(f"Ansible architecture selected as: {ansible_architecture}")
             return ansible_architecture
 
         if ansible_architecture not in ansible_to_expected:
-            raise ValueError(f"Unsupported architecture: {ansible_architecture}")
+            raise ValueError(
+                f"Unsupported architecture: {ansible_architecture}, expected: {json.dumps(ansible_to_expected)}"
+            )
         return ansible_to_expected[ansible_architecture]
 
     def get_version_details(self) -> VersionDetails:

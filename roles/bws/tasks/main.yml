@@ -2,19 +2,14 @@
 - name: Bitwarden CLI | Prerequisites
   ansible.builtin.import_tasks: prerequisites.yml
 
-- name: Bitwarden CLI | BWS SDK | Get Dynamic Version
-  when: bws_sdk_version_tag is not defined
-  block:
-      - name: Bitwarden CLI | BWS SDK | Get Latest Release from github
-        arpanrec.nebula.github_release_search:
-            github_repo: "bitwarden/sdk"
-            prefix: "bws-"
-        delegate_to: localhost
-        register: bws_sdk_version_for_github
+- name: Bitwarden CLI | BWS SDK | Get Version Details
+  ansible.builtin.set_fact:
+      bws_sdk_version_details: "{{ lookup('arpanrec.nebula.version_db', 'bws',
+          bws_sdk_version_tag=bws_sdk_version_tag) }}"
 
-      - name: Bitwarden CLI | BWS SDK | Set Dynamic Version
-        ansible.builtin.set_fact:
-            bws_sdk_version_tag: "{{ bws_sdk_version_for_github.tag_version[5:] }}"
+- name: Bitwarden CLI | BWS SDK | Set Download URL
+  ansible.builtin.set_fact:
+      bws_sdk_download_url: "{{ bws_sdk_version_details.download_link }}"
 
 - name: Bitwarden CLI | BWS SDK | Get downloaded file stat
   ansible.builtin.stat:
