@@ -1,0 +1,33 @@
+---
+- name: Terraform | Molecule | Verify
+  hosts: all
+  gather_facts: true
+  tasks:
+      - name: Terraform | Molecule | Verify | Import Roles for variables
+        ansible.builtin.import_role:
+            name: arpanrec.nebula.terraform
+            tasks_from: prerequisites
+
+      - name: Terraform | Molecule | Verify | Get Version Details
+        ansible.builtin.set_fact:
+            terraform_tmp_version_details: "{{ lookup('arpanrec.nebula.version_db', 'terraform',
+                terraform_rv_version=terraform_rv_version) }}"
+
+      - name: Terraform | Molecule | Verify | Get terraform version from shell
+        ansible.builtin.command: terraform --version
+        environment:
+            PATH: "{{ terraform_rv_install_path }}:{{ ansible_env.PATH }}"
+        register: terraform_rv_version_shell_result
+        changed_when: false
+
+      - name: Terraform | Molecule | Verify | terraform version from shell result
+        ansible.builtin.debug:
+            var: terraform_rv_version_shell_result
+
+      - name: Terraform | Molecule | Verify | Fail if terraform version is not present
+        ansible.builtin.assert:
+            that: terraform_rv_version_shell_result.stdout_lines[0] == "Terraform v"
+                + terraform_tmp_version_details.version
+            success_msg: Terraform Version {{ terraform_tmp_version_details.version }} is installed
+            fail_msg: Terraform Version {{ terraform_tmp_version_details.version }} is not installed,
+                Shell result {{ terraform_rv_version_shell_result.stdout }}

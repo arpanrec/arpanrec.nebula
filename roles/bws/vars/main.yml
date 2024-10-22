@@ -1,4 +1,2 @@
 ---
-bws_sdk_download_url: "https://github.com/bitwarden/sdk/releases/download/bws-v{{ bws_sdk_version_tag }}\
-    /bws-{{ ansible_facts.architecture }}-unknown-linux-gnu-{{ bws_sdk_version_tag }}.zip"
 bws_sdk_tmp_zip_download_path: "{{ bws_sdk_tmp_dir }}/bws.zip"
