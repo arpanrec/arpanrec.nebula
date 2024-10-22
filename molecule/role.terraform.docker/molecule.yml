@@ -10,7 +10,8 @@ dependency:
 driver:
     name: docker
 platforms:
-    - name: debian
+    - name: debian_role_terraform_docker
+      hostname: debian_role_terraform_docker
       image: debian
       dockerfile: Dockerfile.j2
       pre_build_image: false
@@ -19,20 +20,26 @@ provisioner:
     vvv: true
     env:
         ANSIBLE_VERBOSITY: 5
+    inventory:
+        group_vars:
+            all:
+                # terraform_rv_version: 1.0.0
     playbooks:
         converge: converge.yml
         verify: verify.yml
 scenario:
-    name: role.bws.default
+    name: role.terraform.docker
     converge_sequence:
         - converge
     destroy_sequence:
         - destroy
     create_sequence:
+        - dependency
         - create
     test_sequence:
         - syntax
         - destroy
+        - dependency
         - create
         - converge
         - verify

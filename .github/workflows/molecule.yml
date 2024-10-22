@@ -317,7 +317,7 @@ jobs:
               run: poetry install --with dev
 
             - name: Run Molecule Test
-              run: poetry run molecule test -s role.bws.default
+              run: poetry run molecule test -s role.bws.docker
 
     molecule_test_role_bitwarden_desktop:
         runs-on: ubuntu-latest
@@ -589,7 +589,7 @@ jobs:
               run: poetry install --with dev
 
             - name: Run Molecule Test
-              run: poetry run molecule test -s role.terraform.default
+              run: poetry run molecule test -s role.terraform.docker
 
     molecule_test_role_vault:
         runs-on: ubuntu-latest

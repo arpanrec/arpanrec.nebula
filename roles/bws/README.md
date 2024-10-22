@@ -10,10 +10,13 @@ Variables:
 
   - Description:
     - Version of [Bitwarden BWS SDK ClI](https://github.com/bitwarden/sdk/releases).
-    - Default Get latest release name from [github](https://api.github.com/repos/bitwarden/sdk/releases/latest)
-  - Type: `str`
-  - Required: `false`
-  - Example: `0.3.1`
+    - Like [bws-v1.0.0](https://github.com/bitwarden/sdk/releases/tag/bws-v1.0.0).
+    - Default Get latest release name from [github](https://api.github.com/repos/bitwarden/sdk/releases/latest).
+    - If set to `fetch_latest_version`, it will fetch the latest release from the github api.
+  - Type: `str`.
+  - Required: `false`.
+  - Default: `fetch_latest_version`.
+  - Example: `bws-v1.0.0`.
 
 - `bws_sdk_bin_dir`
 
