@@ -1,11 +1,17 @@
 from ansible.utils.display import Display  # type: ignore
-from ansible_collections.arpanrec.nebula.plugins.module_utils.version_db import AppDetails
-from ansible_collections.arpanrec.nebula.plugins.module_utils.version_db.grs import github_release_tag_search
+
+# pylint: disable=E0401,E0611
+from ansible_collections.arpanrec.nebula.plugins.module_utils.version_db import AppDetails  # type: ignore
+
+# pylint: disable=E0401,E0611
+from ansible_collections.arpanrec.nebula.plugins.module_utils.version_db.grs import (  # type: ignore
+    github_release_tag_search,
+)
 
 display = Display()
 
 
-class BWS(AppDetails):
+class BWS(AppDetails):  # pylint: disable=too-few-public-methods
     """
     BWS app details.
     """
@@ -33,6 +39,8 @@ class BWS(AppDetails):
             )
         else:
             display.vvv(f"Using provided BWS version tag: {_github_release_tag}")
+
+        # pylint: disable=attribute-defined-outside-init
         self._download_link = (
             f"https://github.com/bitwarden/sdk/releases/download/{_github_release_tag}"
             f"/bws-{self._get_ansible_architecture()}-unknown-linux-gnu-{_github_release_tag[5:]}.zip"

@@ -6,7 +6,7 @@ Ansible Module for Search for the latest release in a GitHub repository.
 
 from __future__ import absolute_import, division, print_function
 
-__metaclass__ = type
+__metaclass__ = type  # pylint: disable=invalid-name
 
 import json
 from dataclasses import asdict
@@ -15,7 +15,12 @@ from typing import Any, Dict, List, Optional
 from ansible.errors import AnsibleLookupError  # type: ignore
 from ansible.plugins.lookup import LookupBase  # type: ignore
 from ansible.utils.display import Display  # type: ignore
-from ansible_collections.arpanrec.nebula.plugins.module_utils.version_db import VersionDetails, get_version
+
+# pylint: disable=import-error,no-name-in-module
+from ansible_collections.arpanrec.nebula.plugins.module_utils.version_db import (  # type: ignore
+    VersionDetails,
+    get_version,
+)
 
 DOCUMENTATION = """
 ---
