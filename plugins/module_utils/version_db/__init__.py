@@ -1,8 +1,9 @@
 import abc
 import dataclasses
 import enum
-from typing import Any, Optional, Dict
 import json
+from typing import Any, Dict, Optional
+
 from ansible.utils.display import Display  # type: ignore
 
 display = Display()
@@ -10,7 +11,7 @@ display = Display()
 FETCH_LATEST_KEY = "fetch_latest_version"
 
 
-class SupportedApps(enum.StrEnum):
+class SupportedApps(enum.Enum):
     """
     Supported apps.
     """
@@ -91,11 +92,10 @@ def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: igno
     """
     Get the version details for the specified app.
     """
-    app = SupportedApps(app_name)
     app_details: AppDetails
 
-    match app:
-        case SupportedApps.BWS:
+    match app_name:
+        case SupportedApps.BWS.value:
             from .bws import BWS  # pylint: disable=import-outside-toplevel
 
             app_details = BWS(*args, **kwargs)  # type: ignore

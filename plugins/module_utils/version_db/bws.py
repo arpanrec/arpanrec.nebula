@@ -1,6 +1,6 @@
+from ansible.utils.display import Display  # type: ignore
 from ansible_collections.arpanrec.nebula.plugins.module_utils.version_db import AppDetails
 from ansible_collections.arpanrec.nebula.plugins.module_utils.version_db.grs import github_release_tag_search
-from ansible.utils.display import Display  # type: ignore
 
 display = Display()
 
