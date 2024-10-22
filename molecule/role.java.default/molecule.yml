@@ -18,7 +18,7 @@ platforms:
 provisioner:
     name: ansible
     env:
-      ANSIBLE_VERBOSITY: 1
+        ANSIBLE_VERBOSITY: 1
     playbooks:
         converge: converge.yml
         verify: verify.yml
