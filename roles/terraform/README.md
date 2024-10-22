@@ -16,18 +16,19 @@ Install Terraform in user space
 - `terraform_rv_version`
 
   - Description:
-    - Release version.
-    - Get latest release from [Github releases](https://api.github.com/repos/hashicorp/terraform/releases/latest)
-    - Example `v1.0.9`
-  - Required: `false`
-  - Type: `str`
+    - Terraform version to install.
+    - If set to `fetch_latest_version`, it will fetch the latest release from the api. Get latest release from [releases](https://releases.hashicorp.com/terraform/index.json).
+    - Example `1.0.9`.
+  - Required: `false`.
+  - Default: `fetch_latest_version`.
+  - Type: `str`.
 
 - `terraform_rv_tmp_install_cache_dir`
 
   - Description: Cache install directory.
-  - Default: `"{{ ansible_facts.user_dir }}/.tmp/terraform"`
-  - Required: `false`
-  - Type: `str`
+  - Default: `"{{ ansible_facts.user_dir }}/.tmp/terraform"`.
+  - Required: `false`.
+  - Type: `str`.
 
 ### Example Playbook Terraform
 
