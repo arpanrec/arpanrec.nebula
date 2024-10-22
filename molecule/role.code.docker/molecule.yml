@@ -10,9 +10,9 @@ dependency:
 driver:
     name: docker
 platforms:
-    - name: debian_role_code_default
+    - name: debian_role_code_docker
       image: debian
-      hostname: debian_role_code_default
+      hostname: debian_role_code_docker
       privileged: false
       dockerfile: Dockerfile.j2
       pre_build_image: false
@@ -27,7 +27,7 @@ provisioner:
                 code_rv_ext_to_be_installed:
                     - "akamud.vscode-theme-onedark"
 scenario:
-    name: role.code.default
+    name: role.code.docker
     converge_sequence:
         - dependency
         - converge
