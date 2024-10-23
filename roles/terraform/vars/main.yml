@@ -1,2 +1,2 @@
 ---
-terraform_rv_tarball_download_path: "{{ terraform_rv_tmp_install_cache_dir }}/tf-{{ terraform_rv_version }}.zip"
+terraform_rv_tarball_download_path: "{{ terraform_rv_tmp_install_cache_dir }}/teraform-{{ terraform_rv_version }}.zip"
