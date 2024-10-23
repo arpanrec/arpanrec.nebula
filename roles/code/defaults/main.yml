@@ -1,4 +1,5 @@
 ---
+code_rv_version: "fetch_latest_version"
 code_rv_tmp_dir: "{{ ansible_facts.user_dir }}/.tmp/code"
 code_rv_bin_dir: "{{ ansible_facts.user_dir }}/.local/bin"
 code_rv_install_path: "{{ ansible_facts.user_dir }}/.local/share/vscode"

@@ -3,8 +3,7 @@ from typing import Any, Dict
 import requests
 from ansible.utils.display import Display  # type: ignore
 
-# pylint: disable=E0401,E0611
-from ansible_collections.arpanrec.nebula.plugins.module_utils.version_db import AppDetails  # type: ignore
+from .models import AppDetails  # type: ignore
 
 display = Display()
 
@@ -16,7 +15,7 @@ class Terraform(AppDetails):  # pylint: disable=too-few-public-methods
 
     __terraform_releases_url: str = "https://releases.hashicorp.com/terraform/index.json"
 
-    __Terraform_ansible_architecture_map: Dict[str, str] = {"x86_64": "amd64", "aarch64": "arm64"}
+    __terraform_ansible_architecture_map: Dict[str, str] = {"x86_64": "amd64", "aarch64": "arm64"}
 
     def fetch_details(self) -> None:
         """
@@ -35,7 +34,7 @@ class Terraform(AppDetails):  # pylint: disable=too-few-public-methods
 
             except Exception as e:
                 display.error(f"Failed to fetch terraform releases: {e}")
-                raise ValueError("Failed to fetch terraform releases.") from e
+                raise ValueError(f"Failed to fetch terraform releases. {str(e)}") from e
         else:
             display.vvv(f"Using provided Terraform version tag: {_terraform_release_tag}")
         # https://releases.hashicorp.com/terraform/1.4.4/terraform_1.4.4_linux_amd64.zip
@@ -43,6 +42,6 @@ class Terraform(AppDetails):  # pylint: disable=too-few-public-methods
         self._download_link = (
             f"https://releases.hashicorp.com/terraform/{_terraform_release_tag}"
             f"/terraform_{_terraform_release_tag}_linux_"
-            f"{self._get_ansible_architecture(self.__Terraform_ansible_architecture_map)}.zip"
+            f"{self._get_ansible_architecture(self.__terraform_ansible_architecture_map)}.zip"
         )
         self._version = _terraform_release_tag

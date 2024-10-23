@@ -113,7 +113,7 @@ jobs:
               run: poetry install --with dev
 
             - name: Run Molecule Test
-              run: poetry run molecule test -s role.code.default
+              run: poetry run molecule test -s role.code.docker
 
     molecule_test_role_java:
         runs-on: ubuntu-latest
