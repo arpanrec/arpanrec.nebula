@@ -28,7 +28,11 @@ class Vault(AppDetails):  # pylint: disable=too-few-public-methods
                 _vault_releases: Dict[str, Any] = requests.get(self.__vault_releases_url, timeout=10).json()[
                     "versions"
                 ]
-                _vault_release_tag = list(_vault_releases)[-1]
+                for key in reversed(list(_vault_releases.keys())):
+                    if "+" in key:
+                        continue
+                    _vault_release_tag = key
+                    break
 
                 display.vvv(f"Latest Vault release tag: {_vault_release_tag}")
 
