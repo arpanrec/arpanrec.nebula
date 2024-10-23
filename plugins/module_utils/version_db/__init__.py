@@ -29,6 +29,7 @@ class VersionDetails:
 
     download_link: str
     version: str
+    checksum_sha256: Optional[str] = None
 
 
 class AppDetails(abc.ABC):

@@ -3,8 +3,7 @@ from typing import Any, Dict
 import requests
 from ansible.utils.display import Display  # type: ignore
 
-# pylint: disable=E0401,E0611
-from ansible_collections.arpanrec.nebula.plugins.module_utils.version_db import AppDetails  # type: ignore
+from . import AppDetails  # type: ignore
 
 display = Display()
 
