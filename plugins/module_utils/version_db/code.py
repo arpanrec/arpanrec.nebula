@@ -1,4 +1,4 @@
-from typing import Any, Dict
+from typing import Dict, List
 
 import requests
 from ansible.utils.display import Display  # type: ignore
@@ -26,7 +26,7 @@ class Code(AppDetails):  # pylint: disable=too-few-public-methods
         if not _code_release_tag or _code_release_tag == "fetch_latest_version":
             display.vvv(f"Fetching VSCode version details from {self.__code_releases_url}.")
             try:
-                _vscode_releases: Dict[str, Any] = requests.get(self.__code_releases_url, timeout=10).json()["versions"]
+                _vscode_releases: List[str] = requests.get(self.__code_releases_url, timeout=10).json()
                 _code_release_tag = list(_vscode_releases)[0]
 
                 display.vvv(f"Latest VSCode release tag: {_code_release_tag}")
@@ -38,6 +38,8 @@ class Code(AppDetails):  # pylint: disable=too-few-public-methods
             display.vvv(f"Using provided VSCode version tag: {_code_release_tag}")
         # "https://update.code.visualstudio.com/1.94.2/linux-arm64/stable"
         # pylint: disable=attribute-defined-outside-init
-        self._download_link = (f"https://update.code.visualstudio.com/{_code_release_tag}"
-                               f"/linux-{self._get_ansible_architecture(self.__code_ansible_architecture_map)}/stable")
+        self._download_link = (
+            f"https://update.code.visualstudio.com/{_code_release_tag}"
+            f"/linux-{self._get_ansible_architecture(self.__code_ansible_architecture_map)}/stable"
+        )
         self._version = _code_release_tag
