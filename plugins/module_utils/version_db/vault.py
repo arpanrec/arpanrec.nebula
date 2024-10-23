@@ -25,9 +25,7 @@ class Vault(AppDetails):  # pylint: disable=too-few-public-methods
         if not _vault_release_tag or _vault_release_tag == "fetch_latest_version":
             display.vvv(f"Fetching Vault version details from {self.__vault_releases_url}.")
             try:
-                _vault_releases: Dict[str, Any] = requests.get(self.__vault_releases_url, timeout=10).json()[
-                    "versions"
-                ]
+                _vault_releases: Dict[str, Any] = requests.get(self.__vault_releases_url, timeout=10).json()["versions"]
                 for key in reversed(list(_vault_releases.keys())):
                     if "+" in key:
                         continue
