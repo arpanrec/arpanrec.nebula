@@ -17,6 +17,7 @@ class SupportedApps(enum.Enum):
     BWS = "bws"
     TERRAFORM = "terraform"
     CODE = "code"
+    VAULT = "vault"
 
 
 @dataclasses.dataclass

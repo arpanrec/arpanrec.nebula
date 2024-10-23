@@ -26,6 +26,10 @@ def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: igno
             from .code import Code  # pylint: disable=import-outside-toplevel
 
             app_details = Code(*args, **kwargs)  # type: ignore
+        case SupportedApps.VAULT.value:
+            from .vault import Vault  # pylint: disable=import-outside-toplevel
+
+            app_details = Vault(*args, **kwargs)  # type: ignore
         case _:
             raise ValueError(f"Unsupported app: {app_name}")
 
