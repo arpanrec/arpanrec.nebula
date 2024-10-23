@@ -3,7 +3,7 @@ from typing import Any, Dict
 import requests
 from ansible.utils.display import Display  # type: ignore
 
-from . import AppDetails  # type: ignore
+from .models import AppDetails  # type: ignore
 
 display = Display()
 

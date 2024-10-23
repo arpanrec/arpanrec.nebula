@@ -17,10 +17,9 @@ from ansible.plugins.lookup import LookupBase  # type: ignore
 from ansible.utils.display import Display  # type: ignore
 
 # pylint: disable=import-error,no-name-in-module
-from ansible_collections.arpanrec.nebula.plugins.module_utils.version_db import (  # type: ignore
-    VersionDetails,
-    get_version,
-)
+from ansible_collections.arpanrec.nebula.plugins.module_utils.version_db import get_version  # type: ignore
+
+from ansible_collections.arpanrec.nebula.plugins.module_utils.version_db.models import VersionDetails  # type: ignore
 
 DOCUMENTATION = """
 ---

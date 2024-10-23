@@ -1,7 +1,7 @@
 from ansible.utils.display import Display  # type: ignore
 
 # pylint: disable=E0401,E0611
-from . import AppDetails  # type: ignore
+from .models import AppDetails  # type: ignore
 from .grs import github_release_tag_search  # type: ignore
 
 display = Display()
