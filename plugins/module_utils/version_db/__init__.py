@@ -1,4 +1,3 @@
-
 from ansible.utils.display import Display  # type: ignore
 
 from .models import AppDetails, SupportedApps, VersionDetails
@@ -6,7 +5,6 @@ from .models import AppDetails, SupportedApps, VersionDetails
 display = Display()
 
 FETCH_LATEST_KEY = "fetch_latest_version"
-
 
 
 def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: ignore

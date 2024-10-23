@@ -18,7 +18,6 @@ from ansible.utils.display import Display  # type: ignore
 
 # pylint: disable=import-error,no-name-in-module
 from ansible_collections.arpanrec.nebula.plugins.module_utils.version_db import get_version  # type: ignore
-
 from ansible_collections.arpanrec.nebula.plugins.module_utils.version_db.models import VersionDetails  # type: ignore
 
 DOCUMENTATION = """

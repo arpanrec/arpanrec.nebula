@@ -1,7 +1,9 @@
 import abc
 import dataclasses
 import enum
-from typing import Optional, Dict, Any
+import json
+from typing import Any, Dict, Optional
+
 from ansible.utils.display import Display  # type: ignore
 
 display = Display()

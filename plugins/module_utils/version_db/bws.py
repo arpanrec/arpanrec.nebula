@@ -1,8 +1,9 @@
 from ansible.utils.display import Display  # type: ignore
 
+from .grs import github_release_tag_search  # type: ignore
+
 # pylint: disable=E0401,E0611
 from .models import AppDetails  # type: ignore
-from .grs import github_release_tag_search  # type: ignore
 
 display = Display()
 
