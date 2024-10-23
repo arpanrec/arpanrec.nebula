@@ -18,6 +18,9 @@ platforms:
       pre_build_image: false
 provisioner:
     name: ansible
+    vvv: true
+    env:
+        ANSIBLE_VERBOSITY: 5
     playbooks:
         converge: converge.yml
         verify: verify.yml

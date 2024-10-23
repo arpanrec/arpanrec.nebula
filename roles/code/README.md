@@ -34,7 +34,7 @@ Install vscode, and extensions Also creates a soft link to the `code` executable
   - code_rv_version:
     - description:
       - Version of [Microsoft Visual Studio Code](https://code.visualstudio.com/updates).
-      - If set to `fetch_latest_version`, it will fetch the latest release from the github api.
+      - If set to `fetch_latest_version`, it will fetch the latest release from the [api](https://update.code.visualstudio.com/api/releases/stable).
       - required: false
       - type: str
       - default: Dynamically find the [latest tag_name](https://update.code.visualstudio.com/api/releases/stable), like `1.64.2`.

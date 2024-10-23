@@ -16,36 +16,28 @@ class Code(AppDetails):  # pylint: disable=too-few-public-methods
 
     __code_releases_url: str = "https://update.code.visualstudio.com/api/releases/stable"
 
-    __Terraform_ansible_architecture_map: Dict[str, str] = {"x86_64": "x64", "aarch64": "arm64"}
+    __code_ansible_architecture_map: Dict[str, str] = {"x86_64": "x64", "aarch64": "arm64"}
 
     def fetch_details(self) -> None:
         """
         Get the version details for the Terraform.
         """
-        _terraform_release_tag = self._kwargs.get("terraform_rv_version", None)
-        if not _terraform_release_tag or _terraform_release_tag == "fetch_latest_version":
-            display.vvv(f"Fetching terraform version details from {self.__code_releases_url}.")
+        _code_release_tag = self._kwargs.get("code_rv_version", None)
+        if not _code_release_tag or _code_release_tag == "fetch_latest_version":
+            display.vvv(f"Fetching VSCode version details from {self.__code_releases_url}.")
             try:
-                _terraform_releases: Dict[str, Any] = requests.get(self.__code_releases_url, timeout=10).json()[
-                    "versions"
-                ]
-                _terraform_release_tag = list(_terraform_releases)[-1]
+                _vscode_releases: Dict[str, Any] = requests.get(self.__code_releases_url, timeout=10).json()["versions"]
+                _code_release_tag = list(_vscode_releases)[0]
 
-                display.vvv(f"Latest terraform release tag: {_terraform_release_tag}")
+                display.vvv(f"Latest VSCode release tag: {_code_release_tag}")
 
             except Exception as e:
-                display.error(f"Failed to fetch terraform releases: {e}")
-                raise ValueError("Failed to fetch terraform releases.") from e
+                display.error(f"Failed to fetch VSCode releases: {e}")
+                raise ValueError(f"Failed to fetch VSCode releases. {str(e)}") from e
         else:
-            display.vvv(f"Using provided Terraform version tag: {_terraform_release_tag}")
-        # https://releases.hashicorp.com/terraform/1.4.4/terraform_1.4.4_linux_amd64.zip
+            display.vvv(f"Using provided VSCode version tag: {_code_release_tag}")
+        # "https://update.code.visualstudio.com/1.94.2/linux-arm64/stable"
         # pylint: disable=attribute-defined-outside-init
-        self._download_link = (
-            f"https://releases.hashicorp.com/terraform/{_terraform_release_tag}"
-            f"/terraform_{_terraform_release_tag}_linux_"
-            f"{self._get_ansible_architecture(self.__Terraform_ansible_architecture_map)}.zip"
-        )
-        self._version = _terraform_release_tag
-
-
-S
+        self._download_link = (f"https://update.code.visualstudio.com/{_code_release_tag}"
+                               f"/linux-{self._get_ansible_architecture(self.__code_ansible_architecture_map)}/stable")
+        self._version = _code_release_tag

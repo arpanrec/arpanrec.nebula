@@ -105,6 +105,10 @@ def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: igno
             from .terraform import Terraform  # pylint: disable=import-outside-toplevel
 
             app_details = Terraform(*args, **kwargs)  # type: ignore
+        case SupportedApps.CODE.value:
+            from .code import Code  # pylint: disable=import-outside-toplevel
+
+            app_details = Code(*args, **kwargs)  # type: ignore
         case _:
             raise ValueError(f"Unsupported app: {app_name}")
 
