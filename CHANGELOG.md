@@ -1,6 +1,6 @@
-# [1.3.0](https://github.com/arpanrec/arpanrec.nebula/compare/1.2.0...1.3.0) (2024-10-23)
+# [1.4.0](https://github.com/arpanrec/arpanrec.nebula/compare/1.3.0...1.4.0) (2024-10-24)
 
 
 ### Features
 
-* hashicorp vault version from version db ([#24](https://github.com/arpanrec/arpanrec.nebula/issues/24)) ([a5cbea9](https://github.com/arpanrec/arpanrec.nebula/commit/a5cbea9ec025745acdf66b6a2c779d0057fba31f))
+* bitwarden desktop in version db ([8e81de0](https://github.com/arpanrec/arpanrec.nebula/commit/8e81de055e11c66031f14d7a631607917fa4bef5))
