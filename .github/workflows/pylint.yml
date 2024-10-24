@@ -1,0 +1,43 @@
+---
+name: Pylint
+
+"on":
+    push:
+        paths:
+            - "**.py"
+            - ".github/workflows/pylint.yml"
+            - ".pylint.*"
+            - "poetry.lock"
+            - "pyproject.toml"
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    pylint:
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                python-version: ["3.10", "3.11", "3.12"]
+        name: pylint
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Install poetry 1.8.4
+              run: pipx install poetry==1.8.4
+
+            - name: Set up Python "${{ matrix.python-version }}"
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "${{ matrix.python-version }}"
+                  cache: poetry
+                  # cache-dependency-path: pyproject.toml
+
+            - name: Install dependencies
+              run: poetry install --with dev
+
+            - name: Analysing the code with pylint
+              run: poetry run pylint $(git ls-files '*.py')
