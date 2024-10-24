@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict
 
 import requests
 from ansible.utils.display import Display  # type: ignore
@@ -24,7 +24,7 @@ class Go(AppDetails):  # pylint: disable=too-few-public-methods
         Fetch the latest GoLang version.
         """
 
-        display.vvv(f"AppDetails Go: Fetching GoLang version")
+        display.vvv("AppDetails Go: Fetching GoLang version")
         _golang_release_tag = self._kwargs.get("go_rv_version", None)
         if not _golang_release_tag or _golang_release_tag == self._FETCH_LATEST_KEY:
             display.vvv(f"AppDetails Go: Fetching GoLang version details from {self.__go_version_endpoint}.")

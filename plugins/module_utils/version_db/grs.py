@@ -49,7 +49,8 @@ def github_release_tag_search(
     display.vvv(f"github_release_tag_search: Searching for latest release in {github_release_tag_search_repo}")
     if not github_release_tag_search_token:
         display.vvv(
-            "github_release_tag_search: No GitHub token provided. Trying to fetch github token from environment variable 'GITHUB_TOKEN'."
+            "github_release_tag_search: No GitHub token provided."
+            " Trying to fetch github token from environment variable 'GITHUB_TOKEN'."
         )
         github_release_tag_search_token = os.getenv("GITHUB_TOKEN", None)
 

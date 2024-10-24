@@ -70,7 +70,7 @@ class AppDetails(abc.ABC):
         Get the architecture from the Ansible facts.
         """
 
-        display.vvv(f"AppDetails Get Ansible Architecture: Fetching Ansible architecture.")
+        display.vvv("AppDetails Get Ansible Architecture: Fetching Ansible architecture.")
 
         if not self._variables:
             raise ValueError("Hostvars not provided.")

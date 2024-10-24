@@ -31,6 +31,7 @@ class BitwardenDesktop(AppDetails):  # pylint: disable=too-few-public-methods
         _github_release_tag = self._kwargs.get("bitwarden_desktop_rv_version", None)
         if not _github_release_tag or _github_release_tag == self._FETCH_LATEST_KEY:
             display.vvv("AppDetails BitwardenDesktop: Fetching Bitwarden Desktop version details from GitHub.")
+            # pylint: disable=R0801
             _github_release_tag = github_release_tag_search(
                 github_release_tag_search_repo=self.__github_repo,
                 github_release_tag_search_api_url=self._kwargs.get("github_release_tag_search_api_url"),
