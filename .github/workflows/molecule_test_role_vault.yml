@@ -4,20 +4,20 @@ name: Molecule Test Role Vault
 "on":
     push:
         paths:
-            - "roles/vault/**"
+            - "!roles/vault/README.md"
+            - ".github/workflows/molecule_test_role_vault.yml"
+            - "meta/**"
             - "molecule/role.vault.docker/**"
-            - "plugins/module_utils/version_db/vault.py"
-            - "plugins/module_utils/version_db/models.py"
             - "plugins/lookup/version_db.py"
-            - "plugins/module_utils/version_db/py.typed"
-            - "plugins/module_utils/version_db/__init__.py"
             - "plugins/module_utils/__init__.py"
             - "plugins/module_utils/py.typed"
-            - "requirements.yml"
+            - "plugins/module_utils/version_db/__init__.py"
+            - "plugins/module_utils/version_db/models.py"
+            - "plugins/module_utils/version_db/py.typed"
+            - "plugins/module_utils/version_db/vault.py"
             - "poetry.lock"
-            - "meta/**"
-            - ".github/workflows/molecule_test_role_vault.yml"
-            - "!roles/vault/README.md"
+            - "requirements.yml"
+            - "roles/vault/**"
     workflow_dispatch:
 
 concurrency:

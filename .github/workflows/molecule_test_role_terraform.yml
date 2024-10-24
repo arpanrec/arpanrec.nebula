@@ -4,20 +4,20 @@ name: Molecule Test Role Terraform
 "on":
     push:
         paths:
-            - "roles/terraform/**"
+            - "!roles/terraform/README.md"
+            - ".github/workflows/molecule_test_role_terraform.yml"
+            - "meta/**"
             - "molecule/role.terraform.docker/**"
-            - "plugins/module_utils/version_db/terraform.py"
-            - "plugins/module_utils/version_db/models.py"
             - "plugins/lookup/version_db.py"
-            - "plugins/module_utils/version_db/py.typed"
-            - "plugins/module_utils/version_db/__init__.py"
             - "plugins/module_utils/__init__.py"
             - "plugins/module_utils/py.typed"
-            - "requirements.yml"
+            - "plugins/module_utils/version_db/__init__.py"
+            - "plugins/module_utils/version_db/models.py"
+            - "plugins/module_utils/version_db/py.typed"
+            - "plugins/module_utils/version_db/terraform.py"
             - "poetry.lock"
-            - "meta/**"
-            - ".github/workflows/molecule_test_role_terraform.yml"
-            - "!roles/terraform/README.md"
+            - "requirements.yml"
+            - "roles/terraform/**"
     workflow_dispatch:
 
 concurrency:
