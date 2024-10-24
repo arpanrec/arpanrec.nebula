@@ -42,7 +42,7 @@ class Go(AppDetails):  # pylint: disable=too-few-public-methods
             display.vvv(f"AppDetails Go: Using provided GoLang version tag: {_golang_release_tag}")
         # pylint: disable=attribute-defined-outside-init
         self._download_link = (
-            f"https://go.dev/dl/go{_golang_release_tag}.linux"
+            f"https://go.dev/dl/{_golang_release_tag}.linux"
             f"-{self._get_ansible_architecture(self.__go_ansible_architecture_map)}.tar.gz"
         )
         self._version = _golang_release_tag
