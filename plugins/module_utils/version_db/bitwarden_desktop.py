@@ -1,4 +1,5 @@
 from typing import Dict
+
 from ansible.utils.display import Display  # type: ignore
 
 from .grs import github_release_tag_search  # type: ignore
