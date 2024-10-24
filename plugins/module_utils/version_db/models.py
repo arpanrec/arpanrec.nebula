@@ -19,6 +19,7 @@ class SupportedApps(enum.Enum):
     CODE = "code"
     VAULT = "vault"
     BITWARDEN_DESKTOP = "bitwarden_desktop"
+    GO = "go"
 
 
 @dataclasses.dataclass

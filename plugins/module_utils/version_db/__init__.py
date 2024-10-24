@@ -32,6 +32,10 @@ def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: igno
             from .bitwarden_desktop import BitwardenDesktop  # pylint: disable=import-outside-toplevel
 
             app_details = BitwardenDesktop(*args, **kwargs)  # type: ignore
+        case SupportedApps.GO.value:
+            from .go import Go  # pylint: disable=import-outside-toplevel
+
+            app_details = Go(*args, **kwargs)  # type: ignore
         case _:
             raise ValueError(f"Unsupported app: {app_name}")
 
