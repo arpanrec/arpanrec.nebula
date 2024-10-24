@@ -8,6 +8,7 @@ name: "Mypy: Static Typing for Python"
             - ".github/workflows/mypy.yml"
             - "poetry.lock"
             - "pyproject.toml"
+    workflow_dispatch:
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}

@@ -10,6 +10,7 @@ name: Yamllint
             - ".yamllint"
             - "poetry.lock"
             - "pyproject.toml"
+    workflow_dispatch:
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
