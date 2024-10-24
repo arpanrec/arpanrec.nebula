@@ -11,8 +11,9 @@ from ansible.utils.display import Display  # type: ignore
 display = Display()
 
 
-# pylint: disable=R0912,R0913,R0914,too-many-positional-arguments
+# pylint: disable=R0912,R0913,R0914
 def github_release_tag_search(
+    *,
     github_release_tag_search_repo: str,
     github_release_tag_search_api_url: Optional[str],
     github_release_tag_search_token: Optional[str],

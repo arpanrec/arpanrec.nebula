@@ -10,19 +10,20 @@ dependency:
 driver:
     name: docker
 platforms:
-    - name: debian_role_bitwarden_desktop_default
+    - name: debian_role_bitwarden_desktop_docker
       image: debian
-      hostname: debian_role_bitwarden_desktop_defaults
+      hostname: debian_role_bitwarden_desktop_docker
       dockerfile: Dockerfile.j2
       pre_build_image: false
 provisioner:
     name: ansible
-    playbooks:
-        converge: converge.yml
+    vvv: true
     env:
         ANSIBLE_VERBOSITY: 5
+    playbooks:
+        converge: converge.yml
 scenario:
-    name: role.bitwarden_desktop.default
+    name: role.bitwarden_desktop.docker
     create_sequence:
         - create
     converge_sequence:

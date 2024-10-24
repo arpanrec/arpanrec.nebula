@@ -22,7 +22,7 @@ class Terraform(AppDetails):  # pylint: disable=too-few-public-methods
         Get the version details for the Terraform.
         """
         _terraform_release_tag = self._kwargs.get("terraform_rv_version", None)
-        if not _terraform_release_tag or _terraform_release_tag == "fetch_latest_version":
+        if not _terraform_release_tag or _terraform_release_tag == self._FETCH_LATEST_KEY:
             display.vvv(f"Fetching terraform version details from {self.__terraform_releases_url}.")
             try:
                 _terraform_releases: Dict[str, Any] = requests.get(self.__terraform_releases_url, timeout=10).json()[

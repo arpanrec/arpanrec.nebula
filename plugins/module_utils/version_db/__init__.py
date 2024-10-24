@@ -4,8 +4,6 @@ from .models import AppDetails, SupportedApps, VersionDetails
 
 display = Display()
 
-FETCH_LATEST_KEY = "fetch_latest_version"
-
 
 def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: ignore
     """
@@ -30,6 +28,10 @@ def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: igno
             from .vault import Vault  # pylint: disable=import-outside-toplevel
 
             app_details = Vault(*args, **kwargs)  # type: ignore
+        case SupportedApps.BITWARDEN_DESKTOP.value:
+            from .bitwarden_desktop import BitwardenDesktop  # pylint: disable=import-outside-toplevel
+
+            app_details = BitwardenDesktop(*args, **kwargs)  # type: ignore
         case _:
             raise ValueError(f"Unsupported app: {app_name}")
 

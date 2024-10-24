@@ -23,7 +23,7 @@ class Code(AppDetails):  # pylint: disable=too-few-public-methods
         Get the version details for the Terraform.
         """
         _code_release_tag = self._kwargs.get("code_rv_version", None)
-        if not _code_release_tag or _code_release_tag == "fetch_latest_version":
+        if not _code_release_tag or _code_release_tag == self._FETCH_LATEST_KEY:
             display.vvv(f"Fetching VSCode version details from {self.__code_releases_url}.")
             try:
                 _vscode_releases: List[str] = requests.get(self.__code_releases_url, timeout=10).json()

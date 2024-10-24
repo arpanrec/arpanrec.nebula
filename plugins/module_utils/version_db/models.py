@@ -18,6 +18,7 @@ class SupportedApps(enum.Enum):
     TERRAFORM = "terraform"
     CODE = "code"
     VAULT = "vault"
+    BITWARDEN_DESKTOP = "bitwarden_desktop"
 
 
 @dataclasses.dataclass
@@ -46,6 +47,7 @@ class AppDetails(abc.ABC):
     _extras: Optional[Dict[str, Any]]
     _kwargs: Dict[str, Any]
     _checksum: Optional[str] = None
+    _FETCH_LATEST_KEY = "fetch_latest_version"
 
     def __init__(self, *args, **kwargs) -> None:  # type: ignore
         """
@@ -81,7 +83,8 @@ class AppDetails(abc.ABC):
 
         if ansible_architecture not in ansible_to_expected:
             raise ValueError(
-                f"Unsupported architecture: {ansible_architecture}, expected: {json.dumps(ansible_to_expected)}"
+                f"Unsupported architecture: {ansible_architecture}, Supported Only in:"
+                f" {json.dumps(ansible_to_expected)}"
             )
         return ansible_to_expected[ansible_architecture]
 
