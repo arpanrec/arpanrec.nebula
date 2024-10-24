@@ -30,7 +30,7 @@
       - name: "Terraform | New Download | Download tarball version: {{ terraform_rv_version }}"
         ansible.builtin.get_url:
             url: "{{ terraform_tmp_version_details.download_link }}"
-            checksum: "{{ terraform_tmp_version_details.checksum_sha256 | default(omit) }}"
+            checksum: "{{ terraform_tmp_version_details.checksum | default(omit) }}"
             dest: "{{ terraform_rv_tarball_download_path }}"
             mode: "0700"
   rescue:

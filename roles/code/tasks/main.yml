@@ -34,7 +34,7 @@
       - name: Visual Studio Code | Install | Download tarball
         ansible.builtin.get_url:
             url: "{{ code_version_details.download_link }}"
-            checksum: "{{ code_version_details.checksum_sha256 | default(omit) }}"
+            checksum: "{{ code_version_details.checksum | default(omit) }}"
             dest: "{{ code_rv_tarball_download_path }}"
             mode: "0700"
 
