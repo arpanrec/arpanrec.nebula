@@ -1,5 +1,4 @@
 import abc
-import dataclasses
 import enum
 import json
 from typing import Any, Dict, Optional, Tuple
@@ -22,16 +21,10 @@ class SupportedApps(enum.Enum):
     GO = "go"
 
 
-@dataclasses.dataclass
-class VersionDetails:
+class VersionDetails(Dict[str, Any]):
     """
     Version details.
     """
-
-    download_link: str
-    version: str
-    checksum: Optional[str] = None
-    extras: Optional[Dict[str, Any]] = None
 
 
 class AppDetails(abc.ABC):
@@ -70,7 +63,7 @@ class AppDetails(abc.ABC):
         Get the architecture from the Ansible facts.
         """
 
-        display.vvv(f"AppDetails Get Ansible Architecture: Fetching Ansible architecture.")
+        display.vvv("AppDetails Get Ansible Architecture: Fetching Ansible architecture.")
 
         if not self._variables:
             raise ValueError("Hostvars not provided.")
@@ -105,6 +98,13 @@ class AppDetails(abc.ABC):
 
         display.vvv("AppDetails: Getting version details.")
 
-        return VersionDetails(
-            download_link=self._download_link, version=self._version, checksum=self._checksum, extras=self._extras
-        )
+        version_details: VersionDetails = VersionDetails()
+        version_details["download_link"] = self._download_link
+        version_details["version"] = self._version
+        if self._checksum:
+            version_details["checksum"] = self._checksum
+        if self._extras:
+            version_details["extras"] = self._extras
+
+        display.vvv(f"AppDetails: Version details: {version_details}")
+        return version_details

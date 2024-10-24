@@ -9,7 +9,6 @@ from __future__ import absolute_import, division, print_function
 __metaclass__ = type  # pylint: disable=invalid-name
 
 import json
-from dataclasses import asdict
 from typing import Any, Dict, List, Optional
 
 from ansible.errors import AnsibleLookupError  # type: ignore
@@ -69,4 +68,4 @@ class LookupModule(LookupBase):
         except Exception as e:
             raise AnsibleLookupError(f"Failed to get version details for {terms[0]}: {str(e)}") from e
 
-        return [json.dumps(asdict(version_details))]  # type: ignore
+        return [json.dumps(version_details)]  # type: ignore

@@ -27,7 +27,7 @@
 - name: Terraform | New Download
   when: not terraform_rv_tmp_downloaded_file_stat.stat.exists
   block:
-      - name: "Terraform | New Download | Download tarball version: {{ terraform_rv_version }}"
+      - name: "Terraform | New Download | Download tarball"
         ansible.builtin.get_url:
             url: "{{ terraform_tmp_version_details.download_link }}"
             checksum: "{{ terraform_tmp_version_details.checksum | default(omit) }}"

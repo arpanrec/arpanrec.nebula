@@ -1,23 +1,8 @@
 ---
-name: Molecule Test Role Go
+name: Ansible Lint
 
 "on":
     push:
-        paths:
-            - "!roles/go/README.md"
-            - ".github/workflows/molecule_test_role_go.yml"
-            - "meta/**"
-            - "molecule/role.go.docker/**"
-            - "plugins/lookup/version_db.py"
-            - "plugins/module_utils/__init__.py"
-            - "plugins/module_utils/py.typed"
-            - "plugins/module_utils/version_db/__init__.py"
-            - "plugins/module_utils/version_db/go.py"
-            - "plugins/module_utils/version_db/models.py"
-            - "plugins/module_utils/version_db/py.typed"
-            - "poetry.lock"
-            - "requirements.yml"
-            - "roles/go/**"
     workflow_dispatch:
 
 concurrency:
@@ -25,12 +10,13 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    molecule_test_role_go:
+    ansible-lint:
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
             matrix:
                 python-version: ["3.10", "3.11", "3.12"]
+        name: ansible-lint
         steps:
             - name: Checkout
               uses: actions/checkout@v4
@@ -42,7 +28,7 @@ jobs:
               uses: actions/setup-python@v5
               with:
                   python-version: "${{ matrix.python-version }}"
-                  cache: "poetry"
+                  cache: poetry
                   # cache-dependency-path: pyproject.toml
 
             - name: Cache ansible
@@ -54,7 +40,9 @@ jobs:
                   key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
 
             - name: Install dependencies
-              run: poetry install --with dev
+              run: |+
+                  poetry install
+                  ansible-galaxy install -r requirements.yml
 
-            - name: Run Molecule Test
-              run: poetry run molecule test -s role.go.docker
+            - name: Analysing the code with ansible-lint
+              run: poetry run ansible-lint

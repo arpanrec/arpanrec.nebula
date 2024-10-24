@@ -27,7 +27,7 @@
 - name: Vault | New Download
   when: not vault_rv_tmp_downloaded_file_stat.stat.exists
   block:
-      - name: "Vault | New Download | Download tarball version: {{ vault_rv_version }}"
+      - name: "Vault | New Download | Download tarball"
         ansible.builtin.get_url:
             url: "{{ vault_tmp_version_details.download_link }}"
             checksum: "{{ vault_tmp_version_details.checksum | default(omit) }}"
