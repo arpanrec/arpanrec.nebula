@@ -1,5 +1,5 @@
 ---
-name: Molecule
+name: Molecule Test Role Bitwarden Desktop
 
 "on":
     push:
