@@ -36,6 +36,10 @@ def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: igno
             from .go import Go  # pylint: disable=import-outside-toplevel
 
             app_details = Go(*args, **kwargs)  # type: ignore
+        case SupportedApps.JAVA.value:
+            from .java import Java  # pylint: disable=import-outside-toplevel
+
+            app_details = Java(*args, **kwargs)  # type: ignore
         case _:
             raise ValueError(f"Unsupported app: {app_name}")
 

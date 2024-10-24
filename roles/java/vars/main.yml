@@ -1,25 +1,7 @@
 ---
-java_rv_jdk_download_url_map:
-    jdk:
-        17:
-            x86_64: https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.tar.gz
-            aarch64: https://download.oracle.com/java/17/archive/jdk-17.0.4_linux-aarch64_bin.tar.gz
-        21:
-            x86_64: https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.tar.gz
-            aarch64: https://download.oracle.com/java/21/archive/jdk-21.0.4_linux-aarch64_bin.tar.gz
-    graalvm:
-        21:
-            x86_64: https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-x64_bin.tar.gz
-            aarch64: https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-aarch64_bin.tar.gz
-        17:
-            x86_64: https://download.oracle.com/graalvm/17/latest/graalvm-jdk-17_linux-x64_bin.tar.gz
-            aarch64: https://download.oracle.com/graalvm/17/latest/graalvm-jdk-17_linux-aarch64_bin.tar.gz
-
 java_rv_jdk_tarball_download_path: "{{ java_rv_jdk_tmp_dir }}\
     /jdk-{{ java_rv_jdk_version }}_linux-{{ ansible_facts.architecture }}_bin.tar.gz"
 
-java_rv_jdk_mvn_download_url: "https://dlcdn.apache.org/maven/maven-3/{{ java_rv_jdk_mvn_version }}/binaries\
-    /apache-maven-{{ java_rv_jdk_mvn_version }}-bin.tar.gz"
 java_rv_jdk_mvn_tarball_download_path: "{{ java_rv_jdk_tmp_dir }}/apache-maven-{{ java_rv_jdk_mvn_version }}-bin.tar.gz"
 
 java_rv_jdk_gradle_download_url: "https://downloads.gradle.org/distributions\

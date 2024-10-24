@@ -7,6 +7,12 @@
       path: "{{ java_rv_jdk_tarball_download_path }}"
   register: pv_ua_jdk_downloaded_file_stat
 
+- name: Bitwarden CLI | BWS SDK | Get Version Details
+  ansible.builtin.set_fact:
+      oracle_jdk_tmp_version_details: "{{ lookup('arpanrec.nebula.version_db', 'bws',
+          java_rv_jdk_version=java_rv_jdk_version,
+          java_rv_jdk_mvn_version=java_rv_jdk_mvn_version) }}"
+
 - name: Oracle JDK | Newly Downloaded
   when: not pv_ua_jdk_downloaded_file_stat.stat.exists
   block:
