@@ -2,7 +2,7 @@ import abc
 import dataclasses
 import enum
 import json
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Tuple
 
 from ansible.utils.display import Display  # type: ignore
 
@@ -18,6 +18,8 @@ class SupportedApps(enum.Enum):
     TERRAFORM = "terraform"
     CODE = "code"
     VAULT = "vault"
+    BITWARDEN_DESKTOP = "bitwarden_desktop"
+    GO = "go"
 
 
 @dataclasses.dataclass
@@ -28,7 +30,8 @@ class VersionDetails:
 
     download_link: str
     version: str
-    checksum_sha256: Optional[str] = None
+    checksum: Optional[str] = None
+    extras: Optional[Dict[str, Any]] = None
 
 
 class AppDetails(abc.ABC):
@@ -41,8 +44,11 @@ class AppDetails(abc.ABC):
     _variables: Optional[Dict[str, Any]]
     _download_link: str
     _version: str
-    _args: tuple[Any, ...]
-    _kwargs: dict[str, Any]
+    _args: Tuple[Any, ...]
+    _extras: Optional[Dict[str, Any]] = None
+    _kwargs: Dict[str, Any]
+    _checksum: Optional[str] = None
+    _FETCH_LATEST_KEY = "fetch_latest_version"
 
     def __init__(self, *args, **kwargs) -> None:  # type: ignore
         """
@@ -64,6 +70,8 @@ class AppDetails(abc.ABC):
         Get the architecture from the Ansible facts.
         """
 
+        display.vvv(f"AppDetails Get Ansible Architecture: Fetching Ansible architecture.")
+
         if not self._variables:
             raise ValueError("Hostvars not provided.")
 
@@ -71,15 +79,23 @@ class AppDetails(abc.ABC):
             raise ValueError("ansible_architecture not found in hostvars. Make sure gather_facts is enabled.")
 
         ansible_architecture: str = self._variables["ansible_architecture"]
+        display.vvv(f"AppDetails Get Ansible Architecture: Ansible architecture: {ansible_architecture}")
 
         if not ansible_to_expected:
-            display.vvv(f"Ansible architecture selected as: {ansible_architecture}")
+            display.vvv(
+                f"AppDetails Get Ansible Architecture: Ansible architecture selected as: {ansible_architecture}"
+            )
             return ansible_architecture
 
         if ansible_architecture not in ansible_to_expected:
             raise ValueError(
-                f"Unsupported architecture: {ansible_architecture}, expected: {json.dumps(ansible_to_expected)}"
+                f"Unsupported architecture: {ansible_architecture}, Supported Only in:"
+                f" {json.dumps(ansible_to_expected)}"
             )
+        display.vvv(
+            f"AppDetails Get Ansible Architecture: Ansible architecture selected as"
+            f": {ansible_to_expected[ansible_architecture]}"
+        )
         return ansible_to_expected[ansible_architecture]
 
     def get_version_details(self) -> VersionDetails:
@@ -87,4 +103,8 @@ class AppDetails(abc.ABC):
         Get the version details for the app.
         """
 
-        return VersionDetails(download_link=self._download_link, version=self._version)
+        display.vvv("AppDetails: Getting version details.")
+
+        return VersionDetails(
+            download_link=self._download_link, version=self._version, checksum=self._checksum, extras=self._extras
+        )

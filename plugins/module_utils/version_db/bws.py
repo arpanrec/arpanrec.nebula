@@ -23,7 +23,7 @@ class BWS(AppDetails):  # pylint: disable=too-few-public-methods
         """
 
         _github_release_tag = self._kwargs.get("bws_sdk_version_tag", None)
-        if not _github_release_tag or _github_release_tag == "fetch_latest_version":
+        if not _github_release_tag or _github_release_tag == self._FETCH_LATEST_KEY:
             display.vvv("Fetching BWS version details from GitHub.")
             _github_release_tag = github_release_tag_search(
                 github_release_tag_search_repo=self.__github_repo,

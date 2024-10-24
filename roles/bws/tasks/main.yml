@@ -19,7 +19,7 @@
         ansible.builtin.get_url:
             url: "{{ bws_sdk_version_details.download_link }}"
             dest: "{{ bws_sdk_tmp_zip_download_path }}"
-            checksum: "{{ bws_sdk_version_details.checksum_sha256 | default(omit) }}"
+            checksum: "{{ bws_sdk_version_details.checksum | default(omit) }}"
             mode: "0700"
 
       - name: Bitwarden CLI | BWS SDK | New Install | Remove old directory

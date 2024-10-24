@@ -9,29 +9,22 @@
       mode: "0700"
 
 - name: Bitwarden Desktop | Get Version
-  when: bitwarden_desktop_rv_version is not defined
-  block:
-      - name: Bitwarden Desktop | Get Version
-        arpanrec.nebula.get_bitwarden_client_latest_github_release:
-        register: bitwarden_desktop_rv_dynamic_release
-        delegate_to: localhost
-
-      - name: Bitwarden Desktop | Set Version
-        ansible.builtin.set_fact:
-            bitwarden_desktop_rv_version: "{{ bitwarden_desktop_rv_dynamic_release.msg }}"
+  ansible.builtin.set_fact:
+      bitwarden_desktop_version_details: "{{ lookup('arpanrec.nebula.version_db', 'bitwarden_desktop',
+          bitwarden_desktop_rv_version=bitwarden_desktop_rv_version) }}"
 
 - name: Bitwarden Desktop | Get archive info
   ansible.builtin.stat:
       path: "{{ bitwarden_desktop_rv_install_path }}/{{
-          bitwarden_desktop_rv_download_url_map[ansible_facts.architecture] | basename }}"
+          bitwarden_desktop_version_details.download_link | basename }}"
   register: pv_ua_bw_archive_stat
 
 - name: Bitwarden Desktop | Download AppImage
   when: not pv_ua_bw_archive_stat.stat.exists
   ansible.builtin.get_url:
-      url: "{{ bitwarden_desktop_rv_download_url_map[ansible_facts.architecture] }}"
-      dest: "{{ bitwarden_desktop_rv_install_path }}/{{
-          bitwarden_desktop_rv_download_url_map[ansible_facts.architecture] | basename }}"
+      url: "{{ bitwarden_desktop_version_details.download_link }}"
+      dest: "{{ bitwarden_desktop_rv_install_path }}/{{ bitwarden_desktop_version_details.download_link | basename }}"
+      checksum: "{{ bitwarden_desktop_version_details.checksum | default(omit) }}"
       mode: "0700"
 
 - name: Bitwarden Desktop | Create desktop icon directory
