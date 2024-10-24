@@ -1,24 +1,23 @@
 ---
-name: Molecule Test Role Bitwarden Desktop
+name: Molecule Test Role Vault
 
 "on":
     push:
         paths:
-            - "!roles/bitwarden_desktop/README.md"
-            - ".github/workflows/molecule_test_role_bitwarden_desktop.yml"
+            - "!roles/vault/README.md"
+            - ".github/workflows/molecule_test_role_vault.yml"
             - "meta/**"
-            - "molecule/role.bitwarden_desktop.docker/**"
+            - "molecule/role.vault.docker/**"
             - "plugins/lookup/version_db.py"
             - "plugins/module_utils/__init__.py"
             - "plugins/module_utils/py.typed"
             - "plugins/module_utils/version_db/__init__.py"
-            - "plugins/module_utils/version_db/bitwarden_desktop.py"
-            - "plugins/module_utils/version_db/grs.py"
             - "plugins/module_utils/version_db/models.py"
             - "plugins/module_utils/version_db/py.typed"
+            - "plugins/module_utils/version_db/vault.py"
             - "poetry.lock"
             - "requirements.yml"
-            - "roles/bitwarden_desktop/**"
+            - "roles/vault/**"
     workflow_dispatch:
 
 concurrency:
@@ -26,7 +25,7 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    molecule_test_role_bitwarden_desktop:
+    molecule_test_role_vault:
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
@@ -58,4 +57,4 @@ jobs:
               run: poetry install --with dev
 
             - name: Run Molecule Test
-              run: poetry run molecule test -s role.bitwarden_desktop.docker
+              run: poetry run molecule test -s role.vault.docker

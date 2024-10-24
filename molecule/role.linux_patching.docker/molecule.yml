@@ -10,8 +10,8 @@ dependency:
 driver:
     name: docker
 platforms:
-    - name: debian_role_linux_patching_default
-      hostname: debian_role_linux_patching_default
+    - name: debian_role_linux_patching_docker
+      hostname: debian_role_linux_patching_docker
       image: debian
       pre_build_image: true
       volumes:
@@ -23,12 +23,15 @@ provisioner:
     name: ansible
     playbooks:
         converge: converge.yml
+    vvv: true
+    env:
+        ANSIBLE_VERBOSITY: 5
     inventory:
         group_vars:
             all:
                 linux_patching_rv_install_devel_packages: false
 scenario:
-    name: role.linux_patching.default
+    name: role.linux_patching.docker
     converge_sequence:
         - converge
     destroy_sequence:
