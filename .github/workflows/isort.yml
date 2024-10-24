@@ -8,6 +8,7 @@ name: isort
             - ".github/workflows/isort.yml"
             - "poetry.lock"
             - "pyproject.toml"
+    workflow_dispatch:
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}

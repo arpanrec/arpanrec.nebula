@@ -1,7 +1,6 @@
 ---
 name: Scans
 "on":
-    pull_request:
     push:
     workflow_dispatch:
     schedule:

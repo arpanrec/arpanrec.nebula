@@ -9,6 +9,7 @@ name: Pylint
             - ".pylint.*"
             - "poetry.lock"
             - "pyproject.toml"
+    workflow_dispatch:
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
