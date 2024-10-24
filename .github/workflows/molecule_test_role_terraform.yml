@@ -17,8 +17,7 @@ name: Molecule Test Role Terraform
             - "poetry.lock"
             - "meta/**"
             - ".github/workflows/molecule_test_role_terraform.yml"
-        paths-ignore:
-            - "roles/terraform/README.md"
+            - "!roles/terraform/README.md"
     workflow_dispatch:
 
 concurrency:

@@ -17,8 +17,7 @@ name: Molecule Test Role Bitwarden Desktop
             - "poetry.lock"
             - "meta/**"
             - ".github/workflows/molecule_test_role_bitwarden_desktop.yml"
-        paths-ignore:
-            - "roles/bitwarden_desktop/README.md"
+            - "!roles/bitwarden_desktop/README.md"
     workflow_dispatch:
 
 concurrency:

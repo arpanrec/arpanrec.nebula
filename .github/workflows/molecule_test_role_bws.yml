@@ -17,8 +17,7 @@ name: Molecule Test Role BWS
             - "poetry.lock"
             - "meta/**"
             - ".github/workflows/molecule_test_role_bws.yml"
-        paths-ignore:
-            - "roles/bws/README.md"
+            - "!roles/bws/README.md"
     workflow_dispatch:
 
 concurrency:

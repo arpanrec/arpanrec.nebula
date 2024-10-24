@@ -17,8 +17,7 @@ name: Molecule Test Role Go
             - "poetry.lock"
             - "meta/**"
             - ".github/workflows/molecule_test_role_go.yml"
-        paths-ignore:
-            - "roles/go/README.md"
+            - "!roles/go/README.md"
     workflow_dispatch:
 
 concurrency:

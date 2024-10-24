@@ -17,8 +17,7 @@ name: Molecule Test Role Vault
             - "poetry.lock"
             - "meta/**"
             - ".github/workflows/molecule_test_role_vault.yml"
-        paths-ignore:
-            - "roles/vault/README.md"
+            - "!roles/vault/README.md"
     workflow_dispatch:
 
 concurrency:
