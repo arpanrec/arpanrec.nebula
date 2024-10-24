@@ -13,10 +13,6 @@
       terraform_tmp_version_details: "{{ lookup('arpanrec.nebula.version_db', 'terraform',
           terraform_rv_version=terraform_rv_version) }}"
 
-- name: Terraform | Set terraform_rv_version
-  ansible.builtin.set_fact:
-      terraform_rv_version: "{{ terraform_tmp_version_details.version }}"
-
 - name: Terraform | Get downloaded file stat
   ansible.builtin.stat:
       path: "{{ terraform_rv_tarball_download_path }}"
