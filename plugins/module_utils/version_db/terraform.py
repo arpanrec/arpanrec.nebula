@@ -21,22 +21,26 @@ class Terraform(AppDetails):  # pylint: disable=too-few-public-methods
         """
         Get the version details for the Terraform.
         """
+
+        display.vvv(f"AppDetails Terraform: Fetching Terraform version")
+
         _terraform_release_tag = self._kwargs.get("terraform_rv_version", None)
         if not _terraform_release_tag or _terraform_release_tag == self._FETCH_LATEST_KEY:
-            display.vvv(f"Fetching terraform version details from {self.__terraform_releases_url}.")
+            display.vvv(f"AppDetails Terraform: Fetching terraform version details from"
+                        f" {self.__terraform_releases_url}.")
             try:
                 _terraform_releases: Dict[str, Any] = requests.get(self.__terraform_releases_url, timeout=10).json()[
                     "versions"
                 ]
                 _terraform_release_tag = list(_terraform_releases)[-1]
 
-                display.vvv(f"Latest terraform release tag: {_terraform_release_tag}")
+                display.vvv(f"AppDetails Terraform: Latest terraform release tag: {_terraform_release_tag}")
 
             except Exception as e:
-                display.error(f"Failed to fetch terraform releases: {e}")
-                raise ValueError(f"Failed to fetch terraform releases. {str(e)}") from e
+                display.error(f"AppDetails Terraform: Failed to fetch terraform releases: {e}")
+                raise ValueError(f"AppDetails Terraform: Failed to fetch terraform releases. {str(e)}") from e
         else:
-            display.vvv(f"Using provided Terraform version tag: {_terraform_release_tag}")
+            display.vvv(f"AppDetails Terraform: Using provided Terraform version tag: {_terraform_release_tag}")
         # https://releases.hashicorp.com/terraform/1.4.4/terraform_1.4.4_linux_amd64.zip
         # pylint: disable=attribute-defined-outside-init
         self._download_link = (

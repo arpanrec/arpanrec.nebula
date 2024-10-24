@@ -16,10 +16,11 @@ options:
     go_rv_version:
         description:
             - Exact release version of go language.
-            - Default is, latest release version from [golang](https://golang.org/VERSION?m=text)
-            - Example Format `1.20.5`
-        required: false
-        type: str
+            - Example Format `go1.23.2`.
+            - If set to `fetch_latest_version`, it will fetch the latest version from [golang](https://golang.org/VERSION?m=text).
+        required: false.
+        type: str.
+        default: "fetch_latest_version".
     go_rv_tmp_dir:
         description: Temporary cache directory for install.
         required: false

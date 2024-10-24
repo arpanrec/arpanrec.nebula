@@ -3,17 +3,8 @@
   ansible.builtin.import_tasks: prerequisites.yml
 
 - name: Golang | Get Latest Version
-  when: go_rv_version is not defined
-  block:
-      - name: Golang | Get Latest Version | Download
-        ansible.builtin.uri:
-            url: https://golang.org/VERSION?m=text
-            return_content: true
-        register: pv_ua_golang_latest_version
-
-      - name: Golang | Get Latest Version | Set
-        ansible.builtin.set_fact:
-            go_rv_version: "{{ pv_ua_golang_latest_version.content | split('\n') | first | regex_replace('^go', '') }}"
+  ansible.builtin.set_fact:
+      go_tmp_version_details: "{{ lookup('arpanrec.nebula.version_db', 'go', go_rv_version=go_rv_version) }}"
 
 - name: Golang | Get downloaded file stat
   ansible.builtin.stat:
@@ -29,9 +20,10 @@
 - name: Golang | Newly downloaded
   when: not pv_ua_golang_downloaded_file_stat.stat.exists
   block:
-      - name: "Golang | Newly downloaded | Download tarball version: {{ go_rv_version }}"
+      - name: "Golang | Newly downloaded | Download tarball"
         ansible.builtin.get_url:
-            url: "{{ go_rv_download_url_arch_map[ansible_facts.architecture] }}"
+            url: "{{ go_tmp_version_details.download_link }}"
+            checksum: "{{ go_tmp_version_details.checksum | default(omit) }}"
             dest: "{{ go_rv_tarball_download_path }}"
             mode: "0700"
 
