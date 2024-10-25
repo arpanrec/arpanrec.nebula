@@ -10,9 +10,6 @@
           java_rv_jdk_groovy_version=java_rv_jdk_groovy_version,
           java_rv_jdk_kotlinc_version=java_rv_jdk_kotlinc_version) }}"
 
-- ansible.builtin.fail:
-      msg: "{{ oracle_jdk_tmp_version_details }}"
-
 - name: Oracle JDK | Get downloaded file stat
   ansible.builtin.stat:
       path: "{{ java_rv_jdk_tarball_download_path }}"
@@ -24,7 +21,7 @@
       - name: Oracle JDK | Newly Downloaded | Download tarball
         ansible.builtin.get_url:
             url: "{{ oracle_jdk_tmp_version_details.download_link }}"
-            checksum: "{{ oracle_jdk_tmp_version_details.checksum }}"
+            checksum: "{{ oracle_jdk_tmp_version_details.checksum | default(omit) }}"
             dest: "{{ java_rv_jdk_tarball_download_path }}"
             mode: "0700"
 
