@@ -10,20 +10,21 @@ dependency:
 driver:
     name: docker
 platforms:
-    - name: debian_role_java_default
-      hostname: debian_role_java_default
+    - name: debian_role_java_docker
+      hostname: debian_role_java_docker
       image: debian
       dockerfile: Dockerfile.j2
       pre_build_image: false
 provisioner:
     name: ansible
+    vvv: true
     env:
-        ANSIBLE_VERBOSITY: 1
+        ANSIBLE_VERBOSITY: 5
     playbooks:
         converge: converge.yml
         verify: verify.yml
 scenario:
-    name: role.java.default
+    name: role.java.docker
     converge_sequence:
         - converge
     destroy_sequence:

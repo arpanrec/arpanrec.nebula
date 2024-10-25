@@ -57,4 +57,4 @@ jobs:
               run: poetry install --with dev
 
             - name: Run Molecule Test
-              run: poetry run molecule test -s role.java.default
+              run: poetry run molecule test -s role.java.docker

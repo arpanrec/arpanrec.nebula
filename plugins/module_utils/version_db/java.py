@@ -1,10 +1,10 @@
 # pylint: disable=E0401,E0611
-from typing import Dict
+from typing import Any, Dict
 
-from .grs import github_release_tag_search
-from .models import AppDetails  # type: ignore
 from ansible.utils.display import Display  # type: ignore
 from packaging.version import parse as parse_version
+
+from .models import AppDetails  # type: ignore
 
 display = Display()
 
@@ -14,7 +14,7 @@ class Java(AppDetails):
     Class to handle Java version details.
     """
 
-    __java_download_map = {
+    __java_download_map: Dict[str, Any] = {
         "jdk": {
             "21": {
                 "x86_64": "https://download.oracle.com/java/21/archive/jdk-21.0.4_linux-x64_bin.tar.gz",
@@ -35,13 +35,28 @@ class Java(AppDetails):
                 "aarch64": "https://download.oracle.com/graalvm/17/latest/graalvm-jdk-17_linux-aarch64_bin.tar.gz",
             },
         },
+        "maven": {
+            "maven-3.9.9": {},
+            "maven-3.8.4": {},
+        },
+        "gradle": {
+            "v8.10.2": {},
+            "v7.6.4": {},
+        },
+        "groovy": {"4.0.22": {}, "3.0.22": {}},
+        "kotlinc": {
+            "v2.0.21": {},
+            "v2.0.20": {},
+            "v1.9.25": {},
+            "v1.8.0": {},
+        },
     }
 
     __maven_github_repo = "apache/maven"
 
     def fetch_details(self) -> None:
         """
-        Fetch the Java version details.S
+        Fetch the Java version details.
         """
 
         display.vvv("AppDetails Java: Fetching Java version details.")
@@ -61,7 +76,12 @@ class Java(AppDetails):
 
         self._download_link = self.__java_download_map["jdk"][_java_version][_ansible_architecture]
         self._version = _java_version
-        self._extras = {"maven": self._fetch_maven_version()}
+        self._extras = {
+            "maven": self._fetch_maven_version(),
+            "gradle": self._fetch_gradle_version(),
+            "groovy": self._fetch_groovy_version(),
+            "kotlinc": self._fetch_kotlinc_version(),
+        }
 
     def _fetch_maven_version(self) -> Dict[str, str]:
         """
@@ -71,17 +91,15 @@ class Java(AppDetails):
         _github_release_tag = self._kwargs.get("java_rv_jdk_mvn_version", None)
 
         if not _github_release_tag or _github_release_tag == self._FETCH_LATEST_KEY:
-            display.vvv("Fetching Maven version details from GitHub.")
+            display.vvv("Fetching Maven version details.")
             # pylint: disable=R0801
-            _github_release_tag = github_release_tag_search(
-                github_release_tag_search_repo=self.__maven_github_repo,
-                github_release_tag_search_api_url=self._kwargs.get("github_release_tag_search_api_url"),
-                github_release_tag_search_token=self._kwargs.get("github_release_tag_search_token"),
-                github_release_tag_search_contains=self._kwargs.get("github_release_tag_search_contains"),
-                github_release_tag_search_max_pages=int(self._kwargs.get("github_release_tag_search_max_pages", 100)),
-                github_release_tag_search_timeout=self._kwargs.get("github_release_tag_search_timeout", 10),
-            )
+            _github_release_tag = list(self.__java_download_map["maven"].keys())[0]
         else:
+            if _github_release_tag not in self.__java_download_map["maven"]:
+                raise ValueError(
+                    f"AppDetails Java: Provided Maven version {_github_release_tag} is not supported."
+                    f" Supported versions are {list(self.__java_download_map['maven'].keys())}"
+                )
             display.vvv(f"Using provided Maven version tag: {_github_release_tag}")
 
         if not _github_release_tag or not _github_release_tag.startswith("maven-"):
@@ -90,10 +108,84 @@ class Java(AppDetails):
                 f" Invalid Maven version tag: {_github_release_tag}",
                 "Maven version tag should start with 'maven-'.",
             )
-        maven_major_version = parse_version("_github_release_tag[6:]").major
+        maven_major_version = parse_version(f"{_github_release_tag[6:]}").major
         return {
             "version": _github_release_tag,
             "download_link": f"https://dlcdn.apache.org/maven/maven-{maven_major_version}"
-                             f"/{_github_release_tag[6:]}/binaries"
-                             f"/apache-{_github_release_tag}-bin.tar.gz",
+            f"/{_github_release_tag[6:]}/binaries"
+            f"/apache-{_github_release_tag}-bin.tar.gz",
+        }
+
+    def _fetch_gradle_version(self) -> Dict[str, str]:
+        """
+        Fetch the latest Gradle version.
+        """
+        display.vvv("AppDetails Java: Fetching Gradle version details.")
+        _github_release_tag = self._kwargs.get("java_rv_jdk_gradle_version", None)
+
+        if not _github_release_tag or _github_release_tag == self._FETCH_LATEST_KEY:
+            display.vvv("Fetching Gradle version details.")
+            # pylint: disable=R0801
+            _github_release_tag = list(self.__java_download_map["gradle"].keys())[0]
+        else:
+            if _github_release_tag not in self.__java_download_map["gradle"]:
+                raise ValueError(
+                    f"AppDetails Java: Provided Gradle version {_github_release_tag} is not supported."
+                    f" Supported versions are {list(self.__java_download_map['gradle'].keys())}"
+                )
+            display.vvv(f"Using provided Gradle version tag: {_github_release_tag}")
+
+        return {
+            "version": _github_release_tag,
+            "download_link": f"https://downloads.gradle.org/distributions/gradle-{_github_release_tag[1:]}-all.zip",
+        }
+
+    def _fetch_groovy_version(self) -> Dict[str, str]:
+        """
+        Fetch the latest Groovy version.
+        """
+        display.vvv("AppDetails Java: Fetching Groovy version details.")
+        _github_release_tag = self._kwargs.get("java_rv_jdk_groovy_version", None)
+
+        if not _github_release_tag or _github_release_tag == self._FETCH_LATEST_KEY:
+            display.vvv("Fetching Groovy version details.")
+            # pylint: disable=R0801
+            _github_release_tag = list(self.__java_download_map["groovy"].keys())[0]
+        else:
+            if _github_release_tag not in self.__java_download_map["groovy"]:
+                raise ValueError(
+                    f"AppDetails Java: Provided Groovy version {_github_release_tag} is not supported."
+                    f" Supported versions are {list(self.__java_download_map['groovy'].keys())}"
+                )
+            display.vvv(f"Using provided Groovy version tag: {_github_release_tag}")
+
+        return {
+            "version": _github_release_tag,
+            "download_link": f"https://groovy.jfrog.io/artifactory/dist-release-local/groovy-zips"
+            f"/apache-groovy-sdk-{_github_release_tag}.zip",
+        }
+
+    def _fetch_kotlinc_version(self) -> Dict[str, str]:
+        """
+        Fetch the latest Kotlin compiler version.
+        """
+        display.vvv("AppDetails Java: Fetching Kotlin compiler version details.")
+        _github_release_tag = self._kwargs.get("java_rv_jdk_kotlinc_version", None)
+
+        if not _github_release_tag or _github_release_tag == self._FETCH_LATEST_KEY:
+            display.vvv("Fetching Kotlin compiler version details.")
+            # pylint: disable=R0801
+            _github_release_tag = list(self.__java_download_map["kotlinc"].keys())[0]
+        else:
+            if _github_release_tag not in self.__java_download_map["kotlinc"]:
+                raise ValueError(
+                    f"AppDetails Java: Provided Kotlin compiler version {_github_release_tag} is not supported."
+                    f" Supported versions are {list(self.__java_download_map['kotlinc'].keys())}"
+                )
+            display.vvv(f"Using provided Kotlin compiler version tag: {_github_release_tag}")
+
+        return {
+            "version": _github_release_tag,
+            "download_link": f"https://github.com/JetBrains/kotlin/releases/download"
+            f"/{_github_release_tag}/kotlin-compiler-{_github_release_tag[1:]}.zip",
         }
