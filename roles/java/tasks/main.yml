@@ -53,7 +53,7 @@
       remote_src: true
 
 - name: Oracle JDK | Maven
-  ansible.builtin.import_tasks: mvn.yml
+  ansible.builtin.import_tasks: maven.yml
 
 - name: Oracle JDK | Gradle
   ansible.builtin.import_tasks: gradle.yml

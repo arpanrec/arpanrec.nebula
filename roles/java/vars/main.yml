@@ -3,11 +3,11 @@ java_rv_jdk_tarball_download_path: "{{ java_rv_jdk_tmp_dir }}\
     /jdk-{{ oracle_jdk_tmp_version_details.version }}_linux-{{ ansible_facts.architecture }}_bin.tar.gz"
 
 java_rv_jdk_mvn_tarball_download_path: "{{ java_rv_jdk_tmp_dir }}/apache-maven-{{
-    oracle_jdk_tmp_version_details.maven.version }}-bin.tar.gz"
+    oracle_jdk_tmp_version_details.extras.maven.version }}-bin.tar.gz"
 
 java_rv_jdk_gradle_tmp_unzip_path: "{{ java_rv_jdk_tmp_dir }}"
 java_rv_jdk_gradle_tarball_download_path: "{{ java_rv_jdk_tmp_dir }}/gradle-{{
-    oracle_jdk_tmp_version_details.version }}-all.zip"
+    oracle_jdk_tmp_version_details.extras.gradle.version }}-all.zip"
 
 java_rv_jdk_groovy_tmp_unzip_path: "{{ java_rv_jdk_tmp_dir }}"
 java_rv_jdk_groovy_tarball_download_path: "{{ java_rv_jdk_tmp_dir }}\

@@ -1,4 +1,7 @@
 ---
+- name: Oracle JDK | Apache Maven | Debug Maven Details
+  ansible.builtin.debug:
+      msg: "{{ oracle_jdk_tmp_version_details.extras.maven }}"
 - name: Oracle JDK | Apache Maven | Get downloaded file stat
   ansible.builtin.stat:
       path: "{{ java_rv_jdk_mvn_tarball_download_path }}"
@@ -9,8 +12,8 @@
   block:
       - name: Oracle JDK | Apache Maven | Newly Downloaded | Download tarball
         ansible.builtin.get_url:
-            url: "{{ oracle_jdk_tmp_version_details.maven.download_link }}"
-            checksum: "{{ oracle_jdk_tmp_version_details.maven.checksum }}"
+            url: "{{ oracle_jdk_tmp_version_details.extras.maven.download_link }}"
+            checksum: "{{ oracle_jdk_tmp_version_details.extras.maven.checksum | default(omit) }}"
             dest: "{{ java_rv_jdk_mvn_tarball_download_path }}"
             mode: "0700"
 
@@ -28,7 +31,7 @@
       - name: Oracle JDK | Apache Maven | Newly Downloaded | Fail
         ansible.builtin.fail:
             msg: |+
-                "Failed to download {{ oracle_jdk_tmp_version_details.maven.download_link }}
+                "Failed to download {{ oracle_jdk_tmp_version_details.extras.maven.download_link }}
                 to {{ java_rv_jdk_mvn_tarball_download_path }}"
                 Check the error above for more details
 
