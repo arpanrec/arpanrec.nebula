@@ -10,9 +10,9 @@ dependency:
 driver:
     name: docker
 platforms:
-    - name: debian_role_get_certificate_ownca_default
-      hostname: debian_role_get_certificate_ownca_default
-      image: debian
+    - name: debian_role_get_certificate_ownca_docker
+      hostname: debian_role_get_certificate_ownca_docker
+      image: docker.io/library/debian:bookworm
       dockerfile: Dockerfile.j2
       pre_build_image: false
 provisioner:
@@ -20,8 +20,9 @@ provisioner:
     playbooks:
         converge: converge.yml
         prepare: prepare.yml
+    vvv: true
     env:
-        ANSIBLE_VERBOSITY: 1
+        ANSIBLE_VERBOSITY: 5
     inventory:
         group_vars:
             all:
@@ -58,7 +59,7 @@ provisioner:
                     - pathlen:0
                 get_certificate_ownca_rv_getcert_private_key_file_mode: "0600"
 scenario:
-    name: role.get_certificate_ownca.default
+    name: role.get_certificate_ownca.docker
     converge_sequence:
         - converge
     destroy_sequence:

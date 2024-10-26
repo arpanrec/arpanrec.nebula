@@ -10,41 +10,35 @@ dependency:
 driver:
     name: docker
 platforms:
-    - name: debian_role_ssh_hardening_default
-      hostname: debian_role_ssh_hardening_default
-      image: debian
-      pre_build_image: true
-      volumes:
-          - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      privileged: true
-      provider_raw_config_args:
-          - "--sysctl"
+    - name: debian_role_telegram_desktop_docker
+      hostname: debian_role_telegram_desktop_docker
+      image: docker.io/library/debian:bookworm
+      dockerfile: Dockerfile.j2
+      pre_build_image: false
 provisioner:
     name: ansible
-    playbooks:
-        converge: converge.yml
-        prepare: prepare.yml
-        verify: verify.yml
+    vvv: true
+    env:
+        ANSIBLE_VERBOSITY: 5
     inventory:
         group_vars:
             all:
-                linux_patching_rv_install_devel_packages: false
+                ansible_python_interpreter: /usr/bin/python3
+    playbooks:
+        converge: converge.yml
 scenario:
-    name: role.ssh_hardening.default
+    name: role.telegram_desktop.docker
     create_sequence:
         - dependency
         - create
-        - prepare
     destroy_sequence:
         - destroy
     converge_sequence:
         - converge
     test_sequence:
-        - dependency
-        - destroy
         - syntax
+        - dependency
         - create
-        - prepare
         - converge
         - idempotence
         - destroy

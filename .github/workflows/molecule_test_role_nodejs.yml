@@ -1,24 +1,16 @@
 ---
-name: Molecule Test Role BWS
+name: Molecule Test Role NodeJS
 
 "on":
     push:
         paths:
-            - "!roles/bws/README.md"
-            - ".github/workflows/molecule_test_role_bws.yml"
+            - "!roles/nodejs/README.md"
+            - ".github/workflows/molecule_test_role_nodejs.yml"
             - "meta/**"
-            - "molecule/role.bws.docker/**"
-            - "plugins/lookup/version_db.py"
-            - "plugins/module_utils/__init__.py"
-            - "plugins/module_utils/py.typed"
-            - "plugins/module_utils/version_db/__init__.py"
-            - "plugins/module_utils/version_db/bws.py"
-            - "plugins/module_utils/version_db/grs.py"
-            - "plugins/module_utils/version_db/models.py"
-            - "plugins/module_utils/version_db/py.typed"
+            - "molecule/role.nodejs.docker/**"
             - "poetry.lock"
             - "requirements.yml"
-            - "roles/bws/**"
+            - "roles/nodejs/**"
     workflow_dispatch:
 
 concurrency:
@@ -26,7 +18,7 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    molecule_test_role_bws:
+    molecule_test_role_nodejs:
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
@@ -58,4 +50,4 @@ jobs:
               run: poetry install --with dev
 
             - name: Run Molecule Test
-              run: poetry run molecule test -s role.bws.docker
+              run: poetry run molecule test -s role.nodejs.docker

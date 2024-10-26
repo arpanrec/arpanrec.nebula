@@ -1,7 +1,7 @@
 ---
 dependency:
     name: galaxy
-    enabled: true
+    enabled: false
     options:
         ignore-certs: false
         ignore-errors: false
@@ -10,9 +10,9 @@ dependency:
 driver:
     name: docker
 platforms:
-    - name: debian_role_pulumi_default
-      hostname: debian_role_pulumi_default
-      image: debian
+    - name: debian_role_terminal_docker
+      hostname: debian_role_terminal_docker
+      image: docker.io/library/debian:bookworm
       dockerfile: Dockerfile.j2
       pre_build_image: false
 provisioner:
@@ -20,21 +20,27 @@ provisioner:
     playbooks:
         converge: converge.yml
         verify: verify.yml
+    vvv: true
+    env:
+        ANSIBLE_VERBOSITY: 5
+    inventory:
+        group_vars:
+            all:
+                ansible_python_interpreter: /usr/bin/python3
 scenario:
+    name: role.terminal.docker
     converge_sequence:
+        - dependency
         - converge
     destroy_sequence:
         - destroy
     create_sequence:
-        - dependency
         - create
     test_sequence:
         - syntax
         - destroy
-        - dependency
         - create
         - converge
-        - verify
         - idempotence
         - destroy
 verifier:

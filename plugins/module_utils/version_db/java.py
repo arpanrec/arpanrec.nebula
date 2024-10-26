@@ -204,11 +204,10 @@ class Java(AppDetails):
         Fetch the latest GraalVM version.
         """
         display.vvv("AppDetails Java: Fetching GraalVM version details.")
-        _java_major_version = parse_version(self._version).major
+        _java_major_version = str(parse_version(self._version).major)
         _ansible_architecture = self._get_ansible_architecture(self.__graalvm_architecture_map)
         return {
             "version": _java_major_version,
             "download_link": f"https://download.oracle.com/graalvm/{_java_major_version}"
             f"/latest/graalvm-jdk-{_java_major_version}_linux-{_ansible_architecture}_bin.tar.gz",
-            # self.__java_download_map["graalvm"][_java_major_version][self._get_ansible_architecture()],
         }
