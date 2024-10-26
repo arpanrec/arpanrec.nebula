@@ -2,6 +2,14 @@
 - name: Oracle JDK | Prerequisites
   ansible.builtin.import_tasks: prerequisites.yml
 
+- name: Oracle JDK | Get Version Details
+  ansible.builtin.set_fact:
+      oracle_jdk_tmp_version_details: "{{ lookup('arpanrec.nebula.version_db', 'java',
+          java_rv_jdk_version=java_rv_jdk_version, java_rv_jdk_mvn_version=java_rv_jdk_mvn_version,
+          java_rv_jdk_gradle_version=java_rv_jdk_gradle_version,
+          java_rv_jdk_groovy_version=java_rv_jdk_groovy_version,
+          java_rv_jdk_kotlinc_version=java_rv_jdk_kotlinc_version) }}"
+
 - name: Oracle JDK | Get downloaded file stat
   ansible.builtin.stat:
       path: "{{ java_rv_jdk_tarball_download_path }}"
@@ -12,7 +20,8 @@
   block:
       - name: Oracle JDK | Newly Downloaded | Download tarball
         ansible.builtin.get_url:
-            url: "{{ java_rv_jdk_download_url_map['jdk'][java_rv_jdk_version][ansible_facts.architecture] }}"
+            url: "{{ oracle_jdk_tmp_version_details.download_link }}"
+            checksum: "{{ oracle_jdk_tmp_version_details.checksum | default(omit) }}"
             dest: "{{ java_rv_jdk_tarball_download_path }}"
             mode: "0700"
 
@@ -20,7 +29,6 @@
         ansible.builtin.file:
             path: "{{ java_rv_jdk_install_path }}"
             state: absent
-
   rescue:
       - name: Oracle JDK | Newly Downloaded | Delete Downloaded tarball
         ansible.builtin.file:
@@ -45,7 +53,7 @@
       remote_src: true
 
 - name: Oracle JDK | Maven
-  ansible.builtin.import_tasks: mvn.yml
+  ansible.builtin.import_tasks: maven.yml
 
 - name: Oracle JDK | Gradle
   ansible.builtin.import_tasks: gradle.yml

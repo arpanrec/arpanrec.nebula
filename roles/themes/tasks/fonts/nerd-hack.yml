@@ -39,7 +39,3 @@
         ansible.builtin.command: "fc-cache -f -v {{ themes_rv_user_share_dir }}/fonts/hack"
         register: pv_ua_fonts_hack_fonts_update_cache_result
         changed_when: true
-
-      - name: Themes | Fonts | Hack | Install | Update Result
-        ansible.builtin.debug:
-            var: pv_ua_fonts_hack_fonts_update_cache_result

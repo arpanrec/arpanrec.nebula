@@ -37,10 +37,6 @@
       force: "{{ get_certificate_ownca_rv_getcert_to_be_created }}"
   register: get_certificate_ownca_rv_getcert_tmp_new_certificate_content
 
-- name: Get Certificate Ownca | Create Certificate | Certificate Information
-  ansible.builtin.debug:
-      var: get_certificate_ownca_rv_getcert_tmp_new_certificate_content
-
 - name: Get Certificate Ownca | Create Certificate | Certificate Set Fact
   when: get_certificate_ownca_rv_getcert_tmp_new_certificate_content.certificate is defined
   ansible.builtin.set_fact:

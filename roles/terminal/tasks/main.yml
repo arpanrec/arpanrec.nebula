@@ -24,7 +24,6 @@
       version: master
   notify:
       - Terminal | Terminal Themes | Initialize fzf | Execute install script
-      - Terminal | Terminal Themes | Initialize fzf | Result
 
 - name: Terminal | Terminal Themes | Lookup ZSH_CUSTOM from env
   ansible.builtin.set_fact:
@@ -65,4 +64,3 @@
       version: master
   notify:
       - Terminal | Terminal Themes | Initialize p10k gitstatus | Execute install script
-      - Terminal | Terminal Themes | Initialize p10k gitstatus | Result

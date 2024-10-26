@@ -1,0 +1,60 @@
+---
+name: Molecule Test Role Java
+
+"on":
+    push:
+        paths:
+            - "!roles/java/README.md"
+            - ".github/workflows/molecule_test_role_java.yml"
+            - "meta/**"
+            - "molecule/role.java.docker/**"
+            - "plugins/lookup/version_db.py"
+            - "plugins/module_utils/__init__.py"
+            - "plugins/module_utils/py.typed"
+            - "plugins/module_utils/version_db/__init__.py"
+            - "plugins/module_utils/version_db/java.py"
+            - "plugins/module_utils/version_db/models.py"
+            - "plugins/module_utils/version_db/py.typed"
+            - "poetry.lock"
+            - "requirements.yml"
+            - "roles/java/**"
+    workflow_dispatch:
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    molecule_test_role_java:
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                python-version: ["3.10", "3.11", "3.12"]
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Install poetry 1.8.4
+              run: pipx install poetry==1.8.4
+
+            - name: Set up Python "${{ matrix.python-version }}"
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "${{ matrix.python-version }}"
+                  cache: "poetry"
+                  # cache-dependency-path: pyproject.toml
+
+            - name: Cache ansible
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.ansible
+                      ~/.cache/ansible-*
+                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+
+            - name: Install dependencies
+              run: poetry install --with dev
+
+            - name: Run Molecule Test
+              run: poetry run molecule test -s role.java.docker

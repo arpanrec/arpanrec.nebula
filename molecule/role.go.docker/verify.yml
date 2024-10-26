@@ -19,10 +19,6 @@
         register: go_rv_tmp_version_shell_result
         changed_when: false
 
-      - name: Golang | Molecule | Verify | go version from shell result
-        ansible.builtin.debug:
-            var: go_rv_tmp_version_shell_result
-
       - name: Golang | Molecule | Verify | Fail if Go version is not present
         ansible.builtin.assert:
             that: go_rv_tmp_version_shell_result.stdout is match("go version "

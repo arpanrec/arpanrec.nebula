@@ -8,7 +8,6 @@
       version: master
   notify:
       - Themes | Icon | vinceliuice Tela | Install | Execute install script
-      - Themes | Icon | vinceliuice Tela | Install | Result
 
 - name: Themes | Icon | EliverLara Candy | Git clone
   ansible.builtin.git:
@@ -30,7 +29,6 @@
       version: master
   notify:
       - Themes | Cursors | vinceliuice Layan-cursors | Install | Execute install script
-      - Themes | Cursors | vinceliuice Layan-cursors | Install | Result
 
 - name: Themes | Icon | Gvolpe BeautyLine | Git Clone
   ansible.builtin.git:

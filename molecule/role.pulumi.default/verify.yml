@@ -29,10 +29,6 @@
         register: pulumi_rv_version_shell_result
         changed_when: false
 
-      - name: Pulumi | Molecule | Verify | pulumi version from shell result
-        ansible.builtin.debug:
-            var: pulumi_rv_version_shell_result
-
       - name: Pulumi | Molecule | Verify | Fail if pulumi version is not present
         ansible.builtin.assert:
             that: pulumi_rv_version_shell_result.stdout_lines[0] == pulumi_rv_version

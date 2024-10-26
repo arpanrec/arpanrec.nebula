@@ -119,8 +119,3 @@
       expected_list: "{{ get_certificate_ownca_rv_getcert_basic_constraints | default([]) }}"
       current_list: "{{ get_certificate_ownca_rv_getcert_tmp_certificate_content_x509_info.basic_constraints
           | default([]) }}"
-
-- name: Get Certificate Ownca | Certificate To Be Created | Reason
-  when: get_certificate_ownca_rv_getcert_to_be_created
-  ansible.builtin.debug:
-      msg: "Certificate to be created reason: {{ get_certificate_ownca_rv_getcert_to_be_created_reason }}"
