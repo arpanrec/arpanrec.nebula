@@ -19,6 +19,13 @@ provisioner:
     name: ansible
     playbooks:
         converge: converge.yml
+    vvv: true
+    env:
+        ANSIBLE_VERBOSITY: 5
+    inventory:
+        group_vars:
+            all:
+                ansible_python_interpreter: /usr/bin/python3
 scenario:
     name: role.gnome.default
     create_sequence:

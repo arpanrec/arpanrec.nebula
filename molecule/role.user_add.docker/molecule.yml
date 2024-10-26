@@ -18,7 +18,7 @@ provisioner:
         converge: converge.yml
     inventory:
         host_vars:
-            debian:
+            debian_role_user_add_docker:
                 user_add_rv_username: test
                 user_add_rv_password: test
 verifier:

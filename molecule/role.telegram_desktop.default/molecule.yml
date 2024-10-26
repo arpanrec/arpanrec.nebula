@@ -17,8 +17,13 @@ platforms:
       pre_build_image: false
 provisioner:
     name: ansible
+    vvv: true
     env:
-        ANSIBLE_VERBOSITY: 1
+        ANSIBLE_VERBOSITY: 5
+    inventory:
+        group_vars:
+            all:
+                ansible_python_interpreter: /usr/bin/python3
     playbooks:
         converge: converge.yml
 scenario:

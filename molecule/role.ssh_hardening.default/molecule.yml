@@ -25,6 +25,9 @@ provisioner:
         converge: converge.yml
         prepare: prepare.yml
         verify: verify.yml
+    vvv: true
+    env:
+        ANSIBLE_VERBOSITY: 5
     inventory:
         group_vars:
             all:

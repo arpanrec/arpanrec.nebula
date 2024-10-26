@@ -10,8 +10,8 @@ dependency:
 driver:
     name: docker
 platforms:
-    - name: debian_role_nodejs_default
-      hostname: debian_role_nodejs_default
+    - name: debian_role_nodejs_docker
+      hostname: debian_role_nodejs_docker
       image: docker.io/library/debian:bookworm
       dockerfile: Dockerfile.j2
       pre_build_image: false
@@ -21,6 +21,7 @@ provisioner:
         converge: converge.yml
         verify: verify.yml
 scenario:
+    name: role.nodejs.docker
     converge_sequence:
         - dependency
         - converge
