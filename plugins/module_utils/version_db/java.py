@@ -113,8 +113,8 @@ class Java(AppDetails):
         return {
             "version": _github_release_tag,
             "download_link": f"https://dlcdn.apache.org/maven/maven-{maven_major_version}"
-                             f"/{_github_release_tag[6:]}/binaries"
-                             f"/apache-{_github_release_tag}-bin.tar.gz",
+            f"/{_github_release_tag[6:]}/binaries"
+            f"/apache-{_github_release_tag}-bin.tar.gz",
         }
 
     def _fetch_gradle_version(self) -> Dict[str, str]:
@@ -163,7 +163,7 @@ class Java(AppDetails):
         return {
             "version": _github_release_tag,
             "download_link": f"https://groovy.jfrog.io/artifactory/dist-release-local/groovy-zips"
-                             f"/apache-groovy-sdk-{_github_release_tag}.zip",
+            f"/apache-groovy-sdk-{_github_release_tag}.zip",
         }
 
     def _fetch_kotlinc_version(self) -> Dict[str, str]:
@@ -188,7 +188,7 @@ class Java(AppDetails):
         return {
             "version": _github_release_tag,
             "download_link": f"https://github.com/JetBrains/kotlin/releases/download"
-                             f"/{_github_release_tag}/kotlin-compiler-{_github_release_tag[1:]}.zip",
+            f"/{_github_release_tag}/kotlin-compiler-{_github_release_tag[1:]}.zip",
         }
 
     def _fetch_graalvm_version(self) -> Dict[str, str]:
