@@ -10,8 +10,8 @@ dependency:
 driver:
     name: docker
 platforms:
-    - name: debian_role_ssh_hardening_default
-      hostname: debian_role_ssh_hardening_default
+    - name: debian_role_ssh_hardening_docker
+      hostname: debian_role_ssh_hardening_docker
       image: docker.io/library/debian:bookworm
       pre_build_image: true
       volumes:
@@ -33,7 +33,7 @@ provisioner:
             all:
                 linux_patching_rv_install_devel_packages: false
 scenario:
-    name: role.ssh_hardening.default
+    name: role.ssh_hardening.docker
     create_sequence:
         - dependency
         - create

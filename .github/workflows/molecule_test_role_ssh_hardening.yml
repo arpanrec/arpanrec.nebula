@@ -1,8 +1,16 @@
 ---
-name: Molecule
+name: Molecule Test Role SSH Hardening
 
 "on":
     push:
+        paths:
+            - "!roles/ssh_hardening/README.md"
+            - ".github/workflows/molecule_test_role_ssh_hardening.yml"
+            - "meta/**"
+            - "molecule/role.ssh_hardening.docker/**"
+            - "poetry.lock"
+            - "requirements.yml"
+            - "roles/ssh_hardening/**"
     workflow_dispatch:
 
 concurrency:
@@ -10,7 +18,7 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    molecule_test_role_gnome:
+    molecule_test_role_ssh_hardening:
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
@@ -42,4 +50,4 @@ jobs:
               run: poetry install --with dev
 
             - name: Run Molecule Test
-              run: poetry run molecule test -s role.gnome.default
+              run: poetry run molecule test -s role.ssh_hardening.docker
