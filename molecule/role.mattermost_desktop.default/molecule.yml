@@ -10,9 +10,9 @@ dependency:
 driver:
     name: docker
 platforms:
-    - name: debian_role_mattermost_desktop
-      image: debian
-      hostname: debian_role_mattermost_desktop
+    - name: debian_role_mattermost_desktop_docker
+      image: docker.io/library/debian:bookworm
+      hostname: debian_role_mattermost_desktop_docker
       dockerfile: Dockerfile.j2
       pre_build_image: false
 provisioner:

@@ -12,7 +12,7 @@ driver:
 platforms:
     - name: debian_role_nodejs_default
       hostname: debian_role_nodejs_default
-      image: debian
+      image: docker.io/library/debian:bookworm
       dockerfile: Dockerfile.j2
       pre_build_image: false
 provisioner:

@@ -12,7 +12,7 @@ driver:
 platforms:
     - name: debian_role_ssh_hardening_default
       hostname: debian_role_ssh_hardening_default
-      image: debian
+      image: docker.io/library/debian:bookworm
       pre_build_image: true
       volumes:
           - /sys/fs/cgroup:/sys/fs/cgroup:ro
