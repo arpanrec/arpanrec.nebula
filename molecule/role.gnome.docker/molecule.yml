@@ -10,18 +10,30 @@ dependency:
 driver:
     name: docker
 platforms:
-    - name: debian_role_mattermost_desktop
-      image: debian
-      hostname: debian_role_mattermost_desktop
+    - name: debian_role_gnome_docker
+      image: docker.io/library/debian:bookworm
+      hostname: debian_role_gnome_docker
       dockerfile: Dockerfile.j2
       pre_build_image: false
 provisioner:
     name: ansible
     playbooks:
         converge: converge.yml
+    vvv: true
+    env:
+        ANSIBLE_VERBOSITY: 5
+    inventory:
+        group_vars:
+            all:
+                ansible_python_interpreter: /usr/bin/python3
 scenario:
+    name: role.gnome.docker
+    create_sequence:
+        - create
     converge_sequence:
         - converge
+    destroy_sequence:
+        - destroy
     test_sequence:
         - syntax
         - create

@@ -10,21 +10,25 @@ dependency:
 driver:
     name: docker
 platforms:
-    - name: debian_role_telegram_desktop_default
-      hostname: debian_role_telegram_desktop_default
-      image: debian
+    - name: debian_role_postman_docker
+      image: docker.io/library/debian:bookworm
+      hostname: debian_role_postman_docker
       dockerfile: Dockerfile.j2
       pre_build_image: false
 provisioner:
     name: ansible
-    env:
-        ANSIBLE_VERBOSITY: 1
     playbooks:
         converge: converge.yml
+    vvv: true
+    env:
+        ANSIBLE_VERBOSITY: 5
+    inventory:
+        group_vars:
+            all:
+                ansible_python_interpreter: /usr/bin/python3
 scenario:
-    name: role.telegram_desktop.default
+    name: role.postman.docker
     create_sequence:
-        - dependency
         - create
     destroy_sequence:
         - destroy
@@ -32,7 +36,6 @@ scenario:
         - converge
     test_sequence:
         - syntax
-        - dependency
         - create
         - converge
         - idempotence

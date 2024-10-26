@@ -4,23 +4,27 @@ dependency:
 driver:
     name: docker
 platforms:
-    - name: debian
-      image: docker.io/library/debian:bullseye
+    - name: debian_role_user_add_docker
+      hostname: debian_role_user_add_docker
+      image: docker.io/library/debian:bookworm
       pre_build_image: true
 provisioner:
     name: ansible
+    vvv: true
+    env:
+        ANSIBLE_VERBOSITY: 5
     playbooks:
         prepare: prepare.yml
         converge: converge.yml
     inventory:
         host_vars:
-            debian:
+            debian_role_user_add_docker:
                 user_add_rv_username: test
                 user_add_rv_password: test
 verifier:
     name: ansible
 scenario:
-    name: role.user_add.default
+    name: role.user_add.docker
     test_sequence:
         - destroy
         - syntax

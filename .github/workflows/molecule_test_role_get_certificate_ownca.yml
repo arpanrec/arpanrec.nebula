@@ -1,24 +1,17 @@
 ---
-name: Molecule Test Role BWS
+name: Molecule Test Role Get Certificate OwnCA
 
 "on":
     push:
         paths:
-            - "!roles/bws/README.md"
-            - ".github/workflows/molecule_test_role_bws.yml"
+            - "!roles/get_certificate_ownca/README.md"
+            - ".github/workflows/molecule_test_role_get_certificate_ownca.yml"
             - "meta/**"
-            - "molecule/role.bws.docker/**"
-            - "plugins/lookup/version_db.py"
-            - "plugins/module_utils/__init__.py"
-            - "plugins/module_utils/py.typed"
-            - "plugins/module_utils/version_db/__init__.py"
-            - "plugins/module_utils/version_db/bws.py"
-            - "plugins/module_utils/version_db/grs.py"
-            - "plugins/module_utils/version_db/models.py"
-            - "plugins/module_utils/version_db/py.typed"
+            - "molecule/role.get_certificate_ownca.docker/**"
+            - "plugins/filter/split_certificates.py"
             - "poetry.lock"
             - "requirements.yml"
-            - "roles/bws/**"
+            - "roles/get_certificate_ownca/**"
     workflow_dispatch:
 
 concurrency:
@@ -26,7 +19,7 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    molecule_test_role_bws:
+    molecule_test_role_get_certificate_ownca:
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
@@ -58,4 +51,4 @@ jobs:
               run: poetry install --with dev
 
             - name: Run Molecule Test
-              run: poetry run molecule test -s role.bws.docker
+              run: poetry run molecule test -s role.get_certificate_ownca.docker

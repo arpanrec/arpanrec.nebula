@@ -1,7 +1,7 @@
 ---
 dependency:
     name: galaxy
-    enabled: true
+    enabled: false
     options:
         ignore-certs: false
         ignore-errors: false
@@ -10,25 +10,35 @@ dependency:
 driver:
     name: docker
 platforms:
-    - name: debian_role_gnome_default
-      image: debian
-      hostname: debian_role_gnome_default
+    - name: debian_role_themes_docker
+      hostname: debian_role_themes_docker
+      image: docker.io/library/debian:bookworm
       dockerfile: Dockerfile.j2
       pre_build_image: false
 provisioner:
     name: ansible
     playbooks:
         converge: converge.yml
+        verify: verify.yml
+    vvv: true
+    env:
+        ANSIBLE_VERBOSITY: 5
+    inventory:
+        group_vars:
+            all:
+                ansible_python_interpreter: /usr/bin/python3
 scenario:
-    name: role.gnome.default
-    create_sequence:
-        - create
+    name: role.themes.docker
     converge_sequence:
+        - dependency
         - converge
     destroy_sequence:
         - destroy
+    create_sequence:
+        - create
     test_sequence:
         - syntax
+        - destroy
         - create
         - converge
         - idempotence
