@@ -11,8 +11,9 @@ from ansible.utils.display import Display  # type: ignore
 display = Display()
 
 
-# pylint: disable=R0912,R0913,R0914,too-many-positional-arguments
+# pylint: disable=R0912,R0913,R0914
 def github_release_tag_search(
+    *,
     github_release_tag_search_repo: str,
     github_release_tag_search_api_url: Optional[str],
     github_release_tag_search_token: Optional[str],
@@ -45,18 +46,21 @@ def github_release_tag_search(
     Returns:
         str: The latest tag in the GitHub repository.
     """
-    display.vvv(f"Searching for latest release in {github_release_tag_search_repo}")
+    display.vvv(f"github_release_tag_search: Searching for latest release in {github_release_tag_search_repo}")
     if not github_release_tag_search_token:
-        display.vvv("No GitHub token provided. Trying to fetch github token from environment variable 'GITHUB_TOKEN'.")
+        display.vvv(
+            "github_release_tag_search: No GitHub token provided."
+            " Trying to fetch github token from environment variable 'GITHUB_TOKEN'."
+        )
         github_release_tag_search_token = os.getenv("GITHUB_TOKEN", None)
 
     if not github_release_tag_search_token:
-        display.warning("No GitHub token provided. Rate limits may apply.")
+        display.warning("github_release_tag_search: No GitHub token provided. Rate limits may apply.")
 
     if not github_release_tag_search_api_url:
         github_release_tag_search_api_url = "https://api.github.com"
 
-    display.vvv(f"GitHub API URL: {github_release_tag_search_api_url}")
+    display.vvv(f"github_release_tag_search: GitHub API URL: {github_release_tag_search_api_url}")
 
     if not github_release_tag_search_max_pages or github_release_tag_search_max_pages < 1:
         github_release_tag_search_max_pages = 100
@@ -101,12 +105,15 @@ def github_release_tag_search(
                     continue
 
                 tag_version = tag_name
+                display.vvv(f"github_release_tag_search: Found tag: {tag_version}")
                 break
 
         if tag_version:
+            display.vvv(f"github_release_tag_search: Found tag: {tag_version}")
             break
 
     if not tag_version or len(tag_version) < 1:
-        raise ValueError(f"No matching tag found for {github_release_tag_search_repo}")
+        raise ValueError(f"github_release_tag_search: No matching tag found for {github_release_tag_search_repo}")
 
+    display.vvv(f"github_release_tag_search: Latest tag found: {tag_version}")
     return tag_version

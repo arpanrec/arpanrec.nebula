@@ -10,20 +10,28 @@ dependency:
 driver:
     name: docker
 platforms:
-    - name: debian_role_java_default
-      hostname: debian_role_java_default
+    - name: debian_role_linux_patching_docker
+      hostname: debian_role_linux_patching_docker
       image: debian
-      dockerfile: Dockerfile.j2
-      pre_build_image: false
+      pre_build_image: true
+      volumes:
+          - /sys/fs/cgroup:/sys/fs/cgroup:rw
+      privileged: true
+      provider_raw_config_args:
+          - "--sysctl"
 provisioner:
     name: ansible
-    env:
-        ANSIBLE_VERBOSITY: 1
     playbooks:
         converge: converge.yml
-        verify: verify.yml
+    vvv: true
+    env:
+        ANSIBLE_VERBOSITY: 5
+    inventory:
+        group_vars:
+            all:
+                linux_patching_rv_install_devel_packages: false
 scenario:
-    name: role.java.default
+    name: role.linux_patching.docker
     converge_sequence:
         - converge
     destroy_sequence:
@@ -37,8 +45,9 @@ scenario:
         - dependency
         - create
         - converge
-        - verify
         - idempotence
         - destroy
 verifier:
     name: ansible
+log: true
+role_name_check: 0

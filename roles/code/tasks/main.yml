@@ -8,22 +8,10 @@
           DONT_PROMPT_WSL_INSTALL: true
           PATH: "{{ code_rv_bin_dir }}:{{ ansible_env.PATH }}"
 
-- name: Visual Studio Code | Set Version
-  when: code_rv_version is undefined
-  block:
-      - name: Visual Studio Code | Set Version | Get latest releases from github
-        ansible.builtin.uri:
-            url: "https://api.github.com/repos/microsoft/vscode/releases/latest"
-            method: GET
-            return_content: true
-            headers:
-                Accept: "application/vnd.github.v3+json"
-            status_code: 200
-        register: code_rv_tmp_latest_release
-
-      - name: Visual Studio Code | Set Version | Set Version Number
-        ansible.builtin.set_fact:
-            code_rv_version: "{{ code_rv_tmp_latest_release.json.tag_name }}"
+- name: Visual Studio Code | Get code version
+  ansible.builtin.set_fact:
+      code_version_details: "{{ lookup('arpanrec.nebula.version_db', 'code',
+          code_rv_version=code_rv_version) }}"
 
 - name: Visual Studio Code | Get downloaded file stat
   ansible.builtin.stat:
@@ -45,7 +33,8 @@
   block:
       - name: Visual Studio Code | Install | Download tarball
         ansible.builtin.get_url:
-            url: "{{ code_rv_download_url_map[ansible_facts.architecture] }}"
+            url: "{{ code_version_details.download_link }}"
+            checksum: "{{ code_version_details.checksum | default(omit) }}"
             dest: "{{ code_rv_tarball_download_path }}"
             mode: "0700"
 

@@ -9,7 +9,8 @@
   block:
       - name: Oracle JDK | GraalVM | Newly Downloaded | Download tarball
         ansible.builtin.get_url:
-            url: "{{ java_rv_jdk_download_url_map['graalvm'][java_rv_jdk_version][ansible_facts.architecture] }}"
+            url: "{{ oracle_jdk_tmp_version_details.extras.graalvm.download_link }}"
+            checksum: "{{ oracle_jdk_tmp_version_details.extras.graalvm.checksum | default(omit) }}"
             dest: "{{ java_rv_jdk_graalvm_tarball_download_path }}"
             mode: "0700"
             timeout: 300

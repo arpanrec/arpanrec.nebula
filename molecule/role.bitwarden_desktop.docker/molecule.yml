@@ -10,39 +10,28 @@ dependency:
 driver:
     name: docker
 platforms:
-    - name: debian_role_code_default
+    - name: debian_role_bitwarden_desktop_docker
       image: debian
-      hostname: debian_role_code_default
-      privileged: false
+      hostname: debian_role_bitwarden_desktop_docker
       dockerfile: Dockerfile.j2
       pre_build_image: false
 provisioner:
     name: ansible
+    vvv: true
+    env:
+        ANSIBLE_VERBOSITY: 5
     playbooks:
         converge: converge.yml
-        verify: verify.yml
-    inventory:
-        group_vars:
-            all:
-                code_rv_ext_to_be_installed:
-                    - "akamud.vscode-theme-onedark"
 scenario:
-    name: role.code.default
-    converge_sequence:
-        - dependency
-        - converge
-    destroy_sequence:
-        - destroy
+    name: role.bitwarden_desktop.docker
     create_sequence:
-        - dependency
         - create
+    converge_sequence:
+        - converge
     test_sequence:
         - syntax
-        - destroy
-        - dependency
         - create
         - converge
-        - verify
         - idempotence
         - destroy
 verifier:

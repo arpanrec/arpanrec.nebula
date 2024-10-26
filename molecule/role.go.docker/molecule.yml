@@ -10,18 +10,21 @@ dependency:
 driver:
     name: docker
 platforms:
-    - name: debian_role_go_default
+    - name: debian_role_go_docker
       image: debian
-      hostname: debian_role_go_default
+      hostname: debian_role_go_docker
       dockerfile: Dockerfile.j2
       pre_build_image: false
 provisioner:
     name: ansible
+    vvv: true
+    env:
+        ANSIBLE_VERBOSITY: 5
     playbooks:
         converge: converge.yml
         verify: verify.yml
 scenario:
-    name: role.go.default
+    name: role.go.docker
     converge_sequence:
         - converge
     destroy_sequence:

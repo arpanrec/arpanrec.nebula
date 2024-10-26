@@ -14,7 +14,8 @@
 
       - name: Oracle JDK | Gradle | New Install | Copy new files
         ansible.builtin.copy:
-            src: "{{ java_rv_jdk_gradle_tmp_unzip_path }}/gradle-{{ java_rv_jdk_gradle_version }}/"
+            src: "{{ java_rv_jdk_gradle_tmp_unzip_path }}/gradle-{{
+                oracle_jdk_tmp_version_details.extras.gradle.version[1:] }}/"
             dest: "{{ java_rv_jdk_gradle_install_path }}/"
             remote_src: true
             mode: "0700"
@@ -24,5 +25,5 @@
             path: "{{ item }}"
             state: absent
         with_items:
-            - "{{ java_rv_jdk_gradle_tmp_unzip_path }}/gradle-{{ java_rv_jdk_gradle_version }}/"
+            - "{{ java_rv_jdk_gradle_tmp_unzip_path }}"
             - "{{ java_rv_jdk_gradle_tarball_download_path }}"

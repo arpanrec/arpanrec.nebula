@@ -10,27 +10,39 @@ dependency:
 driver:
     name: docker
 platforms:
-    - name: debian_role_bitwarden_desktop_default
+    - name: debian_role_java_docker
+      hostname: debian_role_java_docker
       image: debian
-      hostname: debian_role_bitwarden_desktop_defaults
       dockerfile: Dockerfile.j2
       pre_build_image: false
 provisioner:
     name: ansible
-    playbooks:
-        converge: converge.yml
+    vvv: true
     env:
         ANSIBLE_VERBOSITY: 5
+    inventory:
+        group_vars:
+            all:
+                java_rv_jdk_version: 21.0.4
+    playbooks:
+        converge: converge.yml
+        verify: verify.yml
 scenario:
-    name: role.bitwarden_desktop.default
-    create_sequence:
-        - create
+    name: role.java.docker
     converge_sequence:
         - converge
+    destroy_sequence:
+        - destroy
+    create_sequence:
+        - dependency
+        - create
     test_sequence:
         - syntax
+        - destroy
+        - dependency
         - create
         - converge
+        - verify
         - idempotence
         - destroy
 verifier:
