@@ -28,7 +28,6 @@
       version: master
   notify:
       - Themes | Theme | vinceliuice Layan | Install | Execute install script
-      - Themes | Theme | vinceliuice Layan | Install | Result
 
 - name: Themes | Theme | vinceliuice Layan-gtk-theme | Git Clone
   ansible.builtin.git:
@@ -39,7 +38,6 @@
       version: master
   notify:
       - Themes | Theme | vinceliuice Layan-gtk-theme | Install | Execute install script
-      - Themes | Theme | vinceliuice Layan-gtk-theme | Install | Result
 
 - name: Themes | Theme | EliverLara Sweet Mars | Git Clone
   ansible.builtin.git:
