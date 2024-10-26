@@ -1,5 +1,5 @@
 ---
-name: Molecule Test Role Linux Patching
+name: Molecule Test Role User Add
 
 "on":
     push:
