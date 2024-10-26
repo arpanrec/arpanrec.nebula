@@ -9,7 +9,8 @@
   block:
       - name: Oracle JDK | Kotlin Compiler | New Install | Download tarball
         ansible.builtin.get_url:
-            url: "{{ java_rv_jdk_kotlinc_download_url }}"
+            url: "{{ oracle_jdk_tmp_version_details.extras.kotlinc.download_link }}"
+            checksum: "{{ oracle_jdk_tmp_version_details.extras.kotlinc.checksum | default(omit) }}"
             dest: "{{ java_rv_jdk_kotlinc_tarball_download_path }}"
             mode: "0700"
 

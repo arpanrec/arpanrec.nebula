@@ -14,7 +14,8 @@
 
       - name: Oracle JDK | Apache Groovy | New Install | Copy new files
         ansible.builtin.copy:
-            src: "{{ java_rv_jdk_groovy_tmp_unzip_path }}/groovy-{{ java_rv_jdk_groovy_version }}/"
+            src: "{{ java_rv_jdk_groovy_tmp_unzip_path }}/groovy-{{
+                oracle_jdk_tmp_version_details.extras.groovy.version }}/"
             dest: "{{ java_rv_jdk_groovy_install_path }}/"
             remote_src: true
             mode: "0700"
@@ -24,5 +25,6 @@
             path: "{{ item }}"
             state: absent
         with_items:
-            - "{{ java_rv_jdk_groovy_tmp_unzip_path }}/groovy-{{ java_rv_jdk_groovy_version }}/"
+            - "{{ java_rv_jdk_groovy_tmp_unzip_path }}/groovy-{{
+              oracle_jdk_tmp_version_details.extras.groovy.version }}/"
             - "{{ java_rv_jdk_groovy_tarball_download_path }}"
