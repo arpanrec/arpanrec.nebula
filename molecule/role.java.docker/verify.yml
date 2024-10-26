@@ -67,10 +67,10 @@
 
       - name: Oracle JDK | Gradle | Molecule | Verify | Fail if Gradle version is not present
         ansible.builtin.assert:
-            that: '"Gradle " + oracle_jdk_tmp_version_details.version in
+            that: '"Gradle " + oracle_jdk_tmp_version_details.extras.gradle.version in
                 java_rv_jdk_gradle_tmp_version_shell_result.stdout'
-            success_msg: Gradle Version {{ oracle_jdk_tmp_version_details.version }} is installed
-            fail_msg: Gradle Version {{ oracle_jdk_tmp_version_details.version }} is not installed,
+            success_msg: Gradle Version {{ oracle_jdk_tmp_version_details.extras.gradle.version }} is installed
+            fail_msg: Gradle Version {{ oracle_jdk_tmp_version_details.extras.gradle.version }} is not installed,
                 Shell result {{ java_rv_jdk_gradle_tmp_version_shell_result.stdout }}
 
       - name: Oracle JDK | Apache Groovy | Molecule | Verify | Get Apache Groovy version from shell
