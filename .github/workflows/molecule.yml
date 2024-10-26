@@ -10,40 +10,6 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    molecule_test_role_mattermost_desktop:
-        runs-on: ubuntu-latest
-        strategy:
-            fail-fast: false
-            matrix:
-                python-version: ["3.10", "3.11", "3.12"]
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
-
-            - name: Install poetry 1.8.4
-              run: pipx install poetry==1.8.4
-
-            - name: Set up Python "${{ matrix.python-version }}"
-              uses: actions/setup-python@v5
-              with:
-                  python-version: "${{ matrix.python-version }}"
-                  cache: "poetry"
-                  # cache-dependency-path: pyproject.toml
-
-            - name: Cache ansible
-              uses: actions/cache@v4
-              with:
-                  path: |
-                      ~/.ansible
-                      ~/.cache/ansible-*
-                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
-
-            - name: Install dependencies
-              run: poetry install --with dev
-
-            - name: Run Molecule Test
-              run: poetry run molecule test -s role.mattermost_desktop.default
-
     molecule_test_role_gnome:
         runs-on: ubuntu-latest
         strategy:
@@ -77,40 +43,6 @@ jobs:
 
             - name: Run Molecule Test
               run: poetry run molecule test -s role.gnome.default
-
-    molecule_test_role_postman:
-        runs-on: ubuntu-latest
-        strategy:
-            fail-fast: false
-            matrix:
-                python-version: ["3.10", "3.11", "3.12"]
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
-
-            - name: Install poetry 1.8.4
-              run: pipx install poetry==1.8.4
-
-            - name: Set up Python "${{ matrix.python-version }}"
-              uses: actions/setup-python@v5
-              with:
-                  python-version: "${{ matrix.python-version }}"
-                  cache: "poetry"
-                  # cache-dependency-path: pyproject.toml
-
-            - name: Cache ansible
-              uses: actions/cache@v4
-              with:
-                  path: |
-                      ~/.ansible
-                      ~/.cache/ansible-*
-                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
-
-            - name: Install dependencies
-              run: poetry install --with dev
-
-            - name: Run Molecule Test
-              run: poetry run molecule test -s role.postman.default
 
     molecule_test_role_telegram_desktop:
         runs-on: ubuntu-latest
@@ -179,37 +111,3 @@ jobs:
 
             - name: Run Molecule Test
               run: poetry run molecule test -s role.ssh_hardening.default
-
-    molecule_test_role_pulumi:
-        runs-on: ubuntu-latest
-        strategy:
-            fail-fast: false
-            matrix:
-                python-version: ["3.10", "3.11", "3.12"]
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
-
-            - name: Install poetry 1.8.4
-              run: pipx install poetry==1.8.4
-
-            - name: Set up Python "${{ matrix.python-version }}"
-              uses: actions/setup-python@v5
-              with:
-                  python-version: "${{ matrix.python-version }}"
-                  cache: "poetry"
-                  # cache-dependency-path: pyproject.toml
-
-            - name: Cache ansible
-              uses: actions/cache@v4
-              with:
-                  path: |
-                      ~/.ansible
-                      ~/.cache/ansible-*
-                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
-
-            - name: Install dependencies
-              run: poetry install --with dev
-
-            - name: Run Molecule Test
-              run: poetry run molecule test -s role.pulumi.default
