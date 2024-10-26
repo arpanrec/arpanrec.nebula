@@ -14,26 +14,27 @@ class Java(AppDetails):
     Class to handle Java version details.
     """
 
+    __jdk_architecture_map: Dict[str, str] = {
+        "x86_64": "x64",
+        "aarch64": "aarch64",
+    }
+
+    __graalvm_architecture_map: Dict[str, str] = {
+        "x86_64": "x64",
+        "aarch64": "aarch64",
+    }
+
     __java_download_map: Dict[str, Any] = {
         "jdk": {
-            "21": {
-                "x86_64": "https://download.oracle.com/java/21/archive/jdk-21.0.4_linux-x64_bin.tar.gz",
-                "aarch64": "https://download.oracle.com/java/21/archive/jdk-21.0.4_linux-aarch64_bin.tar.gz",
-            },
-            "17": {
-                "x86_64": "https://download.oracle.com/java/17/archive/jdk-17.0.12_linux-x64_bin.tar.gz",
-                "aarch64": "https://download.oracle.com/java/17/archive/jdk-17.0.12_linux-aarch64_bin.tar.gz",
-            },
+            "22.0.2": {},
+            "22.0.1": {},
+            "22": {},
+            "21.0.4": {},
+            "17.0.12": {},
         },
         "graalvm": {
-            "21": {
-                "x86_64": "https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-x64_bin.tar.gz",
-                "aarch64": "https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-aarch64_bin.tar.gz",
-            },
-            "17": {
-                "x86_64": "https://download.oracle.com/graalvm/17/latest/graalvm-jdk-17_linux-x64_bin.tar.gz",
-                "aarch64": "https://download.oracle.com/graalvm/17/latest/graalvm-jdk-17_linux-aarch64_bin.tar.gz",
-            },
+            "21": {},
+            "17": {},
         },
         "maven": {
             "maven-3.9.9": {},
@@ -43,7 +44,10 @@ class Java(AppDetails):
             "v8.10.2": {},
             "v7.6.4": {},
         },
-        "groovy": {"4.0.22": {}, "3.0.22": {}},
+        "groovy": {
+            "4.0.22": {},
+            "3.0.22": {},
+        },
         "kotlinc": {
             "v2.0.21": {},
             "v2.0.20": {},
@@ -62,7 +66,7 @@ class Java(AppDetails):
         display.vvv("AppDetails Java: Fetching Java version details.")
 
         _java_version = self._kwargs.get("java_rv_jdk_version", None)
-        _ansible_architecture = self._get_ansible_architecture()
+        _ansible_architecture = self._get_ansible_architecture(self.__jdk_architecture_map)
         if not _java_version or _java_version == self._FETCH_LATEST_KEY:
             _java_version = list(self.__java_download_map["jdk"].keys())[0]
             display.vvv(f"AppDetails Java: Using Java version: {_java_version}")
@@ -73,8 +77,12 @@ class Java(AppDetails):
                     f"AppDetails Java: Provided Java version {_java_version} is not supported."
                     f" Supported versions are {list(self.__java_download_map['jdk'].keys())}"
                 )
-
-        self._download_link = self.__java_download_map["jdk"][_java_version][_ansible_architecture]
+        _java_major_version = parse_version(_java_version).major
+        self._download_link = (
+            "https://download.oracle.com/java"
+            f"/{_java_major_version}/archive"
+            f"/jdk-{_java_version}_linux-{_ansible_architecture}_bin.tar.gz"
+        )
         self._version = _java_version
         self._extras = {
             "maven": self._fetch_maven_version(),
@@ -196,7 +204,11 @@ class Java(AppDetails):
         Fetch the latest GraalVM version.
         """
         display.vvv("AppDetails Java: Fetching GraalVM version details.")
+        _java_major_version = parse_version(self._version).major
+        _ansible_architecture = self._get_ansible_architecture(self.__graalvm_architecture_map)
         return {
-            "version": self._version,
-            "download_link": self.__java_download_map["graalvm"][self._version][self._get_ansible_architecture()],
+            "version": _java_major_version,
+            "download_link": f"https://download.oracle.com/graalvm/{_java_major_version}"
+            f"/latest/graalvm-jdk-{_java_major_version}_linux-{_ansible_architecture}_bin.tar.gz",
+            # self.__java_download_map["graalvm"][_java_major_version][self._get_ansible_architecture()],
         }

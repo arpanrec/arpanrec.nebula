@@ -20,6 +20,10 @@ provisioner:
     vvv: true
     env:
         ANSIBLE_VERBOSITY: 5
+    inventory:
+        group_vars:
+            all:
+                java_rv_jdk_version: 21.0.4
     playbooks:
         converge: converge.yml
         verify: verify.yml

@@ -20,11 +20,10 @@ options:
         default: "{{ pv_ua_user_share_dir }}/java"
     java_rv_jdk_version:
         description:
-            - Major Java Release version
-            - Example format `17`
+            - Example format `21.0.4`
             - If set to `fetch_latest_version` then the latest version will be installed.
         required: false
-        type: int|str
+        type: str
         default: fetch_latest_version
     java_rv_jdk_mvn_install_path:
         description: Install Path.
