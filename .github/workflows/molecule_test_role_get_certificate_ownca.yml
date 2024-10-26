@@ -8,6 +8,7 @@ name: Molecule Test Role Get Certificate OwnCA
             - ".github/workflows/molecule_test_role_get_certificate_ownca.yml"
             - "meta/**"
             - "molecule/role.get_certificate_ownca.docker/**"
+            - "plugins/filter/split_certificates.py"
             - "poetry.lock"
             - "requirements.yml"
             - "roles/get_certificate_ownca/**"
