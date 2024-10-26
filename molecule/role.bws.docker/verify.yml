@@ -21,10 +21,6 @@
         register: bws_sdk_cli_rv_tmp_version_shell_result
         changed_when: false
 
-      - name: Bitwarden CLI | BWS SDK | Molecule | Verify | bw version from shell result
-        ansible.builtin.debug:
-            var: bws_sdk_cli_rv_tmp_version_shell_result
-
       - name: Bitwarden CLI | BWS SDK | Molecule | Verify | Fail if bw version is not present
         ansible.builtin.assert:
             that: bws_sdk_cli_rv_tmp_version_shell_result.stdout is match("bws " + bws_sdk_version_details.version[5:] )

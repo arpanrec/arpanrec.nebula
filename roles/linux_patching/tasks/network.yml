@@ -24,10 +24,6 @@
             PATH: /usr/sbin:{{ ansible_env.PATH }}
         changed_when: linux_patching_rv_update_ca_trust_shell_result.stdout_lines[1] is not match("0 added.*")
 
-      - name: Linux Patching | Network | CA Certificate | Update CA Trust Shell Result
-        ansible.builtin.debug:
-            var: linux_patching_rv_update_ca_trust_shell_result
-
 - name: Linux Patching | Network | Disable Wifi MAC randomization
   community.general.ini_file:
       path: /etc/NetworkManager/NetworkManager.conf

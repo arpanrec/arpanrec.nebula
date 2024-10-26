@@ -20,10 +20,6 @@
         register: vault_rv_version_shell_result
         changed_when: false
 
-      - name: Vault | Molecule | Verify | vault version from shell result
-        ansible.builtin.debug:
-            var: vault_rv_version_shell_result
-
       - name: Vault | Molecule | Verify | Fail if vault version is not present
         ansible.builtin.assert:
             that: vault_rv_version_shell_result.stdout_lines[0]

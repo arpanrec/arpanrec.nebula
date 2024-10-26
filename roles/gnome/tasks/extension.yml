@@ -12,10 +12,6 @@
   ansible.builtin.set_fact:
       pv_gnome_gnome_shell_version: "{{ pv_gnome_gnome_shell_v_result.stdout }}"
 
-- name: Gnome | Extension | Gnome Shell Version
-  ansible.builtin.debug:
-      var: pv_gnome_gnome_shell_version
-
 - name: Gnome | Extension | Install
   ansible.builtin.include_tasks: extension-install.yml
   with_items: "{{ gnome_rv_extension_list }}"

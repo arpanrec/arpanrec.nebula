@@ -8,10 +8,6 @@
         changed_when: true
         register: pv_ua_tmp_p10k_shell_install_result
 
-      - name: Terminal | Terminal Themes | Initialize p10k gitstatus | Result
-        ansible.builtin.debug:
-            var: pv_ua_tmp_p10k_shell_install_result
-
 - name: Terminal | Terminal Themes | Initialize fzf
   block:
       - name: Terminal | Terminal Themes | Initialize fzf | Execute install script
@@ -20,7 +16,3 @@
             {{ terminal_rv_user_home_dir }}/.fzf/install --all
         changed_when: true
         register: pv_ua_tmp_fzf_shell_install_result
-
-      - name: Terminal | Terminal Themes | Initialize fzf | Result
-        ansible.builtin.debug:
-            var: pv_ua_tmp_fzf_shell_install_result

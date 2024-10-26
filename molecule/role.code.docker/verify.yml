@@ -21,10 +21,6 @@
         register: code_rv_tmp_version_shell_result
         changed_when: false
 
-      - name: Visual Studio Code | Molecule | Verify | code version from shell result
-        ansible.builtin.debug:
-            var: code_rv_tmp_version_shell_result
-
       - name: Visual Studio Code | Molecule | Verify | Set Fact for code version
         ansible.builtin.set_fact:
             code_version_details: "{{ lookup('arpanrec.nebula.version_db', 'code',

@@ -9,7 +9,3 @@
         ansible.builtin.command: "id {{ user_add_rv_username }}"
         register: userdetails
         changed_when: false
-
-      - name: Print User Details
-        ansible.builtin.debug:
-            var: userdetails

@@ -1,7 +1,4 @@
 ---
-- name: Oracle JDK | Apache Maven | Debug Maven Details
-  ansible.builtin.debug:
-      msg: "{{ oracle_jdk_tmp_version_details.extras.maven }}"
 - name: Oracle JDK | Apache Maven | Get downloaded file stat
   ansible.builtin.stat:
       path: "{{ java_rv_jdk_mvn_tarball_download_path }}"
