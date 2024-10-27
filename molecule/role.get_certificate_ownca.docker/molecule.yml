@@ -20,9 +20,9 @@ provisioner:
     playbooks:
         converge: converge.yml
         prepare: prepare.yml
-    vvv: true
+    vvv: false
     env:
-        ANSIBLE_VERBOSITY: 5
+        ANSIBLE_VERBOSITY: 1
     inventory:
         group_vars:
             all:

@@ -17,9 +17,9 @@ platforms:
       pre_build_image: false
 provisioner:
     name: ansible
-    vvv: true
+    vvv: false
     env:
-        ANSIBLE_VERBOSITY: 5
+        ANSIBLE_VERBOSITY: 1
     inventory:
         group_vars:
             all:

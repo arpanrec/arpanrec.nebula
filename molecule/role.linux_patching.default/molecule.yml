@@ -8,50 +8,41 @@ dependency:
         role-file: requirements.yml
         requirements-file: requirements.yml
 driver:
-    name: delegated
+    name: default
     provider:
         managed: false
         ansible_connection_options:
             ansible_python_interpreter: /usr/bin/python3
             ansible_connection: ssh
 platforms:
-    - name: debian11
+    - name: rb4-m1
 provisioner:
     name: ansible
+    vvv: false
+    env:
+        ANSIBLE_VERBOSITY: 1
     playbooks:
-        converge: ../role.ssh_hardening.default/converge.yml
-        prepare: ../role.ssh_hardening.default/prepare.yml
+        converge: ../role.linux_patching.docker/converge.yml
     inventory:
-        group_vars:
-            all:
-                ssh_hardening_rv_ssh_port: 5484
         host_vars:
-            debian11:
-                ansible_host: 192.168.145.128
-                ansible_port: 5484
-                ansible_user: user
+            rb4-m1:
+                ansible_host: 192.168.0.219
+                ansible_port: 22
+                ansible_user: arpan
                 # ansible_ssh_private_key_file: ~/.ssh/id_rsa
-                ansible_password: password
+                # ansible_password: password
                 ansible_ssh_common_args: "-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
                 ansible_become_method: sudo
                 ansible_become_user: root
-                ansible_become_password: password
+                # ansible_become_password: root
+                # linux_patching_rv_hostname: rb4-m1
 scenario:
-    name: role.ssh_hardening.delegated
-    prepare_sequence:
-        - dependency
-        - prepare
-    destroy_sequence:
-        - destroy
+    name: role.linux_patching.default
     converge_sequence:
         - converge
     test_sequence:
         - dependency
-        - destroy
-        - syntax
-        - prepare
         - converge
         - idempotence
-        - destroy
 verifier:
     name: ansible
