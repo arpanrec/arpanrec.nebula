@@ -12,17 +12,18 @@ driver:
 platforms:
     - name: debian_role_java_docker
       hostname: debian_role_java_docker
-      image: docker.io/library/debian:bookworm
+      image: "docker.io/library/debian:bookworm"
       dockerfile: Dockerfile.j2
       pre_build_image: false
 provisioner:
     name: ansible
-    vvv: true
+    vvv: false
     env:
-        ANSIBLE_VERBOSITY: 5
+        ANSIBLE_VERBOSITY: 1
     inventory:
         group_vars:
             all:
+                ansible_python_interpreter: /usr/bin/python3
                 java_rv_jdk_version: 21.0.4
     playbooks:
         converge: converge.yml

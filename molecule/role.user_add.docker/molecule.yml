@@ -1,22 +1,31 @@
 ---
 dependency:
     name: galaxy
+    enabled: true
+    options:
+        ignore-certs: false
+        ignore-errors: false
+        role-file: requirements.yml
+        requirements-file: requirements.yml
 driver:
     name: docker
 platforms:
     - name: debian_role_user_add_docker
       hostname: debian_role_user_add_docker
-      image: docker.io/library/debian:bookworm
+      image: "docker.io/library/debian:bookworm"
       pre_build_image: true
 provisioner:
     name: ansible
-    vvv: true
+    vvv: false
     env:
-        ANSIBLE_VERBOSITY: 5
+        ANSIBLE_VERBOSITY: 1
     playbooks:
         prepare: prepare.yml
         converge: converge.yml
     inventory:
+        group_vars:
+            all:
+                ansible_python_interpreter: /usr/bin/python3
         host_vars:
             debian_role_user_add_docker:
                 user_add_rv_username: test

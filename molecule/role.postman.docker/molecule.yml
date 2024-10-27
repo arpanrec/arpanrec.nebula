@@ -11,7 +11,7 @@ driver:
     name: docker
 platforms:
     - name: debian_role_postman_docker
-      image: docker.io/library/debian:bookworm
+      image: "docker.io/library/debian:bookworm"
       hostname: debian_role_postman_docker
       dockerfile: Dockerfile.j2
       pre_build_image: false
@@ -19,9 +19,9 @@ provisioner:
     name: ansible
     playbooks:
         converge: converge.yml
-    vvv: true
+    vvv: false
     env:
-        ANSIBLE_VERBOSITY: 5
+        ANSIBLE_VERBOSITY: 1
     inventory:
         group_vars:
             all:

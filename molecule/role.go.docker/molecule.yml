@@ -11,15 +11,15 @@ driver:
     name: docker
 platforms:
     - name: debian_role_go_docker
-      image: docker.io/library/debian:bookworm
+      image: "docker.io/library/debian:bookworm"
       hostname: debian_role_go_docker
       dockerfile: Dockerfile.j2
       pre_build_image: false
 provisioner:
     name: ansible
-    vvv: true
+    vvv: false
     env:
-        ANSIBLE_VERBOSITY: 5
+        ANSIBLE_VERBOSITY: 1
     inventory:
         group_vars:
             all:
