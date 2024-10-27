@@ -24,6 +24,8 @@ name: Molecule Test Role Bitwarden Desktop
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
     cancel-in-progress: true
+env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
     molecule_test_role_bitwarden_desktop:
