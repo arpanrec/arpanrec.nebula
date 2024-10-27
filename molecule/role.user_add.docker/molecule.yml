@@ -1,12 +1,18 @@
 ---
 dependency:
     name: galaxy
+    enabled: true
+    options:
+        ignore-certs: false
+        ignore-errors: false
+        role-file: requirements.yml
+        requirements-file: requirements.yml
 driver:
     name: docker
 platforms:
     - name: debian_role_user_add_docker
       hostname: debian_role_user_add_docker
-      image: docker.io/library/debian:bookworm
+      image: "docker.io/library/debian:bookworm"
       pre_build_image: true
 provisioner:
     name: ansible
