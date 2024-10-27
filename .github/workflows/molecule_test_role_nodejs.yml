@@ -42,7 +42,7 @@ jobs:
             - name: Install poetry 1.8.4
               run: pipx install poetry==1.8.4
 
-            - name: Set up Python "${{ matrix.python-version }}"
+            - name: Set up Python ${{ matrix.python-version }}
               uses: actions/setup-python@v5
               with:
                   python-version: "${{ matrix.python-version }}"
