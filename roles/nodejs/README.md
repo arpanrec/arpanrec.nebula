@@ -15,10 +15,13 @@ Install NodeJS in user space
 
 - `nodejs_rv_version`
 
-  - Description: Release version.
+  - Description:
+    - Release version.
+    - If set to `fetch_latest_version`, it will fetch the latest version from [Github](https://github.com/nodejs/node/releases).
   - Default: `v20.13.1`
   - Required: `false`
   - Type: `str`
+  - Default: `fetch_latest_version`
 
 - `nodejs_rv_tmp_install_cache_dir`
 

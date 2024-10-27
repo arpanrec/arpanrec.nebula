@@ -20,6 +20,7 @@ class SupportedApps(enum.Enum):
     BITWARDEN_DESKTOP = "bitwarden_desktop"
     GO = "go"
     JAVA = "java"
+    NODEJS = "nodejs"
 
 
 class VersionDetails(Dict[str, Any]):

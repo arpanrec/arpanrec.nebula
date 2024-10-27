@@ -8,6 +8,11 @@
             name: arpanrec.nebula.nodejs
             tasks_from: prerequisites
 
+      - name: NodeJS | Molecule | Verify | Set nodejs version details
+        ansible.builtin.set_fact:
+            nodejs_version_details: "{{ lookup('arpanrec.nebula.version_db', 'nodejs',
+                nodejs_rv_version=nodejs_rv_version) }}"
+
       - name: NodeJS | Molecule | Verify | Get node version from shell
         ansible.builtin.command: node --version
         environment:
@@ -17,7 +22,7 @@
 
       - name: NodeJS | Molecule | Verify | Fail if nodejs version is not present
         ansible.builtin.assert:
-            that: nodejs_rv_version_shell_result.stdout == nodejs_rv_version
-            success_msg: NodeJS Version {{ nodejs_rv_version }} is installed
-            fail_msg: "NodeJS Version {{ nodejs_rv_version }} is not installed, \
+            that: nodejs_rv_version_shell_result.stdout == nodejs_version_details.version
+            success_msg: NodeJS Version {{ nodejs_version_details.version }} is installed
+            fail_msg: "NodeJS Version {{ nodejs_version_details.version }} is not installed, \
                 Shell result {{ nodejs_rv_version_shell_result.stdout }}"
