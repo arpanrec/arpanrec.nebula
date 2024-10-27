@@ -27,7 +27,7 @@
 
 - name: Terminal | Terminal Themes | Lookup ZSH_CUSTOM from env
   ansible.builtin.set_fact:
-      pv_ua_user_zsh_custom_dir: "{{ lookup('env', 'ZSH_CUSTOM') }}"
+      pv_ua_user_zsh_custom_dir: "{{ lookup('ansible.builtin.env', 'ZSH_CUSTOM') }}"
 
 - name: Terminal | Terminal Themes | Set default ZSH_CUSTOM directory
   ansible.builtin.set_fact:
