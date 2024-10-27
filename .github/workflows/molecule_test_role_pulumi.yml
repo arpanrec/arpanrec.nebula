@@ -8,6 +8,14 @@ name: Molecule Test Role Pulimi
             - ".github/workflows/molecule_test_role_pulumi.yml"
             - "meta/**"
             - "molecule/role.pulumi.docker/**"
+            - "plugins/lookup/version_db.py"
+            - "plugins/module_utils/__init__.py"
+            - "plugins/module_utils/py.typed"
+            - "plugins/module_utils/version_db/__init__.py"
+            - "plugins/module_utils/version_db/pulumi.py"
+            - "plugins/module_utils/version_db/grs.py"
+            - "plugins/module_utils/version_db/models.py"
+            - "plugins/module_utils/version_db/py.typed"
             - "poetry.lock"
             - "requirements.yml"
             - "roles/pulumi/**"
@@ -16,6 +24,9 @@ name: Molecule Test Role Pulimi
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
     cancel-in-progress: true
+
+env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
     molecule_test_role_pulumi:
@@ -31,7 +42,7 @@ jobs:
             - name: Install poetry 1.8.4
               run: pipx install poetry==1.8.4
 
-            - name: Set up Python "${{ matrix.python-version }}"
+            - name: Set up Python ${{ matrix.python-version }}
               uses: actions/setup-python@v5
               with:
                   python-version: "${{ matrix.python-version }}"
@@ -44,7 +55,7 @@ jobs:
                   path: |
                       ~/.ansible
                       ~/.cache/ansible-*
-                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+                  key: ansible-cache-py.${{ matrix.python-version }}-${{ hashFiles('**/requirements.yml') }}
 
             - name: Install dependencies
               run: poetry install --with dev

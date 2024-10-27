@@ -17,10 +17,11 @@ Install [Pulumi](https://github.com/pulumi/pulumi) in user space.
 
   - Description:
     - Release version.
-    - Get latest release from [Github releases](https://api.github.com/repos/pulumi/pulumi/releases/latest)
+    - If set to `fetch_latest_version`, it will fetch latest release from [Github releases](https://api.github.com/repos/pulumi/pulumi/releases/latest)
     - Example `v3.116.0`
   - Required: `false`
   - Type: `str`
+  - Default: `fetch_latest_version`
 
 - `pulumi_rv_tmp_install_cache_dir`
 

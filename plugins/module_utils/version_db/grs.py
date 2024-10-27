@@ -54,6 +54,9 @@ def github_release_tag_search(
         )
         github_release_tag_search_token = os.getenv("GITHUB_TOKEN", None)
 
+        if github_release_tag_search_token:
+            display.vvv("github_release_tag_search: GitHub token fetched from environment")
+
     if not github_release_tag_search_token:
         display.warning("github_release_tag_search: No GitHub token provided. Rate limits may apply.")
 

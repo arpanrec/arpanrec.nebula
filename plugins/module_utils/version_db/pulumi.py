@@ -8,24 +8,23 @@ from .models import AppDetails  # type: ignore
 display = Display()
 
 
-class NodeJS(AppDetails):
+class Pulumi(AppDetails):
     """
-    NodeJS app details.
+    Pulumi app details.
     """
 
-    __github_repo: str = "nodejs/node"
+    __github_repo: str = "pulumi/pulumi"
 
-    __node_architecture_map: dict[str, str] = {
+    __pulumi_architecture_map: dict[str, str] = {
         "amd64": "x64",
         "x86_64": "x64",
-        "armv7l": "armv7l",
         "aarch64": "arm64",
     }
 
     def fetch_details(self) -> None:
-        _github_release_tag = self._kwargs.get("nodejs_rv_version", None)
+        _github_release_tag = self._kwargs.get("pulumi_rv_version", None)
         if not _github_release_tag or _github_release_tag == self._FETCH_LATEST_KEY:
-            display.vvv("AppDetails NodeJS: Fetching NodeJS version details from GitHub.")
+            display.vvv("AppDetails Pulumi: Fetching Pulumi version details from GitHub.")
             # pylint: disable=R0801
             _github_release_tag = github_release_tag_search(
                 github_release_tag_search_repo=self.__github_repo,
@@ -36,12 +35,13 @@ class NodeJS(AppDetails):
                 github_release_tag_search_timeout=self._kwargs.get("github_release_tag_search_timeout", 10),
             )
         else:
-            display.vvv(f"AppDetails NodeJS: Using provided NodeJS version tag: {_github_release_tag}")
+            display.vvv(f"AppDetails Pulumi: Using provided Pulumi version tag: {_github_release_tag}")
 
         # pylint: disable=attribute-defined-outside-init
         self._download_link = (
-            f"https://nodejs.org/download/release"
-            f"/{_github_release_tag}/node-{_github_release_tag}-linux"
-            f"-{self._get_ansible_architecture(self.__node_architecture_map)}.tar.gz"
+            f"https://github.com/pulumi/pulumi/releases/download/{_github_release_tag}"
+            f"/pulumi-{_github_release_tag}"
+            f"-linux-{self._get_ansible_architecture(self.__pulumi_architecture_map)}.tar.gz"
         )
+
         self._version = _github_release_tag
