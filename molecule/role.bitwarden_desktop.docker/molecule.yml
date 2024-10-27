@@ -13,7 +13,7 @@ platforms:
     - name: debian_role_bitwarden_desktop_docker
       dockerfile: Dockerfile.j2
       hostname: debian_role_bitwarden_desktop_docker
-      image: docker.io/library/debian:bookworm
+      image: "docker.io/library/debian:bookworm"
       pre_build_image: false
       privileged: false
 provisioner:

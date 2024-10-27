@@ -1,4 +1,3 @@
----
 dependency:
     name: galaxy
     enabled: true
@@ -11,7 +10,7 @@ driver:
     name: docker
 platforms:
     - name: debian_role_go_docker
-      image: docker.io/library/debian:bookworm
+      image: "docker.io/library/debian:bookworm"
       hostname: debian_role_go_docker
       dockerfile: Dockerfile.j2
       pre_build_image: false
