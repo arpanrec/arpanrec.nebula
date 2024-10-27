@@ -55,7 +55,7 @@ jobs:
                   path: |
                       ~/.ansible
                       ~/.cache/ansible-*
-                  key: ansible-cache-${{ hashFiles('**/requirements.yml') }}
+                  key: ansible-cache-py.${{ matrix.python-version }}-${{ hashFiles('**/requirements.yml') }}
 
             - name: Install dependencies
               run: poetry install --with dev
