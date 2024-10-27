@@ -32,6 +32,16 @@ This collection provides a set of roles to deploy and manage various services.
 - [server_workspace](/playbooks/server_workspace.md)
 - [cloudinit](/playbooks/cloudinit.md)
 
+## Installation
+
+```bash
+export NEBULA_VERSION=1.7.0
+curl "https://raw.githubusercontent.com/arpanrec/arpanrec.nebula/refs/tags/${NEBULA_VERSION}/requirements.yml" \
+    -o "/tmp/requirements-${NEBULA_VERSION}.yml"
+ansible-galaxy install -r "/tmp/requirements-${NEBULA_VERSION}.yml"
+ansible-galaxy collection install "git+https://github.com/arpanrec/arpanrec.nebula.git,${NEBULA_VERSION}"
+```
+
 ## [License](LICENSE)
 
 `GLWTS`
