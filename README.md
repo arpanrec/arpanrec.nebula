@@ -32,6 +32,10 @@ This collection provides a set of roles to deploy and manage various services.
 - [server_workspace](/playbooks/server_workspace.md)
 - [cloudinit](/playbooks/cloudinit.md)
 
+## Plugins
+
+- `arpanrec.nebula.godaddy_record`
+
 ## Installation
 
 ```bash
