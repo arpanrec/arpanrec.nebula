@@ -23,6 +23,7 @@ provisioner:
     inventory:
         group_vars:
             all:
+                ansible_python_interpreter: /usr/bin/python3
                 java_rv_jdk_version: 21.0.4
     playbooks:
         converge: converge.yml

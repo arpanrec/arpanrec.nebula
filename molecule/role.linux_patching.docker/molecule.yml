@@ -29,6 +29,7 @@ provisioner:
     inventory:
         group_vars:
             all:
+                ansible_python_interpreter: /usr/bin/python3
                 linux_patching_rv_install_devel_packages: false
 scenario:
     name: role.linux_patching.docker

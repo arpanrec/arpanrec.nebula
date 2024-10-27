@@ -11,11 +11,11 @@ driver:
     name: docker
 platforms:
     - name: debian_role_code_docker
-      image: docker.io/library/debian:bookworm
-      hostname: debian_role_code_docker
-      privileged: false
       dockerfile: Dockerfile.j2
+      hostname: debian_role_code_docker
+      image: docker.io/library/debian:bookworm
       pre_build_image: false
+      privileged: false
 provisioner:
     name: ansible
     vvv: false
@@ -27,6 +27,7 @@ provisioner:
     inventory:
         group_vars:
             all:
+                ansible_python_interpreter: /usr/bin/python3
                 code_rv_ext_to_be_installed:
                     - "akamud.vscode-theme-onedark"
 scenario:

@@ -11,10 +11,11 @@ driver:
     name: docker
 platforms:
     - name: debian_role_get_certificate_ownca_docker
+      dockerfile: Dockerfile.j2
       hostname: debian_role_get_certificate_ownca_docker
       image: docker.io/library/debian:bookworm
-      dockerfile: Dockerfile.j2
       pre_build_image: false
+      privileged: false
 provisioner:
     name: ansible
     playbooks:
@@ -26,6 +27,7 @@ provisioner:
     inventory:
         group_vars:
             all:
+                ansible_python_interpreter: /usr/bin/python3
                 get_certificate_ownca_rv_private_key_path: /tmp/ownca_private_key.pem
                 get_certificate_ownca_rv_certificate_path: /tmp/ownca_certificate_path.pem
                 get_certificate_ownca_rv_private_key_password: password

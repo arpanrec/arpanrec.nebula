@@ -17,6 +17,9 @@ provisioner:
         prepare: prepare.yml
         converge: converge.yml
     inventory:
+        group_vars:
+            all:
+                ansible_python_interpreter: /usr/bin/python3
         host_vars:
             debian_role_user_add_docker:
                 user_add_rv_username: test

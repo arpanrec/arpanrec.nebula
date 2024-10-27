@@ -23,6 +23,7 @@ provisioner:
     inventory:
         group_vars:
             all:
+                ansible_python_interpreter: /usr/bin/python3
                 # terraform_rv_version: 1.0.0
     playbooks:
         converge: converge.yml

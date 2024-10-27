@@ -20,6 +20,13 @@ provisioner:
     playbooks:
         converge: converge.yml
         verify: verify.yml
+    vvv: false
+    env:
+        ANSIBLE_VERBOSITY: 1
+    inventory:
+        group_vars:
+            all:
+                ansible_python_interpreter: /usr/bin/python3
 scenario:
     name: role.nodejs.docker
     converge_sequence:
