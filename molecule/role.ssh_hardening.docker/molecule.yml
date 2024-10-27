@@ -12,10 +12,10 @@ driver:
 platforms:
     - name: debian_role_ssh_hardening_docker
       hostname: debian_role_ssh_hardening_docker
-      image: docker.io/library/debian:bookworm
+      image: "docker.io/library/debian:bookworm"
       pre_build_image: true
       volumes:
-          - /sys/fs/cgroup:/sys/fs/cgroup:ro
+          - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
       privileged: true
       provider_raw_config_args:
           - "--sysctl"

@@ -11,10 +11,11 @@ driver:
     name: docker
 platforms:
     - name: debian_role_get_certificate_ownca_docker
-      hostname: debian_role_get_certificate_ownca_docker
-      image: docker.io/library/debian:bookworm
       dockerfile: Dockerfile.j2
+      hostname: debian_role_get_certificate_ownca_docker
+      image: "docker.io/library/debian:bookworm"
       pre_build_image: false
+      privileged: false
 provisioner:
     name: ansible
     playbooks:
@@ -26,6 +27,7 @@ provisioner:
     inventory:
         group_vars:
             all:
+                ansible_python_interpreter: /usr/bin/python3
                 get_certificate_ownca_rv_private_key_path: /tmp/ownca_private_key.pem
                 get_certificate_ownca_rv_certificate_path: /tmp/ownca_certificate_path.pem
                 get_certificate_ownca_rv_private_key_password: password
@@ -50,13 +52,13 @@ provisioner:
                     - OCSPSigning
                     - msCTLSign
                 get_certificate_ownca_rv_getcert_subject_alt_name:
-                    - DNS:www.arpanrec.com
-                    - IP:172.0.0.1
+                    - "DNS:www.arpanrec.com"
+                    - "IP:172.0.0.1"
                 get_certificate_ownca_rv_getcert_subject:
                     commonName: www.arpanrec.com
                 get_certificate_ownca_rv_getcert_basic_constraints:
-                    - CA:TRUE
-                    - pathlen:0
+                    - "CA:TRUE"
+                    - "pathlen:0"
                 get_certificate_ownca_rv_getcert_private_key_file_mode: "0600"
 scenario:
     name: role.get_certificate_ownca.docker

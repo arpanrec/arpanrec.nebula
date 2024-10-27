@@ -29,13 +29,9 @@ provisioner:
                 ansible_host: 192.168.0.219
                 ansible_port: 22
                 ansible_user: arpan
-                # ansible_ssh_private_key_file: ~/.ssh/id_rsa
-                # ansible_password: password
                 ansible_ssh_common_args: "-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
                 ansible_become_method: sudo
                 ansible_become_user: root
-                # ansible_become_password: root
-                # linux_patching_rv_hostname: rb4-m1
 scenario:
     name: role.linux_patching.default
     converge_sequence:
