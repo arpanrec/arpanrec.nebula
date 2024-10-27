@@ -9,18 +9,9 @@
             tasks_from: prerequisites
 
       - name: Pulumi | Molecule | Get Release
-        when: pulumi_rv_version is not defined
-        block:
-            - name: Pulumi | Molecule | Get Pulumi Release from Github API
-              ansible.builtin.uri:
-                  url: "https://api.github.com/repos/pulumi/pulumi/releases/latest"
-                  return_content: true
-                  status_code: 200
-              register: pulumi_rv_release_from_github
-
-            - name: Pulumi | Molecule | Set releases
-              ansible.builtin.set_fact:
-                  pulumi_rv_version: "{{ pulumi_rv_release_from_github.json.tag_name }}"
+        ansible.builtin.set_fact:
+            pulumi_version_details: "{{ lookup('arpanrec.nebula.version_db', 'pulumi',
+                pulumi_rv_version=pulumi_rv_version) }}"
 
       - name: Pulumi | Molecule | Verify | Get pulumi version from shell
         ansible.builtin.command: pulumi version
@@ -31,7 +22,7 @@
 
       - name: Pulumi | Molecule | Verify | Fail if pulumi version is not present
         ansible.builtin.assert:
-            that: pulumi_rv_version_shell_result.stdout_lines[0] == pulumi_rv_version
-            success_msg: Pulumi Version {{ pulumi_rv_version }} is installed
-            fail_msg: Pulumi Version {{ pulumi_rv_version }} is not installed,
+            that: pulumi_rv_version_shell_result.stdout_lines[0] == pulumi_version_details.version
+            success_msg: Pulumi Version {{ pulumi_version_details.version }} is installed
+            fail_msg: Pulumi Version {{ pulumi_version_details.version }} is not installed,
                 Shell result {{ pulumi_rv_version_shell_result.stdout }}
