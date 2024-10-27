@@ -21,6 +21,7 @@ class SupportedApps(enum.Enum):
     GO = "go"
     JAVA = "java"
     NODEJS = "nodejs"
+    PULUMI = "pulumi"
 
 
 class VersionDetails(Dict[str, Any]):
