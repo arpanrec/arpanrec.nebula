@@ -18,7 +18,7 @@ provisioner:
     name: ansible
     vvv: false
     env:
-        ANSIBLE_VERBOSITY: 5
+        ANSIBLE_VERBOSITY: 1
     playbooks:
         prepare: prepare.yml
         converge: converge.yml
