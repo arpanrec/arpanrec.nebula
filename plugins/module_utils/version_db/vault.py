@@ -1,3 +1,21 @@
+"""
+This module provides functionality to fetch and manage Vault application details.
+
+Classes:
+    Vault: Inherits from AppDetails and provides methods to fetch Vault version details.
+
+Attributes:
+    __vault_releases_url (str): URL to fetch Vault release versions.
+    __vault_ansible_architecture_map (Dict[str, str]): Mapping of Ansible architecture to Vault architecture.
+
+Methods:
+    fetch_details(self) -> None:
+        Fetches the version details for the Vault application. If a specific version is not provided,
+        it fetches the latest version available. Constructs the download link for the Vault binary
+        based on the fetched or provided version and the system architecture.
+
+"""
+
 from typing import Any, Dict
 
 import requests

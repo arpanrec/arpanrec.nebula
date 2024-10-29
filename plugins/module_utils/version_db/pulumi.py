@@ -1,3 +1,20 @@
+"""
+This module provides the Pulumi class, which extends the AppDetails class to fetch
+and manage Pulumi application details.
+
+Classes:
+    Pulumi: A class to fetch and manage Pulumi application details.
+
+Pulumi class:
+    Attributes:
+        __github_repo (str): The GitHub repository for Pulumi.
+        __pulumi_architecture_map (dict): A mapping of architecture names to Pulumi architecture names.
+
+    Methods:
+        fetch_details(): Fetches the Pulumi version details from GitHub or uses the provided version tag.
+
+"""
+
 from ansible.utils.display import Display  # type: ignore
 
 from .grs import github_release_tag_search  # type: ignore

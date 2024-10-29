@@ -1,3 +1,26 @@
+"""
+This module provides the `BitwardenDesktop` class,
+which is used to fetch version details for the Bitwarden Desktop application.
+
+Classes:
+    BitwardenDesktop: A class that inherits from `AppDetails`
+      and provides methods to fetch version details for the Bitwarden Desktop app.
+
+Methods:
+    fetch_details(self) -> None:
+        Fetches the version details for the Bitwarden Desktop app. If a specific version tag is not provided,
+          it fetches the latest version tag from GitHub.
+          It constructs the download link for the Bitwarden Desktop AppImage based on the fetched version tag
+           and architecture.
+
+Attributes:
+    __github_repo (str): The GitHub repository for Bitwarden clients.
+    __github_release_prefix (str): The prefix for Bitwarden Desktop release tags.
+    _github_release_tag (str | None): The GitHub release tag for the Bitwarden Desktop version.
+    __bitwarden_desktop_architecture_map (Dict[str, str]): A mapping of architecture identifiers for Bitwarden Desktop.
+
+"""
+
 from typing import Dict
 
 from ansible.utils.display import Display  # type: ignore

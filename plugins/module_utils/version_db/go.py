@@ -1,3 +1,23 @@
+"""
+This module provides the `Go` class, which is a subclass of `AppDetails`.
+ It is used to fetch the latest GoLang version details
+   and construct the download link for the GoLang tarball based on the system architecture.
+
+Classes:
+    Go: A class to fetch and store GoLang application details.
+
+Attributes:
+    __go_version_endpoint (str): The endpoint URL to fetch the latest GoLang version.
+    __go_version_endpoint_query (Dict[str, str]): The query parameters for the GoLang version endpoint.
+    __go_ansible_architecture_map (Dict[str, str]):
+      A mapping of Ansible architecture names to GoLang architecture names.
+
+Methods:
+    fetch_details(self) -> None:
+        Fetches the latest GoLang version and constructs the download link for the GoLang tarball.
+
+"""
+
 from typing import Dict
 
 import requests

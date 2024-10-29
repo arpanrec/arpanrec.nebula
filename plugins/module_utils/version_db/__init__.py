@@ -1,3 +1,28 @@
+"""
+This module provides functionality to retrieve version details for various supported applications.
+
+Classes:
+    Display: Utility class from ansible.utils.display for displaying messages.
+    AppDetails: Base class for application details.
+    SupportedApps: Enum class representing supported applications.
+    VersionDetails: Class representing version details of an application.
+
+Functions:
+    get_version(app_name: str, *args, **kwargs) -> VersionDetails:
+
+        Parameters:
+            app_name (str): The name of the application.
+            *args: Variable length argument list.
+            **kwargs: Arbitrary keyword arguments.
+
+        Returns:
+            VersionDetails: An instance containing version details of the specified application.
+
+        Raises:
+            ValueError: If the specified app is not supported.
+
+"""
+
 from ansible.utils.display import Display  # type: ignore
 
 from .models import AppDetails, SupportedApps, VersionDetails
