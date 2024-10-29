@@ -1,7 +1,7 @@
 ---
-- name: Converge
+- name: Application User | Molecule | Converge
   hosts: all
   tasks:
-      - name: Include user_add
+      - name: Application User | Molecule | Converge | Include user_add
         ansible.builtin.import_role:
             name: arpanrec.nebula.user_add

@@ -1,3 +1,22 @@
+"""
+This module provides the BWS class for fetching version details of the BWS app from GitHub.
+
+Classes:
+    BWS: Inherits from AppDetails and fetches version details for the BWS app.
+
+Functions:
+    fetch_details: Retrieves the version details for the BWS app,
+      either from provided kwargs or by searching GitHub releases.
+
+Attributes:
+    __github_repo (str): The GitHub repository for the BWS app.
+    __github_release_prefix (str): The prefix for GitHub release tags.
+    _github_release_tag (str | None): The GitHub release tag for the BWS app.
+    _download_link (str): The download link for the BWS app.
+    _version (str): The version of the BWS app.
+
+"""
+
 from ansible.utils.display import Display  # type: ignore
 
 from .grs import github_release_tag_search  # type: ignore

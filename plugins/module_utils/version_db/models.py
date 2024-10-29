@@ -1,3 +1,50 @@
+"""
+This module defines the models for version database management in the Nebula plugin.
+
+Classes:
+    SupportedApps(enum.Enum): Enum representing supported applications.
+    VersionDetails(Dict[str, Any]): Dictionary to hold version details.
+    AppDetails(abc.ABC): Abstract base class for application details.
+
+Classes Details:
+    SupportedApps:
+        Enum Members:
+            - BWS: Represents the 'bws' application.
+            - TERRAFORM: Represents the 'terraform' application.
+            - CODE: Represents the 'code' application.
+            - VAULT: Represents the 'vault' application.
+            - BITWARDEN_DESKTOP: Represents the 'bitwarden_desktop' application.
+            - GO: Represents the 'go' application.
+            - JAVA: Represents the 'java' application.
+            - NODEJS: Represents the 'nodejs' application.
+            - PULUMI: Represents the 'pulumi' application.
+
+    VersionDetails:
+        A dictionary to store version details of an application.
+
+    AppDetails:
+        Abstract base class to define the structure for application details.
+        
+        Attributes:
+            _variables (Optional[Dict[str, Any]]): Variables related to the application.
+            _download_link (str): Download link for the application.
+            _version (str): Version of the application.
+            _args (Tuple[Any, ...]): Arguments for the application.
+            _extras (Optional[Dict[str, Any]]): Extra details for the application.
+            _kwargs (Dict[str, Any]): Keyword arguments for the application.
+            _checksum (Optional[str]): Checksum for the application.
+            _FETCH_LATEST_KEY (str): Key to fetch the latest version.
+
+        Methods:
+            __init__(*args, **kwargs): Initializes the AppDetails instance.
+            fetch_details(): Abstract method to fetch version details for the app.
+            _get_ansible_architecture(ansible_to_expected: Optional[Dict[str, str]] = None) -> str:
+                Retrieves the architecture from Ansible facts.
+            get_version_details() -> VersionDetails:
+                Retrieves the version details for the app.
+
+"""
+
 import abc
 import enum
 import json
