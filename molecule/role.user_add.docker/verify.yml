@@ -1,11 +1,11 @@
 ---
 # This is an example playbook to execute Ansible tests.
 
-- name: Verify
+- name: Application User | Molecule | Verify
   hosts: all
   gather_facts: false
   tasks:
-      - name: Get user details
+      - name: Application User | Molecule | Verify | Get user details
         ansible.builtin.command: "id {{ user_add_rv_username }}"
         register: userdetails
         changed_when: false

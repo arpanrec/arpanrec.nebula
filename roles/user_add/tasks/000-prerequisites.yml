@@ -1,5 +1,6 @@
 ---
-- name: Application User | Checking user_add_rv_username is defined
+- name: Application User | Checking Mandatory Variables
+      | Checking user_add_rv_username is defined
   ansible.builtin.assert:
       that:
           - user_add_rv_username is defined
@@ -7,7 +8,8 @@
       success_msg: "user_add_rv_username is defined."
       fail_msg: "user_add_rv_username is not defined. Username is required to create a user."
 
-- name: Application User | Checking is user_add_rv_user_nopasswd_commands is a type of list
+- name: Application User | Checking Mandatory Variables
+      | Checking is user_add_rv_user_nopasswd_commands is a type of list
   ansible.builtin.assert:
       that:
           - user_add_rv_user_nopasswd_commands | type_debug == 'list'
@@ -15,7 +17,8 @@
       fail_msg: "user_add_rv_user_nopasswd_commands is not a list.
           user_add_rv_user_nopasswd_commands should be a list."
 
-- name: Application User | Checking is user_add_rv_ssh_access_public_key_content_list is a type of list
+- name: Application User | Checking Mandatory Variables
+      | Checking is user_add_rv_ssh_access_public_key_content_list is a type of list
   ansible.builtin.assert:
       that:
           - user_add_rv_ssh_access_public_key_content_list | type_debug == 'list'
@@ -23,7 +26,7 @@
       fail_msg: "user_add_rv_ssh_access_public_key_content_list is not a list.
           user_add_rv_ssh_access_public_key_content_list should be a list."
 
-- name: Application User | Checking is user_add_rv_user_extra_groups is a type of list
+- name: Application User | Checking Mandatory Variables | Checking is user_add_rv_user_extra_groups is a type of list
   ansible.builtin.assert:
       that:
           - user_add_rv_user_extra_groups | type_debug == 'list'
