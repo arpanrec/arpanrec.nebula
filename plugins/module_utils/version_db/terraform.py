@@ -1,3 +1,21 @@
+"""
+This module provides functionality to fetch and manage Terraform version details.
+
+Classes:
+    Terraform(AppDetails): A class to fetch and manage Terraform version details.
+
+Methods:
+    fetch_details(self) -> None:
+        Fetches the version details for Terraform. If a specific version is not provided, it fetches the latest version
+        details from the Terraform releases URL. Constructs the download link for the Terraform binary based on the 
+        fetched or provided version and the system architecture.
+
+Attributes:
+    __terraform_releases_url (str): URL to fetch Terraform releases information.
+    __terraform_ansible_architecture_map (Dict[str, str]): Mapping of system architectures to Terraform architectures.
+
+"""
+
 from typing import Any, Dict
 
 import requests

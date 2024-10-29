@@ -1,3 +1,19 @@
+"""
+This module provides functionality to fetch and manage NodeJS application details.
+
+Classes:
+    NodeJS(AppDetails): A class to handle NodeJS application details, including fetching version details from GitHub.
+
+Methods:
+    fetch_details(self) -> None:
+        Fetches the NodeJS version details from GitHub or uses a provided version tag.
+          Constructs the download link for the specified NodeJS version and architecture.
+
+Attributes:
+    __github_repo (str): The GitHub repository for NodeJS releases.
+    __node_architecture_map (dict[str, str]): A mapping of architecture names to NodeJS architecture identifiers.
+"""
+
 from ansible.utils.display import Display  # type: ignore
 
 from .grs import github_release_tag_search  # type: ignore

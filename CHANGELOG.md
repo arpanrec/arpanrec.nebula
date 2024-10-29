@@ -1,7 +1,11 @@
-## [1.8.1](https://github.com/arpanrec/arpanrec.nebula/compare/1.8.0...1.8.1) (2024-10-27)
+# [1.9.0](https://github.com/arpanrec/arpanrec.nebula/compare/1.8.1...1.9.0) (2024-10-29)
 
 
 ### Bug Fixes
 
-* ansible fqdn for lookup modules ([317c745](https://github.com/arpanrec/arpanrec.nebula/commit/317c7457de5a143bedba47eae480b69d7cfc1b27))
-* fix file name for github actions role gnome[skip ci] ([ab03443](https://github.com/arpanrec/arpanrec.nebula/commit/ab03443a75efb07c2295dde5a740e2013417e43d))
+* remove shebang from version_db [skip ci] ([b5c7cbe](https://github.com/arpanrec/arpanrec.nebula/commit/b5c7cbe5800979079a0c4e80da3abb9a5ea7f571))
+
+
+### Features
+
+* Update python-versions to >=3.10,<4.0 ([#34](https://github.com/arpanrec/arpanrec.nebula/issues/34)) ([330f3a2](https://github.com/arpanrec/arpanrec.nebula/commit/330f3a232185f5efffc76919da67a11b023d751d))

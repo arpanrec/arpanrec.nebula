@@ -1,22 +1,17 @@
 ---
-- name: Application User | Generate password hash
-  ansible.builtin.shell: >
-      python -c 'import crypt;  print(crypt.crypt("{{ user_add_rv_password }}", "$1$SomeSalt$"))'
-  register: user_add_rv_password_hash_tmp
-  args:
-      executable: /bin/bash
-  no_log: true
-  when: user_add_rv_password is defined
-  changed_when: false
-  delegate_to: localhost
-
-- name: Application User | Adding the group
+- name: Application User | Adding user | Adding the group
   ansible.builtin.group:
       name: "{{ user_add_rv_user_primary_group | default(user_add_rv_username, true) }}"
       gid: "{{ user_add_rv_user_primary_gid | default(omit) }}"
       state: present
 
-- name: Application User | Adding the user
+- name: Application User | Adding user | Generate password hash
+  ansible.builtin.set_fact:
+      user_add_rv_password_hash_tmp: "{{ user_add_rv_password | password_hash('sha512') }}"
+  no_log: true
+  when: user_add_rv_password is defined
+
+- name: Application User | Adding user | Adding the user
   ansible.builtin.user:
       name: "{{ user_add_rv_username }}"
       shell: "{{ user_add_rv_user_default_shell }}"
@@ -28,10 +23,10 @@
       create_home: true
       home: "{{ user_add_rv_user_home_dir | default(omit, True) }}"
       expires: -1
-      password: "{{ user_add_rv_password_hash_tmp.stdout | default(omit) }}"
+      password: "{{ user_add_rv_password_hash_tmp | default(omit) }}"
       update_password: on_create
 
-- name: Application User | Deploying SSH Key
+- name: Application User | Adding user | Deploying SSH Key
   ansible.posix.authorized_key:
       user: "{{ user_add_rv_username }}"
       key: "{{ item }}"
@@ -40,7 +35,7 @@
   with_items: "{{ user_add_rv_ssh_access_public_key_content_list }}"
   when: user_add_rv_ssh_access_public_key_content_list | length > 0
 
-- name: Application User | Adding user to the sudoers
+- name: Application User | Adding user | Adding user to the sudoers
   when: user_add_rv_user_nopasswd_commands | length > 0
   ansible.builtin.lineinfile:
       path: "{{ user_add_rv_sudoers_file }}"

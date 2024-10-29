@@ -1,3 +1,18 @@
+"""
+This module provides functionality to fetch and manage version details for the Visual Studio Code (VSCode) application.
+
+Classes:
+    Code: Inherits from AppDetails and provides methods to fetch VSCode version details.
+
+Attributes:
+    __code_releases_url (str): URL to fetch the stable releases of VSCode.
+    __code_ansible_architecture_map (Dict[str, str]): Mapping of Ansible architecture to VSCode architecture.
+
+Methods:
+    fetch_details(self) -> None: Fetches the version details for the VSCode application.
+
+"""
+
 from typing import Dict, List
 
 import requests

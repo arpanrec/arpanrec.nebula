@@ -1,3 +1,32 @@
+"""
+This module provides the `Java` class, which handles Java version details and fetches
+related software versions such as Maven, Gradle, Groovy, Kotlin compiler, and GraalVM.
+
+Classes:
+    Java: A class to handle Java version details and fetch related software versions.
+
+Attributes:
+    __jdk_architecture_map (Dict[str, str]): A mapping of JDK architectures.
+    __graalvm_architecture_map (Dict[str, str]): A mapping of GraalVM architectures.
+    __java_download_map (Dict[str, Any]): A mapping of Java-related software versions and their details.
+    __maven_github_repo (str): The GitHub repository for Maven.
+
+Methods:
+    fetch_details(self) -> None:
+        Fetches the Java version details and related software versions.
+    _fetch_maven_version(self) -> Dict[str, str]:
+        Fetches the latest Maven version details.
+    _fetch_gradle_version(self) -> Dict[str, str]:
+        Fetches the latest Gradle version details.
+    _fetch_groovy_version(self) -> Dict[str, str]:
+        Fetches the latest Groovy version details.
+    _fetch_kotlinc_version(self) -> Dict[str, str]:
+        Fetches the latest Kotlin compiler version details.
+    _fetch_graalvm_version(self) -> Dict[str, str]:
+        Fetches the latest GraalVM version details.
+
+"""
+
 # pylint: disable=E0401,E0611
 from typing import Any, Dict
 
