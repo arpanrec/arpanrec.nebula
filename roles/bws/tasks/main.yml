@@ -1,5 +1,5 @@
 ---
-- name: Bitwarden CLI | Prerequisites
+- name: Bitwarden CLI | BWS SDK | Prerequisites
   ansible.builtin.import_tasks: prerequisites.yml
 
 - name: Bitwarden CLI | BWS SDK | Get Version Details

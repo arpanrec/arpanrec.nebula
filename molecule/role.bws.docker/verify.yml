@@ -1,10 +1,10 @@
 ---
-- name: Bitwarden CLI | Molecule | Verify
+- name: Bitwarden CLI | BWS SDK | Molecule | Verify
   hosts: all
   gather_facts: true
   become: false
   tasks:
-      - name: Bitwarden CLI | Molecule | Verify | Import Roles for variables
+      - name: Bitwarden CLI | BWS SDK | Molecule | Verify | Import Roles for variables
         ansible.builtin.import_role:
             name: arpanrec.nebula.bws
             tasks_from: prerequisites
