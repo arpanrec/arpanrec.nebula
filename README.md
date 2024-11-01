@@ -1,7 +1,5 @@
 # Ansible Collection Nebula (arpanrec.nebula)
 
-![Nebula](https://upload.wikimedia.org/wikipedia/commons/7/75/Trifid_Nebula_by_Deddy_Dayag.jpg)
-
 ## Description
 
 This collection provides a set of roles to deploy and manage various services.
