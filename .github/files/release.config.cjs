@@ -41,7 +41,7 @@ module.exports = {
         [
             '@semantic-release/git',
             {
-                assets: ['galaxy.yml', 'CHANGELOG.md', 'pyproject.toml'],
+                assets: ['galaxy.yml', 'CHANGELOG.md', 'pyproject.toml', 'README.md'],
                 message: 'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
             },
         ],
