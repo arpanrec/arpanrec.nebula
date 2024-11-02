@@ -35,7 +35,7 @@ This collection provides a set of roles to deploy and manage various services.
 ## Installation
 
 ```bash
-export NEBULA_VERSION=1.9.1
+export NEBULA_VERSION=1.9.2
 curl "https://raw.githubusercontent.com/arpanrec/arpanrec.nebula/refs/tags/${NEBULA_VERSION}/requirements.yml" \
     -o "/tmp/requirements-${NEBULA_VERSION}.yml"
 ansible-galaxy install -r "/tmp/requirements-${NEBULA_VERSION}.yml"
