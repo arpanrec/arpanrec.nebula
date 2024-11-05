@@ -126,6 +126,7 @@
       group: root
       mode: "0644"
       line: "{{ item.line }}"
+      state: present
       regexp: "{{ item.regexp }}"
   register: linux_patching_rv_tmp_set_hosts_file_entry
   failed_when: >
@@ -134,7 +135,7 @@
       linux_patching_rv_tmp_set_hosts_file_entry.failed
   loop:
       - regexp: '^127\.0\.0\.1'
-        line: "127.0.0.1  localhost"
+        line: "127.0.0.1 localhost"
       - regexp: '^127\.0\.1\.1'
         line: "127.0.1.1 {{ linux_patching_rv_hostname }}
             {{ linux_patching_rv_hostname }}.{{ linux_patching_rv_domain_name }}"
