@@ -1,6 +1,6 @@
-## [1.9.5](https://github.com/arpanrec/arpanrec.nebula/compare/1.9.4...1.9.5) (2024-11-06)
+## [1.9.6](https://github.com/arpanrec/arpanrec.nebula/compare/1.9.5...1.9.6) (2024-11-06)
 
 
 ### Bug Fixes
 
-* update community.general collection version to 10.0.0 in requirements.yml ([2b2dd43](https://github.com/arpanrec/arpanrec.nebula/commit/2b2dd43e1e573f794686b578e1596a3a01414d48))
+* enhance package installation by enabling update_cache and install_recommends in various tasks ([a23f83d](https://github.com/arpanrec/arpanrec.nebula/commit/a23f83de8d9a11ae3a6f1540df4351f495cc5f9d))
