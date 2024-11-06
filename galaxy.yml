@@ -1,7 +1,7 @@
 ---
 namespace: arpanrec
 name: nebula
-version: 1.9.4
+version: 1.9.5
 readme: README.md
 authors:
     - "Arpan Mandal <arpan.rec@gmail.com>"
