@@ -7,15 +7,20 @@
       name: ntp
       state: absent
       purge: true
+      update_cache: true
+      install_recommends: true
 
 - name: Linux Patching | Install Packages | Update apt cache
   ansible.builtin.apt:
       update_cache: true
+      install_recommends: true
 
 - name: Linux Patching | Install Packages | Install specific essential packages in Debian
   ansible.builtin.apt:
       name: "{{ linux_patching_rv_packages + linux_patching_rv_extra_packages | default([]) }}"
       state: present
+      update_cache: true
+      install_recommends: true
   register: linux_patching_rv_extra_install
 
 - name: Linux Patching | Install Packages | Reboot After Packages Install
@@ -27,6 +32,8 @@
   ansible.builtin.apt:
       name: "{{ linux_patching_rv_devel_packages | default([]) }}"
       state: present
+      update_cache: true
+      install_recommends: true
   register: linux_patching_rv_extra_devel_install
   when: linux_patching_rv_install_devel_packages
 
@@ -39,6 +46,8 @@
   ansible.builtin.apt:
       name: "linux-headers-{{ ansible_kernel }}"
       state: present
+      update_cache: true
+      install_recommends: true
   when: linux_patching_rv_install_devel_packages
   ignore_errors: true
   register: linux_patching_rv_install_devel_packages_tmp_kernel_version_installed
@@ -47,6 +56,8 @@
   ansible.builtin.apt:
       name: "linux-headers"
       state: present
+      update_cache: true
+      install_recommends: true
   when: linux_patching_rv_install_devel_packages
       and linux_patching_rv_install_devel_packages_tmp_kernel_version_installed.failed
   register: linux_patching_rv_install_generic_headers_tmp_kernel_version_installed

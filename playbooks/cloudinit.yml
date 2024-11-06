@@ -28,6 +28,7 @@
             name: zsh
             state: present
             update_cache: true
+            install_recommends: true
 
       - name: Patch Cloud System | Add application user
         ansible.builtin.include_role:
