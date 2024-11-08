@@ -7,6 +7,9 @@
             that:
                 - item is defined
                 - item != None
+                - item != ""
+            success_msg: "Variable '{{ item }}' is defined and not None"
+            fail_msg: "Variable '{{ item }}' is not defined or is None"
         with_items:
             - "{{ pv_cloud_init_user }}"
             - "{{ pv_cloud_init_group }}"
