@@ -7,6 +7,9 @@
             that:
                 - item is defined
                 - item != None
+                - item != ""
+            success_msg: "Variable '{{ item }}' is defined and not None"
+            fail_msg: "Variable '{{ item }}' is not defined or is None"
         with_items:
             - "{{ pv_cloud_init_user }}"
             - "{{ pv_cloud_init_group }}"
@@ -14,6 +17,7 @@
             - "{{ pv_cloud_init_is_dev_machine }}"
             - "{{ pv_cloud_init_hostname }}"
             - "{{ pv_cloud_init_domain }}"
+            - "{{ pv_cloud_init_install_docker }}"
 
       - name: Patch Cloud System | Linux Patching
         ansible.builtin.include_role:
@@ -28,6 +32,7 @@
             name: zsh
             state: present
             update_cache: true
+            install_recommends: true
 
       - name: Patch Cloud System | Add application user
         ansible.builtin.include_role:
@@ -46,6 +51,7 @@
             name: arpanrec.nebula.ssh_hardening
 
       - name: Patch Cloud System | Install Docker
+        when: pv_cloud_init_install_docker | bool
         ansible.builtin.include_role:
             name: geerlingguy.docker
         vars:

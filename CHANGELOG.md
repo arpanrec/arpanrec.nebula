@@ -1,6 +1,6 @@
-## [1.9.1](https://github.com/arpanrec/arpanrec.nebula/compare/1.9.0...1.9.1) (2024-11-01)
+## [1.10.1](https://github.com/arpanrec/arpanrec.nebula/compare/1.10.0...1.10.1) (2024-11-08)
 
 
 ### Bug Fixes
 
-* remove files from galaxy build ([#35](https://github.com/arpanrec/arpanrec.nebula/issues/35)) ([1abc733](https://github.com/arpanrec/arpanrec.nebula/commit/1abc73334245fb059488251da8a352c454cdb053))
+* add success and fail messages for variable validation in cloudinit playbook ([6faafaa](https://github.com/arpanrec/arpanrec.nebula/commit/6faafaa850864131ed32ec75f1b6c3ed0916d345))

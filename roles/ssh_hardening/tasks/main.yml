@@ -20,6 +20,8 @@
           - openssh-server
           - openssh-sftp-server
       state: present
+      update_cache: true
+      install_recommends: true
 
 - name: SSHD Hardening | Enable UFW SSH Port
   community.general.ufw:

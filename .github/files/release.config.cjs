@@ -32,8 +32,11 @@ module.exports = {
         [
             '@semantic-release/exec',
             {
-                prepareCmd:
-                    "sed -i 's/^version:.*/version: ${nextRelease.version}/g' galaxy.yml && poetry version ${nextRelease.version} && ansible-galaxy collection build",
+                prepareCmd: [
+                    "sed -i 's/^version:.*/version: ${nextRelease.version}/g' galaxy.yml",
+                    "sed -i 's/^export NEBULA_VERSION=.*/export NEBULA_VERSION=${nextRelease.version}/g' README.md",
+                    "poetry version ${nextRelease.version} && ansible-galaxy collection build",
+                ].join(' && '),
                 // successCmd:
                 //     'ansible-galaxy collection publish arpanrec-nebula-${nextRelease.version}.tar.gz --api-key ${process.env.GALAXY_API_KEY}',
             },
@@ -41,7 +44,7 @@ module.exports = {
         [
             '@semantic-release/git',
             {
-                assets: ['galaxy.yml', 'CHANGELOG.md', 'pyproject.toml'],
+                assets: ['galaxy.yml', 'CHANGELOG.md', 'pyproject.toml', 'README.md'],
                 message: 'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
             },
         ],
