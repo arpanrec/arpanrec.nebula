@@ -23,3 +23,5 @@ Extra variables will be applied to the original role.
 `pv_cloud_init_hostname` - The hostname to use for the cloud provider.
 
 `pv_cloud_init_domain` - The domain to use for the cloud provider.
+
+`pv_cloud_init_install_docker` - Whether to install Docker on the machine. Default is `false`.
