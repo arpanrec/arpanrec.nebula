@@ -1,6 +1,6 @@
-## [1.10.1](https://github.com/arpanrec/arpanrec.nebula/compare/1.10.0...1.10.1) (2024-11-08)
+## [1.10.2](https://github.com/arpanrec/arpanrec.nebula/compare/1.10.1...1.10.2) (2024-11-08)
 
 
 ### Bug Fixes
 
-* add success and fail messages for variable validation in cloudinit playbook ([6faafaa](https://github.com/arpanrec/arpanrec.nebula/commit/6faafaa850864131ed32ec75f1b6c3ed0916d345))
+* update pyright version and add packaging dependency in pyproject.toml ([b449655](https://github.com/arpanrec/arpanrec.nebula/commit/b44965571a0cc489f5d3f17b486684c1502255d6))
