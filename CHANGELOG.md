@@ -1,6 +1,6 @@
-## [1.9.6](https://github.com/arpanrec/arpanrec.nebula/compare/1.9.5...1.9.6) (2024-11-06)
+# [1.10.0](https://github.com/arpanrec/arpanrec.nebula/compare/1.9.6...1.10.0) (2024-11-08)
 
 
-### Bug Fixes
+### Features
 
-* enhance package installation by enabling update_cache and install_recommends in various tasks ([a23f83d](https://github.com/arpanrec/arpanrec.nebula/commit/a23f83de8d9a11ae3a6f1540df4351f495cc5f9d))
+* add support for optional Docker installation in cloudinit playbook ([c9e62ae](https://github.com/arpanrec/arpanrec.nebula/commit/c9e62ae9593f915e416faa9770b4e755a03c26e2))
