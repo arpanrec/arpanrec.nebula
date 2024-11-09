@@ -1,6 +1,6 @@
-## [1.10.2](https://github.com/arpanrec/arpanrec.nebula/compare/1.10.1...1.10.2) (2024-11-08)
+## [1.10.4](https://github.com/arpanrec/arpanrec.nebula/compare/1.10.3...1.10.4) (2024-11-09)
 
 
 ### Bug Fixes
 
-* update pyright version and add packaging dependency in pyproject.toml ([b449655](https://github.com/arpanrec/arpanrec.nebula/commit/b44965571a0cc489f5d3f17b486684c1502255d6))
+* update setup-python and cache actions in workflow files ([267e466](https://github.com/arpanrec/arpanrec.nebula/commit/267e466df12ca75d9218bf038739973d7a8a5521))

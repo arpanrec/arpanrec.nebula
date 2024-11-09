@@ -39,14 +39,14 @@ jobs:
               run: pipx install poetry==1.8.4
 
             - name: Set up Python ${{ matrix.python-version }}
-              uses: actions/setup-python@v5
+              uses: actions/setup-python@v5.3.0
               with:
                   python-version: "${{ matrix.python-version }}"
                   cache: "poetry"
                   # cache-dependency-path: pyproject.toml
 
             - name: Cache ansible
-              uses: actions/cache@v4
+              uses: actions/cache@v4.1.2
               with:
                   path: |
                       ~/.ansible
