@@ -16,7 +16,7 @@ jobs:
 
             - name: Import GPG key
               id: import-gpg
-              uses: crazy-max/ghaction-import-gpg@v6
+              uses: crazy-max/ghaction-import-gpg@v6.2.0
               with:
                   gpg_private_key: "${{ secrets.GH_BOT_GPG_PRIVATE_KEY }}"
                   passphrase: "${{ secrets.GH_BOT_GPG_PASSPHRASE }}"
@@ -25,7 +25,7 @@ jobs:
                   trust_level: 5
 
             - name: Setup Node
-              uses: actions/setup-node@v4
+              uses: actions/setup-node@v4.1.0
               with:
                   node-version: lts/*
                   cache-dependency-path: .github/files/package-lock.json
@@ -34,7 +34,7 @@ jobs:
               run: pipx install poetry==1.8.4
 
             - name: Set up Python "3.12"
-              uses: actions/setup-python@v5
+              uses: actions/setup-python@v5.3.0
               with:
                   python-version: "3.12"
                   cache: "poetry"
