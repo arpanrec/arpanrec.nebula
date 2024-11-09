@@ -2,22 +2,45 @@
 - name: Patch Cloud System
   hosts: cloudinit
   tasks:
-      - name: Patch Cloud System | Checking essential variables
-        ansible.builtin.assert:
-            that:
-                - item is defined
-                - item != None
-                - item != ""
-            success_msg: "Variable '{{ item }}' is defined and not None"
-            fail_msg: "Variable '{{ item }}' is not defined or is None"
-        with_items:
-            - "{{ pv_cloud_init_user }}"
-            - "{{ pv_cloud_init_group }}"
-            - "{{ pv_cloud_init_authorized_keys }}"
-            - "{{ pv_cloud_init_is_dev_machine }}"
-            - "{{ pv_cloud_init_hostname }}"
-            - "{{ pv_cloud_init_domain }}"
-            - "{{ pv_cloud_init_install_docker }}"
+      - name: Patch Cloud System | Checking essential variables | pv_cloud_init_user
+        ansible.builtin.fail:
+            msg: "pv_cloud_init_user is not defined or is None"
+        when: pv_cloud_init_user is not defined or pv_cloud_init_user == "" or pv_cloud_init_user == None
+
+      - name: Patch Cloud System | Checking essential variables | pv_cloud_init_group
+        ansible.builtin.fail:
+            msg: "pv_cloud_init_group is not defined or is None"
+        when: pv_cloud_init_group is not defined or pv_cloud_init_group == "" or pv_cloud_init_group == None
+
+      - name: Patch Cloud System | Checking essential variables | pv_cloud_init_authorized_keys
+        ansible.builtin.fail:
+            msg: "pv_cloud_init_authorized_keys is not defined or is None"
+        when: pv_cloud_init_authorized_keys is not defined
+            or pv_cloud_init_authorized_keys == "" or pv_cloud_init_authorized_keys == None
+
+      - name: Patch Cloud System | Checking essential variables | pv_cloud_init_is_dev_machine
+        ansible.builtin.fail:
+            msg: "pv_cloud_init_is_dev_machine is not defined or is None"
+        when: pv_cloud_init_is_dev_machine is not defined or pv_cloud_init_is_dev_machine == ""
+            or pv_cloud_init_is_dev_machine == None
+
+      - name: Patch Cloud System | Checking essential variables | pv_cloud_init_hostname
+        ansible.builtin.fail:
+            msg: "pv_cloud_init_hostname is not defined or is None"
+        when: pv_cloud_init_hostname is not defined or pv_cloud_init_hostname == ""
+            or pv_cloud_init_hostname == None
+
+      - name: Patch Cloud System | Checking essential variables | pv_cloud_init_domain
+        ansible.builtin.fail:
+            msg: "pv_cloud_init_domain is not defined or is None"
+        when: pv_cloud_init_domain is not defined or pv_cloud_init_domain == ""
+            or pv_cloud_init_domain == None
+
+      - name: Patch Cloud System | Checking essential variables | pv_cloud_init_install_docker
+        ansible.builtin.fail:
+            msg: "pv_cloud_init_install_docker is not defined or is None"
+        when: pv_cloud_init_install_docker is not defined or pv_cloud_init_install_docker == ""
+            or pv_cloud_init_install_docker == None
 
       - name: Patch Cloud System | Linux Patching
         ansible.builtin.include_role:
