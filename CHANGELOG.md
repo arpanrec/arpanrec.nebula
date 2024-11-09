@@ -1,6 +1,6 @@
-## [1.10.4](https://github.com/arpanrec/arpanrec.nebula/compare/1.10.3...1.10.4) (2024-11-09)
+## [1.10.5](https://github.com/arpanrec/arpanrec.nebula/compare/1.10.4...1.10.5) (2024-11-09)
 
 
 ### Bug Fixes
 
-* update setup-python and cache actions in workflow files ([267e466](https://github.com/arpanrec/arpanrec.nebula/commit/267e466df12ca75d9218bf038739973d7a8a5521))
+* package lock json updated ([57c83cb](https://github.com/arpanrec/arpanrec.nebula/commit/57c83cb25aaf9b087ef879d073f81587216a1e3d))
