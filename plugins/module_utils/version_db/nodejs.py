@@ -46,7 +46,7 @@ class NodeJS(AppDetails):
 
             if _nodejs_version_tags_res.status_code != 200:
                 raise ValueError(f"Failed to fetch NodeJS version details: {_nodejs_version_tags_res.text}")
-            
+
             _nodejs_version_tag = _nodejs_version_tags_res.json()[0]["version"]
 
         else:
