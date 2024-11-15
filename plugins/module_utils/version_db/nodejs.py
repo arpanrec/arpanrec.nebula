@@ -14,9 +14,8 @@ Attributes:
     __node_architecture_map (dict[str, str]): A mapping of architecture names to NodeJS architecture identifiers.
 """
 
+import requests  # type: ignore
 from ansible.utils.display import Display  # type: ignore
-
-from .grs import github_release_tag_search  # type: ignore
 
 # pylint: disable=E0401,E0611
 from .models import AppDetails  # type: ignore
@@ -29,7 +28,7 @@ class NodeJS(AppDetails):
     NodeJS app details.
     """
 
-    __github_repo: str = "nodejs/node"
+    __node_dist_url = "https://nodejs.org/dist/index.json"
 
     __node_architecture_map: dict[str, str] = {
         "amd64": "x64",
@@ -39,25 +38,24 @@ class NodeJS(AppDetails):
     }
 
     def fetch_details(self) -> None:
-        _github_release_tag = self._kwargs.get("nodejs_rv_version", None)
-        if not _github_release_tag or _github_release_tag == self._FETCH_LATEST_KEY:
-            display.vvv("AppDetails NodeJS: Fetching NodeJS version details from GitHub.")
-            # pylint: disable=R0801
-            _github_release_tag = github_release_tag_search(
-                github_release_tag_search_repo=self.__github_repo,
-                github_release_tag_search_api_url=self._kwargs.get("github_release_tag_search_api_url"),
-                github_release_tag_search_token=self._kwargs.get("github_release_tag_search_token"),
-                github_release_tag_search_contains=self._kwargs.get("github_release_tag_search_contains"),
-                github_release_tag_search_max_pages=int(self._kwargs.get("github_release_tag_search_max_pages", 100)),
-                github_release_tag_search_timeout=self._kwargs.get("github_release_tag_search_timeout", 10),
-            )
+        _nodejs_version_tag = self._kwargs.get("nodejs_rv_version", None)
+        if not _nodejs_version_tag or _nodejs_version_tag == self._FETCH_LATEST_KEY:
+            display.vvv(f"AppDetails NodeJS: Fetching NodeJS version details from {self.__node_dist_url}")
+
+            _nodejs_version_tags_res = requests.get(self.__node_dist_url, timeout=10)
+
+            if _nodejs_version_tags_res.status_code != 200:
+                raise ValueError(f"Failed to fetch NodeJS version details: {_nodejs_version_tags_res.text}")
+            
+            _nodejs_version_tag = _nodejs_version_tags_res.json()[0]["version"]
+
         else:
-            display.vvv(f"AppDetails NodeJS: Using provided NodeJS version tag: {_github_release_tag}")
+            display.vvv(f"AppDetails NodeJS: Using provided NodeJS version tag: {_nodejs_version_tag}")
 
         # pylint: disable=attribute-defined-outside-init
         self._download_link = (
             f"https://nodejs.org/download/release"
-            f"/{_github_release_tag}/node-{_github_release_tag}-linux"
+            f"/{_nodejs_version_tag}/node-{_nodejs_version_tag}-linux"
             f"-{self._get_ansible_architecture(self.__node_architecture_map)}.tar.gz"
         )
-        self._version = _github_release_tag
+        self._version = _nodejs_version_tag
