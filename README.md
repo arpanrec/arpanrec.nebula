@@ -44,6 +44,4 @@ ansible-galaxy collection install "git+https://github.com/arpanrec/arpanrec.nebu
 
 ## [License](LICENSE)
 
-`GLWTS`
-
-Visit [GLWTS Public License](https://raw.githubusercontent.com/me-shaon/GLWTPL/master/NSFW_LICENSE) for more information.
+`MIT`

@@ -32,7 +32,6 @@ build_ignore:
     - ".yamllint"
     - "CODE_OF_CONDUCT.md"
     - "DEVELOPMENT.md"
-    - "LICENSE"
     - "build"
     - "molecule"
     - "node_modules"
