@@ -1,6 +1,6 @@
-## [1.10.9](https://github.com/arpanrec/arpanrec.nebula/compare/1.10.8...1.10.9) (2024-11-13)
+## [1.10.10](https://github.com/arpanrec/arpanrec.nebula/compare/1.10.9...1.10.10) (2024-11-15)
 
 
 ### Bug Fixes
 
-* update release configuration to include changelog generation and adjust requirements export ([371643a](https://github.com/arpanrec/arpanrec.nebula/commit/371643afb216c59c6dc77ac581d8e3ce7c40dc69))
+* update NodeJS version fetching to use official Node.js distribution API ([#36](https://github.com/arpanrec/arpanrec.nebula/issues/36)) ([6487fed](https://github.com/arpanrec/arpanrec.nebula/commit/6487fedd21bee0e5ed6689ff6a22f78764e0701d))
