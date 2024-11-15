@@ -30,6 +30,8 @@ env:
 
 jobs:
     molecule_test_role_nodejs:
+        timeout-minutes: 1
+        cancel-timeout-minutes: 1
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false

@@ -16,6 +16,8 @@ concurrency:
 
 jobs:
     black:
+        timeout-minutes: 1
+        cancel-timeout-minutes: 1
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false

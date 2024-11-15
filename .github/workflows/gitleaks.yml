@@ -7,6 +7,8 @@ name: Gitleaks
         - cron: "0 4 * * *" # run once a day at 4 AM
 jobs:
     gitleaks:
+        timeout-minutes: 1
+        cancel-timeout-minutes: 1
         name: gitleaks
         runs-on: ubuntu-latest
         steps:

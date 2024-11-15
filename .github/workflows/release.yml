@@ -5,6 +5,8 @@ name: Release
 
 jobs:
     release:
+        timeout-minutes: 500
+        cancel-timeout-minutes: 500
         name: release
         runs-on: ubuntu-latest
         steps:
