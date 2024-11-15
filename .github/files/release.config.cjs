@@ -35,8 +35,8 @@ module.exports = {
                     'poetry export --without-hashes --format=requirements.txt --with dev -o requirements-dev.txt',
                     'ansible-galaxy collection build',
                 ].join(' && '),
-                // successCmd:
-                //     'ansible-galaxy collection publish arpanrec-nebula-${nextRelease.version}.tar.gz --api-key ${process.env.GALAXY_API_KEY}',
+                successCmd:
+                    'ansible-galaxy collection publish arpanrec-nebula-${nextRelease.version}.tar.gz --api-key ${process.env.GALAXY_API_KEY}',
             },
         ],
         [
@@ -57,6 +57,12 @@ module.exports = {
                     'requirements-dev.txt',
                 ],
                 message: 'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
+            },
+        ],
+        [
+            '@semantic-release/github',
+            {
+                assets: [{ path: 'arpanrec-nebula-*.tar.gz' }],
             },
         ],
     ],
