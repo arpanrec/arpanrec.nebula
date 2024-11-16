@@ -19,6 +19,8 @@ concurrency:
 
 jobs:
     molecule_test_role_linux_patching:
+        timeout-minutes: 60
+        cancel-timeout-minutes: 60
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
@@ -36,7 +38,7 @@ jobs:
               with:
                   python-version: "${{ matrix.python-version }}"
                   cache: "poetry"
-                  # cache-dependency-path: pyproject.toml
+                  cache-dependency-path: poetry.lock
 
             - name: Cache ansible
               uses: actions/cache@v4.1.2

@@ -39,7 +39,7 @@ This collection provides a set of roles to deploy and manage various services.
 ## Installation
 
 ```bash
-export NEBULA_VERSION=1.10.7
+export NEBULA_VERSION=1.10.15
 curl "https://raw.githubusercontent.com/arpanrec/arpanrec.nebula/refs/tags/${NEBULA_VERSION}/requirements.yml" \
     -o "/tmp/requirements-${NEBULA_VERSION}.yml"
 ansible-galaxy install -r "/tmp/requirements-${NEBULA_VERSION}.yml"
@@ -48,6 +48,4 @@ ansible-galaxy collection install "git+https://github.com/arpanrec/arpanrec.nebu
 
 ## [License](LICENSE)
 
-`GLWTS`
-
-Visit [GLWTS Public License](https://raw.githubusercontent.com/me-shaon/GLWTPL/master/NSFW_LICENSE) for more information.
+`MIT`

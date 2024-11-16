@@ -1,7 +1,7 @@
 ---
 namespace: arpanrec
 name: nebula
-version: 1.10.7
+version: 1.10.15
 readme: README.md
 authors:
     - "Arpan Mandal <arpan.rec@gmail.com>"
@@ -13,33 +13,34 @@ issues: https://github.com/arpanrec/arpanrec.nebula/issues
 #   "https://github.com/ansible-collections/community.general.git": "6.0.1"
 #   "https://github.com/ansible-collections/ansible.posix.git": "1.4.0"
 #   "https://github.com/ansible-collections/community.docker.git": "3.3.1"
-homepage: "https://arpanrec.com"
-documentation: README.md
+homepage: "https://github.com/arpanrec/arpanrec.nebula"
+documentation: https://github.com/arpanrec/arpanrec.nebula/blob/main/README.md
 build_ignore:
-    - ".github"
-    - ".idea"
-    - ".trunk"
-    - ".vscode"
-    - "venv"
-    - "node_modules"
-    - "molecule"
-    - ".venv"
-    - ".gitignore"
+    - ".ansible-lint"
     - ".git"
     - ".gitattributes"
-    - "requirements.yml"
-    - "pyproject.toml"
-    - "poetry.lock"
-    - "build"
-    - ".yamllint"
-    - ".pylintrc"
-    - "CODE_OF_CONDUCT.md"
-    - ".ansible-lint"
-    - "CHANGELOG.md"
+    - ".github"
+    - ".gitignore"
+    - ".gitkeep"
+    - ".idea"
     - ".mypy_cache"
+    - ".py.typed"
+    - ".pylintrc"
+    - ".trunk"
+    - ".venv"
+    - ".vscode"
+    - ".yamllint"
+    - "CODE_OF_CONDUCT.md"
     - "DEVELOPMENT.md"
-    - "README.md"
-    - "LICENSE"
+    - "build"
+    - "molecule"
+    - "node_modules"
+    - "poetry.lock"
+    - "pyproject.toml"
+    - "requirements-dev.txt"
+    - "requirements.txt"
+    - "requirements.yml"
+    - "venv"
 tags:
     - "linux"
     - "debian"
