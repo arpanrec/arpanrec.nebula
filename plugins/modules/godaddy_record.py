@@ -78,7 +78,7 @@ message:
 SUPPORTED_RECORD_TYPES = ["A", "AAAA", "CNAME", "SRV", "TXT", "SOA", "NS", "MX", "SPF", "PTR"]
 
 
-def run_module():
+def run_module() -> None:
     """
     Run the module
     """
@@ -122,7 +122,7 @@ def run_module():
     module.exit_json(**result)
 
 
-def main():
+def main() -> None:
     """
     Main function
     """
