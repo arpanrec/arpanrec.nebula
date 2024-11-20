@@ -12,6 +12,15 @@ name: Molecule Test Role Telegram Desktop
             - "requirements.yml"
             - "roles/telegram_desktop/**"
     workflow_dispatch:
+    pull_request:
+        paths:
+            - "!roles/telegram_desktop/README.md"
+            - ".github/workflows/molecule_test_role_telegram_desktop.yml"
+            - "meta/**"
+            - "molecule/role.telegram_desktop.docker/**"
+            - "poetry.lock"
+            - "requirements.yml"
+            - "roles/telegram_desktop/**"
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
@@ -25,7 +34,7 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                python-version: ["3.10", "3.11", "3.12", "3.13"]
+                python-version: ["3.11", "3.12", "3.13"]
         steps:
             - name: Checkout
               uses: actions/checkout@v4.2.2
