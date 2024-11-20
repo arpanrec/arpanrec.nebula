@@ -1,6 +1,6 @@
-## [1.11.1](https://github.com/arpanrec/arpanrec.nebula/compare/1.11.0...1.11.1) (2024-11-20)
+## [1.11.2](https://github.com/arpanrec/arpanrec.nebula/compare/1.11.1...1.11.2) (2024-11-20)
 
 
 ### Bug Fixes
 
-* update README with plugin sections and improve installation instructions ([92dd689](https://github.com/arpanrec/arpanrec.nebula/commit/92dd689be6fd4e3382d01faa132bea1491e3d997))
+* specify version for kewlfft.aur in requirements.yml ([6b66799](https://github.com/arpanrec/arpanrec.nebula/commit/6b6679936e65e9377d42b6f0c759afb142a46ad7))
