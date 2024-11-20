@@ -1,6 +1,6 @@
-## [1.10.16](https://github.com/arpanrec/arpanrec.nebula/compare/1.10.15...1.10.16) (2024-11-16)
+# [1.11.0](https://github.com/arpanrec/arpanrec.nebula/compare/1.10.16...1.11.0) (2024-11-20)
 
 
-### Bug Fixes
+### Features
 
-* update dependencies to latest versions in poetry.lock ([01fb9c9](https://github.com/arpanrec/arpanrec.nebula/commit/01fb9c96c9d140f41460e4b18e009d692d05fb81))
+* add bitwarden lookup module ([#38](https://github.com/arpanrec/arpanrec.nebula/issues/38)) ([a2d9256](https://github.com/arpanrec/arpanrec.nebula/commit/a2d92564d9ed061aee0185e793c3f7d64adac66a))
