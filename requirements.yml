@@ -11,7 +11,7 @@ collections:
     - name: ansible.posix
       version: 1.6.2
     - name: kewlfft.aur
-      # version: v0.11.1
+      version: 0.11.1
 roles:
     - name: geerlingguy.docker
       version: 7.4.1
