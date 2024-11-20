@@ -84,7 +84,6 @@ options:
             - If enabled, then make sure to delete the cachier default cache directory after execution.
         type: bool
         default: false
-
 """
 
 EXAMPLES = """
@@ -113,7 +112,6 @@ EXAMPLES = """
 - name: "Get a attachment named 'privkey.pem' from all Bitwarden records named 'a_test'"
   ansible.builtin.debug:
       msg: "{{ lookup('arpanrec.nebula.bitwarden', 'a_test', attachment_name='privkey.pem') }}"
-
 """
 
 RETURN = """
@@ -125,7 +123,6 @@ _raw:
           this always gets reduced to a list of field values or JSON objects.
     type: list
     elements: list
-
 """
 
 display = Display()
