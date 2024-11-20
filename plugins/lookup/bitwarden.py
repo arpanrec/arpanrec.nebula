@@ -32,7 +32,7 @@ requirements:
     - bw (command line utility)
     - be logged into bitwarden
     - bitwarden vault unlocked, or session key provided
-    - cachier (optional, for caching)
+    - cachier
     - Attachments are returned as the content of the file. Not the file/'file path' itself.
 short_description: Retrieve secrets from Bitwarden
 description:
