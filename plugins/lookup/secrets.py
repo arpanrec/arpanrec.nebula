@@ -23,6 +23,7 @@ except ImportError as e:
 __metaclass__ = type
 
 DOCUMENTATION = """
+---
 name: secrets
 author:
     - Arpan Mandal (@arpanrec) <arpan.rec@gmail.com>
@@ -30,6 +31,8 @@ requirements:
     - bw (command line utility)
     - be logged into bitwarden
     - bitwarden vault unlocked, or session key provided
+    - cachier (optional, for caching)
+    - Attachments are returned as the content of the file. Not the file/'file path' itself.
 short_description: Retrieve secrets from Bitwarden
 description:
     - Retrieve secrets from Bitwarden.
@@ -50,7 +53,8 @@ options:
     field:
         description:
             - Field to fetch. Leave unset to fetch whole response.
-            - If set to V(username), V(password), V(totp), V(uri), or V(notes), only the value of that field is returned.
+            - If set to V(username), V(password), V(totp), V(uri), or V(notes),
+              only the value of that field is returned.
             - If set to a custom field name, the value of that field is returned.
             - Mutually exclusive with V(attachment_name) and V(attachment_id).
         type: str
@@ -58,6 +62,7 @@ options:
         description:
             - Pass session key instead of reading from env.
             - E(BW_SESSION) environment variable set.
+            - Variable take precedence over environment variable.
         type: str
     attachment_name:
         description:
@@ -83,31 +88,32 @@ options:
 EXAMPLES = """
 - name: "Get 'password' from all Bitwarden records named 'a_test'"
   ansible.builtin.debug:
-      msg: >-
-          {{ lookup('community.general.bitwarden', 'a_test', field='password') }}
+      msg: "{{ lookup('community.general.bitwarden', 'a_test', field='password') }}"
 
 - name: "Get 'password' from Bitwarden record with ID 'bafba515-af11-47e6-abe3-af1200cd18b2'"
   ansible.builtin.debug:
-      msg: >-
-          {{ lookup('community.general.bitwarden', 'bafba515-af11-47e6-abe3-af1200cd18b2', search='id', field='password') }}
+      msg: "{{ lookup('community.general.bitwarden', 'bafba515-af11-47e6-abe3-af1200cd18b2', search='id',
+          field='password') }}"
 
 - name: "Get list of all full Bitwarden records named 'a_test'"
   ansible.builtin.debug:
-      msg: >-
-          {{ lookup('community.general.bitwarden', 'a_test') }}
+      msg: "{{ lookup('community.general.bitwarden', 'a_test') }}"
 
 - name: "Get custom field 'api_key' from all Bitwarden records named 'a_test'"
   ansible.builtin.debug:
-      msg: >-
-          {{ lookup('community.general.bitwarden', 'a_test', field='api_key') }}
+      msg: "{{ lookup('community.general.bitwarden', 'a_test', field='api_key') }}"
 
 - name: "Get 'password' from all Bitwarden records named 'a_test', using given session key"
   ansible.builtin.debug:
-      msg: >-
-          {{ lookup('community.general.bitwarden', 'a_test', field='password', bw_session='bXZ9B5TXi6...') }}
+      msg: "{{ lookup('community.general.bitwarden', 'a_test', field='password', bw_session='bXZ9B5TXi6...') }}"
+
+- name: "Get a attachment named 'privkey.pem' from all Bitwarden records named 'a_test'"
+  ansible.builtin.debug:
+      msg: "{{ lookup('secrets', 'a_test', attachment_name='privkey.pem') }}"
 """
 
 RETURN = """
+---
 _raw:
     description:
         - A one-element list that contains a list of requested fields or JSON objects of matches.
@@ -201,8 +207,8 @@ class LookupModule(LookupBase):
         """
         return self.__bw_exec_subprocess(cmd, ret_encoding, env_vars)
 
-    @staticmethod
     def __bw_exec_subprocess(
+        self,
         cmd: List[str],
         ret_encoding: str = "UTF-8",
         env_vars: Optional[Dict[str, str]] = None,
@@ -218,6 +224,9 @@ class LookupModule(LookupBase):
 
         if env_vars is not None:
             cli_env_vars.update(env_vars)
+
+        if self.__bw_session:
+            cli_env_vars["BW_SESSION"] = self.__bw_session
 
         display.vvv(f"Executing Bitwarden CLI command: {' '.join(cmd)}")
         command_out = subprocess.run(
@@ -273,7 +282,10 @@ class LookupModule(LookupBase):
         ):
             self.__cache_enabled = True
 
-        if kwargs:
+        if variables and len(variables) > 1 and "bw_session" in variables:
+            self.__bw_session = str(variables["bw_session"])
+
+        if kwargs and len(kwargs) > 0:
 
             if "field" in kwargs:
                 field = str(kwargs["field"])
@@ -286,13 +298,16 @@ class LookupModule(LookupBase):
 
             if "search" in kwargs:
                 self.__search = str(kwargs["search"])
-            if (
-                kwargs
-                and len(kwargs) > 1
-                and ("secrets_lookup_cache_enabled" in kwargs)
-                and (str(kwargs["secrets_lookup_cache_enabled"]).lower() in ["true", "yes", "1"])
+            if ("secrets_lookup_cache_enabled" in kwargs) and (
+                str(kwargs["secrets_lookup_cache_enabled"]).lower() in ["true", "yes", "1"]
             ):
                 self.__cache_enabled = True
+
+            if "bw_session" in kwargs:
+                self.__bw_session = str(kwargs["bw_session"])
+
+        if not self.__bw_session and "BW_SESSION" in os.environ:
+            self.__bw_session = os.environ["BW_SESSION"]
 
         if self.__search not in ["name", "id"]:
             raise AnsibleLookupError("Invalid search type, only 'name' or 'id' is allowed")
