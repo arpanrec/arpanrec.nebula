@@ -13,6 +13,16 @@ name: Molecule Test Role Get Certificate OwnCA
             - "requirements.yml"
             - "roles/get_certificate_ownca/**"
     workflow_dispatch:
+    pull_request:
+        paths:
+            - "!roles/get_certificate_ownca/README.md"
+            - ".github/workflows/molecule_test_role_get_certificate_ownca.yml"
+            - "meta/**"
+            - "molecule/role.get_certificate_ownca.docker/**"
+            - "plugins/filter/split_certificates.py"
+            - "poetry.lock"
+            - "requirements.yml"
+            - "roles/get_certificate_ownca/**"
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
@@ -26,7 +36,7 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                python-version: ["3.10", "3.11", "3.12", "3.13"]
+                python-version: ["3.11", "3.12", "3.13"]
         steps:
             - name: Checkout
               uses: actions/checkout@v4.2.2
