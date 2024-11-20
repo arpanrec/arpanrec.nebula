@@ -20,6 +20,23 @@ name: Molecule Test Role NodeJS
             - "requirements.yml"
             - "roles/nodejs/**"
     workflow_dispatch:
+    pull_request:
+        paths:
+            - "!roles/nodejs/README.md"
+            - ".github/workflows/molecule_test_role_nodejs.yml"
+            - "meta/**"
+            - "molecule/role.nodejs.docker/**"
+            - "plugins/lookup/version_db.py"
+            - "plugins/module_utils/__init__.py"
+            - "plugins/module_utils/py.typed"
+            - "plugins/module_utils/version_db/__init__.py"
+            - "plugins/module_utils/version_db/nodejs.py"
+            - "plugins/module_utils/version_db/grs.py"
+            - "plugins/module_utils/version_db/models.py"
+            - "plugins/module_utils/version_db/py.typed"
+            - "poetry.lock"
+            - "requirements.yml"
+            - "roles/nodejs/**"
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
@@ -36,7 +53,7 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                python-version: ["3.10", "3.11", "3.12", "3.13"]
+                python-version: ["3.11", "3.12", "3.13"]
         steps:
             - name: Checkout
               uses: actions/checkout@v4.2.2
