@@ -1,6 +1,6 @@
-# [1.11.0](https://github.com/arpanrec/arpanrec.nebula/compare/1.10.16...1.11.0) (2024-11-20)
+## [1.11.1](https://github.com/arpanrec/arpanrec.nebula/compare/1.11.0...1.11.1) (2024-11-20)
 
 
-### Features
+### Bug Fixes
 
-* add bitwarden lookup module ([#38](https://github.com/arpanrec/arpanrec.nebula/issues/38)) ([a2d9256](https://github.com/arpanrec/arpanrec.nebula/commit/a2d92564d9ed061aee0185e793c3f7d64adac66a))
+* update README with plugin sections and improve installation instructions ([92dd689](https://github.com/arpanrec/arpanrec.nebula/commit/92dd689be6fd4e3382d01faa132bea1491e3d997))
