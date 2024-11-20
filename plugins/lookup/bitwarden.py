@@ -24,7 +24,7 @@ __metaclass__ = type
 
 DOCUMENTATION = """
 ---
-name: secrets
+name: arpanrec.nebula.bitwarden
 author:
     - Arpan Mandal (@arpanrec) <arpan.rec@gmail.com>
 requirements:
@@ -83,33 +83,36 @@ options:
             - If enabled, then make sure to delete the cachier default cache directory after execution.
         type: bool
         default: false
+
 """
 
 EXAMPLES = """
+---
 - name: "Get 'password' from all Bitwarden records named 'a_test'"
   ansible.builtin.debug:
-      msg: "{{ lookup('community.general.bitwarden', 'a_test', field='password') }}"
+      msg: "{{ lookup('arpanrec.nebula.bitwarden', 'a_test', field='password') }}"
 
 - name: "Get 'password' from Bitwarden record with ID 'bafba515-af11-47e6-abe3-af1200cd18b2'"
   ansible.builtin.debug:
-      msg: "{{ lookup('community.general.bitwarden', 'bafba515-af11-47e6-abe3-af1200cd18b2', search='id',
+      msg: "{{ lookup('arpanrec.nebula.bitwarden', 'bafba515-af11-47e6-abe3-af1200cd18b2', search='id',
           field='password') }}"
 
 - name: "Get list of all full Bitwarden records named 'a_test'"
   ansible.builtin.debug:
-      msg: "{{ lookup('community.general.bitwarden', 'a_test') }}"
+      msg: "{{ lookup('arpanrec.nebula.bitwarden', 'a_test') }}"
 
 - name: "Get custom field 'api_key' from all Bitwarden records named 'a_test'"
   ansible.builtin.debug:
-      msg: "{{ lookup('community.general.bitwarden', 'a_test', field='api_key') }}"
+      msg: "{{ lookup('arpanrec.nebula.bitwarden', 'a_test', field='api_key') }}"
 
 - name: "Get 'password' from all Bitwarden records named 'a_test', using given session key"
   ansible.builtin.debug:
-      msg: "{{ lookup('community.general.bitwarden', 'a_test', field='password', bw_session='bXZ9B5TXi6...') }}"
+      msg: "{{ lookup('arpanrec.nebula.bitwarden', 'a_test', field='password', bw_session='bXZ9B5TXi6...') }}"
 
 - name: "Get a attachment named 'privkey.pem' from all Bitwarden records named 'a_test'"
   ansible.builtin.debug:
-      msg: "{{ lookup('secrets', 'a_test', attachment_name='privkey.pem') }}"
+      msg: "{{ lookup('arpanrec.nebula.bitwarden', 'a_test', attachment_name='privkey.pem') }}"
+
 """
 
 RETURN = """
@@ -121,6 +124,7 @@ _raw:
           this always gets reduced to a list of field values or JSON objects.
     type: list
     elements: list
+
 """
 
 display = Display()
