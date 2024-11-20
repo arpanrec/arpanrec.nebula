@@ -18,7 +18,7 @@ line-length = 120
 
 [tool.poetry]
 name = "arpanrec.nebula"
-version = "1.10.16"
+version = "1.11.1"
 description = "common ansible resources"
 authors = ["arpanrec <arpan.rec@gmail.com>"]
 license = "GLWTS"
@@ -34,7 +34,7 @@ godaddypy = "2.5.1"
 cachier = "3.1.2"
 
 [tool.poetry.group.dev.dependencies]
-ansible-lint = { version = "24.9.2", markers = "platform_system != 'Windows'" }
+ansible-lint = { version = "24.10.0", markers = "platform_system != 'Windows'" }
 bandit = "1.7.10"
 black = "24.10.0"
 docker = "7.1.0" # Needed for molecule docker driver
@@ -46,7 +46,7 @@ neovim = "0.3.1"
 packaging = "24.2"
 poetry-plugin-export = "1.8.0"
 pylint = "3.3.1"
-pyright = "1.1.388"
+pyright = "1.1.389"
 types-pyyaml = "6.0.12.20240917"
 types-requests = "2.32.0.20241016"
 

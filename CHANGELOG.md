@@ -1,6 +1,6 @@
-## [1.10.16](https://github.com/arpanrec/arpanrec.nebula/compare/1.10.15...1.10.16) (2024-11-16)
+## [1.11.1](https://github.com/arpanrec/arpanrec.nebula/compare/1.11.0...1.11.1) (2024-11-20)
 
 
 ### Bug Fixes
 
-* update dependencies to latest versions in poetry.lock ([01fb9c9](https://github.com/arpanrec/arpanrec.nebula/commit/01fb9c96c9d140f41460e4b18e009d692d05fb81))
+* update README with plugin sections and improve installation instructions ([92dd689](https://github.com/arpanrec/arpanrec.nebula/commit/92dd689be6fd4e3382d01faa132bea1491e3d997))
