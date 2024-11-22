@@ -16,10 +16,11 @@ Methods:
 
 """
 
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 import requests
 from ansible.utils.display import Display  # type: ignore
+from packaging.version import Version
 
 from .models import AppDetails  # type: ignore
 
@@ -43,13 +44,21 @@ class Vault(AppDetails):  # pylint: disable=too-few-public-methods
         if not _vault_release_tag or _vault_release_tag == self._FETCH_LATEST_KEY:
             display.vvv(f"Fetching Vault version details from {self.__vault_releases_url}.")
             try:
+                _expected_version: Optional[str] = None
                 _vault_releases: Dict[str, Any] = requests.get(self.__vault_releases_url, timeout=10).json()["versions"]
-                for key in reversed(list(_vault_releases.keys())):
-                    if "+" in key:
+                for key in list(_vault_releases.keys()):
+                    # pylint: disable=R0801
+                    if ("+" in key) or ("beta" in key) or ("rc" in key) or ("oci" in key) or ("alpha" in key):
                         continue
-                    _vault_release_tag = key
-                    break
+                    if not _expected_version:
+                        _expected_version = key
+                    else:
+                        if Version(key) > Version(_expected_version):
+                            _expected_version = key
 
+                if not _expected_version:
+                    raise ValueError("Failed to fetch Vault releases.")
+                _vault_release_tag = _expected_version
                 display.vvv(f"Latest Vault release tag: {_vault_release_tag}")
 
             except Exception as e:
