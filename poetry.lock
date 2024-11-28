@@ -760,6 +760,20 @@ testing = ["covdefaults (>=2.3)", "coverage (>=7.6.1)", "diff-cover (>=9.2)", "p
 typing = ["typing-extensions (>=4.12.2)"]
 
 [[package]]
+name = "godaddypy"
+version = "2.5.1"
+description = "A very simple python client used to update the IP address in A records for GoDaddy managed domains."
+optional = false
+python-versions = "*"
+files = [
+    {file = "GoDaddyPy-2.5.1-py2.py3-none-any.whl", hash = "sha256:22da1e2d93225e605bc150992b9ed477677f782c87e0ed3e0c47d2cbc13ece53"},
+    {file = "GoDaddyPy-2.5.1.tar.gz", hash = "sha256:db54c3a023b65f1b4b7793c8bdac0f778bb02044817df1f412c76540e2e0ae9a"},
+]
+
+[package.dependencies]
+requests = ">=2.4"
+
+[[package]]
 name = "greenlet"
 version = "3.1.1"
 description = "Lightweight in-process concurrent programming"
@@ -2444,4 +2458,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "194c46fc3e9eb0bd34ec72a505a8e4523830f8d7b15ea8baa41a43598fc7ed8f"
+content-hash = "eaafb2a4bca25a9af1aab6f96d9133e32de7ea2e9e33fef69adbf365427166b4"
