@@ -39,7 +39,7 @@ This collection provides a set of roles to deploy and manage various services.
     - [bitwarden](/plugins/lookup/bitwarden.py)
     - [version_db](/plugins/lookup/version_db.py)
 
-## Filters
+### Filters
 
     - [split_certificates](/plugins/filter/split_certificates.py)
 

@@ -16,10 +16,11 @@ Attributes:
 
 """
 
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 import requests
 from ansible.utils.display import Display  # type: ignore
+from packaging.version import Version
 
 from .models import AppDetails  # type: ignore
 
@@ -51,8 +52,20 @@ class Terraform(AppDetails):  # pylint: disable=too-few-public-methods
                 _terraform_releases: Dict[str, Any] = requests.get(self.__terraform_releases_url, timeout=10).json()[
                     "versions"
                 ]
-                _terraform_release_tag = list(_terraform_releases)[-1]
+                _expected_version: Optional[str] = None
+                for key in list(_terraform_releases.keys()):
+                    # pylint: disable=R0801
+                    if ("+" in key) or ("beta" in key) or ("rc" in key) or ("oci" in key) or ("alpha" in key):
+                        continue
+                    if not _expected_version:
+                        _expected_version = key
+                    else:
+                        if Version(key) > Version(_expected_version):
+                            _expected_version = key
 
+                if not _expected_version:
+                    raise ValueError("AppDetails Terraform: Failed to fetch terraform releases.")
+                _terraform_release_tag = _expected_version
                 display.vvv(f"AppDetails Terraform: Latest terraform release tag: {_terraform_release_tag}")
 
             except Exception as e:
