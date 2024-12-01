@@ -28,6 +28,9 @@
       rule: allow
       port: "{{ ssh_hardening_rv_ssh_port }}"
       state: enabled
+      proto: tcp
+      comment: "Allow SSH Port,  Managed by Ansible arpanrec.nebula {{
+          now(utc=true, fmt='%Y-%m-%d %H:%M:%S') }}"
   environment:
       PATH: /sbin:{{ ansible_env.PATH }}
 
