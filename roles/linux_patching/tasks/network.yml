@@ -167,8 +167,7 @@
       port: "{{ linux_patching_rv_ssh_port }}"
       proto: tcp
       state: enabled
-      comment: "Allow SSH Port,  Managed by Ansible arpanrec.nebula {{
-          now(utc=true, fmt='%Y-%m-%d %H:%M:%S') }}"
+      comment: "Allow SSH Port, Managed by Ansible arpanrec.nebula"
   register: linux_patching_rv_ufw_ssh_port_result
   ignore_errors: true
   environment:
@@ -190,7 +189,6 @@
             port: "{{ linux_patching_rv_ssh_port }}"
             proto: tcp
             state: enabled
-            comment: "Allow SSH Port,  Managed by Ansible arpanrec.nebula {{
-                now(utc=true, fmt='%Y-%m-%d %H:%M:%S') }}"
+            comment: "Allow SSH Port, Managed by Ansible arpanrec.nebula"
         environment:
             PATH: /sbin:{{ ansible_env.PATH }}
