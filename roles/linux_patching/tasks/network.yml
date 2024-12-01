@@ -189,7 +189,7 @@
             rule: allow
             port: "{{ linux_patching_rv_ssh_port }}"
             proto: tcp
-            state: reloaded
+            state: enabled
             comment: "Allow SSH Port,  Managed by Ansible arpanrec.nebula {{
                 now(utc=true, fmt='%Y-%m-%d %H:%M:%S') }}"
         environment:
