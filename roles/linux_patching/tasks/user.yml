@@ -10,6 +10,9 @@
       value: "{{ item.value }}"
       mode: "0644"
       backup: true
+      owner: root
+      group: root
+      no_extra_spaces: true
   with_items:
       - option: HandleLidSwitch
         value: ignore
