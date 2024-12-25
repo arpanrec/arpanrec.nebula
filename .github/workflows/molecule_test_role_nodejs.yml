@@ -49,7 +49,7 @@ jobs:
     molecule_test_role_nodejs:
         timeout-minutes: 60
         cancel-timeout-minutes: 60
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-24.04
         strategy:
             fail-fast: false
             matrix:
