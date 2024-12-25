@@ -8,7 +8,7 @@ jobs:
         timeout-minutes: 500
         cancel-timeout-minutes: 500
         name: release
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-24.04
         steps:
             - name: Checkout
               uses: actions/checkout@v4.2.2
@@ -32,8 +32,8 @@ jobs:
                   node-version: lts/*
                   cache-dependency-path: .github/files/package-lock.json
 
-            - name: Install poetry 1.8.4
-              run: pipx install poetry==1.8.4
+            - name: Install poetry 1.8.5
+              run: pipx install poetry==1.8.5
 
             - name: Set up Python "3.12"
               uses: actions/setup-python@v5.3.0
@@ -49,7 +49,7 @@ jobs:
               run: |+
                   npm i semantic-release@24.2.0 \
                       @semantic-release/commit-analyzer@13.0.0 \
-                      @semantic-release/release-notes-generator@14.0.1 \
+                      @semantic-release/release-notes-generator@14.0.2 \
                       @semantic-release/changelog@6.0.3 \
                       @semantic-release/exec@6.0.3 \
                       @semantic-release/git@10.0.1 \
