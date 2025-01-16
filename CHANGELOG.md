@@ -1,6 +1,6 @@
-## [1.11.6](https://github.com/arpanrec/arpanrec.nebula/compare/1.11.5...1.11.6) (2025-01-16)
+## [1.11.7](https://github.com/arpanrec/arpanrec.nebula/compare/1.11.6...1.11.7) (2025-01-16)
 
 
 ### Bug Fixes
 
-* Domain name in /etc/resolvconf/resolv.conf.d/head ([#42](https://github.com/arpanrec/arpanrec.nebula/issues/42)) ([5e1ce8b](https://github.com/arpanrec/arpanrec.nebula/commit/5e1ce8b71200c2a4dc585d73e5cbbb88a3a49b24))
+* install resolvconf package and update network services in vars ([#43](https://github.com/arpanrec/arpanrec.nebula/issues/43)) ([8b9661c](https://github.com/arpanrec/arpanrec.nebula/commit/8b9661c1a67fcdd0a8f70c51ad76e28b9fbf1016))
