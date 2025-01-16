@@ -2,16 +2,6 @@
 name: Molecule Test Role Get Certificate OwnCA
 
 "on":
-    push:
-        paths:
-            - "!roles/get_certificate_ownca/README.md"
-            - ".github/workflows/molecule_test_role_get_certificate_ownca.yml"
-            - "meta/**"
-            - "molecule/role.get_certificate_ownca.docker/**"
-            - "plugins/filter/split_certificates.py"
-            - "poetry.lock"
-            - "requirements.yml"
-            - "roles/get_certificate_ownca/**"
     workflow_dispatch:
     pull_request:
         paths:
@@ -41,8 +31,8 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v4.2.2
 
-            - name: Install poetry 1.8.5
-              run: pipx install poetry==1.8.5
+            - name: Install poetry 2.0.1
+              run: pipx install poetry==2.0.1
 
             - name: Set up Python ${{ matrix.python-version }}
               uses: actions/setup-python@v5.3.0
