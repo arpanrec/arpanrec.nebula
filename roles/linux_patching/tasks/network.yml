@@ -106,17 +106,6 @@
       and
       linux_patching_rv_tmp_set_debian_hostname.failed
 
-- name: Linux Patching | Network | Setup Host Network Information | Install resolvconf
-  ansible.builtin.apt:
-      name: resolvconf
-      state: present
-      update_cache: true
-  register: linux_patching_rv_tmp_install_resolvconf
-  failed_when: >
-      linux_patching_rv_init_system_systemd
-      and
-      linux_patching_rv_tmp_install_resolvconf.failed
-
 - name: Linux Patching | Network | Setup Host Network Information | Set hostname via sysctl
   ansible.posix.sysctl:
       name: "{{ item.name }}"
@@ -135,6 +124,14 @@
       - name: kernel.domainname
         value: "{{ linux_patching_rv_domain_name }}"
 
+- name: Linux Patching | Network | Setup Host Network Information | Install resolvconf
+  ansible.builtin.apt:
+      name: resolvconf
+      state: present
+      update_cache: true
+  register: linux_patching_rv_tmp_install_resolvconf
+  ignore_errors: not linux_patching_rv_init_system_systemd
+
 - name: Linux Patching | Network | Setup Host Network Information | Create /etc/resolvconf/resolv.conf.d
   ansible.builtin.file:
       path: /etc/resolvconf/resolv.conf.d
@@ -143,6 +140,7 @@
       owner: root
       group: root
   register: linux_patching_rv_tmp_resolvconf_dir
+  when: not linux_patching_rv_tmp_install_resolvconf.failed
   failed_when: >
       linux_patching_rv_init_system_systemd
       and
@@ -157,6 +155,7 @@
       owner: root
       group: root
   register: linux_patching_rv_tmp_resolvconf_head
+  when: not linux_patching_rv_tmp_install_resolvconf.failed
   failed_when: >
       linux_patching_rv_init_system_systemd
       and
