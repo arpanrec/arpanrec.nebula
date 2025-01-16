@@ -119,6 +119,12 @@
       and
       linux_patching_rv_tmp_resolvconf_dir.failed
 
+- name: Linux Patching | Network | Setup Host Network Information | Install resolvconf
+  ansible.builtin.apt:
+      name: resolvconf
+      state: present
+      update_cache: true
+
 - name: Linux Patching | Network | Setup Host Network Information | Write /etc/resolvconf/resolv.conf.d/head
   ansible.builtin.lineinfile:
       line: "{{ linux_patching_rv_domain_name }}"
