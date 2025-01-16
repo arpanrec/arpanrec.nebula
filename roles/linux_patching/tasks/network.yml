@@ -124,43 +124,6 @@
       - name: kernel.domainname
         value: "{{ linux_patching_rv_domain_name }}"
 
-- name: Linux Patching | Network | Setup Host Network Information | Install resolvconf
-  ansible.builtin.apt:
-      name: resolvconf
-      state: present
-      update_cache: true
-  register: linux_patching_rv_tmp_install_resolvconf
-  when: linux_patching_rv_init_system_systemd
-
-- name: Linux Patching | Network | Setup Host Network Information | Create /etc/resolvconf/resolv.conf.d
-  ansible.builtin.file:
-      path: /etc/resolvconf/resolv.conf.d
-      state: directory
-      mode: "0755"
-      owner: root
-      group: root
-  register: linux_patching_rv_tmp_resolvconf_dir
-  when: linux_patching_rv_tmp_install_resolvconf.changed and linux_patching_rv_init_system_systemd
-  failed_when: >
-      linux_patching_rv_init_system_systemd
-      and
-      linux_patching_rv_tmp_resolvconf_dir.failed
-
-- name: Linux Patching | Network | Setup Host Network Information | Write /etc/resolvconf/resolv.conf.d/head
-  ansible.builtin.lineinfile:
-      line: "{{ linux_patching_rv_domain_name }}"
-      path: /etc/resolvconf/resolv.conf.d/head
-      create: true
-      mode: "0644"
-      owner: root
-      group: root
-  register: linux_patching_rv_tmp_resolvconf_head
-  when: linux_patching_rv_tmp_install_resolvconf.changed and linux_patching_rv_init_system_systemd
-  failed_when: >
-      linux_patching_rv_init_system_systemd
-      and
-      linux_patching_rv_tmp_resolvconf_head.failed
-
 - name: Linux Patching | Network | Setup Host Network Information | Set Host-Name via /etc/hostname
   ansible.builtin.copy:
       content: "{{ linux_patching_rv_hostname }}\n"

@@ -1,6 +1,5 @@
 ---
 linux_patching_rv_net_time_services:
-    - resolvconf.service
     - NetworkManager.service
     - systemd-timesyncd.service
     - ufw.service
