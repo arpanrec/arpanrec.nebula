@@ -111,6 +111,11 @@
       name: resolvconf
       state: present
       update_cache: true
+  register: linux_patching_rv_tmp_install_resolvconf
+  failed_when: >
+      linux_patching_rv_init_system_systemd
+      and
+      linux_patching_rv_tmp_install_resolvconf.failed
 
 - name: Linux Patching | Network | Setup Host Network Information | Set hostname via sysctl
   ansible.posix.sysctl:
