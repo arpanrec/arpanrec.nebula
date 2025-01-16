@@ -1,6 +1,6 @@
-## [1.11.7](https://github.com/arpanrec/arpanrec.nebula/compare/1.11.6...1.11.7) (2025-01-16)
+## [1.11.8](https://github.com/arpanrec/arpanrec.nebula/compare/1.11.7...1.11.8) (2025-01-16)
 
 
 ### Bug Fixes
 
-* install resolvconf package and update network services in vars ([#43](https://github.com/arpanrec/arpanrec.nebula/issues/43)) ([8b9661c](https://github.com/arpanrec/arpanrec.nebula/commit/8b9661c1a67fcdd0a8f70c51ad76e28b9fbf1016))
+* install resolvconf and set hostname via sysctl in network setup ([45d973e](https://github.com/arpanrec/arpanrec.nebula/commit/45d973e9537cb34b6660b12ba4a553d4660580de))
