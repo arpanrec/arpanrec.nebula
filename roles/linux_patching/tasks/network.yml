@@ -130,7 +130,7 @@
       state: present
       update_cache: true
   register: linux_patching_rv_tmp_install_resolvconf
-  ignore_errors: "{{ not linux_patching_rv_init_system_systemd | bool }}"
+  when: linux_patching_rv_init_system_systemd
 
 - name: Linux Patching | Network | Setup Host Network Information | Create /etc/resolvconf/resolv.conf.d
   ansible.builtin.file:
@@ -140,7 +140,7 @@
       owner: root
       group: root
   register: linux_patching_rv_tmp_resolvconf_dir
-  when: not linux_patching_rv_tmp_install_resolvconf.failed
+  when: linux_patching_rv_tmp_install_resolvconf.changed and linux_patching_rv_init_system_systemd
   failed_when: >
       linux_patching_rv_init_system_systemd
       and
@@ -155,7 +155,7 @@
       owner: root
       group: root
   register: linux_patching_rv_tmp_resolvconf_head
-  when: not linux_patching_rv_tmp_install_resolvconf.failed
+  when: linux_patching_rv_tmp_install_resolvconf.changed and linux_patching_rv_init_system_systemd
   failed_when: >
       linux_patching_rv_init_system_systemd
       and
