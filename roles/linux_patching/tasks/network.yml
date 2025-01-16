@@ -130,7 +130,7 @@
       state: present
       update_cache: true
   register: linux_patching_rv_tmp_install_resolvconf
-  ignore_errors: not linux_patching_rv_init_system_systemd
+  ignore_errors: "{{ not linux_patching_rv_init_system_systemd | bool }}"
 
 - name: Linux Patching | Network | Setup Host Network Information | Create /etc/resolvconf/resolv.conf.d
   ansible.builtin.file:
