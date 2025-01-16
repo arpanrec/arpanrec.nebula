@@ -32,8 +32,8 @@ jobs:
                   node-version: lts/*
                   cache-dependency-path: .github/files/package-lock.json
 
-            - name: Install poetry 1.8.5
-              run: pipx install poetry==1.8.5
+            - name: Install poetry 2.0.1
+              run: pipx install poetry==2.0.1
 
             - name: Set up Python "3.12"
               uses: actions/setup-python@v5.3.0
@@ -43,7 +43,9 @@ jobs:
                   cache-dependency-path: poetry.lock
 
             - name: Install python dependencies
-              run: poetry install
+              run: |+
+                  poetry install
+                  pipx inject poetry poetry-plugin-export
 
             - name: Install node dependencies
               run: |+

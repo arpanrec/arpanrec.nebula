@@ -2,15 +2,6 @@
 name: Molecule Test Role Postman
 
 "on":
-    push:
-        paths:
-            - "!roles/postman/README.md"
-            - ".github/workflows/molecule_test_role_postman.yml"
-            - "meta/**"
-            - "molecule/role.postman.docker/**"
-            - "poetry.lock"
-            - "requirements.yml"
-            - "roles/postman/**"
     workflow_dispatch:
     pull_request:
         paths:
@@ -39,8 +30,8 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v4.2.2
 
-            - name: Install poetry 1.8.5
-              run: pipx install poetry==1.8.5
+            - name: Install poetry 2.0.1
+              run: pipx install poetry==2.0.1
 
             - name: Set up Python ${{ matrix.python-version }}
               uses: actions/setup-python@v5.3.0
@@ -50,7 +41,7 @@ jobs:
                   cache-dependency-path: poetry.lock
 
             - name: Cache ansible
-              uses: actions/cache@v4.1.2
+              uses: actions/cache@v4.2.0
               with:
                   path: |
                       ~/.ansible

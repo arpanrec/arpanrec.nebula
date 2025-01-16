@@ -34,21 +34,21 @@ cachier = "3.1.2"
 
 [tool.poetry.group.dev.dependencies]
 ansible-lint = { version = "24.12.2", markers = "platform_system != 'Windows'" }
-bandit = "1.8.0"
+bandit = "1.8.2"
 black = "24.10.0"
 docker = "7.1.0" # Needed for molecule docker driver
 isort = "5.13.2"
 molecule = "24.12.0"
 molecule-plugins = "23.6.0"
-mypy = "1.14.0"
+mypy = "1.14.1"
 neovim = "0.3.1"
 packaging = "24.2"
-poetry-plugin-export = "1.8.0"
+poetry-plugin-export = "1.9.0"
 pylint = "3.3.3"
-pyright = "1.1.391"
-types-pyyaml = "6.0.12.20241221"
+pyright = "1.1.392"
+types-pyyaml = "6.0.12.20241230"
 types-requests = "2.32.0.20241016"
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=2.0.1"]
 build-backend = "poetry.core.masonry.api"
