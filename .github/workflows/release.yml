@@ -32,7 +32,7 @@ jobs:
                   node-version: lts/*
                   cache-dependency-path: .github/files/package-lock.json
 
-            - name: Install poetry 2.0.1
+            - name: Install poetry 2.1.1
               run: pipx install poetry==2.0.1
 
             - name: Set up Python "3.12"
