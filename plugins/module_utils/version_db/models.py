@@ -24,7 +24,7 @@ Classes Details:
 
     AppDetails:
         Abstract base class to define the structure for application details.
-        
+
         Attributes:
             _variables (Optional[Dict[str, Any]]): Variables related to the application.
             _download_link (str): Download link for the application.
