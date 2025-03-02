@@ -14,9 +14,6 @@ ssh_hardening_rv_fail2ban_base_configuration:
     - option: logtarget
       value: "{{ ssh_hardening_rv_fail2ban_logtarget }}"
       section: Definition
-    - option: ignoreip
-      value: "{{ ssh_hardening_rv_fail2ban_ignoreips | join(' ') }}"
-      section: DEFAULT
 
 ssh_hardening_rv_fail2ban_base_jail_configuration:
     - option: ignoreself
@@ -36,4 +33,7 @@ ssh_hardening_rv_fail2ban_base_jail_configuration:
       section: DEFAULT
     - option: sender
       value: "{{ ssh_hardening_rv_fail2ban_sender }}"
+      section: DEFAULT
+    - option: ignoreip
+      value: "{{ ssh_hardening_rv_fail2ban_ignoreips | join(' ') }}"
       section: DEFAULT
