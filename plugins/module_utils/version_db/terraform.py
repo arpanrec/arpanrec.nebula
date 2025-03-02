@@ -7,7 +7,7 @@ Classes:
 Methods:
     fetch_details(self) -> None:
         Fetches the version details for Terraform. If a specific version is not provided, it fetches the latest version
-        details from the Terraform releases URL. Constructs the download link for the Terraform binary based on the 
+        details from the Terraform releases URL. Constructs the download link for the Terraform binary based on the
         fetched or provided version and the system architecture.
 
 Attributes:
