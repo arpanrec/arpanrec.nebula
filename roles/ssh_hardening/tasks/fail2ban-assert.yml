@@ -15,6 +15,14 @@
           - ssh_hardening_rv_fail2ban_logtarget is not none
       quiet: true
 
+- name: SSHD Hardening | fail2ban | assert | Test ssh_hardening_rv_fail2ban_banaction
+  ansible.builtin.assert:
+      that:
+          - ssh_hardening_rv_fail2ban_banaction is defined
+          - ssh_hardening_rv_fail2ban_banaction is string
+          - ssh_hardening_rv_fail2ban_banaction is not none
+      quiet: true
+
 - name: SSHD Hardening | fail2ban | assert | Test ssh_hardening_rv_fail2ban_ignoreself
   ansible.builtin.assert:
       that:

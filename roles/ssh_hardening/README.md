@@ -95,6 +95,13 @@ This role applies basic security settings for personal VPS
 - Required: `false`
 - Description: Ignore IPs in fail2ban
 
+`ssh_hardening_rv_fail2ban_banaction`
+
+- Type: `string`
+- Default: `ufw`
+- Required: `false`
+- Description: Ban action in fail2ban, like iptables-multiport, iptables-allports, ufw, shorewall, etc.
+
 `ssh_hardening_rv_fail2ban_bantime`
 
 - Type: `int`

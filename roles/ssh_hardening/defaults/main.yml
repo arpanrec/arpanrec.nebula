@@ -47,6 +47,8 @@ ssh_hardening_rv_fail2ban_ignoreself: "true"
 ssh_hardening_rv_fail2ban_ignoreips:
     - "127.0.0.1/8 ::1"
 
+ssh_hardening_rv_fail2ban_banaction: ufw
+
 # In seconds
 ssh_hardening_rv_fail2ban_bantime: -1
 ssh_hardening_rv_fail2ban_findtime: 86400

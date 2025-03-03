@@ -37,3 +37,6 @@ ssh_hardening_rv_fail2ban_base_jail_configuration:
     - option: ignoreip
       value: "{{ ssh_hardening_rv_fail2ban_ignoreips | join(' ') }}"
       section: DEFAULT
+    - option: banaction
+      value: "{{ ssh_hardening_rv_fail2ban_banaction }}"
+      section: DEFAULT
