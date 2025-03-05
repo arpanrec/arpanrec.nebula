@@ -105,14 +105,16 @@ This role applies basic security settings for personal VPS
 `ssh_hardening_rv_fail2ban_bantime`
 
 - Type: `int`
-- Default: `-1`
+- Default: `86400`
 - Required: `false`
-- Description: Ban time in fail2ban
+- Description:
+  - Ban time in fail2ban,
+  - For permanent ban, set it to -1
 
 `ssh_hardening_rv_fail2ban_findtime`
 
 - Type: `int`
-- Default: `86400`
+- Default: `600`
 - Required: `false`
 - Description: Find time in fail2ban
 
