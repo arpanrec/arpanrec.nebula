@@ -3,5 +3,3 @@ linux_patching_rv_net_time_services:
     - NetworkManager.service
     - systemd-timesyncd.service
     - ufw.service
-    - cron.service
-    - rsyslog.service # Mainly for cron jobs

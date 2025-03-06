@@ -20,7 +20,6 @@ Set timezone, locale, and loopback ip in server
     - network-manager
     - gnupg2
     - gnupg
-    - cron
     - acl
     - ufw
     - procps
@@ -29,7 +28,6 @@ Set timezone, locale, and loopback ip in server
     - software-properties-common
     - python3
     - openssl
-    - rsyslog # Mainly for cron jobs
 
 - Type: `list[str]`
 

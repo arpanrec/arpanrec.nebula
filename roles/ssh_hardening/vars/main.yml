@@ -3,7 +3,6 @@
 
 ssh_hardening_rv_fail2ban_packages:
     - fail2ban
-    - sendmail
 
 ssh_hardening_rv_fail2ban_service: fail2ban
 
