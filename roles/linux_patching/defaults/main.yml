@@ -61,6 +61,7 @@ linux_patching_rv_packages:
     - software-properties-common
     - python3
     - openssl
+    - rsyslog # Mainly for cron jobs
 
 linux_patching_rv_extra_packages: []
 

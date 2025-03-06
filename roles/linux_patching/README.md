@@ -29,6 +29,7 @@ Set timezone, locale, and loopback ip in server
     - software-properties-common
     - python3
     - openssl
+    - rsyslog # Mainly for cron jobs
 
 - Type: `list[str]`
 
