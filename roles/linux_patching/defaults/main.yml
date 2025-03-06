@@ -32,36 +32,35 @@ linux_patching_rv_devel_packages:
     - fd-find
     - ripgrep
     - rclone
-
-linux_patching_rv_packages:
     - zip
     - unzip
     - tar
     - wget
     - curl
+    - pigz
+    - xz-utils
+    - gzip
+    - bzip2
+
+linux_patching_rv_packages:
     - ca-certificates
     - sudo
     - systemd
-    - gnupg2
     - apt-transport-https
     - locales
     - systemd-timesyncd
     - network-manager
+    - gnupg2
     - gnupg
-    - pigz
     - cron
     - acl
     - ufw
-    - bzip2
     - procps
-    - xz-utils
-    - python3
-    - gzip
-    - openssl
-    # Apt tools
     - apt-utils
     - lsb-release
     - software-properties-common
+    - python3
+    - openssl
 
 linux_patching_rv_extra_packages: []
 

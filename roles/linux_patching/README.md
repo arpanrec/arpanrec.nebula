@@ -11,33 +11,23 @@ Set timezone, locale, and loopback ip in server
   - Description: Install the packages in the distributions.
   - Required: `false`
   - Default:
-    - zip
-    - unzip
-    - tar
-    - wget
-    - curl
     - ca-certificates
     - sudo
     - systemd
-    - gnupg2
     - apt-transport-https
     - locales
     - systemd-timesyncd
     - network-manager
     - gnupg2
     - gnupg
-    - pigz
     - cron
     - acl
     - ufw
-    - bzip2
     - procps
-    - xz-utils
     - apt-utils
     - lsb-release
     - software-properties-common
     - python3
-    - gzip
     - openssl
 
 - Type: `list[str]`
@@ -76,6 +66,15 @@ Set timezone, locale, and loopback ip in server
     - fd-find
     - ripgrep
     - rclone
+    - zip
+    - unzip
+    - tar
+    - wget
+    - curl
+    - pigz
+    - xz-utils
+    - gzip
+    - bzip2
 
 - `linux_patching_rv_install_devel_packages`
   - Description: Install the development packages in the distributions.
