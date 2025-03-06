@@ -1,6 +1,6 @@
-## [1.11.17](https://github.com/arpanrec/arpanrec.nebula/compare/1.11.16...1.11.17) (2025-03-05)
+## [1.11.18](https://github.com/arpanrec/arpanrec.nebula/compare/1.11.17...1.11.18) (2025-03-06)
 
 
 ### Bug Fixes
 
-* update fail2ban bantime and findtime defaults in ssh hardening role ([1137a40](https://github.com/arpanrec/arpanrec.nebula/commit/1137a40701a1b67f847ada4409c959d3bec5df6b))
+* update linux patching role package list to include additional utilities ([a490a99](https://github.com/arpanrec/arpanrec.nebula/commit/a490a99b8541e112d62769ad4a335e4eabf58987))
