@@ -1,6 +1,6 @@
-## [1.11.19](https://github.com/arpanrec/arpanrec.nebula/compare/1.11.18...1.11.19) (2025-03-06)
+## [1.11.20](https://github.com/arpanrec/arpanrec.nebula/compare/1.11.19...1.11.20) (2025-03-06)
 
 
 ### Bug Fixes
 
-* add rsyslog to package list for cron job support in linux patching role ([0d02c8a](https://github.com/arpanrec/arpanrec.nebula/commit/0d02c8a4229794e9b9d61492330d921073a7ba4a))
+* remove cron and rsyslog from linux patching role package lists ([dff45f1](https://github.com/arpanrec/arpanrec.nebula/commit/dff45f103660686db43486aa47355a8f7e4723a5))
