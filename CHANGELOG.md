@@ -1,6 +1,6 @@
-## [1.11.21](https://github.com/arpanrec/arpanrec.nebula/compare/1.11.20...1.11.21) (2025-03-07)
+## [1.11.22](https://github.com/arpanrec/arpanrec.nebula/compare/1.11.21...1.11.22) (2025-03-07)
 
 
 ### Bug Fixes
 
-* update fail2ban service handling to support multiple services with sendmail and rsyslog ([dd49b69](https://github.com/arpanrec/arpanrec.nebula/commit/dd49b69297dd2428129f4839e587da89353254b7))
+* clarify optional fail2ban dependencies in ssh hardening role ([3d9088a](https://github.com/arpanrec/arpanrec.nebula/commit/3d9088ae5da7fa72a224a44764948452d1fc3933))
