@@ -3,8 +3,13 @@
 
 ssh_hardening_rv_fail2ban_packages:
     - fail2ban
+    - sendmail
+    - rsyslog
 
-ssh_hardening_rv_fail2ban_service: fail2ban
+ssh_hardening_rv_fail2ban_services:
+    - fail2ban
+    - sendmail
+    - rsyslog
 
 ssh_hardening_rv_fail2ban_base_configuration:
     - option: loglevel
