@@ -3,8 +3,8 @@
 
 ssh_hardening_rv_fail2ban_packages:
     - fail2ban
-    - sendmail
-    - rsyslog
+    - sendmail # Optional
+    - rsyslog # Without rsyslog, fail2ban will not work because there is no log file to monitor
 
 ssh_hardening_rv_fail2ban_services:
     - fail2ban
