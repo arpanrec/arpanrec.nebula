@@ -1,6 +1,8 @@
 ---
 - name: Patch Cloud System
   hosts: cloudinit
+  become: true
+  become_user: root
   tasks:
       - name: Patch Cloud System | Checking essential variables | pv_cloud_init_user
         ansible.builtin.fail:
@@ -42,17 +44,9 @@
         when: pv_cloud_init_install_docker is not defined or pv_cloud_init_install_docker == ""
             or pv_cloud_init_install_docker == None
 
-      - name: Patch Cloud System | Linux Patching
-        ansible.builtin.include_role:
-            name: arpanrec.nebula.linux_patching
-        vars:
-            linux_patching_rv_install_devel_packages: "{{ pv_cloud_init_is_dev_machine | bool }}"
-            linux_patching_rv_hostname: "{{ pv_cloud_init_hostname }}"
-            linux_patching_rv_domain_name: "{{ pv_cloud_init_domain }}"
-
-      - name: Patch Cloud System | Make sure zsh is installed
+      - name: Patch Cloud System | Make sure bash is installed
         ansible.builtin.apt:
-            name: zsh
+            name: bash
             state: present
             update_cache: true
             install_recommends: true
@@ -65,9 +59,17 @@
             user_add_rv_username: "{{ pv_cloud_init_user }}"
             user_add_rv_ssh_access_public_key_content_list: "{{ lookup('ansible.builtin.file',
                 pv_cloud_init_authorized_keys).splitlines() }}"
-            user_add_rv_user_default_shell: "/bin/zsh"
+            user_add_rv_user_default_shell: "/bin/bash"
             user_add_rv_user_nopasswd_commands: ["ALL"]
             user_add_rv_user_extra_groups: ["wheel"]
+
+      - name: Patch Cloud System | Linux Patching
+        ansible.builtin.include_role:
+            name: arpanrec.nebula.linux_patching
+        vars:
+            linux_patching_rv_install_devel_packages: "{{ pv_cloud_init_is_dev_machine | bool }}"
+            linux_patching_rv_hostname: "{{ pv_cloud_init_hostname }}"
+            linux_patching_rv_domain_name: "{{ pv_cloud_init_domain }}"
 
       - name: Patch Cloud System | SSH Hardening
         ansible.builtin.include_role:
