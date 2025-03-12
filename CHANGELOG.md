@@ -1,6 +1,6 @@
-## [1.11.24](https://github.com/arpanrec/arpanrec.nebula/compare/1.11.23...1.11.24) (2025-03-12)
+## [1.11.25](https://github.com/arpanrec/arpanrec.nebula/compare/1.11.24...1.11.25) (2025-03-12)
 
 
 ### Bug Fixes
 
-* update user creation tasks to always update password and remove no_log ([769ff57](https://github.com/arpanrec/arpanrec.nebula/commit/769ff578f9e9976d4c301d87566183212db76744))
+* enhance user creation tasks to validate password length and conditionally update password ([c9d6322](https://github.com/arpanrec/arpanrec.nebula/commit/c9d6322bb14855120013a557e11d64d9e9ab4ea6))
