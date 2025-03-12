@@ -1,6 +1,6 @@
-## [1.11.23](https://github.com/arpanrec/arpanrec.nebula/compare/1.11.22...1.11.23) (2025-03-07)
+## [1.11.24](https://github.com/arpanrec/arpanrec.nebula/compare/1.11.23...1.11.24) (2025-03-12)
 
 
 ### Bug Fixes
 
-* update playbook to use 'cloudinit' group and change default shell to bash ([2cfe73e](https://github.com/arpanrec/arpanrec.nebula/commit/2cfe73eac2b183255550d51b8cd3e4b5601bd128))
+* update user creation tasks to always update password and remove no_log ([769ff57](https://github.com/arpanrec/arpanrec.nebula/commit/769ff578f9e9976d4c301d87566183212db76744))
