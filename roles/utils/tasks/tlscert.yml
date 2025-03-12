@@ -88,10 +88,8 @@
             body_format: json
             validate_certs: false
         register: rv_tls_vault_uri_result
-        no_log: true
 
       - name: Install Vault | Set private key
-        no_log: true
         ansible.builtin.copy:
             content: "{{ rv_tls_vault_uri_result.json.data.private_key }}"
             dest: "{{ rv_tls_key_path }}"
