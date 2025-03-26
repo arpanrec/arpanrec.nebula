@@ -39,6 +39,7 @@
   ansible.builtin.group:
       name: "{{ item }}"
       state: present
+      system: true
   with_items:
       - wheel
       - sudo
