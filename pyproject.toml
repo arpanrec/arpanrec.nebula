@@ -27,13 +27,13 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-ansible = "11.3.0"
+ansible = "11.4.0"
 hvac = "2.3.0"
 passlib = "1.7.4"
 cachier = "3.1.2"
 
 [tool.poetry.group.dev.dependencies]
-yamllint = "1.36.0"
+yamllint = "1.37.0"
 ansible-lint = { version = "25.1.3", markers = "platform_system != 'Windows'" }
 bandit = "1.8.3"
 black = "25.1.0"
@@ -44,9 +44,9 @@ molecule-plugins = "23.7.0"
 mypy = "1.15.0"
 neovim = "0.3.1"
 packaging = "24.2"
-pylint = "3.3.5"
-pyright = "1.1.396"
-types-pyyaml = "6.0.12.20241230"
+pylint = "3.3.6"
+pyright = "1.1.398"
+types-pyyaml = "6.0.12.20250326"
 types-requests = "2.32.0.20250306"
 
 [build-system]

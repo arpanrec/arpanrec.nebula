@@ -51,6 +51,12 @@
             update_cache: true
             install_recommends: true
 
+      - name: Patch Cloud System | Add wheel group
+        ansible.builtin.group:
+            name: wheel
+            state: present
+            system: true
+
       - name: Patch Cloud System | Add application user
         ansible.builtin.include_role:
             name: arpanrec.nebula.user_add
