@@ -1,6 +1,6 @@
-## [1.11.27](https://github.com/arpanrec/arpanrec.nebula/compare/1.11.26...1.11.27) (2025-03-26)
+## [1.11.28](https://github.com/arpanrec/arpanrec.nebula/compare/1.11.27...1.11.28) (2025-04-09)
 
 
 ### Bug Fixes
 
-* add system flag to wheel and sudo groups in user.yml ([5662d2c](https://github.com/arpanrec/arpanrec.nebula/commit/5662d2c252db998aa3b1e89e1a3452bc4dcafa5e))
+* remove unused Maven and GitLab extensions from VS Code configuration ([2db1d1b](https://github.com/arpanrec/arpanrec.nebula/commit/2db1d1b76114281e2eafe0e9379d37cf3d28a173))
