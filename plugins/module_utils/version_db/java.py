@@ -9,7 +9,6 @@ Attributes:
     __jdk_architecture_map (Dict[str, str]): A mapping of JDK architectures.
     __graalvm_architecture_map (Dict[str, str]): A mapping of GraalVM architectures.
     __java_download_map (Dict[str, Any]): A mapping of Java-related software versions and their details.
-    __maven_github_repo (str): The GitHub repository for Maven.
 
 Methods:
     fetch_details(self) -> None:
@@ -70,22 +69,23 @@ class Java(AppDetails):
             "maven-3.8.4": {},
         },
         "gradle": {
+            "v8.13.0": {},
             "v8.10.2": {},
             "v7.6.4": {},
         },
         "groovy": {
+            "4.0.26": {},
             "4.0.22": {},
             "3.0.22": {},
         },
         "kotlinc": {
+            "v2.1.20": {},
             "v2.0.21": {},
             "v2.0.20": {},
             "v1.9.25": {},
             "v1.8.0": {},
         },
     }
-
-    __maven_github_repo = "apache/maven"
 
     def fetch_details(self) -> None:
         """

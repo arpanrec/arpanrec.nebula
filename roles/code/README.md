@@ -48,8 +48,6 @@ Install vscode, and extensions Also creates a soft link to the `code` executable
       - bradlc.vscode-tailwindcss
       - davidanson.vscode-markdownlint
       - dbaeumer.vscode-eslint
-      - dhruv.maven-dependency-explorer
-      - dsznajder.es7-react-js-snippets
       - esbenp.prettier-vscode
       - exiasr.hadolint
       - foxundermoon.shell-format
@@ -61,10 +59,8 @@ Install vscode, and extensions Also creates a soft link to the `code` executable
       - github.vscode-codeql
       - github.vscode-github-actions
       - github.vscode-pull-request-github
-      - gitlab.gitlab-workflow
       - golang.go
       - hashicorp.terraform
-      - johnpapa.angular2
       - ms-azuretools.vscode-docker
       - ms-python.black-formatter
       - ms-python.debugpy
@@ -83,7 +79,6 @@ Install vscode, and extensions Also creates a soft link to the `code` executable
       - ms-vscode-remote.remote-ssh-edit
       - ms-vscode-remote.remote-wsl
       - ms-vscode-remote.vscode-remote-extensionpack
-      - ms-vscode.azure-repos
       - ms-vscode.remote-explorer
       - ms-vscode.remote-repositories
       - ms-vscode.remote-server
@@ -96,7 +91,6 @@ Install vscode, and extensions Also creates a soft link to the `code` executable
       - redhat.vscode-yaml
       - rust-lang.rust-analyzer
       - streetsidesoftware.code-spell-checker
-      - sumneko.lua
       - timonwong.shellcheck
       - visualstudioexptteam.intellicode-api-usage-examples
       - visualstudioexptteam.vscodeintellicode
