@@ -41,6 +41,7 @@ description:
             "ca_cert_pem": "Content of the CA PEM certificate file"
         }
         ```
+    - Cryptpass docs: https://github.com/cryptpass/cryptpass
 options:
     key:
         description: Key of the secret. Must not start or end with / and cannot be empty.
@@ -96,7 +97,8 @@ secret:
 # pylint: disable=inconsistent-return-statements
 def run_module() -> None:
     """
-    Ansible main module
+    Ansible module to manage secrets using the cryptpass service.
+    Cryptpass docs: https://github.com/cryptpass/cryptpass
     """
     module_args = {
         "key": {"type": "str", "required": True},

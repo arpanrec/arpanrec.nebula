@@ -25,6 +25,7 @@ version_added: "0.1.0"
 short_description: Read secrets from the cryptpass secrets service.
 description:
     - This lookup plugin retrieves secrets from the cryptpass secrets service.
+    - Cryptpass docs: https://github.com/cryptpass/cryptpass
 options:
     _terms:
         description: The secret key to retrieve.
@@ -63,6 +64,7 @@ EXAMPLES = r"""
 class LookupModule(LookupBase):
     """
     LookupModule is a custom Ansible lookup plugin for retrieving secrets from Vault.
+    Cryptpass docs: https://github.com/cryptpass/cryptpass
     Methods:
         run(
             terms: List[str], variables: Optional[Dict[str, Any]] = None, **kwargs: Optional[Dict[str, Any]]

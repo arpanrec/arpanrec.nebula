@@ -102,6 +102,7 @@ def cryptpass_client(  # pylint: disable=too-many-branches,too-many-locals,too-m
         "ca_cert_pem": "Content of the CA PEM certificate file"
     }
     ```
+    Cryptpass docs: https://github.com/cryptpass/cryptpass
 
     Args:
         key: Key of the secret. Must not start or end with / and cannot be empty.
