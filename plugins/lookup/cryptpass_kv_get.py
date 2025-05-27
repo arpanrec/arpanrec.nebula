@@ -13,14 +13,14 @@ from ansible.plugins.lookup import LookupBase  # type: ignore
 from ansible.utils.display import Display  # type: ignore
 
 # pylint: disable=import-error,E0611
-from ansible_collections.arpanrec.nebula.plugins.module_utils.cryptpass import cryptpass_client  # type: ignore
+from ansible_collections.arpanrec.nebula.plugins.module_utils.cryptpass_utils import cryptpass_client  # type: ignore
 
 __metaclass__ = type  # pylint: disable=invalid-name
 display = Display()
 
 # pylint: disable=duplicate-code
 DOCUMENTATION = r"""
-name: arpanrec.nebula.cryptpass
+name: arpanrec.nebula.cryptpass_kv_get
 version_added: "0.1.0"
 short_description: Read secrets from the cryptpass secrets service.
 description:
@@ -51,7 +51,7 @@ author:
 EXAMPLES = r"""
 - name: Retrieve a secret from Vault
   ansible.builtin.debug:
-      msg: "{{ lookup('arpanrec.nebula.cryptpass', 'project/key') }}"
+      msg: "{{ lookup('arpanrec.nebula.cryptpass_kv_get', 'project/key') }}"
 """
 
 

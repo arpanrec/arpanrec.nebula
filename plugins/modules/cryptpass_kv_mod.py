@@ -11,7 +11,7 @@ from __future__ import absolute_import, division, print_function
 from ansible.module_utils.basic import AnsibleModule  # type: ignore
 
 # pylint: disable=import-error,E0611
-from ansible_collections.arpanrec.nebula.plugins.module_utils.cryptpass import cryptpass_client  # type: ignore
+from ansible_collections.arpanrec.nebula.plugins.module_utils.cryptpass_utils import cryptpass_client  # type: ignore
 
 # pylint: disable=C0103
 __metaclass__ = type
@@ -19,7 +19,7 @@ __metaclass__ = type
 # pylint: disable=duplicate-code
 DOCUMENTATION = r"""
 ---
-module: arpanrec.nebula.cryptpass
+module: arpanrec.nebula.cryptpass_kv_mod
 
 short_description: "Ansible module for managing secrets"
 
@@ -66,7 +66,7 @@ author:
 
 EXAMPLES = r"""
 - name: Create or Update a repository secret
-  arpanrec.nebula.cryptpass:
+  arpanrec.nebula.cryptpass_kv_mod:
       key: "project/key"
       action: "write"
       value: "my_secret_value"
