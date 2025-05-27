@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 This module provides the `BitwardenDesktop` class,
 which is used to fetch version details for the Bitwarden Desktop application.

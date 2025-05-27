@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 This module provides the BWS class for fetching version details of the BWS app from GitHub.
 
