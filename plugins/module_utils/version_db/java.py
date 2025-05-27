@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 """
 This module provides the `Java` class, which handles Java version details and fetches

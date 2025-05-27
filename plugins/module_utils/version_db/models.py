@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 """
 This module defines the models for version database management in the Nebula plugin.
