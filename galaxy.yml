@@ -41,6 +41,7 @@ build_ignore:
     - "requirements.txt"
     - "requirements.yml"
     - "venv"
+    - ".ansible"
 tags:
     - "linux"
     - "debian"
