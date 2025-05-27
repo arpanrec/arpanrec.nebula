@@ -42,6 +42,7 @@ build_ignore:
     - "requirements.yml"
     - "venv"
     - ".ansible"
+    - "roles/geerlingguy.docker"
 tags:
     - "linux"
     - "debian"
