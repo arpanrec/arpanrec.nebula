@@ -27,21 +27,11 @@ version_added: "1.12.0"
 
 description:
     - Executes the specified action (read, write, list, delete) on the secret identified by the key.
-    - Environment variable CRYPTPASS_CLIENT_CONFIG can be used to set the configuration file path \
-      or JSON string.
-    - If not set, it defaults to ~/.cryptpass_client.json.
-    - |+
-        The config file or JSON string must contain the following
-        ```json
-        {
-            "endpoint": "https://127.0.0.1:8080",
-            "headers": {
-                "X-CRYPTPASS-KEY": "auth_token"
-            },
-            "ca_cert_pem": "Content of the CA PEM certificate file"
-        }
-        ```
-    - Cryptpass docs: https://github.com/cryptpass/cryptpass
+    - "Environment variable CRYPTPASS_CLIENT_CONFIG can be used to set the configuration file path
+      or JSON string."
+    - If not set, it defaults to ~/.cryptpass_client_config.json.
+    - The config file or JSON string must contain the following `{"endpoint":"https://127.0.0.1:8080","headers":{"X-CRYPTPASS-KEY":"auth_token"},"ca_cert_pem":"Content of the CA PEM certificate file"}`
+    - Cryptpass docs `https://github.com/cryptpass/cryptpass`
 options:
     key:
         description: Key of the secret. Must not start or end with / and cannot be empty.
@@ -65,9 +55,9 @@ options:
         type: dict
     config:
         description:
-            - Dict with `endpoint`, `auth_token`, `auth_header` and `cert_pem`.
+            - Configuration for the client. Can be a JSON or a path to a JSON file.
             - Environment variable CRYPTPASS_CLIENT_CONFIG can be used to set the config file path or content.
-            - Default config file is ~/.cryptpass_client.json
+            - Default config file is ~/.cryptpass_client_config.json
         required: false
         type: dict
 author:

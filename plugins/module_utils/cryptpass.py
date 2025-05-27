@@ -91,7 +91,7 @@ def cryptpass_client(  # pylint: disable=too-many-branches,too-many-locals,too-m
 
     Environment variable CRYPTPASS_CLIENT_CONFIG can be used to set the configuration file path
      or JSON string.
-    If not set, it defaults to ~/.cryptpass_client.json.
+    If not set, it defaults to ~/.cryptpass_client_config.json.
     The config file or JSON string must contain the following
     ```json
     {
@@ -108,13 +108,13 @@ def cryptpass_client(  # pylint: disable=too-many-branches,too-many-locals,too-m
         key: Key of the secret. Must not start or end with / and cannot be empty.
         action: Action to be performed (read, write, list, delete).
         value: Value of the secret.
-        config: Configuration for the client. Can be a dictionary or a path to a JSON file.
+        config: Configuration for the client. Can be a JSON or a path to a JSON file.
 
     Returns:
         secret: The json response from the server, which contains the secret data or confirmation of action.
 
     """
-    default_config_file = os.path.join(Path.home(), ".cryptpass_client.json")
+    default_config_file = os.path.join(Path.home(), ".cryptpass_client_config.json")
 
     if key.startswith("/"):
         raise ValueError("Key cannot start with /")
