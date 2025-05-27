@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Ansible Module for Search for the latest release in a GitHub repository.

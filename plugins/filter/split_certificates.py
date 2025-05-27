@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 This module provides functionality for splitting a string of concatenated certificates
 into a list of individual certificates.
