@@ -4,15 +4,68 @@
 Python client for CryptPass.
 """
 
+import dataclasses
 import json
 import os
 import tempfile
-from pathlib import Path
-from typing import Any, Dict, Optional, Union
+from typing import Any, Dict, List, Optional, Union
 from urllib.parse import urlparse
 
 import requests
 from requests.adapters import HTTPAdapter, Retry
+
+
+@dataclasses.dataclass
+class CryptPassClientAuth:
+    """
+    Class to handle authentication for CryptPass client.
+    """
+
+    type: str
+    username: Optional[str] = None
+    password: Optional[str] = None
+
+    def __init__(self, my_dict: Dict[str, Any]) -> None:
+
+        for key in my_dict:
+            setattr(self, key, my_dict[key])
+
+
+@dataclasses.dataclass
+class CryptPassClient:
+    """
+    Class to handle CryptPass client configuration.
+    """
+
+    endpoint: str
+    headers: Dict[str, str]
+    auth: CryptPassClientAuth
+    ca_cert_pem: Optional[str] = None
+
+    def __init__(self, my_dict: Dict[str, Any]) -> None:
+
+        for key in my_dict:
+            if key == "auth":
+                setattr(self, key, CryptPassClientAuth(my_dict[key]))
+            else:
+                setattr(self, key, my_dict[key])
+
+
+@dataclasses.dataclass
+class CryptPass:
+    """
+    Class to handle CryptPass configuration.
+    """
+
+    client: CryptPassClient
+
+    def __init__(self, my_dict: Dict[str, Any]) -> None:
+
+        for key in my_dict:
+            if key == "client":
+                setattr(self, key, CryptPassClient(my_dict[key]))
+            else:
+                setattr(self, key, my_dict[key])
 
 
 def __file_or_string(file_or_string: str) -> str:
@@ -30,7 +83,7 @@ def __cryptpass_request(  # pylint: disable=too-many-arguments,too-many-position
     action: str,
     key: str,
     ssl_verify: Union[bool, str],
-    value: Optional[Union[Dict[str, Any], str]] = None,
+    value: Optional[Union[Dict[str, Any], List[Any]]] = None,
 ) -> Dict[str, Any]:
 
     match action.lower():
@@ -43,12 +96,16 @@ def __cryptpass_request(  # pylint: disable=too-many-arguments,too-many-position
                     f"Error reading secret, status code: {res.status_code}, expected status: 200,"
                     f"response message: {res.text}"
                 )
-            return {"changed": False, "secret": res.json()}
+            return {"changed": False, "secret": res.json()["data"]}
         case "write":
             if value is None or len(value) == 0:
                 raise ValueError("Value cannot be empty")
             res = session.put(
-                url=f"{api_v1_endpoint}/keyvalue/data/{key}", headers=headers, json=value, timeout=5, verify=ssl_verify
+                url=f"{api_v1_endpoint}/keyvalue/data/{key}",
+                headers=headers,
+                json={"data": value},
+                timeout=5,
+                verify=ssl_verify,
             )
             if res.status_code != 201:
                 raise ValueError(
@@ -65,7 +122,7 @@ def __cryptpass_request(  # pylint: disable=too-many-arguments,too-many-position
                     f"Error listing secrets, status code: {res.status_code}, expected status: 200,"
                     f"response message: {res.text}"
                 )
-            return {"changed": False, "secret": res.json()}
+            return {"changed": False, "secret": res.json()["data"]}
         case "delete":
             res = session.delete(
                 url=f"{api_v1_endpoint}/keyvalue/data/{key}", headers=headers, timeout=5, verify=ssl_verify
@@ -80,26 +137,65 @@ def __cryptpass_request(  # pylint: disable=too-many-arguments,too-many-position
             raise ValueError("Invalid action, must be one of read, write, list, delete")
 
 
-def cryptpass_client(  # pylint: disable=too-many-branches,too-many-locals,too-many-statements
+def __cryptpass_login_request(
+    auth_endpoint: str,
+    headers: Dict[str, str],
+    session: requests.Session,
+    ssl_verify: Union[bool, str],
+    auth_details: CryptPassClientAuth,
+) -> Dict[str, Any]:
+
+    if auth_details.type != "userpass":
+        raise ValueError("Invalid auth type, must be 'userpass'")
+
+    if not auth_details.username or not auth_details.password:
+        raise ValueError("Username and password are required for userpass auth")
+
+    res = session.post(
+        url=auth_endpoint,
+        headers=headers,
+        json={
+            "username": auth_details.username,
+            "password": auth_details.password,
+        },
+        timeout=5,
+        verify=ssl_verify,
+    )
+    if res.status_code != 200:
+        raise ValueError(
+            f"Error logging in, status code: {res.status_code}, expected status: 200," f"response message: {res.text}"
+        )
+    return res.json()
+
+
+def cryptpass_client(
     key: str,
     action: str = "read",
-    value: Optional[Union[Dict[str, Any], str]] = None,
+    value: Optional[Union[Dict[str, Any], List[Any]]] = None,
     config: Optional[Union[Dict[str, str], str]] = None,
 ) -> Dict[str, Any]:
     """
     Executes the specified action (read, write, list, delete) on the secret identified by the key.
 
-    Environment variable CRYPTPASS_CLIENT_CONFIG can be used to set the configuration file path
+    Environment variable CRYPTPASS_CONFIG can be used to set the configuration file path
      or JSON string.
-    If not set, it defaults to ~/.cryptpass_client_config.json.
+    If not set, it defaults to /etc/cryptpass/config.json.
     The config file or JSON string must contain the following
     ```json
     {
-        "endpoint": "https://127.0.0.1:8080",
-        "headers": {
-            "X-CRYPTPASS-KEY": "auth_token"
-        },
-        "ca_cert_pem": "Content of the CA PEM certificate file"
+        "client": {
+            "endpoint": "https://127.0.0.1:8080",
+            "headers": {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            "auth": {
+                "type": "userpass",
+                "username": "admin",
+                "password": "password"
+            },
+            "ca_cert_pem": "Content of the CA PEM certificate file"
+        }
     }
     ```
     Cryptpass docs: https://github.com/cryptpass/cryptpass
@@ -114,7 +210,7 @@ def cryptpass_client(  # pylint: disable=too-many-branches,too-many-locals,too-m
         secret: The json response from the server, which contains the secret data or confirmation of action.
 
     """
-    default_config_file = os.path.join(Path.home(), ".cryptpass_client_config.json")
+    default_config_file = "/etc/cryptpass/config.json"
 
     if key.startswith("/"):
         raise ValueError("Key cannot start with /")
@@ -129,35 +225,54 @@ def cryptpass_client(  # pylint: disable=too-many-branches,too-many-locals,too-m
             raise ValueError(f"Error parsing config: {config}, {e}") from e
 
     if not config:
-        config_env_val: str = str(os.getenv("CRYPTPASS_CLIENT_CONFIG", default_config_file))
+        config_env_val: str = str(os.getenv("CRYPTPASS_CONFIG", default_config_file))
         try:
             config = json.loads(__file_or_string(config_env_val))
         except json.JSONDecodeError as e:
             raise ValueError(f"Error parsing config: {config}, {e}") from e
 
     if not config:
-        raise ValueError("CRYPTPASS_CLIENT_CONFIG is required")
+        raise ValueError("CRYPTPASS_CONFIG is required")
 
     if not isinstance(config, dict):
-        raise ValueError("CRYPTPASS_CLIENT_CONFIG must be a valid JSON or a path to a JSON file")
+        raise ValueError("CRYPTPASS_CONFIG must be a valid JSON or a path to a JSON file")
 
-    config_ep = config.get("endpoint", "https://127.0.0.1:8080")
-    headers: Dict[str, str] = config.get("headers", {})  # type: ignore
-    parsed_uri = urlparse(config_ep)
-    api_v1_endpoint: str = f"{parsed_uri.scheme}://{parsed_uri.netloc}/api/v1"
+    crypt_pass_config = CryptPass(config)
+    parsed_uri = urlparse(crypt_pass_config.client.endpoint)
+    parsed_uri_scheme = str(parsed_uri.scheme)
+    parsed_uri_netloc = str(parsed_uri.netloc)
+    api_v1_endpoint: str = f"{parsed_uri_scheme}://{parsed_uri_netloc}/api/v1"
+    auth_endpoint: str = f"{parsed_uri_scheme}://{parsed_uri_netloc}/perpetual/login"
+
     ssl_verify: Union[bool, str] = False
     session = requests.Session()
     retries = Retry(total=5, backoff_factor=0.1, status_forcelist=[500, 502, 503, 504])
-    session.mount(f"{parsed_uri.scheme}://", HTTPAdapter(max_retries=retries))
-
-    if parsed_uri.scheme == "https" and "ca_cert_pem" in config and len(config["ca_cert_pem"]) > 0:
+    session.mount(f"{parsed_uri_scheme}://", HTTPAdapter(max_retries=retries))
+    if (
+        parsed_uri_scheme == "https"
+        and crypt_pass_config.client.ca_cert_pem
+        and len(crypt_pass_config.client.ca_cert_pem) > 0
+    ):
         with tempfile.NamedTemporaryFile(
             mode="w", delete=False, suffix=".pem", prefix="cryptpass_ca_cert_", encoding="utf-8"
         ) as ssl_cert_file:
-            ssl_cert_file.write(config["ca_cert_pem"])
+            ssl_cert_file.write(crypt_pass_config.client.ca_cert_pem)
             ssl_cert_file.flush()
         ssl_verify = ssl_cert_file.name
 
+    elif parsed_uri_scheme == "https":
+        ssl_verify = True
+    else:
+        ssl_verify = False
+    headers = crypt_pass_config.client.headers
+    login_res = __cryptpass_login_request(
+        auth_endpoint=auth_endpoint,
+        headers=headers,
+        session=session,
+        ssl_verify=ssl_verify,
+        auth_details=crypt_pass_config.client.auth,
+    )
+    headers["X-CRYPTPASS-KEY"] = f"Bearer {login_res['token']}"
     val = __cryptpass_request(
         action=action,
         api_v1_endpoint=api_v1_endpoint,

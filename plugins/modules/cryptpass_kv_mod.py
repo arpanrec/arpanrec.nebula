@@ -27,10 +27,9 @@ version_added: "1.12.0"
 
 description:
     - Executes the specified action (read, write, list, delete) on the secret identified by the key.
-    - "Environment variable CRYPTPASS_CLIENT_CONFIG can be used to set the configuration file path
+    - "Environment variable CRYPTPASS_CONFIG can be used to set the configuration file path
       or JSON string."
-    - If not set, it defaults to ~/.cryptpass_client_config.json.
-    - The config file or JSON string must contain the following `{"endpoint":"https://127.0.0.1:8080","headers":{"X-CRYPTPASS-KEY":"auth_token"},"ca_cert_pem":"Content of the CA PEM certificate file"}`
+    - If not set, it defaults to /etc/cryptpass/config.json.
     - Cryptpass docs `https://github.com/cryptpass/cryptpass`
 options:
     key:
@@ -56,8 +55,8 @@ options:
     config:
         description:
             - Configuration for the client. Can be a JSON or a path to a JSON file.
-            - Environment variable CRYPTPASS_CLIENT_CONFIG can be used to set the config file path or content.
-            - Default config file is ~/.cryptpass_client_config.json
+            - Environment variable CRYPTPASS_CONFIG can be used to set the config file path or content.
+            - Default config file is /etc/cryptpass/config.json
         required: false
         type: dict
 author:
@@ -70,11 +69,7 @@ EXAMPLES = r"""
       key: "project/key"
       action: "write"
       value: "my_secret_value"
-      config:
-          endpoint: "https://secrets.example.com"
-          headers:
-              "X-CRYPTPASS-KEY": "auth_token"
-          cert_pem: "-----BEGIN CERTIFICATE-----\n...\n-----END CERTIFICATE-----"
+      config: {}
 """
 
 RETURN = r"""
