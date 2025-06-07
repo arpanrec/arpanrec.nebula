@@ -127,7 +127,7 @@ def __cryptpass_request(  # pylint: disable=too-many-arguments,too-many-position
             res = session.delete(
                 url=f"{api_v1_endpoint}/keyvalue/data/{key}", headers=headers, timeout=5, verify=ssl_verify
             )
-            if res.status_code != 200:
+            if res.status_code != 204:
                 raise ValueError(
                     f"Error deleting secret, status code: {res.status_code}, expected status: 200,"
                     f"response message: {res.text}"
