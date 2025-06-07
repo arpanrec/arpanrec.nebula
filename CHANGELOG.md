@@ -1,6 +1,6 @@
-## [1.14.1](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.0...1.14.1) (2025-06-07)
+## [1.14.2](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.1...1.14.2) (2025-06-07)
 
 
 ### Bug Fixes
 
-* update environment variable references and default config paths in cryptpass modules ([bf7523b](https://github.com/arpanrec/arpanrec.nebula/commit/bf7523bc86f41755f52b839b8f3c770f65247292))
+* update delete request status code check from 200 to 204 ([cb58772](https://github.com/arpanrec/arpanrec.nebula/commit/cb58772157b17b8652d0fa7a0c5f2b06cc8469f1))
