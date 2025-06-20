@@ -1,4 +1,14 @@
-# ansible-role-utils
+# Ansible Role: Utils (arpanrec.nebula.utils)
+
+This role provides utility functions and helper tasks for common operations across other Ansible roles. It includes reusable tasks for certificate management, secret handling, and other shared functionality.
+
+**Features:**
+
+- TLS certificate management utilities
+- Secret and environment variable handling
+- Reusable task modules for other roles
+- Common helper functions and utilities
+- Standardized error handling and logging
 
 Helper Ansible Roles
 

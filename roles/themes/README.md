@@ -1,5 +1,18 @@
 # Ansible Role: User Themes (arpanrec.nebula.themes)
 
+This role installs and configures desktop themes, fonts, icons, and cursors for KDE and GTK-based desktop environments. It provides a consistent, modern visual experience across different applications and desktop environments.
+
+**Features:**
+
+- Premium programming fonts (Hack, Cascadia Code) for development
+- Modern desktop themes for KDE and GTK applications
+- Beautiful icon packs for file managers and applications
+- Elegant cursor themes for enhanced visual experience
+- User-space installation (no root privileges required)
+- Support for multiple desktop environments
+
+**Included Themes and Assets:**
+
 Install below fonts in `{{ themes_rv_user_share_dir }}/fonts/<font-name>`
 
 - [Hack Font](https://github.com/source-foundry/Hack)
