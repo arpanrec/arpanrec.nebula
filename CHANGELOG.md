@@ -1,6 +1,6 @@
-## [1.14.3](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.2...1.14.3) (2025-06-20)
+## [1.14.4](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.3...1.14.4) (2025-06-20)
 
 
 ### Bug Fixes
 
-* add nodejs and golang global packages ([9ade970](https://github.com/arpanrec/arpanrec.nebula/commit/9ade97029ae4fb2b53510173cea41671d99c5988))
+* update file permissions for VS Code config and correct condition for Go global installs ([552bb7e](https://github.com/arpanrec/arpanrec.nebula/commit/552bb7e2c8e0f8cb9e5b6418edcfae75e817394d))
