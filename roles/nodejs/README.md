@@ -11,18 +11,7 @@ Install NodeJS in user space
 | `nodejs_rv_install_path` | `str` | `false` | `{{ ansible_facts.user_dir }}/.local/share/node` | Install path for nodejs. |
 | `nodejs_rv_version` | `str` | `false` | `fetch_latest_version` | Release version. If set to `fetch_latest_version`, it will fetch the latest version from [Github](https://github.com/nodejs/node/releases). |
 | `nodejs_rv_tmp_install_cache_dir` | `str` | `false` | `{{ ansible_facts.user_dir }}/.tmp/nodejs` | Cache install directory. |
-| `nodejs_rv_global_packages` | `list` | `false` | See default list below | List of global packages to install. |
-
-### Default Global Packages (`nodejs_rv_global_packages`)
-
-```yaml
-nodejs_rv_global_packages:
-  - "@bitwarden/cli"
-  - "neovim"
-  - "yarn"
-  - "pnpm"
-  - "semver"
-```
+| `nodejs_rv_global_packages` | `list` | ["@bitwarden/cli", "neovim", "yarn", "pnpm", "semver"] | See default list below | List of global packages to install. |
 
 ### Example Playbook NodeJS
 
