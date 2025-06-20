@@ -15,6 +15,12 @@
     "[github-actions-workflow]": {
         "prettier.singleQuote": false
     },
+    "[go.mod]": {
+        "editor.defaultFormatter": "golang.go"
+    },
+    "[go]": {
+        "editor.defaultFormatter": "golang.go"
+    },
     "[ignore]": {
         "editor.defaultFormatter": "foxundermoon.shell-format"
     },
@@ -44,6 +50,9 @@
         },
         "editor.defaultFormatter": "ms-python.black-formatter",
         "editor.wordBasedSuggestions": "off"
+    },
+    "[rust]": {
+        "editor.defaultFormatter": "rust-lang.rust-analyzer"
     },
     "[shellscript]": {
         "editor.defaultFormatter": "foxundermoon.shell-format"
@@ -97,7 +106,8 @@
         "**/tasks/**/*.yml": "ansible",
         ".git/config": "gitconfig",
         "site*.yaml": "ansible",
-        "site*.yml": "ansible"
+        "site*.yml": "ansible",
+        "*.css": "tailwindcss"
     },
     "files.exclude": {
         "**/.classpath": true,
@@ -117,7 +127,8 @@
         "**/env/**": true,
         "**/node_modules/**": true,
         "**/venv.bak/**": true,
-        "**/venv/**": true
+        "**/venv/**": true,
+        "**/vendor/**": true
     },
     "files.trimTrailingWhitespace": false,
     "files.watcherExclude": {
@@ -138,7 +149,8 @@
         "**/env/**": true,
         "**/node_modules/**": true,
         "**/venv.bak/**": true,
-        "**/venv/**": true
+        "**/venv/**": true,
+        "**/vendor/**": true
     },
     "git.autofetch": true,
     "git.confirmSync": false,
@@ -195,5 +207,6 @@
     "workbench.startupEditor": "none",
     "yaml.customTags": ["!vault"],
     "yaml.format.enable": false,
-    "yaml.format.printWidth": 120
+    "yaml.format.printWidth": 120,
+    "remote.autoForwardPorts": false
 }

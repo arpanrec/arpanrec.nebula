@@ -54,3 +54,14 @@
       dest: "{{ go_rv_install_path }}"
       extra_opts: [--strip-components=1]
       remote_src: true
+
+- name: Golang | Newly downloaded | Install global packages
+  ansible.builtin.command:
+      cmd: "{{ go_rv_install_path }}/bin/go install {{ item }}"
+      chdir: "{{ go_rv_install_path }}"
+  loop: "{{ go_rv_global_installs }}"
+  when: go_rv_global_installs | length > 0
+  environment:
+      PATH: "{{ go_rv_install_path }}/bin:{{ ansible_env.PATH }}"
+  register: go_rv_global_installs_result
+  changed_when: go_rv_global_installs_result.stdout_lines | length != 0

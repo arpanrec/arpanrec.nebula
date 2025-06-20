@@ -57,3 +57,12 @@
       dest: "{{ nodejs_rv_install_path }}"
       extra_opts: [--strip-components=1]
       remote_src: true
+
+- name: NodeJS | New Download | Install node.js package globally.
+  community.general.npm:
+      name: "{{ item }}"
+      global: true
+      executable: "{{ nodejs_rv_install_path }}/bin/npm"
+  with_items: "{{ nodejs_rv_global_packages }}"
+  environment:
+      PATH: "{{ nodejs_rv_install_path }}/bin:{{ ansible_env.PATH }}"

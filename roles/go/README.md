@@ -26,6 +26,17 @@ options:
         required: false
         type: str
         default: "{{ ansible_facts.user_dir }}/.tmp/go"
+    go_rv_global_installs:
+        description: List of global packages to install.
+        required: false
+        type: list
+        default:
+            - "golang.org/x/tools/gopls@latest"
+            - "mvdan.cc/sh/v3/cmd/gosh@latest"
+            - "github.com/mikefarah/yq/v4@latest"
+            - "github.com/minio/mc@latest"
+            - "github.com/jesseduffield/lazygit@latest"
+            - "github.com/tursodatabase/turso-cli/cmd/turso@latest"
 ```
 
 ## Example Playbook Go Language

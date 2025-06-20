@@ -30,6 +30,18 @@ Install NodeJS in user space
   - Required: `false`
   - Type: `str`
 
+- `nodejs_rv_global_packages`
+  - Description: List of global packages to install.
+  - Default:
+    - "@bitwarden/cli"
+    - "neovim"
+    - "yarn"
+    - "pnpm"
+    - "semver"
+
+  - Required: `false`
+  - Type: `list`
+
 ### Example Playbook NodeJS
 
 ```yaml
