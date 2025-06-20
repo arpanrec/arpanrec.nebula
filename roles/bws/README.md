@@ -1,8 +1,8 @@
-# Ansible Role: Bitwarden CLI (arpanrec.nebula.bws)
+# Ansible Role: Bitwarden Secrets Manager SDK (arpanrec.nebula.bws)
 
-## Bitwarden CLI
+## Bitwarden Secrets Manager SDK
 
-This role installs the Bitwarden BWS (Bitwarden Secrets) SDK CLI tool for automated secrets management. It provides secure access to Bitwarden secrets for CI/CD pipelines and server automation.
+This role installs the Bitwarden Secrets Manager SDK CLI tool for automated secrets management. It provides secure access to Bitwarden secrets for CI/CD pipelines and server automation.
 
 **Features:**
 
@@ -13,7 +13,7 @@ This role installs the Bitwarden BWS (Bitwarden Secrets) SDK CLI tool for automa
 - Automatic GitHub API version detection
 - Support for CI/CD and server automation use cases
 
-Install [Bitwarden ClI](https://www.npmjs.com/package/@bitwarden/cli)
+Install [Bitwarden Secrets Manager SDK](https://bitwarden.com/help/secrets-manager-sdk/)
 
 Variables:
 
@@ -23,15 +23,15 @@ Variables:
 | `bws_sdk_bin_dir` | `str` | `false` | `{{ ansible_facts.user_dir }}/.local/bin` | - | Directory to install BWS |
 | `bws_sdk_tmp_dir` | `str` | `false` | `{{ ansible_facts.user_dir }}/.tmp/bw` | - | Directory to temporary download BWS. |
 
-### Example Playbook Bitwarden CLI
+### Example Playbook Bitwarden Secrets Manager SDK
 
 ```yaml
-- name: Include Bitwarden CLI
+- name: Include Bitwarden Secrets Manager SDK
   ansible.builtin.import_role:
       name: arpanrec.nebula.bws
 ```
 
-### Testing Bitwarden CLI
+### Testing Bitwarden Secrets Manager SDK
 
 ```bash
 molecule test -s role.bw.default
