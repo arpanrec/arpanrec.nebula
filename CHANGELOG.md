@@ -1,6 +1,6 @@
-## [1.14.2](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.1...1.14.2) (2025-06-07)
+## [1.14.3](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.2...1.14.3) (2025-06-20)
 
 
 ### Bug Fixes
 
-* update delete request status code check from 200 to 204 ([cb58772](https://github.com/arpanrec/arpanrec.nebula/commit/cb58772157b17b8652d0fa7a0c5f2b06cc8469f1))
+* add nodejs and golang global packages ([9ade970](https://github.com/arpanrec/arpanrec.nebula/commit/9ade97029ae4fb2b53510173cea41671d99c5988))
