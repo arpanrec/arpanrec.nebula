@@ -168,7 +168,7 @@ def __cryptpass_login_request(
     return res.json()
 
 
-def cryptpass_client(
+def cryptpass_client(  # pylint: disable=too-many-locals
     key: str,
     action: str = "read",
     value: Optional[Union[Dict[str, Any], List[Any]]] = None,
