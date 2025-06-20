@@ -4,39 +4,27 @@ Install Gnome Extensions and setup
 
 ## Variables
 
-- `gnome_rv_extension_list`
+| Variable | Type | Required | Default | Description |
+|----------|------|----------|---------|-------------|
+| `gnome_rv_extension_list` | `list[dict]` | `false` | See default list below | List of Extensions with `name` and `id` properties |
+| `gnome_rv_user_share_dir` | `str` | `false` | `{{ ansible_facts.user_dir }}/.local/share` | User share directory. Extensions will be install in `{{ gnome_rv_user_share_dir }}/gnome-shell/extensions/<uuid>` |
+| `gnome_rv_user_cache_tmp_dir` | `str` | `false` | `{{ ansible_facts.user_dir }}/.tmp/gnome_ansible` | Install cache and temporary directory. |
 
-  - Description: List of Extensions
-  - Type:
-    - list: {`name`:`{{ name }}`,`id`:`{{ id }}`}
-    - None
-  - Default:
-    - name: "user-themes"
-      id: 19
-    - name: "AppIndicator and KStatusNotifierItem Support"
-      id: 615
-    - name: "workspace-indicator"
-      id: 21
-    - name: "applications-menu"
-      id: 6
-    - name: "vitals"
-      id: 1460
+### Default Extensions (`gnome_rv_extension_list`)
 
-- `gnome_rv_user_share_dir`
-
-  - Description:
-    - User share directory.
-    - Extensions will be install in `{{ gnome_rv_user_share_dir }}/gnome-shell/extensions/<uuid>`
-  - Type: `str`
-  - Required: `false`
-  - Default: `{{ ansible_facts.user_dir }}/.local/share`
-
-- `gnome_rv_user_cache_tmp_dir`
-
-  - Description: Install cache and temporary directory.
-  - Type: `str`
-  - Required: `false`
-  - Default: `{{ ansible_facts.user_dir }}/.tmp/gnome_ansible`
+```yaml
+gnome_rv_extension_list:
+  - name: "user-themes"
+    id: 19
+  - name: "AppIndicator and KStatusNotifierItem Support"
+    id: 615
+  - name: "workspace-indicator"
+    id: 21
+  - name: "applications-menu"
+    id: 6
+  - name: "vitals"
+    id: 1460
+```
 
 ## Example Playbook Gnome
 

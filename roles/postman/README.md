@@ -4,26 +4,11 @@ Install [postman](https://www.postman.com/)
 
 ## Variables
 
-- `postman_rv_install_path`
-
-  - Description: Postman install path.
-  - Type: `str`
-  - Required: `false`
-  - Default: `{{ ansible_facts.user_dir }}/.local/share/Postman`
-
-- `postman_rv_xdg_icon_path`
-
-  - Description: Desktop icon path.
-  - Type: `str`
-  - Required: `false`
-  - Default: `{{ ansible_facts.user_dir }}/.local/share/applications/postman-userapps.desktop`
-
-- `postman_rv_user_tmp_dir`
-
-  - Description: Install cache and temporary directory.
-  - Type: `str`
-  - Required: `false`
-  - Default: `{{ ansible_facts.user_dir }}/.tmp/postman_app`
+| Variable | Type | Required | Default | Description |
+|----------|------|----------|---------|-------------|
+| `postman_rv_install_path` | `str` | `false` | `{{ ansible_facts.user_dir }}/.local/share/Postman` | Postman install path. |
+| `postman_rv_xdg_icon_path` | `str` | `false` | `{{ ansible_facts.user_dir }}/.local/share/applications/postman-userapps.desktop` | Desktop icon path. |
+| `postman_rv_user_tmp_dir` | `str` | `false` | `{{ ansible_facts.user_dir }}/.tmp/postman_app` | Install cache and temporary directory. |
 
 ### Example Playbook postman
 

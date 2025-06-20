@@ -4,46 +4,19 @@ Install vscode, and extensions Also creates a soft link to the `code` executable
 
 ## Variables
 
-- options:
-  - code_rv_tmp_dir:
-    - description: Tarball download location.
-    - required: false
-    - type: str
-    - default: "{{ ansible_facts.user_dir }}/.tmp/code"
+| Variable | Type | Required | Default | Description |
+|----------|------|----------|---------|-------------|
+| `code_rv_tmp_dir` | `str` | `false` | `{{ ansible_facts.user_dir }}/.tmp/code` | Tarball download location. |
+| `code_rv_bin_dir` | `str` | `false` | `{{ ansible_facts.user_dir }}/.local/bin` | Code executable directory. This path expected to be in ${PATH}. |
+| `code_rv_install_path` | `str` | `false` | `{{ ansible_facts.user_dir }}/.local/share/vscode` | Install Path. |
+| `code_rv_xdg_icon_dir` | `str` | `false` | `{{ ansible_facts.user_dir }}/.local/share/applications` | XDG icon directory. |
+| `code_rv_version` | `str` | `false` | `fetch_latest_version` | Version of [Microsoft Visual Studio Code](https://code.visualstudio.com/updates). If set to `fetch_latest_version`, it will fetch the latest release from the [api](https://update.code.visualstudio.com/api/releases/stable). Dynamically find the [latest tag_name](https://update.code.visualstudio.com/api/releases/stable), like `1.64.2`. |
+| `code_rv_ext_to_be_installed` | `list[str]` | `false` | See default list below | List of VSCode extension to be installed. |
 
-  - code_rv_bin_dir:
-    - description:
-      - Code executable directory,.
-      - This path expected to be in ${PATH}.
-    - required: false
-    - type: str
-    - default: "{{ ansible_facts.user_dir }}/.local/bin"
+### Default Extensions (`code_rv_ext_to_be_installed`)
 
-  - code_rv_install_path:
-    - description: Install Path.
-    - required: false
-    - type: str
-    - default: "{{ ansible_facts.user_dir }}/.local/share/vscode"
-
-  - code_rv_xdg_icon_dir:
-    - description: XDG icon directory.
-    - required: false
-    - type: str
-    - default: "{{ ansible_facts.user_dir }}/.local/share/applications"
-  
-  - code_rv_version:
-    - description:
-      - Version of [Microsoft Visual Studio Code](https://code.visualstudio.com/updates).
-      - If set to `fetch_latest_version`, it will fetch the latest release from the [api](https://update.code.visualstudio.com/api/releases/stable).
-      - required: false
-      - type: str
-      - default: Dynamically find the [latest tag_name](https://update.code.visualstudio.com/api/releases/stable), like `1.64.2`.
-  
-  - code_rv_ext_to_be_installed:
-    - description: List of VSCode extension to be installed.
-    - required: false
-    - type: list[str]
-    - default:
+```yaml
+code_rv_ext_to_be_installed:
       - angular.ng-template
       - bradlc.vscode-tailwindcss
       - davidanson.vscode-markdownlint
