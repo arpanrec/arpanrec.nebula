@@ -1,4 +1,4 @@
-# Ansible Role: Bitwarden CLI (arpanrec.nebula.bw)
+# Ansible Role: Bitwarden CLI (arpanrec.nebula.bws)
 
 ## Bitwarden CLI
 
