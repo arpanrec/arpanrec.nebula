@@ -1,5 +1,19 @@
 # Ansible Role: Get Certificate (arpanrec.nebula.get_certificate_ownca)
 
+This role generates X.509 certificates signed by your own Certificate Authority (CA) for server and client authentication. It supports comprehensive certificate management with custom extensions, subject alternative names, and multiple output formats.
+
+**Features:**
+
+- Server and client certificate generation with custom CA
+- Comprehensive certificate configuration (SAN, key usage, basic constraints)
+- Multiple output formats (PEM, PKCS#12)
+- Certificate chain and full-chain generation
+- Configurable certificate validity periods
+- Private key generation with customizable parameters
+- File permission and ownership management
+- Support for encrypted private keys
+- Integration with organizational PKI infrastructure
+
 Get Server or Client certificate.
 
 ## Variables

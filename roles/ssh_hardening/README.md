@@ -1,5 +1,18 @@
 # Ansible Role: SSHD Hardening (arpanrec.nebula.ssh_hardening)
 
+This role implements comprehensive SSH security hardening and intrusion detection for servers and VPS instances. It configures SSH daemon security settings and deploys Fail2Ban for automated threat mitigation.
+
+**Features:**
+
+- SSH daemon security configuration and hardening
+- Fail2Ban intrusion detection and prevention system
+- Configurable authentication policies and limits
+- Brute force protection with automatic IP banning
+- Email notifications for security events
+- Customizable firewall integration (UFW, iptables, etc.)
+- Comprehensive logging and monitoring
+- Support for custom security policies and configurations
+
 This role applies basic security settings for personal VPS
 
 ## Variables

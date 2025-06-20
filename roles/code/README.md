@@ -1,6 +1,17 @@
 # Ansible Role: Microsoft Visual Studio Code (arpanrec.nebula.code)
 
-Install vscode, and extensions Also creates a soft link to the `code` executable in `{{ code_rv_bin_dir }}`
+This role installs Microsoft Visual Studio Code along with a comprehensive set of extensions for modern development workflows. It also creates a convenient symbolic link to the `code` executable in the user's bin directory.
+
+**Features:**
+
+- VS Code installation with latest version detection
+- Comprehensive extension pack for various programming languages
+- Support for Python, JavaScript, TypeScript, Go, Rust, and more
+- GitHub integration and remote development capabilities
+- Jupyter notebook support and data science tools
+- Docker and container development extensions
+- Code quality tools (linters, formatters, spell checkers)
+- User-space installation with desktop integration
 
 ## Variables
 

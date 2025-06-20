@@ -2,6 +2,17 @@
 
 ## Bitwarden CLI
 
+This role installs the Bitwarden BWS (Bitwarden Secrets) SDK CLI tool for automated secrets management. It provides secure access to Bitwarden secrets for CI/CD pipelines and server automation.
+
+**Features:**
+
+- BWS SDK CLI installation with latest version detection
+- Secure secrets management for automation workflows
+- Integration with Bitwarden Secrets Manager
+- User-space installation with configurable paths
+- Automatic GitHub API version detection
+- Support for CI/CD and server automation use cases
+
 Install [Bitwarden ClI](https://www.npmjs.com/package/@bitwarden/cli)
 
 Variables:

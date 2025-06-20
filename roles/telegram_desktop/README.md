@@ -1,4 +1,15 @@
-# Ansible Role: Telegram (arpanrec.nebula.telegram)
+# Ansible Role: Telegram Desktop (arpanrec.nebula.telegram_desktop)
+
+This role installs Telegram Desktop messaging application with desktop integration. It provides secure messaging, file sharing, and communication features with automatic version detection.
+
+**Features:**
+
+- Telegram Desktop installation with latest version detection from GitHub
+- Desktop integration with icons and application shortcuts
+- User-space installation (no root privileges required)
+- Configurable installation and working directories
+- Secure messaging and file sharing capabilities
+- Support for group chats, channels, and bot integration
 
 Install [Telegram Desktop](https://desktop.telegram.org/)
 

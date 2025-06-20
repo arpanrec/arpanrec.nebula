@@ -1,5 +1,16 @@
 # Ansible Role: Bitwarden Desktop (arpanrec.nebula.bitwarden_desktop)
 
+This role installs the Bitwarden Desktop application as an AppImage, providing a secure password manager with desktop integration. The role automatically detects the latest version and sets up desktop shortcuts.
+
+**Features:**
+
+- Automatic latest version detection from GitHub releases
+- AppImage installation for easy deployment and updates
+- Desktop integration with .desktop file creation
+- User-space installation (no root privileges required)
+- Configurable installation paths
+- XDG icon support for desktop environments
+
 Install bitwarden AppImage [Bitwarden Desktop](https://github.com/bitwarden/clients)
 
 ## Variables

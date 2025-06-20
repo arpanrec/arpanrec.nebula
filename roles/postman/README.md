@@ -1,5 +1,15 @@
 # Ansible Role: Postman (arpanrec.nebula.postman)
 
+This role installs Postman API development platform for testing, documenting, and collaborating on APIs. It provides desktop integration and user-space installation for development teams.
+
+**Features:**
+
+- Postman installation with desktop integration
+- User-space installation (no root privileges required)
+- Desktop shortcut and icon configuration
+- Configurable installation and cache directories
+- Support for API testing, documentation, and collaboration workflows
+
 Install [postman](https://www.postman.com/)
 
 ## Variables

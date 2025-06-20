@@ -1,5 +1,17 @@
 # Ansible Role User Add (arpanrec.nebula.user_add)
 
+This role creates system users with comprehensive configuration including group membership, SSH access, and sudo privileges. It provides secure user provisioning for development and server environments.
+
+**Features:**
+
+- User account creation with configurable UID/GID
+- Primary and secondary group management
+- SSH public key authentication setup
+- Sudo privileges configuration with granular command control
+- Password-less command execution for specific operations
+- Home directory and shell configuration
+- Secure user provisioning for team environments
+
 Create a user and add it to sudoers.d
 
 ## Role Variables

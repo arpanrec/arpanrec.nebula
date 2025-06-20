@@ -1,5 +1,17 @@
 # Ansible Role: Gnome Desktop (arpanrec.nebula.gnome)
 
+This role installs and configures GNOME Shell extensions to enhance desktop productivity and user experience. It automatically downloads and installs extensions from the GNOME Extensions website.
+
+**Features:**
+
+- Automated GNOME Shell extension installation
+- Curated list of productivity and system monitoring extensions
+- User-space installation (no root privileges required)
+- Support for custom extension lists
+- Desktop theme and appearance customization
+- System monitoring and workspace management tools
+- Application menu and system indicator enhancements
+
 Install Gnome Extensions and setup
 
 ## Variables

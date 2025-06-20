@@ -2,6 +2,17 @@
 
 ## Hashicorp Vault
 
+This role installs HashiCorp Vault secrets management platform in user space. Vault provides secure storage and access to secrets, encryption keys, and sensitive data for modern applications.
+
+**Features:**
+
+- Vault CLI installation with latest version detection
+- User-space installation (no root privileges required)
+- Secure secrets management and encryption services
+- Integration with cloud platforms and Kubernetes
+- Configurable installation directory
+- Automatic version management via HashiCorp releases API
+
 Install Hashicorp Vault in user space
 
 ## Variable

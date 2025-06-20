@@ -2,7 +2,15 @@
 
 ## Go Language
 
-Install Go Language in user space
+This role installs the Go programming language runtime and essential development tools in user space. It sets up a complete Go development environment with popular tools and utilities.
+
+**Features:**
+
+- Go language runtime installation with latest version detection
+- Essential development tools (gopls, gosh, yq, mc, lazygit, turso)
+- User-space installation (no root privileges required)
+- Automatic environment configuration
+- Global package management for consistent tooling across teams
 
 ## Variables Go Language
 

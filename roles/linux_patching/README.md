@@ -1,5 +1,17 @@
 # Ansible Role Linux Patching (arpanrec.nebula.linux_patching)
 
+This role provides comprehensive system configuration and package management for Debian-based systems. It installs essential packages, development tools, and configures system settings for optimal server and development environments.
+
+**Features:**
+
+- System package installation and updates for Debian-based distributions
+- Essential development tools and utilities installation
+- System configuration (timezone, locale, hostname, domain)
+- Security hardening with firewall (ufw) and access controls
+- Root CA certificate management for organization PKI
+- SSH configuration and networking setup
+- Configurable package lists for different use cases (base system vs development)
+
 Install all latest packages in Debian based systems.
 Also Install basic utility tools for server.
 Set timezone, locale, and loopback ip in server

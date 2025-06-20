@@ -1,8 +1,17 @@
-# Ansible Role: Server Workspace (arpanrec.nebula.server_workspace)
+# Ansible Role: Oracle Java (arpanrec.nebula.java)
 
 ## Oracle Java
 
-Install oracle jdk in user space
+This role installs Oracle JDK, Maven, Gradle, Groovy, Kotlin, and GraalVM in user space. It provides a complete Java development environment with all the necessary tools for Java application development.
+
+**Features:**
+
+- Oracle JDK installation with latest version detection
+- Maven build tool for dependency management
+- Gradle build automation tool
+- Apache Groovy dynamic language
+- Kotlin programming language support  
+- GraalVM high-performance runtime
 
 ## Variables
 

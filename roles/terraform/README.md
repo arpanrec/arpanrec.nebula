@@ -2,6 +2,16 @@
 
 ## Terraform
 
+This role installs HashiCorp Terraform infrastructure-as-code tool in user space. It provides automated infrastructure provisioning and management capabilities with latest version detection.
+
+**Features:**
+
+- Terraform CLI installation with latest version detection
+- User-space installation (no root privileges required)
+- Configurable installation directory
+- Automatic version management via HashiCorp releases API
+- Support for infrastructure automation and cloud provisioning
+
 Install Terraform in user space
 
 ## Variable

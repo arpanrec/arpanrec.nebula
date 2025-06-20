@@ -2,7 +2,15 @@
 
 ## NodeJS
 
-Install NodeJS in user space
+This role installs Node.js runtime environment in user space along with popular global packages. It automatically configures the environment and installs essential development tools.
+
+**Features:**
+
+- Latest Node.js version installation with automatic detection
+- Global package management (npm/yarn/pnpm)
+- Essential development tools (Bitwarden CLI, Neovim support, etc.)
+- User-space installation (no root privileges required)
+- Configurable package list for team consistency
 
 ## Variable
 

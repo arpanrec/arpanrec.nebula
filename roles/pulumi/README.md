@@ -2,6 +2,17 @@
 
 ## Pulumi
 
+This role installs Pulumi infrastructure-as-code platform in user space. Pulumi allows you to create, deploy, and manage cloud infrastructure using familiar programming languages.
+
+**Features:**
+
+- Pulumi CLI installation with latest version detection from GitHub
+- User-space installation (no root privileges required)
+- Support for multiple programming languages (TypeScript, Python, Go, C#, Java)
+- Cloud-agnostic infrastructure provisioning
+- Configurable installation and cache directories
+- Integration with modern development workflows
+
 Install [Pulumi](https://github.com/pulumi/pulumi) in user space.
 
 ## Variable
