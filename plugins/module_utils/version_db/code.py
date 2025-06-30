@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
 """
 This module provides functionality to fetch and manage version details for the Visual Studio Code (VSCode) application.
 

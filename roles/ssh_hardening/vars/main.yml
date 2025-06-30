@@ -3,9 +3,13 @@
 
 ssh_hardening_rv_fail2ban_packages:
     - fail2ban
-    - sendmail
+    - sendmail # Optional
+    - rsyslog # Without rsyslog, fail2ban will not work because there is no log file to monitor
 
-ssh_hardening_rv_fail2ban_service: fail2ban
+ssh_hardening_rv_fail2ban_services:
+    - fail2ban
+    - sendmail
+    - rsyslog
 
 ssh_hardening_rv_fail2ban_base_configuration:
     - option: loglevel
@@ -14,9 +18,6 @@ ssh_hardening_rv_fail2ban_base_configuration:
     - option: logtarget
       value: "{{ ssh_hardening_rv_fail2ban_logtarget }}"
       section: Definition
-    - option: ignoreip
-      value: "{{ ssh_hardening_rv_fail2ban_ignoreips | join(' ') }}"
-      section: DEFAULT
 
 ssh_hardening_rv_fail2ban_base_jail_configuration:
     - option: ignoreself
@@ -36,4 +37,10 @@ ssh_hardening_rv_fail2ban_base_jail_configuration:
       section: DEFAULT
     - option: sender
       value: "{{ ssh_hardening_rv_fail2ban_sender }}"
+      section: DEFAULT
+    - option: ignoreip
+      value: "{{ ssh_hardening_rv_fail2ban_ignoreips | join(' ') }}"
+      section: DEFAULT
+    - option: banaction
+      value: "{{ ssh_hardening_rv_fail2ban_banaction }}"
       section: DEFAULT

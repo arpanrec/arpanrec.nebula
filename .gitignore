@@ -293,3 +293,5 @@ dist
 arpanrec-nebula-*.tar.gz
 .vscode/*
 /roles/geerlingguy.docker/*
+foo*
+.ansible/*

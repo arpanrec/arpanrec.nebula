@@ -1,8 +1,8 @@
 ---
-- name: Bitwarden CLI | BWS SDK | Molecule | Converge
+- name: Bitwarden Secrets Manager SDK | Molecule | Converge
   hosts: all
   gather_facts: false
   tasks:
-      - name: Bitwarden CLI | BWS SDK | Molecule | Converge | Include Bitwarden CLI
+      - name: Bitwarden Secrets Manager SDK | Molecule | Converge | Import role
         ansible.builtin.import_role:
             name: arpanrec.nebula.bws

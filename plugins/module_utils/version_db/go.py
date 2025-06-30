@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
 """
 This module provides the `Go` class, which is a subclass of `AppDetails`.
  It is used to fetch the latest GoLang version details

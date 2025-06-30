@@ -1,37 +1,26 @@
 # Ansible Role: Mattermost Desktop (arpanrec.nebula.mattermost_desktop)
 
+This role installs Mattermost Desktop application for team collaboration and communication. It provides a dedicated desktop client for Mattermost servers with notification support and desktop integration.
+
+**Features:**
+
+- Mattermost Desktop installation with latest version detection from GitHub
+- Desktop integration with icons and application shortcuts
+- User-space installation (no root privileges required)
+- Support for multiple Mattermost server connections
+- Native desktop notifications and system tray integration
+- Configurable installation and cache directories
+
 Install [Mattermost Desktop](https://github.com/mattermost/desktop/releases)
 
 ## Variables
 
-- `pv_ua_mm_release_version`
-
-  - Description: Release Version of [Mattermost Desktop](https://github.com/mattermost/desktop/releases)
-  - Type: `str`
-  - Required: `false`
-  - Default: [Latest Github Release](https://api.github.com/repos/mattermost/desktop/releases/latest).tag_name
-  - Example: `v5.1.0`
-
-- `mattermost_desktop_rv_user_tmp_dir`
-
-  - Description: Install cache directory
-  - Type: `str`
-  - Required: `false`
-  - Default: `{{ ansible_facts.user_dir }}/.tmp/mattermost_desktop`
-
-- `mattermost_desktop_rv_install_path`
-
-  - Description: Install directory
-  - Type: `str`
-  - Required: `false`
-  - Default: `{{ ansible_facts.user_dir }}/.local/share/mattermost-desktop`
-
-- `mattermost_desktop_rv_xdg_icon_path`
-
-  - Description: Linux desktop icon path.
-  - Type: `str`
-  - Required: `false`
-  - Default: `{{ ansible_facts.user_dir }}/.local/share/applications/mattermost-desktop-userapps.desktop`
+| Variable | Type | Required | Default | Example | Description |
+|----------|------|----------|---------|---------|-------------|
+| `pv_ua_mm_release_version` | `str` | `false` | [Latest Github Release](https://api.github.com/repos/mattermost/desktop/releases/latest).tag_name | `v5.1.0` | Release Version of [Mattermost Desktop](https://github.com/mattermost/desktop/releases) |
+| `mattermost_desktop_rv_user_tmp_dir` | `str` | `false` | `{{ ansible_facts.user_dir }}/.tmp/mattermost_desktop` | - | Install cache directory |
+| `mattermost_desktop_rv_install_path` | `str` | `false` | `{{ ansible_facts.user_dir }}/.local/share/mattermost-desktop` | - | Install directory |
+| `mattermost_desktop_rv_xdg_icon_path` | `str` | `false` | `{{ ansible_facts.user_dir }}/.local/share/applications/mattermost-desktop-userapps.desktop` | - | Linux desktop icon path. |
 
 ## Example Playbook Mattermost Desktop
 

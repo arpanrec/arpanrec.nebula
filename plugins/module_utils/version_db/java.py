@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
 """
 This module provides the `Java` class, which handles Java version details and fetches
 related software versions such as Maven, Gradle, Groovy, Kotlin compiler, and GraalVM.
@@ -9,7 +11,6 @@ Attributes:
     __jdk_architecture_map (Dict[str, str]): A mapping of JDK architectures.
     __graalvm_architecture_map (Dict[str, str]): A mapping of GraalVM architectures.
     __java_download_map (Dict[str, Any]): A mapping of Java-related software versions and their details.
-    __maven_github_repo (str): The GitHub repository for Maven.
 
 Methods:
     fetch_details(self) -> None:
@@ -55,6 +56,7 @@ class Java(AppDetails):
 
     __java_download_map: Dict[str, Any] = {
         "jdk": {
+            "24": {},
             "22.0.2": {},
             "22.0.1": {},
             "22": {},
@@ -62,30 +64,36 @@ class Java(AppDetails):
             "17.0.12": {},
         },
         "graalvm": {
+            "24": {},
             "21": {},
             "17": {},
         },
         "maven": {
+            "maven-3.9.10": {},
             "maven-3.9.9": {},
             "maven-3.8.4": {},
         },
         "gradle": {
+            "v8.14.2": {},
+            "v8.13": {},
             "v8.10.2": {},
             "v7.6.4": {},
         },
         "groovy": {
+            "4.0.27": {},
+            "4.0.26": {},
             "4.0.22": {},
             "3.0.22": {},
         },
         "kotlinc": {
+            "v2.1.21": {},
+            "v2.1.20": {},
             "v2.0.21": {},
             "v2.0.20": {},
             "v1.9.25": {},
             "v1.8.0": {},
         },
     }
-
-    __maven_github_repo = "apache/maven"
 
     def fetch_details(self) -> None:
         """

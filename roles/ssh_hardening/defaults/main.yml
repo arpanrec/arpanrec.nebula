@@ -47,12 +47,14 @@ ssh_hardening_rv_fail2ban_ignoreself: "true"
 ssh_hardening_rv_fail2ban_ignoreips:
     - "127.0.0.1/8 ::1"
 
+ssh_hardening_rv_fail2ban_banaction: ufw
+
 # In seconds
-ssh_hardening_rv_fail2ban_bantime: 600
+ssh_hardening_rv_fail2ban_bantime: 86400 # `-1` for permanent ban
 ssh_hardening_rv_fail2ban_findtime: 600
 
 ssh_hardening_rv_fail2ban_maxretry: 5
-ssh_hardening_rv_fail2ban_destemail: root@localhost
+ssh_hardening_rv_fail2ban_destemail: root@{{ ansible_fqdn }}
 ssh_hardening_rv_fail2ban_sender: root@{{ ansible_fqdn }}
 
 ssh_hardening_rv_fail2ban_configuration: []

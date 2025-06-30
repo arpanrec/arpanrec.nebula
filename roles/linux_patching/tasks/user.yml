@@ -2,6 +2,25 @@
 - name: Linux Patching | Users | Checking Prerequisite
   ansible.builtin.import_tasks: prerequisite.yml
 
+- name: Linux Patching | Users | Disable laptop lid switch
+  community.general.ini_file:
+      path: /etc/systemd/logind.conf
+      section: Login
+      option: "{{ item.option }}"
+      value: "{{ item.value }}"
+      mode: "0644"
+      backup: true
+      owner: root
+      group: root
+      no_extra_spaces: true
+  with_items:
+      - option: HandleLidSwitch
+        value: ignore
+      - option: HandleLidSwitchDocked
+        value: ignore
+      - option: HandleLidSwitchExternalPower
+        value: ignore
+
 - name: Linux Patching | Users | Create home for new users
   ansible.builtin.lineinfile:
       path: /etc/login.defs
@@ -20,6 +39,7 @@
   ansible.builtin.group:
       name: "{{ item }}"
       state: present
+      system: true
   with_items:
       - wheel
       - sudo

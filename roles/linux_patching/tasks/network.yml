@@ -106,6 +106,24 @@
       and
       linux_patching_rv_tmp_set_debian_hostname.failed
 
+- name: Linux Patching | Network | Setup Host Network Information | Set hostname via sysctl
+  ansible.posix.sysctl:
+      name: "{{ item.name }}"
+      value: "{{ item.value }}"
+      state: present
+      reload: true
+      sysctl_file: /etc/sysctl.d/60-hostname.conf
+  register: linux_patching_rv_tmp_hostname_sysctl
+  failed_when: >
+      linux_patching_rv_init_system_systemd
+      and
+      linux_patching_rv_tmp_hostname_sysctl.failed
+  with_items:
+      - name: kernel.hostname
+        value: "{{ linux_patching_rv_hostname }}"
+      - name: kernel.domainname
+        value: "{{ linux_patching_rv_domain_name }}"
+
 - name: Linux Patching | Network | Setup Host Network Information | Set Host-Name via /etc/hostname
   ansible.builtin.copy:
       content: "{{ linux_patching_rv_hostname }}\n"
@@ -167,6 +185,7 @@
       port: "{{ linux_patching_rv_ssh_port }}"
       proto: tcp
       state: enabled
+      comment: "Allow SSH Port, Managed by Ansible arpanrec.nebula"
   register: linux_patching_rv_ufw_ssh_port_result
   ignore_errors: true
   environment:
@@ -188,5 +207,6 @@
             port: "{{ linux_patching_rv_ssh_port }}"
             proto: tcp
             state: enabled
+            comment: "Allow SSH Port, Managed by Ansible arpanrec.nebula"
         environment:
             PATH: /sbin:{{ ansible_env.PATH }}

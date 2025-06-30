@@ -4,9 +4,9 @@ Run the playbook
 
 ## Hosts
 
-* cloud_init
+* cloudinit
 
-This playbook is designed to run on the server or group named `cloud_init` in your Ansible inventory.
+This playbook is designed to run on the server or group named `cloudinit` in your Ansible inventory.
 
 ## Extra Vars
 

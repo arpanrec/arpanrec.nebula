@@ -64,23 +64,13 @@
       - ssh_hardening_rv_fail2ban_auth.stat.exists is defined
       - not ssh_hardening_rv_fail2ban_auth.stat.exists
 
-- name: SSHD Hardening | fail2ban | Start and enable sendmail
-  ansible.builtin.systemd_service:
-      name: sendmail
-      state: started
-      enabled: true
-  register: ssh_hardening_rv_tmp_start_sendmail
-  failed_when: >
-      ssh_hardening_rv_init_system_systemd
-      and
-      ssh_hardening_rv_tmp_start_sendmail.failed
-
 - name: SSHD Hardening | fail2ban | Start and enable fail2ban
   ansible.builtin.systemd_service:
-      name: "{{ ssh_hardening_rv_fail2ban_service }}"
+      name: "{{ item }}"
       state: started
       enabled: true
   register: ssh_hardening_rv_tmp_start_fail2ban
+  loop: "{{ ssh_hardening_rv_fail2ban_services }}"
   failed_when: >
       ssh_hardening_rv_init_system_systemd
       and

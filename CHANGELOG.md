@@ -1,6 +1,6 @@
-## [1.11.3](https://github.com/arpanrec/arpanrec.nebula/compare/1.11.2...1.11.3) (2024-11-22)
+## [1.14.5](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.4...1.14.5) (2025-06-20)
 
 
 ### Bug Fixes
 
-* improve version fetching logic for Terraform and Vault to handle release tags more accurately ([#39](https://github.com/arpanrec/arpanrec.nebula/issues/39)) ([2f5b78b](https://github.com/arpanrec/arpanrec.nebula/commit/2f5b78b224ca213d50d9a52ee4e2ac178c87759f))
+* Updated java versions and all the role readme docs ([5086d1c](https://github.com/arpanrec/arpanrec.nebula/commit/5086d1cfa9d41a1262e505bae0e8b5286cf21e03))
