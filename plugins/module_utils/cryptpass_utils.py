@@ -23,7 +23,7 @@ class CryptPassClient:
 
     endpoint: str
     headers: Dict[str, str]
-    x_cryptpass_key: Optional[str] = None
+    x_cryptpass_token: Optional[str] = None
     ca_cert_pem: Optional[str] = None
 
     def __init__(self, my_dict: Dict[str, Any]) -> None:
@@ -139,7 +139,7 @@ def cryptpass_client(  # pylint: disable=too-many-locals
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            "x_cryptpass_key": "your-cryptpass-key",
+            "x_cryptpass_token": "your-cryptpass-key",
             "ca_cert_pem": "Content of the CA PEM certificate file"
         }
     }
@@ -210,7 +210,7 @@ def cryptpass_client(  # pylint: disable=too-many-locals
     else:
         ssl_verify = False
     headers = crypt_pass_config.client.headers
-    headers["X-CRYPTPASS-KEY"] = crypt_pass_config.client.x_cryptpass_key or ""
+    headers["X-CRYPTPASS-TOKEN"] = crypt_pass_config.client.x_cryptpass_token or ""
     val = __cryptpass_request(
         action=action,
         api_v1_endpoint=api_v1_endpoint,
