@@ -23,13 +23,20 @@ class CryptPassClient:
 
     endpoint: str
     headers: Dict[str, str]
-    x_cryptpass_token: Optional[str] = None
+    api_key: Optional[str] = None
+    api_key_name: str = "X-CRYPTPASS-TOKEN"
     ca_cert_pem: Optional[str] = None
 
     def __init__(self, my_dict: Dict[str, Any]) -> None:
 
         for key in my_dict:
             setattr(self, key, my_dict[key])
+
+        if not isinstance(self.api_key_name, str):
+            raise ValueError("api_key_name must be a string")
+
+        if not self.api_key_name and len(self.api_key_name) == 0:
+            raise ValueError("api_key_name cannot be empty")
 
 
 @dataclasses.dataclass
@@ -139,7 +146,8 @@ def cryptpass_client(  # pylint: disable=too-many-locals
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            "x_cryptpass_token": "your-cryptpass-key",
+            "api_key": "your-cryptpass-key",
+            "api_key_name": "X-CRYPTPASS-TOKEN",
             "ca_cert_pem": "Content of the CA PEM certificate file"
         }
     }
@@ -210,7 +218,7 @@ def cryptpass_client(  # pylint: disable=too-many-locals
     else:
         ssl_verify = False
     headers = crypt_pass_config.client.headers
-    headers["X-CRYPTPASS-TOKEN"] = crypt_pass_config.client.x_cryptpass_token or ""
+    headers[crypt_pass_config.client.api_key_name] = crypt_pass_config.client.api_key or ""
     val = __cryptpass_request(
         action=action,
         api_v1_endpoint=api_v1_endpoint,
