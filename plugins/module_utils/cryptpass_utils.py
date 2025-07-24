@@ -16,22 +16,6 @@ from requests.adapters import HTTPAdapter, Retry
 
 
 @dataclasses.dataclass
-class CryptPassClientAuth:
-    """
-    Class to handle authentication for CryptPass client.
-    """
-
-    type: str
-    username: Optional[str] = None
-    password: Optional[str] = None
-
-    def __init__(self, my_dict: Dict[str, Any]) -> None:
-
-        for key in my_dict:
-            setattr(self, key, my_dict[key])
-
-
-@dataclasses.dataclass
 class CryptPassClient:
     """
     Class to handle CryptPass client configuration.
@@ -39,16 +23,20 @@ class CryptPassClient:
 
     endpoint: str
     headers: Dict[str, str]
-    auth: CryptPassClientAuth
+    api_key: Optional[str] = None
+    api_key_name: str = "X-CRYPTPASS-TOKEN"
     ca_cert_pem: Optional[str] = None
 
     def __init__(self, my_dict: Dict[str, Any]) -> None:
 
         for key in my_dict:
-            if key == "auth":
-                setattr(self, key, CryptPassClientAuth(my_dict[key]))
-            else:
-                setattr(self, key, my_dict[key])
+            setattr(self, key, my_dict[key])
+
+        if not isinstance(self.api_key_name, str):
+            raise ValueError("api_key_name must be a string")
+
+        if not self.api_key_name and len(self.api_key_name) == 0:
+            raise ValueError("api_key_name cannot be empty")
 
 
 @dataclasses.dataclass
@@ -137,37 +125,6 @@ def __cryptpass_request(  # pylint: disable=too-many-arguments,too-many-position
             raise ValueError("Invalid action, must be one of read, write, list, delete")
 
 
-def __cryptpass_login_request(
-    auth_endpoint: str,
-    headers: Dict[str, str],
-    session: requests.Session,
-    ssl_verify: Union[bool, str],
-    auth_details: CryptPassClientAuth,
-) -> Dict[str, Any]:
-
-    if auth_details.type != "userpass":
-        raise ValueError("Invalid auth type, must be 'userpass'")
-
-    if not auth_details.username or not auth_details.password:
-        raise ValueError("Username and password are required for userpass auth")
-
-    res = session.post(
-        url=auth_endpoint,
-        headers=headers,
-        json={
-            "username": auth_details.username,
-            "password": auth_details.password,
-        },
-        timeout=5,
-        verify=ssl_verify,
-    )
-    if res.status_code != 200:
-        raise ValueError(
-            f"Error logging in, status code: {res.status_code}, expected status: 200," f"response message: {res.text}"
-        )
-    return res.json()
-
-
 def cryptpass_client(  # pylint: disable=too-many-locals
     key: str,
     action: str = "read",
@@ -189,11 +146,8 @@ def cryptpass_client(  # pylint: disable=too-many-locals
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            "auth": {
-                "type": "userpass",
-                "username": "admin",
-                "password": "password"
-            },
+            "api_key": "your-cryptpass-key",
+            "api_key_name": "X-CRYPTPASS-TOKEN",
             "ca_cert_pem": "Content of the CA PEM certificate file"
         }
     }
@@ -242,7 +196,6 @@ def cryptpass_client(  # pylint: disable=too-many-locals
     parsed_uri_scheme = str(parsed_uri.scheme)
     parsed_uri_netloc = str(parsed_uri.netloc)
     api_v1_endpoint: str = f"{parsed_uri_scheme}://{parsed_uri_netloc}/api/v1"
-    auth_endpoint: str = f"{parsed_uri_scheme}://{parsed_uri_netloc}/perpetual/login"
 
     ssl_verify: Union[bool, str] = False
     session = requests.Session()
@@ -265,14 +218,7 @@ def cryptpass_client(  # pylint: disable=too-many-locals
     else:
         ssl_verify = False
     headers = crypt_pass_config.client.headers
-    login_res = __cryptpass_login_request(
-        auth_endpoint=auth_endpoint,
-        headers=headers,
-        session=session,
-        ssl_verify=ssl_verify,
-        auth_details=crypt_pass_config.client.auth,
-    )
-    headers["X-CRYPTPASS-KEY"] = f"Bearer {login_res['token']}"
+    headers[crypt_pass_config.client.api_key_name] = crypt_pass_config.client.api_key or ""
     val = __cryptpass_request(
         action=action,
         api_v1_endpoint=api_v1_endpoint,
