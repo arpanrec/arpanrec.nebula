@@ -1,6 +1,6 @@
-## [1.14.5](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.4...1.14.5) (2025-06-20)
+## [1.14.6](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.5...1.14.6) (2025-07-24)
 
 
 ### Bug Fixes
 
-* Updated java versions and all the role readme docs ([5086d1c](https://github.com/arpanrec/arpanrec.nebula/commit/5086d1cfa9d41a1262e505bae0e8b5286cf21e03))
+* Cryptpass token ([#47](https://github.com/arpanrec/arpanrec.nebula/issues/47)) ([17ce6c7](https://github.com/arpanrec/arpanrec.nebula/commit/17ce6c7a2bd1adf633c3f62d097f4a92a8277e2e))
