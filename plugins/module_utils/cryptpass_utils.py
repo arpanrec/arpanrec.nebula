@@ -32,7 +32,7 @@ class CryptPassClient:
         for key in my_dict:
             setattr(self, key, my_dict[key])
 
-        if not isinstance(self.api_key_name, str):
+        if not isinstance(self.api_key_name, str): # type: ignore
             raise ValueError("api_key_name must be a string")
 
         if not self.api_key_name and len(self.api_key_name) == 0:
@@ -152,7 +152,7 @@ def cryptpass_client(  # pylint: disable=too-many-locals
         }
     }
     ```
-    Cryptpass docs: https://github.com/cryptpass/cryptpass
+    Cryptpass docs: https://github.com/easyiac/cryptpass
 
     Args:
         key: Key of the secret. Must not start or end with / and cannot be empty.
@@ -195,7 +195,7 @@ def cryptpass_client(  # pylint: disable=too-many-locals
     parsed_uri = urlparse(crypt_pass_config.client.endpoint)
     parsed_uri_scheme = str(parsed_uri.scheme)
     parsed_uri_netloc = str(parsed_uri.netloc)
-    api_v1_endpoint: str = f"{parsed_uri_scheme}://{parsed_uri_netloc}/api/v1"
+    api_v1_endpoint: str = f"{parsed_uri_scheme}://{parsed_uri_netloc}/cryptpass/api/v1"
 
     ssl_verify: Union[bool, str] = False
     session = requests.Session()
