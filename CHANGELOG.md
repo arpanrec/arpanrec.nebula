@@ -1,6 +1,6 @@
-## [1.14.6](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.5...1.14.6) (2025-07-24)
+## [1.14.7](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.6...1.14.7) (2025-08-08)
 
 
 ### Bug Fixes
 
-* Cryptpass token ([#47](https://github.com/arpanrec/arpanrec.nebula/issues/47)) ([17ce6c7](https://github.com/arpanrec/arpanrec.nebula/commit/17ce6c7a2bd1adf633c3f62d097f4a92a8277e2e))
+* cryptpass api endpoint ([82a0d9f](https://github.com/arpanrec/arpanrec.nebula/commit/82a0d9f7d69b7fca71c6b4820f92f2fc46e80840))
