@@ -13,8 +13,6 @@ code_rv_ext_to_be_installed:
     - "exiasr.hadolint"
     - "foxundermoon.shell-format"
     - "github.codespaces"
-    - "github.copilot"
-    - "github.copilot-chat"
     - "github.github-vscode-theme"
     - "github.remotehub"
     - "github.vscode-codeql"
