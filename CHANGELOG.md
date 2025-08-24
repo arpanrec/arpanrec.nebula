@@ -1,6 +1,6 @@
-## [1.14.7](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.6...1.14.7) (2025-08-08)
+## [1.14.8](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.7...1.14.8) (2025-08-24)
 
 
 ### Bug Fixes
 
-* cryptpass api endpoint ([82a0d9f](https://github.com/arpanrec/arpanrec.nebula/commit/82a0d9f7d69b7fca71c6b4820f92f2fc46e80840))
+* Update java and ansible dependencies ([44f7900](https://github.com/arpanrec/arpanrec.nebula/commit/44f790030f51aff79f4d2ae920381f211917499b))
