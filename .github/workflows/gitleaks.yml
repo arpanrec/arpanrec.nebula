@@ -10,7 +10,6 @@ name: Gitleaks
 jobs:
     gitleaks:
         timeout-minutes: 60
-        cancel-timeout-minutes: 60
         name: gitleaks
         runs-on: ubuntu-24.04
         steps:

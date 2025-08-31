@@ -36,6 +36,7 @@ build_ignore:
     - "molecule"
     - "node_modules"
     - "poetry.lock"
+    - "uv.lock"
     - "pyproject.toml"
     - "requirements-dev.txt"
     - "requirements.txt"
