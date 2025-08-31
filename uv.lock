@@ -87,7 +87,7 @@ dependencies = [
     { name = "requests" },
 ]
 
-[package.dev-dependencies]
+[package.optional-dependencies]
 dev = [
     { name = "ansible-lint", marker = "sys_platform != 'win32'" },
     { name = "bandit" },
@@ -109,30 +109,27 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "ansible", specifier = "==11.9.0" },
+    { name = "ansible-lint", marker = "sys_platform != 'win32' and extra == 'dev'", specifier = "==25.8.2" },
+    { name = "bandit", marker = "extra == 'dev'", specifier = "==1.8.6" },
+    { name = "black", marker = "extra == 'dev'", specifier = "==25.1.0" },
     { name = "cachier", specifier = "==4.1.0" },
+    { name = "docker", marker = "extra == 'dev'", specifier = "==7.1.0" },
     { name = "hvac", specifier = "==2.3.0" },
+    { name = "isort", marker = "extra == 'dev'", specifier = "==6.0.1" },
+    { name = "molecule", marker = "extra == 'dev'", specifier = "==25.7.0" },
+    { name = "molecule-plugins", marker = "extra == 'dev'", specifier = "==25.8.12" },
+    { name = "mypy", marker = "extra == 'dev'", specifier = "==1.17.1" },
+    { name = "neovim", marker = "extra == 'dev'", specifier = "==0.3.1" },
+    { name = "packaging", marker = "extra == 'dev'", specifier = "==25.0" },
     { name = "passlib", specifier = "==1.7.4" },
+    { name = "pylint", marker = "extra == 'dev'", specifier = "==3.3.8" },
+    { name = "pyright", marker = "extra == 'dev'", specifier = "==1.1.404" },
     { name = "requests", specifier = "==2.32.5" },
+    { name = "types-pyyaml", marker = "extra == 'dev'", specifier = "==6.0.12.20250822" },
+    { name = "types-requests", marker = "extra == 'dev'", specifier = "==2.32.4.20250809" },
+    { name = "yamllint", marker = "extra == 'dev'", specifier = "==1.37.1" },
 ]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "ansible-lint", marker = "sys_platform != 'win32'", specifier = "==25.8.2" },
-    { name = "bandit", specifier = "==1.8.6" },
-    { name = "black", specifier = "==25.1.0" },
-    { name = "docker", specifier = "==7.1.0" },
-    { name = "isort", specifier = "==6.0.1" },
-    { name = "molecule", specifier = "==25.7.0" },
-    { name = "molecule-plugins", specifier = "==25.8.12" },
-    { name = "mypy", specifier = "==1.17.1" },
-    { name = "neovim", specifier = "==0.3.1" },
-    { name = "packaging", specifier = "==25.0" },
-    { name = "pylint", specifier = "==3.3.8" },
-    { name = "pyright", specifier = "==1.1.404" },
-    { name = "types-pyyaml", specifier = "==6.0.12.20250822" },
-    { name = "types-requests", specifier = "==2.32.4.20250809" },
-    { name = "yamllint", specifier = "==1.37.1" },
-]
+provides-extras = ["dev"]
 
 [[package]]
 name = "astroid"
