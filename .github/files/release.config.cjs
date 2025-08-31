@@ -52,6 +52,7 @@ module.exports = {
                     'galaxy.yml',
                     'CHANGELOG.md',
                     'pyproject.toml',
+                    'uv.lock',
                     'README.md',
                     'requirements.txt',
                     'requirements-dev.txt',

@@ -20,7 +20,7 @@ line-length = 120
 name = "arpanrec-nebula"
 version = "1.14.10"
 description = "common ansible resources"
-authors = ["arpanrec <arpan.rec@gmail.com>"]
+authors = [ { name = "arpan", email = "me@arpanrec.com" } ]
 license = "GLWTS"
 readme = "README.md"
 requires-python = ">=3.11"
