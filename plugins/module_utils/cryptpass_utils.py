@@ -31,6 +31,7 @@ class CryptPassClient:
         for key in my_dict:
             setattr(self, key, my_dict[key])
 
+
 @dataclasses.dataclass
 class CryptPass:
     """
