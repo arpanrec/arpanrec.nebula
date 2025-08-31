@@ -225,12 +225,12 @@ def cryptpass_client(  # pylint: disable=too-many-locals
 
 
 # if __name__ == "__main__":
-#     all_secrets_keys = cryptpass_client("", "list")["secret"]
+#     all_secrets_keys = cryptpass_client("secrets", "list")["secret"]
 #     all_secrets_dict: Dict[str, Any] = {}
 #     for secret_key in all_secrets_keys:
 #         print(f"Reading secret: {secret_key}")
-#         secret_value = cryptpass_client(f"{secret_key}", "read")["secret"]
-#         all_secrets_dict[secret_key] = secret_value
+#         secret_value = cryptpass_client(f"secrets/{secret_key}", "read")["secret"]
+#         all_secrets_dict[f"secrets/{secret_key}"] = secret_value
 #     print(all_secrets_dict)
 #     from datetime import datetime
 
