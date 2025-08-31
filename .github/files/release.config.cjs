@@ -32,7 +32,7 @@ module.exports = {
                     "sed -i 's/^export NEBULA_VERSION=.*/export NEBULA_VERSION=${nextRelease.version}/g' README.md",
                     'uv version ${nextRelease.version}',
                     'uv export --format requirements.txt --no-hashes -o requirements.txt',
-                    'uv export --format requirements.txt --no-hashes --extra dev -o requirements.txt',
+                    'uv export --format requirements.txt --no-hashes --extra dev -o requirements-dev.txt',
                     'uv run ansible-galaxy collection build',
                 ].join(' && '),
                 successCmd:
