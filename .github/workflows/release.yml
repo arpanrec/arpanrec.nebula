@@ -39,7 +39,8 @@ jobs:
 
             - name: Install python dependencies
               run: |+
-                  uv sync
+                  uv run --python 3.13 --managed-python python --version
+                  uv sync --python 3.13 --managed-python
 
             - name: Install node dependencies
               run: |+

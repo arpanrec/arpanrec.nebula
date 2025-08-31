@@ -35,7 +35,9 @@ jobs:
                   enable-cache: true
 
             - name: Install dependencies
-              run: uv sync --extra dev
+              run: |+
+                  uv run --python ${{ matrix.python-version }} --managed-python python --version
+                  uv sync --python ${{ matrix.python-version }} --managed-python --extra dev
 
             - name: Analyzing the code with pylint
-              run: uv run pylint $(git ls-files '*.py')
+              run: uv run --python ${{ matrix.python-version }} --managed-python pylint $(git ls-files '*.py')

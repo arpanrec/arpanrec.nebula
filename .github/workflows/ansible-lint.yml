@@ -38,8 +38,9 @@ jobs:
 
             - name: Install dependencies
               run: |+
-                  uv sync --extra dev
-                  uv run ansible-galaxy install -r requirements.yml
+                  uv run --python ${{ matrix.python-version }} --managed-python python --version
+                  uv sync --python ${{ matrix.python-version }} --managed-python --extra dev
+                  uv run --python ${{ matrix.python-version }} --managed-python ansible-galaxy install -r requirements.yml
 
             - name: Analyzing the code with ansible-lint
-              run: uv run ansible-lint
+              run: uv run --python ${{ matrix.python-version }} --managed-python ansible-lint

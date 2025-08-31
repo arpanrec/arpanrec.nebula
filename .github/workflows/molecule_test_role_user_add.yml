@@ -44,7 +44,9 @@ jobs:
                   key: ansible-cache-py.${{ matrix.python-version }}-${{ hashFiles('**/requirements.yml') }}
 
             - name: Install dependencies
-              run: uv sync --extra dev
+              run: |+
+                  uv run --python ${{ matrix.python-version }} --managed-python python --version
+                  uv sync --python ${{ matrix.python-version }} --managed-python --extra dev
 
             - name: Run Molecule Test
-              run: uv run molecule test -s role.user_add.docker
+              run: uv run --python ${{ matrix.python-version }} --managed-python molecule test -s role.user_add.docker
