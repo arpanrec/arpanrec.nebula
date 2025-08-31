@@ -1,6 +1,6 @@
-## [1.14.11](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.10...1.14.11) (2025-08-31)
+## [1.14.12](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.11...1.14.12) (2025-08-31)
 
 
 ### Bug Fixes
 
-* add uv lock after update ([9777f4f](https://github.com/arpanrec/arpanrec.nebula/commit/9777f4fc22850326948daee01940c59c59be193d))
+* ci lint fix ([5545bdf](https://github.com/arpanrec/arpanrec.nebula/commit/5545bdf01f6fa26020c1933727e4907668102d05))
