@@ -1,6 +1,6 @@
-## [1.14.8](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.7...1.14.8) (2025-08-24)
+## [1.14.9](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.8...1.14.9) (2025-08-31)
 
 
 ### Bug Fixes
 
-* Update java and ansible dependencies ([44f7900](https://github.com/arpanrec/arpanrec.nebula/commit/44f790030f51aff79f4d2ae920381f211917499b))
+* poetry to uv ([#48](https://github.com/arpanrec/arpanrec.nebula/issues/48)) ([d105c5b](https://github.com/arpanrec/arpanrec.nebula/commit/d105c5b0da947b17b22095b82cdc948d8f5ece8e))
