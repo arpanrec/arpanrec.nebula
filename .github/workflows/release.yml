@@ -36,6 +36,8 @@ jobs:
               with:
                   enable-cache: true
                   python-version: 3.13
+                  cache-dependency-glob: |
+                      **/uv.lock
 
             - name: Install python dependencies
               run: |+
