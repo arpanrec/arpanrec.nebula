@@ -53,4 +53,5 @@ jobs:
                   uv sync --python ${{ matrix.python-version }} --managed-python --extra dev
 
             - name: Run Molecule Test
-              run: uv run --python ${{ matrix.python-version }} --managed-python molecule test -s role.mattermost_desktop.docker
+              run: uv run --python ${{ matrix.python-version }} --managed-python molecule test \
+                  -s role.mattermost_desktop.docker

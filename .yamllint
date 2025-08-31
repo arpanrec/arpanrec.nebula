@@ -49,7 +49,7 @@ rules:
     key-ordering: disable
     line-length:
         level: error
-        max: 160
+        max: 120
     new-line-at-end-of-file:
         level: error
     new-lines:

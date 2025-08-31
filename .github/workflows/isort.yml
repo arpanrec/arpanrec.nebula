@@ -43,4 +43,5 @@ jobs:
                   uv sync --python ${{ matrix.python-version }} --managed-python --extra dev
 
             - name: Analyzing the code with isort
-              run: uv run --python ${{ matrix.python-version }} --managed-python isort --check-only $(git ls-files '*.py')
+              run: uv run --python ${{ matrix.python-version }} --managed-python isort \
+                  --check-only $(git ls-files '*.py')
