@@ -30,7 +30,7 @@ module.exports = {
                     'rm -f CHANGELOG.md',
                     "sed -i 's/^version:.*/version: ${nextRelease.version}/g' galaxy.yml",
                     "sed -i 's/^export NEBULA_VERSION=.*/export NEBULA_VERSION=${nextRelease.version}/g' README.md",
-                    'poetry version ${nextRelease.version}',
+                    'uv version ${nextRelease.version}',
                     'uv export --format requirements.txt --no-hashes -o requirements.txt',
                     'uv export --format requirements.txt --no-hashes --extra dev -o requirements.txt',
                     'uv run ansible-galaxy collection build',
