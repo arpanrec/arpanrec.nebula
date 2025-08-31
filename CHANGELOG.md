@@ -1,6 +1,6 @@
-## [1.14.5](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.4...1.14.5) (2025-06-20)
+## [1.14.9](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.8...1.14.9) (2025-08-31)
 
 
 ### Bug Fixes
 
-* Updated java versions and all the role readme docs ([5086d1c](https://github.com/arpanrec/arpanrec.nebula/commit/5086d1cfa9d41a1262e505bae0e8b5286cf21e03))
+* poetry to uv ([#48](https://github.com/arpanrec/arpanrec.nebula/issues/48)) ([d105c5b](https://github.com/arpanrec/arpanrec.nebula/commit/d105c5b0da947b17b22095b82cdc948d8f5ece8e))
