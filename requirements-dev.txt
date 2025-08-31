@@ -1,73 +1,215 @@
-ansible-compat==25.8.1 ; python_version >= "3.11" and python_version < "4.0"
-ansible-core==2.18.8 ; python_version >= "3.11" and python_version < "4.0"
-ansible-lint==25.8.2 ; python_version >= "3.11" and python_version < "4.0" and platform_system != "Windows"
-ansible==11.9.0 ; python_version >= "3.11" and python_version < "4.0"
-astroid==3.3.11 ; python_version >= "3.11" and python_version < "4.0"
-attrs==25.3.0 ; python_version >= "3.11" and python_version < "4.0"
-bandit==1.8.6 ; python_version >= "3.11" and python_version < "4.0"
-black==25.1.0 ; python_version >= "3.11" and python_version < "4.0"
-bracex==2.6 ; python_version >= "3.11" and python_version < "4.0"
-cachier==4.1.0 ; python_version >= "3.11" and python_version < "4.0"
-certifi==2025.8.3 ; python_version >= "3.11" and python_version < "4.0"
-cffi==1.17.1 ; python_version >= "3.11" and python_version < "4.0" and platform_python_implementation != "PyPy"
-charset-normalizer==3.4.3 ; python_version >= "3.11" and python_version < "4.0"
-click-help-colors==0.9.4 ; python_version >= "3.11" and python_version < "4.0"
-click==8.2.1 ; python_version >= "3.11" and python_version < "4.0"
-colorama==0.4.6 ; python_version >= "3.11" and python_version < "4.0" and (platform_system == "Windows" or sys_platform == "win32")
-cryptography==45.0.6 ; python_version >= "3.11" and python_version < "4.0"
-dill==0.4.0 ; python_version >= "3.11" and python_version < "4.0"
-docker==7.1.0 ; python_version >= "3.11" and python_version < "4.0"
-enrich==1.2.7 ; python_version >= "3.11" and python_version < "4.0"
-filelock==3.19.1 ; python_version >= "3.11" and python_version < "4.0" and platform_system != "Windows"
-greenlet==3.2.4 ; python_version >= "3.11" and python_version < "4.0" and platform_python_implementation != "PyPy"
-hvac==2.3.0 ; python_version >= "3.11" and python_version < "4.0"
-idna==3.10 ; python_version >= "3.11" and python_version < "4.0"
-importlib-metadata==8.7.0 ; python_version >= "3.11" and python_version < "4.0" and platform_system != "Windows"
-isort==6.0.1 ; python_version >= "3.11" and python_version < "4.0"
-jinja2==3.1.6 ; python_version >= "3.11" and python_version < "4.0"
-jsonschema-specifications==2025.4.1 ; python_version >= "3.11" and python_version < "4.0"
-jsonschema==4.25.1 ; python_version >= "3.11" and python_version < "4.0"
-markdown-it-py==4.0.0 ; python_version >= "3.11" and python_version < "4.0"
-markupsafe==3.0.2 ; python_version >= "3.11" and python_version < "4.0"
-mccabe==0.7.0 ; python_version >= "3.11" and python_version < "4.0"
-mdurl==0.1.2 ; python_version >= "3.11" and python_version < "4.0"
-molecule-plugins==25.8.12 ; python_version >= "3.11" and python_version < "4.0"
-molecule==25.7.0 ; python_version >= "3.11" and python_version < "4.0"
-msgpack==1.1.1 ; python_version >= "3.11" and python_version < "4.0"
-mypy-extensions==1.1.0 ; python_version >= "3.11" and python_version < "4.0"
-mypy==1.17.1 ; python_version >= "3.11" and python_version < "4.0"
-neovim==0.3.1 ; python_version >= "3.11" and python_version < "4.0"
-nodeenv==1.9.1 ; python_version >= "3.11" and python_version < "4.0"
-packaging==25.0 ; python_version >= "3.11" and python_version < "4.0"
-passlib==1.7.4 ; python_version >= "3.11" and python_version < "4.0"
-pathspec==0.12.1 ; python_version >= "3.11" and python_version < "4.0"
-pbr==7.0.1 ; python_version >= "3.11" and python_version < "4.0"
-platformdirs==4.3.8 ; python_version >= "3.11" and python_version < "4.0"
-pluggy==1.6.0 ; python_version >= "3.11" and python_version < "4.0"
-portalocker==3.2.0 ; python_version >= "3.11" and python_version < "4.0"
-pycparser==2.22 ; python_version >= "3.11" and python_version < "4.0" and platform_python_implementation != "PyPy"
-pygments==2.19.2 ; python_version >= "3.11" and python_version < "4.0"
-pylint==3.3.8 ; python_version >= "3.11" and python_version < "4.0"
-pynvim==0.5.2 ; python_version >= "3.11" and python_version < "4.0"
-pyright==1.1.404 ; python_version >= "3.11" and python_version < "4.0"
-pywin32==311 ; python_version >= "3.11" and python_version < "4.0" and (sys_platform == "win32" or platform_system == "Windows")
-pyyaml==6.0.2 ; python_version >= "3.11" and python_version < "4.0"
-referencing==0.36.2 ; python_version >= "3.11" and python_version < "4.0"
-requests==2.32.5 ; python_version >= "3.11" and python_version < "4.0"
-resolvelib==1.0.1 ; python_version >= "3.11" and python_version < "4.0"
-rich==14.1.0 ; python_version >= "3.11" and python_version < "4.0"
-rpds-py==0.27.0 ; python_version >= "3.11" and python_version < "4.0"
-ruamel-yaml-clib==0.2.12 ; python_version >= "3.11" and python_version < "3.14" and platform_python_implementation == "CPython" and platform_system != "Windows"
-ruamel-yaml==0.18.15 ; python_version >= "3.11" and python_version < "4.0" and platform_system != "Windows"
-setuptools==80.9.0 ; python_version >= "3.11" and python_version < "4.0"
-stevedore==5.4.1 ; python_version >= "3.11" and python_version < "4.0"
-subprocess-tee==0.4.2 ; python_version >= "3.11" and python_version < "4.0"
-tomlkit==0.13.3 ; python_version >= "3.11" and python_version < "4.0"
-types-pyyaml==6.0.12.20250822 ; python_version >= "3.11" and python_version < "4.0"
-types-requests==2.32.4.20250809 ; python_version >= "3.11" and python_version < "4.0"
-typing-extensions==4.14.1 ; python_version >= "3.11" and python_version < "4.0"
-urllib3==2.5.0 ; python_version >= "3.11" and python_version < "4.0"
-watchdog==6.0.0 ; python_version >= "3.11" and python_version < "4.0"
-wcmatch==10.1 ; python_version >= "3.11" and python_version < "4.0"
-yamllint==1.37.1 ; python_version >= "3.11" and python_version < "4.0"
-zipp==3.23.0 ; python_version >= "3.11" and python_version < "4.0" and platform_system != "Windows"
+# This file was autogenerated by uv via the following command:
+#    uv export --format requirements.txt --no-hashes --extra dev -o requirements-dev.txt
+ansible==11.9.0
+    # via arpanrec-nebula
+ansible-compat==25.8.1
+    # via
+    #   ansible-lint
+    #   molecule
+ansible-core==2.18.8
+    # via
+    #   ansible
+    #   ansible-compat
+    #   ansible-lint
+    #   molecule
+ansible-lint==25.8.2 ; sys_platform != 'win32'
+    # via arpanrec-nebula
+astroid==3.3.11
+    # via pylint
+attrs==25.3.0
+    # via
+    #   jsonschema
+    #   referencing
+bandit==1.8.6
+    # via arpanrec-nebula
+black==25.1.0
+    # via
+    #   ansible-lint
+    #   arpanrec-nebula
+bracex==2.6
+    # via wcmatch
+cachier==4.1.0
+    # via arpanrec-nebula
+certifi==2025.8.3
+    # via requests
+cffi==1.17.1 ; platform_python_implementation != 'PyPy'
+    # via cryptography
+charset-normalizer==3.4.3
+    # via requests
+click==8.2.1
+    # via
+    #   black
+    #   click-help-colors
+    #   molecule
+click-help-colors==0.9.4
+    # via molecule
+colorama==0.4.6 ; sys_platform == 'win32'
+    # via
+    #   bandit
+    #   click
+    #   pylint
+cryptography==45.0.6
+    # via ansible-core
+dill==0.4.0
+    # via pylint
+docker==7.1.0
+    # via arpanrec-nebula
+enrich==1.2.7
+    # via molecule
+filelock==3.19.1 ; sys_platform != 'win32'
+    # via ansible-lint
+greenlet==3.2.4 ; platform_python_implementation != 'PyPy'
+    # via pynvim
+hvac==2.3.0
+    # via arpanrec-nebula
+idna==3.10
+    # via requests
+importlib-metadata==8.7.0 ; sys_platform != 'win32'
+    # via ansible-lint
+isort==6.0.1
+    # via
+    #   arpanrec-nebula
+    #   pylint
+jinja2==3.1.6
+    # via
+    #   ansible-core
+    #   molecule
+jsonschema==4.25.1
+    # via
+    #   ansible-compat
+    #   ansible-lint
+    #   molecule
+jsonschema-specifications==2025.4.1
+    # via jsonschema
+markdown-it-py==4.0.0
+    # via rich
+markupsafe==3.0.2
+    # via jinja2
+mccabe==0.7.0
+    # via pylint
+mdurl==0.1.2
+    # via markdown-it-py
+molecule==25.7.0
+    # via
+    #   arpanrec-nebula
+    #   molecule-plugins
+molecule-plugins==25.8.12
+    # via arpanrec-nebula
+msgpack==1.1.1
+    # via pynvim
+mypy==1.17.1
+    # via arpanrec-nebula
+mypy-extensions==1.1.0
+    # via
+    #   black
+    #   mypy
+neovim==0.3.1
+    # via arpanrec-nebula
+nodeenv==1.9.1
+    # via pyright
+packaging==25.0
+    # via
+    #   ansible-compat
+    #   ansible-core
+    #   ansible-lint
+    #   arpanrec-nebula
+    #   black
+    #   molecule
+passlib==1.7.4
+    # via arpanrec-nebula
+pathspec==0.12.1
+    # via
+    #   ansible-lint
+    #   black
+    #   mypy
+    #   yamllint
+platformdirs==4.4.0
+    # via
+    #   black
+    #   pylint
+pluggy==1.6.0
+    # via molecule
+portalocker==3.2.0
+    # via cachier
+pycparser==2.22 ; platform_python_implementation != 'PyPy'
+    # via cffi
+pygments==2.19.2
+    # via rich
+pylint==3.3.8
+    # via arpanrec-nebula
+pynvim==0.5.2
+    # via neovim
+pyright==1.1.404
+    # via arpanrec-nebula
+pywin32==311 ; sys_platform == 'win32'
+    # via
+    #   docker
+    #   portalocker
+pyyaml==6.0.2
+    # via
+    #   ansible-compat
+    #   ansible-core
+    #   ansible-lint
+    #   bandit
+    #   molecule
+    #   yamllint
+referencing==0.36.2
+    # via
+    #   ansible-lint
+    #   jsonschema
+    #   jsonschema-specifications
+requests==2.32.5
+    # via
+    #   arpanrec-nebula
+    #   docker
+    #   hvac
+resolvelib==1.0.1
+    # via ansible-core
+rich==14.1.0
+    # via
+    #   bandit
+    #   enrich
+    #   molecule
+rpds-py==0.27.1
+    # via
+    #   jsonschema
+    #   referencing
+ruamel-yaml==0.18.15 ; sys_platform != 'win32'
+    # via ansible-lint
+ruamel-yaml-clib==0.2.12 ; python_full_version < '3.14' and platform_python_implementation == 'CPython' and sys_platform != 'win32'
+    # via ruamel-yaml
+stevedore==5.5.0
+    # via bandit
+subprocess-tee==0.4.2
+    # via
+    #   ansible-compat
+    #   ansible-lint
+tomlkit==0.13.3
+    # via pylint
+types-pyyaml==6.0.12.20250822
+    # via arpanrec-nebula
+types-requests==2.32.4.20250809
+    # via arpanrec-nebula
+typing-extensions==4.15.0
+    # via
+    #   mypy
+    #   pynvim
+    #   pyright
+    #   referencing
+urllib3==2.5.0
+    # via
+    #   docker
+    #   requests
+    #   types-requests
+watchdog==6.0.0
+    # via cachier
+wcmatch==10.1
+    # via
+    #   ansible-lint
+    #   molecule
+yamllint==1.37.1
+    # via
+    #   ansible-lint
+    #   arpanrec-nebula
+zipp==3.23.0 ; sys_platform != 'win32'
+    # via importlib-metadata
