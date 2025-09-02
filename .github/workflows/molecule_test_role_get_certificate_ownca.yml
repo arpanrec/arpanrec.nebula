@@ -60,7 +60,6 @@ jobs:
                   UV_PYTHON: ${{ matrix.python-version }}
 
             - name: Run Molecule Test
-              run: uv run molecule test \
-                  -s role.get_certificate_ownca.docker
+              run: uv run molecule test -s role.get_certificate_ownca.docker
               env:
                   UV_PYTHON: ${{ matrix.python-version }}
