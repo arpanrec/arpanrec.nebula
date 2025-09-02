@@ -24,6 +24,10 @@ concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
     cancel-in-progress: true
 
+env:
+    UV_FROZEN: "true"
+    UV_MANAGED_PYTHON: "true"
+
 jobs:
     molecule_test_role_go:
         timeout-minutes: 60
@@ -56,8 +60,12 @@ jobs:
 
             - name: Install dependencies
               run: |+
-                  uv run --python ${{ matrix.python-version }} --managed-python python --version
-                  uv sync --python ${{ matrix.python-version }} --managed-python --extra dev
+                  uv run python --version
+                  uv sync --extra dev
+              env:
+                  UV_PYTHON: ${{ matrix.python-version }}
 
             - name: Run Molecule Test
-              run: uv run --python ${{ matrix.python-version }} --managed-python molecule test -s role.go.docker
+              run: uv run molecule test -s role.go.docker
+              env:
+                  UV_PYTHON: ${{ matrix.python-version }}

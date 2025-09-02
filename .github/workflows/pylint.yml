@@ -15,6 +15,10 @@ concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
     cancel-in-progress: true
 
+env:
+    UV_FROZEN: "true"
+    UV_MANAGED_PYTHON: "true"
+
 jobs:
     pylint:
         timeout-minutes: 60
@@ -40,8 +44,12 @@ jobs:
 
             - name: Install dependencies
               run: |+
-                  uv run --python ${{ matrix.python-version }} --managed-python python --version
-                  uv sync --python ${{ matrix.python-version }} --managed-python --extra dev
+                  uv run python --version
+                  uv sync --extra dev
+              env:
+                  UV_PYTHON: ${{ matrix.python-version }}
 
             - name: Analyzing the code with pylint
-              run: uv run --python ${{ matrix.python-version }} --managed-python pylint $(git ls-files '*.py')
+              run: uv run pylint $(git ls-files '*.py')
+              env:
+                  UV_PYTHON: ${{ matrix.python-version }}

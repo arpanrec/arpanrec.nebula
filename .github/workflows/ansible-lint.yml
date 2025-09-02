@@ -9,6 +9,10 @@ concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
     cancel-in-progress: true
 
+env:
+    UV_FROZEN: "true"
+    UV_MANAGED_PYTHON: "true"
+
 jobs:
     ansible-lint:
         timeout-minutes: 60
@@ -42,10 +46,13 @@ jobs:
 
             - name: Install dependencies
               run: |+
-                  uv run --python ${{ matrix.python-version }} --managed-python python --version
-                  uv sync --python ${{ matrix.python-version }} --managed-python --extra dev
-                  uv run --python ${{ matrix.python-version }} --managed-python ansible-galaxy install \
-                    -r requirements.yml
+                  uv run python --version
+                  uv sync --extra dev
+                  uv run ansible-galaxy install -r requirements.yml
+              env:
+                  UV_PYTHON: ${{ matrix.python-version }}
 
             - name: Analyzing the code with ansible-lint
-              run: uv run --python ${{ matrix.python-version }} --managed-python ansible-lint
+              run: uv run ansible-lint
+              env:
+                  UV_PYTHON: ${{ matrix.python-version }}

@@ -3,6 +3,10 @@ name: Release
 "on":
     push:
 
+env:
+    UV_MANAGED_PYTHON: "true"
+    UV_PYTHON: "3.13"
+
 jobs:
     release:
         timeout-minutes: 500
@@ -42,8 +46,8 @@ jobs:
 
             - name: Install python dependencies
               run: |+
-                  uv run --python 3.13 --managed-python python --version
-                  uv sync --python 3.13 --managed-python
+                  uv run python --version
+                  uv sync --frozen
 
             - name: Install node dependencies
               run: |+
