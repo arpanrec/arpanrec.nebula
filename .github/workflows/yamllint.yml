@@ -19,6 +19,7 @@ concurrency:
 env:
     UV_FROZEN: "true"
     UV_MANAGED_PYTHON: "true"
+    UV_LOCKED: "true"
 
 jobs:
     yamllint:
