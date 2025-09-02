@@ -17,7 +17,6 @@ concurrency:
     cancel-in-progress: true
 
 env:
-    UV_FROZEN: "true"
     UV_MANAGED_PYTHON: "true"
     UV_LOCKED: "true"
 
