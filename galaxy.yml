@@ -1,10 +1,10 @@
 ---
 namespace: arpanrec
 name: nebula
-version: 1.14.10
+version: 1.14.12
 readme: README.md
 authors:
-    - "Arpan Mandal <arpan.rec@gmail.com>"
+    - "Arpan <me@arpanrec.com>"
 description: common ansible resources
 repository: https://github.com/arpanrec/arpanrec.nebula.git
 license_file: LICENSE
@@ -35,7 +35,6 @@ build_ignore:
     - "build"
     - "molecule"
     - "node_modules"
-    - "poetry.lock"
     - "uv.lock"
     - "pyproject.toml"
     - "requirements-dev.txt"

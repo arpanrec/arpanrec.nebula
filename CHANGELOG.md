@@ -1,6 +1,6 @@
-## [1.14.10](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.9...1.14.10) (2025-08-31)
+## [1.14.12](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.11...1.14.12) (2025-08-31)
 
 
 ### Bug Fixes
 
-* dev requirements python file ([cb11ad5](https://github.com/arpanrec/arpanrec.nebula/commit/cb11ad55842521b102b2936b9871caffd48510a3))
+* ci lint fix ([5545bdf](https://github.com/arpanrec/arpanrec.nebula/commit/5545bdf01f6fa26020c1933727e4907668102d05))
