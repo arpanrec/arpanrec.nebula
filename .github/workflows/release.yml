@@ -40,14 +40,14 @@ jobs:
               with:
                   version: 0.8.14
                   enable-cache: true
-                  python-version: 3.13
+                  python-version: "3.13.7"
                   cache-dependency-glob: |
                       **/uv.lock
 
             - name: Install python dependencies
               run: |+
                   uv run python --version
-                  uv sync --frozen
+                  uv sync --frozen --locked
 
             - name: Install node dependencies
               run: |+
