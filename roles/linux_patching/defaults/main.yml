@@ -41,6 +41,15 @@ linux_patching_rv_devel_packages:
     - xz-utils
     - gzip
     - bzip2
+    - autoconf
+    - automake
+    - gcc
+    - g++
+    - clang
+    - libglib2.0-dev
+    - libssl-dev
+    - libffi-dev
+    - zlib1g-dev
 
 linux_patching_rv_packages:
     - ca-certificates
