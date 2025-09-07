@@ -223,29 +223,3 @@ def cryptpass_client(  # pylint: disable=too-many-locals
     if isinstance(ssl_verify, str):
         os.remove(ssl_verify)
     return val
-
-
-# if __name__ == "__main__":
-#     all_secrets_keys = cryptpass_client("secrets", "list")["secret"]
-#     all_secrets_dict: Dict[str, Any] = {}
-#     for secret_key in all_secrets_keys:
-#         print(f"Reading secret: {secret_key}")
-#         secret_value = cryptpass_client(f"secrets/{secret_key}", "read")["secret"]
-#         all_secrets_dict[f"secrets/{secret_key}"] = secret_value
-#     print(all_secrets_dict)
-#     from datetime import datetime
-
-#     current_datetime = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-#     with open("all_secrets.json", "w", encoding="utf-8") as f:
-#         f.write(json.dumps(all_secrets_dict, indent=4))
-#     with open(f"all_secrets-{current_datetime}.json", "w", encoding="utf-8") as f:
-#         f.write(json.dumps(all_secrets_dict, indent=4))
-
-
-# if __name__ == "__main__":
-#     all_secrets = open("all_secrets.json", "r", encoding="utf-8").read()
-#     all_secrets_dict = json.loads(all_secrets)
-#     for secret_key, secret_value in all_secrets_dict.items():
-#         print(f"Writing secret: {secret_key}")
-#         cryptpass_client(f"{secret_key}", "write", secret_value)
-#     print("All secrets written")
