@@ -45,7 +45,7 @@ dev = [
     "neovim==0.3.1",
     "packaging==25.0",
     "pylint==3.3.8",
-    "pyright==1.1.404",
+    "pyright==1.1.405",
     "types-pyyaml==6.0.12.20250822",
     "types-requests==2.32.4.20250809",
     "yamllint==1.37.1",
