@@ -13,7 +13,7 @@ platforms:
     - name: debian_role_get_certificate_ownca_docker
       dockerfile: Dockerfile.j2
       hostname: debian_role_get_certificate_ownca_docker
-      image: "docker.io/library/debian:bookworm"
+      image: "docker.io/library/debian:trixie"
       pre_build_image: false
       privileged: false
 provisioner:

@@ -8,7 +8,7 @@
           java_rv_jdk_version=java_rv_jdk_version, java_rv_jdk_mvn_version=java_rv_jdk_mvn_version,
           java_rv_jdk_gradle_version=java_rv_jdk_gradle_version,
           java_rv_jdk_groovy_version=java_rv_jdk_groovy_version,
-          java_rv_jdk_kotlinc_version=java_rv_jdk_kotlinc_version) }}"
+          java_rv_jdk_kotlinc_version=java_rv_jdk_kotlinc_version) | from_json }}"
 
 - name: Oracle JDK | Get downloaded file stat
   ansible.builtin.stat:

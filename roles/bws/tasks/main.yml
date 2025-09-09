@@ -5,7 +5,7 @@
 - name: Bitwarden Secrets Manager SDK | Get Version Details
   ansible.builtin.set_fact:
       bws_sdk_version_details: "{{ lookup('arpanrec.nebula.version_db', 'bws',
-          bws_sdk_version_tag=bws_sdk_version_tag) }}"
+          bws_sdk_version_tag=bws_sdk_version_tag) | from_json }}"
 
 - name: Bitwarden Secrets Manager SDK | Get downloaded file stat
   ansible.builtin.stat:

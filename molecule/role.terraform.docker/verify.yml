@@ -11,7 +11,7 @@
       - name: Terraform | Molecule | Verify | Get Version Details
         ansible.builtin.set_fact:
             terraform_tmp_version_details: "{{ lookup('arpanrec.nebula.version_db', 'terraform',
-                terraform_rv_version=terraform_rv_version) }}"
+                terraform_rv_version=terraform_rv_version) | from_json }}"
 
       - name: Terraform | Molecule | Verify | Get terraform version from shell
         ansible.builtin.command: terraform --version

@@ -8,6 +8,7 @@ linux_patching_rv_devel_packages:
     - telnet
     - vim
     - git
+    - git-lfs
     - jq
     - zsh
     - htop
@@ -66,7 +67,6 @@ linux_patching_rv_packages:
     - procps
     - apt-utils
     - lsb-release
-    - software-properties-common
     - python3
     - openssl
 

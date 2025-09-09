@@ -2,8 +2,14 @@
 - name: Gnome | Extension | Install | Fail if extension id not present
   ansible.builtin.fail:
       msg: pv_gnome_extension_id or pv_gnome_extension_name is not present
-  when: pv_gnome_extension_id is undefined or pv_gnome_extension_id |
-      length < 1 or pv_gnome_extension_name is undefined or pv_gnome_extension_name | length < 1
+  when: >
+      pv_gnome_extension_id is undefined
+      or
+      pv_gnome_extension_id < 1
+      or
+      pv_gnome_extension_name is undefined
+      or
+      pv_gnome_extension_name | length < 1
 
 - name: Gnome | Extension | Install | Get Extension Info | {{ pv_gnome_extension_name }}
   ansible.builtin.uri:

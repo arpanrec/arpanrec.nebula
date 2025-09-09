@@ -11,7 +11,7 @@
       - name: Vault | Molecule | Verify | Get Version Details
         ansible.builtin.set_fact:
             vault_tmp_version_details: "{{ lookup('arpanrec.nebula.version_db', 'vault',
-                vault_rv_version=vault_rv_version) }}"
+                vault_rv_version=vault_rv_version) | from_json }}"
 
       - name: Vault | Molecule | Verify | Get vault version from shell
         ansible.builtin.command: vault --version
