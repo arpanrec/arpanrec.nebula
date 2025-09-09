@@ -11,7 +11,7 @@
       - name: Pulumi | Molecule | Get Release
         ansible.builtin.set_fact:
             pulumi_version_details: "{{ lookup('arpanrec.nebula.version_db', 'pulumi',
-                pulumi_rv_version=pulumi_rv_version) }}"
+                pulumi_rv_version=pulumi_rv_version) | from_json }}"
 
       - name: Pulumi | Molecule | Verify | Get pulumi version from shell
         ansible.builtin.command: pulumi version
