@@ -12,7 +12,7 @@ driver:
 platforms:
     - name: debian_role_user_add_docker
       hostname: debian_role_user_add_docker
-      image: "docker.io/library/debian:bookworm"
+      image: "docker.io/library/debian:trixie"
       pre_build_image: true
 provisioner:
     name: ansible
