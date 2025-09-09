@@ -18,6 +18,9 @@
             return_content: true
             headers:
                 Accept: "application/vnd.github.v3+json"
+                X-GitHub-Api-Version: 2022-11-28
+                Authorization: "{{ lookup('ansible.builtin.env', 'GITHUB_TOKEN', default=Undefined)
+                    | default(omit) }}"
             status_code: 200
         register: pv_ua_tmp_mm_latest_release
 
