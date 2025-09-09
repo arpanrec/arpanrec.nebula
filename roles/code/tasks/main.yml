@@ -11,7 +11,7 @@
 - name: Visual Studio Code | Get code version
   ansible.builtin.set_fact:
       code_version_details: "{{ lookup('arpanrec.nebula.version_db', 'code',
-          code_rv_version=code_rv_version) }}"
+          code_rv_version=code_rv_version) | from_json }}"
 
 - name: Visual Studio Code | Get downloaded file stat
   ansible.builtin.stat:

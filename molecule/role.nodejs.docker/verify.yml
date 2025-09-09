@@ -11,7 +11,7 @@
       - name: NodeJS | Molecule | Verify | Set nodejs version details
         ansible.builtin.set_fact:
             nodejs_version_details: "{{ lookup('arpanrec.nebula.version_db', 'nodejs',
-                nodejs_rv_version=nodejs_rv_version) }}"
+                nodejs_rv_version=nodejs_rv_version) | from_json }}"
 
       - name: NodeJS | Molecule | Verify | Get node version from shell
         ansible.builtin.command: node --version

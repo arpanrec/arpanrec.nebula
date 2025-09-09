@@ -10,7 +10,8 @@
 
       - name: Golang | Molecule | Verify | Get Latest Version
         ansible.builtin.set_fact:
-            go_tmp_version_details: "{{ lookup('arpanrec.nebula.version_db', 'go', go_rv_version=go_rv_version) }}"
+            go_tmp_version_details: "{{ lookup('arpanrec.nebula.version_db', 'go',
+                go_rv_version=go_rv_version) | from_json }}"
 
       - name: Golang | Molecule | Verify | Get go version from shell
         ansible.builtin.command: go version

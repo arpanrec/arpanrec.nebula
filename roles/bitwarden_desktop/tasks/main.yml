@@ -11,7 +11,7 @@
 - name: Bitwarden Desktop | Get Version
   ansible.builtin.set_fact:
       bitwarden_desktop_version_details: "{{ lookup('arpanrec.nebula.version_db', 'bitwarden_desktop',
-          bitwarden_desktop_rv_version=bitwarden_desktop_rv_version) }}"
+          bitwarden_desktop_rv_version=bitwarden_desktop_rv_version) | from_json }}"
 
 - name: Bitwarden Desktop | Get archive info
   ansible.builtin.stat:
