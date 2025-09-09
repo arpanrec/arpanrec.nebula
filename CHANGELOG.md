@@ -1,6 +1,6 @@
-## [1.14.15](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.14...1.14.15) (2025-09-08)
+## [1.14.16](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.15...1.14.16) (2025-09-09)
 
 
 ### Bug Fixes
 
-* added git-lfs in linux patching ([f932048](https://github.com/arpanrec/arpanrec.nebula/commit/f93204833ce25a3d80f4aada16ba2e3833c1714e))
+* ansible 12.0.0 compatibility ([bd2cd90](https://github.com/arpanrec/arpanrec.nebula/commit/bd2cd90fbe5473cb1f7d750f5a2f5db06f60b163))
