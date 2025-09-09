@@ -107,7 +107,7 @@ def file_or_string(value: str | Dict[Any, Any]) -> Dict[Any, Any]:
     raise ValueError(f"Unsupported value type: {type(value)}")
 
 
-class InventoryModule(BaseFileInventoryPlugin):
+class InventoryModule(BaseFileInventoryPlugin): # pylint: disable=too-many-ancestors
     """
     Ansible dynamic inventory plugin for Hashicorp Vault
     """
