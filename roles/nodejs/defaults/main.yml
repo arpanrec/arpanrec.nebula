@@ -5,6 +5,4 @@ nodejs_rv_version: "fetch_latest_version"
 nodejs_rv_global_packages:
     - "@bitwarden/cli"
     - "neovim"
-    - "yarn"
-    - "pnpm"
     - "semver"
