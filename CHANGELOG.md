@@ -1,6 +1,6 @@
-## [1.14.18](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.17...1.14.18) (2025-09-12)
+## [1.14.19](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.18...1.14.19) (2025-09-12)
 
 
 ### Bug Fixes
 
-* remove cryptpass unless needed ([e5f5719](https://github.com/arpanrec/arpanrec.nebula/commit/e5f57191a62424903ee112d450a51c22a5ef7a8a))
+* Remove node.js npm global pnpm and yarn ([b8ee2a9](https://github.com/arpanrec/arpanrec.nebula/commit/b8ee2a9d204fe972408b2b7f6280894b32a169a9))
