@@ -1,6 +1,6 @@
-## [1.14.16](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.15...1.14.16) (2025-09-09)
+## [1.14.18](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.17...1.14.18) (2025-09-12)
 
 
 ### Bug Fixes
 
-* ansible 12.0.0 compatibility ([bd2cd90](https://github.com/arpanrec/arpanrec.nebula/commit/bd2cd90fbe5473cb1f7d750f5a2f5db06f60b163))
+* remove cryptpass unless needed ([e5f5719](https://github.com/arpanrec/arpanrec.nebula/commit/e5f57191a62424903ee112d450a51c22a5ef7a8a))

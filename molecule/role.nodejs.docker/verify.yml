@@ -26,3 +26,17 @@
             success_msg: NodeJS Version {{ nodejs_version_details.version }} is installed
             fail_msg: "NodeJS Version {{ nodejs_version_details.version }} is not installed, \
                 Shell result {{ nodejs_rv_version_shell_result.stdout }}"
+
+      - name: "NodeJS | Molecule | Verify | Check corepack package managers (pnpm & yarn) exists in path"
+        ansible.builtin.command:
+            argv:
+                - "{{ item }}"
+                - --version
+        environment:
+            PATH: "{{ nodejs_rv_install_path }}/bin:{{ ansible_env.PATH }}"
+        register: nodejs_rv_extra_package_manager_exists
+        changed_when: false
+        loop:
+            - pnpm
+            - yarn
+        failed_when: nodejs_rv_extra_package_manager_exists.rc != 0

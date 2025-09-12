@@ -51,14 +51,27 @@
       state: directory
       mode: "0700"
 
-- name: NodeJS | New Download | Unarchive the tarball
+- name: NodeJS | Unarchive the tarball
   ansible.builtin.unarchive:
       src: "{{ nodejs_rv_tarball_download_path }}"
       dest: "{{ nodejs_rv_install_path }}"
       extra_opts: [--strip-components=1]
       remote_src: true
 
-- name: NodeJS | New Download | Install node.js package globally.
+- name: NodeJS | Enable corepack package managers pnpm & yarn
+  ansible.builtin.command:
+      argv:
+          - "{{ nodejs_rv_install_path }}/bin/corepack"
+          - enable
+          - "{{ item }}"
+      creates: "{{ nodejs_rv_install_path }}/bin/{{ item }}"
+  environment:
+      PATH: "{{ nodejs_rv_install_path }}/bin:{{ ansible_env.PATH }}"
+  loop:
+      - pnpm
+      - yarn
+
+- name: NodeJS | Install node.js package globally.
   community.general.npm:
       name: "{{ item }}"
       global: true
