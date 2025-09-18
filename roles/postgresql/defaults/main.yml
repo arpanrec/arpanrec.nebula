@@ -1,0 +1,38 @@
+---
+postgresql_auth_method: "{{ ansible_fips | ternary('scram-sha-256', 'md5') }}"
+postgresql_version: 16
+postgresql_cluster: main
+postgresql_port: 5432
+
+postgresql_conf_dir: "/etc/postgresql/{{ postgresql_version }}/{{ postgresql_cluster }}"
+postgresql_conf_file: "{{ postgresql_conf_dir }}/conf.d/010-postgresql.conf"
+postgresql_hba_file: "{{ postgresql_conf_dir }}/pg_hba.conf"
+postgresql_ident_file: "{{ postgresql_conf_dir }}/pg_ident.conf"
+
+postgresql_ssl_ca_file: "{{ postgresql_conf_dir }}/ssl-ca.pem"
+# postgresql_ssl_ca_pem_content:
+
+postgresql_ssl_cert_file: "{{ postgresql_conf_dir }}/ssl-cert.pem"
+# postgresql_ssl_cert_pem_content:
+
+postgresql_ssl_key_file: "{{ postgresql_conf_dir }}/ssl-cert.key"
+# postgresql_ssl_key_pem_content:
+
+postgresql_unix_socket_directories:
+    - "/var/run/postgresql"
+
+# postgresql_super_user_password:
+
+postgresql_unix_socket_permissions: "0750"
+postgresql_unix_socket_group: "{{ postgresql_service_group }}"
+postgresql_data_directory: "/var/lib/postgresql/{{ postgresql_version }}/{{ postgresql_cluster }}"
+postgresql_bin_directory: "/usr/lib/postgresql/{{ postgresql_version }}/bin"
+postgresql_locales:
+    - "en_US.UTF-8"
+
+postgresql_extra_hba_rules: []
+postgresql_extra_conf_options: []
+
+postgresql_users: []
+postgresql_databases: []
+postgresql_privs: []

@@ -1,0 +1,7 @@
+---
+- name: Restart postgresql handler
+  ansible.builtin.systemd_service:
+      name: "{{ postgresql_pg_ctlcluster_systemd_service_name }}"
+      enabled: true
+      state: restarted
+      daemon_reload: true
