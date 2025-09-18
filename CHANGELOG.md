@@ -1,6 +1,6 @@
-## [1.14.19](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.18...1.14.19) (2025-09-12)
+## [1.14.20](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.19...1.14.20) (2025-09-18)
 
 
 ### Bug Fixes
 
-* Remove node.js npm global pnpm and yarn ([b8ee2a9](https://github.com/arpanrec/arpanrec.nebula/commit/b8ee2a9d204fe972408b2b7f6280894b32a169a9))
+* added postgresql and gitea role ([#50](https://github.com/arpanrec/arpanrec.nebula/issues/50)) ([e136d54](https://github.com/arpanrec/arpanrec.nebula/commit/e136d54ce81888c21838e2fabe035f0c88140e09))

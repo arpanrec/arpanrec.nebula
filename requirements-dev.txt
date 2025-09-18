@@ -12,7 +12,7 @@ ansible-core==2.19.2
     #   ansible-compat
     #   ansible-lint
     #   molecule
-ansible-lint==25.8.2 ; sys_platform != 'win32'
+ansible-lint==25.9.0 ; sys_platform != 'win32'
     # via arpanrec-nebula
 astroid==3.3.11
     # via pylint
@@ -32,11 +32,13 @@ cachier==4.1.0
     # via arpanrec-nebula
 certifi==2025.8.3
     # via requests
-cffi==2.0.0 ; platform_python_implementation != 'PyPy'
-    # via cryptography
+cffi==2.0.0 ; platform_python_implementation != 'PyPy' or sys_platform != 'win32'
+    # via
+    #   ansible-lint
+    #   cryptography
 charset-normalizer==3.4.3
     # via requests
-click==8.2.1
+click==8.3.0
     # via
     #   black
     #   click-help-colors
@@ -48,12 +50,15 @@ colorama==0.4.6 ; sys_platform == 'win32'
     #   bandit
     #   click
     #   pylint
-cryptography==45.0.7
+cryptography==46.0.1
     # via
     #   ansible-core
+    #   ansible-lint
     #   arpanrec-nebula
 dill==0.4.0
     # via pylint
+distro==1.9.0 ; sys_platform != 'win32'
+    # via ansible-lint
 docker==7.1.0
     # via arpanrec-nebula
 enrich==1.2.7
@@ -91,7 +96,7 @@ mccabe==0.7.0
     # via pylint
 mdurl==0.1.2
     # via markdown-it-py
-molecule==25.7.0
+molecule==25.9.0
     # via
     #   arpanrec-nebula
     #   molecule-plugins
@@ -99,7 +104,7 @@ molecule-plugins==25.8.12
     # via arpanrec-nebula
 msgpack==1.1.1
     # via pynvim
-mypy==1.17.1
+mypy==1.18.1
     # via arpanrec-nebula
 mypy-extensions==1.1.0
     # via
@@ -133,7 +138,7 @@ pluggy==1.6.0
     # via molecule
 portalocker==3.2.0
     # via cachier
-pycparser==2.23 ; implementation_name != 'PyPy' and platform_python_implementation != 'PyPy'
+pycparser==2.23 ; (implementation_name != 'PyPy' and platform_python_implementation != 'PyPy') or (implementation_name != 'PyPy' and sys_platform != 'win32')
     # via cffi
 pygments==2.19.2
     # via rich
@@ -178,8 +183,10 @@ rpds-py==0.27.1
     #   referencing
 ruamel-yaml==0.18.15 ; sys_platform != 'win32'
     # via ansible-lint
-ruamel-yaml-clib==0.2.12 ; python_full_version < '3.14' and platform_python_implementation == 'CPython' and sys_platform != 'win32'
-    # via ruamel-yaml
+ruamel-yaml-clib==0.2.12 ; python_full_version < '3.14' and sys_platform != 'win32'
+    # via
+    #   ansible-lint
+    #   ruamel-yaml
 stevedore==5.5.0
     # via bandit
 subprocess-tee==0.4.2
@@ -188,9 +195,9 @@ subprocess-tee==0.4.2
     #   ansible-lint
 tomlkit==0.13.3
     # via pylint
-types-pyyaml==6.0.12.20250822
+types-pyyaml==6.0.12.20250915
     # via arpanrec-nebula
-types-requests==2.32.4.20250809
+types-requests==2.32.4.20250913
     # via arpanrec-nebula
 typing-extensions==4.15.0
     # via
