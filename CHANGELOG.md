@@ -1,6 +1,6 @@
-## [1.14.20](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.19...1.14.20) (2025-09-18)
+## [1.14.21](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.20...1.14.21) (2025-09-19)
 
 
 ### Bug Fixes
 
-* added postgresql and gitea role ([#50](https://github.com/arpanrec/arpanrec.nebula/issues/50)) ([e136d54](https://github.com/arpanrec/arpanrec.nebula/commit/e136d54ce81888c21838e2fabe035f0c88140e09))
+* add gitea cicd ([#51](https://github.com/arpanrec/arpanrec.nebula/issues/51)) ([f1b3846](https://github.com/arpanrec/arpanrec.nebula/commit/f1b3846bdb9fb565c5f8cf594e168704ce7c18de))

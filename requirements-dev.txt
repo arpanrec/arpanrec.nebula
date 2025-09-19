@@ -22,7 +22,7 @@ attrs==25.3.0
     #   referencing
 bandit==1.8.6
     # via arpanrec-nebula
-black==25.1.0
+black==25.9.0
     # via
     #   ansible-lint
     #   arpanrec-nebula
@@ -104,7 +104,7 @@ molecule-plugins==25.8.12
     # via arpanrec-nebula
 msgpack==1.1.1
     # via pynvim
-mypy==1.18.1
+mypy==1.18.2
     # via arpanrec-nebula
 mypy-extensions==1.1.0
     # via
@@ -148,6 +148,8 @@ pynvim==0.6.0
     # via neovim
 pyright==1.1.405
     # via arpanrec-nebula
+pytokens==0.1.10
+    # via black
 pywin32==311 ; sys_platform == 'win32'
     # via
     #   docker
