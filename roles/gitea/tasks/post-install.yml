@@ -149,7 +149,7 @@
                 - --password
                 - "{{ gitea_admin_user_password }}"
                 - --must-change-password=false
-        changed_when: true
+        changed_when: false # There is no way to know the current password.
         register: gitea_cli_res_admin_password_reset
 
       - name: Gitea | Post Install | Admin user | User password reset result.
