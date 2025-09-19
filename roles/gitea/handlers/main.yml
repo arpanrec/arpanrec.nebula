@@ -6,3 +6,6 @@
       enabled: true
       daemon_reload: true
       masked: false
+  register: gitea_systemd_restart_res
+  failed_when: gitea_rv_init_system_systemd
+      and gitea_systemd_restart_res.failed

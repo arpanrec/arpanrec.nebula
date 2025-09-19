@@ -9,11 +9,11 @@ gitea_ssh_port: 8583
 
 # gitea_http_cert_pem_content:
 # gitea_http_key_pem_content:
-gitea_protocol: "{{ gitea_http_cert_pem_content is defined
+gitea_protocol: "{{ (gitea_http_cert_pem_content is defined
     and (gitea_http_cert_pem_content | length > 1)
     and gitea_http_key_pem_content is defined
-    and (gitea_http_key_pem_content | length > 1) | ternary('https', 'http') }}"
-gitea_domain: "{{ ansible_ssh_host }}"
+    and (gitea_http_key_pem_content | length > 1)) | ternary('https', 'http') }}"
+gitea_domain: "{{ ansible_fqdn }}"
 
 # https://docs.gitea.com/administration/config-cheat-sheet
 gitea_extra_config: []

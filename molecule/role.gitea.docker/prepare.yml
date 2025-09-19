@@ -1,0 +1,12 @@
+---
+- name: Gitea | Molecule | Prepare
+  hosts: all
+  gather_facts: false
+  tasks:
+      - name: Gitea | Molecule | Prepare | Include arpanrec.linux_patching
+        become: true
+        become_method: ansible.builtin.su
+        ansible.builtin.import_role:
+            name: arpanrec.nebula.linux_patching
+        vars:
+            linux_patching_rv_install_devel_packages: false

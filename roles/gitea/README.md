@@ -14,7 +14,7 @@ This role installs a Gitea managed by systemd.
 | `gitea_version`               | `str` | `false`  | `1.24.6`                         | [Gitea version](https://github.com/go-gitea/gitea/releases)                    |
 | `gitea_http_port`             | `int` | `false`  | `8582`                           | Http port.                                                                     |
 | `gitea_ssh_port`              | `int` | `false`  | `8583`                           | SSH port.                                                                      |
-| `gitea_domain`                | `str` | `false`  | `{{ ansible_ssh_host }}`         | Gitea communication URI.                                                       |
+| `gitea_domain`                | `str` | `false`  | `{{ ansible_fqdn }}`             | Gitea communication URI.                                                       |
 | `gitea_http_cert_pem_content` | `str` | `false`  | None                             | Gitea SSL Certificate pem content.                                             |
 | `gitea_http_key_pem_content`  | `str` | `false`  | None                             | Gitea SSL Key pem content.                                                     |
 | `gitea_secret_key`            | `str` | `false`  | None                             | Global secret key (Generated automatically if not provided).                   |

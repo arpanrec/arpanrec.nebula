@@ -1,0 +1,60 @@
+---
+dependency:
+    name: galaxy
+    enabled: true
+    options:
+        ignore-certs: false
+        ignore-errors: false
+        role-file: requirements.yml
+        requirements-file: requirements.yml
+driver:
+    name: docker
+platforms:
+    - name: debian_role_gitea_docker
+      hostname: debian_role_gitea_docker
+      image: docker.io/library/debian:trixie # geerlingguy/docker-debian13-ansible:latest #
+      pre_build_image: true
+      volumes:
+          - "/sys/fs/cgroup:/sys/fs/cgroup:rw"
+      privileged: true
+      provider_raw_config_args:
+          - "--sysctl"
+provisioner:
+    name: ansible
+    playbooks:
+        converge: converge.yml
+        prepare: prepare.yml
+    vvv: false
+    env:
+        ANSIBLE_VERBOSITY: 1
+    inventory:
+        group_vars:
+            all:
+                ansible_python_interpreter: /usr/bin/python3
+                linux_patching_rv_install_devel_packages: false
+                gitea_admin_user_username: sajhkasfhskafh
+                gitea_admin_user_password: "web-{{ lookup('ansible.builtin.password', '/dev/null',
+                    chars=['ascii_lowercase', 'digits'], length=8) }}"
+                gitea_admin_user_email: x@x.x
+scenario:
+    name: role.gitea.docker
+    converge_sequence:
+        - converge
+    destroy_sequence:
+        - destroy
+    create_sequence:
+        - dependency
+        - create
+        - prepare
+    test_sequence:
+        - syntax
+        - destroy
+        - dependency
+        - create
+        - converge
+        - idempotence
+        - destroy
+verifier:
+    name: ansible
+log: true
+role_name_check: 0

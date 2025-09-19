@@ -36,12 +36,12 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "bandit==1.8.6",
-    "black==25.1.0",
+    "black==25.9.0",
     "docker==7.1.0",
     "isort==6.0.1",
     "molecule==25.9.0",
     "molecule-plugins==25.8.12",
-    "mypy==1.18.1",
+    "mypy==1.18.2",
     "neovim==0.3.1",
     "packaging==25.0",
     "pylint==3.3.8",
