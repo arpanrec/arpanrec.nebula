@@ -2,7 +2,7 @@
 gitea_cluster_name: main
 gitea_service_group: "gitea-{{ gitea_cluster_name }}"
 gitea_service_user: "{{ gitea_service_group }}"
-gitea_version: "1.24.6"
+gitea_rv_version: "fetch_latest_version"
 
 gitea_http_port: 8582
 gitea_ssh_port: 8583

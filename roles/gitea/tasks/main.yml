@@ -1,4 +1,12 @@
 ---
+- name: Gitea | Gather root facts.
+  ansible.builtin.setup:
+
+- name: Gitea | Get Release
+  ansible.builtin.set_fact:
+      gitea_version_details: "{{ lookup('arpanrec.nebula.version_db', 'gitea',
+          gitea_rv_version=gitea_rv_version) | from_json }}"
+
 - name: Gitea | Prerequisite | Get system 1 PID Details
   ansible.builtin.command: ps -p 1
   register: gitea_rv_tmp_one_pid_shell_result
@@ -8,9 +16,6 @@
   ansible.builtin.set_fact:
       gitea_rv_init_system_systemd: "{{ gitea_rv_tmp_one_pid_shell_result.stdout_lines[1] \
           | split(' ') | last == 'systemd' }}"
-
-- name: Gitea | Gather root facts.
-  ansible.builtin.setup:
 
 - name: Gitea | Install dependencies
   ansible.builtin.apt:
@@ -72,8 +77,7 @@
 
 - name: Gitea | Download binary
   ansible.builtin.get_url:
-      url: "https://dl.gitea.com/gitea/{{ gitea_version }}\
-          /gitea-{{ gitea_version }}-linux-{{ gitea_print_architecture.stdout }}"
+      url: "{{ gitea_version_details.download_link }}"
       mode: "0755"
       owner: root
       group: root

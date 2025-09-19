@@ -1,7 +1,7 @@
 ---
 gitea_systemd_service_name: gitea-{{ gitea_cluster_name }}.service
 
-gitea_executable: /usr/local/bin/gitea-{{ gitea_version }}
+gitea_executable: /usr/local/bin/gitea-{{ gitea_version_details.version }}
 
 gitea_working_directory: /var/lib/gitea/{{ gitea_cluster_name }}
 gitea_service_user_home_directory: "{{ gitea_working_directory }}"
