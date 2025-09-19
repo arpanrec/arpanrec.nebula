@@ -22,20 +22,29 @@ Environment=USER={{ gitea_service_user }}
 Environment=HOME={{ gitea_service_user_home_directory }}
 Environment=PATH={{ gitea_service_user_home_directory }}/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-{% if gitea_config_db_postgresql %}
 
-{% if 'pg_ssl_root_cert_pem_content' in gitea_config_db_postgresql and gitea_config_db_postgresql['pg_ssl_root_cert_pem_content'] | length > 1 %}
+{% if gitea_config_db_postgresql is defined
+    and gitea_config_db_postgresql is not none
+    and gitea_config_db_postgresql | length > 1
+    and 'pg_ssl_root_cert_pem_content' in gitea_config_db_postgresql
+    and gitea_config_db_postgresql['pg_ssl_root_cert_pem_content'] | length > 1 %}
 Environment=PGSSLROOTCERT={{ gitea_config_db_pg_ssl_root_cert_file }}
 {% endif %}
 
-{% if 'pg_ssl_client_cert_pem_content' in gitea_config_db_postgresql and gitea_config_db_postgresql['pg_ssl_client_cert_pem_content'] | length > 1 %}
+{%  if gitea_config_db_postgresql is defined
+    and gitea_config_db_postgresql is not none
+    and gitea_config_db_postgresql | length > 1
+    and 'pg_ssl_client_cert_pem_content' in gitea_config_db_postgresql
+    and gitea_config_db_postgresql['pg_ssl_client_cert_pem_content'] | length > 1 %}
 Environment=PGSSLCERT={{ gitea_config_db_pg_ssl_cert_file }}
 {% endif %}
 
-{% if 'pg_ssl_client_key_pem_content' in gitea_config_db_postgresql and gitea_config_db_postgresql['pg_ssl_client_key_pem_content'] | length > 1 %}
+{%  if gitea_config_db_postgresql is defined
+    and gitea_config_db_postgresql is not none
+    and gitea_config_db_postgresql | length > 1
+    and 'pg_ssl_client_key_pem_content' in gitea_config_db_postgresql
+    and gitea_config_db_postgresql['pg_ssl_client_key_pem_content'] | length > 1 %}
 Environment=PGSSLKEY={{ gitea_config_db_pg_ssl_key_file }}
-{% endif %}
-
 {% endif %}
 
 CapabilityBoundingSet=CAP_NET_BIND_SERVICE

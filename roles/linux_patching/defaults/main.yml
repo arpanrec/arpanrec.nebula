@@ -69,6 +69,7 @@ linux_patching_rv_packages:
     - lsb-release
     - python3
     - openssl
+    - util-linux-extra
 
 linux_patching_rv_extra_packages: []
 
