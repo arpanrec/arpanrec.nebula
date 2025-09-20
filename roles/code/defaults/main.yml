@@ -56,3 +56,4 @@ code_rv_ext_to_be_installed:
     - "visualstudioexptteam.vscodeintellicode-completions"
     - "wholroyd.jinja"
     - "yzhang.markdown-all-in-one"
+    - "pomdtr.excalidraw-editor"
