@@ -25,7 +25,7 @@
 
       - name: Gitleaks | Molecule | Verify | Fail if gitleaks version is not present
         ansible.builtin.assert:
-            that: "gitleaks_version_details.version[1:] == gitleaks_rv_version_shell_result.stdout_lines[0] \
+            that: "gitleaks_version_details.version == gitleaks_rv_version_shell_result.stdout_lines[0] \
                 | split | last"
             success_msg: Gitleaks Version {{ gitleaks_version_details.version }} is installed
             fail_msg: Gitleaks Version {{ gitleaks_version_details.version }} is not installed,

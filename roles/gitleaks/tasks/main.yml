@@ -53,9 +53,8 @@
   ansible.builtin.unarchive:
       src: "{{ gitleaks_rv_tarball_download_path }}"
       dest: "{{ gitleaks_rv_tmp_unarchive_dir }}"
-      extra_opts:
-          - "--strip-components=1"
       remote_src: true
+      mode: "0750"
 
 - name: Gitleaks | Copy bin to dest
   ansible.builtin.copy:
