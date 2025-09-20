@@ -58,7 +58,8 @@ class Gitleaks(AppDetails):
         # pylint: disable=attribute-defined-outside-init
         self._download_link = (
             f"https://github.com/gitleaks/gitleaks/releases/download/v{_github_release_tag}"
-            f"/gitleaks_{_github_release_tag}_linux_{self._get_ansible_architecture(self.__gitleaks_architecture_map)}.tar.gz"
+            f"/gitleaks_{_github_release_tag}_linux_"
+            f"{self._get_ansible_architecture(self.__gitleaks_architecture_map)}.tar.gz"
         )
 
         self._version = _github_release_tag
