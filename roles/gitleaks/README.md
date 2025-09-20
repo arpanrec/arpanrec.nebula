@@ -1,29 +1,29 @@
-# Ansible Role: Hadolint (arpanrec.nebula.hadolint)
+# Ansible Role: Gitleaks (arpanrec.nebula.gitleaks)
 
-## Hadolint
+## Gitleaks
 
-This role installs Hadolint. A smarter Dockerfile linter that helps you build best practice Docker images. The linter
-parses the Dockerfile into an AST and performs rules on top of the AST. It stands on the shoulders of ShellCheck to lint
-the Bash code inside RUN instructions.
+Gitleaks is a tool for **detecting** secrets like passwords, API keys, and tokens in git repos, files, and whatever else
+you wanna throw at it via `stdin`. If you wanna learn more about how the detection engine works check out this
+blog: [Regex is (almost) all you need](https://lookingatcomputer.substack.com/p/regex-is-almost-all-you-need).
 
 ## Variable
 
-| Variable                            | Type  | Required | Default                                      | Example   | Description                                                                                                                                            |
-|-------------------------------------|-------|----------|----------------------------------------------|-----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `hadolint_rv_executable_bin_path`          | `str` | `false`  | `{{ ansible_facts.user_dir }}/.local/bin`    | -         | Install path for hadolint.                                                                                                                             |
-| `hadolint_rv_version`               | `str` | `false`  | `fetch_latest_version`                       | `v2.13.1` | Release version. If set to `fetch_latest_version`, it will fetch latest release from [Github releases](https://github.com/hadolint/hadolint/releases). |
-| `hadolint_rv_tmp_install_cache_dir` | `str` | `false`  | `{{ ansible_facts.user_dir }}/.tmp/hadolint` | -         | Cache install directory.                                                                                                                               |
+| Variable                          | Type  | Required | Default                                      | Example  | Description                                                                                                                                            |
+|-----------------------------------|-------|----------|----------------------------------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `gitleaks_rv_executable_bin_path` | `str` | `false`  | `{{ ansible_facts.user_dir }}/.local/bin`    | -        | Install path for gitleaks.                                                                                                                             |
+| `gitleaks_rv_version`             | `str` | `false`  | `fetch_latest_version`                       | `8.28.0` | Release version. If set to `fetch_latest_version`, it will fetch latest release from [Github releases](https://github.com/gitleaks/gitleaks/releases). |
+| `gitleaks_rv_tmp_download_dir`    | `str` | `false`  | `{{ ansible_facts.user_dir }}/.tmp/gitleaks` | -        | Cache install directory.                                                                                                                               |
 
-### Example Playbook Hadolint
+### Example Playbook Gitleaks
 
 ```yaml
-- name: Include Hadolint
+- name: Include Gitleaks
   ansible.builtin.import_role:
-      name: arpanrec.nebula.hadolint
+      name: arpanrec.nebula.gitleaks
 ```
 
-### Testing Hadolint
+### Testing Gitleaks
 
 ```bash
-molecule test -s role.hadolint.default
+molecule test -s role.gitleaks.default
 ```
