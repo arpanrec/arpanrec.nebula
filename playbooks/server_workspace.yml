@@ -164,3 +164,23 @@
             apply:
                 tags:
                     - bws
+
+      - name: USERAPPS | Bitwarden Hadolint
+        ansible.builtin.include_role:
+            name: arpanrec.nebula.hadolint
+        tags:
+            - hadolint
+        args:
+            apply:
+                tags:
+                    - hadolint
+
+      - name: USERAPPS | Bitwarden gitleaks
+        ansible.builtin.include_role:
+            name: arpanrec.nebula.gitleaks
+        tags:
+            - gitleaks
+        args:
+            apply:
+                tags:
+                    - gitleaks
