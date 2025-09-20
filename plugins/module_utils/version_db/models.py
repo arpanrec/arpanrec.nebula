@@ -72,6 +72,8 @@ class SupportedApps(enum.Enum):
     NODEJS = "nodejs"
     PULUMI = "pulumi"
     GITEA = "gitea"
+    HADOLINT = "hadolint"
+    GITLEAKS = "gitleaks"
 
 
 class VersionDetails(Dict[str, Any]):

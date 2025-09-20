@@ -33,7 +33,7 @@ from .models import AppDetails, SupportedApps, VersionDetails
 display = Display()
 
 
-def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: ignore
+def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: ignore # pylint: disable=R0914
     """
     Get the version details for the specified app.
     """
@@ -89,6 +89,16 @@ def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: igno
             from .gitea import Gitea  # pylint: disable=import-outside-toplevel
 
             app_details = Gitea(*args, **kwargs)  # type: ignore
+
+        case SupportedApps.HADOLINT.value:
+            from .hadolint import Hadolint  # pylint: disable=import-outside-toplevel
+
+            app_details = Hadolint(*args, **kwargs)  # type: ignore
+
+        case SupportedApps.GITLEAKS.value:
+            from .gitleaks import Gitleaks  # pylint: disable=import-outside-toplevel
+
+            app_details = Gitleaks(*args, **kwargs)  # type: ignore
 
         case _:
             raise ValueError(f"Unsupported app: {app_name}")
