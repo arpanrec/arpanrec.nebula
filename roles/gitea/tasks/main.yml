@@ -1,0 +1,347 @@
+---
+- name: Gitea | Gather root facts.
+  ansible.builtin.setup:
+
+- name: Gitea | Get Release
+  ansible.builtin.set_fact:
+      gitea_version_details: "{{ lookup('arpanrec.nebula.version_db', 'gitea',
+          gitea_rv_version=gitea_rv_version) | from_json }}"
+
+- name: Gitea | Prerequisite | Get system 1 PID Details
+  ansible.builtin.command: ps -p 1
+  register: gitea_rv_tmp_one_pid_shell_result
+  changed_when: false
+
+- name: Gitea | Prerequisite | Assume system is not in systemd
+  ansible.builtin.set_fact:
+      gitea_rv_init_system_systemd: "{{ gitea_rv_tmp_one_pid_shell_result.stdout_lines[1] \
+          | split(' ') | last == 'systemd' }}"
+
+- name: Gitea | Install dependencies
+  ansible.builtin.apt:
+      name:
+          - git
+          - git-lfs
+          - python3-requests
+
+- name: Gitea | Add git group
+  ansible.builtin.group:
+      name: "{{ gitea_service_group }}"
+      state: present
+      system: true
+  notify:
+      - Gitea | Restart systemd service
+
+- name: Gitea | Add git user
+  ansible.builtin.user:
+      name: "{{ gitea_service_user }}"
+      group: "{{ gitea_service_group }}"
+      shell: /bin/bash
+      home: "{{ gitea_service_user_home_directory }}"
+      system: true
+  notify:
+      - Gitea | Restart systemd service
+
+- name: Gitea | Create directories
+  ansible.builtin.file:
+      path: "{{ item }}"
+      owner: "{{ gitea_service_user }}"
+      group: "{{ gitea_service_group }}"
+      mode: "0755"
+      state: directory
+  loop:
+      - "{{ gitea_app_ini_file | dirname }}"
+      - "{{ gitea_secret_key_file | dirname }}"
+      - "{{ gitea_internal_token_file | dirname }}"
+      - "{{ gitea_oauth2_jwt_secret_file | dirname }}"
+      - "{{ gitea_lfs_jwt_secret_file | dirname }}"
+      - "{{ gitea_working_directory }}"
+      - "{{ gitea_app_data_directory }}"
+      - "{{ gitea_repository_root_directory }}"
+      - "{{ gitea_lfs_directory }}"
+      - "{{ gitea_git_home_directory }}"
+      - "{{ gitea_custom_directory }}"
+      - "{{ gitea_sqlite3_db_file | dirname }}"
+      - "{{ gitea_service_user_home_directory }}/.local/bin"
+      - "{{ gitea_service_user_home_directory }}/.config/systemd/user"
+  notify:
+      - Gitea | Restart systemd service
+
+- name: Gitea | Get architecture
+  ansible.builtin.command:
+      argv:
+          - dpkg
+          - --print-architecture
+  register: gitea_print_architecture
+  changed_when: false
+
+- name: Gitea | Download binary
+  ansible.builtin.get_url:
+      url: "{{ gitea_version_details.download_link }}"
+      mode: "0755"
+      owner: root
+      group: root
+      dest: "{{ gitea_executable }}"
+  notify:
+      - Gitea | Restart systemd service
+
+- name: Gitea | Create systemd service
+  ansible.builtin.template:
+      src: service.j2
+      dest: /etc/systemd/system/{{ gitea_systemd_service_name }}
+      owner: root
+      group: root
+      mode: "0644"
+      backup: false
+  notify:
+      - Gitea | Restart systemd service
+
+- name: Gitea | Secrets
+  ansible.builtin.import_tasks:
+      file: secrets.yml
+
+- name: Gitea | Gitea ini config
+  community.general.ini_file:
+      path: "{{ gitea_app_ini_file }}"
+      owner: "{{ gitea_service_user }}"
+      group: "{{ gitea_service_group }}"
+      mode: "0640"
+      create: true
+      backup: false
+      no_extra_spaces: false
+      section: "{{ item.section | default(omit) }}"
+      option: "{{ item.option }}"
+      value: "{{ item.value }}"
+  loop:
+      - { section: DEFAULT, option: APP_NAME, value: "Gitea Easyiac" }
+      - { section: DEFAULT, option: RUN_USER, value: "{{ gitea_service_user }}" }
+      - { section: DEFAULT, option: RUN_MODE, value: "prod" }
+      - { section: DEFAULT, option: WORK_PATH, value: "{{ gitea_working_directory }}" }
+
+      - { section: server, option: PROTOCOL, value: "{{ gitea_protocol }}" }
+      - { section: server, option: APP_DATA_PATH, value: "{{ gitea_app_data_directory }}" }
+      - { section: server, option: DOMAIN, value: "{{ gitea_domain }}" }
+      - { section: server, option: HTTP_PORT, value: "{{ gitea_http_port }}" }
+      - { section: server, option: SSH_DOMAIN, value: "{{ gitea_domain }}" }
+      - { section: server, option: ENABLE_ACME, value: "false" }
+      - { section: server, option: DISABLE_SSH, value: "false" }
+      - { section: server, option: SSH_PORT, value: "{{ gitea_ssh_port }}" }
+      - { section: server, option: SSH_LISTEN_PORT, value: "{{ gitea_ssh_port }}" }
+      - { section: server, option: START_SSH_SERVER, value: "true" }
+      - { section: server, option: OFFLINE_MODE, value: "true" }
+      - section: server
+        option: ROOT_URL
+        value: "{{ gitea_protocol }}://{{ gitea_domain }}:{{ gitea_http_port }}"
+      - { section: server, option: LFS_START_SERVER, value: "true" }
+      - { section: server, option: LFS_JWT_SECRET_URI, value: "file:{{ gitea_lfs_jwt_secret_file }}" }
+      - { section: server, option: SSH_AUTHORIZED_KEYS_BACKUP, value: "true" }
+      - { section: server, option: SSH_AUTHORIZED_PRINCIPALS_BACKUP, value: "true" }
+
+      - { section: lfs, option: PATH, value: "{{ gitea_lfs_directory }}" }
+
+      - { section: security, option: INSTALL_LOCK, value: "true" }
+      - { section: security, option: SECRET_KEY_URI, value: "file:{{ gitea_secret_key_file }}" }
+      - { section: security, option: INTERNAL_TOKEN_URI, value: "file:{{ gitea_internal_token_file }}" }
+      - { section: security, option: DISABLE_GIT_HOOKS, value: "false" }
+
+      - { section: oauth2, option: ENABLED, value: "true" }
+      - { section: oauth2, option: JWT_SECRET_URI, value: "file:{{ gitea_oauth2_jwt_secret_file }}" }
+
+      - { section: service, option: ENABLE_NOTIFY_MAIL, value: "true" }
+      - { section: service, option: DISABLE_REGISTRATION, value: "true" }
+      - { section: service, option: REQUIRE_SIGNIN_VIEW, value: "false" }
+      - { section: service, option: ENABLE_BASIC_AUTHENTICATION, value: "false" }
+      - { section: service, option: ENABLE_PASSWORD_SIGNIN_FORM, value: "true" }
+      - { section: service, option: ENABLE_CAPTCHA, value: "false" }
+      - { section: service, option: REQUIRE_EXTERNAL_REGISTRATION_CAPTCHA, value: "false" }
+      - { section: service, option: REGISTER_EMAIL_CONFIRM, value: "true" }
+
+      - { section: openid, option: ENABLE_OPENID_SIGNIN, value: "false" }
+
+      - { section: actions, option: ENABLED, value: "true" }
+      - { section: actions, option: DEFAULT_ACTIONS_URL, value: self }
+      - { section: actions, option: STORAGE_TYPE, value: local }
+      - { section: actions, option: ARTIFACT_RETENTION_DAYS, value: 7 }
+      - { section: actions, option: ZOMBIE_TASK_TIMEOUT, value: 10m }
+      - { section: actions, option: ENDLESS_TASK_TIMEOUT, value: 1h }
+      - { section: actions, option: ABANDONED_JOB_TIMEOUT, value: 1h }
+
+      - { section: log, option: MODE, value: "console,file" }
+      - { section: log, option: LEVEL, value: Warn }
+      - { section: log, option: ENABLE_SSH_LOG, value: "true" }
+      - { section: log, option: logger.access.MODE, value: "console,file" }
+
+      - { section: cron, option: ENABLED, value: "true" }
+      - { section: cron, option: RUN_AT_START, value: "true" }
+      - { section: cron, option: SCHEDULE, value: "@midnight" }
+
+      - { section: cron.update_checker, option: ENABLED, value: "true" }
+
+      - { section: cron.cleanup_actions, option: ENABLED, value: "true" }
+      - { section: cron.cleanup_actions, option: RUN_AT_START, value: "true" }
+      - { section: cron.cleanup_actions, option: SCHEDULE, value: "@midnight" }
+
+      - { section: cron.delete_old_actions, option: ENABLED, value: "true" }
+      - { section: cron.delete_old_actions, option: RUN_AT_START, value: "true" }
+      - { section: cron.delete_old_actions, option: SCHEDULE, value: "@midnight" }
+      - { section: cron.delete_old_actions, option: NOTICE_ON_SUCCESS, value: "true" }
+      - { section: cron.delete_old_actions, option: OLDER_THAN, value: 24h }
+
+      - { section: cron.deleted_branches_cleanup, option: ENABLED, value: "true" }
+      - { section: cron.deleted_branches_cleanup, option: RUN_AT_START, value: "true" }
+      - { section: cron.deleted_branches_cleanup, option: SCHEDULE, value: "@midnight" }
+      - { section: cron.deleted_branches_cleanup, option: NOTICE_ON_SUCCESS, value: "true" }
+      - { section: cron.deleted_branches_cleanup, option: OLDER_THAN, value: 24h }
+
+      - { section: repository.signing, option: SIGNING_KEY, value: default }
+      - { section: repository.signing, option: SIGNING_NAME, value: gitea }
+      - { section: repository.signing, option: SIGNING_EMAIL, value: "{{ gitea_service_user }}@{{ gitea_domain }}" }
+      - { section: repository.signing, option: INITIAL_COMMIT, value: always }
+      - { section: repository.signing, option: CRUD_ACTIONS, value: "pubkey, twofa, parentsigned" }
+      - { section: repository.signing, option: WIKI, value: never }
+      - { section: repository.signing, option: MERGES, value: "pubkey, twofa, basesigned, commitssigned" }
+
+      - section: repository
+        option: DEFAULT_REPO_UNITS
+        value: "repo.code,repo.releases,repo.issues,repo.pulls,repo.wiki,repo.projects,repo.packages"
+      - { section: repository, option: ROOT, value: "{{ gitea_repository_root_directory }}" }
+
+      - { section: git, option: HOME_PATH, value: "{{ gitea_git_home_directory }}" }
+  notify:
+      - Gitea | Restart systemd service
+
+- name: Gitea | Postgresql
+  when: gitea_config_db_postgresql is defined
+      and gitea_config_db_postgresql is not none
+      and gitea_config_db_postgresql | length > 1
+  ansible.builtin.import_tasks:
+      file: db-postgresql.yml
+
+- name: Gitea | sqlite3 DB Config
+  when: gitea_config_db_postgresql is not defined
+      or gitea_config_db_postgresql is none
+      or gitea_config_db_postgresql | length == 0
+  community.general.ini_file:
+      path: "{{ gitea_app_ini_file }}"
+      owner: "{{ gitea_service_user }}"
+      group: "{{ gitea_service_group }}"
+      mode: "0640"
+      create: false
+      backup: false
+      no_extra_spaces: false
+      section: "{{ item.section | default(omit) }}"
+      option: "{{ item.option }}"
+      value: "{{ item.value }}"
+  loop:
+      - { section: database, option: DB_TYPE, value: sqlite3 }
+      - { section: database, option: PATH, value: "{{ gitea_sqlite3_db_file }}" }
+  notify:
+      - Gitea | Restart systemd service
+
+- name: Gitea | SSL | Create directories
+  when: gitea_protocol == 'https'
+  block:
+      - name: Gitea | SSL | Create directories
+        ansible.builtin.file:
+            path: "{{ item }}"
+            owner: "{{ gitea_service_user }}"
+            group: "{{ gitea_service_group }}"
+            mode: "0755"
+            state: directory
+        loop:
+            - "{{ gitea_http_key_pem_file | dirname }}"
+            - "{{ gitea_http_cert_pem_file | dirname }}"
+        notify:
+            - Gitea | Restart systemd service
+
+      - name: Gitea | SSL | Write Certificates.
+        ansible.builtin.copy:
+            dest: "{{ item.dest }}"
+            content: "{{ item.content }}"
+            owner: "{{ gitea_service_user }}"
+            group: "{{ gitea_service_group }}"
+            mode: "{{ item.mode }}"
+        loop:
+            - dest: "{{ gitea_http_key_pem_file }}"
+              content: "{{ gitea_http_key_pem_content }}"
+              mode: "0640"
+            - dest: "{{ gitea_http_cert_pem_file }}"
+              content: "{{ gitea_http_cert_pem_content }}"
+              mode: "0644"
+        notify:
+            - Gitea | Restart systemd service
+
+      - name: Gitea | SSL | Git ea ini file
+        community.general.ini_file:
+            path: "{{ gitea_app_ini_file }}"
+            owner: "{{ gitea_service_user }}"
+            group: "{{ gitea_service_group }}"
+            mode: "0640"
+            create: false # It should be created by the previous task.
+            backup: false
+            no_extra_spaces: false
+            section: "{{ item.section | default(omit) }}"
+            option: "{{ item.option }}"
+            value: "{{ item.value }}"
+        loop:
+            - { section: server, option: CERT_FILE, value: "{{ gitea_http_cert_pem_file }}" }
+            - { section: server, option: KEY_FILE, value: "{{ gitea_http_key_pem_file }}" }
+        notify:
+            - Gitea | Restart systemd service
+
+- name: Gitea | Gitea extra configs
+  community.general.ini_file:
+      path: "{{ gitea_app_ini_file }}"
+      owner: "{{ gitea_service_user }}"
+      group: "{{ gitea_service_group }}"
+      mode: "0640"
+      create: false # It should be created by the previous task.
+      backup: false
+      no_extra_spaces: false
+      section: "{{ item.section | default(omit) }}"
+      option: "{{ item.option }}"
+      value: "{{ item.value }}"
+  loop: "{{ gitea_extra_config }}"
+  notify:
+      - Gitea | Restart systemd service
+
+- name: Gitea | Flush handlers.
+  ansible.builtin.meta: flush_handlers
+
+- name: Gitea | Enable systemd service
+  ansible.builtin.systemd_service:
+      name: "{{ gitea_systemd_service_name }}"
+      state: started
+      enabled: true
+      daemon_reload: true
+      masked: false
+  register: gitea_systemd_enable_res
+  failed_when: gitea_rv_init_system_systemd
+      and gitea_systemd_enable_res.failed
+
+- name: Gitea | Gather the package facts.
+  ansible.builtin.package_facts:
+      manager: auto
+
+- name: Gitea | Allow ufw port.
+  when: "'ufw' in ansible_facts.packages and ansible_facts.packages['ufw'] | length > 0"
+  community.general.ufw:
+      state: enabled
+      port: "{{ item }}"
+      comment: Gitea managed by ansible easyiac init stack.
+      proto: tcp
+      rule: allow
+      to: 0.0.0.0/0
+  loop:
+      - "{{ gitea_ssh_port }}"
+      - "{{ gitea_http_port }}"
+
+- name: Gitea | Post Install
+  ansible.builtin.import_tasks:
+      file: post-install.yml
+  environment:
+      PGSSLROOTCERT: "{{ gitea_config_db_pg_ssl_root_cert_file }}"
+      PGSSLCERT: "{{ gitea_config_db_pg_ssl_cert_file }}"
+      PGSSLKEY: "{{ gitea_config_db_pg_ssl_key_file }}"
+      GITEA_CUSTOM: "{{ gitea_custom_directory }}"
+      GITEA_WORK_DIR: "{{ gitea_working_directory }}"

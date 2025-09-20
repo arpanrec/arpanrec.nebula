@@ -26,6 +26,10 @@ This collection provides a set of roles to deploy and manage various services.
 - [utils](/roles/utils/README.md)
 - [Vault by HashiCorp](/roles/vault/README.md)
 - [Pulumi](/roles/pulumi/README.md)
+- [Gitea](/roles/gitea/README.md)
+- [Postgresql](/roles/postgresql/README.md)
+- [Hadolint](/roles/hadolint/README.md)
+- [gitleaks](/roles/gitleaks/README.md)
 
 ## Playbooks
 

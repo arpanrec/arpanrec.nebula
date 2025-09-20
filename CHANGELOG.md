@@ -1,6 +1,6 @@
-## [1.14.18](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.17...1.14.18) (2025-09-12)
+## [1.14.24](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.23...1.14.24) (2025-09-20)
 
 
 ### Bug Fixes
 
-* remove cryptpass unless needed ([e5f5719](https://github.com/arpanrec/arpanrec.nebula/commit/e5f57191a62424903ee112d450a51c22a5ef7a8a))
+* Added hadolint and gitleaks ([#52](https://github.com/arpanrec/arpanrec.nebula/issues/52)) ([ee81993](https://github.com/arpanrec/arpanrec.nebula/commit/ee8199353eea8875e1f67988638bd0a09b2e584c))

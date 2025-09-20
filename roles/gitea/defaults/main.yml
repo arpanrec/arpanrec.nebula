@@ -1,0 +1,31 @@
+---
+gitea_cluster_name: main
+gitea_service_group: "gitea-{{ gitea_cluster_name }}"
+gitea_service_user: "{{ gitea_service_group }}"
+gitea_rv_version: "fetch_latest_version"
+
+gitea_http_port: 8582
+gitea_ssh_port: 8583
+
+# gitea_http_cert_pem_content:
+# gitea_http_key_pem_content:
+gitea_protocol: "{{ (gitea_http_cert_pem_content is defined
+    and (gitea_http_cert_pem_content | length > 1)
+    and gitea_http_key_pem_content is defined
+    and (gitea_http_key_pem_content | length > 1)) | ternary('https', 'http') }}"
+gitea_domain: "{{ ansible_fqdn }}"
+
+# https://docs.gitea.com/administration/config-cheat-sheet
+gitea_extra_config: []
+#    - section: # app.ini file section, Check https://docs.gitea.com/administration/config-cheat-sheet.
+#      option: # app.ini file option, Check https://docs.gitea.com/administration/config-cheat-sheet.
+#      value: # app.ini file option value, Check https://docs.gitea.com/administration/config-cheat-sheet.
+
+# gitea_secret_key:
+# gitea_internal_token:
+# gitea_oauth2_jwt_secret:
+# gitea_lfs_jwt_secret:
+
+# gitea_admin_user_password
+# gitea_admin_user_username
+# gitea_admin_user_email

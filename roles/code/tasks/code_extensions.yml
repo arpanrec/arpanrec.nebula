@@ -4,6 +4,9 @@
   register: pv_ua_code_tmp_ext_installed_list_shell
   environment: "{{ code_rv_tmp_bin_env }}"
   changed_when: false
+  retries: 5
+  delay: 3
+  until: pv_ua_code_tmp_ext_installed_list_shell.rc == 0
 
 - name: Visual Studio Code | Extension | Install | {{ item }}
   ansible.builtin.command: "code --install-extension {{ item }}"
@@ -11,3 +14,6 @@
   when: item | lower not in pv_ua_code_tmp_ext_installed_list_shell | lower
   environment: "{{ code_rv_tmp_bin_env }}"
   changed_when: '"successfully installed" in pv_ua_code_tmp_ext_install_result.stdout'
+  retries: 5
+  delay: 3
+  until: pv_ua_code_tmp_ext_install_result.rc == 0

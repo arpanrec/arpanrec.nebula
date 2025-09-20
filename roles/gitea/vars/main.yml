@@ -1,0 +1,33 @@
+---
+gitea_systemd_service_name: gitea-{{ gitea_cluster_name }}.service
+
+gitea_executable: /usr/local/bin/gitea-{{ gitea_version_details.version }}
+
+gitea_working_directory: /var/lib/gitea/{{ gitea_cluster_name }}
+gitea_service_user_home_directory: "{{ gitea_working_directory }}"
+
+# yamllint disable-line rule:line-length
+# SSL Certs file should be exactly as it is, https://docs.gitea.com/installation/database-prep#postgresql-tls. (This doesn't work). These needs to be set via env variable PGSSLROOTCERT, PGSSLCERT, PGSSLKEY. https://github.com/go-gitea/gitea/issues/32635
+gitea_config_db_pg_ssl_root_cert_file: "{{ gitea_service_user_home_directory }}/.postgresql/root.crt"
+gitea_config_db_pg_ssl_cert_file: "{{ gitea_service_user_home_directory }}/.postgresql/postgresql.crt"
+gitea_config_db_pg_ssl_key_file: "{{ gitea_service_user_home_directory }}/.postgresql/postgresql.key"
+
+# defaults to AppWorkPath/custom
+gitea_custom_directory: "{{ gitea_working_directory }}/custom"
+# yamllint disable-line rule:line-length
+# For CustomConf https://docs.gitea.com/administration/config-cheat-sheet#use-environment-variables-to-setup-gitea, Don't change this path, so that we don't have to ever inject this file anywhere, it's default.
+gitea_app_ini_file: "{{ gitea_custom_directory }}/conf/app.ini"
+
+gitea_http_key_pem_file: "{{ gitea_custom_directory }}/ssl_cert.pem"
+gitea_http_cert_pem_file: "{{ gitea_custom_directory }}/ssl_key.pem"
+
+gitea_secret_key_file: "{{ gitea_custom_directory }}/gitea_secret_key"
+gitea_internal_token_file: "{{ gitea_custom_directory }}/gitea_internal_token"
+gitea_oauth2_jwt_secret_file: "{{ gitea_custom_directory }}/gitea_oauth2_jwt_secret"
+gitea_lfs_jwt_secret_file: "{{ gitea_custom_directory }}/gitea_lfs_jwt_secret"
+
+gitea_app_data_directory: "{{ gitea_working_directory }}/data"
+gitea_lfs_directory: "{{ gitea_app_data_directory }}/lfs"
+gitea_repository_root_directory: "{{ gitea_app_data_directory }}/gitea-repositories"
+gitea_git_home_directory: "{{ gitea_app_data_directory }}/home"
+gitea_sqlite3_db_file: "{{ gitea_app_data_directory }}/sqlite3.db"
