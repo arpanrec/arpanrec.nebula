@@ -1,6 +1,6 @@
-## [1.14.21](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.20...1.14.21) (2025-09-19)
+## [1.14.22](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.21...1.14.22) (2025-09-20)
 
 
 ### Bug Fixes
 
-* add gitea cicd ([#51](https://github.com/arpanrec/arpanrec.nebula/issues/51)) ([f1b3846](https://github.com/arpanrec/arpanrec.nebula/commit/f1b3846bdb9fb565c5f8cf594e168704ce7c18de))
+* retry for getting code extensions ([3fc0b39](https://github.com/arpanrec/arpanrec.nebula/commit/3fc0b392f754d3b0d8e55d8ff10a4632821593d1))
