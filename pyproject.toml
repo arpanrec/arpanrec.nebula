@@ -18,7 +18,7 @@ line-length = 120
 
 [project]
 name = "arpanrec-nebula"
-version = "1.14.23"
+version = "1.14.24"
 description = "common ansible resources"
 authors = [ { name = "arpan", email = "me@arpanrec.com" } ]
 license = "GLWTS"
