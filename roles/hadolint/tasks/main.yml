@@ -1,0 +1,51 @@
+---
+- name: Hadolint | Prerequisites
+  ansible.builtin.import_tasks: prerequisites.yml
+
+- name: Hadolint | Create install directory
+  ansible.builtin.file:
+      path: "{{ hadolint_rv_install_path }}"
+      state: directory
+      mode: "0700"
+
+- name: Hadolint | Get Release
+  ansible.builtin.set_fact:
+      hadolint_version_details: "{{ lookup('arpanrec.nebula.version_db', 'hadolint',
+          hadolint_rv_version=hadolint_rv_version) | from_json }}"
+
+- name: Hadolint | Get downloaded file stat
+  ansible.builtin.stat:
+      path: "{{ hadolint_rv_tarball_download_path }}"
+  register: hadolint_rv_tmp_downloaded_file_stat
+
+- name: Hadolint | New Download
+  when: not hadolint_rv_tmp_downloaded_file_stat.stat.exists
+  block:
+      - name: Hadolint | New Download | Create download directory
+        ansible.builtin.file:
+            path: "{{ hadolint_rv_tmp_install_cache_dir }}"
+            state: directory
+            mode: "0700"
+
+      - name: "Hadolint | New Download | Download tarball version: {{ hadolint_version_details.version }}"
+        ansible.builtin.get_url:
+            url: "{{ hadolint_version_details.download_link }}"
+            checksum: "{{ hadolint_version_details.checksum | default(omit) }}"
+            dest: "{{ hadolint_rv_tarball_download_path }}"
+            mode: "0700"
+  rescue:
+      - name: Hadolint | New Download | Fail | Cleanup
+        ansible.builtin.file:
+            path: "{{ hadolint_rv_tarball_download_path }}"
+            state: absent
+
+      - name: Hadolint | New Download | Fail | Fail
+        ansible.builtin.fail:
+            msg: Something went wrong, check the errors above
+
+- name: Hadolint | New Download | Copy to dest
+  ansible.builtin.copy:
+      src: "{{ hadolint_rv_tarball_download_path }}"
+      dest: "{{ hadolint_rv_install_path }}/hadolint"
+      mode: "0755"
+      remote_src: true

@@ -1,0 +1,4 @@
+---
+hadolint_rv_install_path: "{{ ansible_facts.user_dir }}/.local/bin"
+hadolint_rv_tmp_install_cache_dir: "{{ ansible_facts.user_dir }}/.tmp/hadolint"
+hadolint_rv_version: "fetch_latest_version"
