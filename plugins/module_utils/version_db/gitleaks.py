@@ -1,19 +1,19 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 """
-This module provides the hadolint class, which extends the AppDetails class to fetch
-hadolint releases.
+This module provides the gitleaks class, which extends the AppDetails class to fetch
+gitleaks releases.
 
 Classes:
-    Hadolint: A class to fetch and manage hadolint application details.
+    Gitleaks: A class to fetch and manage gitleaks application details.
 
-hadolint class:
+gitleaks class:
     Attributes:
-        __github_repo (str): The GitHub repository for hadolint.
-        __hadolint_architecture_map (dict): A mapping of architecture names to hadolint architecture names.
+        __github_repo (str): The GitHub repository for gitleaks.
+        __gitleaks_architecture_map (dict): A mapping of architecture names to gitleaks architecture names.
 
     Methods:
-        fetch_details(): Fetches the hadolint version details from GitHub or uses the provided version tag.
+        fetch_details(): Fetches the gitleaks version details from GitHub or uses the provided version tag.
 
 """
 
@@ -27,23 +27,23 @@ from .models import AppDetails  # type: ignore
 display = Display()
 
 
-class Hadolint(AppDetails):
+class Gitleaks(AppDetails):
     """
-    hadolint app details.
+    gitleaks app details.
     """
 
-    __github_repo: str = "hadolint/hadolint"
+    __github_repo: str = "gitleaks/gitleaks"
 
-    __hadolint_architecture_map: dict[str, str] = {
-        "amd64": "x86_64",
-        "x86_64": "x86_64",
+    __gitleaks_architecture_map: dict[str, str] = {
+        "amd64": "x64",
+        "x86_64": "x64",
         "aarch64": "arm64",
     }
 
     def fetch_details(self) -> None:
-        _github_release_tag = self._kwargs.get("hadolint_rv_version", None)
+        _github_release_tag = self._kwargs.get("gitleaks_rv_version", None)
         if not _github_release_tag or _github_release_tag == self._FETCH_LATEST_KEY:
-            display.vvv("AppDetails hadolint: Fetching hadolint version details from GitHub.")
+            display.vvv("AppDetails gitleaks: Fetching gitleaks version details from GitHub.")
             # pylint: disable=R0801
             _github_release_tag = github_release_tag_search(
                 github_release_tag_search_repo=self.__github_repo,
@@ -52,13 +52,13 @@ class Hadolint(AppDetails):
                 github_release_tag_search_contains=self._kwargs.get("github_release_tag_search_contains"),
                 github_release_tag_search_max_pages=int(self._kwargs.get("github_release_tag_search_max_pages", 100)),
                 github_release_tag_search_timeout=self._kwargs.get("github_release_tag_search_timeout", 10),
-            )
+            )[1:]
         else:
-            display.vvv(f"AppDetails hadolint: Using provided hadolint version tag: {_github_release_tag}")
+            display.vvv(f"AppDetails gitleaks: Using provided gitleaks version tag: {_github_release_tag}")
         # pylint: disable=attribute-defined-outside-init
         self._download_link = (
-            f"https://github.com/hadolint/hadolint/releases/download/{_github_release_tag}"
-            f"/hadolint-linux-{self._get_ansible_architecture(self.__hadolint_architecture_map)}"
+            f"https://github.com/gitleaks/gitleaks/releases/download/v{_github_release_tag}"
+            f"/gitleaks_{_github_release_tag}_linux_{self._get_ansible_architecture(self.__gitleaks_architecture_map)}.tar.gz"
         )
 
         self._version = _github_release_tag

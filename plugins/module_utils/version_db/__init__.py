@@ -95,6 +95,11 @@ def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: igno
 
             app_details = Hadolint(*args, **kwargs)  # type: ignore
 
+        case SupportedApps.GITLEAKS.value:
+            from .gitleaks import Gitleaks  # pylint: disable=import-outside-toplevel
+
+            app_details = Gitleaks(*args, **kwargs)  # type: ignore
+
         case _:
             raise ValueError(f"Unsupported app: {app_name}")
 

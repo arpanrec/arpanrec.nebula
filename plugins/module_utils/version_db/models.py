@@ -73,6 +73,7 @@ class SupportedApps(enum.Enum):
     PULUMI = "pulumi"
     GITEA = "gitea"
     HADOLINT = "hadolint"
+    GITLEAKS = "gitleaks"
 
 
 class VersionDetails(Dict[str, Any]):

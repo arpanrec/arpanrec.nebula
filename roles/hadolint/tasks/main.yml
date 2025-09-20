@@ -4,7 +4,7 @@
 
 - name: Hadolint | Create install directory
   ansible.builtin.file:
-      path: "{{ hadolint_rv_install_path }}"
+      path: "{{ hadolint_rv_executable_bin_path | dirname }}"
       state: directory
       mode: "0700"
 
@@ -15,7 +15,7 @@
 
 - name: Hadolint | Get downloaded file stat
   ansible.builtin.stat:
-      path: "{{ hadolint_rv_tarball_download_path }}"
+      path: "{{ hadolint_rv_tmp_executable_download_path }}"
   register: hadolint_rv_tmp_downloaded_file_stat
 
 - name: Hadolint | New Download
@@ -23,7 +23,7 @@
   block:
       - name: Hadolint | New Download | Create download directory
         ansible.builtin.file:
-            path: "{{ hadolint_rv_tmp_install_cache_dir }}"
+            path: "{{ hadolint_rv_tmp_executable_download_path | dirname }}"
             state: directory
             mode: "0700"
 
@@ -31,12 +31,12 @@
         ansible.builtin.get_url:
             url: "{{ hadolint_version_details.download_link }}"
             checksum: "{{ hadolint_version_details.checksum | default(omit) }}"
-            dest: "{{ hadolint_rv_tarball_download_path }}"
+            dest: "{{ hadolint_rv_tmp_executable_download_path }}"
             mode: "0700"
   rescue:
       - name: Hadolint | New Download | Fail | Cleanup
         ansible.builtin.file:
-            path: "{{ hadolint_rv_tarball_download_path }}"
+            path: "{{ hadolint_rv_tmp_executable_download_path }}"
             state: absent
 
       - name: Hadolint | New Download | Fail | Fail
@@ -45,7 +45,7 @@
 
 - name: Hadolint | New Download | Copy to dest
   ansible.builtin.copy:
-      src: "{{ hadolint_rv_tarball_download_path }}"
-      dest: "{{ hadolint_rv_install_path }}/hadolint"
+      src: "{{ hadolint_rv_tmp_executable_download_path }}"
+      dest: "{{ hadolint_rv_executable_bin_path }}"
       mode: "0755"
       remote_src: true
