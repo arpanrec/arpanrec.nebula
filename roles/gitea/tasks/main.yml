@@ -75,15 +75,52 @@
   register: gitea_print_architecture
   changed_when: false
 
+- name: Gitea | Write gpg key
+  ansible.builtin.copy:
+      dest: "{{ gitea_service_user_home_directory }}/teabot-gpg.asc"
+      content: "{{ gitea_teabot_gpg_key }}"
+      owner: "{{ gitea_service_user }}"
+      group: "{{ gitea_service_group }}"
+      mode: "0644"
+
+- name: Gitea | Import gpg key
+  ansible.builtin.command:
+      argv:
+          - gpg
+          - --import
+          - "{{ gitea_service_user_home_directory }}/teabot-gpg.asc"
+  register: gitea_import_gpg_key_res
+  changed_when: "'imported' in gitea_import_gpg_key_res.stdout"
+
+- name: Gitea | Download gpg signature
+  ansible.builtin.get_url:
+      url: "{{ gitea_version_details.download_link }}.asc"
+      mode: "0755"
+      owner: "{{ gitea_service_user }}"
+      group: "{{ gitea_service_group }}"
+      dest: "{{ gitea_service_user_home_directory }}/gitea-{{ gitea_version_details.version }}.asc"
+
 - name: Gitea | Download binary
   ansible.builtin.get_url:
       url: "{{ gitea_version_details.download_link }}"
+      checksum: "{{ gitea_version_details.checksum | default(omit) }}"
       mode: "0755"
       owner: root
       group: root
       dest: "{{ gitea_executable }}"
   notify:
       - Gitea | Restart systemd service
+
+- name: Gitea | Verify gpg signature
+  ansible.builtin.command:
+      argv:
+          - gpg
+          - --verify
+          - "{{ gitea_service_user_home_directory }}/gitea-{{ gitea_version_details.version }}.asc"
+          - "{{ gitea_executable }}"
+  register: gitea_verify_gpg_signature_res
+  failed_when: gitea_verify_gpg_signature_res.rc != 0
+  changed_when: false
 
 - name: Gitea | Create systemd service
   ansible.builtin.template:
