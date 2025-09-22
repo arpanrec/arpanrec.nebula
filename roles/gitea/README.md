@@ -54,6 +54,16 @@ gitea_extra_config:
       value: ""
 ```
 
+## Backup
+
+```yaml
+gitea_working_directory: "/var/lib/gitea/{{ gitea_cluster_name }}"
+gitea_service_user_home_directory: "{{ gitea_working_directory }}"
+```
+
+For backup just backup the `gitea_working_directory` if nothing else is configured.
+
+
 ### Example Playbook gitea
 
 ```yaml
