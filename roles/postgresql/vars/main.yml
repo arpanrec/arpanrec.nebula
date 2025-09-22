@@ -200,3 +200,34 @@ postgresql_conf_options:
       value: "'en_US.UTF-8'"
     - option: default_text_search_config
       value: "'pg_catalog.english'"
+
+    - option: log_destination
+      value: "'stderr'"
+    - option: logging_collector
+      value: "on"
+    - option: log_directory
+      value: "'log'"
+    - option: log_filename
+      value: "'postgresql-%Y-%m-%d_%H%M%S.log'"
+    - option: log_file_mode
+      value: "0600"
+    - option: log_rotation_age
+      value: 1d
+    - option: log_rotation_size
+      value: 10MB
+    - option: log_truncate_on_rotation
+      value: "off"
+    - option: log_statement
+      value: "'ddl'"
+    - option: log_min_duration_statement
+      value: -1
+    - option: log_checkpoints
+      value: "off"
+    - option: log_connections
+      value: "off"
+    - option: log_disconnections
+      value: "off"
+    - option: log_lock_waits
+      value: "off"
+    - option: log_duration
+      value: "off"
