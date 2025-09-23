@@ -31,8 +31,6 @@ This role installs a Minio managed by systemd.
       name: arpanrec.nebula.minio
 ```
 
-Just write the admin token to file.
-
 ```yaml
 - name: Just install minio client.
   ansible.builtin.import_role:

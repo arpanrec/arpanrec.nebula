@@ -11,7 +11,7 @@
   ansible.builtin.get_url:
       url: "{{ minio_client_version_details.download_link }}.asc"
       mode: "0755"
-      dest: "/tmp/minio-{{ minio_version_details.version }}.asc"
+      dest: "/tmp/minio-client-{{ minio_client_version_details.version }}.asc"
 
 - name: Minio | Client | Download binary.
   ansible.builtin.get_url:
@@ -27,7 +27,7 @@
       argv:
           - gpg
           - --verify
-          - "/tmp/minio-{{ minio_version_details.version }}.asc"
+          - "/tmp/minio-client-{{ minio_client_version_details.version }}.asc"
           - "{{ minio_client_executable }}"
   register: minio_client_verify_gpg_signature_res
   failed_when: minio_client_verify_gpg_signature_res.rc != 0
