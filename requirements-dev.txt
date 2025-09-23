@@ -185,7 +185,7 @@ rpds-py==0.27.1
     #   referencing
 ruamel-yaml==0.18.15 ; sys_platform != 'win32'
     # via ansible-lint
-ruamel-yaml-clib==0.2.12 ; python_full_version < '3.14' and sys_platform != 'win32'
+ruamel-yaml-clib==0.2.14 ; python_full_version < '3.14' and sys_platform != 'win32'
     # via
     #   ansible-lint
     #   ruamel-yaml
