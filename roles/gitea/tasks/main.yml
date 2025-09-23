@@ -1,21 +1,12 @@
 ---
-- name: Gitea | Gather root facts.
-  ansible.builtin.setup:
+- name: Gitea | Prerequisites.
+  ansible.builtin.import_tasks:
+      file: prerequisites.yml
 
 - name: Gitea | Get Release.
   ansible.builtin.set_fact:
       gitea_version_details: "{{ lookup('arpanrec.nebula.version_db', 'gitea',
           gitea_rv_version=gitea_rv_version) | from_json }}"
-
-- name: Gitea | Prerequisite | Get system 1 PID Details.
-  ansible.builtin.command: ps -p 1
-  register: gitea_rv_tmp_one_pid_shell_result
-  changed_when: false
-
-- name: Gitea | Prerequisite | Assume system is not in systemd.
-  ansible.builtin.set_fact:
-      gitea_rv_init_system_systemd: "{{ gitea_rv_tmp_one_pid_shell_result.stdout_lines[1] \
-          | split(' ') | last == 'systemd' }}"
 
 - name: Gitea | Install dependencies.
   ansible.builtin.apt:
@@ -68,31 +59,6 @@
       - "{{ gitea_service_user_home_directory }}/.config/systemd/user"
   notify:
       - Gitea | Restart systemd service
-
-- name: Gitea | Get architecture.
-  ansible.builtin.command:
-      argv:
-          - dpkg
-          - --print-architecture
-  register: gitea_print_architecture
-  changed_when: false
-
-- name: Gitea | Write gpg key.
-  ansible.builtin.copy:
-      dest: "{{ gitea_service_user_home_directory }}/teabot-gpg.asc"
-      content: "{{ gitea_teabot_gpg_key }}"
-      owner: "{{ gitea_service_user }}"
-      group: "{{ gitea_service_group }}"
-      mode: "0644"
-
-- name: Gitea | Import gpg key.
-  ansible.builtin.command:
-      argv:
-          - gpg
-          - --import
-          - "{{ gitea_service_user_home_directory }}/teabot-gpg.asc"
-  register: gitea_import_gpg_key_res
-  changed_when: "'imported' in gitea_import_gpg_key_res.stdout"
 
 - name: Gitea | Download gpg signature.
   ansible.builtin.get_url:
@@ -273,7 +239,7 @@
   community.general.ufw:
       state: enabled
       port: "{{ item }}"
-      comment: Gitea managed by ansible easyiac init stack.
+      comment: Gitea managed by ansible.
       proto: tcp
       rule: allow
       to: 0.0.0.0/0

@@ -100,6 +100,16 @@ def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: igno
 
             app_details = Gitleaks(*args, **kwargs)  # type: ignore
 
+        case SupportedApps.MINIO.value:
+            from .minio import Minio  # pylint: disable=import-outside-toplevel
+
+            app_details = Minio(*args, **kwargs)  # type: ignore
+
+        case SupportedApps.MINIO_CLIENT.value:
+            from .minio_client import MinioClient  # pylint: disable=import-outside-toplevel
+
+            app_details = MinioClient(*args, **kwargs)  # type: ignore
+
         case _:
             raise ValueError(f"Unsupported app: {app_name}")
 

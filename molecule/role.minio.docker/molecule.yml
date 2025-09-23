@@ -10,8 +10,8 @@ dependency:
 driver:
     name: docker
 platforms:
-    - name: debian_role_gitea_docker
-      hostname: debian_role_gitea_docker
+    - name: debian_role_minio_docker
+      hostname: debian_role_minio_docker
       image: docker.io/library/debian:trixie # geerlingguy/docker-debian13-ansible:latest #
       pre_build_image: true
       volumes:
@@ -33,12 +33,9 @@ provisioner:
             all:
                 ansible_python_interpreter: /usr/bin/python3
                 linux_patching_rv_install_devel_packages: false
-                gitea_admin_user_username: sajhkasfhskafh
-                gitea_admin_user_password: "web-{{ lookup('ansible.builtin.password', '/dev/null',
-                    chars=['ascii_lowercase', 'digits'], length=8) }}"
-                gitea_admin_user_email: x@x.x
+                minio_root_password: Test12345
 scenario:
-    name: role.gitea.docker
+    name: role.minio.docker
     converge_sequence:
         - converge
     destroy_sequence:
