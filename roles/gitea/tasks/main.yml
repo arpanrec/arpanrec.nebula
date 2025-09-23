@@ -2,29 +2,29 @@
 - name: Gitea | Gather root facts.
   ansible.builtin.setup:
 
-- name: Gitea | Get Release
+- name: Gitea | Get Release.
   ansible.builtin.set_fact:
       gitea_version_details: "{{ lookup('arpanrec.nebula.version_db', 'gitea',
           gitea_rv_version=gitea_rv_version) | from_json }}"
 
-- name: Gitea | Prerequisite | Get system 1 PID Details
+- name: Gitea | Prerequisite | Get system 1 PID Details.
   ansible.builtin.command: ps -p 1
   register: gitea_rv_tmp_one_pid_shell_result
   changed_when: false
 
-- name: Gitea | Prerequisite | Assume system is not in systemd
+- name: Gitea | Prerequisite | Assume system is not in systemd.
   ansible.builtin.set_fact:
       gitea_rv_init_system_systemd: "{{ gitea_rv_tmp_one_pid_shell_result.stdout_lines[1] \
           | split(' ') | last == 'systemd' }}"
 
-- name: Gitea | Install dependencies
+- name: Gitea | Install dependencies.
   ansible.builtin.apt:
       name:
           - git
           - git-lfs
           - python3-requests
 
-- name: Gitea | Add git group
+- name: Gitea | Add git group.
   ansible.builtin.group:
       name: "{{ gitea_service_group }}"
       state: present
@@ -32,7 +32,7 @@
   notify:
       - Gitea | Restart systemd service
 
-- name: Gitea | Add git user
+- name: Gitea | Add git user.
   ansible.builtin.user:
       name: "{{ gitea_service_user }}"
       group: "{{ gitea_service_group }}"
@@ -42,7 +42,7 @@
   notify:
       - Gitea | Restart systemd service
 
-- name: Gitea | Create directories
+- name: Gitea | Create directories.
   ansible.builtin.file:
       path: "{{ item }}"
       owner: "{{ gitea_service_user }}"
@@ -67,7 +67,7 @@
   notify:
       - Gitea | Restart systemd service
 
-- name: Gitea | Get architecture
+- name: Gitea | Get architecture.
   ansible.builtin.command:
       argv:
           - dpkg
@@ -75,7 +75,7 @@
   register: gitea_print_architecture
   changed_when: false
 
-- name: Gitea | Write gpg key
+- name: Gitea | Write gpg key.
   ansible.builtin.copy:
       dest: "{{ gitea_service_user_home_directory }}/teabot-gpg.asc"
       content: "{{ gitea_teabot_gpg_key }}"
@@ -83,7 +83,7 @@
       group: "{{ gitea_service_group }}"
       mode: "0644"
 
-- name: Gitea | Import gpg key
+- name: Gitea | Import gpg key.
   ansible.builtin.command:
       argv:
           - gpg
@@ -92,7 +92,7 @@
   register: gitea_import_gpg_key_res
   changed_when: "'imported' in gitea_import_gpg_key_res.stdout"
 
-- name: Gitea | Download gpg signature
+- name: Gitea | Download gpg signature.
   ansible.builtin.get_url:
       url: "{{ gitea_version_details.download_link }}.asc"
       mode: "0755"
@@ -100,7 +100,7 @@
       group: "{{ gitea_service_group }}"
       dest: "{{ gitea_service_user_home_directory }}/gitea-{{ gitea_version_details.version }}.asc"
 
-- name: Gitea | Download binary
+- name: Gitea | Download binary.
   ansible.builtin.get_url:
       url: "{{ gitea_version_details.download_link }}"
       checksum: "{{ gitea_version_details.checksum | default(omit) }}"
@@ -111,7 +111,7 @@
   notify:
       - Gitea | Restart systemd service
 
-- name: Gitea | Verify gpg signature
+- name: Gitea | Verify gpg signature.
   ansible.builtin.command:
       argv:
           - gpg
@@ -122,7 +122,7 @@
   failed_when: gitea_verify_gpg_signature_res.rc != 0
   changed_when: false
 
-- name: Gitea | Create systemd service
+- name: Gitea | Create systemd service.
   ansible.builtin.template:
       src: service.j2
       dest: /etc/systemd/system/{{ gitea_systemd_service_name }}
@@ -133,11 +133,11 @@
   notify:
       - Gitea | Restart systemd service
 
-- name: Gitea | Secrets
+- name: Gitea | Secrets.
   ansible.builtin.import_tasks:
       file: secrets.yml
 
-- name: Gitea | Gitea ini config
+- name: Gitea | Gitea ini config.
   community.general.ini_file:
       path: "{{ gitea_app_ini_file }}"
       owner: "{{ gitea_service_user }}"
@@ -247,14 +247,14 @@
   notify:
       - Gitea | Restart systemd service
 
-- name: Gitea | Postgresql
+- name: Gitea | Postgresql.
   when: gitea_config_db_postgresql is defined
       and gitea_config_db_postgresql is not none
       and gitea_config_db_postgresql | length > 1
   ansible.builtin.import_tasks:
       file: db-postgresql.yml
 
-- name: Gitea | sqlite3 DB Config
+- name: Gitea | sqlite3 DB Config.
   when: gitea_config_db_postgresql is not defined
       or gitea_config_db_postgresql is none
       or gitea_config_db_postgresql | length == 0
@@ -275,7 +275,7 @@
   notify:
       - Gitea | Restart systemd service
 
-- name: Gitea | SSL | Create directories
+- name: Gitea | SSL | Create directories.
   when: gitea_protocol == 'https'
   block:
       - name: Gitea | SSL | Create directories
@@ -308,7 +308,7 @@
         notify:
             - Gitea | Restart systemd service
 
-      - name: Gitea | SSL | Git ea ini file
+      - name: Gitea | SSL | Git ea ini file.
         community.general.ini_file:
             path: "{{ gitea_app_ini_file }}"
             owner: "{{ gitea_service_user }}"
@@ -326,7 +326,7 @@
         notify:
             - Gitea | Restart systemd service
 
-- name: Gitea | Gitea extra configs
+- name: Gitea | Gitea extra configs.
   community.general.ini_file:
       path: "{{ gitea_app_ini_file }}"
       owner: "{{ gitea_service_user }}"
@@ -345,7 +345,7 @@
 - name: Gitea | Flush handlers.
   ansible.builtin.meta: flush_handlers
 
-- name: Gitea | Enable systemd service
+- name: Gitea | Enable systemd service.
   ansible.builtin.systemd_service:
       name: "{{ gitea_systemd_service_name }}"
       state: started
@@ -373,7 +373,7 @@
       - "{{ gitea_ssh_port }}"
       - "{{ gitea_http_port }}"
 
-- name: Gitea | Post Install
+- name: Gitea | Post Install.
   ansible.builtin.import_tasks:
       file: post-install.yml
   environment:
@@ -382,3 +382,20 @@
       PGSSLKEY: "{{ gitea_config_db_pg_ssl_key_file }}"
       GITEA_CUSTOM: "{{ gitea_custom_directory }}"
       GITEA_WORK_DIR: "{{ gitea_working_directory }}"
+
+- name: Gitea | Global runner token.
+  when: gitea_global_runner_registration_token_file_path is defined
+      and gitea_global_runner_registration_token_file_path is not none
+      and gitea_global_runner_registration_token_file_path | length > 1
+  ansible.builtin.import_tasks:
+      file: global-runner-token.yml
+
+- name: Gitea | Admin token.
+  when: gitea_admin_token_file_path is defined
+      and gitea_admin_token_file_path is not none
+      and gitea_admin_token_file_path | length > 1
+      and gitea_admin_user_username is defined
+      and gitea_admin_user_username is not none
+      and gitea_admin_user_username | length > 1
+  ansible.builtin.import_tasks:
+      file: admin-token.yml

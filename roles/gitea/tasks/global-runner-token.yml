@@ -1,0 +1,57 @@
+---
+- name: Gitea | Global runner token | Fail | gitea_global_runner_registration_token_file_path
+  ansible.builtin.fail:
+      msg: "Variable `gitea_global_runner_registration_token_file_path` is required to create admin token."
+  when: gitea_global_runner_registration_token_file_path is not defined
+      or gitea_global_runner_registration_token_file_path is none
+      or gitea_global_runner_registration_token_file_path | length == 0
+
+- name: Gitea | Global runner token | Get Release.
+  ansible.builtin.set_fact:
+      gitea_version_details: "{{ lookup('arpanrec.nebula.version_db', 'gitea',
+          gitea_rv_version=gitea_rv_version) | from_json }}"
+  when: gitea_version_details is not defined or gitea_version_details is none
+      or gitea_version_details | length == 0
+
+- name: Gitea | Global runner token | Get token.
+  become: true
+  become_user: "{{ gitea_service_user }}"
+  ansible.builtin.command:
+      argv:
+          - "{{ gitea_executable }}"
+          - --config
+          - "{{ gitea_app_ini_file }}"
+          - --custom-path
+          - "{{ gitea_custom_directory }}"
+          - --work-path
+          - "{{ gitea_working_directory }}"
+          - actions
+          - generate-runner-token
+  changed_when: false
+  register: gitea_cli_res_generate_runner_token
+  environment:
+      PGSSLROOTCERT: "{{ gitea_config_db_pg_ssl_root_cert_file }}"
+      PGSSLCERT: "{{ gitea_config_db_pg_ssl_cert_file }}"
+      PGSSLKEY: "{{ gitea_config_db_pg_ssl_key_file }}"
+      GITEA_CUSTOM: "{{ gitea_custom_directory }}"
+      GITEA_WORK_DIR: "{{ gitea_working_directory }}"
+
+- name: Gitea | Global runner token | Create directory.
+  ansible.builtin.file:
+      path: "{{ gitea_global_runner_registration_token_file_path | dirname }}"
+      owner: "root"
+      group: "root"
+      mode: "0700"
+      state: directory
+
+- name: Gitea | Global runner token | Write token to file.
+  ansible.builtin.copy:
+      dest: "{{ gitea_global_runner_registration_token_file_path }}"
+      owner: "root"
+      group: "root"
+      mode: "0600"
+      content: "{{ gitea_cli_res_generate_runner_token.stdout }}"
+
+- name: Gitea | Global runner token | Reset fact.
+  ansible.builtin.set_fact:
+      gitea_global_runner_registration_token_file_path: ""

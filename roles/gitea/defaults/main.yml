@@ -29,3 +29,6 @@ gitea_extra_config: []
 # gitea_admin_user_password
 # gitea_admin_user_username
 # gitea_admin_user_email
+
+# gitea_admin_token_file_path:
+# gitea_global_runner_registration_token_file_path:
