@@ -1,6 +1,6 @@
-## [1.14.29](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.28...1.14.29) (2025-09-23)
+## [1.14.30](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.29...1.14.30) (2025-09-23)
 
 
 ### Bug Fixes
 
-* update dependencies for release workflow ([5078c1e](https://github.com/arpanrec/arpanrec.nebula/commit/5078c1ef99342bebfe629359cc480c569f9fdc98))
+* Add minio install (Without KES-KMS) ([#53](https://github.com/arpanrec/arpanrec.nebula/issues/53)) ([ead809c](https://github.com/arpanrec/arpanrec.nebula/commit/ead809c649731157fd1c146da44e783203e05383))
