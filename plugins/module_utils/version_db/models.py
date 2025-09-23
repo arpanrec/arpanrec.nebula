@@ -74,6 +74,8 @@ class SupportedApps(enum.Enum):
     GITEA = "gitea"
     HADOLINT = "hadolint"
     GITLEAKS = "gitleaks"
+    MINIO = "minio"
+    MINIO_CLIENT = "minio_client"
 
 
 class VersionDetails(Dict[str, Any]):

@@ -1,0 +1,18 @@
+---
+minio_cluster_name: "main"
+minio_service_group: "minio-{{ minio_cluster_name }}"
+minio_service_user: "{{ minio_service_group }}"
+
+minio_rv_version: "fetch_latest_version"
+minio_client_rv_version: "fetch_latest_version"
+
+minio_rv_s3_port: 9000
+minio_rv_console_port: 9001
+minio_rv_directory: "/etc/minio/{{ minio_cluster_name }}"
+minio_rv_data_directory: "/var/lib/minio/{{ minio_cluster_name }}/data"
+minio_root_user: "minio-root-{{ minio_cluster_name }}"
+minio_root_password: "{{ lookup('ansible.builtin.password',
+    '/dev/null', chars=['ascii_lowercase', 'digits'], length=40) }}"
+# minio_server_cert_pem_content: ""
+# minio_server_key_pem_content: ""
+# minio_server_ca_pem_content: ""
