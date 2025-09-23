@@ -47,7 +47,9 @@ ssh_hardening_rv_fail2ban_ignoreself: "true"
 ssh_hardening_rv_fail2ban_ignoreips:
     - "127.0.0.1/8 ::1"
 
-ssh_hardening_rv_fail2ban_banaction: ufw
+ssh_hardening_rv_fail2ban_banaction: nftables
+ssh_hardening_rv_fail2ban_banaction_multiport: nftables-multiport
+ssh_hardening_rv_fail2ban_banaction_allports: nftables-allports
 
 # In seconds
 ssh_hardening_rv_fail2ban_bantime: 86400 # `-1` for permanent ban

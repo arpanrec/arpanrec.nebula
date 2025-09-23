@@ -1,0 +1,21 @@
+---
+- name: Gitea | Fail2ban | Write filter.
+  ansible.builtin.copy:
+      src: files/fail2ban-filter.ini
+      dest: /etc/fail2ban/filter.d/gitea.conf
+      mode: "0644"
+      owner: root
+      group: root
+      remote_src: false
+  notify:
+      - Fail2ban | Restart service
+
+- name: Gitea | Fail2ban | Write jail local config.
+  ansible.builtin.template:
+      src: templates/fail2ban-gitea-local.ini.j2
+      dest: /etc/fail2ban/jail.d/gitea.conf
+      mode: "0644"
+      owner: root
+      group: root
+  notify:
+      - Fail2ban | Restart service

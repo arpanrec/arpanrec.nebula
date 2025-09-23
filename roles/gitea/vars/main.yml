@@ -32,6 +32,9 @@ gitea_repository_root_directory: "{{ gitea_app_data_directory }}/gitea-repositor
 gitea_git_home_directory: "{{ gitea_app_data_directory }}/home"
 gitea_sqlite3_db_file: "{{ gitea_app_data_directory }}/sqlite3.db"
 
+gitea_log_root_path: "{{ gitea_working_directory }}/log"
+gitea_log_file: "{{ gitea_log_root_path }}/gitea.log"
+
 gitea_teabot_gpg_key: |+
     -----BEGIN PGP PUBLIC KEY BLOCK-----
 
@@ -169,3 +172,103 @@ gitea_teabot_gpg_key: |+
     7tcCQ4yof+HCQKzZLeU+3N4p6Ar2sgAtIrgbvjixsIIP
     =tFwr
     -----END PGP PUBLIC KEY BLOCK-----
+
+
+gitea_default_config:
+    - { section: DEFAULT, option: APP_NAME, value: "Gitea Easyiac" }
+    - { section: DEFAULT, option: RUN_USER, value: "{{ gitea_service_user }}" }
+    - { section: DEFAULT, option: RUN_MODE, value: "prod" }
+    - { section: DEFAULT, option: WORK_PATH, value: "{{ gitea_working_directory }}" }
+
+    - { section: server, option: PROTOCOL, value: "{{ gitea_protocol }}" }
+    - { section: server, option: APP_DATA_PATH, value: "{{ gitea_app_data_directory }}" }
+    - { section: server, option: DOMAIN, value: "{{ gitea_domain }}" }
+    - { section: server, option: HTTP_PORT, value: "{{ gitea_http_port }}" }
+    - { section: server, option: SSH_DOMAIN, value: "{{ gitea_domain }}" }
+    - { section: server, option: ENABLE_ACME, value: "false" }
+    - { section: server, option: DISABLE_SSH, value: "false" }
+    - { section: server, option: SSH_PORT, value: "{{ gitea_ssh_port }}" }
+    - { section: server, option: SSH_LISTEN_PORT, value: "{{ gitea_ssh_port }}" }
+    - { section: server, option: START_SSH_SERVER, value: "true" }
+    - { section: server, option: OFFLINE_MODE, value: "true" }
+    - section: server
+      option: ROOT_URL
+      value: "{{ gitea_protocol }}://{{ gitea_domain }}:{{ gitea_http_port }}"
+    - { section: server, option: LFS_START_SERVER, value: "true" }
+    - { section: server, option: LFS_JWT_SECRET_URI, value: "file:{{ gitea_lfs_jwt_secret_file }}" }
+    - { section: server, option: SSH_AUTHORIZED_KEYS_BACKUP, value: "true" }
+    - { section: server, option: SSH_AUTHORIZED_PRINCIPALS_BACKUP, value: "true" }
+
+    - { section: lfs, option: PATH, value: "{{ gitea_lfs_directory }}" }
+
+    - { section: security, option: INSTALL_LOCK, value: "true" }
+    - { section: security, option: SECRET_KEY_URI, value: "file:{{ gitea_secret_key_file }}" }
+    - { section: security, option: INTERNAL_TOKEN_URI, value: "file:{{ gitea_internal_token_file }}" }
+    - { section: security, option: DISABLE_GIT_HOOKS, value: "false" }
+
+    - { section: oauth2, option: ENABLED, value: "true" }
+    - { section: oauth2, option: JWT_SECRET_URI, value: "file:{{ gitea_oauth2_jwt_secret_file }}" }
+
+    - { section: service, option: ENABLE_NOTIFY_MAIL, value: "true" }
+    - { section: service, option: DISABLE_REGISTRATION, value: "true" }
+    - { section: service, option: REQUIRE_SIGNIN_VIEW, value: "false" }
+    - { section: service, option: ENABLE_BASIC_AUTHENTICATION, value: "false" }
+    - { section: service, option: ENABLE_PASSWORD_SIGNIN_FORM, value: "true" }
+    - { section: service, option: ENABLE_CAPTCHA, value: "false" }
+    - { section: service, option: REQUIRE_EXTERNAL_REGISTRATION_CAPTCHA, value: "false" }
+    - { section: service, option: REGISTER_EMAIL_CONFIRM, value: "true" }
+
+    - { section: openid, option: ENABLE_OPENID_SIGNIN, value: "false" }
+
+    - { section: actions, option: ENABLED, value: "true" }
+    - { section: actions, option: DEFAULT_ACTIONS_URL, value: self }
+    - { section: actions, option: STORAGE_TYPE, value: local }
+    - { section: actions, option: ARTIFACT_RETENTION_DAYS, value: 7 }
+    - { section: actions, option: ZOMBIE_TASK_TIMEOUT, value: 10m }
+    - { section: actions, option: ENDLESS_TASK_TIMEOUT, value: 1h }
+    - { section: actions, option: ABANDONED_JOB_TIMEOUT, value: 1h }
+
+    - { section: log, option: ROOT_PATH, value: "{{ gitea_log_root_path }}" }
+    - { section: log, option: MODE, value: "console,file" }
+    - { section: log, option: LEVEL, value: Warn }
+    - { section: log, option: ENABLE_SSH_LOG, value: "true" }
+    - { section: log, option: logger.access.MODE, value: "console,file" }
+
+    - { section: log.file, option: FILE_NAME, value: "{{ gitea_log_file }}" }
+
+    - { section: cron, option: ENABLED, value: "true" }
+    - { section: cron, option: RUN_AT_START, value: "true" }
+    - { section: cron, option: SCHEDULE, value: "@midnight" }
+
+    - { section: cron.update_checker, option: ENABLED, value: "true" }
+
+    - { section: cron.cleanup_actions, option: ENABLED, value: "true" }
+    - { section: cron.cleanup_actions, option: RUN_AT_START, value: "true" }
+    - { section: cron.cleanup_actions, option: SCHEDULE, value: "@midnight" }
+
+    - { section: cron.delete_old_actions, option: ENABLED, value: "true" }
+    - { section: cron.delete_old_actions, option: RUN_AT_START, value: "true" }
+    - { section: cron.delete_old_actions, option: SCHEDULE, value: "@midnight" }
+    - { section: cron.delete_old_actions, option: NOTICE_ON_SUCCESS, value: "true" }
+    - { section: cron.delete_old_actions, option: OLDER_THAN, value: 24h }
+
+    - { section: cron.deleted_branches_cleanup, option: ENABLED, value: "true" }
+    - { section: cron.deleted_branches_cleanup, option: RUN_AT_START, value: "true" }
+    - { section: cron.deleted_branches_cleanup, option: SCHEDULE, value: "@midnight" }
+    - { section: cron.deleted_branches_cleanup, option: NOTICE_ON_SUCCESS, value: "true" }
+    - { section: cron.deleted_branches_cleanup, option: OLDER_THAN, value: 24h }
+
+    - { section: repository.signing, option: SIGNING_KEY, value: default }
+    - { section: repository.signing, option: SIGNING_NAME, value: gitea }
+    - { section: repository.signing, option: SIGNING_EMAIL, value: "{{ gitea_service_user }}@{{ gitea_domain }}" }
+    - { section: repository.signing, option: INITIAL_COMMIT, value: always }
+    - { section: repository.signing, option: CRUD_ACTIONS, value: "pubkey, twofa, parentsigned" }
+    - { section: repository.signing, option: WIKI, value: never }
+    - { section: repository.signing, option: MERGES, value: "pubkey, twofa, basesigned, commitssigned" }
+
+    - section: repository
+      option: DEFAULT_REPO_UNITS
+      value: "repo.code,repo.releases,repo.issues,repo.pulls,repo.wiki,repo.projects,repo.packages"
+    - { section: repository, option: ROOT, value: "{{ gitea_repository_root_directory }}" }
+
+    - { section: git, option: HOME_PATH, value: "{{ gitea_git_home_directory }}" }

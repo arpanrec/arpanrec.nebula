@@ -295,3 +295,4 @@ arpanrec-nebula-*.tar.gz
 /roles/geerlingguy.docker/*
 foo*
 .ansible/*
+roles/ssh_hardening/.vscode/settings.json
