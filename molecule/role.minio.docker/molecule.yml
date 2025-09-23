@@ -31,7 +31,7 @@ provisioner:
         group_vars:
             all:
                 ansible_python_interpreter: /usr/bin/python3
-                linux_patching_rv_install_devel_packages: false
+                minio_root_password: Test12345
 scenario:
     name: role.minio.docker
     converge_sequence:
