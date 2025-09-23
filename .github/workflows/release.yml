@@ -57,7 +57,7 @@ jobs:
 
             - name: Install node dependencies
               run: |+
-                  pnpm i semantic-release@24.2.7 \
+                  pnpm i semantic-release@24.2.9 \
                       @semantic-release/commit-analyzer@13.0.1 \
                       @semantic-release/release-notes-generator@14.1.0 \
                       @semantic-release/changelog@6.0.3 \
@@ -70,7 +70,7 @@ jobs:
                   git config --global user.email "${{ steps.import-gpg.outputs.email }}"
                   git config --global user.name "${{ steps.import-gpg.outputs.name }}"
                   git config --global user.name "${{ steps.import-gpg.outputs.name }}"
-                  pnpm dlx semantic-release@24.2.7 --extends ./.github/files/release.config.cjs
+                  pnpm dlx semantic-release@24.2.9 --extends ./.github/files/release.config.cjs
               env:
                   GITHUB_TOKEN: "${{ secrets.GH_BOT_API_TOKEN }}"
                   GIT_AUTHOR_NAME: "${{ steps.import-gpg.outputs.name }}"
