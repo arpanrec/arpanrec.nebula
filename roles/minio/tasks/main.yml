@@ -71,7 +71,6 @@
 - name: MinIO | Create Env File for systemd # yamllint disable rule:line-length
   ansible.builtin.copy:
       content: |+
-          MINIO_KMS_KES_KEY_NAME=default
           MINIO_ROOT_USER={{ minio_root_user }}
           MINIO_ROOT_PASSWORD={{ minio_root_password }}
           MINIO_REGION=us-east-1
@@ -112,7 +111,7 @@
 
 - name: Minio | Write CA certificate.
   ansible.builtin.copy:
-      dest: "{{ minio_rv_directory }}/certs/CAs/ca.crt"
+      dest: "{{ minio_rv_directory }}/certs/CAs/server-ca.crt"
       content: "{{ minio_server_ca_pem_content }}"
       owner: "{{ minio_service_user }}"
       group: "{{ minio_service_group }}"
