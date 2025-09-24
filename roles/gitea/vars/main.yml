@@ -3,9 +3,6 @@ gitea_systemd_service_name: gitea-{{ gitea_cluster_name }}.service
 
 gitea_executable: /usr/local/bin/gitea-{{ gitea_version_details.version }}
 
-gitea_working_directory: /var/lib/gitea/{{ gitea_cluster_name }}
-gitea_service_user_home_directory: "{{ gitea_working_directory }}"
-
 # yamllint disable-line rule:line-length
 # SSL Certs file should be exactly as it is, https://docs.gitea.com/installation/database-prep#postgresql-tls. (This doesn't work). These needs to be set via env variable PGSSLROOTCERT, PGSSLCERT, PGSSLKEY. https://github.com/go-gitea/gitea/issues/32635
 gitea_config_db_pg_ssl_root_cert_file: "{{ gitea_service_user_home_directory }}/.postgresql/root.crt"
