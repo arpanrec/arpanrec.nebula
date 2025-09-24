@@ -47,6 +47,13 @@ gitea_config_db_postgresql:
       pg_ssl_client_key_pem_content: "" # Pem content of private key.
 ```
 
+postgresql ssl config files are written to 
+```yaml
+gitea_config_db_pg_ssl_root_cert_file: "{{ gitea_service_user_home_directory }}/.postgresql/root.crt"
+gitea_config_db_pg_ssl_cert_file: "{{ gitea_service_user_home_directory }}/.postgresql/postgresql.crt"
+gitea_config_db_pg_ssl_key_file: "{{ gitea_service_user_home_directory }}/.postgresql/postgresql.key"
+```
+
 ### gitea_extra_config
 
 [Gitea extra configuration](https://docs.gitea.com/administration/config-cheat-sheet).
