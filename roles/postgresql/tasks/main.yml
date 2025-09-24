@@ -1,4 +1,12 @@
 ---
+- name: Postgresql | Verify cluster name.
+  ansible.builtin.fail:
+      msg: "The 'postgresql_cluster' variable must be set and not include any spaces or special characters.
+          https://www.postgresql.org/message-id/E7F3EFD1-82A2-47BB-833D-EFA6BBD66969%40dnservices.co.za"
+  when: postgresql_cluster is not defined or postgresql_cluster | length < 1
+      or postgresql_cluster is search("([^a-z0-9_])")
+      or postgresql_cluster is search(" ")
+
 - name: Postgresql | Install Client.
   ansible.builtin.import_tasks: install-client.yml
 
