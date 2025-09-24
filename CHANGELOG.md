@@ -1,6 +1,6 @@
-## [1.14.31](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.30...1.14.31) (2025-09-23)
+## [1.14.32](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.31...1.14.32) (2025-09-24)
 
 
 ### Bug Fixes
 
-* minio client install version fix ([39bad3e](https://github.com/arpanrec/arpanrec.nebula/commit/39bad3ea0b42a0c6f8802f9b6649dd48fd60b79b))
+* Minio certificate if present bug fix ([c2826da](https://github.com/arpanrec/arpanrec.nebula/commit/c2826dac8eb983d7b1f3531b9ca0d624d290d8dc))
