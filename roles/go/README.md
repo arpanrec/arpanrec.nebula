@@ -6,7 +6,7 @@ This role installs the Go programming language runtime and essential development
 
 **Features:**
 
-- Go language runtime installation with latest version detection
+- Go language runtime installation with the latest version detection
 - Essential development tools (gopls, gosh, yq, mc, lazygit, turso)
 - User-space installation (no root privileges required)
 - Automatic environment configuration
