@@ -296,3 +296,4 @@ arpanrec-nebula-*.tar.gz
 foo*
 .ansible/*
 roles/ssh_hardening/.vscode/settings.json
+dest

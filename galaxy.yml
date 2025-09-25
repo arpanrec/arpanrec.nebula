@@ -43,6 +43,7 @@ build_ignore:
     - "venv"
     - ".ansible"
     - "roles/geerlingguy.docker"
+    - "dest"
 tags:
     - "linux"
     - "debian"
