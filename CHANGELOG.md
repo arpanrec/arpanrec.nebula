@@ -1,7 +1,6 @@
-## [1.14.35](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.34...1.14.35) (2025-09-24)
+## [1.14.36](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.35...1.14.36) (2025-09-25)
 
 
 ### Bug Fixes
 
-* add variables for Gitea working and service user home directories ([92ddc63](https://github.com/arpanrec/arpanrec.nebula/commit/92ddc630c1d3e1df4e79ad403eec8570bad5810a))
-* update Gitea variables and README to reflect directory structure changes ([9b71eb6](https://github.com/arpanrec/arpanrec.nebula/commit/9b71eb6f7b76a59dc0c31d3801c28b7985ca58d8))
+* add gitleaks to user profile install via go install ([216815e](https://github.com/arpanrec/arpanrec.nebula/commit/216815e6ce001f2805cc6b90ebacf35d9881137a))
