@@ -48,14 +48,6 @@
       GITEA_CUSTOM: "{{ gitea_custom_directory }}"
       GITEA_WORK_DIR: "{{ gitea_working_directory }}"
 
-- name: Gitea | Admin token | Create directory.
-  ansible.builtin.file:
-      path: "{{ gitea_admin_token_file_path | dirname }}"
-      owner: "root"
-      group: "root"
-      mode: "0700"
-      state: directory
-
 - name: Gitea | Admin token | Write token to file.
   ansible.builtin.copy:
       dest: "{{ gitea_admin_token_file_path }}"
