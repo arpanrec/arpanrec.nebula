@@ -1,6 +1,6 @@
-## [1.14.36](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.35...1.14.36) (2025-09-25)
+## [1.14.37](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.36...1.14.37) (2025-09-27)
 
 
 ### Bug Fixes
 
-* add gitleaks to user profile install via go install ([216815e](https://github.com/arpanrec/arpanrec.nebula/commit/216815e6ce001f2805cc6b90ebacf35d9881137a))
+* No create tmp directory ([8a43107](https://github.com/arpanrec/arpanrec.nebula/commit/8a431074ba8aa22a1fbb599c1358f8b36bff7282))
