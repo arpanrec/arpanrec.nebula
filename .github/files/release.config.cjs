@@ -27,7 +27,6 @@ module.exports = {
             '@semantic-release/exec',
             {
                 prepareCmd: [
-                    'rm -f CHANGELOG.md',
                     "sed -i 's/^version:.*/version: ${nextRelease.version}/g' galaxy.yml",
                     "sed -i 's/^export NEBULA_VERSION=.*/export NEBULA_VERSION=${nextRelease.version}/g' README.md",
                     'uv version ${nextRelease.version}',
