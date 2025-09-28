@@ -22,7 +22,7 @@ idna==3.10
     # via requests
 jinja2==3.1.6
     # via ansible-core
-markupsafe==3.0.2
+markupsafe==3.0.3
     # via jinja2
 packaging==25.0
     # via ansible-core
