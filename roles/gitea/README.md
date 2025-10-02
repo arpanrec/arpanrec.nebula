@@ -16,7 +16,8 @@ This role installs a Gitea managed by systemd.
 | `gitea_rv_version`                                 | `str` | `false`  | `fetch_latest_version`                    | If set to `fetch_latest_version` it will pull from [Gitea version](https://github.com/go-gitea/gitea/releases), else something like `1.24.6` |
 | `gitea_http_port`                                  | `int` | `false`  | `8582`                                    | Http port.                                                                                                                                   |
 | `gitea_ssh_port`                                   | `int` | `false`  | `8583`                                    | SSH port.                                                                                                                                    |
-| `gitea_domain`                                     | `str` | `false`  | `{{ ansible_fqdn }}`                      | Gitea communication URI.                                                                                                                     |
+| `gitea_domain`                                     | `str` | `false`  | `{{ ansible_fqdn }}`                      | Gitea communication URL.                                                                                                                     |
+| `gitea_ssh_domain`                                 | `str` | `false`  | `{{ gitea_domain }}`                      | Gitea SSH URL.                                                                                                                               |
 | `gitea_http_cert_pem_content`                      | `str` | `false`  | None                                      | Gitea SSL Certificate pem content.                                                                                                           |
 | `gitea_http_key_pem_content`                       | `str` | `false`  | None                                      | Gitea SSL Key pem content.                                                                                                                   |
 | `gitea_secret_key`                                 | `str` | `false`  | None                                      | Global secret key (Generated automatically if not provided).                                                                                 |
@@ -43,11 +44,12 @@ gitea_config_db_postgresql:
       schema: "public"
       ssl_mode: "disable" # ["disable", "require", "verify-ca", "verify-full"]
       pg_ssl_root_cert_pem_content: "" # Pem content of root certificate.
-      pg_ssl_client_cert_pem_content: "" # Pem content of certificate or full chain.
-      pg_ssl_client_key_pem_content: "" # Pem content of private key.
+      pg_ssl_client_cert_pem_content: "" # Pem content of the certificate or full chain.
+      pg_ssl_client_key_pem_content: "" # Pem content of the private key.
 ```
 
 postgresql ssl config files are written to
+
 ```yaml
 gitea_config_db_pg_ssl_root_cert_file: "{{ gitea_service_user_home_directory }}/.postgresql/root.crt"
 gitea_config_db_pg_ssl_cert_file: "{{ gitea_service_user_home_directory }}/.postgresql/postgresql.crt"
@@ -73,7 +75,6 @@ gitea_service_user_home_directory: "{{ gitea_working_directory }}"
 ```
 
 For backup just backup the `gitea_working_directory` if nothing else is configured.
-
 
 ### Example Playbook gitea
 
