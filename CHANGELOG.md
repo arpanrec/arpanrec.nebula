@@ -1,3 +1,10 @@
+## [1.14.40](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.39...1.14.40) (2025-10-02)
+
+
+### Bug Fixes
+
+* update Gitea role README and variables to include `gitea_ssh_domain` ([4b00918](https://github.com/arpanrec/arpanrec.nebula/commit/4b00918bde64d44c0e8c6ce019123d335e557df7))
+
 ## [1.14.39](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.38...1.14.39) (2025-09-28)
 
 
