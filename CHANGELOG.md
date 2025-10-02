@@ -1,3 +1,10 @@
+## [1.14.41](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.40...1.14.41) (2025-10-02)
+
+
+### Bug Fixes
+
+* update Gitea role variables and README to include `gitea_local_root_url` and `gitea_root_url` ([9e31d84](https://github.com/arpanrec/arpanrec.nebula/commit/9e31d84fdc5732afe08b7ece526fe19f8a0508aa))
+
 ## [1.14.40](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.39...1.14.40) (2025-10-02)
 
 
