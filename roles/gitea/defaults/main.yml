@@ -15,6 +15,8 @@ gitea_protocol: "{{ (gitea_http_cert_pem_content is defined
     and (gitea_http_key_pem_content | length > 1)) | ternary('https', 'http') }}"
 gitea_domain: "{{ ansible_fqdn }}"
 gitea_ssh_domain: "{{ gitea_domain }}"
+gitea_local_root_url: "{{ gitea_protocol }}://{{ gitea_domain }}:{{ gitea_http_port }}"
+gitea_root_url: "{{ gitea_local_root_url }}"
 
 gitea_working_directory: /var/lib/gitea/{{ gitea_cluster_name }}
 gitea_service_user_home_directory: "{{ gitea_working_directory }}"
