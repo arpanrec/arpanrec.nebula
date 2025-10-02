@@ -185,6 +185,7 @@ gitea_default_config:
     - { section: server, option: ENABLE_ACME, value: "false" }
     - { section: server, option: DISABLE_SSH, value: "false" }
     - { section: server, option: SSH_PORT, value: "{{ gitea_ssh_port }}" }
+    - { section: server, option: BUILTIN_SSH_SERVER_USER, value: "{{ gitea_ssh_server_user }}" }
     - { section: server, option: SSH_LISTEN_PORT, value: "{{ gitea_ssh_port }}" }
     - { section: server, option: START_SSH_SERVER, value: "true" }
     - { section: server, option: OFFLINE_MODE, value: "true" }

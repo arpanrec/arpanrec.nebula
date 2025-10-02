@@ -18,6 +18,8 @@ gitea_ssh_domain: "{{ gitea_domain }}"
 gitea_local_root_url: "{{ gitea_protocol }}://{{ gitea_domain }}:{{ gitea_http_port }}"
 gitea_root_url: "{{ gitea_local_root_url }}"
 
+gitea_ssh_server_user: "{{ gitea_service_user }}"
+
 gitea_working_directory: /var/lib/gitea/{{ gitea_cluster_name }}
 gitea_service_user_home_directory: "{{ gitea_working_directory }}"
 
