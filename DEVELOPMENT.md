@@ -2,33 +2,33 @@
 
 ## LSP Support for module_utils
 
-Search for `python -m site` to find the location of the site-packages directory. This is where the `ansible` and `ansible_collections` packages are installed.
+Search for `uv run python -m site` to find the location of the site-packages directory. This is where the `ansible` and `ansible_collections` packages are installed.
 
 Command to find the location of the site-packages directory:
 
 ```bash
-python -m site
+uv run python -m site
 ```
 
 Output:
 
 ```shell
 sys.path = [
-    '/home/arpan/workspace/arpanrec.nebula',
-    '/usr/lib/python312.zip',
-    '/usr/lib/python3.12',
-    '/usr/lib/python3.12/lib-dynload',
-    '/home/arpan/.cache/pypoetry/virtualenvs/nebula-a40OZ9WJ-py3.12/lib/python3.12/site-packages',
+    '/home/arpan/workspace/src/arpanrec.nebula',
+    '/home/arpan/.local/share/uv/python/cpython-3.13.7-linux-x86_64-gnu/lib/python313.zip',
+    '/home/arpan/.local/share/uv/python/cpython-3.13.7-linux-x86_64-gnu/lib/python3.13',
+    '/home/arpan/.local/share/uv/python/cpython-3.13.7-linux-x86_64-gnu/lib/python3.13/lib-dynload',
+    '/home/arpan/workspace/src/arpanrec.nebula/.venv/lib/python3.13/site-packages',
 ]
 USER_BASE: '/home/arpan/.local' (exists)
-USER_SITE: '/home/arpan/.local/lib/python3.12/site-packages' (doesn\'t exist)
+USER_SITE: '/home/arpan/.local/lib/python3.13/site-packages' (doesn't exist)
 ENABLE_USER_SITE: False
 ```
 
 Create a symlink of the `arpanrec.nebula` directory to the `ansible_collections` directory in the `site-packages` directory.
 
 ```bash
-rm -rf /home/arpan/.cache/pypoetry/virtualenvs/nebula-a40OZ9WJ-py3.12/lib/python3.12/site-packages/ansible_collections/arpanrec/nebula
-mkdir -p /home/arpan/.cache/pypoetry/virtualenvs/nebula-a40OZ9WJ-py3.12/lib/python3.12/site-packages/ansible_collections/arpanrec
-ln -s /home/arpan/workspace/arpanrec.nebula /home/arpan/.cache/pypoetry/virtualenvs/nebula-a40OZ9WJ-py3.12/lib/python3.12/site-packages/ansible_collections/arpanrec/nebula
+rm -rf "$(pwd)/.venv/lib/python3.13/site-packages/ansible_collections/arpanrec"
+mkdir -p "$(pwd)/.venv/lib/python3.13/site-packages/ansible_collections/arpanrec/nebula"
+ln -s "$(pwd)/plugins" "$(pwd)/.venv/lib/python3.13/site-packages/ansible_collections/arpanrec/nebula/plugins"
 ```
