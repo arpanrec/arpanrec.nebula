@@ -15,15 +15,15 @@ display = Display()
 
 # pylint: disable=R0912,R0913,R0914
 def github_release_tag_search(
-        *,
-        github_release_tag_search_repo: str,
-        github_release_tag_search_api_url: Optional[str],
-        github_release_tag_search_token: Optional[str],
-        github_release_tag_search_prefix: Optional[str] = None,
-        github_release_tag_search_suffix: Optional[str] = None,
-        github_release_tag_search_contains: Optional[str] = None,
-        github_release_tag_search_max_pages: Optional[int] = 100,
-        github_release_tag_search_timeout: Optional[int] = 10,
+    *,
+    github_release_tag_search_repo: str,
+    github_release_tag_search_api_url: Optional[str],
+    github_release_tag_search_token: Optional[str],
+    github_release_tag_search_prefix: Optional[str] = None,
+    github_release_tag_search_suffix: Optional[str] = None,
+    github_release_tag_search_contains: Optional[str] = None,
+    github_release_tag_search_max_pages: Optional[int] = 100,
+    github_release_tag_search_timeout: Optional[int] = 10,
 ) -> str:
     """
     Search for the latest release in a GitHub repository.
