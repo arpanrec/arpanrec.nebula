@@ -15,7 +15,6 @@ dependencies:
     ansible.posix: 2.1.0
     community.postgresql: 4.1.0
     community.hashi_vault: 7.0.0
-    kewlfft.aur: 0.13.0
 homepage: "https://github.com/arpanrec/arpanrec.nebula"
 documentation: https://github.com/arpanrec/arpanrec.nebula/blob/main/README.md
 build_ignore:

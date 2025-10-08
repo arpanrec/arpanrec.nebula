@@ -50,4 +50,5 @@ dev = [
     "types-requests==2.32.4.20250913",
     "yamllint==1.37.1",
     "ansible-lint==25.9.2",
+    "antsibull-docs==2.21.0",
 ]
