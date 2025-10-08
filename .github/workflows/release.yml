@@ -14,14 +14,14 @@ jobs:
         runs-on: ubuntu-24.04
         steps:
             - name: Checkout
-              uses: actions/checkout@v4.2.2
+              uses: actions/checkout@v5.0.0
               with:
                   fetch-depth: 0
                   persist-credentials: false
 
             - name: Import GPG key
               id: import-gpg
-              uses: crazy-max/ghaction-import-gpg@v6.2.0
+              uses: crazy-max/ghaction-import-gpg@v6.3.0
               with:
                   gpg_private_key: "${{ secrets.GH_BOT_GPG_PRIVATE_KEY }}"
                   passphrase: "${{ secrets.GH_BOT_GPG_PASSPHRASE }}"
@@ -30,19 +30,19 @@ jobs:
                   trust_level: 5
 
             - name: Setup pnpm
-              uses: pnpm/action-setup@v4.1.0
+              uses: pnpm/action-setup@v4.2.0
               with:
                   version: 10.15.1
 
             - name: Setup Node
-              uses: actions/setup-node@v4.2.0
+              uses: actions/setup-node@v5.0.0
               with:
                   node-version: lts/*
                   cache-dependency-path: .github/files/pnpm-lock.yaml
                   cache: pnpm
 
             - name: Install uv 0.8.14
-              uses: astral-sh/setup-uv@v6.6.0
+              uses: astral-sh/setup-uv@v7.0.0
               with:
                   version: 0.8.14
                   enable-cache: true

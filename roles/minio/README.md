@@ -7,7 +7,7 @@ This role installs a Minio managed by systemd.
 ## Variables
 
 | Variable                        | Type | Required | Default                                        | Description                                                           |
-|---------------------------------|------|----------|------------------------------------------------|-----------------------------------------------------------------------|
+| ------------------------------- | ---- | -------- | ---------------------------------------------- | --------------------------------------------------------------------- |
 | `minio_cluster_name`            | str  | false    | `main`                                         | Isolated MinIO instance name.                                         |
 | `minio_service_group`           | str  | false    | `minio-{{ minio_cluster_name }}`               | System group that owns the MinIO service.                             |
 | `minio_service_user`            | str  | false    | `{{ minio_service_group }}`                    | System user that runs the MinIO service.                              |

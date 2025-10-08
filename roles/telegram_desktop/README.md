@@ -15,13 +15,13 @@ Install [Telegram Desktop](https://desktop.telegram.org/)
 
 ## Variables
 
-| Variable | Type | Required | Default | Example | Description |
-|----------|------|----------|---------|---------|-------------|
-| `telegram_desktop_rv_install_path` | `str` | `false` | `{{ ansible_facts.user_dir }}/.local/share/telegram_desktop_userapp` | - | Telegram install path. |
-| `telegram_desktop_rv_xdg_icon_path` | `str` | `false` | `{{ ansible_facts.user_dir }}/.local/share/applications/telegram_desktop_userapps.desktop` | - | Telegram icon path. |
-| `telegram_desktop_rv_user_tmp_dir` | `str` | `false` | `{{ ansible_facts.user_dir }}/.tmp/telegram_desktop_userapp` | - | Telegram install cache and temporary directory. |
-| `telegram_desktop_rv_version_number` | `str` | `false` | - | `4.4.1` | Version number. When absent, reads the latest version from [GitHub](https://api.github.com/repos/telegramdesktop/tdesktop/releases/latest). |
-| `telegram_desktop_rv_work_directory` | `str` | `false` | `{{ ansible_facts.user_dir }}/.local/share/TelegramDesktop` | - | Application work directory. |
+| Variable                             | Type  | Required | Default                                                                                    | Example | Description                                                                                                                                 |
+| ------------------------------------ | ----- | -------- | ------------------------------------------------------------------------------------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `telegram_desktop_rv_install_path`   | `str` | `false`  | `{{ ansible_facts.user_dir }}/.local/share/telegram_desktop_userapp`                       | -       | Telegram install path.                                                                                                                      |
+| `telegram_desktop_rv_xdg_icon_path`  | `str` | `false`  | `{{ ansible_facts.user_dir }}/.local/share/applications/telegram_desktop_userapps.desktop` | -       | Telegram icon path.                                                                                                                         |
+| `telegram_desktop_rv_user_tmp_dir`   | `str` | `false`  | `{{ ansible_facts.user_dir }}/.tmp/telegram_desktop_userapp`                               | -       | Telegram install cache and temporary directory.                                                                                             |
+| `telegram_desktop_rv_version_number` | `str` | `false`  | -                                                                                          | `4.4.1` | Version number. When absent, reads the latest version from [GitHub](https://api.github.com/repos/telegramdesktop/tdesktop/releases/latest). |
+| `telegram_desktop_rv_work_directory` | `str` | `false`  | `{{ ansible_facts.user_dir }}/.local/share/TelegramDesktop`                                | -       | Application work directory.                                                                                                                 |
 
 ## Example Playbook Telegram Desktop
 
