@@ -20,6 +20,7 @@ code_rv_ext_to_be_installed:
     - "github.vscode-pull-request-github"
     - "golang.go"
     - "hashicorp.terraform"
+    - "ms-azuretools.vscode-containers"
     - "ms-azuretools.vscode-docker"
     - "ms-python.black-formatter"
     - "ms-python.debugpy"
