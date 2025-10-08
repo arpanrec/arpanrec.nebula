@@ -9,7 +9,7 @@ blog: [Regex is (almost) all you need](https://lookingatcomputer.substack.com/p/
 ## Variable
 
 | Variable                          | Type  | Required | Default                                      | Example  | Description                                                                                                                                            |
-|-----------------------------------|-------|----------|----------------------------------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| --------------------------------- | ----- | -------- | -------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `gitleaks_rv_executable_bin_path` | `str` | `false`  | `{{ ansible_facts.user_dir }}/.local/bin`    | -        | Install path for gitleaks.                                                                                                                             |
 | `gitleaks_rv_version`             | `str` | `false`  | `fetch_latest_version`                       | `8.28.0` | Release version. If set to `fetch_latest_version`, it will fetch latest release from [Github releases](https://github.com/gitleaks/gitleaks/releases). |
 | `gitleaks_rv_tmp_download_dir`    | `str` | `false`  | `{{ ansible_facts.user_dir }}/.tmp/gitleaks` | -        | Cache install directory.                                                                                                                               |

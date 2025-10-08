@@ -19,13 +19,11 @@ verbosity: 1
 
 # Mock modules or roles in order to pass ansible-playbook --syntax-check
 # note the foo.bar is invalid as being neither a module or a collection
-mock_modules:
-    []
+mock_modules: []
     # - zuul_return
     # - fake_namespace.fake_collection.fake_module
     # - fake_namespace.fake_collection.fake_module.fake_submodule
-mock_roles:
-    []
+mock_roles: []
     # - mocked_role
     # - author.role_name # old standalone galaxy role
     # - fake_namespace.fake_collection.fake_role # role within a collection

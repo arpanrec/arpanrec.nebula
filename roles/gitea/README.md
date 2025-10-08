@@ -7,7 +7,7 @@ This role installs a Gitea managed by systemd.
 ## Variables
 
 | Variable                                           | Type  | Required | Default                                                           | Description                                                                                                                                  |
-|----------------------------------------------------|-------|----------|-------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| -------------------------------------------------- | ----- | -------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | `gitea_cluster_name`                               | `str` | `false`  | `main`                                                            | Isolated gitea instance.                                                                                                                     |
 | `gitea_working_directory`                          | `str` | `false`  | `/var/lib/gitea/{{ gitea_cluster_name }}`                         | Gitea Data directory.                                                                                                                        |
 | `gitea_service_group`                              | `str` | `false`  | `gitea-{{ gitea_cluster_name }}`                                  | Gitea Service Group.                                                                                                                         |
@@ -40,23 +40,23 @@ This role installs a Gitea managed by systemd.
 ```yaml
 ---
 gitea_config_db_postgresql:
-    - host: "127.0.0.1:3306"
-      name: "gitea"
-      user: "root"
-      passwd: "password"
-      schema: "public"
-      ssl_mode: "disable" # ["disable", "require", "verify-ca", "verify-full"]
-      pg_ssl_root_cert_pem_content: "" # Pem content of root certificate.
-      pg_ssl_client_cert_pem_content: "" # Pem content of the certificate or full chain.
-      pg_ssl_client_key_pem_content: "" # Pem content of the private key.
+    - host: '127.0.0.1:3306'
+      name: 'gitea'
+      user: 'root'
+      passwd: 'password'
+      schema: 'public'
+      ssl_mode: 'disable' # ["disable", "require", "verify-ca", "verify-full"]
+      pg_ssl_root_cert_pem_content: '' # Pem content of root certificate.
+      pg_ssl_client_cert_pem_content: '' # Pem content of the certificate or full chain.
+      pg_ssl_client_key_pem_content: '' # Pem content of the private key.
 ```
 
 postgresql ssl config files are written to
 
 ```yaml
-gitea_config_db_pg_ssl_root_cert_file: "{{ gitea_service_user_home_directory }}/.postgresql/root.crt"
-gitea_config_db_pg_ssl_cert_file: "{{ gitea_service_user_home_directory }}/.postgresql/postgresql.crt"
-gitea_config_db_pg_ssl_key_file: "{{ gitea_service_user_home_directory }}/.postgresql/postgresql.key"
+gitea_config_db_pg_ssl_root_cert_file: '{{ gitea_service_user_home_directory }}/.postgresql/root.crt'
+gitea_config_db_pg_ssl_cert_file: '{{ gitea_service_user_home_directory }}/.postgresql/postgresql.crt'
+gitea_config_db_pg_ssl_key_file: '{{ gitea_service_user_home_directory }}/.postgresql/postgresql.key'
 ```
 
 ### gitea_extra_config
@@ -65,16 +65,16 @@ gitea_config_db_pg_ssl_key_file: "{{ gitea_service_user_home_directory }}/.postg
 
 ```yaml
 gitea_extra_config:
-    - section: ""
-      option: ""
-      value: ""
+    - section: ''
+      option: ''
+      value: ''
 ```
 
 ## Backup
 
 ```yaml
-gitea_working_directory: "/var/lib/gitea/{{ gitea_cluster_name }}"
-gitea_service_user_home_directory: "{{ gitea_working_directory }}"
+gitea_working_directory: '/var/lib/gitea/{{ gitea_cluster_name }}'
+gitea_service_user_home_directory: '{{ gitea_working_directory }}'
 ```
 
 For backup just backup the `gitea_working_directory` if nothing else is configured.
@@ -101,6 +101,6 @@ Just write the admin token to file.
       name: arpanrec.nebula.gitea
       tasks_from: admin-token.yml
   vars:
-      gitea_admin_token_file_path: "{{ __gitea_admin_token_file.path }}"
-      gitea_admin_user_username: "admin-user"
+      gitea_admin_token_file_path: '{{ __gitea_admin_token_file.path }}'
+      gitea_admin_user_username: 'admin-user'
 ```
