@@ -1,3 +1,10 @@
+## [1.14.43](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.42...1.14.43) (2025-10-08)
+
+
+### Bug Fixes
+
+* Updated dependencies. ([29747e7](https://github.com/arpanrec/arpanrec.nebula/commit/29747e7a6989f998a28bdbcc0fd6288cf1ad6888))
+
 ## [1.14.42](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.41...1.14.42) (2025-10-02)
 
 
