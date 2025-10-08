@@ -1,3 +1,10 @@
+## [1.14.45](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.44...1.14.45) (2025-10-08)
+
+
+### Bug Fixes
+
+* remove `hvac` dependency from project configuration ([2a93f63](https://github.com/arpanrec/arpanrec.nebula/commit/2a93f63cbbd3c45cbc6193c3987c8a0af1be0390))
+
 ## [1.14.44](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.43...1.14.44) (2025-10-08)
 
 

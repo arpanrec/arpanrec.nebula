@@ -125,8 +125,6 @@ frozenlist==1.8.0
     #   aiosignal
 greenlet==3.2.4 ; platform_python_implementation != 'PyPy'
     # via pynvim
-hvac==2.3.0
-    # via arpanrec-nebula
 idna==3.10
     # via
     #   requests
@@ -265,7 +263,6 @@ requests==2.32.5
     # via
     #   arpanrec-nebula
     #   docker
-    #   hvac
     #   sphinx
 resolvelib==1.2.0
     # via ansible-core
