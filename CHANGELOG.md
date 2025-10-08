@@ -1,3 +1,10 @@
+## [1.14.44](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.43...1.14.44) (2025-10-08)
+
+
+### Bug Fixes
+
+* add antsibull docs check ([7861bb2](https://github.com/arpanrec/arpanrec.nebula/commit/7861bb2613de346e3f300d2d21992047b07aaf49))
+
 ## [1.14.43](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.42...1.14.43) (2025-10-08)
 
 
