@@ -11,9 +11,10 @@ license_file: LICENSE
 issues: https://github.com/arpanrec/arpanrec.nebula/issues
 dependencies:
     community.general: 11.2.1
-    community.crypto: 3.0.3
+    community.crypto: 3.0.4
     ansible.posix: 2.1.0
     community.postgresql: 4.1.0
+    community.hashi_vault: 7.0.0
     kewlfft.aur: 0.13.0
 homepage: "https://github.com/arpanrec/arpanrec.nebula"
 documentation: https://github.com/arpanrec/arpanrec.nebula/blob/main/README.md
