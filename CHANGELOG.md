@@ -1,3 +1,24 @@
+## [1.14.45](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.44...1.14.45) (2025-10-08)
+
+
+### Bug Fixes
+
+* remove `hvac` dependency from project configuration ([2a93f63](https://github.com/arpanrec/arpanrec.nebula/commit/2a93f63cbbd3c45cbc6193c3987c8a0af1be0390))
+
+## [1.14.44](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.43...1.14.44) (2025-10-08)
+
+
+### Bug Fixes
+
+* add antsibull docs check ([7861bb2](https://github.com/arpanrec/arpanrec.nebula/commit/7861bb2613de346e3f300d2d21992047b07aaf49))
+
+## [1.14.43](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.42...1.14.43) (2025-10-08)
+
+
+### Bug Fixes
+
+* Updated dependencies. ([29747e7](https://github.com/arpanrec/arpanrec.nebula/commit/29747e7a6989f998a28bdbcc0fd6288cf1ad6888))
+
 ## [1.14.42](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.41...1.14.42) (2025-10-02)
 
 
