@@ -117,7 +117,7 @@ docutils==0.21.2
     #   sphinx
 enrich==1.2.7
     # via molecule
-filelock==3.19.1
+filelock==3.20.0
     # via ansible-lint
 frozenlist==1.8.0
     # via
@@ -203,7 +203,7 @@ pathspec==0.12.1
     #   yamllint
 perky==0.9.3
     # via antsibull-core
-platformdirs==4.4.0
+platformdirs==4.5.0
     # via
     #   black
     #   pylint

@@ -1,3 +1,17 @@
+## [1.14.47](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.46...1.14.47) (2025-10-09)
+
+
+### Bug Fixes
+
+* simplify role names in server_workspace playbook ([0db9e2c](https://github.com/arpanrec/arpanrec.nebula/commit/0db9e2c32b92f373003c524c500a0afba828b362))
+
+## [1.14.46](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.45...1.14.46) (2025-10-08)
+
+
+### Bug Fixes
+
+* updated community dependency. ([7087042](https://github.com/arpanrec/arpanrec.nebula/commit/70870422d657cf60d12731a21ce8d947fdb8ccb0))
+
 ## [1.14.45](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.44...1.14.45) (2025-10-08)
 
 

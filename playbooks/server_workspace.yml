@@ -165,7 +165,7 @@
                 tags:
                     - bws
 
-      - name: USERAPPS | Bitwarden Hadolint
+      - name: USERAPPS | Hadolint
         ansible.builtin.include_role:
             name: arpanrec.nebula.hadolint
         tags:
@@ -175,7 +175,7 @@
                 tags:
                     - hadolint
 
-      - name: USERAPPS | Bitwarden gitleaks
+      - name: USERAPPS | gitleaks
         ansible.builtin.include_role:
             name: arpanrec.nebula.gitleaks
         tags:
