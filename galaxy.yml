@@ -36,6 +36,8 @@ build_ignore:
     - "build"
     - "molecule"
     - "node_modules"
+    - "package.json"
+    - "pnpm-lock.yaml"
     - "uv.lock"
     - "pyproject.toml"
     - "requirements-dev.txt"
@@ -45,6 +47,7 @@ build_ignore:
     - ".ansible"
     - "roles/geerlingguy.docker"
     - "dest"
+    - ".prettierignore"
 tags:
     - "linux"
     - "debian"
