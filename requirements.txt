@@ -10,13 +10,13 @@ certifi==2025.10.5
     # via requests
 cffi==2.0.0 ; platform_python_implementation != 'PyPy'
     # via cryptography
-charset-normalizer==3.4.3
+charset-normalizer==3.4.4
     # via requests
-cryptography==46.0.2
+cryptography==46.0.3
     # via
     #   ansible-core
     #   arpanrec-nebula
-idna==3.10
+idna==3.11
     # via requests
 jinja2==3.1.6
     # via ansible-core
@@ -36,7 +36,7 @@ pyyaml==6.0.3
     # via ansible-core
 requests==2.32.5
     # via arpanrec-nebula
-resolvelib==1.2.0
+resolvelib==1.2.1
     # via ansible-core
 urllib3==2.5.0
     # via requests

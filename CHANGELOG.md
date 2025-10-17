@@ -1,3 +1,10 @@
+## [1.14.49](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.48...1.14.49) (2025-10-17)
+
+
+### Bug Fixes
+
+* Add GraalVM support and update dependencies ([fd5d5e2](https://github.com/arpanrec/arpanrec.nebula/commit/fd5d5e22d7a97bb0fbb5a51d0258d38565a3c05b))
+
 ## [1.14.48](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.47...1.14.48) (2025-10-16)
 
 
