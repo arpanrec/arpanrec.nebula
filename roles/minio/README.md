@@ -11,7 +11,7 @@ This role installs a Minio managed by systemd.
 | `minio_cluster_name`            | str  | false    | `main`                                         | Isolated MinIO instance name.                                         |
 | `minio_service_group`           | str  | false    | `minio-{{ minio_cluster_name }}`               | System group that owns the MinIO service.                             |
 | `minio_service_user`            | str  | false    | `{{ minio_service_group }}`                    | System user that runs the MinIO service.                              |
-| `minio_rv_version`              | str  | false    | `fetch_latest_version`                         | MinIO server version to install.                                      |
+| `minio_rv_version`              | str  | false    | `fetch_latest_version`                         | MinIO server version to install. Like `RELEASE.2025-09-07T16-13-09Z`  |
 | `minio_client_rv_version`       | str  | false    | `fetch_latest_version`                         | MinIO client (mc) version to install.                                 |
 | `minio_rv_s3_port`              | int  | false    | `9000`                                         | S3 API listening port.                                                |
 | `minio_rv_console_port`         | int  | false    | `9001`                                         | MinIO web console port.                                               |

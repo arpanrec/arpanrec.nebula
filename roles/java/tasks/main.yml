@@ -10,47 +10,11 @@
           java_rv_jdk_groovy_version=java_rv_jdk_groovy_version,
           java_rv_jdk_kotlinc_version=java_rv_jdk_kotlinc_version) | from_json }}"
 
-- name: Oracle JDK | Get downloaded file stat
-  ansible.builtin.stat:
-      path: "{{ java_rv_jdk_tarball_download_path }}"
-  register: pv_ua_jdk_downloaded_file_stat
+- name: Oracle JDK | JDK
+  ansible.builtin.import_tasks: jdk.yml
 
-- name: Oracle JDK | Newly Downloaded
-  when: not pv_ua_jdk_downloaded_file_stat.stat.exists
-  block:
-      - name: Oracle JDK | Newly Downloaded | Download tarball
-        ansible.builtin.get_url:
-            url: "{{ oracle_jdk_tmp_version_details.download_link }}"
-            checksum: "{{ oracle_jdk_tmp_version_details.checksum | default(omit) }}"
-            dest: "{{ java_rv_jdk_tarball_download_path }}"
-            mode: "0700"
-
-      - name: Oracle JDK | Newly Downloaded | Remove Old Install Directory
-        ansible.builtin.file:
-            path: "{{ java_rv_jdk_install_path }}"
-            state: absent
-  rescue:
-      - name: Oracle JDK | Newly Downloaded | Delete Downloaded tarball
-        ansible.builtin.file:
-            path: "{{ java_rv_jdk_tarball_download_path }}"
-            state: absent
-
-      - name: Oracle JDK | Newly Downloaded | Delete Install Directory
-        ansible.builtin.fail:
-            msg: "Failed to download JDK tarball. Check the above errors."
-
-- name: Oracle JDK | Create install directory
-  ansible.builtin.file:
-      path: "{{ java_rv_jdk_install_path }}"
-      state: directory
-      mode: "0700"
-
-- name: Oracle JDK | Newly Downloaded | Unarchive the tarball
-  ansible.builtin.unarchive:
-      src: "{{ java_rv_jdk_tarball_download_path }}"
-      dest: "{{ java_rv_jdk_install_path }}"
-      extra_opts: [--strip-components=1]
-      remote_src: true
+- name: Oracle JDK | GraalVM
+  ansible.builtin.include_tasks: graalvm.yml
 
 - name: Oracle JDK | Maven
   ansible.builtin.import_tasks: maven.yml
@@ -63,9 +27,6 @@
 
 - name: Oracle JDK | Kotlin
   ansible.builtin.include_tasks: kotlin.yml
-
-- name: Oracle JDK | GraalVM
-  ansible.builtin.include_tasks: graalvm.yml
 
 - name: Oracle JDK | Install Script
   ansible.builtin.template:

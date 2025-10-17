@@ -10,21 +10,13 @@ dependency:
 driver:
     name: docker
 platforms:
-    - name: debian_role_minio_docker
-      hostname: debian_role_minio_docker
-      image: docker.io/library/debian:trixie # geerlingguy/docker-debian13-ansible:latest #
-      pre_build_image: true
-      volumes:
-          - "/sys/fs/cgroup:/sys/fs/cgroup:rw"
-      privileged: true
-      provider_raw_config_args:
-          - "--sysctl"
+    - name: debian_role_graalvm_docker
+      hostname: debian_role_graalvm_docker
+      image: "docker.io/library/debian:trixie"
+      dockerfile: ../role.java.docker/Dockerfile.j2
+      pre_build_image: false
 provisioner:
     name: ansible
-    playbooks:
-        converge: converge.yml
-        prepare: prepare.yml
-        verify: verify.yml
     vvv: false
     env:
         ANSIBLE_VERBOSITY: 1
@@ -32,11 +24,13 @@ provisioner:
         group_vars:
             all:
                 ansible_python_interpreter: /usr/bin/python3
-                linux_patching_rv_install_devel_packages: false
-                minio_root_password: Test12345
-                minio_rv_version: RELEASE.2025-09-07T16-13-09Z
+                java_rv_jdk_graalvm_is_install: true
+                # java_rv_jdk_version: 21.0.4
+    playbooks:
+        converge: ../role.java.docker/converge.yml
+        verify: ../role.java.docker/verify.yml
 scenario:
-    name: role.minio.docker
+    name: role.graalvm.docker
     converge_sequence:
         - converge
     destroy_sequence:
@@ -44,18 +38,14 @@ scenario:
     create_sequence:
         - dependency
         - create
-        - prepare
     test_sequence:
         - syntax
         - destroy
         - dependency
         - create
-        - prepare
         - converge
         - verify
         - idempotence
         - destroy
 verifier:
     name: ansible
-log: true
-role_name_check: 0

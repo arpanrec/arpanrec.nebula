@@ -71,6 +71,7 @@ linux_patching_rv_packages:
     - openssl
     - util-linux-extra
     - nftables
+    - libatomic1
 
 linux_patching_rv_extra_packages: []
 
