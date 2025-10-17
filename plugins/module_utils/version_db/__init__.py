@@ -33,7 +33,7 @@ from .models import AppDetails, SupportedApps, VersionDetails
 display = Display()
 
 
-def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: ignore # pylint: disable=R0914
+def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: ignore # pylint: disable=R0914,too-many-branches
     """
     Get the version details for the specified app.
     """
