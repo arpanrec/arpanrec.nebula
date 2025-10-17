@@ -1,3 +1,10 @@
+## [1.14.48](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.47...1.14.48) (2025-10-16)
+
+
+### Bug Fixes
+
+* corepack removed from node 25 ([10e408c](https://github.com/arpanrec/arpanrec.nebula/commit/10e408cfff516ccceec784bb1773f4f5758d03e6))
+
 ## [1.14.47](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.46...1.14.47) (2025-10-09)
 
 
