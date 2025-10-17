@@ -1,0 +1,51 @@
+---
+- name: Oracle JDK | JDK | Install
+  when: not java_rv_jdk_graalvm_is_install
+  block:
+      - name: Oracle JDK | JDK | Install | Get downloaded file stat
+        ansible.builtin.stat:
+            path: "{{ java_rv_jdk_tarball_download_path }}"
+        register: pv_ua_jdk_downloaded_file_stat
+
+      - name: Oracle JDK | JDK | Install | Newly Downloaded
+        when: not pv_ua_jdk_downloaded_file_stat.stat.exists
+        block:
+            - name: Oracle JDK | JDK | Install | Newly Downloaded | Download tarball
+              ansible.builtin.get_url:
+                  url: "{{ oracle_jdk_tmp_version_details.download_link }}"
+                  checksum: "{{ oracle_jdk_tmp_version_details.checksum | default(omit) }}"
+                  dest: "{{ java_rv_jdk_tarball_download_path }}"
+                  mode: "0700"
+
+            - name: Oracle JDK | JDK | Install | Newly Downloaded | Remove Old Install Directory
+              ansible.builtin.file:
+                  path: "{{ java_rv_jdk_install_path }}"
+                  state: absent
+        rescue:
+            - name: Oracle JDK | JDK | Install | Newly Downloaded | Delete Downloaded tarball
+              ansible.builtin.file:
+                  path: "{{ java_rv_jdk_tarball_download_path }}"
+                  state: absent
+
+            - name: Oracle JDK | JDK | Install | Newly Downloaded | Delete Install Directory
+              ansible.builtin.fail:
+                  msg: "Failed to download JDK tarball. Check the above errors."
+
+      - name: Oracle JDK | JDK | Install | Create install directory
+        ansible.builtin.file:
+            path: "{{ java_rv_jdk_install_path }}"
+            state: directory
+            mode: "0700"
+
+      - name: Oracle JDK | JDK | Install | Newly Downloaded | Unarchive the tarball
+        ansible.builtin.unarchive:
+            src: "{{ java_rv_jdk_tarball_download_path }}"
+            dest: "{{ java_rv_jdk_install_path }}"
+            extra_opts: [--strip-components=1]
+            remote_src: true
+
+- name: Oracle JDK | JDK | Remove
+  when: java_rv_jdk_graalvm_is_install
+  ansible.builtin.file:
+      path: "{{ java_rv_jdk_install_path }}"
+      state: absent
