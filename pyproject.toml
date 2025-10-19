@@ -21,7 +21,7 @@ name = "arpanrec-nebula"
 version = "1.14.49"
 description = "common ansible resources"
 authors = [ { name = "arpan", email = "me@arpanrec.com" } ]
-license = "GLWTS"
+license = "MIT"
 readme = "README.md"
 requires-python = ">=3.11.0"
 dependencies = [
