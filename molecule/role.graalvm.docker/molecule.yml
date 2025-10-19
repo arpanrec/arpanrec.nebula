@@ -1,0 +1,51 @@
+---
+dependency:
+    name: galaxy
+    enabled: true
+    options:
+        ignore-certs: false
+        ignore-errors: false
+        role-file: requirements.yml
+        requirements-file: requirements.yml
+driver:
+    name: docker
+platforms:
+    - name: debian_role_graalvm_docker
+      hostname: debian_role_graalvm_docker
+      image: "docker.io/library/debian:trixie"
+      dockerfile: ../role.java.docker/Dockerfile.j2
+      pre_build_image: false
+provisioner:
+    name: ansible
+    vvv: false
+    env:
+        ANSIBLE_VERBOSITY: 1
+    inventory:
+        group_vars:
+            all:
+                ansible_python_interpreter: /usr/bin/python3
+                java_rv_jdk_graalvm_is_install: true
+                # java_rv_jdk_version: 21.0.4
+    playbooks:
+        converge: ../role.java.docker/converge.yml
+        verify: ../role.java.docker/verify.yml
+scenario:
+    name: role.graalvm.docker
+    converge_sequence:
+        - converge
+    destroy_sequence:
+        - destroy
+    create_sequence:
+        - dependency
+        - create
+    test_sequence:
+        - syntax
+        - destroy
+        - dependency
+        - create
+        - converge
+        - verify
+        - idempotence
+        - destroy
+verifier:
+    name: ansible

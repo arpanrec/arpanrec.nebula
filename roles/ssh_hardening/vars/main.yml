@@ -5,11 +5,13 @@ ssh_hardening_rv_fail2ban_packages:
     - fail2ban
     - sendmail # Optional
     - rsyslog # Without rsyslog, fail2ban will not work because there is no log file to monitor
+    - nftables
 
 ssh_hardening_rv_fail2ban_services:
     - fail2ban
     - sendmail
     - rsyslog
+    - nftables
 
 ssh_hardening_rv_fail2ban_base_configuration:
     - option: loglevel
@@ -43,4 +45,10 @@ ssh_hardening_rv_fail2ban_base_jail_configuration:
       section: DEFAULT
     - option: banaction
       value: "{{ ssh_hardening_rv_fail2ban_banaction }}"
+      section: DEFAULT
+    - option: banaction_multiport
+      value: "{{ ssh_hardening_rv_fail2ban_banaction_multiport }}"
+      section: DEFAULT
+    - option: banaction_allports
+      value: "{{ ssh_hardening_rv_fail2ban_banaction_allports }}"
       section: DEFAULT

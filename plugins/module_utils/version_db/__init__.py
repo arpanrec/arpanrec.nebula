@@ -33,7 +33,7 @@ from .models import AppDetails, SupportedApps, VersionDetails
 display = Display()
 
 
-def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: ignore # pylint: disable=R0914
+def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: ignore # pylint: disable=R0914,too-many-branches
     """
     Get the version details for the specified app.
     """
@@ -99,6 +99,16 @@ def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: igno
             from .gitleaks import Gitleaks  # pylint: disable=import-outside-toplevel
 
             app_details = Gitleaks(*args, **kwargs)  # type: ignore
+
+        case SupportedApps.MINIO.value:
+            from .minio import Minio  # pylint: disable=import-outside-toplevel
+
+            app_details = Minio(*args, **kwargs)  # type: ignore
+
+        case SupportedApps.MINIO_CLIENT.value:
+            from .minio_client import MinioClient  # pylint: disable=import-outside-toplevel
+
+            app_details = MinioClient(*args, **kwargs)  # type: ignore
 
         case _:
             raise ValueError(f"Unsupported app: {app_name}")

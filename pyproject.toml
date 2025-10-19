@@ -18,20 +18,19 @@ line-length = 120
 
 [project]
 name = "arpanrec-nebula"
-version = "1.14.24"
+version = "1.14.49"
 description = "common ansible resources"
 authors = [ { name = "arpan", email = "me@arpanrec.com" } ]
-license = "GLWTS"
+license = "MIT"
 readme = "README.md"
 requires-python = ">=3.11.0"
 dependencies = [
-    "ansible==12.0.0",
+    "ansible==12.1.0",
     "cachier==4.1.0",
     "godaddypy==2.5.1",
-    "hvac==2.3.0",
     "passlib==1.7.4",
     "requests==2.32.5",
-    "cryptography==46.0.1",
+    "cryptography==46.0.3",
 ]
 
 [project.optional-dependencies]
@@ -39,16 +38,17 @@ dev = [
     "bandit==1.8.6",
     "black==25.9.0",
     "docker==7.1.0",
-    "isort==6.0.1",
+    "isort==7.0.0",
     "molecule==25.9.0",
     "molecule-plugins==25.8.12",
     "mypy==1.18.2",
     "neovim==0.3.1",
     "packaging==25.0",
-    "pylint==3.3.8",
-    "pyright==1.1.405",
+    "pylint==4.0.1",
+    "pyright==1.1.406",
     "types-pyyaml==6.0.12.20250915",
     "types-requests==2.32.4.20250913",
     "yamllint==1.37.1",
-    "ansible-lint==25.9.0; platform_system != 'Windows'",
+    "ansible-lint==25.9.2",
+    "antsibull-docs==2.21.0",
 ]

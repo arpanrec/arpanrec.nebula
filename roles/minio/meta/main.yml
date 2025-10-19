@@ -1,7 +1,7 @@
 ---
 galaxy_info:
     namespace: arpanrec
-    author: Arpan
-    description: Utils Installation
+    author: nebula
+    description: Minio Server and Client Installation
     license: MIT
     min_ansible_version: "2.10"

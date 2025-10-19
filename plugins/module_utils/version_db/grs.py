@@ -13,7 +13,7 @@ from ansible.utils.display import Display  # type: ignore
 display = Display()
 
 
-# pylint: disable=R0912,R0913,R0914
+# pylint: disable=R0912,R0913,R0914,R0915
 def github_release_tag_search(
     *,
     github_release_tag_search_repo: str,
@@ -97,6 +97,11 @@ def github_release_tag_search(
         if len(response_data) == 0:
             raise ValueError(f"No releases found for {github_release_tag_search_repo}")
         for release in response_data:
+            pre_release: bool = bool(release.get("prerelease", False))
+
+            if pre_release:
+                continue
+
             tag_name = release.get("tag_name")
 
             if tag_name:

@@ -6,3 +6,4 @@ nodejs_rv_global_packages:
     - "@bitwarden/cli"
     - "neovim"
     - "semver"
+    - "corepack"

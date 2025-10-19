@@ -1,0 +1,28 @@
+---
+- name: Gitea | Prerequisite | Gather root facts.
+  ansible.builtin.setup:
+
+- name: Gitea | Prerequisite | Get system 1 PID Details.
+  ansible.builtin.command: ps -p 1
+  register: gitea_rv_tmp_one_pid_shell_result
+  changed_when: false
+
+- name: Gitea | Prerequisite | Assume system is not in systemd.
+  ansible.builtin.set_fact:
+      gitea_rv_init_system_systemd: "{{ gitea_rv_tmp_one_pid_shell_result.stdout_lines[1] \
+          | split(' ') | last == 'systemd' }}"
+
+- name: Gitea | Prerequisite | Write gpg key.
+  ansible.builtin.copy:
+      dest: "/tmp/teabot-gpg.asc"
+      content: "{{ gitea_teabot_gpg_key }}"
+      mode: "0644"
+
+- name: Gitea | Prerequisite | Import gpg key.
+  ansible.builtin.command:
+      argv:
+          - gpg
+          - --import
+          - "/tmp/teabot-gpg.asc"
+  register: gitea_import_gpg_key_res
+  changed_when: "'imported' in gitea_import_gpg_key_res.stdout"

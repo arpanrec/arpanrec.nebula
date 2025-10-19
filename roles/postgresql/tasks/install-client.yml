@@ -1,0 +1,12 @@
+---
+- name: Postgresql | Install Client | Add repository.
+  ansible.builtin.import_tasks: add-repo.yml
+
+- name: Postgresql | Install Client | Install packages.
+  ansible.builtin.apt:
+      name:
+          - postgresql-client-{{ postgresql_version }}
+          - python3-psycopg2
+          - libpq-dev
+      state: present
+      update_cache: true

@@ -12,6 +12,14 @@
       update_cache: true
       install_recommends: true
 
+- name: SSHD Hardening | fail2ban | Create filter.d directory
+  ansible.builtin.file:
+      path: /etc/fail2ban/filter.d
+      state: directory
+      owner: root
+      group: root
+      mode: "0755"
+
 - name: SSHD Hardening | fail2ban | Copy filters in filter.d
   ansible.builtin.copy:
       src: "{{ ssh_hardening_rv_fail2ban_filterd_path }}"
@@ -36,6 +44,31 @@
       - SSHD Hardening | fail2ban | Restart fail2ban
   loop_control:
       label: "{{ item.option }}"
+
+- name: SSHD Hardening | fail2ban | Create jail.d directory
+  ansible.builtin.file:
+      path: /etc/fail2ban/jail.d
+      state: directory
+      owner: root
+      group: root
+      mode: "0755"
+
+- name: SSHD Hardening | fail2ban | Setup defaults-debian.conf, setup sshd
+  community.general.ini_file:
+      path: /etc/fail2ban/jail.d/defaults-debian.conf
+      section: "{{ item.section }}"
+      option: "{{ item.option }}"
+      value: "{{ item.value }}"
+      mode: "0644"
+      backup: false
+      create: true
+  loop:
+      - { section: "sshd", option: "backend", value: "systemd" }
+      - { section: "sshd", option: "journalmatch", value: "_SYSTEMD_UNIT=ssh.service + _COMM=sshd" }
+      - { section: "sshd", option: "enabled", value: "true" }
+      - { section: "DEFAULT", option: "banaction", value: "{{ ssh_hardening_rv_fail2ban_banaction }}" }
+  notify:
+      - SSHD Hardening | fail2ban | Restart fail2ban
 
 - name: SSHD Hardening | fail2ban | Configure jail.local
   community.general.ini_file:

@@ -1,6 +1,6 @@
 ---
 postgresql_auth_method: "{{ ansible_fips | ternary('scram-sha-256', 'md5') }}"
-postgresql_version: 16
+postgresql_version: 17
 postgresql_cluster: main
 postgresql_port: 5432
 

@@ -3,3 +3,4 @@ linux_patching_rv_net_time_services:
     - NetworkManager.service
     - systemd-timesyncd.service
     - ufw.service
+    - nftables.service

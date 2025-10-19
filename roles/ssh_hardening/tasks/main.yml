@@ -1,4 +1,11 @@
 ---
+- name: SSHD Hardening | Install python3 and procps
+  ansible.builtin.raw: DEBIAN_FRONTEND=noninteractive apt-get update
+      && DEBIAN_FRONTEND=noninteractive apt-get install -y python3 procps
+  register: linux_patching_rv_install_python_pip_result_raw
+  changed_when: "'0 upgraded, 0 newly installed' not in
+      linux_patching_rv_install_python_pip_result_raw.stdout_lines | last"
+
 - name: SSHD Hardening | Include Asserts | Checking platform compatibility
   ansible.builtin.fail:
       msg: "{{ ansible_system }} is not supported by this role"
@@ -8,6 +15,9 @@
   ansible.builtin.command: ps -p 1
   register: ssh_hardening_rv_tmp_one_pid_shell_result
   changed_when: false
+
+- name: SSHD Hardening | Gathering Facts
+  ansible.builtin.setup:
 
 - name: SSHD Hardening | Prerequisite | Assume system is not in systemd
   ansible.builtin.set_fact:

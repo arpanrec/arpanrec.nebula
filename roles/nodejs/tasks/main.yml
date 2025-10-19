@@ -70,6 +70,15 @@
   environment:
       PATH: "{{ nodejs_rv_install_path }}/bin:{{ ansible_env.PATH }}"
 
+- name: NodeJS | Install node.js package globally.
+  community.general.npm:
+      name: "{{ item }}"
+      global: true
+      executable: "{{ nodejs_rv_install_path }}/bin/npm"
+  with_items: "{{ nodejs_rv_global_packages }}"
+  environment:
+      PATH: "{{ nodejs_rv_install_path }}/bin:{{ ansible_env.PATH }}"
+
 - name: NodeJS | Enable corepack package managers pnpm & yarn
   ansible.builtin.command:
       argv:
@@ -82,12 +91,3 @@
   loop:
       - pnpm
       - yarn
-
-- name: NodeJS | Install node.js package globally.
-  community.general.npm:
-      name: "{{ item }}"
-      global: true
-      executable: "{{ nodejs_rv_install_path }}/bin/npm"
-  with_items: "{{ nodejs_rv_global_packages }}"
-  environment:
-      PATH: "{{ nodejs_rv_install_path }}/bin:{{ ansible_env.PATH }}"

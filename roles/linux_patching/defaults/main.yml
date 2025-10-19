@@ -70,6 +70,8 @@ linux_patching_rv_packages:
     - python3
     - openssl
     - util-linux-extra
+    - nftables
+    - libatomic1
 
 linux_patching_rv_extra_packages: []
 

@@ -1,0 +1,11 @@
+---
+- name: Minio | Restart systemd service
+  ansible.builtin.systemd_service:
+      name: "{{ minio_systemd_service_name }}"
+      state: restarted
+      enabled: true
+      daemon_reload: true
+      masked: false
+  register: minio_systemd_restart_res
+  failed_when: minio_rv_init_system_systemd
+      and minio_systemd_restart_res.failed

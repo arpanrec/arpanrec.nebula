@@ -1,97 +1,19 @@
 ---
-- name: Postgresql | Gather facts.
-  ansible.builtin.setup:
+- name: Postgresql | Verify cluster name.
+  ansible.builtin.fail:
+      msg: "The 'postgresql_cluster' variable must be set and not include any spaces or special characters.
+          https://www.postgresql.org/message-id/E7F3EFD1-82A2-47BB-833D-EFA6BBD66969%40dnservices.co.za"
+  when: postgresql_cluster is not defined or postgresql_cluster | length < 1
+      or postgresql_cluster is search("([^a-z0-9_])")
+      or postgresql_cluster is search(" ")
 
-- name: Postgresql | Remove pgdg list file.
-  ansible.builtin.file:
-      path: /etc/apt/sources.list.d/pgdg.list
-      state: absent
-
-- name: Postgresql | Install required packages.
-  ansible.builtin.apt:
-      package:
-          - curl
-          - ca-certificates
-          - python3-psycopg2
-          - libpq-dev
-          - locales
-          - python3-debian
-          - python3-requests
-          - ssl-cert
-
-- name: Postgresql | Remove default postgresql package is exists.
-  ansible.builtin.apt:
-      name:
-          - postgresql
-          - postgresql-client
-          - postgresql-contrib
-      state: absent
-      purge: true
-
-- name: Postgresql | Create postgresql-common directory.
-  when: false
-  ansible.builtin.file:
-      path: /usr/share/postgresql-common/pgdg
-      state: directory
-      owner: root
-      group: root
-      mode: "0755"
-
-- name: Postgresql | Download GPG key.
-  when: false
-  ansible.builtin.get_url:
-      url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
-      dest: /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc
-      mode: "0644"
-      checksum: "sha256:0144068502a1eddd2a0280ede10ef607d1ec592ce819940991203941564e8e76"
-      owner: root
-      group: root
-
-- name: Postgresql | Get system architecture from dpkg.
-  ansible.builtin.command:
-      argv:
-          - dpkg
-          - --print-architecture
-  register: postgresql_machine_architecture_shell
-  changed_when: false
-
-- name: Postgresql | Remove pgdg list repositories.
-  ansible.builtin.apt_repository:
-      repo: "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] \
-          https://apt.postgresql.org/pub/repos/apt {{ ansible_distribution_release }}-pgdg main"
-      filename: pgdg
-      update_cache: true
-      state: absent
-
-- name: Postgresql | Add apt deb822_repository.
-  ansible.builtin.deb822_repository:
-      name: pgdg
-      allow_downgrade_to_insecure: false
-      allow_insecure: false
-      # signed_by: /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc
-      signed_by: "{{ postgresql_pgp_asc_content }}"
-      architectures:
-          - "{{ postgresql_machine_architecture_shell.stdout }}"
-      suites:
-          - "{{ ansible_distribution_release }}-pgdg"
-      uris:
-          - https://apt.postgresql.org/pub/repos/apt
-      types:
-          - deb
-      components:
-          - main
-      trusted: true
-      enabled: true
-      mode: "0644"
-      state: present
-      check_valid_until: true
-      check_date: true
+- name: Postgresql | Install Client.
+  ansible.builtin.import_tasks: install-client.yml
 
 - name: Postgresql | Install packages.
   ansible.builtin.apt:
       name:
           - postgresql-{{ postgresql_version }}
-          - postgresql-client-{{ postgresql_version }}
           - postgresql-contrib-{{ postgresql_version }}
       state: present
       update_cache: true
@@ -390,6 +312,7 @@
   community.postgresql.postgresql_user:
       name: "{{ postgresql_super_user }}"
       password: "{{ postgresql_super_user_password }}"
+      login_db: "{{ postgresql_super_user_db }}"
       login_user: "{{ postgresql_super_user }}"
       login_port: "{{ postgresql_port }}"
       login_unix_socket: "{{ postgresql_unix_socket_directories[0] }}"
@@ -406,11 +329,12 @@
   community.postgresql.postgresql_user:
       name: "{{ item.name }}"
       password: "{{ item.password | default(omit) }}"
+      login_db: "{{ item.login_db | default(postgresql_super_user_db) }}"
       login_host: "{{ item.login_host | default('localhost') }}"
       login_password: "{{ item.login_password | default(omit) }}"
       login_user: "{{ item.login_user | default(postgresql_super_user) }}"
       login_unix_socket: "{{ item.login_unix_socket | default(postgresql_unix_socket_directories[0]) }}"
-      login_port: "{{ item.port | default(omit) }}"
+      login_port: "{{ item.port | default(postgresql_port) }}"
   with_items: "{{ postgresql_users }}"
   become: true
   become_user: "{{ postgresql_service_user }}"
@@ -432,7 +356,7 @@
       login_password: "{{ item.login_password | default(omit) }}"
       login_user: "{{ item.login_user | default(postgresql_super_user) }}"
       login_unix_socket: "{{ item.login_unix_socket | default(postgresql_unix_socket_directories[0]) }}"
-      login_port: "{{ item.login_port | default(omit) }}"
+      login_port: "{{ item.login_port | default(postgresql_port) }}"
       owner: "{{ item.owner | default(postgresql_super_user) }}"
       state: "{{ item.state | default('present') }}"
   with_items: "{{ postgresql_databases }}"
@@ -453,7 +377,7 @@
       login_password: "{{ item.login_password | default(omit) }}"
       login_user: "{{ item.login_user | default(postgresql_super_user) }}"
       login_unix_socket: "{{ item.login_unix_socket | default(postgresql_unix_socket_directories[0]) }}"
-      login_port: "{{ item.login_port | default(omit) }}"
+      login_port: "{{ item.login_port | default(postgresql_port) }}"
       state: "{{ item.state | default('present') }}"
   with_items: "{{ postgresql_users }}"
   become: true
@@ -487,7 +411,7 @@
       login_password: "{{ item.login_password | default(omit) }}"
       login_user: "{{ item.login_user | default(postgresql_super_user) }}"
       login_unix_socket: "{{ item.login_unix_socket | default(postgresql_unix_socket_directories[0]) }}"
-      login_port: "{{ item.login_port | default(omit) }}"
+      login_port: "{{ item.login_port | default(postgresql_port) }}"
       state: "{{ item.state | default('present') }}"
       fail_on_role: "{{ item.fail_on_role | default(true) }}"
       grant_option: "{{ item.grant_option | default(omit) }}"
