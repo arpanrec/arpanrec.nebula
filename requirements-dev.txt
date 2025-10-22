@@ -6,7 +6,7 @@ aiofiles==25.1.0
     #   antsibull-fileutils
 aiohappyeyeballs==2.6.1
     # via aiohttp
-aiohttp==3.13.0
+aiohttp==3.13.1
     # via
     #   antsibull-core
     #   antsibull-docs
@@ -217,7 +217,7 @@ propcache==0.4.1
     #   yarl
 pycparser==2.23 ; implementation_name != 'PyPy'
     # via cffi
-pydantic==2.12.2
+pydantic==2.12.3
     # via
     #   antsibull-changelog
     #   antsibull-core

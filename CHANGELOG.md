@@ -1,3 +1,10 @@
+## [1.14.50](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.49...1.14.50) (2025-10-22)
+
+
+### Bug Fixes
+
+* add task to set directory permissions for Gitea files ([612b6f0](https://github.com/arpanrec/arpanrec.nebula/commit/612b6f09cead87cab61056ba64e3d36c108deb49))
+
 ## [1.14.49](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.48...1.14.49) (2025-10-17)
 
 
