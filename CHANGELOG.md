@@ -1,3 +1,10 @@
+## [1.14.51](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.50...1.14.51) (2025-11-02)
+
+
+### Bug Fixes
+
+* Update gitea public key ([1e65952](https://github.com/arpanrec/arpanrec.nebula/commit/1e65952ac72e3e761a438391849553c95e053de9))
+
 ## [1.14.50](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.49...1.14.50) (2025-10-22)
 
 
