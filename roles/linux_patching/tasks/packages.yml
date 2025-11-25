@@ -61,6 +61,7 @@
   when: linux_patching_rv_install_devel_packages
       and linux_patching_rv_install_devel_packages_tmp_kernel_version_installed.failed
   register: linux_patching_rv_install_generic_headers_tmp_kernel_version_installed
+  ignore_errors: true
 
 - name: Linux Patching | Install Packages | Reboot after kernel install
   ansible.builtin.import_tasks:

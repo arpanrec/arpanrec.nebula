@@ -6,7 +6,7 @@ aiofiles==25.1.0
     #   antsibull-fileutils
 aiohappyeyeballs==2.6.1
     # via aiohttp
-aiohttp==3.13.1
+aiohttp==3.13.2
     # via
     #   antsibull-core
     #   antsibull-docs
@@ -18,40 +18,40 @@ annotated-types==0.7.0
     # via
     #   antsibull-changelog
     #   pydantic
-ansible==12.1.0
+ansible==13.0.0
     # via arpanrec-nebula
-ansible-compat==25.8.2
+ansible-compat==25.11.0
     # via
     #   ansible-lint
     #   molecule
-ansible-core==2.19.3
+ansible-core==2.20.0
     # via
     #   ansible
     #   ansible-compat
     #   ansible-lint
     #   molecule
-ansible-lint==25.9.2
+ansible-lint==25.11.1
     # via arpanrec-nebula
 ansible-pygments==0.1.2
     # via antsibull-docs
 antsibull-changelog==0.34.0
     # via antsibull-docs
-antsibull-core==3.4.0
+antsibull-core==3.5.0
     # via antsibull-docs
-antsibull-docs==2.21.0
+antsibull-docs==2.23.0
     # via arpanrec-nebula
 antsibull-docs-parser==1.2.2
     # via antsibull-docs
-antsibull-docutils==1.3.0
+antsibull-docutils==1.3.1
     # via
     #   antsibull-changelog
     #   antsibull-docs
-antsibull-fileutils==1.5.0
+antsibull-fileutils==1.5.1
     # via
     #   antsibull-changelog
     #   antsibull-core
     #   antsibull-docs
-astroid==4.0.1
+astroid==4.0.2
     # via pylint
 asyncio-pool==0.6.0
     # via antsibull-docs
@@ -62,9 +62,9 @@ attrs==25.4.0
     #   referencing
 babel==2.17.0
     # via sphinx
-bandit==1.8.6
+bandit==1.9.2
     # via arpanrec-nebula
-black==25.9.0
+black==25.11.0
     # via
     #   ansible-lint
     #   arpanrec-nebula
@@ -74,7 +74,7 @@ build==1.3.0
     # via antsibull-core
 cachier==4.1.0
     # via arpanrec-nebula
-certifi==2025.10.5
+certifi==2025.11.12
     # via requests
 cffi==2.0.0
     # via
@@ -82,7 +82,7 @@ cffi==2.0.0
     #   cryptography
 charset-normalizer==3.4.4
     # via requests
-click==8.3.0
+click==8.3.1
     # via
     #   black
     #   click-help-colors
@@ -158,7 +158,7 @@ mccabe==0.7.0
     # via pylint
 mdurl==0.1.2
     # via markdown-it-py
-molecule==25.9.0
+molecule==25.11.1
     # via
     #   arpanrec-nebula
     #   molecule-plugins
@@ -217,28 +217,28 @@ propcache==0.4.1
     #   yarl
 pycparser==2.23 ; implementation_name != 'PyPy'
     # via cffi
-pydantic==2.12.3
+pydantic==2.12.4
     # via
     #   antsibull-changelog
     #   antsibull-core
     #   antsibull-docs
     #   rstcheck-core
-pydantic-core==2.41.4
+pydantic-core==2.41.5
     # via pydantic
 pygments==2.19.2
     # via
     #   ansible-pygments
     #   rich
     #   sphinx
-pylint==4.0.1
+pylint==4.0.3
     # via arpanrec-nebula
 pynvim==0.6.0
     # via neovim
 pyproject-hooks==1.2.0
     # via build
-pyright==1.1.406
+pyright==1.1.407
     # via arpanrec-nebula
-pytokens==0.2.0
+pytokens==0.3.0
     # via black
 pywin32==311 ; sys_platform == 'win32'
     # via
@@ -274,7 +274,7 @@ rich==14.2.0
     #   typer
 roman-numerals-py==3.1.0
     # via sphinx
-rpds-py==0.27.1
+rpds-py==0.29.0
     # via
     #   jsonschema
     #   referencing
@@ -284,9 +284,9 @@ rstcheck==6.2.5
     #   antsibull-docs
 rstcheck-core==1.2.2
     # via rstcheck
-ruamel-yaml==0.18.15
+ruamel-yaml==0.18.16
     # via ansible-lint
-ruamel-yaml-clib==0.2.14 ; python_full_version < '3.14'
+ruamel-yaml-clib==0.2.15 ; python_full_version < '3.14'
     # via
     #   ansible-lint
     #   ruamel-yaml
@@ -315,7 +315,7 @@ sphinxcontrib-qthelp==2.0.0
     # via sphinx
 sphinxcontrib-serializinghtml==2.0.0
     # via sphinx
-stevedore==5.5.0
+stevedore==5.6.0
     # via bandit
 subprocess-tee==0.4.2
     # via
@@ -324,10 +324,8 @@ subprocess-tee==0.4.2
 tomlkit==0.13.3
     # via pylint
 twiggy==0.5.1
-    # via
-    #   antsibull-core
-    #   antsibull-docs
-typer==0.19.2
+    # via antsibull-core
+typer==0.20.0
     # via rstcheck
 types-pyyaml==6.0.12.20250915
     # via arpanrec-nebula
@@ -339,7 +337,6 @@ typing-extensions==4.15.0
     #   mypy
     #   pydantic
     #   pydantic-core
-    #   pynvim
     #   pyright
     #   referencing
     #   typer
