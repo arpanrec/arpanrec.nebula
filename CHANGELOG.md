@@ -1,3 +1,10 @@
+## [1.14.52](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.51...1.14.52) (2025-11-25)
+
+
+### Bug Fixes
+
+* Update ansible to 13.0.0 and python to 3.14, Remove vs code exts ([#55](https://github.com/arpanrec/arpanrec.nebula/issues/55)) ([034c3ce](https://github.com/arpanrec/arpanrec.nebula/commit/034c3ce827211c0a1950565e068cff30f90ca1a2))
+
 ## [1.14.51](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.50...1.14.51) (2025-11-02)
 
 
