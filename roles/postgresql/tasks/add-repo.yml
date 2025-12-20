@@ -58,7 +58,7 @@
 - name: Postgresql | Install Client | Add repository | Remove pgdg list repository.
   ansible.builtin.apt_repository:
       repo: "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] \
-          https://apt.postgresql.org/pub/repos/apt {{ ansible_distribution_release }}-pgdg main"
+          https://apt.postgresql.org/pub/repos/apt {{ ansible_facts.distribution_release }}-pgdg main"
       filename: pgdg
       update_cache: true
       state: absent
@@ -73,7 +73,7 @@
       architectures:
           - "{{ postgresql_machine_architecture_shell.stdout }}"
       suites:
-          - "{{ ansible_distribution_release }}-pgdg"
+          - "{{ ansible_facts.distribution_release }}-pgdg"
       uris:
           - https://apt.postgresql.org/pub/repos/apt
       types:

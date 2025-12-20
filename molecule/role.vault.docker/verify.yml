@@ -16,7 +16,7 @@
       - name: Vault | Molecule | Verify | Get vault version from shell
         ansible.builtin.command: vault --version
         environment:
-            PATH: "{{ vault_rv_install_path }}:{{ ansible_env.PATH }}"
+            PATH: "{{ vault_rv_install_path }}:{{ ansible_facts['env'].PATH }}"
         register: vault_rv_version_shell_result
         changed_when: false
 

@@ -19,7 +19,7 @@
                 - "{{ minio_executable }}"
                 - "--version"
         environment:
-            PATH: "{{ ansible_env.PATH }}"
+            PATH: "{{ ansible_facts['env'].PATH }}"
         register: minio_rv_tmp_version_shell_result
         changed_when: false
 

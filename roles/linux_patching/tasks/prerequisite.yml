@@ -4,8 +4,8 @@
 
 - name: Linux Patching | Prerequisite | Checking platform compatibility
   ansible.builtin.fail:
-      msg: "{{ ansible_distribution }} is not supported by this role"
-  when: ansible_distribution not in ['Debian']
+      msg: "{{ ansible_facts.distribution }} is not supported by this role"
+  when: ansible_facts.distribution not in ['Debian']
 
 - name: Linux Patching | Prerequisite | Get system 1 PID Details
   ansible.builtin.command: ps -p 1

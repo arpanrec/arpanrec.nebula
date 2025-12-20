@@ -21,7 +21,7 @@
       name: en_US.UTF-8
       state: present
   environment:
-      PATH: /usr/sbin:{{ ansible_env.PATH }}
+      PATH: /usr/sbin:{{ ansible_facts.env.PATH }}
   register: linux_patching_rv_tmp_enus_utf_locale_gen
 
 - name: Linux Patching | Setup Host Date Time | Set default locale to en_US.UTF-8
@@ -29,7 +29,7 @@
       localectl set-locale LANG=en_US.UTF-8
       update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
   environment:
-      PATH: /usr/sbin:{{ ansible_env.PATH }}
+      PATH: /usr/sbin:{{ ansible_facts.env.PATH }}
   register: linux_patching_rv_tmp_set_default_localectl
   changed_when: linux_patching_rv_tmp_enus_utf_locale_gen.changed
   failed_when: >
