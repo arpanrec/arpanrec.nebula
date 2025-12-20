@@ -13,7 +13,7 @@
         ansible.builtin.set_fact:
             code_rv_tmp_bin_env:
                 DONT_PROMPT_WSL_INSTALL: true
-                PATH: "{{ code_rv_bin_dir }}:{{ ansible_facts['env'].PATH }}"
+                PATH: "{{ code_rv_bin_dir }}:{{ ansible_facts.env.PATH }}"
 
       - name: Visual Studio Code | Molecule | Verify | Get code version from shell
         ansible.builtin.command: code --version

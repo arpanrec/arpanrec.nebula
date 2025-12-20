@@ -19,7 +19,7 @@
                 - gitleaks
                 - --version
         environment:
-            PATH: "{{ gitleaks_rv_executable_bin_path | dirname }}:{{ ansible_facts['env'].PATH }}"
+            PATH: "{{ gitleaks_rv_executable_bin_path | dirname }}:{{ ansible_facts.env.PATH }}"
         register: gitleaks_rv_version_shell_result
         changed_when: false
 

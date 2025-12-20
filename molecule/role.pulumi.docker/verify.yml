@@ -16,7 +16,7 @@
       - name: Pulumi | Molecule | Verify | Get pulumi version from shell
         ansible.builtin.command: pulumi version
         environment:
-            PATH: "{{ pulumi_rv_install_path }}:{{ ansible_facts['env'].PATH }}"
+            PATH: "{{ pulumi_rv_install_path }}:{{ ansible_facts.env.PATH }}"
         register: pulumi_rv_version_shell_result
         changed_when: false
 

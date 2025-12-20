@@ -22,7 +22,7 @@
             - name: Oracle JDK | JDK | Molecule | Verify | Get javac version from shell
               ansible.builtin.command: javac --version
               environment:
-                  PATH: "{{ java_rv_jdk_install_path }}/bin:{{ ansible_facts['env'].PATH }}"
+                  PATH: "{{ java_rv_jdk_install_path }}/bin:{{ ansible_facts.env.PATH }}"
               register: java_rv_jdk_tmp_version_shell_result
               changed_when: false
 
@@ -58,7 +58,7 @@
         ansible.builtin.command: mvn --version
         environment:
             PATH: "{{ java_rv_jdk_mvn_install_path }}/bin:{{ java_rv_jdk_graalvm_install_path }}/bin\
-                :{{ java_rv_jdk_install_path }}/bin:{{ ansible_facts['env'].PATH }}"
+                :{{ java_rv_jdk_install_path }}/bin:{{ ansible_facts.env.PATH }}"
         register: java_rv_jdk_maven_tmp_version_shell_result
         changed_when: false
 
@@ -74,7 +74,7 @@
         ansible.builtin.command: gradle -version
         environment:
             PATH: "{{ java_rv_jdk_gradle_install_path }}/bin:{{ java_rv_jdk_graalvm_install_path }}/bin\
-                :{{ java_rv_jdk_install_path }}/bin:{{ ansible_facts['env'].PATH }}"
+                :{{ java_rv_jdk_install_path }}/bin:{{ ansible_facts.env.PATH }}"
         register: java_rv_jdk_gradle_tmp_version_shell_result
         changed_when: false
 
@@ -90,7 +90,7 @@
         ansible.builtin.command: groovy --version
         environment:
             PATH: "{{ java_rv_jdk_groovy_install_path }}/bin:{{ java_rv_jdk_graalvm_install_path }}/bin\
-                :{{ java_rv_jdk_install_path }}/bin:{{ ansible_facts['env'].PATH }}"
+                :{{ java_rv_jdk_install_path }}/bin:{{ ansible_facts.env.PATH }}"
         register: java_rv_jdk_groovy_tmp_version_shell_result
         changed_when: false
 
@@ -107,7 +107,7 @@
         ansible.builtin.command: kotlinc -version
         environment:
             PATH: "{{ java_rv_jdk_kotlinc_install_path }}/bin:{{ java_rv_jdk_graalvm_install_path }}/bin\
-                :{{ java_rv_jdk_install_path }}/bin:{{ ansible_facts['env'].PATH }}"
+                :{{ java_rv_jdk_install_path }}/bin:{{ ansible_facts.env.PATH }}"
         register: java_rv_jdk_kotlinc_tmp_version_shell_result
         changed_when: false
 
