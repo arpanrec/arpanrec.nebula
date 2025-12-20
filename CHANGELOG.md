@@ -1,3 +1,10 @@
+## [1.14.53](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.52...1.14.53) (2025-12-20)
+
+
+### Bug Fixes
+
+* Update Maven version to 3.9.12 in Java class ([#56](https://github.com/arpanrec/arpanrec.nebula/issues/56)) ([8c2835d](https://github.com/arpanrec/arpanrec.nebula/commit/8c2835d5bfdfd5e476c2bf681d243b62d23b316b))
+
 ## [1.14.52](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.51...1.14.52) (2025-11-25)
 
 
