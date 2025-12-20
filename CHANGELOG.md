@@ -1,3 +1,10 @@
+## [1.14.54](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.53...1.14.54) (2025-12-20)
+
+
+### Bug Fixes
+
+* Update ansible_facts syntax for environment PATH in multiple verify.yml files ([569cd8f](https://github.com/arpanrec/arpanrec.nebula/commit/569cd8f761e31b092be788f9c64e80647a28792b))
+
 ## [1.14.53](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.52...1.14.53) (2025-12-20)
 
 
