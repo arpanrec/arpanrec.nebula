@@ -41,7 +41,7 @@
               ansible.builtin.command: native-image --version
               environment:
                   PATH: "{{ java_rv_jdk_graalvm_install_path }}/bin:{{ java_rv_jdk_install_path }}/bin\
-                      :{{ ansible_env.PATH }}"
+                      :{{ ansible_facts.env.PATH }}"
               register: java_rv_jdk_graalvm_tmp_version_shell_result
               changed_when: false
 
