@@ -63,6 +63,6 @@
   loop: "{{ go_rv_global_installs }}"
   when: go_rv_global_installs | length > 0
   environment:
-      PATH: "{{ go_rv_install_path }}/bin:{{ ansible_env.PATH }}"
+      PATH: "{{ go_rv_install_path }}/bin:{{ ansible_facts.env.PATH }}"
   register: go_rv_global_installs_result
   changed_when: go_rv_global_installs_result.stderr_lines | length != 0

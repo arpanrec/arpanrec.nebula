@@ -71,7 +71,7 @@ class Java(AppDetails):
             "17": {},
         },
         "maven": {
-            "maven-3.9.11": {},
+            "maven-3.9.12": {},
         },
         "gradle": {
             "v9.1.0": {},

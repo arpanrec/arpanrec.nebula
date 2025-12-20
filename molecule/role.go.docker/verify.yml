@@ -16,7 +16,7 @@
       - name: Golang | Molecule | Verify | Get go version from shell
         ansible.builtin.command: go version
         environment:
-            PATH: "{{ go_rv_install_path }}/bin:{{ ansible_env.PATH }}"
+            PATH: "{{ go_rv_install_path }}/bin:{{ ansible_facts['env'].PATH }}"
         register: go_rv_tmp_version_shell_result
         changed_when: false
 

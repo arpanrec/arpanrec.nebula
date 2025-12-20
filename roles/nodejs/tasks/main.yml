@@ -68,7 +68,7 @@
       - pnpm
       - yarn
   environment:
-      PATH: "{{ nodejs_rv_install_path }}/bin:{{ ansible_env.PATH }}"
+      PATH: "{{ nodejs_rv_install_path }}/bin:{{ ansible_facts.env.PATH }}"
 
 - name: NodeJS | Install node.js package globally.
   community.general.npm:
@@ -77,7 +77,7 @@
       executable: "{{ nodejs_rv_install_path }}/bin/npm"
   with_items: "{{ nodejs_rv_global_packages }}"
   environment:
-      PATH: "{{ nodejs_rv_install_path }}/bin:{{ ansible_env.PATH }}"
+      PATH: "{{ nodejs_rv_install_path }}/bin:{{ ansible_facts.env.PATH }}"
 
 - name: NodeJS | Enable corepack package managers pnpm & yarn
   ansible.builtin.command:
@@ -87,7 +87,7 @@
           - "{{ item }}"
       creates: "{{ nodejs_rv_install_path }}/bin/{{ item }}"
   environment:
-      PATH: "{{ nodejs_rv_install_path }}/bin:{{ ansible_env.PATH }}"
+      PATH: "{{ nodejs_rv_install_path }}/bin:{{ ansible_facts.env.PATH }}"
   loop:
       - pnpm
       - yarn

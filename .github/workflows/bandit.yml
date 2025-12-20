@@ -29,12 +29,12 @@ jobs:
                 python-version: ["3.12.11", "3.13.7", "3.14.0"]
         steps:
             - name: Checkout
-              uses: actions/checkout@v6.0.0
+              uses: actions/checkout@v6.0.1
 
-            - name: Install uv 0.9.12
-              uses: astral-sh/setup-uv@v7.1.4
+            - name: Install uv 0.9.18
+              uses: astral-sh/setup-uv@v7.1.6
               with:
-                  version: 0.9.12
+                  version: 0.9.18
                   python-version: "${{ matrix.python-version }}"
                   enable-cache: true
                   cache-suffix: python-${{ matrix.python-version }}
