@@ -1,3 +1,10 @@
+## [1.14.55](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.54...1.14.55) (2026-01-06)
+
+
+### Bug Fixes
+
+* support split PEM content for CA certificates and enhance debug info ([03f0544](https://github.com/arpanrec/arpanrec.nebula/commit/03f054460b2679c50b0851393a0615a020d0eacd))
+
 ## [1.14.54](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.53...1.14.54) (2025-12-20)
 
 
