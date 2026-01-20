@@ -6,7 +6,6 @@ This collection provides a set of roles to deploy and manage various services.
 
 ## Roles
 
-- [Secrets Manager CLI](/roles/bws/README.md)
 - [Visual Studio Code](/roles/code/README.md)
 - [Get Certificate from ownca](/roles/get_certificate_ownca/README.md)
 - [GNOME](/roles/gnome/README.md)
@@ -37,7 +36,6 @@ This collection provides a set of roles to deploy and manage various services.
 
 ### Lookups
 
-    - [bitwarden](/plugins/lookup/bitwarden.py)
     - [version_db](/plugins/lookup/version_db.py)
 
 ### Filters

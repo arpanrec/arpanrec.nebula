@@ -1,2 +1,0 @@
----
-bws_sdk_tmp_zip_download_path: "{{ bws_sdk_tmp_dir }}/bws-{{ bws_sdk_version_details.version }}.zip"

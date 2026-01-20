@@ -41,11 +41,6 @@ def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: igno
     app_details: Optional[AppDetails] = None
 
     match app_name:
-        case SupportedApps.BWS.value:
-            from .bws import BWS  # pylint: disable=import-outside-toplevel
-
-            app_details = BWS(*args, **kwargs)  # type: ignore
-
         case SupportedApps.TERRAFORM.value:
             from .terraform import Terraform  # pylint: disable=import-outside-toplevel
 
@@ -60,11 +55,6 @@ def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: igno
             from .vault import Vault  # pylint: disable=import-outside-toplevel
 
             app_details = Vault(*args, **kwargs)  # type: ignore
-
-        case SupportedApps.BITWARDEN_DESKTOP.value:
-            from .bitwarden_desktop import BitwardenDesktop  # pylint: disable=import-outside-toplevel
-
-            app_details = BitwardenDesktop(*args, **kwargs)  # type: ignore
 
         case SupportedApps.GO.value:
             from .go import Go  # pylint: disable=import-outside-toplevel

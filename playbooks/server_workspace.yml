@@ -2,18 +2,6 @@
 - name: Installing apps in user $HOME directory
   hosts: server_workspace
   tasks:
-      - name: USERAPPS | Install Bitwarden
-        ansible.builtin.include_role:
-            name: arpanrec.nebula.bitwarden_desktop
-        args:
-            apply:
-                tags:
-                    - bitwarden_desktop
-                    - never
-        tags:
-            - bitwarden_desktop
-            - never
-
       - name: USERAPPS | Mattermost
         ansible.builtin.include_role:
             name: arpanrec.nebula.mattermost_desktop
@@ -154,16 +142,6 @@
             apply:
                 tags:
                     - pulumi
-
-      - name: USERAPPS | Bitwarden SDK
-        ansible.builtin.include_role:
-            name: arpanrec.nebula.bws
-        tags:
-            - bws
-        args:
-            apply:
-                tags:
-                    - bws
 
       - name: USERAPPS | Hadolint
         ansible.builtin.include_role:

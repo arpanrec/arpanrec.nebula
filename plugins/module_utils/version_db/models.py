@@ -11,11 +11,9 @@ Classes:
 Classes Details:
     SupportedApps:
         Enum Members:
-            - BWS: Represents the 'bws' application.
             - TERRAFORM: Represents the 'terraform' application.
             - CODE: Represents the 'code' application.
             - VAULT: Represents the 'vault' application.
-            - BITWARDEN_DESKTOP: Represents the 'bitwarden_desktop' application.
             - GO: Represents the 'go' application.
             - JAVA: Represents the 'java' application.
             - NODEJS: Represents the 'nodejs' application.
@@ -62,11 +60,9 @@ class SupportedApps(enum.Enum):
     Supported apps.
     """
 
-    BWS = "bws"
     TERRAFORM = "terraform"
     CODE = "code"
     VAULT = "vault"
-    BITWARDEN_DESKTOP = "bitwarden_desktop"
     GO = "go"
     JAVA = "java"
     NODEJS = "nodejs"
