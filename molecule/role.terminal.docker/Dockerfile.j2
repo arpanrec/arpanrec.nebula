@@ -10,9 +10,6 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y python3-venv \
 # For fonts
 RUN apt-get install -y fontconfig
 
-# # For VSCode
-# RUN apt-get install -y libglib2.0-dev libnss3 libatk1.0-0 libatk-bridge2.0-0 libdrm-dev libgtk-3-0 libgbm-dev libasound2
-
 # For Icons
 RUN apt-get install -y gnome-shell gtk-update-icon-cache
 
