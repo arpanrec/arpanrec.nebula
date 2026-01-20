@@ -6,24 +6,17 @@ This collection provides a set of roles to deploy and manage various services.
 
 ## Roles
 
-- [Visual Studio Code](/roles/code/README.md)
-- [Get Certificate from ownca](/roles/get_certificate_ownca/README.md)
 - [The Go Programming Language](/roles/go/README.md)
 - [Java](/roles/java/README.md)
 - [linux_patching](/roles/linux_patching/README.md)
 - [NodeJS](/roles/nodejs/README.md)
 - [ssh_hardening](/roles/ssh_hardening/README.md)
-- [Terraform by HashiCorp](/roles/terraform/README.md)
 - [themes](/roles/themes/README.md)
 - [terminal](/roles/terminal/README.md)
 - [user_add](/roles/user_add/README.md)
-- [utils](/roles/utils/README.md)
-- [Vault by HashiCorp](/roles/vault/README.md)
-- [Pulumi](/roles/pulumi/README.md)
 - [Gitea](/roles/gitea/README.md)
 - [Postgresql](/roles/postgresql/README.md)
 - [Hadolint](/roles/hadolint/README.md)
-- [minio](/roles/minio/README.md)
 
 ## Playbooks
 

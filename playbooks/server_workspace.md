@@ -20,15 +20,8 @@ Extra variables will be applied to the original role.
 - [Go Language](../roles/go/README.md) -> go
 - [Oracle JDK](../roles/java/README.md) -> java
 - [Terminal Themes](../roles/terminal/README.md) -> terminal
-- [Terraform](../roles/terraform/README.md) -> terraform
-- [Vault](../roles/vault/README.md) -> vault
-- [Pulumi](../roles/pulumi/README.md) -> pulumi
 - [Hadolint](../roles/hadolint/README.md) -> hadolint
 
 ### Disabled by Default
 
-- [Mattermost Desktop](../roles/mattermost_desktop/README.md) -> mattermost_desktop
-- [Telegram Desktop](../roles/telegram_desktop/README.md) -> telegram_desktop
-- [Postman](../roles/postman/README.md) -> postman
-- [Microsoft Visual Studio Code](../roles/code/README.md) -> code
 - [Themes](../roles/themes/README.md) -> themes

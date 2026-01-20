@@ -60,17 +60,11 @@ class SupportedApps(enum.Enum):
     Supported apps.
     """
 
-    TERRAFORM = "terraform"
-    CODE = "code"
-    VAULT = "vault"
     GO = "go"
     JAVA = "java"
     NODEJS = "nodejs"
-    PULUMI = "pulumi"
     GITEA = "gitea"
     HADOLINT = "hadolint"
-    MINIO = "minio"
-    MINIO_CLIENT = "minio_client"
 
 
 class VersionDetails(Dict[str, Any]):

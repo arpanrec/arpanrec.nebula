@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 """
-Module to manage GitHub Action Secrets.
+Module to manage GitHub Release tag Search.
 """
 
 import os

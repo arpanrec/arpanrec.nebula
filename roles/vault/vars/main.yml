@@ -1,2 +1,0 @@
----
-vault_rv_tarball_download_path: "{{ vault_rv_tmp_install_cache_dir }}/vault-{{ vault_tmp_version_details.version }}.zip"
