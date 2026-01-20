@@ -6,7 +6,6 @@ This collection provides a set of roles to deploy and manage various services.
 
 ## Roles
 
-- [Bitwarden Desktop](/roles/bitwarden_desktop/README.md)
 - [Secrets Manager CLI](/roles/bws/README.md)
 - [Visual Studio Code](/roles/code/README.md)
 - [Get Certificate from ownca](/roles/get_certificate_ownca/README.md)
@@ -14,11 +13,8 @@ This collection provides a set of roles to deploy and manage various services.
 - [The Go Programming Language](/roles/go/README.md)
 - [Java](/roles/java/README.md)
 - [linux_patching](/roles/linux_patching/README.md)
-- [Mattermost Desktop](/roles/mattermost_desktop/README.md)
 - [NodeJS](/roles/nodejs/README.md)
-- [Postman](/roles/postman/README.md)
 - [ssh_hardening](/roles/ssh_hardening/README.md)
-- [Telegram Desktop](/roles/telegram_desktop/README.md)
 - [Terraform by HashiCorp](/roles/terraform/README.md)
 - [themes](/roles/themes/README.md)
 - [terminal](/roles/terminal/README.md)
