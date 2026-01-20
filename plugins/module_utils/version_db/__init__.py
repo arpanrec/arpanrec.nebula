@@ -24,6 +24,7 @@ Functions:
             ValueError: If the specified app is not supported.
 
 """
+
 from typing import Optional
 
 from ansible.utils.display import Display  # type: ignore
