@@ -31,5 +31,4 @@ Extra variables will be applied to the original role.
 - [Telegram Desktop](../roles/telegram_desktop/README.md) -> telegram_desktop
 - [Postman](../roles/postman/README.md) -> postman
 - [Microsoft Visual Studio Code](../roles/code/README.md) -> code
-- [Gnome Settings](../roles/gnome/README.md) -> gnome
 - [Themes](../roles/themes/README.md) -> themes

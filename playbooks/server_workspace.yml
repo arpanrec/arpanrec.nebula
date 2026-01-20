@@ -101,18 +101,6 @@
                 tags:
                     - terminal
 
-      - name: USERAPPS | Gnome Setup
-        ansible.builtin.include_role:
-            name: arpanrec.nebula.gnome
-        tags:
-            - gnome
-            - never
-        args:
-            apply:
-                tags:
-                    - gnome
-                    - never
-
       - name: USERAPPS | Terraform
         ansible.builtin.include_role:
             name: arpanrec.nebula.terraform
