@@ -24,7 +24,6 @@ Extra variables will be applied to the original role.
 - [Vault](../roles/vault/README.md) -> vault
 - [Pulumi](../roles/pulumi/README.md) -> pulumi
 - [Hadolint](../roles/hadolint/README.md) -> hadolint
-- [gitleaks](../roles/gitleaks/README.md) -> gitleaks
 
 ### Disabled by Default
 

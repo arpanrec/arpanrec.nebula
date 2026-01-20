@@ -69,7 +69,6 @@ class SupportedApps(enum.Enum):
     PULUMI = "pulumi"
     GITEA = "gitea"
     HADOLINT = "hadolint"
-    GITLEAKS = "gitleaks"
     MINIO = "minio"
     MINIO_CLIENT = "minio_client"
 

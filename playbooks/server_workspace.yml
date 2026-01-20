@@ -153,12 +153,3 @@
                 tags:
                     - hadolint
 
-      - name: USERAPPS | gitleaks
-        ansible.builtin.include_role:
-            name: arpanrec.nebula.gitleaks
-        tags:
-            - gitleaks
-        args:
-            apply:
-                tags:
-                    - gitleaks
