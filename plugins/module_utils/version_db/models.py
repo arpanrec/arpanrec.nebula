@@ -11,13 +11,9 @@ Classes:
 Classes Details:
     SupportedApps:
         Enum Members:
-            - TERRAFORM: Represents the 'terraform' application.
-            - CODE: Represents the 'code' application.
-            - VAULT: Represents the 'vault' application.
             - GO: Represents the 'go' application.
             - JAVA: Represents the 'java' application.
             - NODEJS: Represents the 'nodejs' application.
-            - PULUMI: Represents the 'pulumi' application.
 
     VersionDetails:
         A dictionary to store version details of an application.
