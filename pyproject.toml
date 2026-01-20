@@ -34,8 +34,8 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "bandit==1.9.2",
-    "black==25.12.0",
+    "bandit==1.9.3",
+    "black==26.1.0",
     "docker==7.1.0",
     "isort==7.0.0",
     "molecule==25.12.0",
@@ -44,10 +44,10 @@ dev = [
     "neovim==0.3.1",
     "packaging==25.0",
     "pylint==4.0.4",
-    "pyright==1.1.407",
+    "pyright==1.1.408",
     "types-pyyaml==6.0.12.20250915",
-    "types-requests==2.32.4.20250913",
-    "yamllint==1.37.1",
-    "ansible-lint==25.12.2",
+    "types-requests==2.32.4.20260107",
+    "yamllint==1.38.0",
+    "ansible-lint==26.1.1",
     "antsibull-docs==2.24.0",
 ]
