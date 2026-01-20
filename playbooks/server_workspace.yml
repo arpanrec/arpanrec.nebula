@@ -52,13 +52,3 @@
             apply:
                 tags:
                     - terminal
-
-      - name: USERAPPS | Hadolint
-        ansible.builtin.include_role:
-            name: arpanrec.nebula.hadolint
-        tags:
-            - hadolint
-        args:
-            apply:
-                tags:
-                    - hadolint

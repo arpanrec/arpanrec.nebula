@@ -20,7 +20,6 @@ Extra variables will be applied to the original role.
 - [Go Language](../roles/go/README.md) -> go
 - [Oracle JDK](../roles/java/README.md) -> java
 - [Terminal Themes](../roles/terminal/README.md) -> terminal
-- [Hadolint](../roles/hadolint/README.md) -> hadolint
 
 ### Disabled by Default
 

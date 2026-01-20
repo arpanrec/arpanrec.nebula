@@ -16,7 +16,6 @@ This collection provides a set of roles to deploy and manage various services.
 - [user_add](/roles/user_add/README.md)
 - [Gitea](/roles/gitea/README.md)
 - [Postgresql](/roles/postgresql/README.md)
-- [Hadolint](/roles/hadolint/README.md)
 
 ## Playbooks
 

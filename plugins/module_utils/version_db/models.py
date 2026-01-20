@@ -60,7 +60,6 @@ class SupportedApps(enum.Enum):
     JAVA = "java"
     NODEJS = "nodejs"
     GITEA = "gitea"
-    HADOLINT = "hadolint"
 
 
 class VersionDetails(Dict[str, Any]):
