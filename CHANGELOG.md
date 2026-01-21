@@ -1,3 +1,10 @@
+## [1.14.56](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.55...1.14.56) (2026-01-21)
+
+
+### Bug Fixes
+
+* Remove GUI APPS, and unused roles, Update dependencies. ([#58](https://github.com/arpanrec/arpanrec.nebula/issues/58)) ([4a21f8d](https://github.com/arpanrec/arpanrec.nebula/commit/4a21f8df98790806a8f93bd38ff1c971b46517e4))
+
 ## [1.14.55](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.54...1.14.55) (2026-01-06)
 
 
