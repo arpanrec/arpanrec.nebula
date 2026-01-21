@@ -7,7 +7,6 @@ This collection provides a set of roles to deploy and manage various services.
 ## Roles
 
 - [Secrets Manager CLI](/roles/bws/README.md)
-- [Get Certificate from ownca](/roles/get_certificate_ownca/README.md)
 - [The Go Programming Language](/roles/go/README.md)
 - [Java](/roles/java/README.md)
 - [linux_patching](/roles/linux_patching/README.md)
