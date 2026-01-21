@@ -6,17 +6,13 @@
       enabled: true
       daemon_reload: true
       masked: false
-  register: gitea_systemd_restart_res
-  failed_when: gitea_rv_init_system_systemd
-      and gitea_systemd_restart_res.failed
+  when: gitea_rv_init_system_systemd | default(true)
 
 - name: Fail2ban | Restart service
+  when: "'fail2ban' in ansible_facts.packages and ansible_facts.packages['fail2ban'] | length > 0"
   ansible.builtin.systemd_service:
       name: fail2ban
       state: restarted
       enabled: true
       daemon_reload: true
       masked: false
-  register: fail2ban_systemd_restart_res
-  failed_when: gitea_rv_init_system_systemd
-      and fail2ban_systemd_restart_res.failed
