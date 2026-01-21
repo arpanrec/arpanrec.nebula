@@ -16,7 +16,6 @@ This collection provides a set of roles to deploy and manage various services.
 - [themes](/roles/themes/README.md)
 - [terminal](/roles/terminal/README.md)
 - [user_add](/roles/user_add/README.md)
-- [utils](/roles/utils/README.md)
 - [Vault by HashiCorp](/roles/vault/README.md)
 - [Pulumi](/roles/pulumi/README.md)
 - [Gitea](/roles/gitea/README.md)
