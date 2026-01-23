@@ -1,3 +1,10 @@
+## [1.14.57](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.56...1.14.57) (2026-01-23)
+
+
+### Bug Fixes
+
+* terminal and themes are moved to dotfiles ([#61](https://github.com/arpanrec/arpanrec.nebula/issues/61)) ([b99e29b](https://github.com/arpanrec/arpanrec.nebula/commit/b99e29ba476f8c7a7deaf5bffd51eb4bd2b844f4))
+
 ## [1.14.56](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.55...1.14.56) (2026-01-21)
 
 
