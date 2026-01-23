@@ -1,3 +1,10 @@
+## [1.14.59](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.58...1.14.59) (2026-01-23)
+
+
+### Bug Fixes
+
+* update corepack package managers installation to use latest version ([e835fdd](https://github.com/arpanrec/arpanrec.nebula/commit/e835fdd417ce74cc163635e85308a29e48872a8b))
+
 ## [1.14.58](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.57...1.14.58) (2026-01-23)
 
 

@@ -327,7 +327,7 @@ wheels = [
 
 [[package]]
 name = "arpanrec-nebula"
-version = "1.14.58"
+version = "1.14.59"
 source = { virtual = "." }
 dependencies = [
     { name = "ansible" },
