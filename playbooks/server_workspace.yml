@@ -32,27 +32,6 @@
                 tags:
                     - java
 
-      - name: USERAPPS | Themes
-        ansible.builtin.include_role:
-            name: arpanrec.nebula.themes
-        tags:
-            - themes
-        args:
-            apply:
-                tags:
-                    - themes
-                    - never
-
-      - name: USERAPPS | Terminal
-        ansible.builtin.include_role:
-            name: arpanrec.nebula.terminal
-        tags:
-            - terminal
-        args:
-            apply:
-                tags:
-                    - terminal
-
       - name: USERAPPS | Terraform
         ansible.builtin.include_role:
             name: arpanrec.nebula.terraform

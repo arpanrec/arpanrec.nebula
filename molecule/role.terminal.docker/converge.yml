@@ -1,8 +1,0 @@
----
-- name: Terminal | Molecule | Converge
-  hosts: all
-  gather_facts: false
-  tasks:
-      - name: Terminal | Molecule | Converge | Include Code role
-        ansible.builtin.import_role:
-            name: arpanrec.nebula.terminal
