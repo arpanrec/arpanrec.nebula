@@ -1,3 +1,59 @@
+## [1.14.57](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.56...1.14.57) (2026-01-23)
+
+
+### Bug Fixes
+
+* terminal and themes are moved to dotfiles ([#61](https://github.com/arpanrec/arpanrec.nebula/issues/61)) ([b99e29b](https://github.com/arpanrec/arpanrec.nebula/commit/b99e29ba476f8c7a7deaf5bffd51eb4bd2b844f4))
+
+## [1.14.56](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.55...1.14.56) (2026-01-21)
+
+
+### Bug Fixes
+
+* Remove GUI APPS, and unused roles, Update dependencies. ([#58](https://github.com/arpanrec/arpanrec.nebula/issues/58)) ([4a21f8d](https://github.com/arpanrec/arpanrec.nebula/commit/4a21f8df98790806a8f93bd38ff1c971b46517e4))
+
+## [1.14.55](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.54...1.14.55) (2026-01-06)
+
+
+### Bug Fixes
+
+* support split PEM content for CA certificates and enhance debug info ([03f0544](https://github.com/arpanrec/arpanrec.nebula/commit/03f054460b2679c50b0851393a0615a020d0eacd))
+
+## [1.14.54](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.53...1.14.54) (2025-12-20)
+
+
+### Bug Fixes
+
+* Update ansible_facts syntax for environment PATH in multiple verify.yml files ([569cd8f](https://github.com/arpanrec/arpanrec.nebula/commit/569cd8f761e31b092be788f9c64e80647a28792b))
+
+## [1.14.53](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.52...1.14.53) (2025-12-20)
+
+
+### Bug Fixes
+
+* Update Maven version to 3.9.12 in Java class ([#56](https://github.com/arpanrec/arpanrec.nebula/issues/56)) ([8c2835d](https://github.com/arpanrec/arpanrec.nebula/commit/8c2835d5bfdfd5e476c2bf681d243b62d23b316b))
+
+## [1.14.52](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.51...1.14.52) (2025-11-25)
+
+
+### Bug Fixes
+
+* Update ansible to 13.0.0 and python to 3.14, Remove vs code exts ([#55](https://github.com/arpanrec/arpanrec.nebula/issues/55)) ([034c3ce](https://github.com/arpanrec/arpanrec.nebula/commit/034c3ce827211c0a1950565e068cff30f90ca1a2))
+
+## [1.14.51](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.50...1.14.51) (2025-11-02)
+
+
+### Bug Fixes
+
+* Update gitea public key ([1e65952](https://github.com/arpanrec/arpanrec.nebula/commit/1e65952ac72e3e761a438391849553c95e053de9))
+
+## [1.14.50](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.49...1.14.50) (2025-10-22)
+
+
+### Bug Fixes
+
+* add task to set directory permissions for Gitea files ([612b6f0](https://github.com/arpanrec/arpanrec.nebula/commit/612b6f09cead87cab61056ba64e3d36c108deb49))
+
 ## [1.14.49](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.48...1.14.49) (2025-10-17)
 
 

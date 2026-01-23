@@ -42,9 +42,9 @@
   ansible.builtin.import_tasks:
       file: reboot.yml
 
-- name: Linux Patching | Install Packages | Install headers linux-headers-{{ ansible_kernel }}
+- name: Linux Patching | Install Packages | Install headers linux-headers-{{ ansible_facts.kernel }}
   ansible.builtin.apt:
-      name: "linux-headers-{{ ansible_kernel }}"
+      name: "linux-headers-{{ ansible_facts.kernel }}"
       state: present
       update_cache: true
       install_recommends: true
@@ -61,6 +61,7 @@
   when: linux_patching_rv_install_devel_packages
       and linux_patching_rv_install_devel_packages_tmp_kernel_version_installed.failed
   register: linux_patching_rv_install_generic_headers_tmp_kernel_version_installed
+  ignore_errors: true
 
 - name: Linux Patching | Install Packages | Reboot after kernel install
   ansible.builtin.import_tasks:

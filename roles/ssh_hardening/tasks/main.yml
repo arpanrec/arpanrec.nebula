@@ -8,8 +8,8 @@
 
 - name: SSHD Hardening | Include Asserts | Checking platform compatibility
   ansible.builtin.fail:
-      msg: "{{ ansible_system }} is not supported by this role"
-  when: ansible_os_family not in ['Debian']
+      msg: "{{ ansible_facts.system }} is not supported by this role"
+  when: ansible_facts.os_family not in ['Debian']
 
 - name: SSHD Hardening | Prerequisite | Get system 1 PID Details
   ansible.builtin.command: ps -p 1
@@ -41,7 +41,7 @@
       proto: tcp
       comment: "Allow SSH Port, Managed by Ansible arpanrec.nebula"
   environment:
-      PATH: /sbin:{{ ansible_env.PATH }}
+      PATH: /sbin:{{ ansible_facts.env.PATH }}
 
 - name: SSHD Hardening | Create config directory
   ansible.builtin.file:

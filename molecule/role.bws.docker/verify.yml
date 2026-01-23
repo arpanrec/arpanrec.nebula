@@ -17,7 +17,7 @@
       - name: Bitwarden Secrets Manager SDK | Molecule | Verify | Get bw version from shell
         ansible.builtin.command: bws --version
         environment:
-            PATH: "{{ bws_sdk_bin_dir }}:{{ ansible_env.PATH }}"
+            PATH: "{{ bws_sdk_bin_dir }}:{{ ansible_facts.env.PATH }}"
         register: bws_sdk_cli_rv_tmp_version_shell_result
         changed_when: false
 

@@ -35,10 +35,10 @@
   loop_control:
       loop_var: __postgresql_existing_service
   vars:
-      __postgresql_known_systemd_services: "{{ ansible_facts['services'].values()
+      __postgresql_known_systemd_services: "{{ ansible_facts.services.values()
           | selectattr('source', 'equalto', 'systemd')
           | selectattr('state', 'equalto', 'running')
-          + ansible_facts['services'].values()
+          + ansible_facts.services.values()
           | selectattr('source', 'equalto', 'systemd')
           | selectattr('status', 'equalto', 'enabled') }}"
 

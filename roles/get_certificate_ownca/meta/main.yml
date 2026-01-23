@@ -1,7 +1,0 @@
----
-galaxy_info:
-    namespace: arpanrec
-    author: Arpan
-    description: Get Certificate from Own CA
-    license: MIT
-    min_ansible_version: "2.10"

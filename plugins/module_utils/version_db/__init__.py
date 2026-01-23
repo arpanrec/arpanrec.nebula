@@ -24,6 +24,7 @@ Functions:
             ValueError: If the specified app is not supported.
 
 """
+
 from typing import Optional
 
 from ansible.utils.display import Display  # type: ignore
@@ -50,20 +51,10 @@ def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: igno
 
             app_details = Terraform(*args, **kwargs)  # type: ignore
 
-        case SupportedApps.CODE.value:
-            from .code import Code  # pylint: disable=import-outside-toplevel
-
-            app_details = Code(*args, **kwargs)  # type: ignore
-
         case SupportedApps.VAULT.value:
             from .vault import Vault  # pylint: disable=import-outside-toplevel
 
             app_details = Vault(*args, **kwargs)  # type: ignore
-
-        case SupportedApps.BITWARDEN_DESKTOP.value:
-            from .bitwarden_desktop import BitwardenDesktop  # pylint: disable=import-outside-toplevel
-
-            app_details = BitwardenDesktop(*args, **kwargs)  # type: ignore
 
         case SupportedApps.GO.value:
             from .go import Go  # pylint: disable=import-outside-toplevel
@@ -99,16 +90,6 @@ def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: igno
             from .gitleaks import Gitleaks  # pylint: disable=import-outside-toplevel
 
             app_details = Gitleaks(*args, **kwargs)  # type: ignore
-
-        case SupportedApps.MINIO.value:
-            from .minio import Minio  # pylint: disable=import-outside-toplevel
-
-            app_details = Minio(*args, **kwargs)  # type: ignore
-
-        case SupportedApps.MINIO_CLIENT.value:
-            from .minio_client import MinioClient  # pylint: disable=import-outside-toplevel
-
-            app_details = MinioClient(*args, **kwargs)  # type: ignore
 
         case _:
             raise ValueError(f"Unsupported app: {app_name}")

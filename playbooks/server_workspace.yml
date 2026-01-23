@@ -2,42 +2,6 @@
 - name: Installing apps in user $HOME directory
   hosts: server_workspace
   tasks:
-      - name: USERAPPS | Install Bitwarden
-        ansible.builtin.include_role:
-            name: arpanrec.nebula.bitwarden_desktop
-        args:
-            apply:
-                tags:
-                    - bitwarden_desktop
-                    - never
-        tags:
-            - bitwarden_desktop
-            - never
-
-      - name: USERAPPS | Mattermost
-        ansible.builtin.include_role:
-            name: arpanrec.nebula.mattermost_desktop
-        args:
-            apply:
-                tags:
-                    - mattermost_desktop
-                    - never
-        tags:
-            - mattermost_desktop
-            - never
-
-      - name: USERAPPS | Telegram Desktop
-        ansible.builtin.include_role:
-            name: arpanrec.nebula.telegram_desktop
-        args:
-            apply:
-                tags:
-                    - telegram_desktop
-                    - never
-        tags:
-            - telegram_desktop
-            - never
-
       - name: USERAPPS | NodeJS
         ansible.builtin.include_role:
             name: arpanrec.nebula.nodejs
@@ -47,18 +11,6 @@
             apply:
                 tags:
                     - nodejs
-
-      - name: USERAPPS | Postman
-        ansible.builtin.include_role:
-            name: arpanrec.nebula.postman
-        tags:
-            - postman
-            - never
-        args:
-            apply:
-                tags:
-                    - postman
-                    - never
 
       - name: USERAPPS | Go Language
         ansible.builtin.include_role:
@@ -79,51 +31,6 @@
             apply:
                 tags:
                     - java
-
-      - name: USERAPPS | Visual Studio Code
-        ansible.builtin.include_role:
-            name: arpanrec.nebula.code
-        tags:
-            - code
-            - never
-        args:
-            apply:
-                tags:
-                    - code
-                    - never
-
-      - name: USERAPPS | Themes
-        ansible.builtin.include_role:
-            name: arpanrec.nebula.themes
-        tags:
-            - themes
-        args:
-            apply:
-                tags:
-                    - themes
-                    - never
-
-      - name: USERAPPS | Terminal
-        ansible.builtin.include_role:
-            name: arpanrec.nebula.terminal
-        tags:
-            - terminal
-        args:
-            apply:
-                tags:
-                    - terminal
-
-      - name: USERAPPS | Gnome Setup
-        ansible.builtin.include_role:
-            name: arpanrec.nebula.gnome
-        tags:
-            - gnome
-            - never
-        args:
-            apply:
-                tags:
-                    - gnome
-                    - never
 
       - name: USERAPPS | Terraform
         ansible.builtin.include_role:

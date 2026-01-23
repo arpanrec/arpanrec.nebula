@@ -21,7 +21,7 @@
                 - "{{ gitea_executable | basename }}"
                 - "--version"
         environment:
-            PATH: "{{ gitea_executable | dirname }}:{{ ansible_env.PATH }}"
+            PATH: "{{ gitea_executable | dirname }}:{{ ansible_facts.env.PATH }}"
         register: gitea_rv_tmp_version_shell_result
         changed_when: false
 

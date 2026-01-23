@@ -1,8 +1,0 @@
----
-- name: Postman | Molecule | Converge
-  hosts: all
-  gather_facts: false
-  tasks:
-      - name: Postman | Molecule | Converge | Include Postman
-        ansible.builtin.import_role:
-            name: arpanrec.nebula.postman

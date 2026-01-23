@@ -16,7 +16,7 @@
       - name: NodeJS | Molecule | Verify | Get node version from shell
         ansible.builtin.command: node --version
         environment:
-            PATH: "{{ nodejs_rv_install_path }}/bin:{{ ansible_env.PATH }}"
+            PATH: "{{ nodejs_rv_install_path }}/bin:{{ ansible_facts.env.PATH }}"
         register: nodejs_rv_version_shell_result
         changed_when: false
 
@@ -33,7 +33,7 @@
                 - "{{ item }}"
                 - --version
         environment:
-            PATH: "{{ nodejs_rv_install_path }}/bin:{{ ansible_env.PATH }}"
+            PATH: "{{ nodejs_rv_install_path }}/bin:{{ ansible_facts.env.PATH }}"
         register: nodejs_rv_extra_package_manager_exists
         changed_when: false
         loop:

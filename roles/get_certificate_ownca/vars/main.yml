@@ -1,9 +1,0 @@
----
-get_certificate_ownca_rv_getcert_subject_keys_list:
-    - countryName
-    - stateOrProvinceName
-    - localityName
-    - organizationName
-    - organizationalUnitName
-    - commonName
-    - emailAddress

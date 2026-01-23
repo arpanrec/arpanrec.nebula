@@ -13,9 +13,7 @@ Classes Details:
         Enum Members:
             - BWS: Represents the 'bws' application.
             - TERRAFORM: Represents the 'terraform' application.
-            - CODE: Represents the 'code' application.
             - VAULT: Represents the 'vault' application.
-            - BITWARDEN_DESKTOP: Represents the 'bitwarden_desktop' application.
             - GO: Represents the 'go' application.
             - JAVA: Represents the 'java' application.
             - NODEJS: Represents the 'nodejs' application.
@@ -64,9 +62,7 @@ class SupportedApps(enum.Enum):
 
     BWS = "bws"
     TERRAFORM = "terraform"
-    CODE = "code"
     VAULT = "vault"
-    BITWARDEN_DESKTOP = "bitwarden_desktop"
     GO = "go"
     JAVA = "java"
     NODEJS = "nodejs"
@@ -74,8 +70,6 @@ class SupportedApps(enum.Enum):
     GITEA = "gitea"
     HADOLINT = "hadolint"
     GITLEAKS = "gitleaks"
-    MINIO = "minio"
-    MINIO_CLIENT = "minio_client"
 
 
 class VersionDetails(Dict[str, Any]):

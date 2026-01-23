@@ -60,6 +60,31 @@
   notify:
       - Gitea | Restart systemd service
 
+- name: Gitea | Change directory permissions.
+  ansible.builtin.command:
+      argv:
+          - chown
+          - -R
+          - "{{ gitea_service_user }}:{{ gitea_service_group }}"
+          - "{{ item }}"
+  loop:
+      - "{{ gitea_app_ini_file | dirname }}"
+      - "{{ gitea_secret_key_file | dirname }}"
+      - "{{ gitea_internal_token_file | dirname }}"
+      - "{{ gitea_oauth2_jwt_secret_file | dirname }}"
+      - "{{ gitea_lfs_jwt_secret_file | dirname }}"
+      - "{{ gitea_working_directory }}"
+      - "{{ gitea_app_data_directory }}"
+      - "{{ gitea_repository_root_directory }}"
+      - "{{ gitea_lfs_directory }}"
+      - "{{ gitea_git_home_directory }}"
+      - "{{ gitea_custom_directory }}"
+      - "{{ gitea_sqlite3_db_file | dirname }}"
+      - "{{ gitea_log_root_path }}"
+      - "{{ gitea_log_file | dirname }}"
+      - "{{ gitea_service_user_home_directory }}"
+  changed_when: false
+
 - name: Gitea | Download gpg signature.
   ansible.builtin.get_url:
       url: "{{ gitea_version_details.download_link }}.asc"

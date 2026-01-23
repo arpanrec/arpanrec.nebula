@@ -82,8 +82,7 @@ postgresql_databases:
 
 ### postgresql_privs
 
-Privileges to configure
-see https://docs.ansible.com/ansible/latest/collections/community/postgresql/postgresql_privs_module.html#ansible-collections-community-postgresql-postgresql-privs-module
+[Privileges to configure](https://docs.ansible.com/ansible/latest/collections/community/postgresql/postgresql_privs_module.html#ansible-collections-community-postgresql-postgresql-privs-module)
 
 ```yaml
 postgresql_privs:

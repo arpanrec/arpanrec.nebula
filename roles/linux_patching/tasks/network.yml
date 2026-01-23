@@ -13,16 +13,28 @@
 
       - name: Linux Patching | Network | CA Certificate | Copy the certificate
         ansible.builtin.copy:
-            content: "{{ linux_patching_rv_root_ca_pem_content }}"
-            dest: /usr/local/share/ca-certificates/root-ca-certificate.crt
+            content: "{{ item }}"
+            dest: "/usr/local/share/ca-certificates/root-ca-certificate\
+                -{{ __linux_patching_rv_root_ca_pem_split_index }}.crt"
             mode: "0775"
+        loop: "{{ linux_patching_rv_root_ca_pem_content | community.crypto.split_pem }}"
+        loop_control:
+            index_var: __linux_patching_rv_root_ca_pem_split_index
 
       - name: Linux Patching | Network | CA Certificate | Update CA Trust
-        ansible.builtin.command: update-ca-certificates
+        ansible.builtin.command:
+            argv:
+                - update-ca-certificates
+                # - --fresh
+                - --verbose
         register: linux_patching_rv_update_ca_trust_shell_result
         environment:
-            PATH: /usr/sbin:{{ ansible_env.PATH }}
+            PATH: /usr/sbin:{{ ansible_facts.env.PATH }}
         changed_when: linux_patching_rv_update_ca_trust_shell_result.stdout_lines[1] is not match("0 added.*")
+
+      - name: Linux Patching | Network | CA Certificate | Debug CA Trust Update Result
+        ansible.builtin.debug:
+            var: linux_patching_rv_update_ca_trust_shell_result
 
 - name: Linux Patching | Network | Disable Wifi MAC randomization
   community.general.ini_file:
@@ -189,7 +201,7 @@
   register: linux_patching_rv_ufw_ssh_port_result
   ignore_errors: true
   environment:
-      PATH: /sbin:{{ ansible_env.PATH }}
+      PATH: /sbin:{{ ansible_facts.env.PATH }}
 
 - name: Linux Patching | Network | Setup Host Network Information | UFW Iptables legacy
   when: linux_patching_rv_ufw_ssh_port_result.failed
@@ -209,4 +221,4 @@
             state: enabled
             comment: "Allow SSH Port, Managed by Ansible arpanrec.nebula"
         environment:
-            PATH: /sbin:{{ ansible_env.PATH }}
+            PATH: /sbin:{{ ansible_facts.env.PATH }}

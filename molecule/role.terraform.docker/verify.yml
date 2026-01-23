@@ -16,7 +16,7 @@
       - name: Terraform | Molecule | Verify | Get terraform version from shell
         ansible.builtin.command: terraform --version
         environment:
-            PATH: "{{ terraform_rv_install_path }}:{{ ansible_env.PATH }}"
+            PATH: "{{ terraform_rv_install_path }}:{{ ansible_facts.env.PATH }}"
         register: terraform_rv_version_shell_result
         changed_when: false
 
