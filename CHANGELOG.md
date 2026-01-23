@@ -1,3 +1,10 @@
+## [1.14.58](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.57...1.14.58) (2026-01-23)
+
+
+### Bug Fixes
+
+* Install corepack package managers pnpm & yarn ([#62](https://github.com/arpanrec/arpanrec.nebula/issues/62)) ([84e6b55](https://github.com/arpanrec/arpanrec.nebula/commit/84e6b55720205ef58ad305b38a09b3acd374365a))
+
 ## [1.14.57](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.56...1.14.57) (2026-01-23)
 
 
