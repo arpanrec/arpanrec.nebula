@@ -1,3 +1,10 @@
+## [1.14.60](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.59...1.14.60) (2026-01-23)
+
+
+### Bug Fixes
+
+* ensure corepack installation command does not report changes ([6e09f69](https://github.com/arpanrec/arpanrec.nebula/commit/6e09f697e7799b24ab191e5d6d12d8a6e8d4996b))
+
 ## [1.14.59](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.58...1.14.59) (2026-01-23)
 
 
