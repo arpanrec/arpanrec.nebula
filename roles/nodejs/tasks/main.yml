@@ -79,6 +79,20 @@
   environment:
       PATH: "{{ nodejs_rv_install_path }}/bin:{{ ansible_facts.env.PATH }}"
 
+- name: NodeJS | Install corepack package managers pnpm & yarn
+  ansible.builtin.command:
+      argv:
+          - "{{ nodejs_rv_install_path }}/bin/corepack"
+          - install
+          - -g
+          - "{{ item }}"
+      creates: "{{ nodejs_rv_install_path }}/bin/{{ item }}"
+  environment:
+      PATH: "{{ nodejs_rv_install_path }}/bin:{{ ansible_facts.env.PATH }}"
+  loop:
+      - pnpm
+      - yarn
+
 - name: NodeJS | Enable corepack package managers pnpm & yarn
   ansible.builtin.command:
       argv:
