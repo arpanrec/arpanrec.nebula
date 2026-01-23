@@ -86,7 +86,7 @@
           - install
           - -g
           - "{{ item }}@latest"
-      creates: "{{ nodejs_rv_install_path }}/lib/node_modules/corepack/dist/{{ item }}.js"
+  changed_when: false
   environment:
       PATH: "{{ nodejs_rv_install_path }}/bin:{{ ansible_facts.env.PATH }}"
   loop:
