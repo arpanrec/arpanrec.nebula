@@ -1,7 +1,0 @@
----
-galaxy_info:
-    namespace: arpanrec
-    author: Arpan
-    description: Setup Terminal with Zsh and Oh-My-Zsh
-    license: MIT
-    min_ansible_version: "2.10"

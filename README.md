@@ -13,8 +13,6 @@ This collection provides a set of roles to deploy and manage various services.
 - [NodeJS](/roles/nodejs/README.md)
 - [ssh_hardening](/roles/ssh_hardening/README.md)
 - [Terraform by HashiCorp](/roles/terraform/README.md)
-- [themes](/roles/themes/README.md)
-- [terminal](/roles/terminal/README.md)
 - [user_add](/roles/user_add/README.md)
 - [Vault by HashiCorp](/roles/vault/README.md)
 - [Pulumi](/roles/pulumi/README.md)
