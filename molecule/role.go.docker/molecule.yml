@@ -24,6 +24,8 @@ provisioner:
         group_vars:
             all:
                 ansible_python_interpreter: /usr/bin/python3
+                go_rv_global_installs:
+                    - "golang.org/x/tools/gopls@latest"
     playbooks:
         converge: converge.yml
         verify: verify.yml

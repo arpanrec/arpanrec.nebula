@@ -56,7 +56,19 @@
       extra_opts: [--strip-components=1]
       remote_src: true
 
-- name: Golang | Newly downloaded | Install global packages
+- name: Golang | Ensure GOPATH in ~/.bashrc and ~/.zshrc
+  ansible.builtin.lineinfile:
+      path: "{{ item }}"
+      line: 'export GOPATH="${HOME}/.go"'
+      create: true
+      state: present
+      regexp: "^export GOPATH=.*"
+      mode: "0700"
+  loop:
+      - "{{ ansible_facts.user_dir }}/.bashrc"
+      - "{{ ansible_facts.user_dir }}/.zshrc"
+
+- name: Golang | Install global packages
   ansible.builtin.command:
       cmd: "{{ go_rv_install_path }}/bin/go install {{ item }}"
       chdir: "{{ go_rv_install_path }}"
@@ -64,5 +76,6 @@
   when: go_rv_global_installs | length > 0
   environment:
       PATH: "{{ go_rv_install_path }}/bin:{{ ansible_facts.env.PATH }}"
+      GOPATH: "{{ ansible_facts.user_dir }}/.go"
   register: go_rv_global_installs_result
   changed_when: go_rv_global_installs_result.stderr_lines | length != 0
