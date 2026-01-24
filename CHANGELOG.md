@@ -1,3 +1,11 @@
+## [1.14.61](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.60...1.14.61) (2026-01-24)
+
+
+### Bug Fixes
+
+* add GOPATH setup and global Go package installation improvements ([fad2481](https://github.com/arpanrec/arpanrec.nebula/commit/fad24815596bc85abadd37b00e65b7dab03a0e4e))
+* add GOPATH setup and global Go package installation improvements ([1f2bd42](https://github.com/arpanrec/arpanrec.nebula/commit/1f2bd42bb66fee53cce587c3b64c8e467da323b8))
+
 ## [1.14.60](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.59...1.14.60) (2026-01-23)
 
 
