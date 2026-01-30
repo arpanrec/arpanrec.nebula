@@ -2,7 +2,7 @@
 #    uv export --format requirements.txt --no-hashes -o requirements.txt
 ansible==13.2.0
     # via arpanrec-nebula
-ansible-core==2.20.1
+ansible-core==2.20.2
     # via ansible
 cachier==4.1.0
     # via arpanrec-nebula
