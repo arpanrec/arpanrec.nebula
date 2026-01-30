@@ -196,7 +196,7 @@ packaging==26.0
     #   sphinx
 passlib==1.7.4
     # via arpanrec-nebula
-pathspec==1.0.3
+pathspec==1.0.4
     # via
     #   ansible-lint
     #   black
