@@ -168,7 +168,7 @@ molecule-plugins==25.8.12
     # via arpanrec-nebula
 msgpack==1.1.2
     # via pynvim
-multidict==6.7.0
+multidict==6.7.1
     # via
     #   aiohttp
     #   yarl
