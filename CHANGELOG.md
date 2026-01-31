@@ -1,3 +1,10 @@
+## [1.14.62](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.61...1.14.62) (2026-01-31)
+
+
+### Bug Fixes
+
+* remove outdated global Go package installations ([66e022b](https://github.com/arpanrec/arpanrec.nebula/commit/66e022b4fea457c1ce6f5b0d20c903bd5cdd30ed))
+
 ## [1.14.61](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.60...1.14.61) (2026-01-24)
 
 
