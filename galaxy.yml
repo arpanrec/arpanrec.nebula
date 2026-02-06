@@ -10,7 +10,7 @@ repository: https://github.com/arpanrec/arpanrec.nebula.git
 license_file: LICENSE
 issues: https://github.com/arpanrec/arpanrec.nebula/issues
 dependencies:
-    community.general: 12.2.0
+    community.general: 12.3.0
     community.crypto: 3.1.0
     ansible.posix: 2.1.0
     community.postgresql: 4.2.0

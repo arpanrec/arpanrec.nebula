@@ -5,6 +5,4 @@ go_rv_tmp_dir: "{{ ansible_facts.user_dir }}/.tmp/go"
 go_rv_global_installs:
     - "golang.org/x/tools/gopls@latest"
     - "mvdan.cc/sh/v3/cmd/gosh@latest"
-    - "github.com/minio/mc@latest"
     - "github.com/jesseduffield/lazygit@latest"
-    - "github.com/tursodatabase/turso-cli/cmd/turso@latest"
