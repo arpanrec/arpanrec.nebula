@@ -1,3 +1,10 @@
+## [1.14.63](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.62...1.14.63) (2026-02-06)
+
+
+### Bug Fixes
+
+* remove unused Go tools from default packages and update README ([72cd931](https://github.com/arpanrec/arpanrec.nebula/commit/72cd931e38f5af7c8180e00e7037a3f13adf4bf5))
+
 ## [1.14.62](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.61...1.14.62) (2026-01-31)
 
 
