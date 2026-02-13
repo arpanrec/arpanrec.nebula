@@ -119,7 +119,7 @@ docutils==0.22.4
     #   sphinx
 enrich==1.2.7
     # via molecule
-filelock==3.20.3
+filelock==3.21.2
     # via ansible-lint
 frozenlist==1.8.0
     # via
