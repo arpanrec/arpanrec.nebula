@@ -53,7 +53,7 @@ antsibull-fileutils==1.5.2
     #   antsibull-changelog
     #   antsibull-core
     #   antsibull-docs
-astroid==4.0.3
+astroid==4.1.0
     # via pylint
 asyncio-pool==0.6.0
     # via antsibull-docs
