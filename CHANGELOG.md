@@ -1,3 +1,10 @@
+## [1.14.64](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.63...1.14.64) (2026-03-06)
+
+
+### Bug Fixes
+
+* update Maven version to 3.9.13 in Java version database ([a30c41f](https://github.com/arpanrec/arpanrec.nebula/commit/a30c41f99d10a229a621793636ba04da6e886e6d))
+
 ## [1.14.63](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.62...1.14.63) (2026-02-06)
 
 
