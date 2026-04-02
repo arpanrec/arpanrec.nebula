@@ -37,6 +37,10 @@ This collection provides a set of roles to deploy and manage various services.
 
     - [split_certificates](/plugins/filter/split_certificates.py)
 
+### Modules
+
+    - [arpanrec.nebula.godaddy_record](/plugins/modules/godaddy_record.py)
+
 ## Installation
 
     ```bash
