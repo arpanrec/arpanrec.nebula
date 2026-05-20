@@ -1,3 +1,10 @@
+## [1.14.66](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.65...1.14.66) (2026-05-20)
+
+
+### Bug Fixes
+
+* update maven and gradle ([73a60c8](https://github.com/arpanrec/arpanrec.nebula/commit/73a60c81a18528a43a5b09201cdf5232c279db73))
+
 ## [1.14.65](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.64...1.14.65) (2026-03-18)
 
 
