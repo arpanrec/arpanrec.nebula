@@ -1,42 +1,90 @@
-# Ansible Role Linux Patching (arpanrec.nebula.linux_patching)
+# Ansible Role: Linux Patching (arpanrec.nebula.linux_patching)
 
-This role provides comprehensive system configuration and package management for Debian-based systems. It installs essential packages, development tools, and configures system settings for optimal server and development environments.
+Performs system package updates and baseline configuration on Debian-based systems. Installs essential system and development packages, configures timezone/locale/hostname, manages UFW firewall rules, and optionally installs a custom root CA certificate.
 
-**Features:**
+## Features
 
-- System package installation and updates for Debian-based distributions
-- Essential development tools and utilities installation
-- System configuration (timezone, locale, hostname, domain)
-- Security hardening with firewall (ufw) and access controls
-- Root CA certificate management for organization PKI
-- SSH configuration and networking setup
-- Configurable package lists for different use cases (base system vs. development)
+- Full apt package upgrade and configurable package installation
+- Separate base and development package lists, independently toggleable
+- Timezone, locale, and hostname/domain configuration
+- UFW firewall with SSH port allowance
+- Custom root CA certificate installation for organization PKI
+- SSH port configuration for `ufw` rules
 
-Install all the latest packages on Debian-based systems.
-Also Install basic utility tools for server.
-Set timezone, locale, and loopback ip in server
+## Requirements
 
-## Role Variables
+- Debian-based Linux distribution (Debian, Ubuntu)
+- Root or sudo privileges on the target host
 
-| Variable                                   | Type        | Required | Default                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Description                                            |
-| ------------------------------------------ | ----------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
-| `linux_patching_rv_packages`               | `list[str]` | `false`  | `["ca-certificates", "sudo", "systemd", "apt-transport-https", "locales", "systemd-timesyncd", "network-manager", "gnupg2", "gnupg", "acl", "ufw", "procps", "apt-utils", "lsb-release", "python3", "openssl", "util-linux-extra", "nftables", "libatomic1"]`                                                                                                                                                                                                                                                                            | Install the packages in the distributions.             |
-| `linux_patching_rv_devel_packages`         | `list[str]` | `false`  | `["net-tools", "telnet", "vim", "git", "git-lfs", "jq", "zsh", "htop", "tmux", "tree", "neovim", "python3-neovim", "luarocks", "build-essential", "ninja-build", "gettext", "cmake", "make", "openssh-client", "rsync", "ntfs-3g", "exfat-fuse", "python3-pip", "python3-venv", "python3-dev", "python3-pynvim", "fd-find", "ripgrep", "rclone", "zip", "unzip", "tar", "wget", "curl", "pigz", "xz-utils", "gzip", "bzip2", "autoconf", "automake", "gcc", "g++", "clang", "libglib2.0-dev", "libssl-dev", "libffi-dev", "zlib1g-dev"]` | Install the development packages in the distributions. |
-| `linux_patching_rv_install_devel_packages` | `bool`      | `false`  | `true`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Install the development packages in the distributions. |
-| `linux_patching_rv_extra_packages`         | `list[str]` | `false`  | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Install extra required the packages.                   |
-| `linux_patching_rv_timezone`               | `str`       | `false`  | `Asia/Kolkata`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Set the ZoneTime info in server.                       |
-| `linux_patching_rv_hostname`               | `str`       | `false`  | `localhost` or `{{ ansible_facts.hostname }}`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | Cluster / Public Host name. (Doesn't work with docker) |
-| `linux_patching_rv_domain_name`            | `str`       | `false`  | `{{ ansible_facts.domain }}`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Domain Name                                            |
-| `linux_patching_rv_root_ca_pem_content`    | `str`       | `false`  | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Organization Root CA certificate.                      |
-| `linux_patching_rv_ssh_port`               | `int`       | `false`  | `22`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Default SSH Port                                       |
+## Variables
+
+| Variable                                   | Type        | Required | Default                        | Description                                                                                          |
+| ------------------------------------------ | ----------- | -------- | ------------------------------ | ---------------------------------------------------------------------------------------------------- |
+| `linux_patching_rv_packages`               | `list[str]` | `false`  | See below                      | Base system packages to install.                                                                     |
+| `linux_patching_rv_devel_packages`         | `list[str]` | `false`  | See below                      | Development packages to install. Skipped when `linux_patching_rv_install_devel_packages` is `false`. |
+| `linux_patching_rv_install_devel_packages` | `bool`      | `false`  | `true`                         | Set to `false` to skip development package installation.                                             |
+| `linux_patching_rv_extra_packages`         | `list[str]` | `false`  | -                              | Additional packages to install alongside the base list.                                              |
+| `linux_patching_rv_timezone`               | `str`       | `false`  | `Asia/Kolkata`                 | System timezone (e.g. `UTC`, `America/New_York`).                                                    |
+| `linux_patching_rv_hostname`               | `str`       | `false`  | `{{ ansible_facts.hostname }}` | Hostname to set on the system. Has no effect inside Docker containers.                               |
+| `linux_patching_rv_domain_name`            | `str`       | `false`  | `{{ ansible_facts.domain }}`   | Domain name appended to the hostname for FQDN resolution.                                            |
+| `linux_patching_rv_root_ca_pem_content`    | `str`       | `false`  | -                              | PEM content of a custom root CA certificate to trust system-wide.                                    |
+| `linux_patching_rv_ssh_port`               | `int`       | `false`  | `22`                           | SSH port opened in the UFW firewall.                                                                 |
+
+### Default Base Packages (`linux_patching_rv_packages`)
+
+```
+ca-certificates, sudo, systemd, apt-transport-https, locales,
+systemd-timesyncd, network-manager, gnupg2, gnupg, acl, ufw,
+procps, apt-utils, lsb-release, python3, openssl,
+util-linux-extra, nftables, libatomic1
+```
+
+### Default Development Packages (`linux_patching_rv_devel_packages`)
+
+```
+net-tools, telnet, vim, git, git-lfs, jq, zsh, htop, tmux, tree,
+neovim, python3-neovim, luarocks, build-essential, ninja-build,
+gettext, cmake, make, openssh-client, rsync, ntfs-3g, exfat-fuse,
+python3-pip, python3-venv, python3-dev, python3-pynvim, fd-find,
+ripgrep, rclone, zip, unzip, tar, wget, curl, pigz, xz-utils,
+gzip, bzip2, autoconf, automake, gcc, g++, clang,
+libglib2.0-dev, libssl-dev, libffi-dev, zlib1g-dev
+```
 
 ## Example Playbook
 
+Minimal run with defaults:
+
 ```yaml
----
-- name: Patch Debian System
-  ansible.builtin.import_role:
-      name: arpanrec.nebula.linux_patching
+- name: Patch Debian system
+  hosts: all
+  roles:
+      - name: arpanrec.nebula.linux_patching
+```
+
+Server-only baseline (skip dev tools, set timezone and hostname):
+
+```yaml
+- name: Patch Debian system
+  hosts: all
+  roles:
+      - name: arpanrec.nebula.linux_patching
+        vars:
+            linux_patching_rv_install_devel_packages: false
+            linux_patching_rv_timezone: 'UTC'
+            linux_patching_rv_hostname: 'myserver'
+            linux_patching_rv_domain_name: 'example.com'
+```
+
+Install a custom root CA certificate:
+
+```yaml
+- name: Patch Debian system with custom CA
+  hosts: all
+  roles:
+      - name: arpanrec.nebula.linux_patching
+        vars:
+            linux_patching_rv_root_ca_pem_content: "{{ lookup('file', 'corp-root-ca.pem') }}"
 ```
 
 ## Testing

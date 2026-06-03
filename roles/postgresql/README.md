@@ -1,113 +1,136 @@
-# Ansible Role: postgresql (arpanrec.nebula.postgresql)
+# Ansible Role: PostgreSQL (arpanrec.nebula.postgresql)
 
-## Postgresql
+Installs and configures a [PostgreSQL](https://www.postgresql.org/) server managed by systemd and `pg_ctlcluster`. Supports SSL/TLS, custom HBA rules, user provisioning, database creation, and privilege management.
 
-This role installs a postgresql server managed by systemd and pg_ctlcluster.
+## Features
+
+- PostgreSQL server installation from the official apt repository
+- systemd service management via `pg_ctlcluster`
+- SSL/TLS support with configurable certificates
+- Custom `pg_hba.conf` and `postgresql.conf` options
+- User and database provisioning
+- Fine-grained privilege assignment
+
+## Requirements
+
+- Debian-based Linux distribution
+- Root or sudo privileges on the target host
+- `community.postgresql` collection (version `4.2.0+`)
 
 ## Variables
 
-| Variable                          | Type  | Required | Default | Description                       |
-| --------------------------------- | ----- | -------- | ------- | --------------------------------- |
-| `postgresql_version`              | `str` | `false`  | `17`    | Postgresql major version.         |
-| `postgresql_cluster`              | `str` | `false`  | `main`  | Postgres cluster name.            |
-| `postgresql_port`                 | `int` | `false`  | `5432`  | Postgresql port.                  |
-| `postgresql_super_user_password`  | `str` | `false`  | None    | Root user password.               |
-| `postgresql_ssl_cert_pem_content` | `str` | `false`  | None    | DB SSL Certificate pem content.   |
-| `postgresql_ssl_key_pem_content`  | `str` | `false`  | None    | DB SSL Key pem content.           |
-| `postgresql_ssl_ca_pem_content`   | `str` | `false`  | None    | Root certificate for Client Auth. |
+### Core Variables
 
-### postgresql_extra_hba_rules
+| Variable                          | Type  | Required | Default | Description                                                               |
+| --------------------------------- | ----- | -------- | ------- | ------------------------------------------------------------------------- |
+| `postgresql_version`              | `str` | `false`  | `17`    | PostgreSQL major version to install.                                      |
+| `postgresql_cluster`              | `str` | `false`  | `main`  | Cluster name (passed to `pg_ctlcluster`).                                 |
+| `postgresql_port`                 | `int` | `false`  | `5432`  | Port the PostgreSQL server listens on.                                    |
+| `postgresql_super_user_password`  | `str` | `false`  | -       | Password for the `postgres` superuser. Leave unset to keep the default.   |
+| `postgresql_ssl_cert_pem_content` | `str` | `false`  | -       | PEM content of the server SSL certificate.                                |
+| `postgresql_ssl_key_pem_content`  | `str` | `false`  | -       | PEM content of the server SSL private key.                                |
+| `postgresql_ssl_ca_pem_content`   | `str` | `false`  | -       | PEM content of the CA certificate used for client certificate validation. |
 
-Extra rules to add to the `pg_hba.conf` file.
-Default rules are in [var file](vars/main.yml), var: [postgresql_hba_rules](vars/main.yml#postgresql_hba_rules) file and can cause a conflict with your own.
+### `postgresql_extra_hba_rules`
+
+Additional rules appended to `pg_hba.conf`. Default rules are defined in `vars/main.yml` — custom entries may conflict with them.
 
 ```yaml
 postgresql_extra_hba_rules:
-    - contype: # Conn type local, hostssl, host
-      databases: # DB Name
-      users: # user name
-      method: # Auth method, md5, peer, scram-sha-256, cert
-      options: # Extra auth option like: clientcert=verify-full / clientcert=verify-ca
+    - contype: hostssl # local, host, hostssl, hostnossl
+      databases: mydb
+      users: myuser
+      method: scram-sha-256 # md5, peer, scram-sha-256, cert
+      options: '' # e.g. clientcert=verify-full
 ```
 
-### postgresql_extra_conf_options
+### `postgresql_extra_conf_options`
 
-Extra rules to add to the `postgresql.conf` file.
-Default rules are in [var file](vars/main.yml), var: [postgresql_conf_options](vars/main.yml#postgresql_conf_options) file and can cause a conflict with your own.
+Additional key/value pairs appended to `postgresql.conf`. Default options are defined in `vars/main.yml`.
 
 ```yaml
 postgresql_extra_conf_options:
-    - option: # Name of the key
-      value: # Option value, make sure to wrap complex vars in single quote like "'{{ extra_option_value }}'"
+    - option: max_connections
+      value: '200'
+    - option: work_mem
+      value: "'64MB'" # wrap complex values in single quotes
 ```
 
-### postgresql_users
+### `postgresql_users`
 
-Users to ensure exist.
+Users to ensure exist in the cluster.
 
 ```yaml
 postgresql_users:
-    - name: jdoe #required; the rest are optional
-      password: # defaults to not set
-      encrypted: # defaults to not set
-      role_attr_flags: # defaults to not set
-      login_db: # defaults to not set
-      login_host: # defaults to 'localhost'
-      login_password: # defaults to not set
-      login_user: # defaults to '{{ postgresql_user }}'
-      login_unix_socket: # defaults to 1st of postgresql_unix_socket_directories
-      login_port: # defaults to not set
-      state: # defaults to 'present'
+    - name: myuser # required
+      password: secret # optional
+      encrypted: true # optional; defaults to not set
+      role_attr_flags: CREATEDB # optional
+      state: present # optional; defaults to present
 ```
 
-### postgresql_databases
+### `postgresql_databases`
 
-Databases to ensure exist.
+Databases to ensure exist in the cluster.
 
 ```yaml
 postgresql_databases:
-    - name: exampledb # required; the rest are optional
-      lc_collate: # defaults to 'en_US.UTF-8'
-      lc_ctype: # defaults to 'en_US.UTF-8'
-      encoding: # defaults to 'UTF-8'
-      template: # defaults to 'template0'
-      login_host: # defaults to 'localhost'
-      login_password: # defaults to not set
-      login_user: # defaults to '{{ postgresql_user }}'
-      login_unix_socket: # defaults to 1st of postgresql_unix_socket_directories
-      login_port: # defaults to not set
-      owner: # defaults to postgresql_user
-      state: # defaults to 'present'
+    - name: mydb # required
+      owner: myuser # optional; defaults to postgresql_user
+      encoding: UTF-8 # optional; defaults to UTF-8
+      lc_collate: en_US.UTF-8 # optional
+      lc_ctype: en_US.UTF-8 # optional
+      template: template0 # optional
+      state: present # optional; defaults to present
 ```
 
-### postgresql_privs
+### `postgresql_privs`
 
-[Privileges to configure](https://docs.ansible.com/ansible/latest/collections/community/postgresql/postgresql_privs_module.html#ansible-collections-community-postgresql-postgresql-privs-module)
+Privilege grants on database objects. See the [community.postgresql.postgresql_privs module docs](https://docs.ansible.com/ansible/latest/collections/community/postgresql/postgresql_privs_module.html) for all options.
 
 ```yaml
 postgresql_privs:
-    - login_db: exampledb # database (required)
-      roles: jdoe # role(s) the privs apply to (required)
-      privs: # comma separated list of privileges - defaults to not set
-      type: # type of database object to set privileges on - defaults to not set
-      objs: # list of database objects to set privileges on - defaults to not set
-      schema: # defaults to not set
-      session_role: # defaults to not set
-      fail_on_role: # defaults to true
-      grant_option: # defaults to not set
-      target_roles: # defaults to not set
-      login_host: # defaults to 'localhost'
-      login_password: # defaults to not set
-      login_user: # defaults to '{{ postgresql_user }}'
-      login_unix_socket: # defaults to 1st of postgresql_unix_socket_directories
-      login_port: # defaults to not set
-      state: # defaults to 'present'
+    - login_db: mydb # required
+      roles: myuser # required
+      privs: SELECT,INSERT # optional
+      type: table # optional
+      objs: mytable # optional
+      schema: public # optional
+      state: present # optional; defaults to present
 ```
 
-### Example Playbook postgresql
+## Example Playbook
+
+Minimal install:
 
 ```yaml
-- name: Include postgresql
-  ansible.builtin.import_role:
-      name: arpanrec.nebula.postgresql
+- name: Install PostgreSQL
+  hosts: all
+  roles:
+      - name: arpanrec.nebula.postgresql
 ```
+
+Full example with SSL, a user, and a database:
+
+```yaml
+- name: Install PostgreSQL with SSL and provisioning
+  hosts: all
+  roles:
+      - name: arpanrec.nebula.postgresql
+        vars:
+            postgresql_version: '17'
+            postgresql_port: 5432
+            postgresql_super_user_password: 'changeme'
+            postgresql_ssl_cert_pem_content: "{{ lookup('file', 'server.crt') }}"
+            postgresql_ssl_key_pem_content: "{{ lookup('file', 'server.key') }}"
+            postgresql_users:
+                - name: appuser
+                  password: apppassword
+            postgresql_databases:
+                - name: appdb
+                  owner: appuser
+```
+
+## Backup
+
+All cluster data lives under `postgresql_working_directory` (default: `/var/lib/postgresql/<version>/<cluster>`). Back up that directory to preserve all databases, configuration, and SSL certificates.

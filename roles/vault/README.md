@@ -1,37 +1,47 @@
 # Ansible Role: Vault (arpanrec.nebula.vault)
 
-## Hashicorp Vault
+Installs the [HashiCorp Vault](https://www.vaultproject.io/) CLI in user space. Vault provides secure storage and access to secrets, encryption keys, and sensitive data.
 
-This role installs HashiCorp Vault secrets management platform in user space. Vault provides secure storage and access to secrets, encryption keys, and sensitive data for modern applications.
+## Features
 
-**Features:**
-
-- Vault CLI installation with latest version detection
 - User-space installation (no root privileges required)
-- Secure secrets management and encryption services
-- Integration with cloud platforms and Kubernetes
-- Configurable installation directory
-- Automatic version management via HashiCorp releases API
+- Automatic latest-version detection via the HashiCorp Releases API
+- Configurable installation and cache directories
 
-Install Hashicorp Vault in user space
+## Requirements
 
-## Variable
+- Debian-based Linux distribution
+- `unzip` available on the target host
 
-| Variable                         | Type  | Required | Default                                   | Example  | Description                                                                                                                                                                                  |
-| -------------------------------- | ----- | -------- | ----------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `vault_rv_install_path`          | `str` | `false`  | `{{ ansible_facts.user_dir }}/.local/bin` | -        | Install path for vault.                                                                                                                                                                      |
-| `vault_rv_version`               | `str` | `false`  | `fetch_latest_version`                    | `1.16.2` | Vault Release version. If set to `fetch_latest_version`, it will fetch the latest release from the api. Get latest release from [releases](https://releases.hashicorp.com/vault/index.json). |
-| `vault_rv_tmp_install_cache_dir` | `str` | `false`  | `{{ ansible_facts.user_dir }}/.tmp/vault` | -        | Cache install directory.                                                                                                                                                                     |
+## Variables
 
-### Example Playbook Vault
+| Variable                         | Type  | Required | Default                                   | Example  | Description                                                                                                            |
+| -------------------------------- | ----- | -------- | ----------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `vault_rv_install_path`          | `str` | `false`  | `{{ ansible_facts.user_dir }}/.local/bin` | -        | Directory where the `vault` binary is placed.                                                                          |
+| `vault_rv_version`               | `str` | `false`  | `fetch_latest_version`                    | `1.16.2` | Version to install. Set to `fetch_latest_version` to resolve the latest from the HashiCorp Releases API automatically. |
+| `vault_rv_tmp_install_cache_dir` | `str` | `false`  | `{{ ansible_facts.user_dir }}/.tmp/vault` | -        | Temporary directory used during download and extraction.                                                               |
+
+## Example Playbook
 
 ```yaml
-- name: Include Vault
-  ansible.builtin.import_role:
-      name: arpanrec.nebula.vault
+- name: Install Vault CLI
+  hosts: all
+  roles:
+      - name: arpanrec.nebula.vault
 ```
 
-### Testing Vault
+Pin a specific version:
+
+```yaml
+- name: Install Vault CLI
+  hosts: all
+  roles:
+      - name: arpanrec.nebula.vault
+        vars:
+            vault_rv_version: '1.16.2'
+```
+
+## Testing
 
 ```bash
 molecule test -s role.vault.default

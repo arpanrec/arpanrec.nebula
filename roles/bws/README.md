@@ -1,37 +1,48 @@
 # Ansible Role: Bitwarden Secrets Manager SDK (arpanrec.nebula.bws)
 
-## Bitwarden Secrets Manager SDK
+Installs the [Bitwarden Secrets Manager SDK CLI](https://bitwarden.com/help/secrets-manager-sdk/) (`bws`) in user space. The `bws` CLI enables automated secrets retrieval from Bitwarden Secrets Manager for CI/CD pipelines and server automation.
 
-This role installs the Bitwarden Secrets Manager SDK CLI tool for automated secrets management. It provides secure access to Bitwarden secrets for CI/CD pipelines and server automation.
+## Features
 
-**Features:**
+- User-space installation (no root privileges required)
+- Automatic latest-version detection via the GitHub Releases API
+- Configurable installation and cache directories
+- Works alongside the `bitwarden` lookup plugin in this collection
 
-- BWS SDK CLI installation with latest version detection
-- Secure secrets management for automation workflows
-- Integration with Bitwarden Secrets Manager
-- User-space installation with configurable paths
-- Automatic GitHub API version detection
-- Support for CI/CD and server automation use cases
+## Requirements
 
-Install [Bitwarden Secrets Manager SDK](https://bitwarden.com/help/secrets-manager-sdk/)
+- Debian-based Linux distribution
+- A Bitwarden Secrets Manager account and machine account access token for runtime use
 
-Variables:
+## Variables
 
-| Variable              | Type  | Required | Default                                   | Example      | Description                                                                                                                                                                                                                                                                                                                                                    |
-| --------------------- | ----- | -------- | ----------------------------------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `bws_sdk_version_tag` | `str` | `false`  | `fetch_latest_version`                    | `bws-v1.0.0` | Version of [Bitwarden BWS SDK ClI](https://github.com/bitwarden/sdk/releases). Like [bws-v1.0.0](https://github.com/bitwarden/sdk/releases/tag/bws-v1.0.0). Default Get latest release name from [github](https://api.github.com/repos/bitwarden/sdk/releases/latest). If set to `fetch_latest_version`, it will fetch the latest release from the github api. |
-| `bws_sdk_bin_dir`     | `str` | `false`  | `{{ ansible_facts.user_dir }}/.local/bin` | -            | Directory to install BWS                                                                                                                                                                                                                                                                                                                                       |
-| `bws_sdk_tmp_dir`     | `str` | `false`  | `{{ ansible_facts.user_dir }}/.tmp/bw`    | -            | Directory to temporary download BWS.                                                                                                                                                                                                                                                                                                                           |
+| Variable              | Type  | Required | Default                                   | Example      | Description                                                                                                             |
+| --------------------- | ----- | -------- | ----------------------------------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| `bws_sdk_version_tag` | `str` | `false`  | `fetch_latest_version`                    | `bws-v1.0.0` | Release tag to install. Set to `fetch_latest_version` to resolve the latest from the GitHub Releases API automatically. |
+| `bws_sdk_bin_dir`     | `str` | `false`  | `{{ ansible_facts.user_dir }}/.local/bin` | -            | Directory where the `bws` binary is placed.                                                                             |
+| `bws_sdk_tmp_dir`     | `str` | `false`  | `{{ ansible_facts.user_dir }}/.tmp/bw`    | -            | Temporary directory used during download and extraction.                                                                |
 
-### Example Playbook Bitwarden Secrets Manager SDK
+## Example Playbook
 
 ```yaml
-- name: Include Bitwarden Secrets Manager SDK
-  ansible.builtin.import_role:
-      name: arpanrec.nebula.bws
+- name: Install Bitwarden Secrets Manager CLI
+  hosts: all
+  roles:
+      - name: arpanrec.nebula.bws
 ```
 
-### Testing Bitwarden Secrets Manager SDK
+Pin a specific release:
+
+```yaml
+- name: Install Bitwarden Secrets Manager CLI
+  hosts: all
+  roles:
+      - name: arpanrec.nebula.bws
+        vars:
+            bws_sdk_version_tag: 'bws-v1.0.0'
+```
+
+## Testing
 
 ```bash
 molecule test -s role.bw.default

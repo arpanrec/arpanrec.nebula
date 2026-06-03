@@ -1,37 +1,52 @@
-# Ansible Role: GoLang (arpanrec.nebula.go)
+# Ansible Role: Go (arpanrec.nebula.go)
 
-## Go Language
+Installs the [Go](https://golang.org/) programming language runtime in user space along with a configurable set of global Go tools.
 
-This role installs the Go programming language runtime and essential development tools in user space. It sets up a complete Go development environment with popular tools and utilities.
+## Features
 
-**Features:**
-
-- Go language runtime installation with the latest version detection
-- Essential development tools (gopls, gosh, lazygit)
 - User-space installation (no root privileges required)
-- Automatic environment configuration
-- Global package management for consistent tooling across teams
+- Automatic latest-version detection via the Go releases API
+- Installs `gopls` (language server), `gosh` (shell), and `lazygit` by default
+- Configurable list of additional global Go packages
 
-## Variables Go Language
+## Requirements
 
-| Variable                | Type   | Required | Default                                                                                                            | Description                                                                                                                                                                           |
-| ----------------------- | ------ | -------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `go_rv_install_path`    | `str`  | `false`  | `{{ ansible_facts.user_dir }}/.local/share/go`                                                                     | Install path for Go.                                                                                                                                                                  |
-| `go_rv_version`         | `str`  | `false`  | `fetch_latest_version`                                                                                             | Exact release version of go language. Example Format `go1.23.2`. If set to `fetch_latest_version`, it will fetch the latest version from [golang](https://golang.org/VERSION?m=text). |
-| `go_rv_tmp_dir`         | `str`  | `false`  | `{{ ansible_facts.user_dir }}/.tmp/go`                                                                             | Temporary cache directory for install.                                                                                                                                                |
-| `go_rv_global_installs` | `list` | `false`  | `["golang.org/x/tools/gopls@latest", "mvdan.cc/sh/v3/cmd/gosh@latest", "github.com/jesseduffield/lazygit@latest"]` | List of global packages to install.                                                                                                                                                   |
+- Debian-based Linux distribution
+- `tar` available on the target host
 
-## Example Playbook Go Language
+## Variables
+
+| Variable                | Type   | Required | Default                                                                                                            | Example    | Description                                                                                              |
+| ----------------------- | ------ | -------- | ------------------------------------------------------------------------------------------------------------------ | ---------- | -------------------------------------------------------------------------------------------------------- |
+| `go_rv_install_path`    | `str`  | `false`  | `{{ ansible_facts.user_dir }}/.local/share/go`                                                                     | -          | Directory where Go is extracted.                                                                         |
+| `go_rv_version`         | `str`  | `false`  | `fetch_latest_version`                                                                                             | `go1.23.2` | Go release version. Set to `fetch_latest_version` to resolve the latest from `golang.org` automatically. |
+| `go_rv_tmp_dir`         | `str`  | `false`  | `{{ ansible_facts.user_dir }}/.tmp/go`                                                                             | -          | Temporary directory used during download and extraction.                                                 |
+| `go_rv_global_installs` | `list` | `false`  | `["golang.org/x/tools/gopls@latest", "mvdan.cc/sh/v3/cmd/gosh@latest", "github.com/jesseduffield/lazygit@latest"]` | -          | List of Go module paths to install globally via `go install`.                                            |
+
+## Example Playbook
 
 ```yaml
----
-- name: Golang
+- name: Install Go
   hosts: all
   roles:
       - name: arpanrec.nebula.go
 ```
 
-## Testing Go Language
+Pin a specific version and add extra tools:
+
+```yaml
+- name: Install Go
+  hosts: all
+  roles:
+      - name: arpanrec.nebula.go
+        vars:
+            go_rv_version: 'go1.23.2'
+            go_rv_global_installs:
+                - golang.org/x/tools/gopls@latest
+                - github.com/go-delve/delve/cmd/dlv@latest
+```
+
+## Testing
 
 ```bash
 molecule test -s role.go.default

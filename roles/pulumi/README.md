@@ -1,37 +1,49 @@
 # Ansible Role: Pulumi (arpanrec.nebula.pulumi)
 
-## Pulumi
+Installs the [Pulumi](https://www.pulumi.com/) infrastructure-as-code CLI in user space. Pulumi lets you define and manage cloud infrastructure using familiar programming languages (TypeScript, Python, Go, C#, Java, YAML).
 
-This role installs Pulumi infrastructure-as-code platform in user space. Pulumi allows you to create, deploy, and manage cloud infrastructure using familiar programming languages.
+## Features
 
-**Features:**
-
-- Pulumi CLI installation with latest version detection from GitHub
 - User-space installation (no root privileges required)
-- Support for multiple programming languages (TypeScript, Python, Go, C#, Java)
-- Cloud-agnostic infrastructure provisioning
+- Automatic latest-version detection via the GitHub Releases API
 - Configurable installation and cache directories
-- Integration with modern development workflows
+- Compatible with AWS, Azure, GCP, Kubernetes, and 150+ cloud providers
 
-Install [Pulumi](https://github.com/pulumi/pulumi) in user space.
+## Requirements
 
-## Variable
+- Debian-based Linux distribution
+- `tar` available on the target host
 
-| Variable                          | Type  | Required | Default                                    | Example    | Description                                                                                                                                                         |
-| --------------------------------- | ----- | -------- | ------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pulumi_rv_install_path`          | `str` | `false`  | `{{ ansible_facts.user_dir }}/.pulumi/bin` | -          | Install path for pulumi.                                                                                                                                            |
-| `pulumi_rv_version`               | `str` | `false`  | `fetch_latest_version`                     | `v3.116.0` | Release version. If set to `fetch_latest_version`, it will fetch latest release from [Github releases](https://api.github.com/repos/pulumi/pulumi/releases/latest). |
-| `pulumi_rv_tmp_install_cache_dir` | `str` | `false`  | `{{ ansible_facts.user_dir }}/.tmp/pulumi` | -          | Cache install directory.                                                                                                                                            |
+## Variables
 
-### Example Playbook Pulumi
+| Variable                          | Type  | Required | Default                                    | Example    | Description                                                                                                         |
+| --------------------------------- | ----- | -------- | ------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------- |
+| `pulumi_rv_install_path`          | `str` | `false`  | `{{ ansible_facts.user_dir }}/.pulumi/bin` | -          | Directory where Pulumi binaries are placed.                                                                         |
+| `pulumi_rv_version`               | `str` | `false`  | `fetch_latest_version`                     | `v3.116.0` | Version to install. Set to `fetch_latest_version` to resolve the latest from the GitHub Releases API automatically. |
+| `pulumi_rv_tmp_install_cache_dir` | `str` | `false`  | `{{ ansible_facts.user_dir }}/.tmp/pulumi` | -          | Temporary directory used during download and extraction.                                                            |
+
+## Example Playbook
 
 ```yaml
-- name: Include Pulumi
-  ansible.builtin.import_role:
-      name: arpanrec.nebula.pulumi
+- name: Install Pulumi
+  hosts: all
+  roles:
+      - name: arpanrec.nebula.pulumi
 ```
 
-### Testing Pulumi
+Pin a specific version:
+
+```yaml
+- name: Install Pulumi
+  hosts: all
+  roles:
+      - name: arpanrec.nebula.pulumi
+        vars:
+            pulumi_rv_version: 'v3.116.0'
+            pulumi_rv_install_path: '{{ ansible_facts.user_dir }}/.pulumi/bin'
+```
+
+## Testing
 
 ```bash
 molecule test -s role.pulumi.default

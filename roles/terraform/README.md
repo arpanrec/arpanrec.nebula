@@ -1,36 +1,47 @@
 # Ansible Role: Terraform (arpanrec.nebula.terraform)
 
-## Terraform
+Installs the [HashiCorp Terraform](https://www.terraform.io/) CLI in user space for infrastructure-as-code provisioning and management.
 
-This role installs HashiCorp Terraform infrastructure-as-code tool in user space. It provides automated infrastructure provisioning and management capabilities with latest version detection.
+## Features
 
-**Features:**
-
-- Terraform CLI installation with latest version detection
 - User-space installation (no root privileges required)
-- Configurable installation directory
-- Automatic version management via HashiCorp releases API
-- Support for infrastructure automation and cloud provisioning
+- Automatic latest-version detection via the HashiCorp Releases API
+- Configurable installation and cache directories
 
-Install Terraform in user space
+## Requirements
 
-## Variable
+- Debian-based Linux distribution
+- `unzip` available on the target host
 
-| Variable                             | Type  | Required | Default                                       | Example | Description                                                                                                                                                                                             |
-| ------------------------------------ | ----- | -------- | --------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `terraform_rv_install_path`          | `str` | `false`  | `{{ ansible_facts.user_dir }}/.local/bin`     | -       | Install path for terraform.                                                                                                                                                                             |
-| `terraform_rv_version`               | `str` | `false`  | `fetch_latest_version`                        | `1.0.9` | Terraform version to install. If set to `fetch_latest_version`, it will fetch the latest release from the api. Get latest release from [releases](https://releases.hashicorp.com/terraform/index.json). |
-| `terraform_rv_tmp_install_cache_dir` | `str` | `false`  | `{{ ansible_facts.user_dir }}/.tmp/terraform` | -       | Cache install directory.                                                                                                                                                                                |
+## Variables
 
-### Example Playbook Terraform
+| Variable                             | Type  | Required | Default                                       | Example | Description                                                                                                            |
+| ------------------------------------ | ----- | -------- | --------------------------------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `terraform_rv_install_path`          | `str` | `false`  | `{{ ansible_facts.user_dir }}/.local/bin`     | -       | Directory where the `terraform` binary is placed.                                                                      |
+| `terraform_rv_version`               | `str` | `false`  | `fetch_latest_version`                        | `1.9.0` | Version to install. Set to `fetch_latest_version` to resolve the latest from the HashiCorp Releases API automatically. |
+| `terraform_rv_tmp_install_cache_dir` | `str` | `false`  | `{{ ansible_facts.user_dir }}/.tmp/terraform` | -       | Temporary directory used during download and extraction.                                                               |
+
+## Example Playbook
 
 ```yaml
-- name: Include Terraform
-  ansible.builtin.import_role:
-      name: arpanrec.nebula.terraform
+- name: Install Terraform
+  hosts: all
+  roles:
+      - name: arpanrec.nebula.terraform
 ```
 
-### Testing Terraform
+Pin a specific version:
+
+```yaml
+- name: Install Terraform
+  hosts: all
+  roles:
+      - name: arpanrec.nebula.terraform
+        vars:
+            terraform_rv_version: '1.9.0'
+```
+
+## Testing
 
 ```bash
 molecule test -s role.terraform.default

@@ -1,28 +1,48 @@
 # Ansible Role: Gitleaks (arpanrec.nebula.gitleaks)
 
-## Gitleaks
+Installs [Gitleaks](https://github.com/gitleaks/gitleaks) in user space. Gitleaks is a secret-detection tool that scans git repositories, files, and stdin for leaked passwords, API keys, tokens, and other sensitive values using a regex-based detection engine.
 
-Gitleaks is a tool for **detecting** secrets like passwords, API keys, and tokens in git repos, files, and whatever else
-you wanna throw at it via `stdin`. If you wanna learn more about how the detection engine works check out this
-blog: [Regex is (almost) all you need](https://lookingatcomputer.substack.com/p/regex-is-almost-all-you-need).
+## Features
 
-## Variable
+- User-space installation (no root privileges required)
+- Automatic latest-version detection via the GitHub Releases API
+- Configurable installation and cache directories
+- Suitable for pre-commit hooks, CI/CD pipelines, and ad-hoc scans
 
-| Variable                          | Type  | Required | Default                                      | Example  | Description                                                                                                                                            |
-| --------------------------------- | ----- | -------- | -------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `gitleaks_rv_executable_bin_path` | `str` | `false`  | `{{ ansible_facts.user_dir }}/.local/bin`    | -        | Install path for gitleaks.                                                                                                                             |
-| `gitleaks_rv_version`             | `str` | `false`  | `fetch_latest_version`                       | `8.28.0` | Release version. If set to `fetch_latest_version`, it will fetch latest release from [Github releases](https://github.com/gitleaks/gitleaks/releases). |
-| `gitleaks_rv_tmp_download_dir`    | `str` | `false`  | `{{ ansible_facts.user_dir }}/.tmp/gitleaks` | -        | Cache install directory.                                                                                                                               |
+## Requirements
 
-### Example Playbook Gitleaks
+- Debian-based Linux distribution
+- `tar` available on the target host
+
+## Variables
+
+| Variable                          | Type  | Required | Default                                      | Example  | Description                                                                                                         |
+| --------------------------------- | ----- | -------- | -------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------- |
+| `gitleaks_rv_executable_bin_path` | `str` | `false`  | `{{ ansible_facts.user_dir }}/.local/bin`    | -        | Directory where the `gitleaks` binary is placed.                                                                    |
+| `gitleaks_rv_version`             | `str` | `false`  | `fetch_latest_version`                       | `8.28.0` | Version to install. Set to `fetch_latest_version` to resolve the latest from the GitHub Releases API automatically. |
+| `gitleaks_rv_tmp_download_dir`    | `str` | `false`  | `{{ ansible_facts.user_dir }}/.tmp/gitleaks` | -        | Temporary directory used during download and extraction.                                                            |
+
+## Example Playbook
 
 ```yaml
-- name: Include Gitleaks
-  ansible.builtin.import_role:
-      name: arpanrec.nebula.gitleaks
+- name: Install Gitleaks
+  hosts: all
+  roles:
+      - name: arpanrec.nebula.gitleaks
 ```
 
-### Testing Gitleaks
+Pin a specific version:
+
+```yaml
+- name: Install Gitleaks
+  hosts: all
+  roles:
+      - name: arpanrec.nebula.gitleaks
+        vars:
+            gitleaks_rv_version: '8.28.0'
+```
+
+## Testing
 
 ```bash
 molecule test -s role.gitleaks.default

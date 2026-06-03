@@ -1,27 +1,82 @@
-# [Ansible Play Cloud Init](/playbooks/cloudinit.yml)
+# Playbook: Cloud Init (cloudinit.yml)
 
-Run the playbook
+Bootstraps a fresh cloud instance: creates a non-root user, hardens SSH, configures the system baseline, and optionally installs Docker. Designed to run once immediately after instance creation (e.g., via cloud-init userdata or a post-provision hook).
 
-## Hosts
+## Target Host Group
 
-- cloudinit
+```
+cloudinit
+```
 
-This playbook is designed to run on the server or group named `cloudinit` in your Ansible inventory.
+Define this group in your Ansible inventory pointing at the newly provisioned instance.
 
-## Extra Vars
+## What It Does
 
-Extra variables will be applied to the original role.
+1. Applies system baseline — [linux_patching](../roles/linux_patching/README.md)
+2. Creates the provisioning user — [user_add](../roles/user_add/README.md)
+3. Hardens the SSH daemon and deploys Fail2Ban — [ssh_hardening](../roles/ssh_hardening/README.md)
+4. _(Optional)_ Installs Docker via `geerlingguy.docker`
 
-`pv_cloud_init_group` - The name of the group to create in the cloud provider.
+## Extra Variables
 
-`pv_cloud_init_user` - The username to use for the cloud provider.
+| Variable                        | Required | Description                                                                        |
+| ------------------------------- | -------- | ---------------------------------------------------------------------------------- |
+| `pv_cloud_init_group`           | `false`  | Primary group name for the provisioned user.                                       |
+| `pv_cloud_init_user`            | `false`  | Username for the provisioned user.                                                 |
+| `pv_cloud_init_authorized_keys` | `false`  | List of SSH public key strings granted access to the provisioned user.             |
+| `pv_cloud_init_is_dev_machine`  | `false`  | When `true`, installs development packages via `linux_patching`. Default: `false`. |
+| `pv_cloud_init_hostname`        | `false`  | Hostname to configure on the instance.                                             |
+| `pv_cloud_init_domain`          | `false`  | Domain name to configure on the instance.                                          |
+| `pv_cloud_init_install_docker`  | `false`  | When `true`, installs Docker using `geerlingguy.docker`. Default: `false`.         |
 
-`pv_cloud_init_authorized_keys` - The path to the file containing the public keys to use for the cloud provider.
+## Usage
 
-`pv_cloud_init_is_dev_machine` - Whether the machine is a development machine or not.
+Basic bootstrap (system patching and user creation only):
 
-`pv_cloud_init_hostname` - The hostname to use for the cloud provider.
+```bash
+ansible-playbook playbooks/cloudinit.yml -i inventory.yml \
+  --extra-vars "pv_cloud_init_user=ops pv_cloud_init_group=ops"
+```
 
-`pv_cloud_init_domain` - The domain to use for the cloud provider.
+Full bootstrap with SSH keys, hostname, and Docker:
 
-`pv_cloud_init_install_docker` - Whether to install Docker on the machine. Default is `false`.
+```bash
+ansible-playbook playbooks/cloudinit.yml -i inventory.yml \
+  --extra-vars '{
+    "pv_cloud_init_user": "ops",
+    "pv_cloud_init_group": "ops",
+    "pv_cloud_init_hostname": "app-server-01",
+    "pv_cloud_init_domain": "example.com",
+    "pv_cloud_init_install_docker": true,
+    "pv_cloud_init_authorized_keys": ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAA..."]
+  }'
+```
+
+Using a vars file:
+
+```yaml
+# cloud_vars.yml
+pv_cloud_init_user: ops
+pv_cloud_init_group: ops
+pv_cloud_init_hostname: app-server-01
+pv_cloud_init_domain: example.com
+pv_cloud_init_install_docker: true
+pv_cloud_init_authorized_keys:
+    - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAA...'
+```
+
+```bash
+ansible-playbook playbooks/cloudinit.yml -i inventory.yml -e @cloud_vars.yml
+```
+
+## Inventory Example
+
+```yaml
+# inventory.yml
+all:
+    hosts:
+        cloudinit:
+            ansible_host: 203.0.113.10
+            ansible_user: root
+            ansible_ssh_private_key_file: ~/.ssh/id_ed25519
+```
