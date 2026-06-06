@@ -1,3 +1,10 @@
+## [1.14.67](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.66...1.14.67) (2026-06-06)
+
+
+### Bug Fixes
+
+* move collection dependencies to requirements.yml ([35403a8](https://github.com/arpanrec/arpanrec.nebula/commit/35403a8979861b65e287c7ecd475d22ec7172dcb))
+
 ## [1.14.66](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.65...1.14.66) (2026-05-20)
 
 
