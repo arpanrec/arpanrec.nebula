@@ -1,3 +1,10 @@
+## [1.14.68](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.67...1.14.68) (2026-06-09)
+
+
+### Bug Fixes
+
+* correct role and plugin defects, bump CI actions, refresh docs ([a696d8d](https://github.com/arpanrec/arpanrec.nebula/commit/a696d8d264667d9404f0192a61ee02c7676ce933))
+
 ## [1.14.67](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.66...1.14.67) (2026-06-06)
 
 
