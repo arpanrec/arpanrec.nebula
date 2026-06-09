@@ -14,12 +14,12 @@ This role installs Node.js runtime environment in user space along with popular 
 
 ## Variable
 
-| Variable                          | Type   | Required | Default                                              | Description                                                                                                                                 |
-| --------------------------------- | ------ | -------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `nodejs_rv_install_path`          | `str`  | `false`  | `{{ ansible_facts.user_dir }}/.local/share/node`     | Install path for nodejs.                                                                                                                    |
+| Variable                          | Type   | Required | Default                                              | Description                                                                                                                                                               |
+| --------------------------------- | ------ | -------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `nodejs_rv_install_path`          | `str`  | `false`  | `{{ ansible_facts.user_dir }}/.local/share/node`     | Install path for nodejs.                                                                                                                                                  |
 | `nodejs_rv_version`               | `str`  | `false`  | `fetch_latest_version`                               | Release version, like `v22.11.0`. If set to `fetch_latest_version`, it will fetch the latest version from the [NodeJS release index](https://nodejs.org/dist/index.json). |
-| `nodejs_rv_tmp_install_cache_dir` | `str`  | `false`  | `{{ ansible_facts.user_dir }}/.tmp/nodejs`           | Cache install directory.                                                                                                                    |
-| `nodejs_rv_global_packages`       | `list` | `false`  | `["@bitwarden/cli", "neovim", "semver", "corepack"]` | List of global packages to install.                                                                                                         |
+| `nodejs_rv_tmp_install_cache_dir` | `str`  | `false`  | `{{ ansible_facts.user_dir }}/.tmp/nodejs`           | Cache install directory.                                                                                                                                                  |
+| `nodejs_rv_global_packages`       | `list` | `false`  | `["@bitwarden/cli", "neovim", "semver", "corepack"]` | List of global packages to install.                                                                                                                                       |
 
 ### Example Playbook NodeJS
 
