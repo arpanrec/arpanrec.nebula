@@ -32,5 +32,5 @@ This role installs Node.js runtime environment in user space along with popular 
 ### Testing NodeJS
 
 ```bash
-molecule test -s role.nodejs.default
+molecule test -s role.nodejs.docker
 ```

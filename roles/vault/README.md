@@ -34,5 +34,5 @@ Install Hashicorp Vault in user space
 ### Testing Vault
 
 ```bash
-molecule test -s role.vault.default
+molecule test -s role.vault.docker
 ```

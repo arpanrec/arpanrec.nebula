@@ -25,5 +25,5 @@ the Bash code inside RUN instructions.
 ### Testing Hadolint
 
 ```bash
-molecule test -s role.hadolint.default
+molecule test -s role.hadolint.docker
 ```

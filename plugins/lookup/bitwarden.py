@@ -223,7 +223,10 @@ class LookupModule(LookupBase):
 
         cmd.append("--raw")
 
-        cli_env_vars = os.environ
+        # Copy the environment instead of aliasing os.environ, otherwise updates
+        # (including BW_SESSION) would leak into the controller process and persist
+        # across subsequent lookups.
+        cli_env_vars: Dict[str, str] = dict(os.environ)
 
         if env_vars is not None:
             cli_env_vars.update(env_vars)

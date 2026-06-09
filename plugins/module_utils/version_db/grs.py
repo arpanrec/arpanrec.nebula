@@ -95,7 +95,10 @@ def github_release_tag_search(
             raise ValueError(f"Error fetching releases: {response.status_code}, {response.text}")
         response_data = response.json()
         if len(response_data) == 0:
-            raise ValueError(f"No releases found for {github_release_tag_search_repo}")
+            if page_num == 1:
+                raise ValueError(f"No releases found for {github_release_tag_search_repo}")
+            display.vvv("github_release_tag_search: Reached the last page of releases, stopping search.")
+            break
         for release in response_data:
             pre_release: bool = bool(release.get("prerelease", False))
 

@@ -30,22 +30,22 @@ This collection provides a set of roles to deploy and manage various services.
 
 ### Lookups
 
-    - [bitwarden](/plugins/lookup/bitwarden.py)
-    - [version_db](/plugins/lookup/version_db.py)
+- [bitwarden](/plugins/lookup/bitwarden.py)
+- [version_db](/plugins/lookup/version_db.py)
 
 ### Filters
 
-    - [split_certificates](/plugins/filter/split_certificates.py)
+- [split_certificates](/plugins/filter/split_certificates.py)
 
 ## Installation
 
-    ```bash
-    export NEBULA_VERSION=1.11.0
-    curl "https://raw.githubusercontent.com/arpanrec/arpanrec.nebula/refs/tags/${NEBULA_VERSION}/requirements.yml" \
-        -o "/tmp/requirements-${NEBULA_VERSION}.yml"
-    ansible-galaxy install -r "/tmp/requirements-${NEBULA_VERSION}.yml"
-    ansible-galaxy collection install "git+https://github.com/arpanrec/arpanrec.nebula.git,${NEBULA_VERSION}"
-    ```
+```bash
+export NEBULA_VERSION=1.11.0
+curl "https://raw.githubusercontent.com/arpanrec/arpanrec.nebula/refs/tags/${NEBULA_VERSION}/requirements.yml" \
+    -o "/tmp/requirements-${NEBULA_VERSION}.yml"
+ansible-galaxy install -r "/tmp/requirements-${NEBULA_VERSION}.yml"
+ansible-galaxy collection install "git+https://github.com/arpanrec/arpanrec.nebula.git,${NEBULA_VERSION}"
+```
 
 ## [License](LICENSE)
 

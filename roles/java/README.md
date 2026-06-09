@@ -18,7 +18,7 @@ This role installs Oracle JDK, Maven, Gradle, Groovy, Kotlin, and GraalVM in use
 | Variable                           | Type   | Required | Default                                             | Description                                                                                                                                                                                                             |
 | ---------------------------------- | ------ | -------- | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `java_rv_jdk_tmp_dir`              | `str`  | `false`  | `{{ ansible_facts.user_dir }}/.tmp/java`            | Temporary directory.                                                                                                                                                                                                    |
-| `java_rv_jdk_install_path`         | `str`  | `false`  | `{ ansible_facts.user_dir }}/.local/share/java`     | Install path for java.                                                                                                                                                                                                  |
+| `java_rv_jdk_install_path`         | `str`  | `false`  | `{{ ansible_facts.user_dir }}/.local/share/java`    | Install path for java.                                                                                                                                                                                                  |
 | `java_rv_jdk_version`              | `str`  | `false`  | `fetch_latest_version`                              | Example format `21.0.4`. If set to `fetch_latest_version` then the latest version will be installed.                                                                                                                    |
 | `java_rv_jdk_mvn_install_path`     | `str`  | `false`  | `{{ ansible_facts.user_dir }}/.local/share/maven`   | Install Path.                                                                                                                                                                                                           |
 | `java_rv_jdk_mvn_version`          | `str`  | `false`  | `fetch_latest_version`                              | Exact release version of maven. Example format `maven-3.8.4`. If set to `fetch_latest_version` then the latest version will be installed.                                                                               |
@@ -40,5 +40,5 @@ This role installs Oracle JDK, Maven, Gradle, Groovy, Kotlin, and GraalVM in use
 ## Testing Oracle Java
 
 ```bash
-molecule test -s role.java.default
+molecule test -s role.java.docker
 ```
