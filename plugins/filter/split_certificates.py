@@ -45,13 +45,14 @@ def split_certificates(string: str) -> list[str]:
     "-----BEGIN CERTIFICATE-----" and ends with "-----END CERTIFICATE-----".
 
     Parameters:
-        certificates_str (str): A string containing one or more concatenated PEM-formatted certificates.
+        string (str): A string containing one or more concatenated PEM-formatted certificates.
 
     Returns:
         list: A list of strings, where each string is a PEM-formatted certificate.
     """
 
-    list_of_certs = []
+    list_of_certs: list[str] = []
+    temp_cert_list: list[str] = []
     list_of_lines = string.split("\n")
     for line in list_of_lines:
         if line == "-----BEGIN CERTIFICATE-----":

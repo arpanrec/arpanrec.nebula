@@ -142,7 +142,7 @@ class LookupModule(LookupBase):
 
     def __get_custom_field(self, field_name: str) -> str:
         item_dict = json.loads(self.__bw_exec(["get", "item", self.__item]))
-        fields: List[Dict[str, Any]] = item_dict["fields"]
+        fields: List[Dict[str, Any]] = item_dict.get("fields", [])
         value: Optional[str] = None
         for field in fields:
             if field["name"] == field_name:
@@ -282,13 +282,12 @@ class LookupModule(LookupBase):
 
         if (
             variables
-            and len(variables) > 1
             and ("secrets_lookup_cache_enabled" in variables)
             and (str(variables["secrets_lookup_cache_enabled"]).lower() in ["true", "yes", "1"])
         ):
             self.__cache_enabled = True
 
-        if variables and len(variables) > 1 and "bw_session" in variables:
+        if variables and "bw_session" in variables:
             self.__bw_session = str(variables["bw_session"])
 
         if kwargs and len(kwargs) > 0:

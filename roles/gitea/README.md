@@ -40,15 +40,15 @@ This role installs a Gitea managed by systemd.
 ```yaml
 ---
 gitea_config_db_postgresql:
-    - host: '127.0.0.1:3306'
-      name: 'gitea'
-      user: 'root'
-      passwd: 'password'
-      schema: 'public'
-      ssl_mode: 'disable' # ["disable", "require", "verify-ca", "verify-full"]
-      pg_ssl_root_cert_pem_content: '' # Pem content of root certificate.
-      pg_ssl_client_cert_pem_content: '' # Pem content of the certificate or full chain.
-      pg_ssl_client_key_pem_content: '' # Pem content of the private key.
+    host: '127.0.0.1:5432'
+    name: 'gitea'
+    user: 'root'
+    passwd: 'password'
+    schema: 'public'
+    ssl_mode: 'disable' # ["disable", "require", "verify-ca", "verify-full"]
+    pg_ssl_root_cert_pem_content: '' # Pem content of root certificate.
+    pg_ssl_client_cert_pem_content: '' # Pem content of the certificate or full chain.
+    pg_ssl_client_key_pem_content: '' # Pem content of the private key.
 ```
 
 postgresql ssl config files are written to

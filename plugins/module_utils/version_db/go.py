@@ -37,7 +37,7 @@ class Go(AppDetails):  # pylint: disable=too-few-public-methods
     """
 
     # __go_version_endpoint = "https://golang.org/dl/?mode=json"
-    __go_version_endpoint = "https://go.dev/VERSION?=text"
+    __go_version_endpoint = "https://go.dev/VERSION"
     __go_version_endpoint_query: Dict[str, str] = {"m": "text"}
     __go_ansible_architecture_map: Dict[str, str] = {"x86_64": "amd64", "aarch64": "arm64"}
 

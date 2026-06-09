@@ -27,7 +27,7 @@
                   path: "{{ java_rv_jdk_tarball_download_path }}"
                   state: absent
 
-            - name: Oracle JDK | JDK | Install | Newly Downloaded | Delete Install Directory
+            - name: Oracle JDK | JDK | Install | Newly Downloaded | Fail
               ansible.builtin.fail:
                   msg: "Failed to download JDK tarball. Check the above errors."
 
