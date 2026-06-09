@@ -51,12 +51,12 @@ postgresql_users:
       password: # defaults to not set
       encrypted: # defaults to not set
       role_attr_flags: # defaults to not set
-      login_db: # defaults to not set
+      login_db: # defaults to postgresql_super_user_db
       login_host: # defaults to 'localhost'
       login_password: # defaults to not set
-      login_user: # defaults to '{{ postgresql_user }}'
+      login_user: # defaults to '{{ postgresql_super_user }}'
       login_unix_socket: # defaults to 1st of postgresql_unix_socket_directories
-      login_port: # defaults to not set
+      login_port: # defaults to postgresql_port
       state: # defaults to 'present'
 ```
 
@@ -73,10 +73,10 @@ postgresql_databases:
       template: # defaults to 'template0'
       login_host: # defaults to 'localhost'
       login_password: # defaults to not set
-      login_user: # defaults to '{{ postgresql_user }}'
+      login_user: # defaults to '{{ postgresql_super_user }}'
       login_unix_socket: # defaults to 1st of postgresql_unix_socket_directories
-      login_port: # defaults to not set
-      owner: # defaults to postgresql_user
+      login_port: # defaults to postgresql_port
+      owner: # defaults to postgresql_super_user
       state: # defaults to 'present'
 ```
 
@@ -98,9 +98,9 @@ postgresql_privs:
       target_roles: # defaults to not set
       login_host: # defaults to 'localhost'
       login_password: # defaults to not set
-      login_user: # defaults to '{{ postgresql_user }}'
+      login_user: # defaults to '{{ postgresql_super_user }}'
       login_unix_socket: # defaults to 1st of postgresql_unix_socket_directories
-      login_port: # defaults to not set
+      login_port: # defaults to postgresql_port
       state: # defaults to 'present'
 ```
 

@@ -45,5 +45,5 @@ Create a user and add it to sudoers.d
 Prerequisite: `docker`, `python3-venv`
 
 ```bash
-molecule test -s role.user_add.default
+molecule test -s role.user_add.docker
 ```
