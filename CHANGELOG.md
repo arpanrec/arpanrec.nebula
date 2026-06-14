@@ -1,3 +1,10 @@
+## [1.14.70](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.69...1.14.70) (2026-06-14)
+
+
+### Bug Fixes
+
+* remove redundant pgdg list repository task in add-repo.yml ([0f38934](https://github.com/arpanrec/arpanrec.nebula/commit/0f38934c9ea1c3918b6c5e41358e752f12262f92))
+
 ## [1.14.69](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.68...1.14.69) (2026-06-14)
 
 
