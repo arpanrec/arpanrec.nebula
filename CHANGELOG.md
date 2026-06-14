@@ -1,3 +1,10 @@
+## [1.14.69](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.68...1.14.69) (2026-06-14)
+
+
+### Bug Fixes
+
+* replace apt_repository with deb822_repository for pgdg removal ([ceaf955](https://github.com/arpanrec/arpanrec.nebula/commit/ceaf9553d8f4ec155674fa458f7297340bbc3a9e))
+
 ## [1.14.68](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.67...1.14.68) (2026-06-09)
 
 
