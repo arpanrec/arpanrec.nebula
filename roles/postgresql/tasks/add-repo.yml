@@ -55,11 +55,6 @@
       path: /etc/apt/sources.list.d/pgdg.list
       state: absent
 
-- name: Postgresql | Install Client | Add repository | Remove pgdg list repository.
-  ansible.builtin.deb822_repository:
-      name: pgdg
-      state: absent
-
 - name: Postgresql | Install Client | Add repository | Add apt deb822_repository.
   ansible.builtin.deb822_repository:
       name: pgdg
