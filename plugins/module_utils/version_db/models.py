@@ -18,6 +18,9 @@ Classes Details:
             - JAVA: Represents the 'java' application.
             - NODEJS: Represents the 'nodejs' application.
             - PULUMI: Represents the 'pulumi' application.
+            - GITEA: Represents the 'gitea' application.
+            - HADOLINT: Represents the 'hadolint' application.
+            - GITLEAKS: Represents the 'gitleaks' application.
 
     VersionDetails:
         A dictionary to store version details of an application.

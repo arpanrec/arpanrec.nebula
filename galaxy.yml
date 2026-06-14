@@ -1,7 +1,7 @@
 ---
 namespace: arpanrec
 name: nebula
-version: 1.14.65
+version: 1.14.68
 readme: README.md
 authors:
     - "Arpan <me@arpanrec.com>"
@@ -9,11 +9,7 @@ description: common ansible resources
 repository: https://github.com/arpanrec/arpanrec.nebula.git
 license_file: LICENSE
 issues: https://github.com/arpanrec/arpanrec.nebula/issues
-dependencies:
-    community.general: 12.3.0
-    community.crypto: 3.1.0
-    ansible.posix: 2.1.0
-    community.postgresql: 4.2.0
+dependencies: {}
 homepage: "https://github.com/arpanrec/arpanrec.nebula"
 documentation: https://github.com/arpanrec/arpanrec.nebula/blob/main/README.md
 build_ignore:

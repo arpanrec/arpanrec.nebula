@@ -15,8 +15,8 @@ gitea_custom_directory: "{{ gitea_working_directory }}/custom"
 # For CustomConf https://docs.gitea.com/administration/config-cheat-sheet#use-environment-variables-to-setup-gitea, Don't change this path, so that we don't have to ever inject this file anywhere, it's default.
 gitea_app_ini_file: "{{ gitea_custom_directory }}/conf/app.ini"
 
-gitea_http_key_pem_file: "{{ gitea_custom_directory }}/ssl_cert.pem"
-gitea_http_cert_pem_file: "{{ gitea_custom_directory }}/ssl_key.pem"
+gitea_http_key_pem_file: "{{ gitea_custom_directory }}/ssl_key.pem"
+gitea_http_cert_pem_file: "{{ gitea_custom_directory }}/ssl_cert.pem"
 
 gitea_secret_key_file: "{{ gitea_custom_directory }}/gitea_secret_key"
 gitea_internal_token_file: "{{ gitea_custom_directory }}/gitea_internal_token"

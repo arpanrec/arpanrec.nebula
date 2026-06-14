@@ -16,7 +16,7 @@
             content: "{{ item }}"
             dest: "/usr/local/share/ca-certificates/root-ca-certificate\
                 -{{ __linux_patching_rv_root_ca_pem_split_index }}.crt"
-            mode: "0775"
+            mode: "0644"
         loop: "{{ linux_patching_rv_root_ca_pem_content | community.crypto.split_pem }}"
         loop_control:
             index_var: __linux_patching_rv_root_ca_pem_split_index
@@ -88,7 +88,7 @@
       state: directory
       owner: root
       group: root
-      mode: "0644"
+      mode: "0755"
 
 - name: Linux Patching | Network | Disable IPv6 via modeprobe
   when: false

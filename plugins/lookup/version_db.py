@@ -21,25 +21,45 @@ from ansible_collections.arpanrec.nebula.plugins.module_utils.version_db.models 
 
 DOCUMENTATION = """
 ---
-    name: version_db
-    author:
-        - Arpan Mandal <me@arpanrec.com>
-    short_description: Get version details.
-    description:
-        - Get version details.
-    options:
-        _terms:
-            description: The app name.
-            required: true
-            type: str
+name: version_db
+author:
+    - Arpan Mandal <me@arpanrec.com>
+short_description: Get download and version details for a supported application.
+description:
+    - Resolve the version, download link, checksum and any extra details for a supported application.
+    - One of V(bws), V(terraform), V(vault), V(go), V(java), V(nodejs), V(pulumi), V(gitea),
+      V(hadolint) or V(gitleaks) must be supplied as the single term.
+    - The result is returned as a one-element list containing a JSON encoded object.
+notes:
+    - This lookup reads C(ansible_architecture) from the host variables to build architecture
+      specific download links, so C(gather_facts) must be enabled (or the fact otherwise provided).
+options:
+    _terms:
+        description: The application name to resolve version details for.
+        required: true
+        type: str
 """
 
+EXAMPLES = """
+---
+- name: Resolve the latest Terraform version details
+  ansible.builtin.debug:
+      msg: "{{ lookup('arpanrec.nebula.version_db', 'terraform') | from_json }}"
 
-def run_module() -> None:
-    """
-    Search for the latest release in a GitHub repository.
-    """
+- name: Resolve a pinned Vault version
+  ansible.builtin.debug:
+      msg: "{{ lookup('arpanrec.nebula.version_db', 'vault', vault_rv_version='1.16.2') | from_json }}"
+"""
 
+RETURN = """
+---
+_raw:
+    description:
+        - A one-element list containing a JSON encoded object with the resolved
+          C(download_link), C(version) and, when available, C(checksum) and C(extras).
+    type: list
+    elements: str
+"""
 
 display = Display()
 

@@ -1,3 +1,24 @@
+## [1.14.68](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.67...1.14.68) (2026-06-09)
+
+
+### Bug Fixes
+
+* correct role and plugin defects, bump CI actions, refresh docs ([a696d8d](https://github.com/arpanrec/arpanrec.nebula/commit/a696d8d264667d9404f0192a61ee02c7676ce933))
+
+## [1.14.67](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.66...1.14.67) (2026-06-06)
+
+
+### Bug Fixes
+
+* move collection dependencies to requirements.yml ([35403a8](https://github.com/arpanrec/arpanrec.nebula/commit/35403a8979861b65e287c7ecd475d22ec7172dcb))
+
+## [1.14.66](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.65...1.14.66) (2026-05-20)
+
+
+### Bug Fixes
+
+* update maven and gradle ([73a60c8](https://github.com/arpanrec/arpanrec.nebula/commit/73a60c81a18528a43a5b09201cdf5232c279db73))
+
 ## [1.14.65](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.64...1.14.65) (2026-03-18)
 
 
