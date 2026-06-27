@@ -1,3 +1,10 @@
+## [1.14.72](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.71...1.14.72) (2026-06-27)
+
+
+### Bug Fixes
+
+* pv_cloud_init_user as non systemd ([0315a7b](https://github.com/arpanrec/arpanrec.nebula/commit/0315a7b715cb08b8b929c88f02b57d6d13bac8bd))
+
 ## [1.14.71](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.70...1.14.71) (2026-06-27)
 
 
