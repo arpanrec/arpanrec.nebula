@@ -66,7 +66,7 @@
             user_add_rv_ssh_access_public_key_content_list: "{{ lookup('ansible.builtin.file',
                 pv_cloud_init_authorized_keys).splitlines() }}"
             user_add_rv_user_default_shell: "/bin/bash"
-            user_add_rv_user_nopasswd_commands: ["ALL"]
+            user_add_rv_is_system_user: true
             user_add_rv_user_extra_groups: ["wheel"]
 
       - name: Patch Cloud System | Linux Patching
