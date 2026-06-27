@@ -1,3 +1,10 @@
+## [1.14.71](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.70...1.14.71) (2026-06-27)
+
+
+### Bug Fixes
+
+* **useradd:** Add user_add_rv_is_system_user for system user ([4e8370a](https://github.com/arpanrec/arpanrec.nebula/commit/4e8370a6f342d3c4957a7651da9f516d8230bdb3))
+
 ## [1.14.70](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.69...1.14.70) (2026-06-14)
 
 
