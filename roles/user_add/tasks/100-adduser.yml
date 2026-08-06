@@ -3,6 +3,7 @@
   ansible.builtin.group:
       name: "{{ user_add_rv_user_primary_group | default(user_add_rv_username, true) }}"
       gid: "{{ user_add_rv_user_primary_gid | default(omit) }}"
+      system: "{{ user_add_rv_is_system_user }}"
       state: present
 
 - name: Application User | Adding user | Generate password hash
@@ -14,6 +15,7 @@
   ansible.builtin.user:
       name: "{{ user_add_rv_username }}"
       shell: "{{ user_add_rv_user_default_shell }}"
+      system: "{{ user_add_rv_is_system_user }}"
       state: present
       groups: "{{ (user_add_rv_user_extra_groups | length > 0) | ternary(user_add_rv_user_extra_groups, omit) }}"
       append: "{{ (user_add_rv_user_extra_groups | length > 0) | ternary(true, omit) }}"
