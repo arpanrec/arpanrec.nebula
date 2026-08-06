@@ -1,3 +1,38 @@
+## [1.14.72](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.71...1.14.72) (2026-06-27)
+
+
+### Bug Fixes
+
+* pv_cloud_init_user as non systemd ([0315a7b](https://github.com/arpanrec/arpanrec.nebula/commit/0315a7b715cb08b8b929c88f02b57d6d13bac8bd))
+
+## [1.14.71](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.70...1.14.71) (2026-06-27)
+
+
+### Bug Fixes
+
+* **useradd:** Add user_add_rv_is_system_user for system user ([4e8370a](https://github.com/arpanrec/arpanrec.nebula/commit/4e8370a6f342d3c4957a7651da9f516d8230bdb3))
+
+## [1.14.70](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.69...1.14.70) (2026-06-14)
+
+
+### Bug Fixes
+
+* remove redundant pgdg list repository task in add-repo.yml ([0f38934](https://github.com/arpanrec/arpanrec.nebula/commit/0f38934c9ea1c3918b6c5e41358e752f12262f92))
+
+## [1.14.69](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.68...1.14.69) (2026-06-14)
+
+
+### Bug Fixes
+
+* replace apt_repository with deb822_repository for pgdg removal ([ceaf955](https://github.com/arpanrec/arpanrec.nebula/commit/ceaf9553d8f4ec155674fa458f7297340bbc3a9e))
+
+## [1.14.68](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.67...1.14.68) (2026-06-09)
+
+
+### Bug Fixes
+
+* correct role and plugin defects, bump CI actions, refresh docs ([a696d8d](https://github.com/arpanrec/arpanrec.nebula/commit/a696d8d264667d9404f0192a61ee02c7676ce933))
+
 ## [1.14.67](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.66...1.14.67) (2026-06-06)
 
 
