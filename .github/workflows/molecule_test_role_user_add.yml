@@ -9,10 +9,10 @@ name: Molecule Test Role User Add
             - ".github/workflows/molecule_test_role_user_add.yml"
             - "meta/**"
             - "molecule/role.user_add.docker/**"
-            - "uv.lock"
             - "requirements.yml"
             - "roles/user_add/**"
-
+            - "uv.lock"
+            - "pyproject.toml"
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
     cancel-in-progress: true

@@ -16,10 +16,10 @@ name: Molecule Test Role Vault
             - "plugins/module_utils/version_db/models.py"
             - "plugins/module_utils/version_db/py.typed"
             - "plugins/module_utils/version_db/vault.py"
-            - "uv.lock"
             - "requirements.yml"
             - "roles/vault/**"
-
+            - "uv.lock"
+            - "pyproject.toml"
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
     cancel-in-progress: true

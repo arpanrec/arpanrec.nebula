@@ -16,10 +16,11 @@ name: Molecule Test Role Terraform
             - "plugins/module_utils/version_db/models.py"
             - "plugins/module_utils/version_db/py.typed"
             - "plugins/module_utils/version_db/terraform.py"
-            - "uv.lock"
             - "requirements.yml"
             - "roles/terraform/**"
-
+            - "uv.lock"
+            - "pyproject.toml"
+            
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
     cancel-in-progress: true

@@ -17,10 +17,10 @@ name: Molecule Test Role Pulimi
             - "plugins/module_utils/version_db/grs.py"
             - "plugins/module_utils/version_db/models.py"
             - "plugins/module_utils/version_db/py.typed"
-            - "uv.lock"
             - "requirements.yml"
             - "roles/pulumi/**"
-
+            - "uv.lock"
+            - "pyproject.toml"
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
     cancel-in-progress: true

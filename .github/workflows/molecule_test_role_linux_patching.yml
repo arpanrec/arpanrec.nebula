@@ -9,9 +9,10 @@ name: Molecule Test Role Linux Patching
             - ".github/workflows/molecule_test_role_linux_patching.yml"
             - "meta/**"
             - "molecule/role.linux_patching.docker/**"
-            - "uv.lock"
             - "requirements.yml"
             - "roles/linux_patching/**"
+            - "uv.lock"
+            - "pyproject.toml"
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}

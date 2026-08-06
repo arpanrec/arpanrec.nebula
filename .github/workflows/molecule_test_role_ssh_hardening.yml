@@ -9,10 +9,10 @@ name: Molecule Test Role SSH Hardening
             - ".github/workflows/molecule_test_role_ssh_hardening.yml"
             - "meta/**"
             - "molecule/role.ssh_hardening.docker/**"
-            - "uv.lock"
             - "requirements.yml"
             - "roles/ssh_hardening/**"
-
+            - "uv.lock"
+            - "pyproject.toml"
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
     cancel-in-progress: true

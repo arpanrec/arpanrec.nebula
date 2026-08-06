@@ -16,9 +16,10 @@ name: Molecule Test Role GraalVM
             - "plugins/module_utils/version_db/java.py"
             - "plugins/module_utils/version_db/models.py"
             - "plugins/module_utils/version_db/py.typed"
-            - "uv.lock"
             - "requirements.yml"
             - "roles/java/**"
+            - "uv.lock"
+            - "pyproject.toml"
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
