@@ -57,7 +57,7 @@ antsibull-fileutils==1.5.3
     #   antsibull-docs
 ast-serialize==0.8.0
     # via mypy
-astroid==4.0.4
+astroid==4.1.2
     # via pylint
 asyncio-pool==0.6.0
     # via antsibull-docs
