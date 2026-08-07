@@ -4,6 +4,7 @@ name: Ansible Lint
 "on":
     workflow_dispatch:
     pull_request:
+    push:
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
@@ -52,6 +53,6 @@ jobs:
                   UV_PYTHON: ${{ matrix.python-version }}
 
             - name: Analyzing the code with ansible-lint
-              run: uv run ansible-lint
+              run: uv run ansible-lint -vvv
               env:
                   UV_PYTHON: ${{ matrix.python-version }}
