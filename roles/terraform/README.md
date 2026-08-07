@@ -33,5 +33,5 @@ Install Terraform in user space
 ### Testing Terraform
 
 ```bash
-molecule test -s role.terraform.default
+molecule test -s role.terraform.docker
 ```

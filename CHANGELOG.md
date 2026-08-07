@@ -1,3 +1,116 @@
+## [1.14.73](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.72...1.14.73) (2026-08-07)
+
+
+### Bug Fixes
+
+* update dependencies ([cd22b93](https://github.com/arpanrec/arpanrec.nebula/commit/cd22b9397a0403b6086c8a4918a47fcc9bdb9953))
+
+## [1.14.72](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.71...1.14.72) (2026-06-27)
+
+
+### Bug Fixes
+
+* pv_cloud_init_user as non systemd ([0315a7b](https://github.com/arpanrec/arpanrec.nebula/commit/0315a7b715cb08b8b929c88f02b57d6d13bac8bd))
+
+## [1.14.71](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.70...1.14.71) (2026-06-27)
+
+
+### Bug Fixes
+
+* **useradd:** Add user_add_rv_is_system_user for system user ([4e8370a](https://github.com/arpanrec/arpanrec.nebula/commit/4e8370a6f342d3c4957a7651da9f516d8230bdb3))
+
+## [1.14.70](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.69...1.14.70) (2026-06-14)
+
+
+### Bug Fixes
+
+* remove redundant pgdg list repository task in add-repo.yml ([0f38934](https://github.com/arpanrec/arpanrec.nebula/commit/0f38934c9ea1c3918b6c5e41358e752f12262f92))
+
+## [1.14.69](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.68...1.14.69) (2026-06-14)
+
+
+### Bug Fixes
+
+* replace apt_repository with deb822_repository for pgdg removal ([ceaf955](https://github.com/arpanrec/arpanrec.nebula/commit/ceaf9553d8f4ec155674fa458f7297340bbc3a9e))
+
+## [1.14.68](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.67...1.14.68) (2026-06-09)
+
+
+### Bug Fixes
+
+* correct role and plugin defects, bump CI actions, refresh docs ([a696d8d](https://github.com/arpanrec/arpanrec.nebula/commit/a696d8d264667d9404f0192a61ee02c7676ce933))
+
+## [1.14.67](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.66...1.14.67) (2026-06-06)
+
+
+### Bug Fixes
+
+* move collection dependencies to requirements.yml ([35403a8](https://github.com/arpanrec/arpanrec.nebula/commit/35403a8979861b65e287c7ecd475d22ec7172dcb))
+
+## [1.14.66](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.65...1.14.66) (2026-05-20)
+
+
+### Bug Fixes
+
+* update maven and gradle ([73a60c8](https://github.com/arpanrec/arpanrec.nebula/commit/73a60c81a18528a43a5b09201cdf5232c279db73))
+
+## [1.14.65](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.64...1.14.65) (2026-03-18)
+
+
+### Bug Fixes
+
+* update Maven version to 3.9.14 in Java version database ([d38a20f](https://github.com/arpanrec/arpanrec.nebula/commit/d38a20fccd60d6a08d046666a5d890b0d6a1e51f))
+
+## [1.14.64](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.63...1.14.64) (2026-03-06)
+
+
+### Bug Fixes
+
+* update Maven version to 3.9.13 in Java version database ([a30c41f](https://github.com/arpanrec/arpanrec.nebula/commit/a30c41f99d10a229a621793636ba04da6e886e6d))
+
+## [1.14.63](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.62...1.14.63) (2026-02-06)
+
+
+### Bug Fixes
+
+* remove unused Go tools from default packages and update README ([72cd931](https://github.com/arpanrec/arpanrec.nebula/commit/72cd931e38f5af7c8180e00e7037a3f13adf4bf5))
+
+## [1.14.62](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.61...1.14.62) (2026-01-31)
+
+
+### Bug Fixes
+
+* remove outdated global Go package installations ([66e022b](https://github.com/arpanrec/arpanrec.nebula/commit/66e022b4fea457c1ce6f5b0d20c903bd5cdd30ed))
+
+## [1.14.61](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.60...1.14.61) (2026-01-24)
+
+
+### Bug Fixes
+
+* add GOPATH setup and global Go package installation improvements ([fad2481](https://github.com/arpanrec/arpanrec.nebula/commit/fad24815596bc85abadd37b00e65b7dab03a0e4e))
+* add GOPATH setup and global Go package installation improvements ([1f2bd42](https://github.com/arpanrec/arpanrec.nebula/commit/1f2bd42bb66fee53cce587c3b64c8e467da323b8))
+
+## [1.14.60](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.59...1.14.60) (2026-01-23)
+
+
+### Bug Fixes
+
+* ensure corepack installation command does not report changes ([6e09f69](https://github.com/arpanrec/arpanrec.nebula/commit/6e09f697e7799b24ab191e5d6d12d8a6e8d4996b))
+
+## [1.14.59](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.58...1.14.59) (2026-01-23)
+
+
+### Bug Fixes
+
+* update corepack package managers installation to use latest version ([e835fdd](https://github.com/arpanrec/arpanrec.nebula/commit/e835fdd417ce74cc163635e85308a29e48872a8b))
+
+## [1.14.58](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.57...1.14.58) (2026-01-23)
+
+
+### Bug Fixes
+
+* Install corepack package managers pnpm & yarn ([#62](https://github.com/arpanrec/arpanrec.nebula/issues/62)) ([84e6b55](https://github.com/arpanrec/arpanrec.nebula/commit/84e6b55720205ef58ad305b38a09b3acd374365a))
+
 ## [1.14.57](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.56...1.14.57) (2026-01-23)
 
 

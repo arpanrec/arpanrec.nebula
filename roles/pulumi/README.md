@@ -34,5 +34,5 @@ Install [Pulumi](https://github.com/pulumi/pulumi) in user space.
 ### Testing Pulumi
 
 ```bash
-molecule test -s role.pulumi.default
+molecule test -s role.pulumi.docker
 ```

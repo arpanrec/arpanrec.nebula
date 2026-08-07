@@ -55,14 +55,6 @@
       path: /etc/apt/sources.list.d/pgdg.list
       state: absent
 
-- name: Postgresql | Install Client | Add repository | Remove pgdg list repository.
-  ansible.builtin.apt_repository:
-      repo: "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] \
-          https://apt.postgresql.org/pub/repos/apt {{ ansible_facts.distribution_release }}-pgdg main"
-      filename: pgdg
-      update_cache: true
-      state: absent
-
 - name: Postgresql | Install Client | Add repository | Add apt deb822_repository.
   ansible.builtin.deb822_repository:
       name: pgdg

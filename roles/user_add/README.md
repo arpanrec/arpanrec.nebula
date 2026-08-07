@@ -28,6 +28,7 @@ Create a user and add it to sudoers.d
 | `user_add_rv_user_nopasswd_commands`             | `List<String>` | `false`  | -                            | Commands user will be able to run without password |
 | `user_add_rv_user_default_shell`                 | `str`          | `false`  | `/bin/bash`                  | Default shell for the User                         |
 | `user_add_rv_user_home_dir`                      | `str`          | `false`  | -                            | Path to home                                       |
+| `user_add_rv_is_system_user`                     | `Boolean`      | `false`  | `false`                      | Create system user and group                       |
 
 ## Example Playbook
 
@@ -45,5 +46,5 @@ Create a user and add it to sudoers.d
 Prerequisite: `docker`, `python3-venv`
 
 ```bash
-molecule test -s role.user_add.default
+molecule test -s role.user_add.docker
 ```

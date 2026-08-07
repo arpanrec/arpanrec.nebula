@@ -34,3 +34,7 @@ user_add_rv_user_nopasswd_commands: []
 # Default shell for user
 # Type: String
 user_add_rv_user_default_shell: /bin/bash
+
+# Create system user and group
+# Type: Boolean
+user_add_rv_is_system_user: false

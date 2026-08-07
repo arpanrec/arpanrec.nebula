@@ -17,7 +17,7 @@
       - name: Oracle JDK | Gradle | Remove old temporary unzip directory if exists
         ansible.builtin.file:
             path: "{{ java_rv_jdk_gradle_tmp_unzip_path }}/gradle-{{
-                oracle_jdk_tmp_version_details.extras.gradle.version }}"
+                oracle_jdk_tmp_version_details.extras.gradle.version[1:] }}"
             state: absent
 
   rescue:
@@ -29,7 +29,7 @@
       - name: Oracle JDK | Gradle | Fail
         ansible.builtin.fail:
             msg: |+
-                Failed to download {{ java_rv_jdk_gradle_download_url }}
+                Failed to download {{ oracle_jdk_tmp_version_details.extras.gradle.download_link }}
                 Check the errors above.
 
 - name: Oracle JDK | Gradle | Create temporary unzip directory

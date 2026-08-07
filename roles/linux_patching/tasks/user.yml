@@ -55,10 +55,11 @@
 - name: Linux Patching | Users | Allow group permissions
   ansible.builtin.copy:
       dest: "/etc/sudoers.d/{{ item.file_loc }}"
-      content: "{{ item.rule }}"
-      mode: "0644"
+      content: "{{ item.rule }}\n"
+      mode: "0440"
       owner: root
       group: root
+      validate: /usr/sbin/visudo -cf %s
   loop:
       - file_loc: 1000-root
         rule: "root ALL=(ALL:ALL) ALL"

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 """
-Module to manage GitHub Action Secrets.
+Module to search GitHub repository releases for the latest matching release tag.
 """
 
 import os
@@ -91,11 +91,12 @@ def github_release_tag_search(
 
         response = requests.get(url, headers=headers, params=params, timeout=github_release_tag_search_timeout)
         response.raise_for_status()
-        if response.status_code != 200:
-            raise ValueError(f"Error fetching releases: {response.status_code}, {response.text}")
         response_data = response.json()
         if len(response_data) == 0:
-            raise ValueError(f"No releases found for {github_release_tag_search_repo}")
+            if page_num == 1:
+                raise ValueError(f"No releases found for {github_release_tag_search_repo}")
+            display.vvv("github_release_tag_search: Reached the last page of releases, stopping search.")
+            break
         for release in response_data:
             pre_release: bool = bool(release.get("prerelease", False))
 
