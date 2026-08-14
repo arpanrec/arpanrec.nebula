@@ -204,7 +204,7 @@ pathspec==1.1.1
     #   yamllint
 perky==0.10
     # via antsibull-core
-platformdirs==4.11.0
+platformdirs==4.11.2
     # via
     #   black
     #   pylint
