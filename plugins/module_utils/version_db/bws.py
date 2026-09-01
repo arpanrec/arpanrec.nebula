@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
 """
 This module provides the BWS class for fetching version details of the BWS app from GitHub.
 
@@ -18,6 +17,8 @@ Attributes:
     _version (str): The version of the BWS app.
 
 """
+
+from __future__ import annotations
 
 from ansible.utils.display import Display  # type: ignore
 

@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
 """
 This module provides functionality to fetch and manage NodeJS application details.
 
@@ -16,7 +15,9 @@ Attributes:
     __node_architecture_map (dict[str, str]): A mapping of architecture names to NodeJS architecture identifiers.
 """
 
-import requests  # type: ignore
+from __future__ import annotations
+
+import httpx
 from ansible.utils.display import Display  # type: ignore
 
 # pylint: disable=E0401,E0611
@@ -44,7 +45,7 @@ class NodeJS(AppDetails):
         if not _nodejs_version_tag or _nodejs_version_tag == self._FETCH_LATEST_KEY:
             display.vvv(f"AppDetails NodeJS: Fetching NodeJS version details from {self.__node_dist_url}")
 
-            _nodejs_version_tags_res = requests.get(self.__node_dist_url, timeout=10)
+            _nodejs_version_tags_res = httpx.get(self.__node_dist_url, timeout=10)
 
             if _nodejs_version_tags_res.status_code != 200:
                 raise ValueError(f"Failed to fetch NodeJS version details: {_nodejs_version_tags_res.text}")

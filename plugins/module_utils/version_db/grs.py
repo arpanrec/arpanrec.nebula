@@ -1,13 +1,13 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
 """
 Module to search GitHub repository releases for the latest matching release tag.
 """
 
-import os
-from typing import Dict, Optional
+from __future__ import annotations
 
-import requests
+import os
+
+import httpx
 from ansible.utils.display import Display  # type: ignore
 
 display = Display()
@@ -17,13 +17,13 @@ display = Display()
 def github_release_tag_search(
     *,
     github_release_tag_search_repo: str,
-    github_release_tag_search_api_url: Optional[str],
-    github_release_tag_search_token: Optional[str],
-    github_release_tag_search_prefix: Optional[str] = None,
-    github_release_tag_search_suffix: Optional[str] = None,
-    github_release_tag_search_contains: Optional[str] = None,
-    github_release_tag_search_max_pages: Optional[int] = 100,
-    github_release_tag_search_timeout: Optional[int] = 10,
+    github_release_tag_search_api_url: str | None,
+    github_release_tag_search_token: str | None,
+    github_release_tag_search_prefix: str | None = None,
+    github_release_tag_search_suffix: str | None = None,
+    github_release_tag_search_contains: str | None = None,
+    github_release_tag_search_max_pages: int | None = 100,
+    github_release_tag_search_timeout: int | None = 10,
 ) -> str:
     """
     Search for the latest release in a GitHub repository.
@@ -73,14 +73,14 @@ def github_release_tag_search(
     if not github_release_tag_search_timeout or github_release_tag_search_timeout < 1:
         github_release_tag_search_timeout = 10
 
-    tag_version: Optional[str] = None
+    tag_version: str | None = None
     url: str = f"{github_release_tag_search_api_url}/repos/{github_release_tag_search_repo}/releases"
-    headers: Dict[str, str] = {"Accept": "application/vnd.github.v3+json", "X-GitHub-Api-Version": "2022-11-28"}
+    headers: dict[str, str] = {"Accept": "application/vnd.github.v3+json", "X-GitHub-Api-Version": "2022-11-28"}
 
     if github_release_tag_search_token:
         headers["Authorization"] = f"Bearer {github_release_tag_search_token}"
 
-    params: Dict[str, str | int] = {
+    params: dict[str, str | int] = {
         "per_page": 50,
     }
     page_num: int = 0
@@ -89,7 +89,7 @@ def github_release_tag_search(
         page_num += 1
         params["page"] = page_num
 
-        response = requests.get(url, headers=headers, params=params, timeout=github_release_tag_search_timeout)
+        response = httpx.get(url, headers=headers, params=params, timeout=github_release_tag_search_timeout)
         response.raise_for_status()
         response_data = response.json()
         if len(response_data) == 0:
