@@ -1,22 +1,11 @@
 # DEVELOPMENT Notes
 
-## Python lint and type-check
+## Development Setup
 
 Install dependencies, including the dev extras:
 
 ```bash
 uv sync --extra dev
-```
-
-Run the six tools in this order against the tracked Python files:
-
-```bash
-uv run black $(git ls-files '*.py')
-uv run isort $(git ls-files '*.py')
-uv run ruff check $(git ls-files '*.py')
-uv run mypy $(git ls-files '*.py')
-uv run pylint $(git ls-files '*.py')
-uv run pyright $(git ls-files '*.py')
 ```
 
 ## LSP Support for module_utils
