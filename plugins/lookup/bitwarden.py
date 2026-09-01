@@ -16,7 +16,7 @@ from ansible.plugins.lookup import LookupBase  # type: ignore
 from ansible.utils.display import Display  # type: ignore
 
 try:
-    from cachier import cachier
+    from cachier import cachier  # pyright: ignore[reportUnknownVariableType]
 except ImportError as e:
     raise AnsibleLookupError("Please install cachier with 'pip install cachier'") from e
 
@@ -242,6 +242,10 @@ class LookupModule(LookupBase):
             )
         return command_out.stdout
 
+    @staticmethod
+    def __cache_dpath(cached_fn: Any) -> str:
+        return cached_fn.cache_dpath()  # pyright: ignore[reportAttributeAccessIssue, reportUnknownMemberType]
+
     def __bw_exec(
         self,
         cmd: list[str],
@@ -250,7 +254,7 @@ class LookupModule(LookupBase):
     ) -> str:
 
         if self.__cache_enabled:
-            cache_dpath = self.__bw_exec_with_cache.cache_dpath()  # pyright: ignore[reportAttributeAccessIssue]
+            cache_dpath = self.__cache_dpath(self.__bw_exec_with_cache)
             display.warning(
                 f"Using cache location: '{cache_dpath}', Make sure to remove the directory after execution.\n"
             )
@@ -271,7 +275,7 @@ class LookupModule(LookupBase):
         if len(terms) != 1:
             raise AnsibleLookupError("Only one term is allowed")
 
-        self.set_options(var_options=variables, direct=kwargs)
+        self.set_options(var_options=variables, direct=kwargs)  # pyright: ignore[reportUnknownMemberType]
 
         self.__item = terms[0]
         field: str | None = None

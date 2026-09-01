@@ -73,7 +73,7 @@ class LookupModule(LookupBase):
         Run the lookup module.
         """
 
-        self.set_options(var_options=variables, direct=kwargs)
+        self.set_options(var_options=variables, direct=kwargs)  # pyright: ignore[reportUnknownMemberType]
 
         if not terms:
             raise AnsibleLookupError("No terms provided for lookup")
@@ -83,7 +83,9 @@ class LookupModule(LookupBase):
 
         version_details: VersionDetails
         try:
-            version_details = get_version(app_name=terms[0], variables=variables, **kwargs)
+            version_details = get_version(  # pyright: ignore[reportUnknownVariableType]
+                app_name=terms[0], variables=variables, **kwargs
+            )
         except Exception as e:
             raise AnsibleLookupError(f"Failed to get version details for {terms[0]}: {str(e)}") from e
 

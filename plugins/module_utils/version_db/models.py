@@ -103,7 +103,7 @@ class AppDetails(abc.ABC):
         Constructor.
         """
 
-        self._variables = kwargs.get("variables")
+        self._variables = kwargs.get("variables")  # pyright: ignore[reportUnknownMemberType]
         self._args = args
         self._kwargs = kwargs
 
