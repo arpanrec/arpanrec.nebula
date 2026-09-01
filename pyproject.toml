@@ -42,7 +42,7 @@ typeCheckingMode = "strict"
 
 [project]
 name = "arpanrec-nebula"
-version = "1.15.1"
+version = "1.15.2"
 description = "common ansible resources"
 authors = [ { name = "arpan", email = "me@arpanrec.com" } ]
 license = "MIT"

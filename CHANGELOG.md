@@ -1,3 +1,10 @@
+## [1.15.2](https://github.com/arpanrec/arpanrec.nebula/compare/1.15.1...1.15.2) (2026-09-01)
+
+
+### Bug Fixes
+
+* add type checking ignores for pyright in lookup plugins and models ([6ee8342](https://github.com/arpanrec/arpanrec.nebula/commit/6ee8342dd457a5efa781f2dac0a86248ca28db20))
+
 ## [1.15.1](https://github.com/arpanrec/arpanrec.nebula/compare/1.15.0...1.15.1) (2026-09-01)
 
 
