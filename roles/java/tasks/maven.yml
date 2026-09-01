@@ -1,5 +1,5 @@
 ---
-- name: Oracle JDK | Apache Maven | Get downloaded file stat
+- name: Oracle JDK | Apache Maven | Get Downloaded File Stat
   ansible.builtin.stat:
       path: "{{ java_rv_jdk_mvn_tarball_download_path }}"
   register: java_rv_jdk_mvn_tmp_downloaded_file_stat
@@ -7,20 +7,20 @@
 - name: Oracle JDK | Apache Maven | Newly Downloaded
   when: not java_rv_jdk_mvn_tmp_downloaded_file_stat.stat.exists
   block:
-      - name: Oracle JDK | Apache Maven | Newly Downloaded | Download tarball
+      - name: Oracle JDK | Apache Maven | Newly Downloaded | Download Tarball
         ansible.builtin.get_url:
             url: "{{ oracle_jdk_tmp_version_details.extras.maven.download_link }}"
             checksum: "{{ oracle_jdk_tmp_version_details.extras.maven.checksum | default(omit) }}"
             dest: "{{ java_rv_jdk_mvn_tarball_download_path }}"
             mode: "0700"
 
-      - name: Oracle JDK | Apache Maven | Newly Downloaded | Remove old install directory
+      - name: Oracle JDK | Apache Maven | Newly Downloaded | Remove Old Install Directory
         ansible.builtin.file:
             path: "{{ java_rv_jdk_mvn_install_path }}"
             state: absent
 
   rescue:
-      - name: Oracle JDK | Apache Maven | Newly Downloaded | Remove tarball
+      - name: Oracle JDK | Apache Maven | Newly Downloaded | Remove Tarball
         ansible.builtin.file:
             path: "{{ java_rv_jdk_mvn_tarball_download_path }}"
             state: absent
@@ -32,13 +32,13 @@
                 to {{ java_rv_jdk_mvn_tarball_download_path }}"
                 Check the error above for more details
 
-- name: Oracle JDK | Apache Maven | Create install directory
+- name: Oracle JDK | Apache Maven | Create Install Directory
   ansible.builtin.file:
       path: "{{ java_rv_jdk_mvn_install_path }}"
       state: directory
       mode: "0700"
 
-- name: Oracle JDK | Apache Maven | Newly Downloaded | Unarchive the tarball
+- name: Oracle JDK | Apache Maven | Newly Downloaded | Unarchive The Tarball
   ansible.builtin.unarchive:
       src: "{{ java_rv_jdk_mvn_tarball_download_path }}"
       dest: "{{ java_rv_jdk_mvn_install_path }}"

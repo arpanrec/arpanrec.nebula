@@ -1,5 +1,5 @@
 ---
-- name: SSHD Hardening | fail2ban | assert | Test ssh_hardening_rv_fail2ban_loglevel
+- name: SSHD Hardening | Fail2ban | Assert | Test ssh_hardening_rv_fail2ban_loglevel
   ansible.builtin.assert:
       that:
           - ssh_hardening_rv_fail2ban_loglevel is defined
@@ -7,7 +7,7 @@
           - ssh_hardening_rv_fail2ban_loglevel in [ "CRITICAL", "ERROR", "WARNING", "NOTICE", "INFO", "DEBUG" ]
       quiet: true
 
-- name: SSHD Hardening | fail2ban | assert | Test ssh_hardening_rv_fail2ban_logtarget
+- name: SSHD Hardening | Fail2ban | Assert | Test ssh_hardening_rv_fail2ban_logtarget
   ansible.builtin.assert:
       that:
           - ssh_hardening_rv_fail2ban_logtarget is defined
@@ -15,7 +15,7 @@
           - ssh_hardening_rv_fail2ban_logtarget is not none
       quiet: true
 
-- name: SSHD Hardening | fail2ban | assert | Test ssh_hardening_rv_fail2ban_banaction
+- name: SSHD Hardening | Fail2ban | Assert | Test ssh_hardening_rv_fail2ban_banaction
   ansible.builtin.assert:
       that:
           - ssh_hardening_rv_fail2ban_banaction is defined
@@ -23,7 +23,7 @@
           - ssh_hardening_rv_fail2ban_banaction is not none
       quiet: true
 
-- name: SSHD Hardening | fail2ban | assert | Test ssh_hardening_rv_fail2ban_banaction_multiport
+- name: SSHD Hardening | Fail2ban | Assert | Test ssh_hardening_rv_fail2ban_banaction_multiport
   ansible.builtin.assert:
       that:
           - ssh_hardening_rv_fail2ban_banaction_multiport is defined
@@ -31,7 +31,7 @@
           - ssh_hardening_rv_fail2ban_banaction_multiport is not none
       quiet: true
 
-- name: SSHD Hardening | fail2ban | assert | Test ssh_hardening_rv_fail2ban_banaction_allports
+- name: SSHD Hardening | Fail2ban | Assert | Test ssh_hardening_rv_fail2ban_banaction_allports
   ansible.builtin.assert:
       that:
           - ssh_hardening_rv_fail2ban_banaction_allports is defined
@@ -39,7 +39,7 @@
           - ssh_hardening_rv_fail2ban_banaction_allports is not none
       quiet: true
 
-- name: SSHD Hardening | fail2ban | assert | Test ssh_hardening_rv_fail2ban_ignoreself
+- name: SSHD Hardening | Fail2ban | Assert | Test ssh_hardening_rv_fail2ban_ignoreself
   ansible.builtin.assert:
       that:
           - ssh_hardening_rv_fail2ban_ignoreself is defined
@@ -47,14 +47,14 @@
           - ssh_hardening_rv_fail2ban_ignoreself in [ "false", "true" ]
       quiet: true
 
-- name: SSHD Hardening | fail2ban | assert | Test ssh_hardening_rv_fail2ban_ignoreips
+- name: SSHD Hardening | Fail2ban | Assert | Test ssh_hardening_rv_fail2ban_ignoreips
   ansible.builtin.assert:
       that:
           - ssh_hardening_rv_fail2ban_ignoreips is defined
           - ssh_hardening_rv_fail2ban_ignoreips is iterable
       quiet: true
 
-- name: SSHD Hardening | fail2ban | assert | Test ssh_hardening_rv_fail2ban_bantime
+- name: SSHD Hardening | Fail2ban | Assert | Test ssh_hardening_rv_fail2ban_bantime
   ansible.builtin.assert:
       that:
           - ssh_hardening_rv_fail2ban_bantime is defined
@@ -62,7 +62,7 @@
           - ssh_hardening_rv_fail2ban_bantime >= -1 and ssh_hardening_rv_fail2ban_bantime !=0
       quiet: true
 
-- name: SSHD Hardening | fail2ban | assert | Test ssh_hardening_rv_fail2ban_findtime
+- name: SSHD Hardening | Fail2ban | Assert | Test ssh_hardening_rv_fail2ban_findtime
   ansible.builtin.assert:
       that:
           - ssh_hardening_rv_fail2ban_findtime is defined
@@ -70,7 +70,7 @@
           - ssh_hardening_rv_fail2ban_findtime > 0
       quiet: true
 
-- name: SSHD Hardening | fail2ban | assert | Test ssh_hardening_rv_fail2ban_maxretry
+- name: SSHD Hardening | Fail2ban | Assert | Test ssh_hardening_rv_fail2ban_maxretry
   ansible.builtin.assert:
       that:
           - ssh_hardening_rv_fail2ban_maxretry is defined
@@ -78,7 +78,7 @@
           - ssh_hardening_rv_fail2ban_maxretry > 0
       quiet: true
 
-- name: SSHD Hardening | fail2ban | assert | Test ssh_hardening_rv_fail2ban_destemail
+- name: SSHD Hardening | Fail2ban | Assert | Test ssh_hardening_rv_fail2ban_destemail
   ansible.builtin.assert:
       that:
           - ssh_hardening_rv_fail2ban_destemail is defined
@@ -86,7 +86,7 @@
           - ssh_hardening_rv_fail2ban_destemail is not none
       quiet: true
 
-- name: SSHD Hardening | fail2ban | assert | Test ssh_hardening_rv_fail2ban_sender
+- name: SSHD Hardening | Fail2ban | Assert | Test ssh_hardening_rv_fail2ban_sender
   ansible.builtin.assert:
       that:
           - ssh_hardening_rv_fail2ban_sender is defined
@@ -94,7 +94,7 @@
           - ssh_hardening_rv_fail2ban_sender is not none
       quiet: true
 
-- name: SSHD Hardening | fail2ban | assert | Test ssh_hardening_rv_fail2ban_configuration
+- name: SSHD Hardening | Fail2ban | Assert | Test ssh_hardening_rv_fail2ban_configuration
   ansible.builtin.assert:
       that:
           - ssh_hardening_rv_fail2ban_configuration is iterable
@@ -102,7 +102,7 @@
   when:
       - ssh_hardening_rv_fail2ban_configuration is defined
 
-- name: SSHD Hardening | fail2ban | assert | Test item in ssh_hardening_rv_fail2ban_configuration
+- name: SSHD Hardening | Fail2ban | Assert | Test Item In ssh_hardening_rv_fail2ban_configuration
   ansible.builtin.assert:
       that:
           - item.option is defined
@@ -119,7 +119,7 @@
   when:
       - ssh_hardening_rv_fail2ban_configuration is defined
 
-- name: SSHD Hardening | fail2ban | assert | Test ssh_hardening_rv_fail2ban_jail_configuration
+- name: SSHD Hardening | Fail2ban | Assert | Test ssh_hardening_rv_fail2ban_jail_configuration
   ansible.builtin.assert:
       that:
           - item.option is defined
@@ -136,7 +136,7 @@
   when:
       - ssh_hardening_rv_fail2ban_jail_configuration is defined
 
-- name: SSHD Hardening | fail2ban | assert | Test item in ssh_hardening_rv_fail2ban_filterd_path
+- name: SSHD Hardening | Fail2ban | Assert | Test Item In ssh_hardening_rv_fail2ban_filterd_path
   ansible.builtin.assert:
       that:
           - ssh_hardening_rv_fail2ban_filterd_path is string

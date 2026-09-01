@@ -2,7 +2,7 @@
 - name: Vault | Prerequisites
   ansible.builtin.import_tasks: prerequisites.yml
 
-- name: Vault | Create install directory
+- name: Vault | Create Install Directory
   ansible.builtin.file:
       path: "{{ vault_rv_install_path }}"
       state: directory
@@ -13,12 +13,12 @@
       vault_tmp_version_details: "{{ lookup('arpanrec.nebula.version_db', 'vault',
           vault_rv_version=vault_rv_version) | from_json }}"
 
-- name: Vault | Get downloaded file stat
+- name: Vault | Get Downloaded File Stat
   ansible.builtin.stat:
       path: "{{ vault_rv_tarball_download_path }}"
   register: vault_rv_tmp_downloaded_file_stat
 
-- name: Vault | New Download | Create download directory
+- name: Vault | New Download | Create Download Directory
   ansible.builtin.file:
       path: "{{ vault_rv_tmp_install_cache_dir }}"
       state: directory
@@ -27,7 +27,7 @@
 - name: Vault | New Download
   when: not vault_rv_tmp_downloaded_file_stat.stat.exists
   block:
-      - name: "Vault | New Download | Download tarball"
+      - name: "Vault | New Download | Download Tarball"
         ansible.builtin.get_url:
             url: "{{ vault_tmp_version_details.download_link }}"
             checksum: "{{ vault_tmp_version_details.checksum | default(omit) }}"
@@ -43,7 +43,7 @@
         ansible.builtin.fail:
             msg: Something went wrong, check the errors above
 
-- name: Vault | New Download | Unarchive the tarball
+- name: Vault | New Download | Unarchive The Tarball
   ansible.builtin.unarchive:
       src: "{{ vault_rv_tarball_download_path }}"
       dest: "{{ vault_rv_install_path }}"

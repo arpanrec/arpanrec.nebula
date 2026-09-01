@@ -3,7 +3,7 @@
   hosts: all
   gather_facts: false
   tasks:
-      - name: Vault | Molecule | Verify | Import Roles for variables
+      - name: Vault | Molecule | Verify | Import Roles For Variables
         ansible.builtin.import_role:
             name: arpanrec.nebula.vault
             tasks_from: prerequisites
@@ -13,14 +13,14 @@
             vault_tmp_version_details: "{{ lookup('arpanrec.nebula.version_db', 'vault',
                 vault_rv_version=vault_rv_version) | from_json }}"
 
-      - name: Vault | Molecule | Verify | Get vault version from shell
+      - name: Vault | Molecule | Verify | Get Vault Version From Shell
         ansible.builtin.command: vault --version
         environment:
             PATH: "{{ vault_rv_install_path }}:{{ ansible_facts.env.PATH }}"
         register: vault_rv_version_shell_result
         changed_when: false
 
-      - name: Vault | Molecule | Verify | Fail if vault version is not present
+      - name: Vault | Molecule | Verify | Fail If Vault Version Is Not Present
         ansible.builtin.assert:
             that: vault_rv_version_shell_result.stdout_lines[0]
                 is match('Vault v' + vault_tmp_version_details.version + '.*')

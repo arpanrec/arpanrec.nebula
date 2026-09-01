@@ -5,17 +5,17 @@
   gather_facts: false
   any_errors_fatal: false
   tasks:
-      - name: Gitea | Molecule | Verify | Import Roles for variables
+      - name: Gitea | Molecule | Verify | Import Roles For Variables
         ansible.builtin.import_role:
             name: arpanrec.nebula.gitea
             tasks_from: prerequisites.yml
 
-      - name: Gitea | Molecule | Verify | Get Release.
+      - name: Gitea | Molecule | Verify | Get Release
         ansible.builtin.set_fact:
             gitea_version_details: "{{ lookup('arpanrec.nebula.version_db', 'gitea',
                 gitea_rv_version=gitea_rv_version) | from_json }}"
 
-      - name: Gitea | Molecule | Verify | Get version from shell
+      - name: Gitea | Molecule | Verify | Get Version From Shell
         ansible.builtin.command:
             argv:
                 - "{{ gitea_executable | basename }}"
@@ -25,7 +25,7 @@
         register: gitea_rv_tmp_version_shell_result
         changed_when: false
 
-      - name: Gitea | Molecule | Verify | Assert version is as expected
+      - name: Gitea | Molecule | Verify | Assert Version Is As Expected
         ansible.builtin.assert:
             that:
                 - "gitea_version_details.version in gitea_rv_tmp_version_shell_result.stdout"

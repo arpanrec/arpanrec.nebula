@@ -3,7 +3,7 @@
   hosts: all
   gather_facts: false
   tasks:
-      - name: Gitleaks | Molecule | Verify | Import Roles for variables
+      - name: Gitleaks | Molecule | Verify | Import Roles For Variables
         ansible.builtin.import_role:
             name: arpanrec.nebula.gitleaks
             tasks_from: prerequisites
@@ -13,7 +13,7 @@
             gitleaks_version_details: "{{ lookup('arpanrec.nebula.version_db', 'gitleaks',
                 gitleaks_rv_version=gitleaks_rv_version) | from_json }}"
 
-      - name: Gitleaks | Molecule | Verify | Get gitleaks version from shell
+      - name: Gitleaks | Molecule | Verify | Get Gitleaks Version From Shell
         ansible.builtin.command:
             argv:
                 - gitleaks
@@ -23,7 +23,7 @@
         register: gitleaks_rv_version_shell_result
         changed_when: false
 
-      - name: Gitleaks | Molecule | Verify | Fail if gitleaks version is not present
+      - name: Gitleaks | Molecule | Verify | Fail If Gitleaks Version Is Not Present
         ansible.builtin.assert:
             that: "gitleaks_version_details.version == gitleaks_rv_version_shell_result.stdout_lines[0] \
                 | split | last"
