@@ -1,3 +1,10 @@
+## [1.15.3](https://github.com/arpanrec/arpanrec.nebula/compare/1.15.2...1.15.3) (2026-09-01)
+
+
+### Bug Fixes
+
+* update development notes to streamline setup instructions ([cd899c7](https://github.com/arpanrec/arpanrec.nebula/commit/cd899c7150ccc17da7468c59ff71be5434ae07a1))
+
 ## [1.15.2](https://github.com/arpanrec/arpanrec.nebula/compare/1.15.1...1.15.2) (2026-09-01)
 
 
