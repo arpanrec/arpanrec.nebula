@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.74...1.15.0) (2026-09-01)
+
+
+### Features
+
+* Replace requests with httpx ([#83](https://github.com/arpanrec/arpanrec.nebula/issues/83)) ([de882e9](https://github.com/arpanrec/arpanrec.nebula/commit/de882e935681fce61b64e5e73d8c192639e85c7e))
+
 ## [1.14.74](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.73...1.14.74) (2026-08-07)
 
 
