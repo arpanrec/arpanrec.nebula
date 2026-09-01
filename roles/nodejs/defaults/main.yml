@@ -7,3 +7,4 @@ nodejs_rv_global_packages:
     - "neovim"
     - "semver"
     - "corepack"
+    - "prettier"

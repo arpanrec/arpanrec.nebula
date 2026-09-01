@@ -2,7 +2,7 @@
 - name: Linux Patching | Install Packages | Checking Prerequisite | Include Common Checks
   ansible.builtin.import_tasks: prerequisite.yml
 
-- name: Linux Patching | Install Packages | Purge to resolve conflicts with timesyncd
+- name: Linux Patching | Install Packages | Purge To Resolve Conflicts With Timesyncd
   ansible.builtin.apt:
       name: ntp
       state: absent
@@ -10,12 +10,12 @@
       update_cache: true
       install_recommends: true
 
-- name: Linux Patching | Install Packages | Update apt cache
+- name: Linux Patching | Install Packages | Update APT Cache
   ansible.builtin.apt:
       update_cache: true
       install_recommends: true
 
-- name: Linux Patching | Install Packages | Install specific essential packages in Debian
+- name: Linux Patching | Install Packages | Install Specific Essential Packages In Debian
   ansible.builtin.apt:
       name: "{{ linux_patching_rv_packages + linux_patching_rv_extra_packages | default([]) }}"
       state: present
@@ -28,7 +28,7 @@
   ansible.builtin.import_tasks:
       file: reboot.yml
 
-- name: Linux Patching | Install Packages | Install specific devel packages in Debian
+- name: Linux Patching | Install Packages | Install Specific Devel Packages In Debian
   ansible.builtin.apt:
       name: "{{ linux_patching_rv_devel_packages | default([]) }}"
       state: present
@@ -42,7 +42,7 @@
   ansible.builtin.import_tasks:
       file: reboot.yml
 
-- name: Linux Patching | Install Packages | Install headers linux-headers-{{ ansible_facts.kernel }}
+- name: Linux Patching | Install Packages | Install Kernel Headers
   ansible.builtin.apt:
       name: "linux-headers-{{ ansible_facts.kernel }}"
       state: present
@@ -52,7 +52,7 @@
   ignore_errors: true
   register: linux_patching_rv_install_devel_packages_tmp_kernel_version_installed
 
-- name: Linux Patching | Install Packages | Install generic headers linux-headers
+- name: Linux Patching | Install Packages | Install Generic Headers Linux-Headers
   ansible.builtin.apt:
       name: "linux-headers"
       state: present
@@ -63,7 +63,7 @@
   register: linux_patching_rv_install_generic_headers_tmp_kernel_version_installed
   ignore_errors: true
 
-- name: Linux Patching | Install Packages | Reboot after kernel install
+- name: Linux Patching | Install Packages | Reboot After Kernel Install
   ansible.builtin.import_tasks:
       file: reboot.yml
   when: >

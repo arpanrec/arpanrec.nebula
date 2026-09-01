@@ -25,16 +25,16 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                python-version: ["3.12.13", "3.13.13", "3.14.5"]
+                python-version: ["3.12.13", "3.13.13", "3.14.7"]
         name: isort
         steps:
             - name: Checkout
               uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-            - name: Install uv 0.11.19
+            - name: Install uv 0.12.8
               uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
               with:
-                  version: 0.11.19
+                  version: 0.12.8
                   python-version: "${{ matrix.python-version }}"
                   enable-cache: true
                   cache-suffix: python-${{ matrix.python-version }}

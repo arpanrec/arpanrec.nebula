@@ -1,5 +1,5 @@
 ---
-- name: Postgresql | Verify cluster name.
+- name: PostgreSQL | Verify Cluster Name
   ansible.builtin.fail:
       msg: "The 'postgresql_cluster' variable must be set and not include any spaces or special characters.
           https://www.postgresql.org/message-id/E7F3EFD1-82A2-47BB-833D-EFA6BBD66969%40dnservices.co.za"
@@ -7,10 +7,10 @@
       or postgresql_cluster is search("([^a-z0-9_])")
       or postgresql_cluster is search(" ")
 
-- name: Postgresql | Install Client.
+- name: PostgreSQL | Install Client
   ansible.builtin.import_tasks: install-client.yml
 
-- name: Postgresql | Install packages.
+- name: PostgreSQL | Install Packages
   ansible.builtin.apt:
       name:
           - postgresql-{{ postgresql_version }}
@@ -18,11 +18,11 @@
       state: present
       update_cache: true
 
-- name: Postgresql | Populate service facts.
+- name: PostgreSQL | Populate Service Facts
   when: false
   ansible.builtin.service_facts:
 
-- name: Postgresql | Disable existing postgresql services.
+- name: PostgreSQL | Disable Existing PostgreSQL Services
   ansible.builtin.systemd_service:
       name: "{{ __postgresql_existing_service }}"
       state: stopped
@@ -42,19 +42,19 @@
           | selectattr('source', 'equalto', 'systemd')
           | selectattr('status', 'equalto', 'enabled') }}"
 
-- name: Postgresql | Generate locales
+- name: PostgreSQL | Generate Locales
   community.general.locale_gen:
       name: "{{ postgresql_locales }}"
       state: present
   notify:
       - Restart postgresql handler
 
-- name: Postgresql | Make sure postgresql group exists
+- name: PostgreSQL | Make Sure PostgreSQL Group Exists
   ansible.builtin.group:
       name: "{{ postgresql_service_group }}"
       system: true
 
-- name: Postgresql | Make sure postgresql user exists
+- name: PostgreSQL | Make Sure PostgreSQL User Exists
   ansible.builtin.user:
       name: "{{ postgresql_service_user }}"
       create_home: false
@@ -67,7 +67,7 @@
       shell: /bin/bash
       comment: PostgreSQL administrator
 
-- name: Postgresql | Create postgresql required resource and data directories.
+- name: PostgreSQL | Create PostgreSQL Required Resource And Data Directories
   ansible.builtin.file:
       path: "{{ item.path }}"
       state: directory
@@ -86,7 +86,7 @@
       - path: "{{ postgresql_hba_file | dirname }}"
       - path: "{{ postgresql_ident_file | dirname }}"
 
-- name: Postgresql | Create postgresql socket directories.
+- name: PostgreSQL | Create PostgreSQL Socket Directories
   ansible.builtin.file:
       path: "{{ item }}"
       state: directory
@@ -96,7 +96,7 @@
   notify:
       - Restart postgresql handler
 
-- name: Postgresql | Create postgresql hba_file.
+- name: PostgreSQL | Create PostgreSQL hba_file
   community.postgresql.postgresql_pg_hba:
       dest: "{{ postgresql_hba_file }}"
       mode: "0600"
@@ -112,7 +112,7 @@
   notify:
       - Restart postgresql handler
 
-- name: Postgresql | Extra hba_file entries.
+- name: PostgreSQL | Extra hba_file Entries
   community.postgresql.postgresql_pg_hba:
       dest: "{{ postgresql_hba_file }}"
       mode: "0600"
@@ -135,7 +135,7 @@
   notify:
       - Restart postgresql handler
 
-- name: Postgresql | Create postgresql ident_file.
+- name: PostgreSQL | Create PostgreSQL ident_file
   ansible.builtin.copy:
       src: "files/pg_ident.conf"
       dest: "{{ postgresql_ident_file }}"
@@ -146,7 +146,7 @@
   notify:
       - Restart postgresql handler
 
-- name: Postgresql | Write pg_ctlcluster files.
+- name: PostgreSQL | Write pg_ctlcluster Files
   ansible.builtin.copy:
       src: "{{ item.src }}"
       dest: "{{ item.dest }}"
@@ -162,7 +162,7 @@
   notify:
       - Restart postgresql handler
 
-- name: Postgresql | Include ansible config overwrite directory.
+- name: PostgreSQL | Include Ansible Config Overwrite Directory
   community.general.ini_file:
       path: "{{ postgresql_default_conf_file }}"
       mode: "0644"
@@ -176,7 +176,7 @@
   notify:
       - Restart postgresql handler
 
-- name: Postgresql | Overwrite postgresql configurations.
+- name: PostgreSQL | Overwrite PostgreSQL Configurations
   community.general.ini_file:
       path: "{{ postgresql_conf_file }}"
       mode: "0644"
@@ -191,11 +191,11 @@
   notify:
       - Restart postgresql handler
 
-- name: Postgresql | SSL.
+- name: PostgreSQL | SSL
   when: postgresql_ssl_cert_pem_content is defined and postgresql_ssl_cert_pem_content | length > 1
       and postgresql_ssl_key_pem_content is defined and postgresql_ssl_key_pem_content | length > 1
   block:
-      - name: Postgresql | SSL | Create SSL directories.
+      - name: PostgreSQL | SSL | Create SSL Directories
         ansible.builtin.file:
             path: "{{ item.path }}"
             state: directory
@@ -206,7 +206,7 @@
             - path: "{{ postgresql_ssl_cert_file | dirname }}"
             - path: "{{ postgresql_ssl_key_file | dirname }}"
 
-      - name: Postgresql | SSL | Write DB Server Certificates.
+      - name: PostgreSQL | SSL | Write DB Server Certificates
         ansible.builtin.copy:
             content: "{{ item.content }}"
             dest: "{{ item.dest }}"
@@ -224,7 +224,7 @@
         notify:
             - Restart postgresql handler
 
-      - name: Postgresql | SSL | Overwrite postgresql configurations.
+      - name: PostgreSQL | SSL | Overwrite PostgreSQL Configurations
         community.general.ini_file:
             path: "{{ postgresql_conf_file }}"
             mode: "0644"
@@ -245,10 +245,10 @@
         notify:
             - Restart postgresql handler
 
-      - name: Postgresql | SSL | Client CA
+      - name: PostgreSQL | SSL | Client CA
         when: postgresql_ssl_ca_pem_content is defined and postgresql_ssl_ca_pem_content | length > 1
         block:
-            - name: Postgresql | SSL | Client CA | Create SSL directories.
+            - name: PostgreSQL | SSL | Client CA | Create SSL Directories
               ansible.builtin.file:
                   path: "{{ postgresql_ssl_ca_file | dirname }}"
                   state: directory
@@ -256,7 +256,7 @@
                   owner: "{{ postgresql_service_user }}"
                   group: "{{ postgresql_service_group }}"
 
-            - name: Postgresql | SSL | Client CA | Write DB CA certificate.
+            - name: PostgreSQL | SSL | Client CA | Write DB CA Certificate
               ansible.builtin.copy:
                   content: "{{ postgresql_ssl_ca_pem_content }}"
                   dest: "{{ postgresql_ssl_ca_file }}"
@@ -267,7 +267,7 @@
               notify:
                   - Restart postgresql handler
 
-            - name: Postgresql | SSL | Client CA | Overwrite postgresql configurations.
+            - name: PostgreSQL | SSL | Client CA | Overwrite PostgreSQL Configurations
               community.general.ini_file:
                   path: "{{ postgresql_conf_file }}"
                   mode: "0644"
@@ -281,7 +281,7 @@
               notify:
                   - Restart postgresql handler
 
-- name: Postgresql | Ensure PostgreSQL database is initialized.
+- name: PostgreSQL | Ensure PostgreSQL Database Is Initialized
   ansible.builtin.command:
       argv:
           - "{{ postgresql_bin_directory }}/initdb"
@@ -297,17 +297,17 @@
   notify:
       - Restart postgresql handler
 
-- name: Postgresql | Flush handlers.
+- name: PostgreSQL | Flush Handlers
   ansible.builtin.meta: flush_handlers
 
-- name: Postgresql | Enable postgresql systemd service.
+- name: PostgreSQL | Enable PostgreSQL Systemd Service
   ansible.builtin.systemd_service:
       name: "{{ postgresql_pg_ctlcluster_systemd_service_name }}"
       enabled: true
       state: started
       daemon_reload: true
 
-- name: Postgresql | Reset superuser password.
+- name: PostgreSQL | Reset Superuser Password
   when: postgresql_super_user_password is defined and postgresql_super_user_password | length > 1
   community.postgresql.postgresql_user:
       name: "{{ postgresql_super_user }}"
@@ -325,7 +325,7 @@
       PGOPTIONS: "{{ (postgresql_auth_method == 'scram-sha-256')
           | ternary('-c password_encryption=scram-sha-256', '') }}"
 
-- name: Postgresql | Ensure PostgreSQL users are present.
+- name: PostgreSQL | Ensure PostgreSQL Users Are Present
   community.postgresql.postgresql_user:
       name: "{{ item.name }}"
       password: "{{ item.password | default(omit) }}"
@@ -345,7 +345,7 @@
       PGOPTIONS: "{{ (postgresql_auth_method == 'scram-sha-256')
           | ternary('-c password_encryption=scram-sha-256', '') }}"
 
-- name: Postgresql | Ensure PostgreSQL databases are present.
+- name: PostgreSQL | Ensure PostgreSQL Databases Are Present
   community.postgresql.postgresql_db:
       name: "{{ item.name }}"
       lc_collate: "{{ item.lc_collate | default('en_US.UTF-8') }}"
@@ -366,7 +366,7 @@
   vars:
       ansible_ssh_pipelining: true
 
-- name: Postgresql | Ensure PostgreSQL users are configured correctly.
+- name: PostgreSQL | Ensure PostgreSQL Users Are Configured Correctly
   community.postgresql.postgresql_user:
       name: "{{ item.name }}"
       password: "{{ item.password | default(omit) }}"
@@ -389,7 +389,7 @@
       PGOPTIONS: "{{ (postgresql_auth_method == 'scram-sha-256')
           | ternary('-c password_encryption=scram-sha-256', '') }}"
 
-- name: Postgresql | Ensure PostgreSQL users do not use deprecated privileges settings
+- name: PostgreSQL | Ensure PostgreSQL Users Do Not Use Deprecated Privileges Settings
   ansible.builtin.debug:
       msg: "Postgresql user {{ item.name }} uses deprecated privileges settings.
           See https://github.com/geerlingguy/ansible-role-postgresql/issues/254"
@@ -398,7 +398,7 @@
       label: "{{ item.name }}"
   when: item.priv is defined
 
-- name: Postgresql | Ensure PostgreSQL users privileges are configured correctly.
+- name: PostgreSQL | Ensure PostgreSQL Users Privileges Are Configured Correctly
   community.postgresql.postgresql_privs:
       roles: "{{ item.roles }}"
       privs: "{{ item.privs | default(omit) }}"
@@ -426,11 +426,11 @@
       PGOPTIONS: "{{ (postgresql_auth_method == 'scram-sha-256')
           | ternary('-c password_encryption=scram-sha-256', '') }}"
 
-- name: Postgresql | Gather the package facts.
+- name: PostgreSQL | Gather The Package Facts
   ansible.builtin.package_facts:
       manager: auto
 
-- name: Postgresql | Allow ufw port.
+- name: PostgreSQL | Allow UFW Port
   when: "'ufw' in ansible_facts.packages and ansible_facts.packages['ufw'] | length > 0"
   community.general.ufw:
       state: enabled

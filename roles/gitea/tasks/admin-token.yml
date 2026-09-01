@@ -1,24 +1,24 @@
 ---
-- name: Gitea | Admin token | Fail | gitea_admin_user_username
+- name: Gitea | Admin Token | Fail | gitea_admin_user_username
   ansible.builtin.fail:
       msg: "Variable `gitea_admin_user_username` is required to create admin token."
   when: gitea_admin_user_username is not defined or gitea_admin_user_username is none
       or gitea_admin_user_username | length == 0
 
-- name: Gitea | Admin token | Fail | gitea_admin_token_file_path
+- name: Gitea | Admin Token | Fail | gitea_admin_token_file_path
   ansible.builtin.fail:
       msg: "Variable `gitea_admin_token_file_path` is required to create admin token."
   when: gitea_admin_token_file_path is not defined or gitea_admin_token_file_path is none
       or gitea_admin_token_file_path | length == 0
 
-- name: Gitea | Admin token | Get Release.
+- name: Gitea | Admin Token | Get Release
   ansible.builtin.set_fact:
       gitea_version_details: "{{ lookup('arpanrec.nebula.version_db', 'gitea',
           gitea_rv_version=gitea_rv_version) | from_json }}"
   when: gitea_version_details is not defined or gitea_version_details is none
       or gitea_version_details | length == 0
 
-- name: Gitea | Admin token | Get token.
+- name: Gitea | Admin Token | Get Token
   become: true
   become_user: "{{ gitea_service_user }}"
   ansible.builtin.command:
@@ -48,7 +48,7 @@
       GITEA_CUSTOM: "{{ gitea_custom_directory }}"
       GITEA_WORK_DIR: "{{ gitea_working_directory }}"
 
-- name: Gitea | Admin token | Write token to file.
+- name: Gitea | Admin Token | Write Token To File
   ansible.builtin.copy:
       dest: "{{ gitea_admin_token_file_path }}"
       owner: "root"
@@ -56,6 +56,6 @@
       mode: "0600"
       content: "{{ gitea_cli_res_admin_token.stdout_lines | first | split(' ') | last }}"
 
-- name: Gitea | Admin token | Reset fact.
+- name: Gitea | Admin Token | Reset Fact
   ansible.builtin.set_fact:
       gitea_admin_token_file_path: ""

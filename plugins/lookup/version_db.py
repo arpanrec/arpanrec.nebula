@@ -1,15 +1,12 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
 """
 Ansible Module for Search for the latest release in a GitHub repository.
 """
 
-from __future__ import absolute_import, division, print_function
-
-__metaclass__ = type  # pylint: disable=invalid-name
+from __future__ import annotations
 
 import json
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 from ansible.errors import AnsibleLookupError  # type: ignore
 from ansible.plugins.lookup import LookupBase  # type: ignore
@@ -69,7 +66,9 @@ class LookupModule(LookupBase):
     Lookup module that retrieves version details.
     """
 
-    def run(self, terms: List[str], variables: Optional[Dict[str, Any]] = None, **kwargs: Dict[str, Any]) -> List[str]:
+    def run(  # pyright: ignore[reportIncompatibleMethodOverride]
+        self, terms: list[str], variables: dict[str, Any] | None = None, **kwargs: dict[str, Any]
+    ) -> list[str]:
         """
         Run the lookup module.
         """

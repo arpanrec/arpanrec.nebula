@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
 """
 This module provides functionality to retrieve version details for various supported applications.
 
@@ -25,7 +24,7 @@ Functions:
 
 """
 
-from typing import Optional
+from __future__ import annotations
 
 from ansible.utils.display import Display  # type: ignore
 
@@ -38,7 +37,7 @@ def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: igno
     """
     Get the version details for the specified app.
     """
-    app_details: Optional[AppDetails] = None
+    app_details: AppDetails | None = None
 
     match app_name:
         case SupportedApps.BWS.value:
