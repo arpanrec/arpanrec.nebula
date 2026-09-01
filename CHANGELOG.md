@@ -1,3 +1,10 @@
+## [1.15.1](https://github.com/arpanrec/arpanrec.nebula/compare/1.15.0...1.15.1) (2026-09-01)
+
+
+### Bug Fixes
+
+* update community.general and community.docker versions in requirements.yml ([f4ac9d5](https://github.com/arpanrec/arpanrec.nebula/commit/f4ac9d55ce21a089d5f8a4c7b4ba3d83a1395d14))
+
 # [1.15.0](https://github.com/arpanrec/arpanrec.nebula/compare/1.14.74...1.15.0) (2026-09-01)
 
 
