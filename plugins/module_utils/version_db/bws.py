@@ -35,7 +35,7 @@ class BWS(AppDetails):  # pylint: disable=too-few-public-methods
     BWS app details.
     """
 
-    __github_repo: str = "bitwarden/sdk"
+    __github_repo: str = "bitwarden/sdk-sm"
     __github_release_prefix: str = "bws-"
     _github_release_tag: str | None
 
@@ -62,7 +62,7 @@ class BWS(AppDetails):  # pylint: disable=too-few-public-methods
 
         # pylint: disable=attribute-defined-outside-init
         self._download_link = (
-            f"https://github.com/bitwarden/sdk/releases/download/{_github_release_tag}"
+            f"https://github.com/bitwarden/sdk-sm/releases/download/{_github_release_tag}"
             f"/bws-{self._get_ansible_architecture()}-unknown-linux-gnu-{_github_release_tag[5:]}.zip"
         )
         self._version = _github_release_tag
