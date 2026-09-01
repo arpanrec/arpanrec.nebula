@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/arpanrec/arpanrec.nebula/compare/1.15.3...1.16.0) (2026-09-01)
+
+
+### Features
+
+* add py.typed files for module_utils and version_db to support type checking ([47cbe05](https://github.com/arpanrec/arpanrec.nebula/commit/47cbe05e763f8185b31b5fad8510fe76f192d147))
+
 ## [1.15.3](https://github.com/arpanrec/arpanrec.nebula/compare/1.15.2...1.15.3) (2026-09-01)
 
 
