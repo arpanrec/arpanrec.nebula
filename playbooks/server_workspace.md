@@ -25,3 +25,4 @@ Extra variables will be applied to the original role.
 - [Bitwarden SDK](../roles/bws/README.md) -> bws
 - [Hadolint](../roles/hadolint/README.md) -> hadolint
 - [gitleaks](../roles/gitleaks/README.md) -> gitleaks
+- [Uv](../roles/uv/README.md) -> uv

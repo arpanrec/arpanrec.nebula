@@ -90,6 +90,11 @@ def get_version(app_name: str, *args, **kwargs) -> VersionDetails:  # type: igno
 
             app_details = Gitleaks(*args, **kwargs)  # type: ignore
 
+        case SupportedApps.UV.value:
+            from .uv import Uv  # pylint: disable=import-outside-toplevel
+
+            app_details = Uv(*args, **kwargs)  # type: ignore
+
         case _:
             raise ValueError(f"Unsupported app: {app_name}")
 

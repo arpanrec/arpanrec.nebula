@@ -91,3 +91,13 @@
             apply:
                 tags:
                     - gitleaks
+
+      - name: USERAPPS | Uv
+        ansible.builtin.include_role:
+            name: arpanrec.nebula.uv
+        tags:
+            - uv
+        args:
+            apply:
+                tags:
+                    - uv
