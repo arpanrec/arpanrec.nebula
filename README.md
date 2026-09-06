@@ -29,6 +29,10 @@ This collection provides a set of roles to deploy and manage various services.
 
 ## Plugins
 
+### Modules
+
+- [recursive_permissions](/plugins/modules/recursive_permissions.py)
+
 ### Lookups
 
 - [bitwarden](/plugins/lookup/bitwarden.py)
