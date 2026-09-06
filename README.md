@@ -20,6 +20,7 @@ This collection provides a set of roles to deploy and manage various services.
 - [PostgreSQL (postgresql)](/roles/postgresql/README.md)
 - [Hadolint (hadolint)](/roles/hadolint/README.md)
 - [Gitleaks (gitleaks)](/roles/gitleaks/README.md)
+- [Uv (uv)](/roles/uv/README.md)
 
 ## Playbooks
 

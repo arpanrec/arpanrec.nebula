@@ -1,0 +1,4 @@
+---
+uv_rv_tarball_download_path: "{{ uv_rv_tmp_download_dir }}\
+    /uv-{{ uv_version_details.version }}.tar.gz"
+uv_rv_tmp_unarchive_dir: "{{ uv_rv_tmp_download_dir }}-{{ uv_version_details.version }}"

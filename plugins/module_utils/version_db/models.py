@@ -20,6 +20,7 @@ Classes Details:
             - GITEA: Represents the 'gitea' application.
             - HADOLINT: Represents the 'hadolint' application.
             - GITLEAKS: Represents the 'gitleaks' application.
+            - UV: Represents the 'uv' application.
 
     VersionDetails:
         A dictionary to store version details of an application.
@@ -74,6 +75,7 @@ class SupportedApps(enum.Enum):
     GITEA = "gitea"
     HADOLINT = "hadolint"
     GITLEAKS = "gitleaks"
+    UV = "uv"
 
 
 class VersionDetails(dict[str, Any]):

@@ -1,0 +1,50 @@
+---
+- name: Uv | Molecule | Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+      - name: Uv | Molecule | Verify | Import Roles For Variables
+        ansible.builtin.import_role:
+            name: arpanrec.nebula.uv
+            tasks_from: prerequisites
+
+      - name: Uv | Molecule | Get Release
+        ansible.builtin.set_fact:
+            uv_version_details: "{{ lookup('arpanrec.nebula.version_db', 'uv',
+                uv_rv_version=uv_rv_version) | from_json }}"
+
+      - name: Uv | Molecule | Verify | Get Uv Version From Shell
+        ansible.builtin.command:
+            argv:
+                - uv
+                - --version
+        environment:
+            PATH: "{{ uv_rv_executable_bin_path | dirname }}:{{ ansible_facts.env.PATH }}"
+        register: uv_rv_version_shell_result
+        changed_when: false
+
+      - name: Uv | Molecule | Verify | Fail If Uv Version Is Not Present
+        ansible.builtin.assert:
+            that: "uv_version_details.version == (uv_rv_version_shell_result.stdout_lines[0]
+                | split(' ') | reject('equalto', ''))[1]"
+            success_msg: Uv Version {{ uv_version_details.version }} is installed
+            fail_msg: Uv Version {{ uv_version_details.version }} is not installed,
+                Shell result {{ uv_rv_version_shell_result.stdout }}
+
+      - name: Uv | Molecule | Verify | Get Uvx Version From Shell
+        ansible.builtin.command:
+            argv:
+                - uvx
+                - --version
+        environment:
+            PATH: "{{ uv_rv_executable_bin_path | dirname }}:{{ ansible_facts.env.PATH }}"
+        register: uvx_rv_version_shell_result
+        changed_when: false
+
+      - name: Uv | Molecule | Verify | Fail If Uvx Version Is Not Present
+        ansible.builtin.assert:
+            that: "uv_version_details.version == (uvx_rv_version_shell_result.stdout_lines[0]
+                | split(' ') | reject('equalto', ''))[1]"
+            success_msg: Uvx Version {{ uv_version_details.version }} is installed
+            fail_msg: Uvx Version {{ uv_version_details.version }} is not installed,
+                Shell result {{ uvx_rv_version_shell_result.stdout }}
