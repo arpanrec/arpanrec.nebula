@@ -4,7 +4,7 @@ ansible==14.3.1
     # via arpanrec-nebula
 ansible-core==2.21.3
     # via ansible
-anyio==4.14.2
+anyio==4.15.1
     # via httpx
 cachier==4.2.0
     # via arpanrec-nebula
@@ -46,7 +46,7 @@ pyyaml==6.0.3
     # via ansible-core
 resolvelib==1.2.1
     # via ansible-core
-typing-extensions==4.16.0 ; python_full_version < '3.13'
+typing-extensions==4.16.0 ; python_full_version < '3.15'
     # via anyio
 watchdog==6.0.0
     # via cachier

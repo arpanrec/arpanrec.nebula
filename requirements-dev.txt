@@ -42,11 +42,11 @@ antsibull-core==3.6.0
     # via antsibull-docs
 antsibull-docs==2.26.0
     # via arpanrec-nebula
-antsibull-docs-parser==1.2.2
+antsibull-docs-parser==1.2.3
     # via
     #   antsibull-changelog
     #   antsibull-docs
-antsibull-docutils==1.4.0
+antsibull-docutils==1.4.1
     # via
     #   antsibull-changelog
     #   antsibull-docs
@@ -55,9 +55,9 @@ antsibull-fileutils==1.5.3
     #   antsibull-changelog
     #   antsibull-core
     #   antsibull-docs
-anyio==4.14.2
+anyio==4.15.1
     # via httpx
-ast-serialize==0.8.0
+ast-serialize==0.9.0
     # via mypy
 astroid==4.0.4
     # via pylint
@@ -300,7 +300,7 @@ ruamel-yaml==0.19.1
     # via ansible-lint
 ruamel-yaml-clib==0.2.15 ; python_full_version < '3.14'
     # via ansible-lint
-ruff==0.16.5
+ruff==0.16.6
     # via arpanrec-nebula
 semantic-version==2.10.0
     # via
@@ -337,7 +337,7 @@ twiggy==0.5.1
     # via antsibull-core
 typer==0.27.2
     # via rstcheck
-types-pyyaml==6.0.12.20260815
+types-pyyaml==6.0.12.20260906
     # via arpanrec-nebula
 typing-extensions==4.16.0
     # via

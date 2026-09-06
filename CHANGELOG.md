@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/arpanrec/arpanrec.nebula/compare/1.17.0...1.18.0) (2026-09-06)
+
+
+### Features
+
+* add Uv role with Molecule testing and version management ([#85](https://github.com/arpanrec/arpanrec.nebula/issues/85)) ([74fe536](https://github.com/arpanrec/arpanrec.nebula/commit/74fe536903b754f527de3ea1b0bedf3186352226))
+
 # [1.17.0](https://github.com/arpanrec/arpanrec.nebula/compare/1.16.0...1.17.0) (2026-09-01)
 
 
