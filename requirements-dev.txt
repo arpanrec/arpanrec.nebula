@@ -113,7 +113,7 @@ distro==1.9.0
     # via ansible-lint
 docker==7.2.0
     # via arpanrec-nebula
-docutils==0.22.4
+docutils==0.23
     # via
     #   antsibull-changelog
     #   antsibull-docs
