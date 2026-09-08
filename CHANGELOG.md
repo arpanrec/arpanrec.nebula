@@ -1,3 +1,10 @@
+## [1.18.1](https://github.com/arpanrec/arpanrec.nebula/compare/1.18.0...1.18.1) (2026-09-08)
+
+
+### Bug Fixes
+
+* update temporary directories to use cache instead of tmp for various roles ([a67ff46](https://github.com/arpanrec/arpanrec.nebula/commit/a67ff462f38fada247939280ad6ba7640f3c88a9))
+
 # [1.18.0](https://github.com/arpanrec/arpanrec.nebula/compare/1.17.0...1.18.0) (2026-09-06)
 
 
