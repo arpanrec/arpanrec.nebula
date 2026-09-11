@@ -57,7 +57,7 @@ antsibull-fileutils==1.5.3
     #   antsibull-docs
 anyio==4.15.1
     # via httpx
-ast-serialize==0.9.0
+ast-serialize==0.10.0
     # via mypy
 astroid==4.0.4
     # via pylint
