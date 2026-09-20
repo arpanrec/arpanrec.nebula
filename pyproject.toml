@@ -49,7 +49,7 @@ license = "MIT"
 readme = "README.md"
 requires-python = ">=3.12.0"
 dependencies = [
-    "ansible==14.3.1",
+    "ansible==14.4.0",
     "cachier==4.2.0",
     "passlib==1.7.4",
     "httpx==0.28.1",
@@ -65,10 +65,10 @@ dev = [
     "mypy==2.3.1",
     "neovim==0.3.1",
     "pylint==4.0.8",
-    "pyright==1.1.411",
-    "ruff==0.16.6",
+    "pyright==1.1.414",
+    "ruff==0.16.8",
     "types-pyyaml==6.0.12.20260906",
     "yamllint==1.38.0",
     "ansible-lint==26.8.0",
-    "antsibull-docs==2.26.0",
+    "antsibull-docs==2.27.0",
 ]
