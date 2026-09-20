@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/arpanrec/arpanrec.nebula/compare/1.18.1...1.19.0) (2026-09-20)
+
+
+### Features
+
+* Add san_list_transformer filter plugin for classifying SAN entries ([#90](https://github.com/arpanrec/arpanrec.nebula/issues/90)) ([75242df](https://github.com/arpanrec/arpanrec.nebula/commit/75242df1cc9e385fc25786917d88535e614ef17f))
+
 ## [1.18.1](https://github.com/arpanrec/arpanrec.nebula/compare/1.18.0...1.18.1) (2026-09-08)
 
 
