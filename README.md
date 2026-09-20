@@ -40,6 +40,7 @@ This collection provides a set of roles to deploy and manage various services.
 
 ### Filters
 
+- [san_list_transformer](/plugins/filter/san_list_transformer.py)
 - [split_certificates](/plugins/filter/split_certificates.py)
 
 ## Installation
