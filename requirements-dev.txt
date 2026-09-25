@@ -179,7 +179,7 @@ molecule-plugins==26.7.15
     # via arpanrec-nebula
 msgpack==1.2.2
     # via pynvim
-multidict==6.9.0
+multidict==6.9.1
     # via
     #   aiohttp
     #   yarl
