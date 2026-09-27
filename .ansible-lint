@@ -23,6 +23,5 @@ exclude_paths:
     - CLAUDE.md
     - AGENTS.md
 profile: production
-skip_list:
-    - args
+skip_list: []
 verbosity: 2
