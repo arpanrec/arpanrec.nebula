@@ -53,22 +53,28 @@ jobs:
             - name: Install python dependencies
               run: uv sync --locked
 
+            # pnpm i semantic-release \
+            #     @semantic-release/commit-analyzer \
+            #     @semantic-release/release-notes-generator \
+            #     @semantic-release/changelog \
+            #     @semantic-release/exec \
+            #     @semantic-release/git \
+            #     @semantic-release/github -D
             - name: Install node dependencies
               run: |+
-                  pnpm i semantic-release@24.2.9 \
+                  pnpm i @semantic-release/changelog@7.0.0 \
                       @semantic-release/commit-analyzer@13.0.1 \
-                      @semantic-release/release-notes-generator@14.1.0 \
-                      @semantic-release/changelog@6.0.3 \
                       @semantic-release/exec@7.1.0 \
-                      @semantic-release/git@10.0.1 \
-                      @semantic-release/github@11.0.6 -D
-
+                      @semantic-release/git@11.0.1 \
+                      @semantic-release/github@12.0.10 \
+                      @semantic-release/release-notes-generator@14.1.1 \
+                      semantic-release@25.0.9 -D
             - name: Release
               run: |+
                   git config --global user.email "${{ steps.import-gpg.outputs.email }}"
                   git config --global user.name "${{ steps.import-gpg.outputs.name }}"
                   git config --global user.name "${{ steps.import-gpg.outputs.name }}"
-                  pnpm dlx semantic-release@24.2.9 --extends ./.github/files/release.config.cjs
+                  pnpm dlx semantic-release@25.0.9 --extends ./.github/files/release.config.cjs
               env:
                   GITHUB_TOKEN: "${{ secrets.GH_BOT_API_TOKEN }}"
                   GIT_AUTHOR_NAME: "${{ steps.import-gpg.outputs.name }}"
