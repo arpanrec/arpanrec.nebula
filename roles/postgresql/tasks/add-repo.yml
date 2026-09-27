@@ -47,7 +47,7 @@
       argv:
           - dpkg
           - --print-architecture
-  register: postgresql_machine_architecture_shell
+  register: __postgresql_machine_architecture_shell
   changed_when: false
 
 - name: PostgreSQL | Install Client | Add Repository | Remove Pgdg List File
@@ -55,7 +55,7 @@
       path: /etc/apt/sources.list.d/pgdg.list
       state: absent
 
-- name: PostgreSQL | Install Client | Add Repository | Add APT deb822_repository
+- name: PostgreSQL | Install Client | Add Repository | Add APT Deb822 Repository
   ansible.builtin.deb822_repository:
       name: pgdg
       allow_downgrade_to_insecure: false
@@ -63,7 +63,7 @@
       # signed_by: /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc
       signed_by: "{{ postgresql_pgp_asc_content }}"
       architectures:
-          - "{{ postgresql_machine_architecture_shell.stdout }}"
+          - "{{ __postgresql_machine_architecture_shell.stdout }}"
       suites:
           - "{{ ansible_facts.distribution_release }}-pgdg"
       uris:

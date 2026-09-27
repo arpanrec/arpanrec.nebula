@@ -12,5 +12,5 @@
 
 - name: "Application User | Removing User | Remove Sudoers File"
   ansible.builtin.file:
-      path: "{{ user_add_rv_sudoers_file }}"
+      path: "{{ __user_add_sudoers_file }}"
       state: absent

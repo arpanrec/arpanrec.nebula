@@ -10,8 +10,8 @@
 
       - name: Uv | Molecule | Get Release
         ansible.builtin.set_fact:
-            uv_version_details: "{{ lookup('arpanrec.nebula.version_db', 'uv',
-                uv_rv_version=uv_rv_version) | from_json }}"
+            __uv_version_details: "{{ lookup('arpanrec.nebula.version_db', 'uv',
+                uv_rv_version=uv_rv_version) | ansible.builtin.from_json }}"
 
       - name: Uv | Molecule | Verify | Get Uv Version From Shell
         ansible.builtin.command:
@@ -19,17 +19,17 @@
                 - uv
                 - --version
         environment:
-            PATH: "{{ uv_rv_executable_bin_path | dirname }}:{{ ansible_facts.env.PATH }}"
-        register: uv_rv_version_shell_result
+            PATH: "{{ uv_rv_executable_bin_path | ansible.builtin.dirname }}:{{ ansible_facts.env.PATH }}"
+        register: __uv_rv_version_shell_result
         changed_when: false
 
       - name: Uv | Molecule | Verify | Fail If Uv Version Is Not Present
         ansible.builtin.assert:
-            that: "uv_version_details.version == (uv_rv_version_shell_result.stdout_lines[0]
-                | split(' ') | reject('equalto', ''))[1]"
-            success_msg: Uv Version {{ uv_version_details.version }} is installed
-            fail_msg: Uv Version {{ uv_version_details.version }} is not installed,
-                Shell result {{ uv_rv_version_shell_result.stdout }}
+            that: "__uv_version_details.version == (__uv_rv_version_shell_result.stdout_lines[0]
+                | ansible.builtin.split(separator=' ') | ansible.builtin.reject('equalto', ''))[1]"
+            success_msg: Uv Version {{ __uv_version_details.version }} is installed
+            fail_msg: Uv Version {{ __uv_version_details.version }} is not installed,
+                Shell result {{ __uv_rv_version_shell_result.stdout }}
 
       - name: Uv | Molecule | Verify | Get Uvx Version From Shell
         ansible.builtin.command:
@@ -37,14 +37,14 @@
                 - uvx
                 - --version
         environment:
-            PATH: "{{ uv_rv_executable_bin_path | dirname }}:{{ ansible_facts.env.PATH }}"
-        register: uvx_rv_version_shell_result
+            PATH: "{{ uv_rv_executable_bin_path | ansible.builtin.dirname }}:{{ ansible_facts.env.PATH }}"
+        register: __uvx_rv_version_shell_result
         changed_when: false
 
       - name: Uv | Molecule | Verify | Fail If Uvx Version Is Not Present
         ansible.builtin.assert:
-            that: "uv_version_details.version == (uvx_rv_version_shell_result.stdout_lines[0]
-                | split(' ') | reject('equalto', ''))[1]"
-            success_msg: Uvx Version {{ uv_version_details.version }} is installed
-            fail_msg: Uvx Version {{ uv_version_details.version }} is not installed,
-                Shell result {{ uvx_rv_version_shell_result.stdout }}
+            that: "__uv_version_details.version == (__uvx_rv_version_shell_result.stdout_lines[0]
+                | ansible.builtin.split(separator=' ') | ansible.builtin.reject('equalto', ''))[1]"
+            success_msg: Uvx Version {{ __uv_version_details.version }} is installed
+            fail_msg: Uvx Version {{ __uv_version_details.version }} is not installed,
+                Shell result {{ __uvx_rv_version_shell_result.stdout }}

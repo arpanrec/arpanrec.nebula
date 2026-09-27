@@ -3,9 +3,9 @@
   ansible.builtin.fail:
       msg: "The 'postgresql_cluster' variable must be set and not include any spaces or special characters.
           https://www.postgresql.org/message-id/E7F3EFD1-82A2-47BB-833D-EFA6BBD66969%40dnservices.co.za"
-  when: postgresql_cluster is not defined or postgresql_cluster | length < 1
-      or postgresql_cluster is search("([^a-z0-9_])")
-      or postgresql_cluster is search(" ")
+  when: postgresql_cluster is not ansible.builtin.defined or postgresql_cluster | ansible.builtin.length < 1
+      or postgresql_cluster is ansible.builtin.search("([^a-z0-9_])")
+      or postgresql_cluster is ansible.builtin.search(" ")
 
 - name: PostgreSQL | Install Client
   ansible.builtin.import_tasks: install-client.yml
@@ -31,16 +31,16 @@
   # when: postgresql_pg_ctlcluster_systemd_service_name in __postgresql_existing_service
   #     or
   #     'postgresql.service' in __postgresql_existing_service
-  loop: "{{ __postgresql_known_systemd_services | map(attribute='name') }}"
+  loop: "{{ __postgresql_known_systemd_services | ansible.builtin.map(attribute='name') }}"
   loop_control:
       loop_var: __postgresql_existing_service
   vars:
       __postgresql_known_systemd_services: "{{ ansible_facts.services.values()
-          | selectattr('source', 'equalto', 'systemd')
-          | selectattr('state', 'equalto', 'running')
+          | ansible.builtin.selectattr('source', 'equalto', 'systemd')
+          | ansible.builtin.selectattr('state', 'equalto', 'running')
           + ansible_facts.services.values()
-          | selectattr('source', 'equalto', 'systemd')
-          | selectattr('status', 'equalto', 'enabled') }}"
+          | ansible.builtin.selectattr('source', 'equalto', 'systemd')
+          | ansible.builtin.selectattr('status', 'equalto', 'enabled') }}"
 
 - name: PostgreSQL | Generate Locales
   community.general.locale_gen:
@@ -71,20 +71,20 @@
   ansible.builtin.file:
       path: "{{ item.path }}"
       state: directory
-      mode: "{{ item.mode | default('0755') }}"
+      mode: "{{ item.mode | ansible.builtin.default(default_value='0755') }}"
       owner: "{{ postgresql_service_user }}"
       group: "{{ postgresql_service_group }}"
   loop:
-      - path: "{{ postgresql_default_conf_file | dirname }}"
-      - path: "{{ postgresql_pg_ctlcluster_start_file | dirname }}"
-      - path: "{{ postgresql_pg_ctlcluster_pg_ctl_file | dirname }}"
-      - path: "{{ postgresql_conf_file | dirname }}"
+      - path: "{{ postgresql_default_conf_file | ansible.builtin.dirname }}"
+      - path: "{{ postgresql_pg_ctlcluster_start_file | ansible.builtin.dirname }}"
+      - path: "{{ postgresql_pg_ctlcluster_pg_ctl_file | ansible.builtin.dirname }}"
+      - path: "{{ postgresql_conf_file | ansible.builtin.dirname }}"
       - path: "{{ postgresql_data_directory }}"
         mode: "0700"
-      - path: "{{ postgresql_external_pid_file | dirname }}"
+      - path: "{{ postgresql_external_pid_file | ansible.builtin.dirname }}"
         mode: "0750"
-      - path: "{{ postgresql_hba_file | dirname }}"
-      - path: "{{ postgresql_ident_file | dirname }}"
+      - path: "{{ postgresql_hba_file | ansible.builtin.dirname }}"
+      - path: "{{ postgresql_ident_file | ansible.builtin.dirname }}"
 
 - name: PostgreSQL | Create PostgreSQL Socket Directories
   ansible.builtin.file:
@@ -96,7 +96,7 @@
   notify:
       - Restart postgresql handler
 
-- name: PostgreSQL | Create PostgreSQL hba_file
+- name: PostgreSQL | Create PostgreSQL HBA File
   community.postgresql.postgresql_pg_hba:
       dest: "{{ postgresql_hba_file }}"
       mode: "0600"
@@ -112,7 +112,7 @@
   notify:
       - Restart postgresql handler
 
-- name: PostgreSQL | Extra hba_file Entries
+- name: PostgreSQL | Extra HBA File Entries
   community.postgresql.postgresql_pg_hba:
       dest: "{{ postgresql_hba_file }}"
       mode: "0600"
@@ -124,18 +124,18 @@
       overwrite: false
       rules_behavior: conflict
       create: false
-      contype: "{{ item.contype | default(omit) }}"
-      databases: "{{ item.databases | default(omit) }}"
-      users: "{{ item.users | default(omit) }}"
-      method: "{{ item.method | default(omit) }}"
-      address: "{{ item.address | default(omit) }}"
-      options: "{{ item.options | default(omit) }}"
-      netmask: "{{ item.netmask | default(omit) }}"
+      contype: "{{ item.contype | ansible.builtin.default(default_value=omit) }}"
+      databases: "{{ item.databases | ansible.builtin.default(default_value=omit) }}"
+      users: "{{ item.users | ansible.builtin.default(default_value=omit) }}"
+      method: "{{ item.method | ansible.builtin.default(default_value=omit) }}"
+      address: "{{ item.address | ansible.builtin.default(default_value=omit) }}"
+      options: "{{ item.options | ansible.builtin.default(default_value=omit) }}"
+      netmask: "{{ item.netmask | ansible.builtin.default(default_value=omit) }}"
   loop: "{{ postgresql_extra_hba_rules }}"
   notify:
       - Restart postgresql handler
 
-- name: PostgreSQL | Create PostgreSQL ident_file
+- name: PostgreSQL | Create PostgreSQL Ident File
   ansible.builtin.copy:
       src: "files/pg_ident.conf"
       dest: "{{ postgresql_ident_file }}"
@@ -146,7 +146,7 @@
   notify:
       - Restart postgresql handler
 
-- name: PostgreSQL | Write pg_ctlcluster Files
+- name: PostgreSQL | Write Pg Ctlcluster Files
   ansible.builtin.copy:
       src: "{{ item.src }}"
       dest: "{{ item.dest }}"
@@ -192,19 +192,21 @@
       - Restart postgresql handler
 
 - name: PostgreSQL | SSL
-  when: postgresql_ssl_cert_pem_content is defined and postgresql_ssl_cert_pem_content | length > 1
-      and postgresql_ssl_key_pem_content is defined and postgresql_ssl_key_pem_content | length > 1
+  when: postgresql_ssl_cert_pem_content is ansible.builtin.defined
+      and postgresql_ssl_cert_pem_content | ansible.builtin.length > 1
+      and postgresql_ssl_key_pem_content is ansible.builtin.defined
+      and postgresql_ssl_key_pem_content | ansible.builtin.length > 1
   block:
       - name: PostgreSQL | SSL | Create SSL Directories
         ansible.builtin.file:
             path: "{{ item.path }}"
             state: directory
-            mode: "{{ item.mode | default('0755') }}"
+            mode: "{{ item.mode | ansible.builtin.default(default_value='0755') }}"
             owner: "{{ postgresql_service_user }}"
             group: "{{ postgresql_service_group }}"
         loop:
-            - path: "{{ postgresql_ssl_cert_file | dirname }}"
-            - path: "{{ postgresql_ssl_key_file | dirname }}"
+            - path: "{{ postgresql_ssl_cert_file | ansible.builtin.dirname }}"
+            - path: "{{ postgresql_ssl_key_file | ansible.builtin.dirname }}"
 
       - name: PostgreSQL | SSL | Write DB Server Certificates
         ansible.builtin.copy:
@@ -246,11 +248,12 @@
             - Restart postgresql handler
 
       - name: PostgreSQL | SSL | Client CA
-        when: postgresql_ssl_ca_pem_content is defined and postgresql_ssl_ca_pem_content | length > 1
+        when: postgresql_ssl_ca_pem_content is ansible.builtin.defined
+            and postgresql_ssl_ca_pem_content | ansible.builtin.length > 1
         block:
             - name: PostgreSQL | SSL | Client CA | Create SSL Directories
               ansible.builtin.file:
-                  path: "{{ postgresql_ssl_ca_file | dirname }}"
+                  path: "{{ postgresql_ssl_ca_file | ansible.builtin.dirname }}"
                   state: directory
                   mode: "{{ '0755' }}"
                   owner: "{{ postgresql_service_user }}"
@@ -308,7 +311,8 @@
       daemon_reload: true
 
 - name: PostgreSQL | Reset Superuser Password
-  when: postgresql_super_user_password is defined and postgresql_super_user_password | length > 1
+  when: postgresql_super_user_password is ansible.builtin.defined
+      and postgresql_super_user_password | ansible.builtin.length > 1
   community.postgresql.postgresql_user:
       name: "{{ postgresql_super_user }}"
       password: "{{ postgresql_super_user_password }}"
@@ -323,18 +327,21 @@
       ansible_ssh_pipelining: true
   environment:
       PGOPTIONS: "{{ (postgresql_auth_method == 'scram-sha-256')
-          | ternary('-c password_encryption=scram-sha-256', '') }}"
+          | ansible.builtin.ternary(true_val='-c password_encryption=scram-sha-256', false_val='') }}"
 
 - name: PostgreSQL | Ensure PostgreSQL Users Are Present
   community.postgresql.postgresql_user:
       name: "{{ item.name }}"
-      password: "{{ item.password | default(omit) }}"
-      login_db: "{{ item.login_db | default(postgresql_super_user_db) }}"
-      login_host: "{{ item.login_host | default('localhost') }}"
-      login_password: "{{ item.login_password | default(omit) }}"
-      login_user: "{{ item.login_user | default(postgresql_super_user) }}"
-      login_unix_socket: "{{ item.login_unix_socket | default(postgresql_unix_socket_directories[0]) }}"
-      login_port: "{{ item.login_port | default(item.port | default(postgresql_port)) }}"
+      password: "{{ item.password | ansible.builtin.default(default_value=omit) }}"
+      login_db: "{{ item.login_db | ansible.builtin.default(default_value=postgresql_super_user_db) }}"
+      login_host: "{{ item.login_host | ansible.builtin.default(default_value='localhost') }}"
+      login_password: "{{ item.login_password | ansible.builtin.default(default_value=omit) }}"
+      login_user: "{{ item.login_user | ansible.builtin.default(default_value=postgresql_super_user) }}"
+      login_unix_socket: "{{ item.login_unix_socket
+          | ansible.builtin.default(default_value=postgresql_unix_socket_directories[0]) }}"
+      login_port: "{{ item.login_port
+          | ansible.builtin.default(default_value=item.port
+              | ansible.builtin.default(default_value=postgresql_port)) }}"
   with_items: "{{ postgresql_users }}"
   become: true
   become_user: "{{ postgresql_service_user }}"
@@ -343,22 +350,23 @@
       ansible_ssh_pipelining: true
   environment:
       PGOPTIONS: "{{ (postgresql_auth_method == 'scram-sha-256')
-          | ternary('-c password_encryption=scram-sha-256', '') }}"
+          | ansible.builtin.ternary(true_val='-c password_encryption=scram-sha-256', false_val='') }}"
 
 - name: PostgreSQL | Ensure PostgreSQL Databases Are Present
   community.postgresql.postgresql_db:
       name: "{{ item.name }}"
-      lc_collate: "{{ item.lc_collate | default('en_US.UTF-8') }}"
-      lc_ctype: "{{ item.lc_ctype | default('en_US.UTF-8') }}"
-      encoding: "{{ item.encoding | default('UTF-8') }}"
-      template: "{{ item.template | default('template0') }}"
-      login_host: "{{ item.login_host | default('localhost') }}"
-      login_password: "{{ item.login_password | default(omit) }}"
-      login_user: "{{ item.login_user | default(postgresql_super_user) }}"
-      login_unix_socket: "{{ item.login_unix_socket | default(postgresql_unix_socket_directories[0]) }}"
-      login_port: "{{ item.login_port | default(postgresql_port) }}"
-      owner: "{{ item.owner | default(postgresql_super_user) }}"
-      state: "{{ item.state | default('present') }}"
+      lc_collate: "{{ item.lc_collate | ansible.builtin.default(default_value='en_US.UTF-8') }}"
+      lc_ctype: "{{ item.lc_ctype | ansible.builtin.default(default_value='en_US.UTF-8') }}"
+      encoding: "{{ item.encoding | ansible.builtin.default(default_value='UTF-8') }}"
+      template: "{{ item.template | ansible.builtin.default(default_value='template0') }}"
+      login_host: "{{ item.login_host | ansible.builtin.default(default_value='localhost') }}"
+      login_password: "{{ item.login_password | ansible.builtin.default(default_value=omit) }}"
+      login_user: "{{ item.login_user | ansible.builtin.default(default_value=postgresql_super_user) }}"
+      login_unix_socket: "{{ item.login_unix_socket
+          | ansible.builtin.default(default_value=postgresql_unix_socket_directories[0]) }}"
+      login_port: "{{ item.login_port | ansible.builtin.default(default_value=postgresql_port) }}"
+      owner: "{{ item.owner | ansible.builtin.default(default_value=postgresql_super_user) }}"
+      state: "{{ item.state | ansible.builtin.default(default_value='present') }}"
   with_items: "{{ postgresql_databases }}"
   become: true
   become_user: "{{ postgresql_service_user }}"
@@ -369,16 +377,17 @@
 - name: PostgreSQL | Ensure PostgreSQL Users Are Configured Correctly
   community.postgresql.postgresql_user:
       name: "{{ item.name }}"
-      password: "{{ item.password | default(omit) }}"
-      encrypted: "{{ item.encrypted | default(omit) }}"
-      role_attr_flags: "{{ item.role_attr_flags | default(omit) }}"
-      login_db: "{{ item.login_db | default(postgresql_super_user_db) }}"
-      login_host: "{{ item.login_host | default('localhost') }}"
-      login_password: "{{ item.login_password | default(omit) }}"
-      login_user: "{{ item.login_user | default(postgresql_super_user) }}"
-      login_unix_socket: "{{ item.login_unix_socket | default(postgresql_unix_socket_directories[0]) }}"
-      login_port: "{{ item.login_port | default(postgresql_port) }}"
-      state: "{{ item.state | default('present') }}"
+      password: "{{ item.password | ansible.builtin.default(default_value=omit) }}"
+      encrypted: "{{ item.encrypted | ansible.builtin.default(default_value=omit) }}"
+      role_attr_flags: "{{ item.role_attr_flags | ansible.builtin.default(default_value=omit) }}"
+      login_db: "{{ item.login_db | ansible.builtin.default(default_value=postgresql_super_user_db) }}"
+      login_host: "{{ item.login_host | ansible.builtin.default(default_value='localhost') }}"
+      login_password: "{{ item.login_password | ansible.builtin.default(default_value=omit) }}"
+      login_user: "{{ item.login_user | ansible.builtin.default(default_value=postgresql_super_user) }}"
+      login_unix_socket: "{{ item.login_unix_socket
+          | ansible.builtin.default(default_value=postgresql_unix_socket_directories[0]) }}"
+      login_port: "{{ item.login_port | ansible.builtin.default(default_value=postgresql_port) }}"
+      state: "{{ item.state | ansible.builtin.default(default_value='present') }}"
   with_items: "{{ postgresql_users }}"
   become: true
   become_user: "{{ postgresql_service_user }}"
@@ -387,7 +396,7 @@
       ansible_ssh_pipelining: true
   environment:
       PGOPTIONS: "{{ (postgresql_auth_method == 'scram-sha-256')
-          | ternary('-c password_encryption=scram-sha-256', '') }}"
+          | ansible.builtin.ternary(true_val='-c password_encryption=scram-sha-256', false_val='') }}"
 
 - name: PostgreSQL | Ensure PostgreSQL Users Do Not Use Deprecated Privileges Settings
   ansible.builtin.debug:
@@ -396,26 +405,27 @@
   with_items: "{{ postgresql_users }}"
   loop_control:
       label: "{{ item.name }}"
-  when: item.priv is defined
+  when: item.priv is ansible.builtin.defined
 
 - name: PostgreSQL | Ensure PostgreSQL Users Privileges Are Configured Correctly
   community.postgresql.postgresql_privs:
       roles: "{{ item.roles }}"
-      privs: "{{ item.privs | default(omit) }}"
-      type: "{{ item.type | default(omit) }}"
-      objs: "{{ item.objs | default(omit) }}"
-      schema: "{{ item.schema | default(omit) }}"
-      session_role: "{{ item.session_role | default(omit) }}"
-      login_db: "{{ item.login_db | default(postgresql_super_user_db) }}"
-      login_host: "{{ item.login_host | default('localhost') }}"
-      login_password: "{{ item.login_password | default(omit) }}"
-      login_user: "{{ item.login_user | default(postgresql_super_user) }}"
-      login_unix_socket: "{{ item.login_unix_socket | default(postgresql_unix_socket_directories[0]) }}"
-      login_port: "{{ item.login_port | default(postgresql_port) }}"
-      state: "{{ item.state | default('present') }}"
-      fail_on_role: "{{ item.fail_on_role | default(true) }}"
-      grant_option: "{{ item.grant_option | default(omit) }}"
-      target_roles: "{{ item.target_roles | default(omit) }}"
+      privs: "{{ item.privs | ansible.builtin.default(default_value=omit) }}"
+      type: "{{ item.type | ansible.builtin.default(default_value=omit) }}"
+      objs: "{{ item.objs | ansible.builtin.default(default_value=omit) }}"
+      schema: "{{ item.schema | ansible.builtin.default(default_value=omit) }}"
+      session_role: "{{ item.session_role | ansible.builtin.default(default_value=omit) }}"
+      login_db: "{{ item.login_db | ansible.builtin.default(default_value=postgresql_super_user_db) }}"
+      login_host: "{{ item.login_host | ansible.builtin.default(default_value='localhost') }}"
+      login_password: "{{ item.login_password | ansible.builtin.default(default_value=omit) }}"
+      login_user: "{{ item.login_user | ansible.builtin.default(default_value=postgresql_super_user) }}"
+      login_unix_socket: "{{ item.login_unix_socket
+          | ansible.builtin.default(default_value=postgresql_unix_socket_directories[0]) }}"
+      login_port: "{{ item.login_port | ansible.builtin.default(default_value=postgresql_port) }}"
+      state: "{{ item.state | ansible.builtin.default(default_value='present') }}"
+      fail_on_role: "{{ item.fail_on_role | ansible.builtin.default(default_value=true) }}"
+      grant_option: "{{ item.grant_option | ansible.builtin.default(default_value=omit) }}"
+      target_roles: "{{ item.target_roles | ansible.builtin.default(default_value=omit) }}"
   with_items: "{{ postgresql_privs }}"
   become: true
   become_user: "{{ postgresql_service_user }}"
@@ -424,14 +434,14 @@
       ansible_ssh_pipelining: true
   environment:
       PGOPTIONS: "{{ (postgresql_auth_method == 'scram-sha-256')
-          | ternary('-c password_encryption=scram-sha-256', '') }}"
+          | ansible.builtin.ternary(true_val='-c password_encryption=scram-sha-256', false_val='') }}"
 
 - name: PostgreSQL | Gather The Package Facts
   ansible.builtin.package_facts:
       manager: auto
 
 - name: PostgreSQL | Allow UFW Port
-  when: "'ufw' in ansible_facts.packages and ansible_facts.packages['ufw'] | length > 0"
+  when: "'ufw' in ansible_facts.packages and ansible_facts.packages['ufw'] | ansible.builtin.length > 0"
   community.general.ufw:
       state: enabled
       port: "{{ postgresql_port }}"
