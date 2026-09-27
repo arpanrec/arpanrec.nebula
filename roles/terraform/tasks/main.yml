@@ -10,13 +10,13 @@
 
 - name: Terraform | Get Version Details
   ansible.builtin.set_fact:
-      terraform_tmp_version_details: "{{ lookup('arpanrec.nebula.version_db', 'terraform',
-          terraform_rv_version=terraform_rv_version) | from_json }}"
+      __terraform_tmp_version_details: "{{ lookup('arpanrec.nebula.version_db', 'terraform',
+          terraform_rv_version=terraform_rv_version) | ansible.builtin.from_json }}"
 
 - name: Terraform | Get Downloaded File Stat
   ansible.builtin.stat:
-      path: "{{ terraform_rv_tarball_download_path }}"
-  register: terraform_rv_tmp_downloaded_file_stat
+      path: "{{ __terraform_rv_tarball_download_path }}"
+  register: __terraform_rv_tmp_downloaded_file_stat
 
 - name: Terraform | New Download | Create Download Directory
   ansible.builtin.file:
@@ -25,18 +25,18 @@
       mode: "0700"
 
 - name: Terraform | New Download
-  when: not terraform_rv_tmp_downloaded_file_stat.stat.exists
+  when: not __terraform_rv_tmp_downloaded_file_stat.stat.exists
   block:
       - name: "Terraform | New Download | Download Tarball"
         ansible.builtin.get_url:
-            url: "{{ terraform_tmp_version_details.download_link }}"
-            checksum: "{{ terraform_tmp_version_details.checksum | default(omit) }}"
-            dest: "{{ terraform_rv_tarball_download_path }}"
+            url: "{{ __terraform_tmp_version_details.download_link }}"
+            checksum: "{{ __terraform_tmp_version_details.checksum | ansible.builtin.default(default_value=omit) }}"
+            dest: "{{ __terraform_rv_tarball_download_path }}"
             mode: "0700"
   rescue:
       - name: Terraform | New Download | Fail | Cleanup
         ansible.builtin.file:
-            path: "{{ terraform_rv_tarball_download_path }}"
+            path: "{{ __terraform_rv_tarball_download_path }}"
             state: absent
 
       - name: Terraform | New Download | Fail | Fail
@@ -45,6 +45,6 @@
 
 - name: Terraform | New Download | Unarchive The Tarball
   ansible.builtin.unarchive:
-      src: "{{ terraform_rv_tarball_download_path }}"
+      src: "{{ __terraform_rv_tarball_download_path }}"
       dest: "{{ terraform_rv_install_path }}"
       remote_src: true

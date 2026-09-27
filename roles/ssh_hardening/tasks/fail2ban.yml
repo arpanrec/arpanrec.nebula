@@ -7,7 +7,7 @@
 
 - name: SSHD Hardening | Fail2ban | Install Fail2ban
   ansible.builtin.apt:
-      name: "{{ ssh_hardening_rv_fail2ban_packages }}"
+      name: "{{ __ssh_hardening_rv_fail2ban_packages }}"
       state: present
       update_cache: true
       install_recommends: true
@@ -39,7 +39,7 @@
       option: "{{ item.option }}"
       value: "{{ item.value }}"
       mode: "0640"
-  loop: "{{ ssh_hardening_rv_fail2ban_base_configuration + ssh_hardening_rv_fail2ban_configuration }}"
+  loop: "{{ __ssh_hardening_rv_fail2ban_base_configuration + ssh_hardening_rv_fail2ban_configuration }}"
   notify:
       - SSHD Hardening | fail2ban | Restart fail2ban
   loop_control:
@@ -77,7 +77,7 @@
       option: "{{ item.option }}"
       value: "{{ item.value }}"
       mode: "0640"
-  loop: "{{ ssh_hardening_rv_fail2ban_base_jail_configuration + ssh_hardening_rv_fail2ban_jail_configuration }}"
+  loop: "{{ __ssh_hardening_rv_fail2ban_base_jail_configuration + ssh_hardening_rv_fail2ban_jail_configuration }}"
   notify:
       - SSHD Hardening | fail2ban | Restart fail2ban
   loop_control:
@@ -86,7 +86,7 @@
 - name: SSHD Hardening | Fail2ban | Stat Auth Log File
   ansible.builtin.stat:
       path: /var/log/auth.log
-  register: ssh_hardening_rv_fail2ban_auth
+  register: __ssh_hardening_rv_fail2ban_auth
 
 - name: SSHD Hardening | Fail2ban | Touch Auth Log File
   ansible.builtin.file:
@@ -94,17 +94,17 @@
       state: touch
       mode: "0640"
   when:
-      - ssh_hardening_rv_fail2ban_auth.stat.exists is defined
-      - not ssh_hardening_rv_fail2ban_auth.stat.exists
+      - __ssh_hardening_rv_fail2ban_auth.stat.exists is defined
+      - not __ssh_hardening_rv_fail2ban_auth.stat.exists
 
 - name: SSHD Hardening | Fail2ban | Start And Enable Fail2ban
   ansible.builtin.systemd_service:
       name: "{{ item }}"
       state: started
       enabled: true
-  register: ssh_hardening_rv_tmp_start_fail2ban
-  loop: "{{ ssh_hardening_rv_fail2ban_services }}"
+  register: __ssh_hardening_rv_tmp_start_fail2ban
+  loop: "{{ __ssh_hardening_rv_fail2ban_services }}"
   failed_when: >
-      ssh_hardening_rv_init_system_systemd
+      __ssh_hardening_rv_init_system_systemd
       and
-      ssh_hardening_rv_tmp_start_fail2ban.failed
+      __ssh_hardening_rv_tmp_start_fail2ban.failed
