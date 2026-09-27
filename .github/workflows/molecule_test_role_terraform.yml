@@ -20,7 +20,7 @@ name: Molecule Test Role Terraform
             - "roles/terraform/**"
             - "uv.lock"
             - "pyproject.toml"
-            
+
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
     cancel-in-progress: true

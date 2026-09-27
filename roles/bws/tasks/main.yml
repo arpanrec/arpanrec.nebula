@@ -19,7 +19,7 @@
         ansible.builtin.get_url:
             url: "{{ __bws_sdk_version_details.download_link }}"
             dest: "{{ __bws_sdk_tmp_zip_download_path }}"
-            checksum: "{{ __bws_sdk_version_details.checksum | ansible.builtin.default(omit) }}"
+            checksum: "{{ __bws_sdk_version_details.checksum | ansible.builtin.default(default_value=omit) }}"
             mode: "0700"
 
       - name: Bitwarden Secrets Manager SDK | New Install | Remove Old Directory

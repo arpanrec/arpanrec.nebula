@@ -30,7 +30,7 @@
       - name: "Vault | New Download | Download Tarball"
         ansible.builtin.get_url:
             url: "{{ __vault_tmp_version_details.download_link }}"
-            checksum: "{{ __vault_tmp_version_details.checksum | ansible.builtin.default(omit) }}"
+            checksum: "{{ __vault_tmp_version_details.checksum | ansible.builtin.default(default_value=omit) }}"
             dest: "{{ __vault_rv_tarball_download_path }}"
             mode: "0700"
   rescue:

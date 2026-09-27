@@ -23,7 +23,7 @@
       - name: Vault | Molecule | Verify | Fail If Vault Version Is Not Present
         ansible.builtin.assert:
             that: __vault_tmp_version_shell_result.stdout_lines[0]
-                is ansible.builtin.match('Vault v' + __vault_tmp_version_details.version + '.*')
+                is ansible.builtin.match(pattern='Vault v' + __vault_tmp_version_details.version + '.*')
             success_msg: Vault Version {{ __vault_tmp_version_details.version }} is installed
             fail_msg: Vault Version {{ __vault_tmp_version_details.version }} is not installed,
                 Shell result {{ __vault_tmp_version_shell_result.stdout }}

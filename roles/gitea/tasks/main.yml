@@ -96,7 +96,7 @@
 - name: Gitea | Download Binary
   ansible.builtin.get_url:
       url: "{{ __gitea_version_details.download_link }}"
-      checksum: "{{ __gitea_version_details.checksum | ansible.builtin.default(omit) }}"
+      checksum: "{{ __gitea_version_details.checksum | ansible.builtin.default(default_value=omit) }}"
       mode: "0755"
       owner: root
       group: root
@@ -139,7 +139,7 @@
       create: true
       backup: false
       no_extra_spaces: false
-      section: "{{ item.section | ansible.builtin.default(omit) }}"
+      section: "{{ item.section | ansible.builtin.default(default_value=omit) }}"
       option: "{{ item.option }}"
       value: "{{ item.value }}"
   loop: "{{ __gitea_default_config }}"
@@ -165,7 +165,7 @@
       create: false
       backup: false
       no_extra_spaces: false
-      section: "{{ item.section | ansible.builtin.default(omit) }}"
+      section: "{{ item.section | ansible.builtin.default(default_value=omit) }}"
       option: "{{ item.option }}"
       value: "{{ item.value }}"
   loop:
@@ -216,7 +216,7 @@
             create: false # It should be created by the previous task.
             backup: false
             no_extra_spaces: false
-            section: "{{ item.section | ansible.builtin.default(omit) }}"
+            section: "{{ item.section | ansible.builtin.default(default_value=omit) }}"
             option: "{{ item.option }}"
             value: "{{ item.value }}"
         loop:
@@ -234,7 +234,7 @@
       create: false # It should be created by the previous task.
       backup: false
       no_extra_spaces: false
-      section: "{{ item.section | ansible.builtin.default(omit) }}"
+      section: "{{ item.section | ansible.builtin.default(default_value=omit) }}"
       option: "{{ item.option }}"
       value: "{{ item.value }}"
   loop: "{{ gitea_extra_config }}"

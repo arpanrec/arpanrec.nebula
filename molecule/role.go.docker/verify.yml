@@ -22,7 +22,7 @@
 
       - name: Golang | Molecule | Verify | Fail If Go Version Is Not Present
         ansible.builtin.assert:
-            that: __go_rv_tmp_version_shell_result.stdout is ansible.builtin.match("go version "
+            that: __go_rv_tmp_version_shell_result.stdout is ansible.builtin.match(pattern="go version "
                 + __go_tmp_version_details.version + ".*")
             success_msg: Go Version {{ __go_tmp_version_details.version }} is installed
             fail_msg: Go Version {{ __go_tmp_version_details.version }} is not installed,

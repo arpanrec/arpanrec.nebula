@@ -6,7 +6,7 @@
       enabled: true
       daemon_reload: true
       masked: false
-  when: __gitea_rv_init_system_systemd | ansible.builtin.default(true)
+  when: __gitea_rv_init_system_systemd | ansible.builtin.default(default_value=true)
 
 - name: Fail2ban | Restart service
   when: "'fail2ban' in ansible_facts.packages and ansible_facts.packages['fail2ban'] | ansible.builtin.length > 0"

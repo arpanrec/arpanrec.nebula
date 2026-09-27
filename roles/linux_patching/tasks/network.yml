@@ -32,7 +32,7 @@
         environment:
             PATH: /usr/sbin:{{ ansible_facts.env.PATH }}
         changed_when: __linux_patching_rv_update_ca_trust_shell_result.stdout_lines[1]
-            is not ansible.builtin.match("0 added.*")
+            is not ansible.builtin.match(pattern="0 added.*")
 
       - name: Linux Patching | Network | CA Certificate | Debug CA Trust Update Result
         ansible.builtin.debug:
@@ -76,7 +76,7 @@
       __linux_patching_rv_tmp_ipvsix_disable_sysctl.failed
       and
       __linux_patching_rv_tmp_ipvsix_disable_sysctl.msg
-      is not ansible.builtin.search('disable_ipv6: No such file or directory')
+      is not ansible.builtin.search(pattern='disable_ipv6: No such file or directory')
   with_items:
       - name: net.ipv6.conf.all.disable_ipv6
         value: "1"

@@ -111,12 +111,12 @@
       - name: Gitea | Post Install | Admin User | Find Row
         ansible.builtin.set_fact:
             __gitea_admin_user_row_split: "{{ __gitea_cli_res_user_row
-                | ansible.builtin.split(separator=' ') | ansible.builtin.reject('equalto', '') }}"
+                | ansible.builtin.split(sep=' ') | ansible.builtin.reject('equalto', '') }}"
         loop: "{{ __gitea_cli_res_all_user_list.stdout_lines }}"
         loop_control:
             loop_var: __gitea_cli_res_user_row
         when: gitea_admin_user_username == (__gitea_cli_res_user_row
-            | ansible.builtin.split(separator=' ') | ansible.builtin.reject('equalto', ''))[1]
+            | ansible.builtin.split(sep=' ') | ansible.builtin.reject('equalto', ''))[1]
 
       - name: Gitea | Post Install | Admin User | Search Debug
         when: __gitea_admin_user_row_split is ansible.builtin.defined

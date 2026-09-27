@@ -15,4 +15,4 @@
 - name: Linux Patching | Prerequisite | Assume System Is Not In Systemd
   ansible.builtin.set_fact:
       __linux_patching_rv_init_system_systemd: "{{ __linux_patching_rv_tmp_one_pid_shell_result.stdout_lines[1] \
-          | ansible.builtin.split(' ') | ansible.builtin.last == 'systemd' }}"
+          | ansible.builtin.split(sep=' ') | ansible.builtin.last == 'systemd' }}"

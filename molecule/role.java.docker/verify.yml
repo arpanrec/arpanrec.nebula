@@ -28,7 +28,7 @@
 
             - name: Oracle JDK | JDK | Molecule | Verify | Fail If Javac Version Is Not Present
               ansible.builtin.assert:
-                  that: __java_rv_jdk_tmp_version_shell_result.stdout is ansible.builtin.match("javac "
+                  that: __java_rv_jdk_tmp_version_shell_result.stdout is ansible.builtin.match(pattern="javac "
                       + __oracle_jdk_tmp_version_details.version | ansible.builtin.string + ".*")
                   success_msg: Java Version {{ __oracle_jdk_tmp_version_details.version }} is installed
                   fail_msg: "Java Version {{ __oracle_jdk_tmp_version_details.version }} is not installed, \
@@ -48,7 +48,7 @@
             - name: Oracle JDK | GraalVM | Molecule | Verify | Fail If Javac Version Is Not Present
               ansible.builtin.assert:
                   that: __java_rv_jdk_graalvm_tmp_version_shell_result.stdout is
-                      ansible.builtin.match("native-image "
+                      ansible.builtin.match(pattern="native-image "
                       + __oracle_jdk_tmp_version_details.extras.graalvm.version | ansible.builtin.string + ".*")
                   success_msg: GraalVM Version {{ __oracle_jdk_tmp_version_details.extras.graalvm.version }}
                       is installed
@@ -67,7 +67,7 @@
       - name: Oracle JDK | Apache Maven | Molecule | Verify | Fail If Mvn Version Is Not Present
         ansible.builtin.assert:
             that: __java_rv_jdk_maven_tmp_version_shell_result.stdout_lines[0]
-                is ansible.builtin.match("Apache Maven "
+                is ansible.builtin.match(pattern="Apache Maven "
                 + __oracle_jdk_tmp_version_details.extras.maven.version[6:] + ".*")
             success_msg: Apache Maven {{ __oracle_jdk_tmp_version_details.extras.maven.version }} is installed
             fail_msg: Apache Maven {{ __oracle_jdk_tmp_version_details.extras.maven.version }}

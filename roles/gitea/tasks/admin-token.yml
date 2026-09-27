@@ -58,7 +58,7 @@
       group: "root"
       mode: "0600"
       content: "{{ __gitea_cli_res_admin_token.stdout_lines | ansible.builtin.first
-          | ansible.builtin.split(separator=' ') | ansible.builtin.last }}"
+          | ansible.builtin.split(sep=' ') | ansible.builtin.last }}"
 
 - name: Gitea | Admin Token | Reset Fact
   ansible.builtin.set_fact:

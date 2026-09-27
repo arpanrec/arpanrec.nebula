@@ -26,7 +26,7 @@
       - name: Uv | Molecule | Verify | Fail If Uv Version Is Not Present
         ansible.builtin.assert:
             that: "__uv_version_details.version == (__uv_rv_version_shell_result.stdout_lines[0]
-                | ansible.builtin.split(separator=' ') | ansible.builtin.reject('equalto', ''))[1]"
+                | ansible.builtin.split(sep=' ') | ansible.builtin.reject('equalto', ''))[1]"
             success_msg: Uv Version {{ __uv_version_details.version }} is installed
             fail_msg: Uv Version {{ __uv_version_details.version }} is not installed,
                 Shell result {{ __uv_rv_version_shell_result.stdout }}
@@ -44,7 +44,7 @@
       - name: Uv | Molecule | Verify | Fail If Uvx Version Is Not Present
         ansible.builtin.assert:
             that: "__uv_version_details.version == (__uvx_rv_version_shell_result.stdout_lines[0]
-                | ansible.builtin.split(separator=' ') | ansible.builtin.reject('equalto', ''))[1]"
+                | ansible.builtin.split(sep=' ') | ansible.builtin.reject('equalto', ''))[1]"
             success_msg: Uvx Version {{ __uv_version_details.version }} is installed
             fail_msg: Uvx Version {{ __uv_version_details.version }} is not installed,
                 Shell result {{ __uvx_rv_version_shell_result.stdout }}

@@ -30,7 +30,7 @@
       - name: "Pulumi | New Download | Download Tarball"
         ansible.builtin.get_url:
             url: "{{ __pulumi_version_details.download_link }}"
-            checksum: "{{ __pulumi_version_details.checksum | ansible.builtin.default(omit) }}"
+            checksum: "{{ __pulumi_version_details.checksum | ansible.builtin.default(default_value=omit) }}"
             dest: "{{ __pulumi_rv_tarball_download_path }}"
             mode: "0700"
   rescue:

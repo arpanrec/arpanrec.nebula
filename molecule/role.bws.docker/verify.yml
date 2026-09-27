@@ -24,7 +24,7 @@
       - name: Bitwarden Secrets Manager SDK | Molecule | Verify | Fail If Bw Version Is Not Present
         ansible.builtin.assert:
             that: __bws_sdk_cli_tmp_version_shell_result.stdout
-                is ansible.builtin.match("bws " + __bws_sdk_version_details.version[5:])
+                is ansible.builtin.match(pattern="bws " + __bws_sdk_version_details.version[5:])
             success_msg: BWS Version {{ __bws_sdk_version_details.version }} is installed
             fail_msg: >-
                 BWS Version {{ __bws_sdk_version_details.version }} is not installed,
