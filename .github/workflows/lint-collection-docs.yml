@@ -42,11 +42,11 @@ jobs:
                       **/uv.lock
 
             - name: Install dependencies
-              run: uv sync --extra dev
+              run: uv sync --all-extras --all-packages --no-progress
               env:
                   UV_PYTHON: ${{ matrix.python-version }}
 
             - name: Analyzing the code with lint-collection-docs
-              run: uv run antsibull-docs lint-collection-docs . --plugin-docs
+              run: uv --offline run --no-sync --no-progress antsibull-docs lint-collection-docs . --plugin-docs
               env:
                   UV_PYTHON: ${{ matrix.python-version }}
