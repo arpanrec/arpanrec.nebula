@@ -7,6 +7,8 @@ ignore:
     - .env
     - node_modules
     - .ansible
+    - geerlingguy.docker
+    - pnpm-lock.yaml
 yaml-files:
     - "*.yaml"
     - "*.yml"

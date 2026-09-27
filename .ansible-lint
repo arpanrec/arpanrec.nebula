@@ -22,6 +22,7 @@ exclude_paths:
     - .prettierrc.mjs
     - CLAUDE.md
     - AGENTS.md
+    - geerlingguy.docker
 profile: production
 skip_list: []
 verbosity: 2
