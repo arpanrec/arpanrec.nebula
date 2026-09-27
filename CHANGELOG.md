@@ -1,3 +1,10 @@
+## [1.19.1](https://github.com/arpanrec/arpanrec.nebula/compare/1.19.0...1.19.1) (2026-09-27)
+
+
+### Bug Fixes
+
+* ansible standars for variable names and task names, no functional change. ([#93](https://github.com/arpanrec/arpanrec.nebula/issues/93)) ([bd35e1e](https://github.com/arpanrec/arpanrec.nebula/commit/bd35e1e9216caef40ee8d43435821f4780dae623))
+
 # [1.19.0](https://github.com/arpanrec/arpanrec.nebula/compare/1.18.1...1.19.0) (2026-09-20)
 
 
