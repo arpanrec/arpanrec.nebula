@@ -1,3 +1,10 @@
+## [1.19.2](https://github.com/arpanrec/ansible-collection-nebula/compare/1.19.1...1.19.2) (2026-10-01)
+
+
+### Bug Fixes
+
+* remove unused prerequisite checks across roles and update release workflow versions ([#94](https://github.com/arpanrec/ansible-collection-nebula/issues/94)) ([6c3b379](https://github.com/arpanrec/ansible-collection-nebula/commit/6c3b379c08f3c0f44435ff4e3d547287ecf2184a))
+
 ## [1.19.1](https://github.com/arpanrec/arpanrec.nebula/compare/1.19.0...1.19.1) (2026-09-27)
 
 
