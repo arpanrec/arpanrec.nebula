@@ -12,6 +12,12 @@
       __gitea_rv_init_system_systemd: "{{ __gitea_rv_tmp_one_pid_shell_result.stdout_lines[1] \
           | ansible.builtin.split(sep=' ') | ansible.builtin.last == 'systemd' }}"
 
+- name: Gitea | Prerequisite | Packages Are Present
+  ansible.builtin.shell: "command -v {{ item }} >/dev/null 2>&1"
+  changed_when: false
+  with_items:
+      - gpg
+
 - name: Gitea | Prerequisite | Write GPG Key
   ansible.builtin.copy:
       dest: "/tmp/teabot-gpg.asc"

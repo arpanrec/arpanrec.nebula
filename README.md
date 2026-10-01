@@ -47,10 +47,10 @@ This collection provides a set of roles to deploy and manage various services.
 
 ```bash
 export NEBULA_VERSION=1.19.1
-curl "https://raw.githubusercontent.com/arpanrec/arpanrec.nebula/refs/tags/${NEBULA_VERSION}/requirements.yml" \
+curl "https://raw.githubusercontent.com/arpanrec/ansible-collection-nebula/refs/tags/${NEBULA_VERSION}/requirements.yml" \
     -o "/tmp/requirements-${NEBULA_VERSION}.yml"
 ansible-galaxy install -r "/tmp/requirements-${NEBULA_VERSION}.yml"
-ansible-galaxy collection install "git+https://github.com/arpanrec/arpanrec.nebula.git,${NEBULA_VERSION}"
+ansible-galaxy collection install "git+https://github.com/arpanrec/ansible-collection-nebula.git,${NEBULA_VERSION}"
 ```
 
 ## [License](LICENSE)

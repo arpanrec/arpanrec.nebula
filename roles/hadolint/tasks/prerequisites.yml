@@ -5,13 +5,5 @@
   failed_when: __rl_sw_current_shelluser_shell_result.stdout == "root"
   changed_when: false
 
-- name: Hadolint | Prerequisites | Packages Are Present
-  ansible.builtin.shell: "command -v {{ item }} >/dev/null 2>&1"
-  changed_when: false
-  with_items:
-      - curl
-      - wget
-      - unzip
-
 - name: Hadolint | Prerequisites | Gather Facts
   ansible.builtin.setup:
